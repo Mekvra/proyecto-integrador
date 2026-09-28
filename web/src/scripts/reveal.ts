@@ -37,15 +37,21 @@ export function initReveal() {
     el.style.setProperty('--reveal-delay', `${index * STEP_MS}ms`);
   }
 
+  // Se repite cada vez que el elemento entra en pantalla, bajando o subiendo.
+  // Si sale por arriba, la próxima entrada es desde arriba (bajando), y viceversa.
   const observer = new IntersectionObserver(
     (entries) => {
       for (const entry of entries) {
-        if (!entry.isIntersecting) continue;
-        entry.target.classList.add('is-in');
-        observer.unobserve(entry.target);
+        const el = entry.target;
+        if (entry.isIntersecting && entry.intersectionRatio >= 0.12) {
+          el.classList.add('is-in');
+        } else if (!entry.isIntersecting) {
+          el.classList.remove('is-in');
+          el.classList.toggle('from-top', entry.boundingClientRect.top < 0);
+        }
       }
     },
-    { rootMargin: '0px 0px -8% 0px', threshold: 0.12 },
+    { rootMargin: '0px 0px -8% 0px', threshold: [0, 0.12] },
   );
 
   items.forEach((el) => observer.observe(el));
