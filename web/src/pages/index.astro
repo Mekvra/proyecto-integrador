@@ -8,6 +8,7 @@ import ProcessTabs from '../components/ProcessTabs.astro';
 import Isa95 from '../components/Isa95.astro';
 import BatchChart from '../components/BatchChart.astro';
 import Monogram from '../components/Monogram.astro';
+import Lockup from '../components/Lockup.astro';
 import sitio from '../data/sitio.json';
 
 const empresa = await getEntry('textos', 'empresa');
@@ -242,8 +243,7 @@ const kpis = [
   <footer class="wrap">
     <div class="footer">
     <div class="footer-brand">
-      <Monogram size={28} />
-      <span>{sitio.nombre}</span>
+      <Lockup size="lg" />
     </div>
     <div class="footer-cols">
       <div>

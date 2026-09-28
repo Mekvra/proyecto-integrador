@@ -1,5 +1,5 @@
 ---
-import Monogram from './Monogram.astro';
+import Lockup from './Lockup.astro';
 import sitio from '../data/sitio.json';
 
 const links = [
@@ -14,10 +14,7 @@ const links = [
 
 <header class="nav" data-nav>
   <div class="nav-inner">
-    <a class="lockup" href="#top" aria-label="Mekvra, inicio">
-      <Monogram size={22} />
-      <span>{sitio.nombre}</span>
-    </a>
+    <Lockup />
     <nav aria-label="Secciones">
       <ul>
         {
@@ -91,19 +88,10 @@ const links = [
   .nav-inner {
     max-width: calc(var(--page) + 2 * var(--gutter));
     margin: 0 auto;
-    padding: 18px var(--gutter);
+    padding: 13px var(--gutter);
     display: flex;
     align-items: center;
     gap: 32px;
-  }
-
-  .lockup {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 16px;
-    font-weight: 500;
-    letter-spacing: -0.3px;
   }
 
   nav {

@@ -117,7 +117,7 @@ Secuencia (bucle de ~16 s, 3 s de reposo en cada figura):
 
 Transición entre figuras: cada tesela viaja a su nuevo destino con ease-out exponencial (900–1400 ms, desfasadas por distancia), con una breve dispersión en forma de nube como en el campo de Aaru. El cursor repele las teselas en un radio de 60px y estas vuelven a su sitio con resorte suave. Ocupa ~40 % de la altura del hero, sin fondo, directo sobre el negro. Bajo `prefers-reduced-motion`: se muestra el monograma quieto.
 
-En la barra de navegación, el **lockup** es el monograma estático (mismas teselas, 20px) + el nombre `Mekvra` en Switzer 500, 16px, crema.
+El **lockup** (barra de navegación y pie de página) es una placa de 34 × 34px (`#141312`, borde 1px crema al 12 %, radio 8px) con la M dibujada en una retícula de 9 × 9 teselas champaña, junto al nombre `MEKVRA` en Barlow Condensed 600, 20px, mayúsculas, tracking 0.14em, como la placa de una máquina. Al pasar el cursor, el borde pasa a champaña y las teselas se encienden en una onda diagonal (35 ms entre teselas). El favicon usa la misma M de teselas sobre la placa.
 
 ### Robot Arm Cell — *modificación 3*
 **Role:** Escena de automatización en vivo; demuestra lo que hace la empresa.
