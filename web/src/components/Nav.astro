@@ -1,0 +1,130 @@
+---
+import Monogram from './Monogram.astro';
+import sitio from '../data/sitio.json';
+
+const links = [
+  { href: '#empresa', label: 'Empresa' },
+  { href: '#automatizacion', label: 'Automatización' },
+  { href: '#proceso', label: 'Proceso' },
+  { href: '#arquitectura', label: 'Arquitectura' },
+  { href: '#modulos', label: 'Módulos' },
+  { href: '#equipo', label: 'Equipo' },
+];
+---
+
+<header class="nav" data-nav>
+  <div class="nav-inner">
+    <a class="lockup" href="#top" aria-label="Mekvra, inicio">
+      <Monogram size={22} />
+      <span>{sitio.nombre}</span>
+    </a>
+    <nav aria-label="Secciones">
+      <ul>
+        {
+          links.map((l) => (
+            <li>
+              <a href={l.href} data-navlink>
+                {l.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+    <a class="ghost-link repo" href={sitio.repositorio} target="_blank" rel="noopener">
+      Repositorio <span class="arrow" aria-hidden="true">→</span>
+    </a>
+  </div>
+</header>
+
+<style>
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: var(--black);
+    border-bottom: 1px solid transparent;
+    transition: border-color 200ms var(--ease-switch);
+  }
+
+  .nav[data-scrolled] {
+    border-bottom-color: var(--cream-08);
+  }
+
+  .nav-inner {
+    max-width: calc(var(--page) + 2 * var(--gutter));
+    margin: 0 auto;
+    padding: 18px var(--gutter);
+    display: flex;
+    align-items: center;
+    gap: 32px;
+  }
+
+  .lockup {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: -0.3px;
+  }
+
+  nav {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  ul {
+    display: flex;
+    gap: 24px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  nav a {
+    font-size: 14px;
+    color: var(--cream-70);
+    transition: color 150ms var(--ease-switch);
+  }
+
+  nav a:hover,
+  nav a[aria-current='true'] {
+    color: var(--cream);
+  }
+
+  @media (max-width: 960px) {
+    nav {
+      display: none;
+    }
+    .repo {
+      margin-left: auto;
+    }
+  }
+</style>
+
+<script>
+  const nav = document.querySelector<HTMLElement>('[data-nav]');
+  const onScroll = () => nav?.toggleAttribute('data-scrolled', window.scrollY > 8);
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  // Resalta la sección visible.
+  const links = [...document.querySelectorAll<HTMLAnchorElement>('[data-navlink]')];
+  const byId = new Map(links.map((a) => [a.getAttribute('href')!.slice(1), a]));
+  const observer = new IntersectionObserver(
+    (entries) => {
+      for (const entry of entries) {
+        if (!entry.isIntersecting) continue;
+        links.forEach((a) => a.removeAttribute('aria-current'));
+        byId.get(entry.target.id)?.setAttribute('aria-current', 'true');
+      }
+    },
+    { rootMargin: '-45% 0px -50% 0px' },
+  );
+  byId.forEach((_, id) => {
+    const el = document.getElementById(id);
+    if (el) observer.observe(el);
+  });
+</script>

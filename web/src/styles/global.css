@@ -1,0 +1,278 @@
+/* Tokens de diseño de Mekvra. Fuente de verdad: DESIGN.md en la raíz del repositorio. */
+:root {
+  color-scheme: dark;
+
+  --gold: #c8ad86;
+  --cream: #fff7dd;
+  --black: #000000;
+  --ash: #66635f;
+  --carbon: #141312;
+  --stroke: #2b2926;
+  --green: #a0ca92;
+  --orange: #ee6018;
+
+  --cream-70: rgb(255 247 221 / 0.7);
+  --cream-40: rgb(255 247 221 / 0.4);
+  --cream-16: rgb(255 247 221 / 0.16);
+  --cream-12: rgb(255 247 221 / 0.12);
+  --cream-08: rgb(255 247 221 / 0.08);
+
+  --sans: var(--font-switzer), 'General Sans', ui-sans-serif, system-ui, sans-serif;
+  --mono: var(--font-geist-mono), ui-monospace, Consolas, monospace;
+
+  --page: 1200px;
+  --gutter: clamp(16px, 4vw, 40px);
+  --section-gap: clamp(80px, 12vw, 120px);
+
+  --radius: 4px;
+  --radius-frame: 6px;
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-switch: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+html {
+  background: var(--black);
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--black);
+  color: var(--cream);
+  font-family: var(--sans);
+  font-size: 14px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  font-variant-numeric: tabular-nums;
+}
+
+::selection {
+  background: var(--gold);
+  color: var(--black);
+}
+
+:focus-visible {
+  outline: 1px solid var(--gold);
+  outline-offset: 3px;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img,
+svg,
+canvas {
+  display: block;
+  max-width: 100%;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 400;
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+html {
+  scrollbar-color: var(--stroke) var(--black);
+}
+
+.wrap {
+  width: 100%;
+  max-width: calc(var(--page) + 2 * var(--gutter));
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+.section {
+  padding-top: var(--section-gap);
+}
+
+.mono {
+  font-family: var(--mono);
+  font-size: 11px;
+  line-height: 1.2;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.muted {
+  color: var(--cream-70);
+}
+
+.ghost-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  color: var(--cream);
+  transition: color 150ms var(--ease-switch);
+}
+
+.ghost-link .arrow {
+  transition: transform 150ms var(--ease-switch);
+}
+
+.ghost-link:hover {
+  color: var(--gold);
+}
+
+.ghost-link:hover .arrow {
+  transform: translateX(3px);
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid var(--gold);
+  border-radius: 100px;
+  padding: 4px 10px;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.18px;
+  line-height: 1.2;
+  color: var(--gold);
+  white-space: nowrap;
+}
+
+.pill[data-estado='en-desarrollo'],
+.pill[data-estado='pendiente'] {
+  border-color: var(--ash);
+  color: var(--cream-70);
+}
+
+.pill[data-estado='entregado'] {
+  border-color: var(--green);
+  color: var(--green);
+}
+
+.pulse {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--green);
+  flex: none;
+}
+
+.pulse[data-live] {
+  animation: pulse 1.6s ease-in-out infinite;
+}
+
+.pulse[data-tone='alarm'] {
+  background: var(--orange);
+}
+
+@keyframes pulse {
+  50% {
+    opacity: 0.35;
+  }
+}
+
+/* Encabezado de sección */
+.section-head {
+  display: grid;
+  align-content: start;
+  gap: 16px;
+  margin-bottom: 48px;
+  max-width: 760px;
+}
+
+.section-head .mono {
+  color: var(--gold);
+}
+
+.section-head h2 {
+  font-size: clamp(32px, 5vw, 44px);
+  line-height: 1.13;
+  letter-spacing: -0.042em;
+}
+
+.section-head p {
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: -0.2px;
+  color: var(--cream-70);
+  max-width: 60ch;
+}
+
+/* Marco de dashboard (instrumento) */
+.frame {
+  background: var(--carbon);
+  border: 1px solid var(--cream-12);
+  border-radius: var(--radius-frame);
+  overflow: hidden;
+}
+
+.frame-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  height: 36px;
+  padding: 0 14px;
+  border-bottom: 1px solid var(--stroke);
+}
+
+.frame-dots {
+  display: flex;
+  gap: 6px;
+}
+
+.frame-dots i {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--stroke);
+}
+
+.frame-title {
+  color: var(--cream-70);
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.frame-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--cream-70);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .pulse[data-live] {
+    animation: none;
+  }
+}

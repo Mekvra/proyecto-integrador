@@ -1,0 +1,326 @@
+---
+// Perfil de temperatura de un lote de queso fresco (receta de referencia).
+// Los datos están en src/data/perfil-queso.json: edítalos ahí.
+import perfil from '../data/perfil-queso.json';
+
+const W = 1000;
+const H = 320;
+const M = { l: 48, r: 16, t: 36, b: 34 };
+const tMax = Math.max(...perfil.puntos.map((p) => p[0]));
+const yMax = 80;
+const x = (t: number) => M.l + (t / tMax) * (W - M.l - M.r);
+const y = (v: number) => M.t + (1 - v / yMax) * (H - M.t - M.b);
+
+const line = perfil.puntos.map(([t, v], i) => `${i ? 'L' : 'M'}${x(t).toFixed(1)} ${y(v).toFixed(1)}`).join(' ');
+const area = `${line} L${x(tMax).toFixed(1)} ${y(0)} L${x(0)} ${y(0)} Z`;
+const yTicks = [0, 20, 40, 60, 80];
+const pct = (v: number, total: number) => ((v / total) * 100).toFixed(2);
+const xTicks = Array.from({ length: Math.floor(tMax / 30) + 1 }, (_, i) => i * 30);
+---
+
+<div
+  class="frame chart"
+  data-chart
+  data-points={JSON.stringify(perfil.puntos)}
+  data-fases={JSON.stringify(perfil.fases)}
+  data-tmax={tMax}
+>
+  <div class="frame-bar">
+    <span class="frame-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+    <span class="frame-title mono">{perfil.titulo}</span>
+    <span class="frame-status mono"><span class="pulse"></span>Referencia</span>
+  </div>
+
+  <div class="chart-body">
+    <div class="readout mono" aria-hidden="true">
+      <span data-readout-phase>Pasa el cursor sobre la curva</span>
+      <span class="readout-value"><span data-readout-t>—</span> min · <span data-readout-v>—</span> °C</span>
+    </div>
+
+    <div class="plot">
+      <svg viewBox={`0 0 ${W} ${H}`} role="img" aria-labelledby="chart-title chart-desc" preserveAspectRatio="none">
+        <title id="chart-title">{perfil.titulo}</title>
+        <desc id="chart-desc">
+          {perfil.fases.map((f) => `${f.nombre}: ${f.desde}–${f.hasta} min`).join('; ')}
+        </desc>
+        {yTicks.map((v) => <line class="grid" x1={M.l} x2={W - M.r} y1={y(v)} y2={y(v)} />)}
+        {perfil.fases.slice(1).map((f) => (
+          <line class="phase-line" x1={x(f.desde)} x2={x(f.desde)} y1={M.t - 8} y2={y(0)} />
+        ))}
+        <line class="limit" x1={M.l} x2={W - M.r} y1={y(perfil.limite.valor)} y2={y(perfil.limite.valor)} />
+        <path class="area" d={area} />
+        <path class="series" d={line} pathLength="1" data-series />
+        <line class="cursor" data-cursor x1="0" x2="0" y1={M.t} y2={y(0)} />
+        <rect
+          class="hit"
+          data-hit
+          x={M.l}
+          y={M.t}
+          width={W - M.l - M.r}
+          height={H - M.t - M.b}
+          data-ml={M.l}
+          data-mr={M.r}
+          data-mt={M.t}
+          data-mb={M.b}
+          data-ymax={yMax}
+        />
+      </svg>
+      <div class="labels" aria-hidden="true">
+        {yTicks.map((v) => (
+          <span class="lbl tick y" style={`left:${pct(M.l, W)}%;top:${pct(y(v), H)}%`}>{v}</span>
+        ))}
+        {xTicks.map((t) => (
+          <span class="lbl tick x" style={`left:${pct(x(t), W)}%;top:${pct(H - M.b, H)}%`}>{t}</span>
+        ))}
+        <span class="lbl tick unit-x" style={`right:0;top:${pct(H - M.b, H)}%`}>min</span>
+        <span class="lbl tick unit-y" style={`left:0;top:0`}>°C</span>
+        {perfil.fases.map((f) => (
+          <span class="lbl phase-label" style={`left:${pct(x(f.desde), W)}%;top:0`}>{f.corto}</span>
+        ))}
+        <span class="lbl limit-label" style={`right:${pct(M.r, W)}%;top:${pct(y(perfil.limite.valor), H)}%`}>
+          {perfil.limite.etiqueta}
+        </span>
+        <span class="dot" data-dot></span>
+      </div>
+    </div>
+  </div>
+
+  <p class="frame-foot mono">{perfil.nota}</p>
+</div>
+
+<style>
+  .chart-body {
+    position: relative;
+    padding: 20px 20px 24px 52px;
+  }
+
+  .readout {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    color: var(--ash);
+    margin-bottom: 8px;
+    min-height: 14px;
+  }
+
+  .readout-value {
+    color: var(--cream);
+  }
+
+  .plot {
+    position: relative;
+    height: clamp(240px, 32vw, 320px);
+  }
+
+  svg {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+  }
+
+  .labels {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  .lbl {
+    position: absolute;
+    white-space: nowrap;
+  }
+
+  .tick.y {
+    transform: translate(calc(-100% - 10px), -50%);
+  }
+
+  .tick.x {
+    transform: translate(-50%, 10px);
+  }
+
+  .unit-x {
+    transform: translateY(10px);
+  }
+
+  .phase-label {
+    transform: translateX(6px);
+  }
+
+  .limit-label {
+    transform: translateY(calc(-100% - 4px));
+  }
+
+  .dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--black);
+    border: 1.5px solid var(--gold);
+    transform: translate(-50%, -50%);
+    opacity: 0;
+  }
+
+  .grid {
+    stroke: var(--stroke);
+    stroke-width: 1;
+    vector-effect: non-scaling-stroke;
+  }
+
+  .tick,
+  .phase-label,
+  .limit-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    line-height: 1;
+    letter-spacing: 0.04em;
+    color: var(--ash);
+  }
+
+  .phase-label {
+    color: var(--cream-70);
+    text-transform: uppercase;
+  }
+
+  .phase-line {
+    stroke: var(--cream-16);
+    stroke-dasharray: 2 4;
+    vector-effect: non-scaling-stroke;
+  }
+
+  .limit {
+    stroke: var(--orange);
+    stroke-dasharray: 4 4;
+    vector-effect: non-scaling-stroke;
+    opacity: 0.8;
+  }
+
+  .limit-label {
+    color: var(--orange);
+  }
+
+  .area {
+    fill: rgb(200 173 134 / 0.08);
+  }
+
+  .series {
+    fill: none;
+    stroke: var(--gold);
+    stroke-width: 1.5;
+    stroke-linejoin: round;
+    vector-effect: non-scaling-stroke;
+    stroke-dasharray: 1;
+    stroke-dashoffset: 0;
+  }
+
+  .series[data-draw] {
+    animation: draw 900ms var(--ease-out-expo) both;
+  }
+
+  @keyframes draw {
+    from {
+      stroke-dashoffset: 1;
+    }
+  }
+
+  .cursor {
+    stroke: var(--cream-40);
+    stroke-width: 1;
+    vector-effect: non-scaling-stroke;
+    opacity: 0;
+  }
+
+  .hit {
+    fill: transparent;
+    cursor: crosshair;
+  }
+
+  .frame-foot {
+    padding: 12px 20px 16px;
+    color: var(--ash);
+    font-size: 10px;
+    text-transform: none;
+    letter-spacing: 0.01em;
+  }
+
+  @media (max-width: 640px) {
+    .phase-label {
+      display: none;
+    }
+    .chart-body {
+      padding: 16px 12px 24px 40px;
+    }
+  }
+</style>
+
+<script>
+  type Fase = { nombre: string; desde: number; hasta: number };
+
+  function init(root: HTMLElement) {
+    const pts: Array<[number, number]> = JSON.parse(root.dataset.points!);
+    const tMax = Number(root.dataset.tmax);
+    const svg = root.querySelector('svg')!;
+    const hit = root.querySelector<SVGRectElement>('[data-hit]')!;
+    const cursor = root.querySelector<SVGLineElement>('[data-cursor]')!;
+    const dot = root.querySelector<HTMLElement>('[data-dot]')!;
+    const series = root.querySelector<SVGPathElement>('[data-series]')!;
+    const phaseEl = root.querySelector<HTMLElement>('[data-readout-phase]')!;
+    const tEl = root.querySelector<HTMLElement>('[data-readout-t]')!;
+    const vEl = root.querySelector<HTMLElement>('[data-readout-v]')!;
+    const fases: Fase[] = JSON.parse(root.dataset.fases ?? '[]');
+
+    const ml = Number(hit.dataset.ml);
+    const mr = Number(hit.dataset.mr);
+    const mt = Number(hit.dataset.mt);
+    const mb = Number(hit.dataset.mb);
+    const yMax = Number(hit.dataset.ymax);
+    const vb = svg.viewBox.baseVal;
+    const toX = (t: number) => ml + (t / tMax) * (vb.width - ml - mr);
+    const toY = (v: number) => mt + (1 - v / yMax) * (vb.height - mt - mb);
+
+    function valueAt(t: number) {
+      for (let i = 1; i < pts.length; i++) {
+        const [t0, v0] = pts[i - 1];
+        const [t1, v1] = pts[i];
+        if (t <= t1) return v0 + ((v1 - v0) * (t - t0)) / (t1 - t0 || 1);
+      }
+      return pts[pts.length - 1][1];
+    }
+
+    function move(e: PointerEvent) {
+      const r = svg.getBoundingClientRect();
+      const sx = ((e.clientX - r.left) / r.width) * vb.width;
+      const t = Math.max(0, Math.min(tMax, ((sx - ml) / (vb.width - ml - mr)) * tMax));
+      const v = valueAt(t);
+      const cx = toX(t);
+      cursor.setAttribute('x1', String(cx));
+      cursor.setAttribute('x2', String(cx));
+      cursor.style.opacity = '1';
+      dot.style.left = `${(cx / vb.width) * 100}%`;
+      dot.style.top = `${(toY(v) / vb.height) * 100}%`;
+      dot.style.opacity = '1';
+      tEl.textContent = t.toFixed(0);
+      vEl.textContent = v.toFixed(1);
+      phaseEl.textContent = fases.find((f) => t >= f.desde && t <= f.hasta)?.nombre ?? '';
+    }
+
+    hit.addEventListener('pointermove', move);
+    hit.addEventListener('pointerleave', () => {
+      cursor.style.opacity = '0';
+      dot.style.opacity = '0';
+    });
+
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      series.style.strokeDashoffset = '1';
+      new IntersectionObserver(
+        ([entry], obs) => {
+          if (!entry.isIntersecting) return;
+          series.style.strokeDashoffset = '';
+          series.setAttribute('data-draw', '');
+          obs.disconnect();
+        },
+        { threshold: 0.4 },
+      ).observe(root);
+    }
+  }
+
+  document.querySelectorAll<HTMLElement>('[data-chart]').forEach(init);
+</script>
