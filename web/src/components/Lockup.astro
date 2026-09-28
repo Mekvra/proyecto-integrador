@@ -6,9 +6,11 @@ import sitio from '../data/sitio.json';
 interface Props {
   href?: string;
   size?: 'sm' | 'lg';
+  /** false = solo el nombre, sin la placa con la M. */
+  badge?: boolean;
 }
 
-const { href = '#top', size = 'sm' } = Astro.props;
+const { href = '#top', size = 'sm', badge = true } = Astro.props;
 
 // M de 9 × 9 módulos: dos columnas y una V que se cruza en el centro.
 const M = [
@@ -26,11 +28,17 @@ const cells = M.flatMap((row, y) => [...row].flatMap((c, x) => (c === '1' ? [{ x
 ---
 
 <a class:list={['lockup', size]} href={href} aria-label={`${sitio.nombre}, inicio`}>
-  <span class="badge" aria-hidden="true">
-    <svg viewBox="0 0 9 9">
-      {cells.map(({ x, y }) => <rect x={x + 0.12} y={y + 0.12} width="0.76" height="0.76" style={`--d:${(x + y) * 35}ms`} />)}
-    </svg>
-  </span>
+  {
+    badge && (
+      <span class="badge" aria-hidden="true">
+        <svg viewBox="0 0 9 9">
+          {cells.map(({ x, y }) => (
+            <rect x={x + 0.12} y={y + 0.12} width="0.76" height="0.76" style={`--d:${(x + y) * 35}ms`} />
+          ))}
+        </svg>
+      </span>
+    )
+  }
   <span class="wordmark">{sitio.nombre}</span>
 </a>
 
@@ -87,6 +95,14 @@ const cells = M.flatMap((row, y) => [...row].flatMap((c, x) => (c === '1' ? [{ x
 
   .lockup.lg .wordmark {
     font-size: 26px;
+  }
+
+  .lockup:hover .wordmark {
+    color: var(--gold);
+  }
+
+  .wordmark {
+    transition: color 150ms var(--ease-switch);
   }
 
   .lockup:hover .badge,
