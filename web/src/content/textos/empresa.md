@@ -1,5 +1,5 @@
 ---
-titulo: Integramos la planta, del sensor a la decisión.
+titulo: Ingeniería que conecta la planta con el negocio.
 resumen: Mekvra es una empresa integradora de soluciones de Transformación Digital Industrial formada por ingenieros mecatrónicos.
 ---
 

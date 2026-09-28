@@ -99,7 +99,11 @@
       tile = Math.max(1.5, step * scale * 0.62);
     }
     resize();
-    new ResizeObserver(resize).observe(canvas);
+    // Al cambiar de tamaño el lienzo se borra: se redibuja (clave cuando no hay animación).
+    new ResizeObserver(() => {
+      resize();
+      if (reduced) draw();
+    }).observe(canvas);
 
     const particles: Particle[] = targets[0].map(([tx, ty]) => {
       // Empiezan dispersas como una nube vertical, al estilo de un campo de datos.

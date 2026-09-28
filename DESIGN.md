@@ -20,7 +20,8 @@ A diferencia de Atoms, este sistema **sí se mueve**, en cuatro lugares con sign
 | Champagne Gold | `#c8ad86` | `--color-champagne-gold` | Acento de marca: partículas del logo, títulos de acento, pills de categoría, trazo principal de gráficas, bordes decorativos. Nunca como relleno de superficie completa |
 | Candlelight Cream | `#fff7dd` | `--color-candlelight-cream` | Texto principal, bordes finos (al 12–30 %), líneas del brazo robot, iconos |
 | Obsidian Black | `#000000` | `--color-obsidian-black` | Lienzo de página, superficie de tarjetas y del dashboard |
-| Ember Ash | `#66635f` | `--color-ember-ash` | Texto secundario, rejillas de gráficas, superficies apagadas |
+| Ember Ash | `#66635f` | `--color-ember-ash` | **Solo** rejillas, bordes, barras "antes" y superficies apagadas. No sirve para texto: su contraste (3,5:1) no cumple WCAG AA |
+| Warm Granite | `#8a8380` | `--color-warm-granite` | *(de Factory)* Texto secundario, etiquetas de instrumento, notas y fuentes. Contraste 5,6:1 sobre negro y 5:1 sobre `#141312` |
 | Carbon Lift | `#141312` | `--color-carbon-lift` | *(de Factory)* Fondo del marco del dashboard y de la barra de ventana; un paso sobre el negro |
 | Ash Stroke | `#2b2926` | `--color-ash-stroke` | *(de Factory)* Divisiones de 1 px entre recuadros de métrica y líneas de rejilla |
 | Metric Green | `#a0ca92` | `--color-metric-green` | *(de Factory)* **Solo datos:** tendencia positiva, equipo en marcha, lote aprobado |
@@ -183,7 +184,9 @@ Número de sección en Geist Mono champaña + título Switzer 44px crema, alinea
 ## Do's and Don'ts
 
 ### Do
-- Usar `#fff7dd` para todo el texto principal y los bordes finos sobre negro.
+- Usar `#fff7dd` para todo el texto principal y los bordes finos sobre negro, y `#8a8380` para el texto secundario.
+- En pantallas táctiles, todo control (enlace, pestaña, botón) mide al menos 44 px de alto.
+- Ningún texto por debajo de 11 px, salvo las pills (10 px, peso 500).
 - Reservar `#c8ad86` para el logo de partículas, tags, títulos de acento, bordes decorativos y la serie principal de las gráficas.
 - Usar `#a0ca92` y `#ee6018` **solo dentro de gráficas, indicadores y estados**: son colores de dato, no de interfaz.
 - Aplicar tracking negativo a Switzer en tamaños ≥ 16px.
