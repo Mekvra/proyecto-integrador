@@ -47,12 +47,26 @@ const kpis = [
   <main>
     <!-- HERO -->
     <section class="hero wrap">
-      <a class="hero-pill" href={sitio.repositorio} target="_blank" rel="noopener">
-        Proyecto Integrador · APM 2026-2S <span class="arrow" aria-hidden="true">→</span>
-      </a>
-      <h1>{sinHuerfanas(sitio.lema)}</h1>
-      <a class="ghost-link hero-link" href="#empresa">Conoce la propuesta <span class="arrow" aria-hidden="true">→</span></a>
-      <ParticleLogo />
+      <div class="stack-strip" role="region" aria-label="Tecnologías y estándares del proyecto">
+        <div class="stack-track">
+          {
+            [...sitio.tecnologias, ...sitio.tecnologias].map((t, i) => (
+              <span class="mono stack-item" aria-hidden={i >= sitio.tecnologias.length ? 'true' : undefined}>
+                {t}
+              </span>
+            ))
+          }
+        </div>
+      </div>
+
+      <div class="hero-main">
+        <a class="hero-pill" href={sitio.repositorio} target="_blank" rel="noopener">
+          Proyecto Integrador · APM 2026-2S <span class="arrow" aria-hidden="true">→</span>
+        </a>
+        <h1>{sinHuerfanas(sitio.lema)}</h1>
+        <a class="ghost-link hero-link" href="#empresa">Conoce la propuesta <span class="arrow" aria-hidden="true">→</span></a>
+        <ParticleLogo />
+      </div>
     </section>
 
     <!-- 01 EMPRESA Y RETO -->
@@ -268,11 +282,64 @@ const kpis = [
   .hero {
     min-height: calc(100svh - 61px);
     display: grid;
-    align-content: center;
-    justify-items: center;
-    padding-top: clamp(24px, 5svh, 56px);
+    grid-template-rows: auto 1fr;
     padding-bottom: clamp(24px, 4svh, 40px);
     text-align: center;
+  }
+
+  /* Franja de tecnologías: se desplaza lento, como la banda de logos de Factory. */
+  .stack-strip {
+    position: relative;
+    overflow: hidden;
+    border-top: 1px solid var(--cream-08);
+    border-bottom: 1px solid var(--cream-08);
+    mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+  }
+
+  .stack-track {
+    display: flex;
+    width: max-content;
+    animation: stack-scroll 48s linear infinite;
+  }
+
+  .stack-strip:hover .stack-track {
+    animation-play-state: paused;
+  }
+
+  .stack-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 28px;
+    padding: 14px 0 14px 28px;
+    color: var(--granite);
+    white-space: nowrap;
+  }
+
+  .stack-item::after {
+    content: '';
+    width: 4px;
+    height: 4px;
+    background: var(--gold);
+    opacity: 0.8;
+  }
+
+  @keyframes stack-scroll {
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .stack-track {
+      animation: none;
+    }
+  }
+
+  .hero-main {
+    display: grid;
+    align-content: center;
+    justify-items: center;
+    padding-top: clamp(28px, 5svh, 56px);
   }
 
   .hero-pill {
@@ -326,8 +393,8 @@ const kpis = [
   }
 
   .hero :global(.plogo) {
-    margin-top: clamp(20px, 4svh, 44px);
-    width: min(360px, 64vw, 34svh);
+    margin-top: clamp(24px, 4.5svh, 48px);
+    width: min(380px, 78vw, 38svh);
   }
 
   .two-col {
