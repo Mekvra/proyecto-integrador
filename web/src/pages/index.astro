@@ -134,14 +134,7 @@ const kpis = [
         </p>
       </div>
 
-      <BatchChart />
-
-      <div class="frame kpis">
-        <div class="frame-bar">
-          <span class="frame-dots" aria-hidden="true"><i></i><i></i><i></i></span>
-          <span class="frame-title mono">Indicadores · antes vs. después de la automatización</span>
-          <span class="frame-status mono"><span class="pulse" style="background: var(--ash)"></span>Pendiente</span>
-        </div>
+      <BatchChart>
         <div class="kpi-grid">
           {
             kpis.map((k) => (
@@ -151,12 +144,12 @@ const kpis = [
                   —<span class="mono unit">{k.unidad}</span>
                 </span>
                 <span class="kpi-note">{k.nota}</span>
+                <span class="mono kpi-pending">Pendiente · VSM y Tecnomatix</span>
               </div>
             ))
           }
         </div>
-        <p class="frame-foot mono">Se completa con el VSM y la simulación en Tecnomatix · módulo 02</p>
-      </div>
+      </BatchChart>
     </section>
 
     <!-- 07 MÓDULOS -->
@@ -372,20 +365,21 @@ const kpis = [
     color: var(--gold);
   }
 
-  .kpis {
-    margin-top: 24px;
-  }
-
   .kpi-grid {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 
   .kpi {
-    padding: 20px;
+    padding: 16px 20px;
     display: grid;
-    gap: 10px;
+    gap: 8px;
     border-bottom: 1px solid var(--stroke);
+  }
+
+  .kpi-pending {
+    color: var(--ash);
+    font-size: 9px;
   }
 
   .kpi + .kpi {
@@ -641,12 +635,15 @@ const kpis = [
     }
   }
 
-  @media (max-width: 420px) {
-    .kpi-grid {
-      grid-template-columns: 1fr;
+  @media (max-width: 480px) {
+    .kpi {
+      padding: 14px;
     }
-    .kpi + .kpi {
-      border-left: 0;
+    .kpi-value {
+      font-size: 22px;
+    }
+    .kpi-note {
+      display: none;
     }
   }
 </style>
