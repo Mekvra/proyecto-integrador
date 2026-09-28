@@ -1,0 +1,373 @@
+---
+import { getEntry } from 'astro:content';
+
+const solucion = await getEntry('textos', 'solucion');
+const niveles = solucion?.data.niveles ?? [];
+const defecto = niveles.findIndex((n) => n.codigo === 'N4');
+const activo = defecto === -1 ? 0 : defecto;
+---
+
+<div class="isa" data-isa>
+  <div class="stack" role="tablist" aria-orientation="vertical" aria-label="Niveles ISA-95">
+    <div class="rail up" aria-hidden="true">
+      <span class="mono">Datos</span>
+      <span class="rail-line"><i></i><i></i><i></i></span>
+    </div>
+    <div class="levels">
+      {
+        niveles.map((n, i) => (
+          <button
+            class="level"
+            role="tab"
+            id={`isa-tab-${n.codigo}`}
+            aria-controls={`isa-panel-${n.codigo}`}
+            aria-selected={i === activo ? 'true' : 'false'}
+            tabindex={i === activo ? 0 : -1}
+          >
+            <span class="mono code">{n.codigo}</span>
+            <span class="lname">{n.nombre}</span>
+            <span class="mono tool">{n.herramienta}</span>
+          </button>
+        ))
+      }
+    </div>
+    <div class="rail down" aria-hidden="true">
+      <span class="mono">Órdenes</span>
+      <span class="rail-line"><i></i><i></i><i></i></span>
+    </div>
+  </div>
+
+  <div class="frame detail">
+    <div class="frame-bar">
+      <span class="frame-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+      <span class="frame-title mono">Arquitectura ISA-95 · Mekvra</span>
+    </div>
+    {
+      niveles.map((n, i) => (
+        <section
+          class="panel"
+          role="tabpanel"
+          id={`isa-panel-${n.codigo}`}
+          aria-labelledby={`isa-tab-${n.codigo}`}
+          hidden={i !== activo}
+        >
+          <div class="panel-top">
+            <span class="mono code">{n.codigo}</span>
+            <h3>{n.nombre}</h3>
+            <span class="pill">{n.herramienta}</span>
+          </div>
+          <p class="fn">{n.funcion}</p>
+          <div class="flows">
+            <div>
+              <span class="mono flow-label">
+                <span class="arrow-up" aria-hidden="true">↑</span> Sube al nivel superior
+              </span>
+              {n.sube.length ? (
+                <ul>
+                  {n.sube.map((s) => (
+                    <li>{s}</li>
+                  ))}
+                </ul>
+              ) : (
+                <p class="none mono">—</p>
+              )}
+            </div>
+            <div>
+              <span class="mono flow-label">
+                <span aria-hidden="true">↓</span> Baja al nivel inferior
+              </span>
+              {n.baja.length ? (
+                <ul>
+                  {n.baja.map((s) => (
+                    <li>{s}</li>
+                  ))}
+                </ul>
+              ) : (
+                <p class="none mono">—</p>
+              )}
+            </div>
+          </div>
+        </section>
+      ))
+    }
+  </div>
+</div>
+
+<style>
+  .isa {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+    gap: 24px;
+    align-items: stretch;
+  }
+
+  .stack {
+    display: grid;
+    grid-template-columns: 28px minmax(0, 1fr) 28px;
+    gap: 12px;
+  }
+
+  .levels {
+    display: grid;
+    align-content: start;
+    gap: 8px;
+  }
+
+  .level {
+    appearance: none;
+    background: transparent;
+    color: var(--cream);
+    font: inherit;
+    text-align: left;
+    border: 1px solid var(--cream-16);
+    border-radius: var(--radius);
+    padding: 14px 16px;
+    display: grid;
+    grid-template-columns: 36px 1fr;
+    grid-template-rows: auto auto;
+    column-gap: 12px;
+    row-gap: 4px;
+    cursor: pointer;
+    transition:
+      border-color 150ms var(--ease-switch),
+      background-color 150ms var(--ease-switch);
+  }
+
+  .level:hover {
+    border-color: rgb(200 173 134 / 0.6);
+  }
+
+  .level[aria-selected='true'] {
+    border-color: var(--gold);
+    background: var(--carbon);
+  }
+
+  .code {
+    color: var(--gold);
+    grid-row: span 2;
+    align-self: center;
+  }
+
+  .lname {
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: -0.3px;
+  }
+
+  .tool {
+    color: var(--ash);
+    font-size: 10px;
+    text-transform: none;
+    letter-spacing: 0.01em;
+  }
+
+  .rail {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    justify-items: center;
+    gap: 10px;
+  }
+
+  .rail .mono {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    color: var(--ash);
+    font-size: 10px;
+  }
+
+  .rail-line {
+    position: relative;
+    width: 1px;
+    background: var(--cream-16);
+    overflow: hidden;
+  }
+
+  .down .rail-line {
+    background: repeating-linear-gradient(to bottom, var(--cream-40) 0 3px, transparent 3px 7px);
+  }
+
+  .rail-line i {
+    position: absolute;
+    left: -1.5px;
+    width: 4px;
+    height: 4px;
+    background: var(--gold);
+    animation: rise 3.6s linear infinite;
+  }
+
+  .down .rail-line i {
+    background: var(--cream);
+    animation-name: fall;
+  }
+
+  .rail-line i:nth-child(2) {
+    animation-delay: -1.2s;
+  }
+
+  .rail-line i:nth-child(3) {
+    animation-delay: -2.4s;
+  }
+
+  @keyframes rise {
+    from {
+      top: 100%;
+    }
+    to {
+      top: -4px;
+    }
+  }
+
+  @keyframes fall {
+    from {
+      top: -4px;
+    }
+    to {
+      top: 100%;
+    }
+  }
+
+  .detail {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .panel {
+    padding: 28px;
+    display: grid;
+    gap: 20px;
+    align-content: start;
+    animation: fade 150ms var(--ease-switch);
+  }
+
+  @keyframes fade {
+    from {
+      opacity: 0;
+    }
+  }
+
+  .panel-top {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .panel-top .code {
+    grid-row: auto;
+  }
+
+  .panel-top h3 {
+    font-size: 28px;
+    letter-spacing: -1px;
+    line-height: 1.1;
+  }
+
+  .fn {
+    font-size: 16px;
+    line-height: 1.5;
+    letter-spacing: -0.2px;
+    color: var(--cream-70);
+    max-width: 55ch;
+  }
+
+  .flows {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    border-top: 1px solid var(--stroke);
+    padding-top: 20px;
+  }
+
+  .flow-label {
+    display: block;
+    color: var(--ash);
+    margin-bottom: 10px;
+  }
+
+  .arrow-up {
+    color: var(--gold);
+  }
+
+  .flows ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 8px;
+  }
+
+  .flows li {
+    font-size: 14px;
+    padding-left: 14px;
+    position: relative;
+  }
+
+  .flows li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 8px;
+    width: 5px;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  .none {
+    color: var(--ash);
+  }
+
+  @media (max-width: 900px) {
+    .isa {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .stack {
+      grid-template-columns: 18px minmax(0, 1fr) 18px;
+      gap: 8px;
+    }
+    .flows {
+      grid-template-columns: 1fr;
+    }
+    .panel {
+      padding: 20px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .rail-line i {
+      animation: none;
+      display: none;
+    }
+    .panel {
+      animation: none;
+    }
+  }
+</style>
+
+<script>
+  function init(root: HTMLElement) {
+    const tabs = [...root.querySelectorAll<HTMLButtonElement>('[role="tab"]')];
+    function select(tab: HTMLButtonElement, focus = false) {
+      for (const t of tabs) {
+        const on = t === tab;
+        t.setAttribute('aria-selected', String(on));
+        t.tabIndex = on ? 0 : -1;
+        const panel = document.getElementById(t.getAttribute('aria-controls')!);
+        if (panel) panel.hidden = !on;
+      }
+      if (focus) tab.focus();
+    }
+    tabs.forEach((tab, i) => {
+      tab.addEventListener('click', () => select(tab));
+      tab.addEventListener('keydown', (e) => {
+        const dir = e.key === 'ArrowDown' ? 1 : e.key === 'ArrowUp' ? -1 : 0;
+        if (!dir) return;
+        e.preventDefault();
+        select(tabs[(i + dir + tabs.length) % tabs.length], true);
+      });
+    });
+  }
+  document.querySelectorAll<HTMLElement>('[data-isa]').forEach(init);
+</script>

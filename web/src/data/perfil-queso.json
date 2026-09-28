@@ -1,0 +1,30 @@
+{
+  "titulo": "Queso fresco · perfil de temperatura del lote",
+  "nota": "Receta de referencia armada con los rangos de la investigación del equipo (08_investigacion). No es un resultado de simulación ni de planta.",
+  "limite": { "valor": 72, "etiqueta": "FDV · 72 °C mín. pasteurización" },
+  "fases": [
+    { "nombre": "Pasteurización HTST y enfriamiento", "corto": "HTST", "desde": 0, "hasta": 10 },
+    { "nombre": "Coagulación: cuajo a 34 °C, reposo", "corto": "Coagulación", "desde": 10, "hasta": 50 },
+    { "nombre": "Corte de la cuajada", "corto": "Corte", "desde": 50, "hasta": 58 },
+    { "nombre": "Agitación y desuerado a 37 °C", "corto": "Agitación", "desde": 58, "hasta": 75 },
+    { "nombre": "Moldeo y prensado", "corto": "Moldeo", "desde": 75, "hasta": 120 },
+    { "nombre": "Salado en salmuera a 11 °C", "corto": "Salado", "desde": 120, "hasta": 184 },
+    { "nombre": "Empaque en frío", "corto": "Empaque", "desde": 184, "hasta": 200 }
+  ],
+  "puntos": [
+    [0, 4],
+    [5, 72],
+    [7, 73],
+    [10, 34],
+    [50, 34],
+    [58, 34],
+    [61, 37],
+    [75, 37],
+    [79, 33],
+    [120, 31],
+    [125, 11],
+    [184, 11],
+    [191, 4],
+    [200, 4]
+  ]
+}
