@@ -27,7 +27,7 @@ Proceso → Sensores y actuadores → Control → SCADA → MES → ERP
 | 2 | Líder de arquitectura y modelado técnico | Pablo de Jesús Arcila | [@Kreiop](https://github.com/Kreiop) |
 | 3 | Líder de gestión de producción | David Steven Pinzón Hernández | [@david-pi3141](https://github.com/david-pi3141) |
 | 4 | CFO · Gestión de proyecto | Daniel Felipe Castro | [@DanielCastro-02](https://github.com/DanielCastro-02) |
-| 5 | CTO · Líder de integración digital | Jahan Libardo Carreño | [@JananLC](https://github.com/JananLC) |
+| 5 | CTO · Líder de integración digital | Janan Libardo Carreño Riaño | [@JananLC](https://github.com/JananLC) |
 
 ## Estructura del repositorio
 

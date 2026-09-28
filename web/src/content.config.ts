@@ -49,8 +49,7 @@ const modulos = defineCollection({
   schema: z.object({
     numero: z.string(),
     titulo: z.string(),
-    entrega: z.enum(['intermedia', 'final']),
-    estado: z.enum(['pendiente', 'en-desarrollo', 'entregado']),
+    estado: z.enum(['pendiente', 'en-desarrollo', 'completado']),
     responsables: z.string(),
     carpeta: z.string(),
     entregables: z.array(z.string()),

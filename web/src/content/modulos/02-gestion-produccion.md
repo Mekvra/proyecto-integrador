@@ -1,7 +1,6 @@
 ---
 numero: "02"
 titulo: Gestión y evaluación de la producción
-entrega: intermedia
 estado: en-desarrollo
 responsables: David Steven Pinzón
 carpeta: 02_gestion-produccion

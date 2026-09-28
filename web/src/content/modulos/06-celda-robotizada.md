@@ -1,7 +1,6 @@
 ---
 numero: "06"
 titulo: Celda de manufactura robotizada
-entrega: final
 estado: pendiente
 responsables: Por definir
 carpeta: 06_celda-robotizada

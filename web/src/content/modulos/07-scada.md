@@ -1,7 +1,6 @@
 ---
 numero: "07"
 titulo: SCADA
-entrega: final
 estado: pendiente
 responsables: Por definir
 carpeta: 07_scada

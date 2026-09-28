@@ -1,7 +1,6 @@
 ---
 numero: "05"
 titulo: Digital Factory · Gemelo digital
-entrega: final
 estado: pendiente
 responsables: Por definir
 carpeta: 05_gemelo-digital

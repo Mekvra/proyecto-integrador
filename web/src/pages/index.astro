@@ -28,7 +28,7 @@ const equipo = await Promise.all(
     .map(async (m) => ({ ...m, Reflexion: (await render(m)).Content, tieneReflexion: Boolean(m.body?.trim()) })),
 );
 
-const estados = { pendiente: 'Pendiente', 'en-desarrollo': 'En desarrollo', entregado: 'Entregado' } as const;
+const estados = { pendiente: 'Pendiente', 'en-desarrollo': 'En desarrollo', completado: 'Completado' } as const;
 const repoTree = `${sitio.repositorio}/tree/main`;
 
 const kpis = [
@@ -183,9 +183,7 @@ const kpis = [
                 ))}
               </ul>
               <div class="card-foot">
-                <span class="mono card-meta">
-                  Entrega {m.data.entrega} · {m.data.responsables}
-                </span>
+                <span class="mono card-meta">{m.data.responsables}</span>
                 <a class="ghost-link" href={`${repoTree}/${m.data.carpeta}`} target="_blank" rel="noopener">
                   Ver carpeta <span class="arrow" aria-hidden="true">→</span>
                 </a>
@@ -248,16 +246,6 @@ const kpis = [
         <span class="mono footer-h">Proyecto</span>
         <p>{sitio.curso}</p>
         <p>{sitio.universidad}</p>
-      </div>
-      <div>
-        <span class="mono footer-h">Entregas</span>
-        {
-          sitio.entregas.map((e) => (
-            <p>
-              {e.nombre} · {e.fecha}
-            </p>
-          ))
-        }
       </div>
       <div>
         <span class="mono footer-h">Enlaces</span>
@@ -588,7 +576,7 @@ const kpis = [
 
   .footer-cols {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 24px;
   }
 
