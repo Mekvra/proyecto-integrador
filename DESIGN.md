@@ -170,6 +170,7 @@ Fila de etiquetas Geist Mono 11px mayúsculas con numeración (`01 QUESO`, `02 Y
 
 ### Hero (inicio)
 Composición serena, centrada, que cabe completa en la primera pantalla (referencia: Balsa):
+0. **Franja de tecnologías** (arriba, bajo el menú): las herramientas y estándares reales del proyecto en Geist Mono 11px `#8a8380`, separados por cuadritos champaña de 4px (el mosaico del logo), entre dos líneas de 1px crema al 8 %. Se desplaza lento (48 s por vuelta), se pausa al pasar el cursor y se queda quieta con movimiento reducido. Bordes desvanecidos con máscara. Lista editable en `sitio.json` → `tecnologias`.
 1. **Píldora:** fondo `#141312`, borde 1px crema al 16 %, radio 6px, Switzer 12px peso 500 crema y flecha champaña. Enlaza al repositorio.
 2. **Titular:** Barlow Condensed 600 en mayúsculas, crema, sin punto final. Una línea en computador; en celular las palabras cortas se unen a la siguiente para que no queden sueltas.
 3. **Bajada:** Switzer 14px, crema al 70 %, máximo 46ch.

@@ -3,7 +3,8 @@
 // La lista de elementos animados vive en global.css (selector de .reveal-ready).
 
 export const REVEAL_SELECTOR = [
-  '.hero > :not(script)',
+  '.stack-strip',
+  '.hero-main > :not(script)',
   '.section-head > *',
   '.fact',
   '.cell-stage',

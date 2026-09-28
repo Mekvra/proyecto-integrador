@@ -22,5 +22,19 @@
       "texto": "por lotes comparten recepción, pasteurización y almacenamiento",
       "fuente": "Enunciado del proyecto"
     }
+  ],
+  "tecnologias": [
+    "Siemens NX",
+    "Logix Emulate",
+    "Ignition",
+    "Node-RED",
+    "Tecnomatix",
+    "RobotStudio",
+    "SAP",
+    "Power BI",
+    "ISA-95",
+    "ISA-88",
+    "ISA-101",
+    "OPC UA"
   ]
 }
