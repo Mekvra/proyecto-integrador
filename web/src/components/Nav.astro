@@ -1,5 +1,4 @@
 ---
-import Lockup from './Lockup.astro';
 import sitio from '../data/sitio.json';
 
 const links = [
@@ -14,7 +13,6 @@ const links = [
 
 <header class="nav" data-nav>
   <div class="nav-inner">
-    <Lockup />
     <nav aria-label="Secciones">
       <ul>
         {
@@ -32,14 +30,14 @@ const links = [
       Repositorio <span class="arrow" aria-hidden="true">→</span>
     </a>
     <button
-      class="menu-btn mono"
+      class="menu-btn"
       type="button"
       aria-expanded="false"
       aria-controls="menu-movil"
+      aria-label="Abrir menú"
       data-menu-btn
     >
       <span class="menu-icon" aria-hidden="true"><i></i><i></i></span>
-      <span data-menu-label>Menú</span>
     </button>
   </div>
 
@@ -88,7 +86,8 @@ const links = [
   .nav-inner {
     max-width: calc(var(--page) + 2 * var(--gutter));
     margin: 0 auto;
-    padding: 13px var(--gutter);
+    min-height: 60px;
+    padding: 8px var(--gutter);
     display: flex;
     align-items: center;
     gap: 32px;
@@ -119,41 +118,37 @@ const links = [
     color: var(--cream);
   }
 
-  /* Botón de menú (solo celular y tablet) */
+  /* Botón de menú (solo celular y tablet): únicamente las dos rayitas. */
   .menu-btn {
     display: none;
-    align-items: center;
-    gap: 10px;
+    place-items: center;
+    width: 44px;
+    height: 44px;
     margin-left: auto;
+    margin-right: -10px;
+    padding: 0;
     background: transparent;
     color: var(--cream);
-    border: 1px solid var(--cream-16);
-    border-radius: var(--radius);
-    padding: 8px 12px;
+    border: 0;
     cursor: pointer;
-    transition: border-color 150ms var(--ease-switch);
-  }
-
-  .menu-btn:hover,
-  .menu-btn[aria-expanded='true'] {
-    border-color: var(--gold);
   }
 
   .menu-icon {
     position: relative;
-    width: 14px;
-    height: 8px;
+    width: 22px;
+    height: 10px;
   }
 
   .menu-icon i {
     position: absolute;
     left: 0;
-    width: 14px;
-    height: 1px;
+    width: 22px;
+    height: 1.5px;
     background: currentColor;
     transition:
       transform 250ms var(--ease-out-expo),
-      top 250ms var(--ease-out-expo);
+      top 250ms var(--ease-out-expo),
+      background-color 150ms var(--ease-switch);
   }
 
   .menu-icon i:first-child {
@@ -161,16 +156,20 @@ const links = [
   }
 
   .menu-icon i:last-child {
-    top: 7px;
+    top: 8.5px;
+  }
+
+  .menu-btn:hover .menu-icon i {
+    background: var(--gold);
   }
 
   .menu-btn[aria-expanded='true'] .menu-icon i:first-child {
-    top: 3.5px;
+    top: 4.25px;
     transform: rotate(45deg);
   }
 
   .menu-btn[aria-expanded='true'] .menu-icon i:last-child {
-    top: 3.5px;
+    top: 4.25px;
     transform: rotate(-45deg);
   }
 
@@ -254,7 +253,7 @@ const links = [
       display: none;
     }
     .menu-btn {
-      display: inline-flex;
+      display: inline-grid;
     }
   }
 
@@ -282,12 +281,11 @@ const links = [
 
   // --- Menú de celular ---
   const btn = nav.querySelector<HTMLButtonElement>('[data-menu-btn]')!;
-  const label = nav.querySelector<HTMLElement>('[data-menu-label]')!;
   const menu = nav.querySelector<HTMLElement>('[data-menu]')!;
 
   function setOpen(open: boolean) {
     btn.setAttribute('aria-expanded', String(open));
-    label.textContent = open ? 'Cerrar' : 'Menú';
+    btn.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
     nav.toggleAttribute('data-open', open);
     document.body.style.overflow = open ? 'hidden' : '';
     if (open) {
