@@ -1,60 +1,96 @@
-# Mekvra — Proyecto Integrador APM 2026-2S
+<p align="center">
+  <a href="https://mekvra.github.io/proyecto-integrador/">
+    <img src=".github/assets/banner.png" alt="Mekvra — Automatización e integración industrial" width="100%">
+  </a>
+</p>
 
-> Transformación Digital Industrial para una planta de derivados lácteos.
-> Automatización de Procesos de Manufactura · Universidad Nacional de Colombia · Sede Bogotá
+<p align="center">
+  <a href="https://mekvra.github.io/proyecto-integrador/"><img alt="Página web" src="https://img.shields.io/badge/p%C3%A1gina_web-en_l%C3%ADnea-c8ad86?style=flat-square&labelColor=141312"></a>
+  <a href="https://github.com/Mekvra/proyecto-integrador/actions/workflows/deploy-web.yml"><img alt="Publicación" src="https://img.shields.io/github/actions/workflow/status/Mekvra/proyecto-integrador/deploy-web.yml?branch=main&label=publicaci%C3%B3n&style=flat-square&labelColor=141312&color=a0ca92"></a>
+  <img alt="Curso" src="https://img.shields.io/badge/APM-2026--2S-c8ad86?style=flat-square&labelColor=141312">
+  <img alt="Universidad" src="https://img.shields.io/badge/UNAL-Sede_Bogot%C3%A1-c8ad86?style=flat-square&labelColor=141312">
+</p>
 
-**Página web:** https://mekvra.github.io/proyecto-integrador/ · **Video:** _pendiente_
+<p align="center">
+  <a href="https://mekvra.github.io/proyecto-integrador/"><b>Página web</b></a>
+  &nbsp;·&nbsp;
+  <a href="#estructura">Estructura</a>
+  &nbsp;·&nbsp;
+  <a href="#equipo">Equipo</a>
+  &nbsp;·&nbsp;
+  <a href="CONTRIBUTING.md">Cómo aportar</a>
+  &nbsp;·&nbsp;
+  Video de sustentación <sub>(próximamente)</sub>
+</p>
 
----
+<br>
 
-## La empresa
+**Mekvra** es una empresa integradora de soluciones de **Transformación Digital Industrial**, formada por ingenieros mecatrónicos. Le proponemos a una planta de derivados lácteos, tomando como referencia los procesos de Alpina en Sopó, una solución que conecta todos sus niveles productivos: del sensor en la tina de cuajado a la decisión en la gerencia.
 
-**Mekvra** es una empresa integradora de soluciones de Transformación Digital Industrial (TDI). Le propone a una planta de derivados lácteos, tomando como referencia los procesos de Alpina, una solución que integra todos sus niveles productivos, del proceso físico a la gestión empresarial:
+> Proyecto Integrador del curso **Automatización de Procesos de Manufactura 2026-2S** · Universidad Nacional de Colombia · Sede Bogotá.
 
+## La arquitectura
+
+La información sube desde la planta hasta la gerencia; las órdenes, recetas y decisiones bajan de vuelta. Organizamos la integración con **ISA-95** y la producción por lotes con **ISA-88**.
+
+```mermaid
+flowchart LR
+    P["<b>N0 · Proceso</b><br/>Gemelo digital<br/>Siemens NX"]
+    F["<b>N1 · Campo</b><br/>Sensores y<br/>actuadores"]
+    C["<b>N2 · Control</b><br/>PLC<br/>Logix Emulate"]
+    S["<b>N3 · SCADA</b><br/>Ignition · OPC"]
+    M["<b>N4 · MES</b><br/>Node-RED<br/>Power BI"]
+    E["<b>N5 · ERP</b><br/>SAP"]
+    P --> F --> C --> S --> M --> E
+    E -. "órdenes y recetas" .-> M
+    M -. "parámetros por lote" .-> S
 ```
-Proceso → Sensores y actuadores → Control → SCADA → MES → ERP
-   ↑                                                      │
-   └──────────── órdenes, recetas y decisiones ───────────┘
-```
 
-**Líneas de producción analizadas:** queso (línea detallada: automatización y gemelo digital), yogurt y kéfir.
+## Líneas de producción
 
-## Equipo
+Tres líneas por lotes que comparten la recepción, la pasteurización y el almacenamiento de la leche.
 
-| # | Rol | Integrante | GitHub |
-|---|-----|------------|--------|
-| 1 | Líder de integración OT/IT | Luis Alberto Mendoza | [@lmendozar2001](https://github.com/lmendozar2001) |
-| 2 | Líder de arquitectura y modelado técnico | Pablo de Jesús Arcila | [@Kreiop](https://github.com/Kreiop) |
-| 3 | Líder de gestión de producción | David Steven Pinzón Hernández | [@david-pi3141](https://github.com/david-pi3141) |
-| 4 | CFO · Gestión de proyecto | Daniel Felipe Castro | [@DanielCastro-02](https://github.com/DanielCastro-02) |
-| 5 | CTO · Líder de integración digital | Janan Libardo Carreño Riaño | [@JananLC](https://github.com/JananLC) |
+| Línea | Alcance en el proyecto |
+|:--|:--|
+| **Queso fresco** | Línea detallada: automatización, celda robotizada, SCADA y gemelo digital |
+| **Yogurt** | Caracterización del proceso, recetas ISA-88 y análisis de producción |
+| **Kéfir** | Caracterización del proceso, recetas ISA-88 y análisis de producción |
 
-## Estructura del repositorio
+<h2 id="estructura">Estructura</h2>
 
-El repositorio está organizado por los módulos del curso. Cada carpeta tiene su propio `README.md` con los entregables esperados, el responsable y su estado.
+El repositorio sigue los módulos del curso. Cada carpeta tiene su propio `README.md` con los entregables, el responsable y el estado.
 
-| Carpeta | Contenido | Entrega |
-|---------|-----------|---------|
-| [`00_gestion-equipo`](00_gestion-equipo) | Actas, roles, reuniones y evidencias de trabajo colaborativo | Continua |
-| [`01_transformacion-digital`](01_transformacion-digital) | Arquitectura ISA-95, modelos ISA-88 (físico, procedimental, recetas), instrumentación | Intermedia |
-| [`02_gestion-produccion`](02_gestion-produccion) | Diagramas de proceso, distribución de planta, VSM, KPIs, Tecnomatix, MES/ERP | Intermedia |
-| [`03_planeacion-proyecto`](03_planeacion-proyecto) | EDT, cronograma, presupuesto, cotizaciones, flujo de caja, propuesta de valor | Intermedia |
-| [`04_controladores`](04_controladores) | Grafcet y lógica Ladder (Logix Emulate) | Final |
-| [`05_gemelo-digital`](05_gemelo-digital) | Gemelo digital de la línea de quesos (Siemens NX) | Final |
-| [`06_celda-robotizada`](06_celda-robotizada) | Celda robotizada (RobotStudio) y análisis de riesgos | Final |
-| [`07_scada`](07_scada) | HMI ISA-101 (Ignition / Node-RED), OPC | Final |
-| [`08_investigacion`](08_investigacion) | Investigación del proceso lácteo y fuentes | Continua |
-| [`web`](web) | Código de la página web (Astro) | Continua |
+| | Módulo | Contenido |
+|:--:|:--|:--|
+| `00` | [**Gestión del equipo**](00_gestion-equipo) | Actas, roles y evidencias de trabajo colaborativo |
+| `01` | [**Transformación digital**](01_transformacion-digital) | Arquitectura ISA-95, modelos y recetas ISA-88, instrumentación |
+| `02` | [**Gestión de la producción**](02_gestion-produccion) | Diagramas de proceso, layout, VSM, OEE, Tecnomatix, MES/ERP |
+| `03` | [**Planeación del proyecto**](03_planeacion-proyecto) | EDT, cronograma, presupuesto, flujo de caja, propuesta de valor |
+| `04` | [**Controladores**](04_controladores) | Grafcet y lógica Ladder en Logix Emulate |
+| `05` | [**Gemelo digital**](05_gemelo-digital) | Línea de quesos en Siemens NX |
+| `06` | [**Celda robotizada**](06_celda-robotizada) | Diseño, simulación en RobotStudio y análisis de riesgos |
+| `07` | [**SCADA**](07_scada) | HMI ISA-101 en Ignition, comunicación OPC |
+| `08` | [**Investigación**](08_investigacion) | Proceso lácteo, variables de operación y fuentes |
+| `web` | [**Página web**](web) | Sitio en Astro, publicado automáticamente con GitHub Pages |
 
-## Fechas
+<h2 id="equipo">Equipo</h2>
 
-| Hito | Fecha |
-|------|-------|
-| Entrega intermedia | **Lunes 5 de octubre de 2026** |
-| Sustentación intermedia | Miércoles 7 y viernes 9 de octubre de 2026 |
-| Entrega final | **Lunes 7 de diciembre de 2026** |
-| Sustentación final | Miércoles 9 y viernes 11 de diciembre de 2026 |
+| | Integrante | Rol |
+|:--:|:--|:--|
+| <img src="https://github.com/lmendozar2001.png?size=80" width="40" alt=""> | **Luis Alberto Mendoza**<br><sub>[@lmendozar2001](https://github.com/lmendozar2001)</sub> | Líder de integración OT/IT |
+| <img src="https://github.com/Kreiop.png?size=80" width="40" alt=""> | **Pablo de Jesús Arcila**<br><sub>[@Kreiop](https://github.com/Kreiop)</sub> | Líder de arquitectura y modelado técnico |
+| <img src="https://github.com/david-pi3141.png?size=80" width="40" alt=""> | **David Steven Pinzón Hernández**<br><sub>[@david-pi3141](https://github.com/david-pi3141)</sub> | Líder de gestión de producción |
+| <img src="https://github.com/DanielCastro-02.png?size=80" width="40" alt=""> | **Daniel Felipe Castro**<br><sub>[@DanielCastro-02](https://github.com/DanielCastro-02)</sub> | CFO · Gestión de proyecto |
+| <img src="https://github.com/JananLC.png?size=80" width="40" alt=""> | **Janan Libardo Carreño Riaño**<br><sub>[@JananLC](https://github.com/JananLC)</sub> | CTO · Integración digital |
 
-## ¿Cómo aporto?
+## Cómo aportar
 
-Lee [CONTRIBUTING.md](CONTRIBUTING.md). Resumen: sube tus archivos a la carpeta de tu módulo (se puede hacer desde la página de GitHub, sin instalar nada) y marca el entregable como listo en el README de esa carpeta.
+Sube tus archivos a la carpeta de tu módulo, directamente desde GitHub y sin instalar nada. La guía completa, con las reglas de nombres y cómo editar la página web, está en **[CONTRIBUTING.md](CONTRIBUTING.md)**.
+
+<br>
+
+<p align="center">
+  <img src=".github/assets/avatar.png" width="44" alt="">
+  <br>
+  <sub><b>MEKVRA</b> · Automatización e integración industrial</sub>
+</p>

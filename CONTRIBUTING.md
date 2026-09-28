@@ -47,6 +47,6 @@ La página se publica sola en https://mekvra.github.io/proyecto-integrador/ uno 
 | Mi reflexión individual | `web/src/content/equipo/<mi-archivo>.md` (escribe debajo de la segunda línea `---`) |
 | Datos de la gráfica de temperatura del queso | `web/src/data/perfil-queso.json` |
 
-Las reglas visuales (colores, tipografías, componentes) están en [`DESIGN.md`](DESIGN.md). Si quieres cambiar el diseño, habla primero con el Integrante 5.
+Las reglas visuales (colores, tipografías, componentes) están en [`web/DESIGN.md`](web/DESIGN.md). Si quieres cambiar el diseño, habla primero con el Integrante 5.
 
 **Nunca pongas en la web un número como resultado si todavía no está calculado o simulado.** Déjalo como pendiente.
