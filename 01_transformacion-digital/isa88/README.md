@@ -22,17 +22,7 @@ flowchart TD
     PLC --> RL["Registro de lote<br/>→ MES / ERP"]
 ```
 
-Lo que el Integrante 3 llamó *Procedure Model* es, en términos de ISA-88, el **modelo de proceso** (etapas y operaciones de proceso sin atar a un equipo). Aquí se traduce al **modelo procedimental**, asignando cada etapa a una clase de unidad concreta.
 
-## Regla de trabajo: qué se puede cambiar sin romper nada
-
-| Tipo de cambio | Costo | Dónde se edita |
-|---|---|---|
-| Valores numéricos (temperaturas, tiempos, dosis, pesos, capacidades) | Bajo | Solo las tablas de `recetas/` y la tabla de capacidades del modelo físico |
-| Número de unidades iguales (p. ej. 4 → 6 fermentadores) | Medio | Modelo físico; el procedimiento no cambia porque las fases se definen por **clase de unidad** |
-| Agregar/quitar etapas o cambiar una referencia por otra con otra secuencia | Alto | Modelo procedimental, y después Grafcet, Ladder y gemelo digital |
-
-> Recomendación: congelar el **modelo procedimental de yogur** antes de empezar el Grafcet (módulo 04) y el gemelo (módulo 05). Los números pueden seguir ajustándose.
 
 ## Supuestos pendientes de validar (Integrante 3)
 
