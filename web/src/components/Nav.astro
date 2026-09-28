@@ -50,7 +50,6 @@ const links = [
           links.map((l, i) => (
             <li style={`--i:${i}`}>
               <a href={l.href} data-navlink data-menu-link>
-                <span class="mono menu-idx">{String(i + 1).padStart(2, '0')}</span>
                 <span class="menu-label">{l.label}</span>
               </a>
             </li>
@@ -235,11 +234,6 @@ const links = [
     padding: 14px 0;
     border-bottom: 1px solid var(--cream-08);
     color: var(--cream-70);
-  }
-
-  .menu-idx {
-    color: var(--gold);
-    width: 20px;
   }
 
   .menu-label {

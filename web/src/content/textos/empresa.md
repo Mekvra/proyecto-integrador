@@ -1,5 +1,5 @@
 ---
-titulo: Ingeniería que conecta la planta con el negocio.
+titulo: La planta y el negocio, conectados.
 resumen: Mekvra es una empresa integradora de soluciones de Transformación Digital Industrial formada por ingenieros mecatrónicos.
 ---
 

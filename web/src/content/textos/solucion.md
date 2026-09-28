@@ -1,5 +1,5 @@
 ---
-titulo: Una arquitectura, del proceso a la empresa.
+titulo: Un solo flujo, del sensor al ERP.
 resumen: La información sube desde la planta hasta la gerencia, y las órdenes, recetas y decisiones bajan de vuelta. Elige un nivel para ver qué hace.
 # Niveles de la arquitectura ISA-95, de arriba (empresa) hacia abajo (proceso).
 niveles:
