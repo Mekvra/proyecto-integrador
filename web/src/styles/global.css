@@ -5,7 +5,8 @@
   --gold: #c8ad86;
   --cream: #fff7dd;
   --black: #000000;
-  --ash: #66635f;
+  --ash: #66635f; /* solo bordes, barras y superficies: no para texto */
+  --granite: #8a8380; /* texto secundario: contraste AA sobre negro y sobre #141312 */
   --carbon: #141312;
   --stroke: #2b2926;
   --green: #a0ca92;
@@ -16,6 +17,9 @@
   --cream-16: rgb(255 247 221 / 0.16);
   --cream-12: rgb(255 247 221 / 0.12);
   --cream-08: rgb(255 247 221 / 0.08);
+
+  --gold-60: var(--gold-60);
+  --gold-08: var(--gold-08);
 
   --sans: var(--font-switzer), 'General Sans', ui-sans-serif, system-ui, sans-serif;
   --mono: var(--font-geist-mono), ui-monospace, Consolas, monospace;
@@ -319,6 +323,16 @@ html.reveal-ready :is(.hero > :not(script), .section-head > *, .fact, .cell-stag
   opacity: 1;
   transform: none;
   filter: none;
+}
+
+/* Pantallas táctiles: todo control mide al menos 44 px de alto (WCAG 2.5.8). */
+@media (pointer: coarse) {
+  .ghost-link,
+  .lockup,
+  [role='tab'],
+  button {
+    min-height: 44px;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

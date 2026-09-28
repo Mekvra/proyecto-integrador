@@ -6,7 +6,7 @@ const rollers = Array.from({ length: 10 }, (_, i) => 45 + i * 30);
 
 <div class="cell" data-cell>
   <div class="cell-stage">
-    <svg viewBox="0 0 640 400" role="img" aria-labelledby="cell-title">
+    <svg viewBox="0 125 640 265" role="img" aria-labelledby="cell-title">
       <title id="cell-title">
         Brazo robot de tres ejes tomando bloques de queso de una banda transportadora y apilándolos en una estiba
       </title>
@@ -29,7 +29,7 @@ const rollers = Array.from({ length: 10 }, (_, i) => 45 + i * 30);
         }
       </g>
       <text x="30" y="362" class="tag">M-01 · BANDA</text>
-      <text x="118" y="362" class="tag" data-belt-state>RUN</text>
+      <text x="138" y="362" class="tag state" data-belt-state>RUN</text>
 
       <!-- sensor fotoeléctrico -->
       <g class="sensor">
@@ -37,7 +37,7 @@ const rollers = Array.from({ length: 10 }, (_, i) => 45 + i * 30);
         <line x1="306" y1="234" x2="306" y2="278" class="beam" data-beam />
         <circle cx="318" cy="228" r="3" class="led" data-sensor-led />
       </g>
-      <text x="292" y="212" class="tag">PE-01</text>
+      <text x="258" y="362" class="tag">PE-01 · SENSOR</text>
 
       <!-- bloques de queso (los mueve el script) -->
       <g data-items></g>
@@ -49,7 +49,7 @@ const rollers = Array.from({ length: 10 }, (_, i) => 45 + i * 30);
         <line x1="562" y1="328" x2="562" y2="340" />
         <line x1="594" y1="328" x2="594" y2="340" />
       </g>
-      <text x="524" y="362" class="tag">ESTIBA · QUESO 500 g</text>
+      <text x="632" y="362" class="tag" text-anchor="end">ESTIBA · 500 g</text>
 
       <!-- robot -->
       <g class="robot">
@@ -233,11 +233,15 @@ const rollers = Array.from({ length: 10 }, (_, i) => 45 + i * 30);
     opacity: 0.5;
   }
 
+  .tag.state {
+    fill: var(--green);
+  }
+
   .tag {
     font-family: var(--mono);
-    font-size: 9px;
+    font-size: 11px;
     letter-spacing: 0.04em;
-    fill: var(--cream-40);
+    fill: var(--cream-70);
   }
 
   .cell-toggle {
@@ -285,7 +289,7 @@ const rollers = Array.from({ length: 10 }, (_, i) => 45 + i * 30);
   }
 
   .tile-label {
-    color: var(--ash);
+    color: var(--granite);
   }
 
   .tile-value {
@@ -331,8 +335,8 @@ const rollers = Array.from({ length: 10 }, (_, i) => 45 + i * 30);
   }
 
   .tile-note {
-    color: var(--ash);
-    font-size: 10px;
+    color: var(--granite);
+    font-size: 11px;
   }
 
   .io {
@@ -341,13 +345,13 @@ const rollers = Array.from({ length: 10 }, (_, i) => 45 + i * 30);
     padding: 0;
     display: grid;
     gap: 6px;
-    font-size: 10px;
+    font-size: 11px;
   }
 
   .io li {
     display: flex;
     justify-content: space-between;
-    color: var(--ash);
+    color: var(--granite);
   }
 
   .io li span:last-child {
@@ -356,8 +360,8 @@ const rollers = Array.from({ length: 10 }, (_, i) => 45 + i * 30);
 
   .frame-foot {
     padding: 12px 20px;
-    color: var(--ash);
-    font-size: 10px;
+    color: var(--granite);
+    font-size: 11px;
   }
 
   @media (max-width: 900px) {

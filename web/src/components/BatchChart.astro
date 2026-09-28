@@ -35,7 +35,7 @@ const xTicks = Array.from({ length: Math.floor(tMax / 30) + 1 }, (_, i) => i * 3
 
   <div class="chart-body">
     <div class="readout mono" aria-hidden="true">
-      <span data-readout-phase>{perfil.titulo} · pasa el cursor</span>
+      <span data-readout-phase>{perfil.titulo}</span>
       <span class="readout-value"><span data-readout-t>—</span> min · <span data-readout-v>—</span> °C</span>
     </div>
 
@@ -100,7 +100,7 @@ const xTicks = Array.from({ length: Math.floor(tMax / 30) + 1 }, (_, i) => i * 3
     display: flex;
     justify-content: space-between;
     gap: 16px;
-    color: var(--ash);
+    color: var(--granite);
     margin-bottom: 8px;
     min-height: 14px;
   }
@@ -171,10 +171,10 @@ const xTicks = Array.from({ length: Math.floor(tMax / 30) + 1 }, (_, i) => i * 3
   .phase-label,
   .limit-label {
     font-family: var(--mono);
-    font-size: 10px;
+    font-size: 11px;
     line-height: 1;
     letter-spacing: 0.04em;
-    color: var(--ash);
+    color: var(--granite);
   }
 
   .phase-label {
@@ -200,7 +200,7 @@ const xTicks = Array.from({ length: Math.floor(tMax / 30) + 1 }, (_, i) => i * 3
   }
 
   .area {
-    fill: rgb(200 173 134 / 0.08);
+    fill: var(--gold-08);
   }
 
   .series {
@@ -233,12 +233,13 @@ const xTicks = Array.from({ length: Math.floor(tMax / 30) + 1 }, (_, i) => i * 3
   .hit {
     fill: transparent;
     cursor: crosshair;
+    touch-action: pan-y;
   }
 
   .frame-foot {
     padding: 12px 20px 16px;
-    color: var(--ash);
-    font-size: 10px;
+    color: var(--granite);
+    font-size: 11px;
     text-transform: none;
     letter-spacing: 0.01em;
   }
@@ -305,6 +306,7 @@ const xTicks = Array.from({ length: Math.floor(tMax / 30) + 1 }, (_, i) => i * 3
     }
 
     hit.addEventListener('pointermove', move);
+    hit.addEventListener('pointerdown', move);
     hit.addEventListener('pointerleave', () => {
       cursor.style.opacity = '0';
       dot.style.opacity = '0';
