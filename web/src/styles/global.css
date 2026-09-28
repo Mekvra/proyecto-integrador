@@ -268,6 +268,49 @@ html {
   color: var(--cream-70);
 }
 
+/* Animaciones de entrada al hacer scroll (ver src/scripts/reveal.ts).
+   Solo se activan si hay JavaScript y el usuario no pidió reducir el movimiento. */
+html.reveal-ready
+  :is(
+    .hero > :not(script),
+    .section-head > *,
+    .fact,
+    .cell-stage,
+    .frame,
+    .trunk,
+    .trunk-flow > li,
+    .tablist,
+    .stage,
+    .level,
+    .card,
+    .proposal,
+    .member,
+    .footer > *
+  ) {
+  opacity: 0;
+  transform: translateY(28px);
+  filter: blur(6px);
+  transition:
+    opacity 800ms var(--ease-out-expo) var(--reveal-delay, 0ms),
+    transform 1000ms var(--ease-out-expo) var(--reveal-delay, 0ms),
+    filter 700ms var(--ease-out-expo) var(--reveal-delay, 0ms),
+    border-color 150ms var(--ease-switch),
+    background-color 150ms var(--ease-switch),
+    color 150ms var(--ease-switch);
+}
+
+/* Paneles de instrumento: entran como un monitor que se enciende. */
+html.reveal-ready :is(.frame, .cell-stage, .proposal, .trunk) {
+  transform: translateY(40px) scale(0.975);
+  transform-origin: 50% 100%;
+}
+
+html.reveal-ready :is(.hero > :not(script), .section-head > *, .fact, .cell-stage, .frame, .trunk, .trunk-flow > li, .tablist, .stage, .level, .card, .proposal, .member, .footer > *).is-in {
+  opacity: 1;
+  transform: none;
+  filter: none;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

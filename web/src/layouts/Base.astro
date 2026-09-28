@@ -25,8 +25,24 @@ const favicon = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/favicon.svg`;
     <Font cssVariable="--font-switzer" preload />
     <Font cssVariable="--font-geist-mono" />
     <title>{title}</title>
+    <script is:inline>
+      // Activa las animaciones de entrada antes del primer pintado (así no hay parpadeo).
+      if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        document.documentElement.classList.add('reveal-ready');
+        // Si algo falla, el contenido se muestra igual a los 4 s.
+        setTimeout(() => {
+          if (!document.documentElement.classList.contains('reveal-on')) {
+            document.documentElement.classList.remove('reveal-ready');
+          }
+        }, 4000);
+      }
+    </script>
   </head>
   <body id="top">
     <slot />
+    <script>
+      import { initReveal } from '../scripts/reveal';
+      initReveal();
+    </script>
   </body>
 </html>
