@@ -60,9 +60,6 @@ const kpis = [
       </div>
 
       <div class="hero-main">
-        <a class="hero-pill" href={sitio.repositorio} target="_blank" rel="noopener">
-          Proyecto Integrador · APM 2026-2S <span class="arrow" aria-hidden="true">→</span>
-        </a>
         <h1>{sinHuerfanas(sitio.lema)}</h1>
         <a class="ghost-link hero-link" href="#empresa">Conoce la propuesta <span class="arrow" aria-hidden="true">→</span></a>
         <ParticleLogo />
@@ -251,6 +248,7 @@ const kpis = [
     <div class="footer-cols">
       <div>
         <span class="mono footer-h">Proyecto</span>
+        <p>Proyecto Integrador · APM 2026-2S</p>
         <p>{sitio.curso}</p>
         <p>{sitio.universidad}</p>
       </div>
@@ -342,36 +340,7 @@ const kpis = [
     padding-top: clamp(28px, 5svh, 56px);
   }
 
-  .hero-pill {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 7px 12px;
-    border: 1px solid var(--cream-16);
-    border-radius: 6px;
-    background: var(--carbon);
-    font-size: 12px;
-    font-weight: 500;
-    letter-spacing: -0.1px;
-    color: var(--cream);
-    transition: border-color 150ms var(--ease-switch);
-  }
-
-  .hero-pill:hover {
-    border-color: var(--gold);
-  }
-
-  .hero-pill .arrow {
-    color: var(--gold);
-    transition: transform 150ms var(--ease-switch);
-  }
-
-  .hero-pill:hover .arrow {
-    transform: translateX(3px);
-  }
-
   .hero h1 {
-    margin-top: clamp(20px, 3.5svh, 32px);
     font-family: var(--font-display), 'Arial Narrow', sans-serif;
     font-weight: 600;
     font-size: clamp(34px, min(5vw, 7svh), 60px);
@@ -394,7 +363,13 @@ const kpis = [
 
   .hero :global(.plogo) {
     margin-top: clamp(24px, 4.5svh, 48px);
-    width: min(380px, 78vw, 38svh);
+    width: min(420px, 80vw, 42svh);
+  }
+
+  @media (max-width: 560px) {
+    .hero :global(.plogo) {
+      width: min(92vw, 44svh);
+    }
   }
 
   .two-col {
