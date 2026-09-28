@@ -1,0 +1,20 @@
+# Sistema
+.DS_Store
+Thumbs.db
+desktop.ini
+~$*
+
+# Web (Astro)
+node_modules/
+web/dist/
+web/.astro/
+.env
+.env.*
+
+# Diseño (herramienta impeccable, archivos locales)
+.impeccable/review/
+.impeccable/config.local.json
+.impeccable/questions/
+.impeccable/serve.log
+.impeccable/decision-*.json
+.impeccable/mocks/
