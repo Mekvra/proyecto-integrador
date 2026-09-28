@@ -45,6 +45,11 @@ Todos los títulos, cuerpo y navegación. Sans geométrica con tracking negativo
 - **Tamaños:** 10, 11, 12px
 - **Letter spacing:** 0.04em en mayúsculas
 
+### Barlow Condensed — titular del inicio · `--font-display`
+Solo para el titular principal (H1). Condensada industrial inspirada en DIN, la letra de la señalética de planta y de las placas de máquinas. Peso 600, siempre en MAYÚSCULAS, tracking 0.005em, line-height 0.95. Referencia de composición: Balsa (titular condensado, grueso y sereno).
+- **Fuente:** Google Fonts
+- **Tamaño:** `clamp(40px, min(8vw, 9svh), 92px)`
+
 ### Type Scale
 
 | Role | Family | Weight | Size | Line Height | Letter Spacing | Token |
@@ -163,8 +168,13 @@ Fila de etiquetas Geist Mono 11px mayúsculas con numeración (`01 QUESO`, `02 Y
 ### Numbered Annotation Row
 *(de Aaru)* Para listas de pasos, niveles ISA-95 o etapas del proceso: prefijo numérico `01–05` en Geist Mono 11px champaña, título en Switzer 20px crema y línea de 1px crema al 12 % encima. Puede expandirse (acordeón) mostrando el cuerpo a 14px con sangría alineada al título.
 
-### Hero Headline
-Switzer 44px (64px en pantallas ≥ 1024px), peso 400, `#fff7dd`, tracking -1.85px, line-height 1.13. Centrado, ancho máximo ~680px, en 2–3 líneas. Sin color de énfasis en palabras sueltas.
+### Hero (inicio)
+Composición serena, centrada, que cabe completa en la primera pantalla (referencia: Balsa):
+1. **Píldora:** fondo `#141312`, borde 1px crema al 16 %, radio 6px, Switzer 12px peso 500 crema y flecha champaña. Enlaza al repositorio.
+2. **Titular:** Barlow Condensed 600 en mayúsculas, crema, sin punto final. Una línea en computador; en celular las palabras cortas se unen a la siguiente para que no queden sueltas.
+3. **Bajada:** Switzer 14px, crema al 70 %, máximo 46ch.
+4. **Un solo ghost link** ("Conoce la propuesta →").
+5. **Logo de partículas debajo**, como pieza central: `min(360px, 64vw, 34svh)`.
 
 ### Ghost Text Link
 Texto de 12–14px en `#fff7dd` con flecha `→`. Sin subrayado ni botón. Al pasar el cursor cambia a `#c8ad86` y la flecha avanza 3px.
@@ -230,7 +240,7 @@ Nada de fotografía de stock. La imagen de la marca son sus propias máquinas y 
 ## Layout
 
 Lienzo negro a sangre con zonas de contenido centradas de 1200px máximo.
-1. **Hero:** logo de partículas centrado (~40 % de la altura), debajo el titular centrado de 3 líneas y un ghost link.
+1. **Hero:** píldora, titular condensado, bajada breve y un ghost link; debajo, el logo de partículas. Todo en la primera pantalla.
 2. **Automatización:** a pantalla dividida, la celda robótica a la izquierda y un Dashboard Frame con métricas en vivo a la derecha.
 3. **Secciones del proyecto:** encabezado numerado a la izquierda y contenido en retícula de 3 columnas de tarjetas, o pestañas de instrumento cuando hay variantes (líneas, niveles ISA-95).
 4. **Gráficas:** siempre dentro de Dashboard Frames, a ancho completo o en retícula de 2.

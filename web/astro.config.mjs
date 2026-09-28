@@ -13,6 +13,14 @@ export default defineConfig({
       fallbacks: ['General Sans', 'ui-sans-serif', 'system-ui', 'sans-serif'],
     },
     {
+      // Titular del inicio: condensada industrial inspirada en DIN (señalética de planta).
+      provider: fontProviders.google(),
+      name: 'Barlow Condensed',
+      cssVariable: '--font-display',
+      weights: [600],
+      fallbacks: ['Arial Narrow', 'sans-serif'],
+    },
+    {
       provider: fontProviders.google(),
       name: 'Geist Mono',
       cssVariable: '--font-geist-mono',
