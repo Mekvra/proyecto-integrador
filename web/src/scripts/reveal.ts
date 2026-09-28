@@ -37,23 +37,43 @@ export function initReveal() {
     el.style.setProperty('--reveal-delay', `${index * STEP_MS}ms`);
   }
 
-  // Se repite cada vez que el elemento entra en pantalla, bajando o subiendo.
-  // Si sale por arriba, la próxima entrada es desde arriba (bajando), y viceversa.
-  const observer = new IntersectionObserver(
+  // 1) Cada elemento aparece la primera vez que entra en pantalla.
+  const itemObserver = new IntersectionObserver(
     (entries) => {
       for (const entry of entries) {
-        const el = entry.target;
         if (entry.isIntersecting && entry.intersectionRatio >= 0.12) {
-          el.classList.add('is-in');
-        } else if (!entry.isIntersecting) {
-          el.classList.remove('is-in');
-          el.classList.toggle('from-top', entry.boundingClientRect.top < 0);
+          entry.target.classList.add('is-in');
         }
       }
     },
     { rootMargin: '0px 0px -8% 0px', threshold: [0, 0.12] },
   );
+  items.forEach((el) => itemObserver.observe(el));
 
-  items.forEach((el) => observer.observe(el));
+  // 2) Solo cuando TODA la sección sale de la pantalla, sus elementos se reinician
+  //    para volver a animarse al regresar (desde arriba si saliste bajando).
+  //    Moverse dentro de una misma sección no repite la animación.
+  const groups = new Map<Element, HTMLElement[]>();
+  for (const el of items) {
+    const section = el.closest('section.section, section.hero, footer') ?? document.body;
+    if (!groups.has(section)) groups.set(section, []);
+    groups.get(section)!.push(el);
+  }
+
+  const sectionObserver = new IntersectionObserver(
+    (entries) => {
+      for (const entry of entries) {
+        if (entry.isIntersecting) continue;
+        const fromTop = entry.boundingClientRect.top < 0;
+        for (const el of groups.get(entry.target) ?? []) {
+          el.classList.remove('is-in');
+          el.classList.toggle('from-top', fromTop);
+        }
+      }
+    },
+    { threshold: 0 },
+  );
+  groups.forEach((_, section) => section !== document.body && sectionObserver.observe(section));
+
   root.classList.add('reveal-on');
 }
