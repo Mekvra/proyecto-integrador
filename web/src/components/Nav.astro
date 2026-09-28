@@ -34,6 +34,42 @@ const links = [
     <a class="ghost-link repo" href={sitio.repositorio} target="_blank" rel="noopener">
       Repositorio <span class="arrow" aria-hidden="true">→</span>
     </a>
+    <button
+      class="menu-btn mono"
+      type="button"
+      aria-expanded="false"
+      aria-controls="menu-movil"
+      data-menu-btn
+    >
+      <span class="menu-icon" aria-hidden="true"><i></i><i></i></span>
+      <span data-menu-label>Menú</span>
+    </button>
+  </div>
+
+  <div class="menu" id="menu-movil" data-menu hidden>
+    <nav aria-label="Secciones (móvil)">
+      <ol>
+        {
+          links.map((l, i) => (
+            <li style={`--i:${i}`}>
+              <a href={l.href} data-navlink data-menu-link>
+                <span class="mono menu-idx">{String(i + 1).padStart(2, '0')}</span>
+                <span class="menu-label">{l.label}</span>
+              </a>
+            </li>
+          ))
+        }
+      </ol>
+    </nav>
+    <a
+      class="ghost-link menu-repo"
+      style={`--i:${links.length}`}
+      href={sitio.repositorio}
+      target="_blank"
+      rel="noopener"
+    >
+      Repositorio en GitHub <span class="arrow" aria-hidden="true">→</span>
+    </a>
   </div>
 </header>
 
@@ -47,7 +83,8 @@ const links = [
     transition: border-color 200ms var(--ease-switch);
   }
 
-  .nav[data-scrolled] {
+  .nav[data-scrolled],
+  .nav[data-open] {
     border-bottom-color: var(--cream-08);
   }
 
@@ -94,36 +131,214 @@ const links = [
     color: var(--cream);
   }
 
+  /* Botón de menú (solo celular y tablet) */
+  .menu-btn {
+    display: none;
+    align-items: center;
+    gap: 10px;
+    margin-left: auto;
+    background: transparent;
+    color: var(--cream);
+    border: 1px solid var(--cream-16);
+    border-radius: var(--radius);
+    padding: 8px 12px;
+    cursor: pointer;
+    transition: border-color 150ms var(--ease-switch);
+  }
+
+  .menu-btn:hover,
+  .menu-btn[aria-expanded='true'] {
+    border-color: var(--gold);
+  }
+
+  .menu-icon {
+    position: relative;
+    width: 14px;
+    height: 8px;
+  }
+
+  .menu-icon i {
+    position: absolute;
+    left: 0;
+    width: 14px;
+    height: 1px;
+    background: currentColor;
+    transition:
+      transform 250ms var(--ease-out-expo),
+      top 250ms var(--ease-out-expo);
+  }
+
+  .menu-icon i:first-child {
+    top: 0;
+  }
+
+  .menu-icon i:last-child {
+    top: 7px;
+  }
+
+  .menu-btn[aria-expanded='true'] .menu-icon i:first-child {
+    top: 3.5px;
+    transform: rotate(45deg);
+  }
+
+  .menu-btn[aria-expanded='true'] .menu-icon i:last-child {
+    top: 3.5px;
+    transform: rotate(-45deg);
+  }
+
+  /* Panel del menú */
+  .menu {
+    position: fixed;
+    inset: var(--menu-top, 61px) 0 0 0;
+    background: var(--black);
+    padding: 24px var(--gutter) 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+
+  .menu nav {
+    flex: none;
+    display: block;
+  }
+
+  .menu ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+  }
+
+  .menu li,
+  .menu-repo {
+    opacity: 0;
+    transform: translateY(16px);
+    filter: blur(4px);
+  }
+
+  .menu[data-visible] li,
+  .menu[data-visible] .menu-repo {
+    opacity: 1;
+    transform: none;
+    filter: none;
+    transition:
+      opacity 600ms var(--ease-out-expo),
+      transform 700ms var(--ease-out-expo),
+      filter 500ms var(--ease-out-expo);
+    transition-delay: calc(var(--i) * 45ms);
+  }
+
+  .menu a[data-menu-link] {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--cream-08);
+    color: var(--cream);
+  }
+
+  .menu-idx {
+    color: var(--gold);
+    width: 20px;
+  }
+
+  .menu-label {
+    font-size: 28px;
+    line-height: 1.1;
+    letter-spacing: -1px;
+    transition: color 150ms var(--ease-switch);
+  }
+
+  .menu a[aria-current='true'] .menu-label,
+  .menu a:hover .menu-label {
+    color: var(--gold);
+  }
+
+  .menu-repo {
+    font-size: 16px;
+  }
+
   @media (max-width: 960px) {
-    nav {
+    .nav-inner > nav,
+    .nav-inner > .repo {
       display: none;
     }
-    .repo {
-      margin-left: auto;
+    .menu-btn {
+      display: inline-flex;
+    }
+  }
+
+  @media (min-width: 961px) {
+    .menu {
+      display: none !important;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .menu li,
+    .menu-repo {
+      opacity: 1;
+      transform: none;
+      filter: none;
     }
   }
 </style>
 
 <script>
-  const nav = document.querySelector<HTMLElement>('[data-nav]');
-  const onScroll = () => nav?.toggleAttribute('data-scrolled', window.scrollY > 8);
+  const nav = document.querySelector<HTMLElement>('[data-nav]')!;
+  const onScroll = () => nav.toggleAttribute('data-scrolled', window.scrollY > 8);
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
-  // Resalta la sección visible.
+  // --- Menú de celular ---
+  const btn = nav.querySelector<HTMLButtonElement>('[data-menu-btn]')!;
+  const label = nav.querySelector<HTMLElement>('[data-menu-label]')!;
+  const menu = nav.querySelector<HTMLElement>('[data-menu]')!;
+
+  function setOpen(open: boolean) {
+    btn.setAttribute('aria-expanded', String(open));
+    label.textContent = open ? 'Cerrar' : 'Menú';
+    nav.toggleAttribute('data-open', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+    if (open) {
+      menu.style.setProperty('--menu-top', `${nav.offsetHeight}px`);
+      menu.hidden = false;
+      requestAnimationFrame(() => requestAnimationFrame(() => menu.setAttribute('data-visible', '')));
+      menu.querySelector<HTMLElement>('a')?.focus({ preventScroll: true });
+    } else {
+      menu.removeAttribute('data-visible');
+      menu.hidden = true;
+    }
+  }
+
+  btn.addEventListener('click', () => setOpen(btn.getAttribute('aria-expanded') !== 'true'));
+  menu.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => setOpen(false)));
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && btn.getAttribute('aria-expanded') === 'true') {
+      setOpen(false);
+      btn.focus();
+    }
+  });
+  window.matchMedia('(min-width: 961px)').addEventListener('change', (e) => e.matches && setOpen(false));
+
+  // Resalta la sección visible (en la barra y en el menú).
   const links = [...document.querySelectorAll<HTMLAnchorElement>('[data-navlink]')];
-  const byId = new Map(links.map((a) => [a.getAttribute('href')!.slice(1), a]));
+  const ids = [...new Set(links.map((a) => a.getAttribute('href')!.slice(1)))];
   const observer = new IntersectionObserver(
     (entries) => {
       for (const entry of entries) {
         if (!entry.isIntersecting) continue;
-        links.forEach((a) => a.removeAttribute('aria-current'));
-        byId.get(entry.target.id)?.setAttribute('aria-current', 'true');
+        links.forEach((a) =>
+          a.toggleAttribute('aria-current', a.getAttribute('href') === `#${entry.target.id}`),
+        );
+        links.forEach((a) => a.hasAttribute('aria-current') && a.setAttribute('aria-current', 'true'));
       }
     },
     { rootMargin: '-45% 0px -50% 0px' },
   );
-  byId.forEach((_, id) => {
+  ids.forEach((id) => {
     const el = document.getElementById(id);
     if (el) observer.observe(el);
   });
