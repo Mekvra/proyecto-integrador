@@ -1,5 +1,5 @@
 ---
-titulo: Una planta láctea que necesita ver, decidir y trazar.
+titulo: Una planta que necesita ver, decidir y trazar.
 resumen: El cliente es una planta de derivados lácteos, tomando como referencia los procesos de Alpina en Sopó, Cundinamarca.
 ---
 
