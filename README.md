@@ -34,16 +34,18 @@
 La información sube desde la planta hasta la gerencia; las órdenes, recetas y decisiones bajan de vuelta. Organizamos la integración con **ISA-95** y la producción por lotes con **ISA-88**.
 
 ```mermaid
-flowchart LR
-    P["<b>N0 · Proceso</b><br/>Gemelo digital<br/>Siemens NX"]
-    F["<b>N1 · Campo</b><br/>Sensores y<br/>actuadores"]
-    C["<b>N2 · Control</b><br/>PLC<br/>Logix Emulate"]
-    S["<b>N3 · SCADA</b><br/>Ignition · OPC"]
-    M["<b>N4 · MES</b><br/>Node-RED<br/>Power BI"]
-    E["<b>N5 · ERP</b><br/>SAP"]
-    P --> F --> C --> S --> M --> E
+flowchart BT
+    P["<b>N0 · Proceso</b> — gemelo digital en Siemens NX"]
+    F["<b>N1 · Campo</b> — sensores y actuadores"]
+    C["<b>N2 · Control</b> — PLC en Logix Emulate"]
+    S["<b>N3 · SCADA</b> — Ignition · OPC"]
+    M["<b>N4 · MES</b> — Node-RED · Power BI"]
+    E["<b>N5 · ERP</b> — SAP"]
+    P -- "datos" --> F --> C --> S --> M --> E
     E -. "órdenes y recetas" .-> M
-    M -. "parámetros por lote" .-> S
+    classDef nivel fill:#141312,stroke:#c8ad86,stroke-width:1px,color:#fff7dd
+    class P,F,C,S,M,E nivel
+    linkStyle default stroke:#c8ad86,color:#8a8380
 ```
 
 ## Líneas de producción
