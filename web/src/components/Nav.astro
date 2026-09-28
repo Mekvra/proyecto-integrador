@@ -1,4 +1,5 @@
 ---
+import Lockup from './Lockup.astro';
 import sitio from '../data/sitio.json';
 
 const links = [
@@ -13,6 +14,7 @@ const links = [
 
 <header class="nav" data-nav>
   <div class="nav-inner">
+    <Lockup badge={false} />
     <nav aria-label="Secciones">
       <ul>
         {
