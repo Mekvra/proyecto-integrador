@@ -189,6 +189,9 @@ Fondo `#000000`, borde de 1px crema al 16 % (o champaña para destacar), radio 4
 ### Category Tag Pill
 Radio 100px, borde de 1px `#c8ad86`, sin relleno. Texto Switzer 10px peso 500, `#c8ad86`, tracking 0.18px. Padding 4px 10px. Variante de estado para entregables: `EN DESARROLLO` en `#66635f` y `COMPLETADO` en `#a0ca92`.
 
+### Section Divider
+Entre secciones, a mitad del espacio que las separa: una línea de 1px crema al 12 % del ancho del contenido, con una tesela champaña de 6 × 6px en su extremo izquierdo (el mosaico del logo). Marca el cambio de sección sin romper la calma de la página.
+
 ### Section Header
 Número de sección en Geist Mono champaña + título Switzer 44px crema, alineado a la izquierda, con un párrafo de introducción de 16px crema al 70 %, ancho máximo 60ch.
 

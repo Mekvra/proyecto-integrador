@@ -114,8 +114,20 @@ html {
   padding: 0 var(--gutter);
 }
 
+/* Cada sección empieza con una línea fina (del ancho del contenido) y una tesela
+   champaña al inicio, a mitad del espacio entre secciones. */
 .section {
-  padding-top: var(--section-gap);
+  padding-top: calc(var(--section-gap) / 2);
+}
+
+.section::before {
+  content: '';
+  display: block;
+  height: 6px;
+  margin-bottom: calc(var(--section-gap) / 2);
+  background:
+    linear-gradient(var(--gold), var(--gold)) left center / 6px 6px no-repeat,
+    linear-gradient(var(--cream-12), var(--cream-12)) left center / 100% 1px no-repeat;
 }
 
 .mono {
