@@ -39,11 +39,11 @@ La página se publica sola en https://mekvra.github.io/proyecto-integrador/ uno 
 
 | Quiero cambiar… | Archivo |
 |---|---|
-| Nombre, lema, enlaces, video, fechas, cifras del cliente | `web/src/data/sitio.json` |
+| Nombre, lema, enlaces, video, cifras del cliente | `web/src/data/sitio.json` |
 | Texto de la empresa, el reto, la propuesta de valor o el aprendizaje grupal | `web/src/content/textos/*.md` |
 | Niveles de la arquitectura ISA-95 | `web/src/content/textos/solucion.md` |
 | Etapas y variables de cada línea de producción | `web/src/content/lineas/*.md` |
-| Estado y entregables de cada módulo (`pendiente`, `en-desarrollo`, `entregado`) | `web/src/content/modulos/*.md` |
+| Estado y entregables de cada módulo (`pendiente`, `en-desarrollo`, `completado`) | `web/src/content/modulos/*.md` |
 | Mi reflexión individual | `web/src/content/equipo/<mi-archivo>.md` (escribe debajo de la segunda línea `---`) |
 | Datos de la gráfica de temperatura del queso | `web/src/data/perfil-queso.json` |
 

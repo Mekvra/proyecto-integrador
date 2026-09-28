@@ -1,7 +1,6 @@
 ---
 numero: "01"
 titulo: Transformación Digital Industrial
-entrega: intermedia
 estado: en-desarrollo
 responsables: Luis Alberto Mendoza · Pablo de Jesús Arcila
 carpeta: 01_transformacion-digital

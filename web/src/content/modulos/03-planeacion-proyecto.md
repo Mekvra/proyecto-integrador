@@ -1,7 +1,6 @@
 ---
 numero: "03"
 titulo: Planeación y evaluación de proyectos
-entrega: intermedia
 estado: en-desarrollo
 responsables: Daniel Felipe Castro
 carpeta: 03_planeacion-proyecto

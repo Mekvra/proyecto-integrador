@@ -1,6 +1,6 @@
 ---
 numero: 5
-nombre: Jahan Libardo Carreño
+nombre: Janan Libardo Carreño Riaño
 rol: CTO · Integración digital
 github: JananLC
 ---

@@ -168,7 +168,7 @@ html {
   color: var(--cream-70);
 }
 
-.pill[data-estado='entregado'] {
+.pill[data-estado='completado'] {
   border-color: var(--green);
   color: var(--green);
 }

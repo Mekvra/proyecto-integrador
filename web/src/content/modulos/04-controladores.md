@@ -1,7 +1,6 @@
 ---
 numero: "04"
 titulo: Controladores industriales
-entrega: final
 estado: pendiente
 responsables: Por definir
 carpeta: 04_controladores

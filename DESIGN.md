@@ -175,7 +175,7 @@ Barra negra fija, 20px de padding vertical y 40px horizontal (16px en móvil). I
 Fondo `#000000`, borde de 1px crema al 16 % (o champaña para destacar), radio 4px, padding 32px. Contiene: área de figura o ícono, título Switzer 16px peso 500, pill de categoría y descripción a 14px crema al 70 %. Al pasar el cursor, el borde sube a champaña al 60 % (150 ms).
 
 ### Category Tag Pill
-Radio 100px, borde de 1px `#c8ad86`, sin relleno. Texto Switzer 10px peso 500, `#c8ad86`, tracking 0.18px. Padding 4px 10px. Variante de estado para entregables: `EN DESARROLLO` en `#66635f` y `ENTREGADO` en `#a0ca92`.
+Radio 100px, borde de 1px `#c8ad86`, sin relleno. Texto Switzer 10px peso 500, `#c8ad86`, tracking 0.18px. Padding 4px 10px. Variante de estado para entregables: `EN DESARROLLO` en `#66635f` y `COMPLETADO` en `#a0ca92`.
 
 ### Section Header
 Número de sección en Geist Mono champaña + título Switzer 44px crema, alineado a la izquierda, con un párrafo de introducción de 16px crema al 70 %, ancho máximo 60ch.
