@@ -59,7 +59,7 @@ niveles:
   - codigo: N0
     nombre: Proceso
     herramienta: Gemelo digital en Siemens NX
-    funcion: La transformación física. La leche se recibe, se trata y se convierte en queso, mantequilla y kéfir.
+    funcion: La transformación física. La leche se recibe, se trata y se convierte en queso, yogurt y kéfir.
     sube: []
     baja: []
 ---

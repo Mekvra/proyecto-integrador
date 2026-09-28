@@ -155,9 +155,9 @@ Al pasar el cursor, una línea vertical crema al 30 % sigue al puntero y una eti
 *(de Factory)* Círculo de 6px en `#ee6018` o `#a0ca92` antes de una etiqueta. Late suavemente (opacidad 1 → 0.35, 1.6 s) solo cuando el estado es "en vivo".
 
 ### Instrument Tabs
-**Role:** Pestañas interactivas para cambiar de línea (Queso · Mantequilla · Kéfir), de nivel ISA-95 o de módulo.
+**Role:** Pestañas interactivas para cambiar de línea (Queso · Yogurt · Kéfir), de nivel ISA-95 o de módulo.
 
-Fila de etiquetas Geist Mono 11px mayúsculas con numeración (`01 QUESO`, `02 MANTEQUILLA`, `03 KÉFIR`), separadas 24px, sobre una línea de 1px crema al 12 %. La pestaña activa pasa a crema al 100 % y un subrayado champaña de 1px se desliza hasta ella (250 ms, ease-out). Las inactivas quedan en `#66635f`, y al pasar el cursor suben a crema al 70 %. Se usan con flechas del teclado. El contenido cambia con un fundido de 150 ms, sin desplazamiento.
+Fila de etiquetas Geist Mono 11px mayúsculas con numeración (`01 QUESO`, `02 YOGURT`, `03 KÉFIR`), separadas 24px, sobre una línea de 1px crema al 12 %. La pestaña activa pasa a crema al 100 % y un subrayado champaña de 1px se desliza hasta ella (250 ms, ease-out). Las inactivas quedan en `#66635f`, y al pasar el cursor suben a crema al 70 %. Se usan con flechas del teclado. El contenido cambia con un fundido de 150 ms, sin desplazamiento.
 
 ### Numbered Annotation Row
 *(de Aaru)* Para listas de pasos, niveles ISA-95 o etapas del proceso: prefijo numérico `01–05` en Geist Mono 11px champaña, título en Switzer 20px crema y línea de 1px crema al 12 % encima. Puede expandirse (acordeón) mostrando el cuerpo a 14px con sangría alineada al título.
