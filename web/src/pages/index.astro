@@ -187,7 +187,6 @@ const kpis = [
                 ))}
               </ul>
               <div class="card-foot">
-                <span class="mono card-meta">{m.data.responsables}</span>
                 <a class="ghost-link" href={`${repoTree}/${m.data.carpeta}`} target="_blank" rel="noopener">
                   Ver carpeta <span class="arrow" aria-hidden="true">→</span>
                 </a>
@@ -545,13 +544,6 @@ const kpis = [
     gap: 12px;
     padding-top: 16px;
     border-top: 1px solid var(--cream-08);
-  }
-
-  .card-meta {
-    color: var(--granite);
-    font-size: 11px;
-    text-transform: none;
-    letter-spacing: 0.01em;
   }
 
   .proposal {
