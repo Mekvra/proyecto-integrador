@@ -170,10 +170,9 @@ Fila de etiquetas Geist Mono 11px mayúsculas con numeración (`01 QUESO`, `02 Y
 
 ### Hero (inicio)
 Composición serena, centrada, que cabe completa en la primera pantalla (referencia: Balsa):
-0. **Franja de tecnologías** (arriba, bajo el menú): las herramientas y estándares reales del proyecto en Geist Mono 11px `#8a8380`, separados por cuadritos champaña de 4px (el mosaico del logo), entre dos líneas de 1px crema al 8 %. Se desplaza lento (48 s por vuelta), se pausa al pasar el cursor y se queda quieta con movimiento reducido. Bordes desvanecidos con máscara. Lista editable en `sitio.json` → `tecnologias`.
+0. **Franja de tecnologías** (arriba, bajo el menú): las herramientas y estándares reales del proyecto en Geist Mono 11px `#8a8380`, separados por cuadritos champaña de 4px (el mosaico del logo), entre dos líneas de 1px crema al 8 %. Se desplaza lento y sin detenerse (48 s por vuelta), aunque se pase el cursor o el dedo por encima; solo se queda quieta con movimiento reducido. Bordes desvanecidos con máscara. Lista editable en `sitio.json` → `tecnologias`.
 1. **Titular:** Barlow Condensed 600 en mayúsculas, crema, sin punto final. Una línea en computador; en celular las palabras cortas se unen a la siguiente para que no queden sueltas.
-2. **Un solo ghost link** ("Conoce la propuesta →").
-3. **Logo de partículas debajo**, como pieza central: `min(420px, 80vw, 42svh)` (en celular `min(92vw, 44svh)`).
+2. **Logo de partículas debajo**, como pieza central: `min(420px, 80vw, 42svh)` (en celular `min(92vw, 44svh)`).
 
 La referencia al curso (Proyecto Integrador · APM 2026-2S) vive en el pie de página, no en el inicio.
 
@@ -244,7 +243,7 @@ Nada de fotografía de stock. La imagen de la marca son sus propias máquinas y 
 ## Layout
 
 Lienzo negro a sangre con zonas de contenido centradas de 1200px máximo.
-1. **Hero:** franja de tecnologías, titular condensado y un ghost link; debajo, el logo de partículas. Todo en la primera pantalla.
+1. **Hero:** franja de tecnologías y titular condensado; debajo, el logo de partículas. Todo en la primera pantalla.
 2. **Automatización:** a pantalla dividida, la celda robótica a la izquierda y un Dashboard Frame con métricas en vivo a la derecha.
 3. **Secciones del proyecto:** encabezado numerado a la izquierda y contenido en retícula de 3 columnas de tarjetas, o pestañas de instrumento cuando hay variantes (líneas, niveles ISA-95).
 4. **Gráficas:** siempre dentro de Dashboard Frames, a ancho completo o en retícula de 2.

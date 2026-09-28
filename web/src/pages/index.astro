@@ -62,7 +62,6 @@ const kpis = [
 
       <div class="hero-main">
         <h1>{sinHuerfanas(sitio.lema)}</h1>
-        <a class="ghost-link hero-link" href="#empresa">Conoce la propuesta <span class="arrow" aria-hidden="true">→</span></a>
         <ParticleLogo />
       </div>
     </section>
@@ -300,10 +299,6 @@ const kpis = [
     animation: stack-scroll 48s linear infinite;
   }
 
-  .stack-strip:hover .stack-track {
-    animation-play-state: paused;
-  }
-
   .stack-item {
     display: inline-flex;
     align-items: center;
@@ -355,10 +350,6 @@ const kpis = [
     line-height: 1.55;
     color: var(--cream-70);
     max-width: 46ch;
-  }
-
-  .hero-link {
-    margin-top: clamp(18px, 3svh, 28px);
   }
 
   .hero :global(.plogo) {
