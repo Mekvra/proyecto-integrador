@@ -305,6 +305,16 @@ html.reveal-ready :is(.frame, .cell-stage, .proposal, .trunk) {
   transform-origin: 50% 100%;
 }
 
+/* Al subir, lo que salió por arriba vuelve a entrar bajando. */
+html.reveal-ready :is(.hero > :not(script), .section-head > *, .fact, .cell-stage, .frame, .trunk, .trunk-flow > li, .tablist, .stage, .level, .card, .proposal, .member, .footer > *).from-top {
+  transform: translateY(-28px);
+}
+
+html.reveal-ready :is(.frame, .cell-stage, .proposal, .trunk).from-top {
+  transform: translateY(-40px) scale(0.975);
+  transform-origin: 50% 0%;
+}
+
 html.reveal-ready :is(.hero > :not(script), .section-head > *, .fact, .cell-stage, .frame, .trunk, .trunk-flow > li, .tablist, .stage, .level, .card, .proposal, .member, .footer > *).is-in {
   opacity: 1;
   transform: none;
