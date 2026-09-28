@@ -167,12 +167,13 @@ const lineas = todas.filter((l) => l.data.orden > 0);
   /* La barra de pestañas se queda fija bajo el menú mientras se leen las etapas. */
   .tablist {
     position: sticky;
-    top: var(--nav-h, 0px);
+    top: var(--nav-offset, 0px);
     z-index: 5;
     background: var(--black);
+    transition: top 320ms var(--ease-out-expo);
     display: flex;
     gap: 28px;
-    padding-top: 16px;
+    padding-top: 8px;
     border-bottom: 1px solid var(--cream-12);
     overflow-x: auto;
     scrollbar-width: none;
@@ -187,7 +188,7 @@ const lineas = todas.filter((l) => l.data.orden > 0);
     background: none;
     border: 0;
     display: inline-flex;
-    align-items: flex-start;
+    align-items: flex-end;
     padding: 0 0 14px;
     color: var(--granite);
     cursor: pointer;
@@ -217,7 +218,7 @@ const lineas = todas.filter((l) => l.data.orden > 0);
 
   .panel {
     padding-top: 24px;
-    scroll-margin-top: calc(var(--nav-h, 0px) + 64px);
+    scroll-margin-top: 64px;
     animation: fade 150ms var(--ease-switch);
   }
 
@@ -345,16 +346,15 @@ const lineas = todas.filter((l) => l.data.orden > 0);
       }
     }
 
-    // El menú superior ya no es fijo: las pestañas se pegan al borde de la pantalla.
+    // Alto de la barra superior cuando está visible (0 cuando se escondió al bajar).
     function navHeight() {
-      return 0;
+      return parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--nav-offset')) || 0;
     }
 
     // Marca cuando la barra está pegada bajo el menú.
     const syncStuck = () =>
       tablist.toggleAttribute('data-stuck', tablist.getBoundingClientRect().top <= navHeight() + 1);
     window.addEventListener('scroll', syncStuck, { passive: true });
-    document.documentElement.style.setProperty('--nav-h', `${navHeight()}px`);
 
     tabs.forEach((tab, i) => {
       tab.addEventListener('click', () => select(tab));

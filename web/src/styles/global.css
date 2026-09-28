@@ -48,7 +48,7 @@
 html {
   background: var(--black);
   scroll-behavior: smooth;
-  scroll-padding-top: 24px;
+  scroll-padding-top: 76px;
   -webkit-text-size-adjust: 100%;
 }
 
@@ -312,7 +312,8 @@ html.reveal-ready
     filter 700ms var(--ease-out-expo) var(--reveal-delay, 0ms),
     border-color 150ms var(--ease-switch),
     background-color 150ms var(--ease-switch),
-    color 150ms var(--ease-switch);
+    color 150ms var(--ease-switch),
+    top 320ms var(--ease-out-expo);
 }
 
 /* Paneles de instrumento: entran como un monitor que se enciende. */

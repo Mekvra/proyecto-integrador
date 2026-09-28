@@ -71,13 +71,22 @@ const links = [
 </header>
 
 <style>
-  /* El menú vive solo arriba de la página: al bajar se va con el contenido. */
+  /* Barra estilo X: se esconde al bajar y reaparece al subir. */
   .nav {
-    position: relative;
+    position: sticky;
+    top: 0;
     z-index: 20;
     background: var(--black);
     border-bottom: 1px solid transparent;
-    transition: border-color 200ms var(--ease-switch);
+    transition:
+      transform 320ms var(--ease-out-expo),
+      border-color 200ms var(--ease-switch);
+  }
+
+  /* Solo lleva transform cuando está escondida: así el panel fijo del menú
+     (que vive dentro de la barra) se posiciona respecto a la pantalla. */
+  .nav[data-hidden] {
+    transform: translateY(-100%);
   }
 
   .nav[data-scrolled],
@@ -266,6 +275,9 @@ const links = [
   }
 
   @media (prefers-reduced-motion: reduce) {
+    .nav {
+      transition: none;
+    }
     .menu li,
     .menu-repo {
       opacity: 1;
@@ -277,9 +289,49 @@ const links = [
 
 <script>
   const nav = document.querySelector<HTMLElement>('[data-nav]')!;
-  const onScroll = () => nav.toggleAttribute('data-scrolled', window.scrollY > 8);
-  window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll();
+  const root = document.documentElement;
+
+  // --- Barra que se esconde al bajar y aparece al subir (como en X) ---
+  const THRESHOLD = 8; // px de movimiento antes de reaccionar (evita parpadeos)
+  let lastY = window.scrollY;
+  let ticking = false;
+
+  function setHidden(hidden: boolean) {
+    if (nav.hasAttribute('data-hidden') === hidden) return;
+    nav.toggleAttribute('data-hidden', hidden);
+    // Las pestañas fijas de la página se acomodan debajo de la barra cuando está visible.
+    root.style.setProperty('--nav-offset', hidden ? '0px' : `${nav.offsetHeight}px`);
+  }
+
+  function update() {
+    ticking = false;
+    const y = window.scrollY;
+    nav.toggleAttribute('data-scrolled', y > 8);
+    if (nav.hasAttribute('data-open') || y < nav.offsetHeight) {
+      setHidden(false);
+      lastY = y;
+      return;
+    }
+    const delta = y - lastY;
+    if (Math.abs(delta) < THRESHOLD) return;
+    setHidden(delta > 0);
+    lastY = y;
+  }
+
+  window.addEventListener(
+    'scroll',
+    () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(update);
+      }
+    },
+    { passive: true },
+  );
+  // Si alguien navega con teclado, la barra aparece al recibir el foco.
+  nav.addEventListener('focusin', () => setHidden(false));
+  root.style.setProperty('--nav-offset', `${nav.offsetHeight}px`);
+  update();
 
   // --- Menú de celular ---
   const btn = nav.querySelector<HTMLButtonElement>('[data-menu-btn]')!;
