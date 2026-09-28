@@ -48,7 +48,7 @@
 html {
   background: var(--black);
   scroll-behavior: smooth;
-  scroll-padding-top: 80px;
+  scroll-padding-top: 24px;
   -webkit-text-size-adjust: 100%;
 }
 

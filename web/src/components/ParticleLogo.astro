@@ -3,13 +3,8 @@
 // y se transforman en engranaje, brazo robot, pirámide ISA-95 y gota de leche.
 ---
 
-<figure class="plogo" data-plogo>
+<figure class="plogo" data-plogo role="img" aria-label="Logo de Mekvra: teselas que forman la M y se transforman en engranaje, brazo robot, pirámide ISA-95 y gota de leche">
   <canvas aria-hidden="true"></canvas>
-  <figcaption class="plogo-caption mono" aria-live="polite">
-    <span data-index>01</span>
-    <span class="plogo-rule" aria-hidden="true"></span>
-    <span data-label>Mekvra</span>
-  </figcaption>
 </figure>
 
 <style>
@@ -19,7 +14,6 @@
     margin: 0 auto;
     width: min(420px, 72vw, 40svh);
     display: grid;
-    gap: 12px;
     justify-items: center;
   }
 
@@ -27,28 +21,6 @@
     width: 100%;
     aspect-ratio: 1;
     touch-action: pan-y;
-  }
-
-  .plogo-caption {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    color: var(--cream-70);
-    min-height: 14px;
-  }
-
-  [data-index] {
-    color: var(--gold);
-  }
-
-  .plogo-rule {
-    width: 24px;
-    height: 1px;
-    background: var(--cream-40);
-  }
-
-  [data-label] {
-    transition: opacity 300ms var(--ease-switch);
   }
 </style>
 
@@ -80,8 +52,6 @@
   function init(root: HTMLElement) {
     const canvas = root.querySelector('canvas')!;
     const ctx = canvas.getContext('2d')!;
-    const indexEl = root.querySelector<HTMLElement>('[data-index]')!;
-    const labelEl = root.querySelector<HTMLElement>('[data-label]')!;
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
     const count = 1000;
@@ -129,15 +99,6 @@
     let shapeIndex = 0;
     let phaseStart = performance.now();
 
-    function setCaption(i: number) {
-      indexEl.textContent = String(i + 1).padStart(2, '0');
-      labelEl.style.opacity = '0';
-      window.setTimeout(() => {
-        labelEl.textContent = SHAPES[i].label;
-        labelEl.style.opacity = '1';
-      }, 200);
-    }
-
     function morphTo(i: number, now: number) {
       shapeIndex = i;
       phaseStart = now;
@@ -157,7 +118,6 @@
         p.bumpX = Math.cos(a) * amp;
         p.bumpY = Math.sin(a) * amp;
       });
-      setCaption(i);
     }
 
     // Puntero en coordenadas del lienzo de 200.

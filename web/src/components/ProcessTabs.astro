@@ -167,7 +167,7 @@ const lineas = todas.filter((l) => l.data.orden > 0);
   /* La barra de pestañas se queda fija bajo el menú mientras se leen las etapas. */
   .tablist {
     position: sticky;
-    top: var(--nav-h, 60px);
+    top: var(--nav-h, 0px);
     z-index: 5;
     background: var(--black);
     display: flex;
@@ -217,7 +217,7 @@ const lineas = todas.filter((l) => l.data.orden > 0);
 
   .panel {
     padding-top: 24px;
-    scroll-margin-top: calc(var(--nav-h, 60px) + 64px);
+    scroll-margin-top: calc(var(--nav-h, 0px) + 64px);
     animation: fade 150ms var(--ease-switch);
   }
 
@@ -345,8 +345,9 @@ const lineas = todas.filter((l) => l.data.orden > 0);
       }
     }
 
+    // El menú superior ya no es fijo: las pestañas se pegan al borde de la pantalla.
     function navHeight() {
-      return document.querySelector<HTMLElement>('[data-nav]')?.offsetHeight ?? 60;
+      return 0;
     }
 
     // Marca cuando la barra está pegada bajo el menú.

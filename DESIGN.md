@@ -107,7 +107,7 @@ Solo para el titular principal (H1). Condensada industrial inspirada en DIN, la 
 
 Un campo de ~900 teselas cuadradas (2–3px) en `#c8ad86`, con ligeras variaciones de opacidad (55–100 %) para dar la textura metálica del mosaico de Atoms. Las teselas se ensamblan en el **monograma de Mekvra**: una "M" construida sobre una retícula de 9×9 módulos cuyo vértice central es una articulación circular, como el eje de un brazo robot.
 
-Secuencia (bucle de ~16 s, 3 s de reposo en cada figura):
+Secuencia (bucle de ~16 s, 3 s de reposo en cada figura; sin leyenda de texto, la figura habla sola):
 1. **Monograma M** (figura de reposo y figura inicial)
 2. **Engranaje** de 12 dientes: mecatrónica
 3. **Brazo robot** en silueta: automatización
@@ -181,7 +181,7 @@ La referencia al curso (Proyecto Integrador · APM 2026-2S) vive en el pie de p�
 Texto de 12–14px en `#fff7dd` con flecha `→`. Sin subrayado ni botón. Al pasar el cursor cambia a `#c8ad86` y la flecha avanza 3px.
 
 ### Top Navigation Bar
-Barra negra fija, 20px de padding vertical y 40px horizontal (16px en móvil). Izquierda: lockup de Mekvra. Derecha: enlaces de sección en Switzer 14px crema al 70 % (crema al 100 % en la sección activa) y un ghost link `Repositorio →`. Al hacer scroll aparece una línea inferior de 1px crema al 8 %.
+Barra negra **no fija**: vive solo arriba de la página y se va con el contenido al bajar (en PC y celular), para que la lectura quede limpia. 13px de padding vertical y 40px horizontal (16px en móvil). Izquierda: lockup de Mekvra. Derecha: enlaces de sección en Switzer 14px crema al 70 % (crema al 100 % al pasar el cursor) y un ghost link `Repositorio →`.
 
 ### Card
 Fondo `#000000`, borde de 1px crema al 16 % (o champaña para destacar), radio 4px, padding 32px. Contiene: área de figura o ícono, título Switzer 16px peso 500, pill de categoría y descripción a 14px crema al 70 %. Al pasar el cursor, el borde sube a champaña al 60 % (150 ms).
