@@ -17,7 +17,7 @@ Proceso → Sensores y actuadores → Control → SCADA → MES → ERP
    └──────────── órdenes, recetas y decisiones ───────────┘
 ```
 
-**Líneas de producción analizadas:** quesos (línea detallada: automatización y gemelo digital), mantequilla y kéfir.
+**Líneas de producción analizadas:** queso (línea detallada: automatización y gemelo digital), yogurt y kéfir.
 
 ## Equipo
 

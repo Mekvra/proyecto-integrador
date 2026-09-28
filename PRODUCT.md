@@ -32,7 +32,7 @@ A consulting proposal, not a course report: it speaks to the client about their 
 
 ## Capabilities and Constraints
 
-- Production lines chosen by the team: queso (detailed line), mantequilla, kéfir. The official brief lists yogur / queso / leche UHT-bebidas lácteas; the team must confirm the mantequilla substitution with professors. Line list must be easy to change in content.
+- Production lines (team decision 2026-09-27): queso (detailed line), yogurt, kéfir (kéfir covers the brief's "bebidas lácteas" line). Line list must be easy to change in content.
 - Company name "Mekvra" confirmed by the team on 2026-09-27 (GitHub org: Mekvra). Name must be a single content value.
 - No logo exists yet.
 
