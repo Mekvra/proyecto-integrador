@@ -35,4 +35,18 @@ git push
 
 ## Actualizar la página web
 
-El contenido de la página está en `web/src/content/`, en archivos de texto Markdown (`.md`). Para cambiar un texto de la web, edita ese archivo y la página se actualiza sola en uno o dos minutos. No hace falta tocar el diseño.
+La página se publica sola en https://mekvra.github.io/proyecto-integrador/ uno o dos minutos después de cada cambio en `web/`. Para cambiar un texto o un dato **no hace falta tocar el diseño**: basta con editar estos archivos desde GitHub (lápiz ✏️).
+
+| Quiero cambiar… | Archivo |
+|---|---|
+| Nombre, lema, enlaces, video, fechas, cifras del cliente | `web/src/data/sitio.json` |
+| Texto de la empresa, el reto, la propuesta de valor o el aprendizaje grupal | `web/src/content/textos/*.md` |
+| Niveles de la arquitectura ISA-95 | `web/src/content/textos/solucion.md` |
+| Etapas y variables de cada línea de producción | `web/src/content/lineas/*.md` |
+| Estado y entregables de cada módulo (`pendiente`, `en-desarrollo`, `entregado`) | `web/src/content/modulos/*.md` |
+| Mi reflexión individual | `web/src/content/equipo/<mi-archivo>.md` (escribe debajo de la segunda línea `---`) |
+| Datos de la gráfica de temperatura del queso | `web/src/data/perfil-queso.json` |
+
+Las reglas visuales (colores, tipografías, componentes) están en [`DESIGN.md`](DESIGN.md). Si quieres cambiar el diseño, habla primero con el Integrante 5.
+
+**Nunca pongas en la web un número como resultado si todavía no está calculado o simulado.** Déjalo como pendiente.
