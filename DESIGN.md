@@ -11,7 +11,7 @@ Base visual: sistema **Atoms** (monocromo negro, crema y champaña; tipografía 
 
 Mekvra opera en una disciplina casi totalmente monocroma: lienzos negros, texto crema cálido y un solo acento champaña. El color no decora; crema para texto, oro para énfasis, negro para profundidad, como titanio mecanizado bajo luz de tungsteno. La única excepción cromática son dos colores **de dato** (verde métrica y naranja señal), que solo aparecen dentro de gráficas e indicadores de estado, igual que en una HMI ISA-101: el color significa estado, nunca adorno.
 
-A diferencia de Atoms, este sistema **sí se mueve**, pero solo en tres lugares con significado: el logo de partículas, el brazo robot con su banda y los datos en vivo de las gráficas. Todo lo demás sigue quieto y colocado.
+A diferencia de Atoms, este sistema **sí se mueve**, en cuatro lugares con significado: el logo de partículas, el brazo robot con su banda, los datos en vivo de las gráficas y **la entrada de cada elemento al hacer scroll** (estilo Factory): el contenido sube, pasa de desenfocado a nítido y entra en cascada. Una vez colocado, queda quieto.
 
 ## Tokens — Colors
 
@@ -190,7 +190,7 @@ Número de sección en Geist Mono champaña + título Switzer 44px crema, alinea
 - Usar Geist Mono en mayúsculas para cualquier etiqueta de instrumento, unidad o tag de equipo.
 - Mantener radios de 4px en tarjetas y botones, 6px en el dashboard y 100px solo en pills.
 - Separar con bordes de 1px, nunca con sombras.
-- Limitar el movimiento a los tres lugares con significado: logo de partículas, celda robótica y datos en vivo.
+- Limitar el movimiento a los cuatro lugares con significado: logo de partículas, celda robótica, datos en vivo y entrada al hacer scroll.
 - Etiquetar como `SIMULACIÓN` o `VALORES ILUSTRATIVOS` cualquier número que todavía no sea un resultado del proyecto.
 
 ### Don't
@@ -199,7 +199,7 @@ Número de sección en Geist Mono champaña + título Switzer 44px crema, alinea
 - No usar blanco puro `#ffffff` para texto.
 - No rellenar tarjetas ni secciones con color de fondo: todo va sobre el negro.
 - No usar radios de 12px o más en rectángulos.
-- No animar entradas de secciones, títulos ni tarjetas: el texto está colocado, no llega volando.
+- No inventar animaciones nuevas por componente: toda entrada usa la misma animación de scroll (una sola gramática de movimiento).
 - No usar el verde o el naranja en botones, títulos ni fondos.
 - No presentar valores inventados como si fueran resultados.
 
@@ -243,6 +243,8 @@ En móvil todo pasa a una columna, el logo baja a ~260px de ancho y la celda rob
 | Brazo robot | Ciclo pick & place continuo | ~4 s por ciclo | ease-in-out entre poses |
 | Minigráficas / series | Dibujo inicial; luego avance en vivo cada 1–2 s | 600 ms | ease-out |
 | Pestañas | Subrayado deslizante + fundido del contenido | 250 ms / 150 ms | ease-out |
+| Entrada al hacer scroll | Sube 28px, de desenfoque 6px a nítido, opacidad 0 → 1; en cascada de 70 ms entre hermanos (máx. 6) | 800–1000 ms | ease-out exponencial |
+| Entrada de paneles (dashboard, celda, tronco común) | Igual, pero sube 40px desde escala 0,975, como un monitor que se enciende | 1000 ms | ease-out exponencial |
 | Hover de enlaces y tarjetas | Color y borde | 150 ms | `cubic-bezier(0.4, 0, 0.2, 1)` |
 
 Todo movimiento continuo se pausa cuando sale de la pantalla y se congela con `prefers-reduced-motion`.
