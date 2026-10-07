@@ -1,0 +1,59 @@
+% Diapositiva "Vitrina 3D" (Tecnomatix Plant Simulation) - Proyecto Integrador APM 2026-2S, Mekvra
+% Compilar: pdflatex vitrina_3d.tex   (las imágenes están en la carpeta superior)
+\documentclass[aspectratio=169]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish]{babel}
+\usepackage{lmodern}
+\usepackage{tikz}
+\graphicspath{{../}}
+
+% Colores del deck
+\definecolor{navy}{HTML}{1E2A78}
+\definecolor{tinta}{HTML}{1F2430}
+\definecolor{suave}{HTML}{5A6070}
+\definecolor{fondo}{HTML}{FAFAF8}
+\setbeamercolor{background canvas}{bg=fondo}
+\setbeamertemplate{navigation symbols}{}
+
+
+% Recuadro con imagen: x, y (esquina superior izquierda), archivo, pie
+\newcommand{\vista}[4]{%
+  \node[anchor=north west,inner sep=0] at (#1+0.017,#2+0.017)
+    {\includegraphics[width=0.45625\paperwidth,height=0.2851\paperheight]{#3}};
+  \fill[white] (#1,#2+2.6) rectangle (#1+7.333,#2+2.967);
+  \node[anchor=center,text=tinta,font=\scriptsize\bfseries] at (#1+3.667,#2+2.78) {#4};
+  \draw[navy,line width=0.8pt,rounded corners=2pt] (#1,#2) rectangle (#1+7.333,#2+2.967);}
+
+\begin{document}
+
+\begin{frame}[plain]
+% lienzo de 16 x 9 unidades, origen arriba a la izquierda
+\begin{tikzpicture}[remember picture,overlay,x=\paperwidth/16,y=-\paperheight/9,shift={(current page.north west)}]
+  % banda del título
+  \fill[navy] (0,0) rectangle (16,1.125);
+  \node[anchor=west,text=white,font=\Large\bfseries] at (0.6,0.56)
+    {Vitrina 3D: acopio, camiones, montacargas y operarios};
+
+  % cuatro vistas
+  \vista{0.6}{1.4}{vitrina_3d_general.png}{Planta completa: acopio, silos, 3 líneas, bodega y muelle}
+  \vista{8.067}{1.4}{vitrina_3d_acopio.png}{Camión cisterna descargando en el punto de acopio}
+  \vista{0.6}{4.5}{vitrina_3d_lineas.png}{Silos, fermentadores y operarios en las líneas}
+  \vista{8.067}{4.5}{vitrina_3d_bodega_muelle.png}{Bodega con montacargas y muelle de despacho}
+
+  % nota y pie
+  \node[anchor=west,text=suave,font=\tiny] at (0.6,7.83)
+    {Misma lógica y resultados que el escenario propuesto (177 · 87 · 148 lotes en 30 días).
+     Vehículos y edificios hechos con figuras 3D de SimTalk.};
+  \node[anchor=west,text=suave,font=\tiny] at (0.6,8.57)
+    {Análisis del proceso productivo · Planta láctea · Mekvra -- Grupo 6 · APM 2026-2S};
+  \node[anchor=east,text=suave,font=\tiny] at (15.4,8.57) {32 / 50};
+\end{tikzpicture}
+
+\note{Modelo planta\_lactea\_3d.spp, al estilo del ejemplo Factory51. Cada 2,4 h llega un camión cisterna,
+entra al punto de acopio techado, descarga con la bomba conectada a los tanques de leche cruda y sale.
+Los camiones de despacho cargan en el muelle, el montacargas recorre la bodega y 8 operarios
+(WorkerPool, Broker y Workplaces) caminan hasta cada puesto.}
+\end{frame}
+
+\end{document}
