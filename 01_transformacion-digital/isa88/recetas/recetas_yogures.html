@@ -618,7 +618,7 @@ footer { font-size: 12px; color: var(--muted); border-top: 1px solid var(--rule)
     <li>Sellos frontales: confirmar con análisis nutricional, perfil de ácidos grasos y la revisión de exenciones.</li>
     <li>Mezcla diaria 3/3/2 y presentaciones: ratificar en acta.</li>
     <li>Vida útil de 30 días y cultivo ≥ 10⁷ UFC/g al vencimiento: estudio acelerado y en tiempo real.</li>
-    <li>Ritmo de un lote cada ≈ 4,1 h con las llenadoras y las fallas: se verifica en Tecnomatix.</li><li>U202 dedicado a yogures: ratificar con el equipo.</li><li>Acidez del griego: es el riesgo regulatorio más alto, porque puede superar 1,50 %. Además, los tiempos máximos del preparado conectado (≤ 24 h a ≤ 8 °C) y de la crema en U127 (≤ 24 h a ≤ 4 °C).</li><li>Calentamiento de la carga de U201 a 50 °C (EM-2014): dimensionarlo con el balance de energía.</li><li>Vigencia de la Res. SIC 32209/2020 en 2026: hay un proyecto de prórroga sin confirmar.</li>
+    <li>Ritmo de un lote cada ≈ 4,1 h con las llenadoras y las fallas: se verifica en Tecnomatix.</li><li>U202 dedicado a yogures: ratificar con el equipo.</li><li>Acidez del griego: es el riesgo regulatorio más alto, porque puede superar 1,50 %. Además, los tiempos máximos del preparado conectado (≤ 24 h a ≤ 8 °C) y de la crema en U127 (≤ 24 h a ≤ 4 °C).</li><li>Calentamiento de la carga de U201 a 50 °C (EM-2014, ≈ 1,05 MW): confirmarlo con el balance de energía de la planta.</li>
     <li>Destino del suero ácido y de la crema excedente: acordarlo con las otras líneas y con gestión ambiental.</li>
   </ul>
 </section>
@@ -652,12 +652,25 @@ footer { font-size: 12px; color: var(--muted); border-top: 1px solid var(--rule)
     <thead><tr><th>Etapa</th><th>Equipo</th><th>Carga con 300.000 L/día</th><th class="r">Uso</th></tr></thead>
     <tbody>
       <tr><td>Recepción</td><td>2 bahías U111/U112</td><td>≈ 15 cisternas/día de 20.000 L; ≈ 1 h por cisterna (pruebas, descarga a 35 m³/h y transición): 15 h-bahía/día</td><td class="r">47 % en 16 h</td></tr>
-      <tr><td>Leche cruda</td><td>U113/U114 + U115 (nuevo), 3 × 60.000 L</td><td>Llega en 16 h y se trata en ≈ 18 h: hay que guardar ≈ 150.000 L, más un tanque libre para CIP. Con los 2 tanques del ISA-88 no alcanza</td><td class="r">180.000 L</td></tr>
+      <tr><td>Leche cruda</td><td>U113/U114 + U115 (nuevo), 3 × 60.000 L</td><td>La leche se pasteuriza mientras llega: el pico es de ≈ 68.000 L. Dos tanques reciben y uno se lava (ver abajo)</td><td class="r">180.000 L</td></tr>
       <tr><td>Clarificación, estandarización y pasteurización</td><td>U121 + U122 a 20.000 L/h, en flujo continuo</td><td>15 h de proceso + 2 CIP-C (≈ 2,8 h) + arranques (≈ 0,5 h) = 18,3 h/día</td><td class="r"><b>76 %</b></td></tr>
       <tr><td>Leche pasteurizada</td><td>Silos por línea: U123A/B y U123C (yogures); U124 y U125 (otras)</td><td>Leche estandarizada de cada línea, máximo 24 h</td><td class="r">—</td></tr>
     </tbody>
   </table></div>
-  <p>El tronco común tiene margen (76 %). Si la planta crece por encima de 300.000 L/día, el primer equipo del tronco que se queda corto es el pasteurizador. El tamaño de cisterna, la ventana de recepción y el colchón de leche cruda son supuestos que se confirman con la logística de acopio. En Tecnomatix, el tronco se modela como flujo continuo que llena los silos, y la línea de yogures toma lotes de 10.000 L.</p>
+  <p>El tronco común tiene margen (76 %). Si la planta crece por encima de 300.000 L/día, el primer equipo del tronco que se queda corto es el pasteurizador. El tamaño de cisterna y la ventana de recepción son supuestos que se confirman con la logística de acopio. En Tecnomatix, el tronco se modela como flujo continuo que llena los silos, y la línea de yogures toma lotes de 10.000 L.</p>
+  <h3>Por qué 3 tanques de leche cruda y no tanques para 300.000 L</h3>
+  <p>Los tanques de leche cruda no guardan la leche de todo el día: funcionan como una <b>sala de espera</b>. Los camiones llegan en dos tandas (después del ordeño de la mañana y del de la tarde) y el pasteurizador va sacando leche al mismo tiempo, a 20.000 L/h. El tanque solo acumula lo que entra más rápido de lo que sale.</p>
+  <div class="tbl"><table>
+    <thead><tr><th>Hora</th><th class="r">Llega</th><th class="r">Sale</th><th class="r">Queda en tanques</th></tr></thead>
+    <tbody>
+      <tr><td>05:00–11:00 · ordeño de la mañana</td><td class="r">30.000 L/h</td><td class="r">20.000 L/h</td><td class="r">sube a 60.000 L</td></tr>
+      <tr><td>11:00–14:00 · sin camiones; CIP del pasteurizador</td><td class="r">0</td><td class="r">20.000 L/h − 1,4 h de CIP</td><td class="r">baja a 28.000 L</td></tr>
+      <tr><td>14:00–18:00 · ordeño de la tarde</td><td class="r">30.000 L/h</td><td class="r">20.000 L/h</td><td class="r"><b>sube a 68.000 L (pico)</b></td></tr>
+      <tr><td>18:00–21:00</td><td class="r">0</td><td class="r">20.000 L/h</td><td class="r">baja a 0</td></tr>
+      <tr><td>21:00–05:00 · segundo CIP</td><td class="r">0</td><td class="r">—</td><td class="r">0</td></tr>
+    </tbody>
+  </table></div>
+  <p><b>El pico es de ≈ 68.000 L</b>, no 300.000 L, porque la leche se va pasteurizando mientras llega. <b>Por qué 3 tanques de 60.000 L:</b> dos reciben leche (120.000 L), cubren el pico y dejan ≈ 52.000 L de colchón (≈ 1,7 h de camiones descargando con el pasteurizador parado). El tercero está en lavado o vacío, listo para entrar. Con solo 2 tanques, mientras uno se lava queda uno de 60.000 L, que no alcanza para el pico; por eso el valor de 2 tanques del ISA-88, del alcance anterior, se amplía a 3. <b>No hacen falta tanques para 300.000 L:</b> solo serían necesarios si todos los camiones llegaran juntos con el pasteurizador apagado, o para guardar un día completo de reserva, y la leche cruda no debe pasar más de 24 h guardada. Las dos olas de recolección (180.000 y 120.000 L) se confirman con la logística de acopio.</p>
   <h3>Personal estimado</h3>
   <div class="tbl"><table>
     <thead><tr><th>Puesto por turno</th><th class="r">Personas</th></tr></thead>
