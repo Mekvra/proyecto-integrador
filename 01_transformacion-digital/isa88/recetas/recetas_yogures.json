@@ -1,5 +1,5 @@
 {
- "version": "1.6",
+ "version": "1.7",
  "supuestos": {
   "densidad": {
    "entera": 1.032,
@@ -38,7 +38,17 @@
   "lote_max_L": 10500,
   "caudal_base_kg_h": 10500,
   "separador_L_h": 7000,
-  "secuencia": [
+  "lotes_semana_actual": {
+   "YN": 13,
+   "YG": 9,
+   "YF": 13
+  },
+  "lotes_dia_actual": {
+   "YN": 2.166667,
+   "YG": 1.5,
+   "YF": 2.166667
+  },
+  "secuencia_propuesta": [
    "YN",
    "YN",
    "YN",
@@ -47,12 +57,7 @@
    "YF",
    "YF",
    "YF"
-  ],
-  "lotes_dia": {
-   "YN": 3,
-   "YG": 2,
-   "YF": 3
-  }
+  ]
  },
  "productos": {
   "YF": {
@@ -149,15 +154,15 @@
    "gramos": 150,
    "envase": "Vaso PP termoformado, tapa foil termosellada",
    "llenadora": "U311",
-   "und_h": 21600,
+   "und_h": 12000,
    "und_caja": 24,
    "fraccion": 0.45,
    "kg_lote": 5891.403652,
    "und_lote": 39276.024344,
    "cajas_lote": 1636.501014,
-   "h_nominal_lote": 1.818334,
-   "kg_dia": 17674.210955,
-   "und_dia": 117828.073033
+   "h_nominal_lote": 3.273002,
+   "kg_dia": 12764.707912,
+   "und_dia": 85098.052746
   },
   {
    "codigo": "YF1000",
@@ -172,8 +177,8 @@
    "und_lote": 4582.20284,
    "cajas_lote": 381.850237,
    "h_nominal_lote": 1.145551,
-   "kg_dia": 13746.608521,
-   "und_dia": 13746.608521
+   "kg_dia": 9928.106154,
+   "und_dia": 9928.106154
   },
   {
    "codigo": "YF1750",
@@ -188,8 +193,8 @@
    "und_lote": 1496.229499,
    "cajas_lote": 249.371583,
    "h_nominal_lote": 0.598492,
-   "kg_dia": 7855.204869,
-   "und_dia": 4488.688496
+   "kg_dia": 5673.203516,
+   "und_dia": 3241.830581
   },
   {
    "codigo": "YN200",
@@ -197,15 +202,15 @@
    "gramos": 200,
    "envase": "Vaso PP termoformado, tapa foil termosellada",
    "llenadora": "U311",
-   "und_h": 17280,
+   "und_h": 10000,
    "und_caja": 24,
    "fraccion": 0.4,
    "kg_lote": 4270.926628,
    "und_lote": 21354.63314,
    "cajas_lote": 889.776381,
-   "h_nominal_lote": 1.235801,
-   "kg_dia": 12812.779884,
-   "und_dia": 64063.899421
+   "h_nominal_lote": 2.135463,
+   "kg_dia": 9253.674361,
+   "und_dia": 46268.371804
   },
   {
    "codigo": "YN1000",
@@ -220,8 +225,8 @@
    "und_lote": 6406.389942,
    "cajas_lote": 533.865829,
    "h_nominal_lote": 1.601597,
-   "kg_dia": 19219.169826,
-   "und_dia": 19219.169826
+   "kg_dia": 13880.511541,
+   "und_dia": 13880.511541
   },
   {
    "codigo": "YG150",
@@ -236,8 +241,8 @@
    "und_lote": 12966.289073,
    "cajas_lote": 540.262045,
    "h_nominal_lote": 2.161048,
-   "kg_dia": 3889.886722,
-   "und_dia": 25932.578145
+   "kg_dia": 2917.415041,
+   "und_dia": 19449.433609
   },
   {
    "codigo": "YG500",
@@ -252,8 +257,8 @@
    "und_lote": 2593.257815,
    "cajas_lote": 216.104818,
    "h_nominal_lote": 1.080524,
-   "kg_dia": 2593.257815,
-   "und_dia": 5186.515629
+   "kg_dia": 1944.943361,
+   "und_dia": 3889.886722
   }
  ],
  "tiempos": {
@@ -326,39 +331,45 @@
   "U216_arranque": 0.25
  },
  "dia": {
-  "leche_linea_L": 80000,
-  "leche_cruda_kg": 84808.928571,
-  "leche_cruda_L": 82179.194352,
+  "leche_linea_L": 58333.333333,
+  "leche_cruda_kg": 61881.971154,
+  "leche_cruda_L": 59963.150343,
   "ingredientes": {
-   "lpd_kg": 2402.733125,
-   "azucar_kg": 1879.357765,
-   "preparado_kg": 5105.883165,
-   "cultivo_U": 3200
+   "lpd_kg": 1735.307257,
+   "azucar_kg": 1357.313941,
+   "preparado_kg": 3687.582286,
+   "cultivo_U": 2333.333333
   },
   "salidas_kg": {
-   "YN": 32031.949711,
-   "YG": 6483.144536,
-   "YF": 39276.024344,
-   "suero_acido": 14526.032215,
-   "crema_excedente": 1879.75182
+   "YN": 23134.185902,
+   "YG": 4862.358402,
+   "YF": 28366.017582,
+   "suero_acido": 10894.524161,
+   "crema_excedente": 1405.088591
   },
-  "entradas_total_kg": 94196.902626,
-  "salidas_total_kg": 94196.902626,
+  "entradas_total_kg": 68662.174638,
+  "salidas_total_kg": 68662.174638,
   "cierre_componentes": {
    "grasa": {
-    "entra_kg": 3077.14876,
-    "sale_kg": 3077.14876
+    "entra_kg": 2245.104034,
+    "sale_kg": 2245.104034
    },
    "prot": {
-    "entra_kg": 3446.006048,
-    "sale_kg": 3446.006048
+    "entra_kg": 2508.345573,
+    "sale_kg": 2508.345573
    }
   },
   "programa": {
-   "ritmo_h": 3.0,
-   "max_fermentadores_simultaneos": 4,
-   "hueco_U202_h": 1.765234,
-   "CIP_C_U202_h": 1.416667
+   "actual": {
+    "ritmo_h": 4.114286,
+    "max_fermentadores_simultaneos": 3
+   },
+   "propuesta": {
+    "ritmo_h": 3.0,
+    "max_fermentadores_simultaneos": 4,
+    "hueco_U202_h": 1.765234,
+    "CIP_C_U202_h": 1.416667
+   }
   },
   "energia_U201": {
    "YF": {
@@ -373,7 +384,7 @@
     "kWh_lote": 519.7425,
     "kW_en_carga": 1039.485
    },
-   "kWh_dia": 4148.901
+   "kWh_dia": 3025.303083
   },
   "vida_util": {
    "YF": {
@@ -439,54 +450,125 @@
    "jornada_max_h": 42
   },
   "horas_llenadora": {
-   "U311": 9.162405,
-   "U312": 10.03692,
-   "U313": 6.483145
+   "U311": 11.718342,
+   "U312": 7.248887,
+   "U313": 4.862358
   },
-  "horas_fermentadores": 67.834757,
-  "carga_4_fermentadores": 0.706612,
-  "carga_3_fermentadores": 0.942149,
-  "horas_U201": 14.91639,
-  "horas_U202": 9.47639,
+  "horas_fermentadores": 49.493292,
+  "carga_4_fermentadores": 0.515555,
+  "carga_3_fermentadores": 0.687407,
+  "horas_U201": 10.873821,
+  "horas_U202": 6.907154,
   "escenarios": {
    "actual": {
+    "lotes_dia": 5.833333,
+    "litros_dia": 58333.333333,
+    "ritmo_h": 4.114286,
+    "leche_cruda_L": 59963.150343,
+    "producto_kg": 56362.561886,
+    "producto_por_tipo_kg": {
+     "YN": 23134.185902,
+     "YG": 4862.358402,
+     "YF": 28366.017582
+    },
+    "suero_acido_kg": 10894.524161,
+    "crema_excedente_kg": 1405.088591,
+    "unidades_dia": {
+     "YF150": 85098.052746,
+     "YF1000": 9928.106154,
+     "YF1750": 3241.830581,
+     "YN200": 46268.371804,
+     "YN1000": 13880.511541,
+     "YG150": 19449.433609,
+     "YG500": 3889.886722
+    },
+    "vasos_U311_dia": 131366.42455,
+    "botellas_U312_dia": 27050.448276,
+    "potes_U313_dia": 23339.320331,
     "u311_vasos_h": {
      "YF150": 12000,
      "YN200": 10000
     },
     "OEE": 0.6984,
     "paradas_h": 3.5,
-    "uso_U311": 0.85,
-    "litros_dia": 58194.99249,
-    "lotes_dia": 5.819499,
-    "factor": 0.727437,
-    "producto_kg_dia": 56588.169527,
-    "uso": {
-     "U311": 0.85,
-     "U312": 0.581426,
-     "U313": 0.427196,
-     "fermentadores": 0.514016
+    "horas_nominales": {
+     "U311": 11.718342,
+     "U312": 7.248887,
+     "U313": 4.862358
     },
-    "U311_si_80000L": 1.113843
+    "uso": {
+     "U311": 0.844952,
+     "U312": 0.578303,
+     "U313": 0.435922,
+     "fermentadores": 0.515555
+    },
+    "horas_U201": 10.873821,
+    "horas_U202": 6.907154,
+    "energia_U201_kWh": 3025.303083,
+    "lpd_kg": 1735.307257,
+    "azucar_kg": 1357.313941,
+    "preparado_kg": 3687.582286,
+    "uso_si_80000L": {
+     "U311": 1.113843,
+     "U312": 0.744638,
+     "U313": 0.532619,
+     "fermentadores": 0.706612
+    }
    },
    "propuesta": {
+    "lotes_dia": 8,
+    "litros_dia": 80000,
+    "ritmo_h": 3.0,
+    "leche_cruda_L": 82179.194352,
+    "producto_kg": 77791.118591,
+    "producto_por_tipo_kg": {
+     "YN": 32031.949711,
+     "YG": 6483.144536,
+     "YF": 39276.024344
+    },
+    "suero_acido_kg": 14526.032215,
+    "crema_excedente_kg": 1879.75182,
+    "unidades_dia": {
+     "YF150": 117828.073033,
+     "YF1000": 13746.608521,
+     "YF1750": 4488.688496,
+     "YN200": 64063.899421,
+     "YN1000": 19219.169826,
+     "YG150": 25932.578145,
+     "YG500": 5186.515629
+    },
+    "vasos_U311_dia": 181891.972454,
+    "botellas_U312_dia": 37454.466843,
+    "potes_U313_dia": 31119.093774,
     "u311_vasos_h": {
      "YF150": 21600,
      "YN200": 17280
     },
     "OEE": 0.802032,
     "paradas_h": 1.25,
-    "litros_dia": 80000,
-    "lotes_dia": 8,
-    "factor": 1.0,
-    "producto_kg_dia": 77791.118591,
+    "horas_nominales": {
+     "U311": 9.162405,
+     "U312": 10.03692,
+     "U313": 6.483145
+    },
     "uso": {
      "U311": 0.528083,
      "U312": 0.573515,
      "U313": 0.388892,
      "fermentadores": 0.706612
     },
-    "U311_con_OEE_actual": 0.692464
+    "horas_U201": 14.91639,
+    "horas_U202": 9.47639,
+    "energia_U201_kWh": 4148.901,
+    "lpd_kg": 2402.733125,
+    "azucar_kg": 1879.357765,
+    "preparado_kg": 5105.883165,
+    "uso_con_OEE_actual": {
+     "U311": 0.692464,
+     "U312": 0.744638,
+     "U313": 0.532619,
+     "fermentadores": 0.706612
+    }
    }
   }
  }
