@@ -1,5 +1,5 @@
 {
- "version": "1.3",
+ "version": "1.6",
  "supuestos": {
   "densidad": {
    "entera": 1.032,
@@ -149,13 +149,13 @@
    "gramos": 150,
    "envase": "Vaso PP termoformado, tapa foil termosellada",
    "llenadora": "U311",
-   "und_h": 15000,
+   "und_h": 21600,
    "und_caja": 24,
    "fraccion": 0.45,
    "kg_lote": 5891.403652,
    "und_lote": 39276.024344,
    "cajas_lote": 1636.501014,
-   "h_nominal_lote": 2.618402,
+   "h_nominal_lote": 1.818334,
    "kg_dia": 17674.210955,
    "und_dia": 117828.073033
   },
@@ -197,13 +197,13 @@
    "gramos": 200,
    "envase": "Vaso PP termoformado, tapa foil termosellada",
    "llenadora": "U311",
-   "und_h": 12000,
+   "und_h": 17280,
    "und_caja": 24,
    "fraccion": 0.4,
    "kg_lote": 4270.926628,
    "und_lote": 21354.63314,
    "cajas_lote": 889.776381,
-   "h_nominal_lote": 1.779553,
+   "h_nominal_lote": 1.235801,
    "kg_dia": 12812.779884,
    "und_dia": 64063.899421
   },
@@ -402,52 +402,14 @@
     "P": 0.8,
     "Q": 0.97,
     "paradas_h": 3.5,
-    "OEE": 0.6984,
-    "llenadoras": {
-     "U311": {
-      "h_nominal": 13.193863,
-      "h_reales": 22.391557,
-      "uso": 0.932982
-     },
-     "U312": {
-      "h_nominal": 10.03692,
-      "h_reales": 17.871306,
-      "uso": 0.744638
-     },
-     "U313": {
-      "h_nominal": 6.483145,
-      "h_reales": 12.782853,
-      "uso": 0.532619
-     }
-    },
-    "U311_a_12000": 26.732239,
-    "U311_vasos_h_minimos": 13823.090221
+    "OEE": 0.6984
    },
    "propuesta": {
     "A": 0.93,
     "P": 0.88,
     "Q": 0.98,
     "paradas_h": 1.25,
-    "OEE": 0.802032,
-    "llenadoras": {
-     "U311": {
-      "h_nominal": 13.193863,
-      "h_reales": 17.700545,
-      "uso": 0.737523
-     },
-     "U312": {
-      "h_nominal": 10.03692,
-      "h_reales": 13.764363,
-      "uso": 0.573515
-     },
-     "U313": {
-      "h_nominal": 6.483145,
-      "h_reales": 9.333399,
-      "uso": 0.388892
-     }
-    },
-    "U311_a_12000": 21.48036,
-    "U311_vasos_h_minimos": 10846.512896
+    "OEE": 0.802032
    }
   },
   "personal": {
@@ -477,7 +439,7 @@
    "jornada_max_h": 42
   },
   "horas_llenadora": {
-   "U311": 13.193863,
+   "U311": 9.162405,
    "U312": 10.03692,
    "U313": 6.483145
   },
@@ -486,13 +448,46 @@
   "carga_3_fermentadores": 0.942149,
   "horas_U201": 14.91639,
   "horas_U202": 9.47639,
-  "U311_12000": {
-   "h_nominal": 16.225396,
-   "h_con_APQ_y_paradas": 23.363877
-  },
-  "U311_15000": {
-   "h_nominal": 13.193863,
-   "h_con_APQ_y_paradas": 19.652535
+  "escenarios": {
+   "actual": {
+    "u311_vasos_h": {
+     "YF150": 12000,
+     "YN200": 10000
+    },
+    "OEE": 0.6984,
+    "paradas_h": 3.5,
+    "uso_U311": 0.85,
+    "litros_dia": 58194.99249,
+    "lotes_dia": 5.819499,
+    "factor": 0.727437,
+    "producto_kg_dia": 56588.169527,
+    "uso": {
+     "U311": 0.85,
+     "U312": 0.581426,
+     "U313": 0.427196,
+     "fermentadores": 0.514016
+    },
+    "U311_si_80000L": 1.113843
+   },
+   "propuesta": {
+    "u311_vasos_h": {
+     "YF150": 21600,
+     "YN200": 17280
+    },
+    "OEE": 0.802032,
+    "paradas_h": 1.25,
+    "litros_dia": 80000,
+    "lotes_dia": 8,
+    "factor": 1.0,
+    "producto_kg_dia": 77791.118591,
+    "uso": {
+     "U311": 0.528083,
+     "U312": 0.573515,
+     "U313": 0.388892,
+     "fermentadores": 0.706612
+    },
+    "U311_con_OEE_actual": 0.692464
+   }
   }
  }
 }

@@ -1,4 +1,4 @@
-# Balance de masas y tiempos de las recetas maestras de la línea de yogures Mekvra (versión 1.3, auditada en 3 ciclos).
+# Balance de masas y tiempos de las recetas maestras de la línea de yogures Mekvra (versión 1.6).
 # Una sola fuente de cifras: el documento de recetas, la página y el modelo de Tecnomatix leen recetas_yogures.json.
 # Uso: python balance_recetas_yogures.py   (escribe recetas_yogures.json junto a este archivo)
 import json, os, sys
@@ -85,10 +85,10 @@ PROD = {'YF': YF, 'YN': YN, 'YG': YG}
 # ---------------- Presentaciones y llenadoras (velocidad nominal de diseño) ----------------
 # código, producto, g, envase, llenadora, und/h nominales, und/caja, fracción del lote
 REFS = [
-    ('YF150', 'YF', 150, 'Vaso PP termoformado, tapa foil termosellada', 'U311', 15000, 24, 0.45),
+    ('YF150', 'YF', 150, 'Vaso PP termoformado, tapa foil termosellada', 'U311', 21600, 24, 0.45),
     ('YF1000', 'YF', 1000, 'Botella PEAD, tapa rosca y sello de inducción', 'U312', 4000, 12, 0.35),
     ('YF1750', 'YF', 1750, 'Botella PEAD con asa, tapa rosca y sello de inducción', 'U312', 2500, 6, 0.20),
-    ('YN200', 'YN', 200, 'Vaso PP termoformado, tapa foil termosellada', 'U311', 12000, 24, 0.40),
+    ('YN200', 'YN', 200, 'Vaso PP termoformado, tapa foil termosellada', 'U311', 17280, 24, 0.40),
     ('YN1000', 'YN', 1000, 'Botella PEAD, tapa rosca y sello de inducción', 'U312', 4000, 12, 0.60),
     ('YG150', 'YG', 150, 'Vaso PP con foil y sobretapa', 'U313', 6000, 24, 0.60),
     ('YG500', 'YG', 500, 'Pote PP con foil y sobretapa', 'U313', 2400, 12, 0.40),
@@ -126,10 +126,6 @@ h_201 = sum(T[p]['U201_total'] * n for p, n in LOTES_DIA.items())
 h_202 = sum(T[p]['U202_total'] * n for p, n in LOTES_DIA.items())
 horas_llen = {fl: sum(r['h_nominal_lote'] * LOTES_DIA[r['producto']] for r in refs if r['llenadora'] == fl)
               for fl in ('U311', 'U312', 'U313')}
-# U311 con la velocidad anterior (12.000 vasos/h de 150 g; 10.000/h de 200 g) y factores base de la propuesta de Pablo
-u311_12k = sum(r['und_dia'] / {'YF150': 12000, 'YN200': 10000}[r['codigo']] for r in refs if r['llenadora'] == 'U311')
-APQ_BASE = 0.85 * (40 / 41) * 0.985
-FIJO_BASE = 1.5 + 1.5 + 0.5                                  # CIP + pausa + relevo (h/día), tabla 6 de Pablo
 
 ing = dict(lpd_kg=sum(PROD[p]['base']['lpd_kg'] * LOTES_DIA[p] for p in ('YF', 'YN')),
            azucar_kg=YF['base']['azucar_kg'] * LOTES_DIA['YF'], preparado_kg=YF['preparado_kg'] * LOTES_DIA['YF'],
@@ -166,12 +162,39 @@ OEE = dict(actual=dict(A=0.90, P=0.80, Q=0.97, paradas_h=1.5 + 1.5 + 0.5),
            propuesta=dict(A=0.93, P=0.88, Q=0.98, paradas_h=1.0 + 0.0 + 0.25))
 for esc_, o in OEE.items():
     o['OEE'] = o['A'] * o['P'] * o['Q']
-    o['llenadoras'] = {fl: dict(h_nominal=h, h_reales=h / o['OEE'] + o['paradas_h'], uso=(h / o['OEE'] + o['paradas_h']) / 24)
-                       for fl, h in horas_llen.items()}
-    o['U311_a_12000'] = u311_12k / o['OEE'] + o['paradas_h']
-    o['U311_vasos_h_minimos'] = 15000 * horas_llen['U311'] / ((24 - o['paradas_h']) * o['OEE'])   # velocidad mínima de 150 g
-    if max(v['uso'] for v in o['llenadoras'].values()) > 1:
-        raise ValueError(f'Escenario {esc_}: una llenadora no alcanza en 24 h')
+
+# ---------------- Escenarios de la llenadora de vasos U311 ----------------
+# Actual: llenadora de vasos preformados de 12.000 vasos/h de 150 g (10.000/h de 200 g), del modelo ISA-88 del equipo,
+# trabajando al 85 % del día (techo aceptable de utilización del cuello de botella).
+# Propuesta: formadora-llenadora-selladora (FFS) de 21.600 vasos/h de 150 g (17.280/h de 200 g, mismos ciclos con
+# vasos más grandes), referencia Erca M-F 14 / Arcil A6, para llegar a los 80.000 L/día.
+USO_MAX_ACTUAL = 0.85
+VEL_U311 = dict(actual={'YF150': 12000, 'YN200': 10000}, propuesta={'YF150': 21600, 'YN200': 17280})
+h_u311 = {e: sum(r['und_dia'] / v[r['codigo']] for r in refs if r['llenadora'] == 'U311') for e, v in VEL_U311.items()}
+oa, op = OEE['actual'], OEE['propuesta']
+h_disp_nominal = (USO_MAX_ACTUAL * 24 - oa['paradas_h']) * oa['OEE']          # horas a velocidad nominal al 85 %
+factor = min(1.0, h_disp_nominal / h_u311['actual'])                              # fracción de los 80.000 L que alcanza
+ESCENARIOS = dict(
+    actual=dict(u311_vasos_h=VEL_U311['actual'], OEE=oa['OEE'], paradas_h=oa['paradas_h'], uso_U311=USO_MAX_ACTUAL,
+                litros_dia=LOTE_L * len(SECUENCIA) * factor, lotes_dia=len(SECUENCIA) * factor, factor=factor,
+                producto_kg_dia=sum(PROD[p]['producto_kg'] * n for p, n in LOTES_DIA.items()) * factor,
+                uso={'U311': USO_MAX_ACTUAL,
+                     'U312': (horas_llen['U312'] * factor / oa['OEE'] + oa['paradas_h']) / 24,
+                     'U313': (horas_llen['U313'] * factor / oa['OEE'] + oa['paradas_h']) / 24,
+                     'fermentadores': h_ferm * factor / 96},
+                U311_si_80000L=(h_u311['actual'] / oa['OEE'] + oa['paradas_h']) / 24),
+    propuesta=dict(u311_vasos_h=VEL_U311['propuesta'], OEE=op['OEE'], paradas_h=op['paradas_h'],
+                   litros_dia=LOTE_L * len(SECUENCIA), lotes_dia=len(SECUENCIA), factor=1.0,
+                   producto_kg_dia=sum(PROD[p]['producto_kg'] * n for p, n in LOTES_DIA.items()),
+                   uso={'U311': (h_u311['propuesta'] / op['OEE'] + op['paradas_h']) / 24,
+                        'U312': (horas_llen['U312'] / op['OEE'] + op['paradas_h']) / 24,
+                        'U313': (horas_llen['U313'] / op['OEE'] + op['paradas_h']) / 24,
+                        'fermentadores': h_ferm / 96},
+                   U311_con_OEE_actual=(h_u311['propuesta'] / oa['OEE'] + oa['paradas_h']) / 24),
+)
+for e in ESCENARIOS.values():
+    if max(e['uso'].values()) > 1:
+        raise ValueError('Un equipo no alcanza en 24 h')
 
 # ---------------- Personal estimado de la línea (puestos por turno) ----------------
 PUESTOS_TURNO = {'Formulación y tratamiento térmico (U201, U202)': 1,
@@ -222,7 +245,7 @@ PROGRAMA = dict(ritmo_h=RITMO_H, max_fermentadores_simultaneos=mx,
                 hueco_U202_h=RITMO_H - max(T[p]['U202_total'] for p in PROD), CIP_C_U202_h=85 / 60)
 
 OUT = dict(
-    version='1.3',
+    version='1.6',
     supuestos=dict(densidad=DENS, leche_cruda=CRUDA, crema=CREMA, lpd=LPD, grasa_descremada=GRASA_DESCREMADA,
                    suero_acido=SUERO, proteina_concentrado=PROT_CONC, grasa_griego=GRASA_YG, preparado_fresa=PREP,
                    lote_L=LOTE_L, lote_max_L=LOTE_MAX_L, caudal_base_kg_h=CAUDAL_KG_H, separador_L_h=SEPARADOR_L_H,
@@ -234,8 +257,7 @@ OUT = dict(
              vida_util=VIDA_UTIL, oee=OEE, personal=PERSONAL, horas_llenadora=horas_llen,
              horas_fermentadores=h_ferm, carga_4_fermentadores=h_ferm / 96, carga_3_fermentadores=h_ferm / 72,
              horas_U201=h_201, horas_U202=h_202,
-             U311_12000=dict(h_nominal=u311_12k, h_con_APQ_y_paradas=u311_12k / APQ_BASE + FIJO_BASE),
-             U311_15000=dict(h_nominal=horas_llen['U311'], h_con_APQ_y_paradas=horas_llen['U311'] / APQ_BASE + FIJO_BASE)),
+             escenarios=ESCENARIOS),
 )
 
 

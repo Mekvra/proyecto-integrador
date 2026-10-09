@@ -2,9 +2,9 @@
 
 **Lácteos Altos de Teusacá** (Sopó, Sabana de Bogotá) · Integrador: **Mekvra**, Grupo 6 · APM 2026-2S, UNAL
 
-| Versión | Fecha | Estado | Responsable de recetas (RACI) |
-|---|---|---|---|
-| 1.5 | 9 de octubre de 2026 | Propuesta técnica auditada en tres ciclos (sección 14) y con riesgos investigados y resueltos (sección 13). Incluye la ficha de planta, el OEE de diseño y el personal (sección 10), para revisión del equipo | Luis (A/R) · elaborada por Janan Libardo |
+| Versión | Fecha |
+|---|---|
+| 1.6 | 9 de octubre de 2026 |
 
 Recetas en formato ISA-88 (IEC 61512) para los tres productos de la línea escogida en el acta del 7 de octubre: **yogur con fresa, yogur natural y yogur griego**. Cubren todo el recorrido, desde que la cisterna llega a la planta hasta el despacho. Todas las cifras de balance y de tiempos salen de [`balance_recetas_yogures.py`](balance_recetas_yogures.py), que escribe [`recetas_yogures.json`](recetas_yogures.json) y comprueba que cierren la masa total, la grasa y la proteína. El nuevo modelo de Tecnomatix de la línea de yogures leerá ese mismo archivo; el modelo actual de Tecnomatix es de la planta anterior, de tres líneas.
 
@@ -20,8 +20,9 @@ Recetas en formato ISA-88 (IEC 61512) para los tres productos de la línea escog
 | **YN** | Yogur natural | Yogur entero sin dulce | 3 | 10.677 kg | Vaso 200 g · botella 1000 g |
 | **YG** | Yogur griego | Yogur semidescremado sin dulce; en el Codex, leche fermentada concentrada | 2 | 3.242 kg | Vaso 150 g · pote 500 g |
 
-- **Lote:** 10.000 L de leche estandarizada y pasteurizada. Son 8 lotes al día, es decir, **80.000 L/día de leche para la línea**, que salen de ≈ 82.200 L de leche cruda.
-- **Producto terminado:** ≈ 77.791 kg/día (YF 39.276, YN 32.032 y YG 6.483 kg).
+- **Lote:** 10.000 L de leche estandarizada y pasteurizada. La meta es de 8 lotes al día, es decir, **80.000 L/día de leche para la línea**, que salen de ≈ 82.200 L de leche cruda, con ≈ 77.791 kg/día de producto (YF 39.276, YN 32.032 y YG 6.483 kg).
+- **Capacidad actual:** la llenadora de vasos U311 (12.000 vasos/h) es el cuello de botella. Trabajando al 85 % del día, la línea procesa hoy **≈ 58.200 L/día** (5,8 lotes y ≈ 56.600 kg de producto).
+- **Propuesta de mejora (sección 15):** una formadora-llenadora-selladora de 21.600 vasos/h lleva la línea a los **80.000 L/día**, con la llenadora al 53 % del día.
 - **Campaña diaria:** natural ×3 → griego ×2 → fresa ×3, siempre sin dulce antes que con dulce (sección 9.3).
 
 ---
@@ -111,7 +112,7 @@ flowchart LR
 | | **U216** | Concentración griega: separador centrífugo de boquillas, enfriador tubular y dosificación en línea de crema pasteurizada (desde U127) con medidor Coriolis | 7.000 L/h de alimentación |
 | | **U214A/U214B** | Tanques pulmón higiénicos cerrados de 12.000 L, con venteo por filtro de aire estéril; dosificador de fruta EM-2141 a la salida (bomba de lóbulos, Coriolis y mezclador estático) | YF y YN, en alternancia |
 | | **U217A/U217B** | Dos pulmones de griego de 4.000 L con agitador de ancla, uno por lote y en alternancia, para no mezclar lotes | Producto viscoso, ≤ 12 °C |
-| A3 · Envasado | U311 | Llenadora-selladora de vasos preformados, 10 carriles | 15.000 vasos/h de 150 g · 12.000 vasos/h de 200 g |
+| A3 · Envasado | U311 | **Actual:** llenadora-selladora de vasos preformados, multicarril (modelo ISA-88 del equipo). **Propuesta:** formadora-llenadora-selladora (FFS) desde rollo (sección 15) | Actual: 12.000 vasos/h de 150 g y 10.000/h de 200 g · Propuesta: 21.600/h de 150 g y 17.280/h de 200 g |
 | | U312 | Llenadora-taponadora rotativa de botellas con sellado por inducción | 4.000 bot/h de 1000 g · 2.500 bot/h de 1750 g |
 | | **U313** | Llenadora de potes con dosificadores de pistón para producto viscoso | 6.000/h de 150 g · 2.400/h de 500 g |
 | | Todas | Báscula de control (checkweigher), detector de metales, cámara de visión y codificador láser | Velocidad de la línea |
@@ -119,7 +120,7 @@ flowchart LR
 | A4 · Frío | U411/U412 | Cámara fría de 2–4 °C con aire forzado y gestión FEFO; muelle refrigerado | Producto ≤ 6 °C en ≤ 12 h: supuesto de diseño que se valida con el dimensionamiento del frío; reposo ≥ 12 h |
 | A9 · Servicios | U901–U905 | CIP central (3 circuitos), vapor, agua helada/glicol, aire comprimido estéril y tratamiento de suero | U905 (existente) recibe además ≈ 14.500 kg/día de suero ácido del griego |
 
-**Por qué U311 va a 15.000 vasos/h.** Con la velocidad anterior (12.000 vasos/h de 150 g y ≈ 10.000/h de 200 g), U311 necesita 16,2 h nominales al día. Con el OEE de la planta actual (≈ 70 %, sección 10.2), más 3,5 h de CIP, pausa y relevo, serían **26,7 h**: no cabe en 24 h. La velocidad mínima es ≈ 13.800 vasos/h. A 15.000/12.000 vasos/h, U311 trabaja 22,4 h con el OEE actual (93 %, es el cuello de botella) y 17,7 h con el OEE propuesto del 80 % (74 %).
+**U311 es el cuello de botella de la línea.** Para los 80.000 L/día, la llenadora actual (12.000 vasos/h) necesitaría 16,2 h nominales al día. Con el OEE de la planta (≈ 70 %) y 3,5 h de CIP, pausa y relevo, serían 26,7 h, el 111 % del día, así que no alcanza. Trabajando al 85 % (techo aceptable, sección 10.2), la línea procesa ≈ 58.200 L/día. La solución está en la sección 15.
 
 ---
 
@@ -165,7 +166,7 @@ flowchart LR
 
 ## 5. Receta maestra YF · Yogur con trozos de fresa
 
-**Encabezado.** Receta YF · versión 1.5 · referencias YF150, YF1000 y YF1750 · lote nominal 10.000 L de leche (10.320 kg), mínimo 8.000 L y máximo 10.500 L (la base del lote máximo ocupa ≈ 11 m³ de los 12 m³ del fermentador) · celda PC21 · estado: propuesta.
+**Encabezado.** Receta YF · versión 1.6 · referencias YF150, YF1000 y YF1750 · lote nominal 10.000 L de leche (10.320 kg), mínimo 8.000 L y máximo 10.500 L (la base del lote máximo ocupa ≈ 11 m³ de los 12 m³ del fermentador) · celda PC21 · estado: propuesta.
 
 ### 5.1 Fórmula por lote
 
@@ -240,7 +241,7 @@ flowchart LR
 
 ## 6. Receta maestra YN · Yogur natural
 
-**Encabezado.** Receta YN · versión 1.5 · referencias YN200 y YN1000 · lote nominal 10.000 L (10.320 kg), máximo 10.500 L · celda PC21 · estado: propuesta.
+**Encabezado.** Receta YN · versión 1.6 · referencias YN200 y YN1000 · lote nominal 10.000 L (10.320 kg), máximo 10.500 L · celda PC21 · estado: propuesta.
 
 ### 6.1 Fórmula por lote
 
@@ -284,7 +285,7 @@ Es un producto de etiqueta limpia: leche, leche en polvo y cultivo. No lleva az�
 
 ## 7. Receta maestra YG · Yogur griego
 
-**Encabezado.** Receta YG · versión 1.5 · referencias YG150 y YG500 · lote nominal 10.000 L de leche descremada (10.350 kg), máximo 10.500 L · celda PC21 · estado: propuesta.
+**Encabezado.** Receta YG · versión 1.6 · referencias YG150 y YG500 · lote nominal 10.000 L de leche descremada (10.350 kg), máximo 10.500 L · celda PC21 · estado: propuesta.
 
 El yogur griego industrial se hace **concentrando** un yogur de leche descremada: un separador centrífugo de boquillas retira el suero ácido hasta la proteína objetivo y después se restituye la grasa con crema pasteurizada. Es el método de GEA y Tetra Pak, que conserva el cultivo vivo; no usa termización después de la fermentación. El Codex lo clasifica como *leche fermentada concentrada* (proteína ≥ 5,6 %). En Colombia se denomina como yogur según la Res. 2310 (sección 7.3).
 
@@ -348,10 +349,10 @@ El yogur griego industrial se hace **concentrando** un yogur de leche descremada
 
 | Referencia | Envase | Llenadora | Velocidad nominal | % del lote | Unidades/lote | Unidades/día | Unidades/caja | Horas nominales/lote |
 |---|---|---|---:|---:|---:|---:|---:|---:|
-| **YF150** | Vaso PP termoformado, tapa foil termosellada | U311 | 15.000/h | 45 | 39.276 | 117.828 | 24 | 2,62 |
+| **YF150** | Vaso PP termoformado, tapa foil termosellada | U311 | 12.000/h actual · 21.600/h propuesta | 45 | 39.276 | 117.828 | 24 | 3,27 actual · 1,82 propuesta |
 | **YF1000** | Botella PEAD, tapa rosca y sello de inducción | U312 | 4.000/h | 35 | 4.582 | 13.747 | 12 | 1,15 |
 | **YF1750** | Botella PEAD con asa, tapa rosca y sello de inducción | U312 | 2.500/h | 20 | 1.496 | 4.489 | 6 | 0,60 |
-| **YN200** | Vaso PP termoformado, tapa foil termosellada | U311 | 12.000/h | 40 | 21.355 | 64.064 | 24 | 1,78 |
+| **YN200** | Vaso PP termoformado, tapa foil termosellada | U311 | 10.000/h actual · 17.280/h propuesta | 40 | 21.355 | 64.064 | 24 | 2,14 actual · 1,24 propuesta |
 | **YN1000** | Botella PEAD, tapa rosca y sello de inducción | U312 | 4.000/h | 60 | 6.406 | 19.219 | 12 | 1,60 |
 | **YG150** | Vaso PP con foil y sobretapa | U313 | 6.000/h | 60 | 12.966 | 25.933 | 24 | 2,16 |
 | **YG500** | Pote PP con foil y sobretapa | U313 | 2.400/h | 40 | 2.593 | 5.187 | 12 | 1,08 |
@@ -442,17 +443,19 @@ Parámetros de Tetra Pak (*Dairy Processing Handbook*, capítulo de limpieza). L
 | U215 | Romper y enfriar (= vaciado) | 1,08 h | 1,02 h | — |
 | U216 | Separar (7.000 L/h) + arranque 0,25 | — | — | 1,67 h |
 
-**Carga diaria nominal:**
+**Carga diaria nominal con la meta de 80.000 L/día** (8 lotes, escenario propuesto):
 - Fermentadores: 67,8 h-tanque. Con 4 tanques es el **71 %** del día; con 3 sería el **94 %**, sin margen para la variación del pH de corte.
 - U201: 14,9 h (62 %).
 - U202: 9,5 h (39 %).
-- Llenadoras (horas nominales/día): U311 **13,2 h** · U312 **10,0 h** · U313 **6,5 h**.
+- Llenadoras (horas nominales/día): U311 **16,2 h** con la llenadora actual o **9,2 h** con la FFS propuesta · U312 **10,0 h** · U313 **6,5 h**.
 
 **Ritmo: un lote cada 3 h (24 h / 8 lotes).** El script simula tres días seguidos con este ritmo y nunca hay más de **4 fermentadores ocupados a la vez**, aunque el ciclo más largo (YG, 9,03 h) dura tres ritmos. Por eso:
 - U201 trabaja ≈ 1,9 h de cada 3 h, y la base nunca espera fermentador. El límite de ≤ 2 h por encima de 10 °C se cumple.
 - U202 trabaja ≈ 1,2 h de cada 3 h y deja un hueco de ≈ 1,8 h, donde caben sus dos CIP-C diarios.
 
-Con el OEE actual (≈ 70 %), U311 tarda ≈ 3,75 h reales por lote YF, más que el ritmo de 3 h. En los tres YF seguidos se acumulan ≈ 2,3 h de atraso, que absorbe el pulmón (≤ 8 h). Se recuperan en los YN (≈ 2,55 h por lote) y en las 6 h de los YG, que no usan U311. Con el OEE propuesto (80 %) el lote YF tarda ≈ 3,3 h y el atraso baja a ≈ 0,9 h.
+**Escenario actual:** como la llenadora no da para más, la línea arranca un lote cada ≈ 4,1 h (5,8 lotes al día). Fermentadores, U201 y U202 trabajan con holgura; U311 marca el ritmo.
+
+**Escenario propuesto:** con la FFS, U311 llena un lote YF en ≈ 2,3 h reales (1,82 / 0,80) y un YN en ≈ 1,5 h, menos que el ritmo de 3 h, así que ya no se acumula atraso. El ritmo lo marcan los fermentadores.
 
 Si los lotes se encadenaran sin esperar (uno cada 1,9 h), los fermentadores se saturarían y la base esperaría caliente en U201. **El MES solo debe arrancar U201 cuando haya un fermentador libre para ese lote.** Tecnomatix verificará el ritmo con las llenadoras y las fallas.
 
@@ -467,10 +470,10 @@ Si los lotes se encadenaran sin esperar (uno cada 1,9 h), los fermentadores se s
 | Dato | Valor | Dónde se detalla |
 |---|---|---|
 | **Tamaño estándar de lote** | **10.000 L** de leche estandarizada (10.320 kg de entera; 10.350 kg de descremada). Mínimo 8.000 L y máximo 10.500 L. Producto por lote: YF 13.092 kg · YN 10.677 kg · YG 3.242 kg | Secciones 0, 5–7 |
-| Lotes por día | 8 (3 YN, 2 YG y 3 YF), uno cada 3 h | Sección 10 |
+| Lotes por día | **Actual: ≈ 5,8** (≈ 58.200 L/día), uno cada ≈ 4,1 h · **Propuesta: 8** (80.000 L/día), uno cada 3 h | Secciones 10 y 15 |
 | **Fermentadores** | **4 × 12.000 L** (U211, U212, U213 y U218), con 10.000–11.400 kg útiles por lote. Ciclo de 8,1–9,0 h; ocupación del 71 % | Secciones 3 y 10 |
-| **Llenadoras** (velocidad nominal) | **U311** vasos: 15.000/h de 150 g y 12.000/h de 200 g · **U312** botellas: 4.000/h de 1000 g y 2.500/h de 1750 g · **U313** potes: 6.000/h de 150 g y 2.400/h de 500 g | Sección 8.1 |
-| Capacidad efectiva de llenado | Capacidad efectiva = nominal × OEE. Ejemplo, U311 con YF150: 2.250 kg/h nominales → ≈ 1.570 kg/h con el OEE actual (70 %) y ≈ 1.800 kg/h con el propuesto (80 %). Horas reales por día: U311 22,4 h · U312 17,9 h · U313 12,8 h (actual); 17,7 · 13,8 · 9,3 h (propuesta) | Sección 10.2 |
+| **Llenadoras** (velocidad nominal) | **U311** vasos: actual 12.000/h de 150 g y 10.000/h de 200 g; propuesta FFS 21.600/h y 17.280/h · **U312** botellas: 4.000/h de 1000 g y 2.500/h de 1750 g · **U313** potes: 6.000/h de 150 g y 2.400/h de 500 g | Sección 8.1 |
+| Capacidad efectiva de llenado | Nominal × OEE. U311 con YF150: actual 1.800 kg/h nominales × 0,70 ≈ **1.260 kg/h**; propuesta 3.240 kg/h × 0,80 ≈ **2.600 kg/h**. Horas reales por día: U311 20,4 · U312 14,0 · U313 10,3 h (actual, 58.200 L); 12,7 · 13,8 · 9,3 h (propuesta, 80.000 L) | Secciones 10.2 y 15 |
 | Otras capacidades | U201 12.000 L · U202 10 m³/h · separador U216 7.000 L/h · pulmones 2 × 12.000 L (U214A/B) y 2 × 4.000 L (U217A/B) | Sección 3 |
 | **Empleados (estimado)** | **≈ 57 personas en la línea de yogures**: 13 puestos por turno × 4 cuadrillas rotativas = 52, más 5 de día. No incluye la recepción común de leche ni el personal administrativo de la empresa | Sección 10.3 |
 
@@ -481,13 +484,15 @@ El OEE de la versión anterior se tomaba de la propuesta de Pablo (≈ 82 % actu
 - **Actual ≈ 70 %:** una empresa mediana con control por equipos, por encima de las pymes por su volumen.
 - **Propuesta ≈ 80 %:** el nivel de Alpina, sin pasar del límite de clase mundial del sector.
 
-| Escenario | Disponibilidad | Desempeño | Calidad | **OEE** | Paradas planeadas (CIP-L + pausa + relevo) | U311 · U312 · U313 (h/día) | Uso de U311 |
-|---|---:|---:|---:|---:|---|---|---:|
-| Actual | 0,90 | 0,80 | 0,97 | **69,8 %** | 3,5 h | 22,4 · 17,9 · 12,8 | 93 % |
-| Propuesta | 0,93 | 0,88 | 0,98 | **80,2 %** | 1,25 h | 17,7 · 13,8 · 9,3 | 74 % |
+| Escenario | Disponibilidad | Desempeño | Calidad | **OEE** | Paradas planeadas (CIP-L + pausa + relevo) | Litros/día | Uso de U311 · U312 · U313 |
+|---|---:|---:|---:|---:|---|---:|---|
+| Actual (llenadora de 12.000 vasos/h) | 0,90 | 0,80 | 0,97 | **69,8 %** | 3,5 h | **≈ 58.200** | **85 %** · 58 % · 43 % |
+| Propuesta (FFS de 21.600 vasos/h) | 0,93 | 0,88 | 0,98 | **80,2 %** | 1,25 h | **80.000** | **53 %** · 57 % · 39 % |
 
 - Las horas reales son nominales / OEE + paradas planeadas, siguiendo la convención de Pablo: las paradas planeadas salen del denominador del OEE.
-- Las dos llenadoras alcanzan en 24 h en ambos escenarios. En el actual, U311 es el cuello de botella sin margen (93 %); la propuesta lo deja en 74 %.
+- **Uso máximo aceptable del cuello de botella:** 80 % para diseñar y 85 % como techo para operar. Por encima de ≈ 85 % las esperas crecen rápido: el factor ρ/(1−ρ) vale 4 al 80 %, 5,7 al 85 % y 9 al 90 %.
+- **Escenario actual:** U311 se fija al **85 %**. Ese 85 % ya incluye las fallas promedio (dentro del OEE) y las paradas planeadas, y le quedan ≈ 3,6 h diarias para imprevistos. Solo un día con OEE menor de ≈ 58 % se atrasaría, y lo absorben los pulmones y el domingo sin producción.
+- **Escenario propuesto:** todas las llenadoras quedan por debajo del 80 %.
 - **Hay que alinear el documento de Pablo**, que usa 81,68 % → 90,14 %, con estos valores.
 
 ### 10.3 Personal estimado de la línea
@@ -561,7 +566,7 @@ Cada riesgo abierto en la versión 1.3 se investigó en fuentes primarias. La ta
 | 9 | Vigencia de la Res. SIC 32209/2020 | La SIC expidió la **Res. 51039 de 2026**, que prorroga 4 años el reglamento metrológico de preempacados | Se cita la 32209/2020, prorrogada por la 51039/2026 | — |
 | 10 | Proteína del suero del separador (nuevo) | Suero ácido industrial de vaca: **0,41–0,68 %** de proteína (*Foods* 2022). La versión 1.3 suponía 0,3 % | Se usa **0,5 %**. El griego baja a **3.242 kg/lote** (3,19 kg de leche por kg) y el balance sigue cerrando exacto | Datos del fabricante del separador |
 | 11 | Ritmo de un lote cada 3 h | — | Se verifica en el modelo de Tecnomatix (siguiente tarea) | — |
-| 12 | OEE de las llenadoras demasiado alto (nuevo) | Lácteos: típico 55–70 %, clase mundial 80–85 % (Oxmaint, TeepTrak). Alpina ≈ 80 % y pymes 50–60 % (clase con el profesor Ubaldo). La versión 1.4 usaba ≈ 82 % | **OEE actual ≈ 70 % y propuesto ≈ 80 %** (sección 10.2). U311 sigue alcanzando: 93 % del día en el actual y 74 % en la propuesta | Medir el OEE real por llenadora |
+| 12 | OEE de las llenadoras demasiado alto (nuevo) | Lácteos: típico 55–70 %, clase mundial 80–85 % (Oxmaint, TeepTrak). Alpina ≈ 80 % y pymes 50–60 % (clase con el profesor Ubaldo). La versión 1.4 usaba ≈ 82 % | **OEE actual ≈ 70 % y propuesto ≈ 80 %** (sección 10.2). Con la llenadora actual al 85 %, la línea da ≈ 58.200 L/día; la propuesta (sección 15) llega a 80.000 L/día | Medir el OEE real por llenadora |
 | 13 | Mezcla 3/3/2 y destino del suero y la crema | Son decisiones del equipo y del negocio | Siguen como propuesta | Acta del equipo |
 
 ### 13.1 Sensibilidad a la composición de la leche cruda
@@ -654,7 +659,68 @@ Con este ciclo se alcanzó el tope de tres ciclos de la auditoría. Lo que no se
 
 ---
 
-## 15. Fuentes
+## 15. Propuesta de mejora: nueva llenadora de vasos para llegar a 80.000 L/día
+
+### 15.1 El problema: la llenadora de vasos es el cuello de botella
+
+La línea tiene que envasar ≈ 182.000 vasos al día (117.828 de 150 g de fresa y 64.064 de 200 g de natural) para procesar los 80.000 L/día. Todos pasan por U311. La llenadora actual es de vasos preformados, de **12.000 vasos/h**: es la velocidad supuesta en el modelo ISA-88 del equipo, que coincide con las máquinas reales de ese tipo (Hamba, Gasti: 8.000–16.000 vasos/h). La propuesta de automatización de Pablo (8-oct) ya mostraba que no alcanza y dejaba como alternativas para cotizar máquinas de 20.000 y 24.000 vasos/h.
+
+| Equipo | Uso del día si la línea procesara 80.000 L con la llenadora actual (OEE 70 %) |
+|---|---:|
+| **U311 vasos** | **111 %**: no alcanza |
+| U312 botellas | 74 % |
+| Fermentadores | 71 % |
+| U313 potes | 53 % |
+
+Con U311 al 85 % (el techo aceptable), la línea procesa **≈ 58.200 L/día**: el 73 % de la meta.
+
+### 15.2 Qué hay en el mercado
+
+| Tipo de llenadora | Cómo funciona | Velocidad | Referencias |
+|---|---|---|---|
+| De vaso preformado (la actual) | Recibe vasos ya fabricados, los llena y los sella | 8.000–16.000 vasos/h; las lineales grandes, hasta 60.000 | Hamba, Gasti (Oystar), Serac |
+| **Formadora-llenadora-selladora (FFS)** | Forma el vaso en línea desde un rollo de plástico, lo llena y lo sella | **21.600 vasos/h** (Erca M-F 14) · 20.000–43.000 (Arcil A6) · hasta 86.400 (IMA Erca EF) | Chobani usa una FFS de 21.600 vasos/h en su planta de Idaho |
+
+Para escoger el tamaño sirve el catálogo de Arcil, donde ≈ 20.000–22.000 vasos/h corresponden a ≈ 10.000 t/año. Los vasos de esta línea (YF150 + YN200) suman ≈ 30.500 kg/día, es decir, ≈ 9.100 t/año en 300 días. **La máquina de nuestra escala es una FFS de ≈ 21.600 vasos/h**, dentro del rango que Pablo dejó para cotizar (20.000–24.000).
+
+### 15.3 Máquina propuesta
+
+| Característica | Valor |
+|---|---|
+| Tipo | Formadora-llenadora-selladora (FFS) de vasos desde rollo, con dosificadores de pistón y sellado con foil |
+| Referencia de mercado | Clase Erca M-F 14 / Arcil A6 (se define al cotizar) |
+| Velocidad nominal | **21.600 vasos/h de 150 g**; ≈ 17.280/h de 200 g (mismos ciclos con vasos más grandes, supuesto que se confirma con el fabricante) |
+| Formatos | Vasos de 150 g (YF150) y 200 g (YN200), en multipacks (2×2, 2×3) |
+| Ventajas | Más del doble de capacidad. El vaso se forma en la planta, así que no se compran ni se almacenan vasos preformados, lo que suele abaratar el empaque |
+| Costos y cambios | Mayor inversión. Cambiar de formato exige cambiar el molde, y los vasos salen cuadrados o en multipack: hay que ajustar el diseño del empaque |
+
+### 15.4 Resultados: actual frente a propuesta
+
+| Indicador | Actual (llenadora de 12.000 vasos/h) | **Propuesta (FFS de 21.600 vasos/h)** |
+|---|---:|---:|
+| Leche procesada | ≈ 58.200 L/día | **80.000 L/día** |
+| Lotes por día | ≈ 5,8 (uno cada ≈ 4,1 h) | **8** (uno cada 3 h) |
+| Leche cruda | ≈ 59.800 L/día | ≈ 82.200 L/día |
+| Producto terminado | ≈ 56.600 kg/día (YF 28.571 · YN 23.301 · YG 4.716) | **≈ 77.791 kg/día** (YF 39.276 · YN 32.032 · YG 6.483) |
+| Vasos (YF150 + YN200) | ≈ 132.300/día | ≈ 181.900/día |
+| OEE de las llenadoras | ≈ 70 % | ≈ 80 % |
+| Uso de U311 | 85 % (techo) | **53 %** (69 % si el OEE se quedara en 70 %) |
+| Uso de U312 · U313 | 58 % · 43 % | 57 % · 39 % |
+| Uso de los fermentadores | 51 % | 71 % |
+| Cuello de botella | U311 | Fermentadores (4 tanques: máximo 8 lotes al día) |
+
+Con la propuesta, la línea cumple la meta y todos los equipos quedan por debajo del 80 % recomendado. Para crecer más allá de 80.000 L/día, el siguiente equipo que se queda corto son los fermentadores: haría falta un quinto tanque, no otra llenadora.
+
+### 15.5 Qué falta
+
+1. **Cotización** de la FFS con la misma referencia, moneda, flete e instalación (Daniel), comparada con las alternativas de 20.000 y 24.000 vasos/h de la propuesta de Pablo.
+2. **Velocidad garantizada** por el fabricante para vasos de 150 y 200 g con producto con trozos de fruta, que suele bajar algo la velocidad.
+3. **Diseño del vaso y del multipack** con el área comercial.
+4. **Modelo de Tecnomatix** con los dos escenarios: actual con la llenadora de 12.000 vasos/h al 85 % y propuesta con la FFS a 80.000 L/día.
+
+---
+
+## 16. Fuentes
 
 - Tetra Pak. *Dairy Processing Handbook*, cap. 13 (productos lácteos fermentados) y cap. de limpieza. https://dairyprocessinghandbook.tetrapak.com/chapter/fermented-milk-products · https://dairyprocessinghandbook.tetrapak.com/chapter/cleaning-dairy-equipment
 - Tetra Pak. *Precision pasteurization – your path to perfect yoghurt*. https://www.tetrapak.com/en-us/insights/cases-articles/precision-pasteurization
@@ -680,5 +746,6 @@ Con este ciclo se alcanzó el tope de tres ciclos de la auditoría. Lo que no se
 - SIC, Resolución 51039 de 2026 (prórroga de la 32209/2020). https://www.tuv.com/regulations-and-standards/en/colombia-resolution-51039-of-2026-extends-the-validity-of-colombia-s-technical-metrology-regulation-for-prepackaged-products.html · https://www.fenalco.com.co/blog/juridico-2/notijuridico-077-sic-amplia-la-vigencia-de-la-regulacion-para-productos-preempacados-8979
 - OEE en lácteos: Oxmaint, *FMCG production benchmarks* (lácteos: promedio 64 %, clase mundial 83 %). https://oxmaint.com/industries/fmcg/fmcg-production-benchmarks-oee-waste-industry · TeepTrak, *OEE benchmark by industry 2026* (alimentos y bebidas: mediana 55–62 %, clase mundial 83–85 %). https://teeptrak.com/en/oee-benchmark-by-industry-2026/
 - Ley 2101 de 2021 (jornada máxima de 42 h/semana desde el 15-jul-2026). https://www.publimetro.co/noticias/2026/06/23/jornada-laboral-de-42-horas-en-colombia-lo-que-cambiara-desde-el-15-de-julio-para-trabajadores-y-pymes/
+- Llenadoras de vasos: IMA Erca EF https://imagroup.com/machines/ef-series · Oystar Erca M-F 14 https://www.dairyfoods.com/articles/89590-oystar-usa-offers-the-new-compact-m-f-14-cup-form-fill-seal-packaging-line-for-dairy · Arcil A6 (Synerlink) https://pdf.directindustry.com/pdf/synerlink/a6-ffs-line/163854-774892.html · Synerlink y Chobani https://www.packaginginsights.com/news/synerlink-is-a-chobani-partner-in-the-yogurt-makers-new-idaho-plant.html · Serac https://www.serac-group.com/serac-worldwide/filling-machines-for-yogurt-in-cups-and-bottles-us-canada/ · Hamba BK 6005/5 https://www.machineryworld.com/product/hamba-bk-6005-5-yoghurt-cup-filling-sealing-machine/
 - ANSI/ISA-88.00.01 (IEC 61512-1). *Batch Control – Models and Terminology*.
 - Documentos del equipo: ISA88_Planta_Lactea_MEVKRA, Receta yogurt de fresa (29-sep), Acta 7-10-2026, Propuesta de automatización para Lácteos Altos de Teusacá e ISA-95 de la empresa base (Pablo, 8-oct).

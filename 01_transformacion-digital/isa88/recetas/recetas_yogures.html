@@ -169,7 +169,8 @@ footer { font-size: 12px; color: var(--muted); border-top: 1px solid var(--rule)
     <li><a href="#planta"><span class="n">11</span>Planta, OEE y personal</a></li>
     <li><a href="#riesgos"><span class="n">12</span>Riesgos resueltos</a></li>
     <li><a href="#auditoria"><span class="n">13</span>Auditoría</a></li>
-    <li><a href="#fuentes"><span class="n">14</span>Fuentes</a></li>
+    <li><a href="#propuesta"><span class="n">14</span>Propuesta: nueva llenadora</a></li>
+    <li><a href="#fuentes"><span class="n">15</span>Fuentes</a></li>
   </ol>
 </nav>
 
@@ -179,19 +180,18 @@ footer { font-size: 12px; color: var(--muted); border-top: 1px solid var(--rule)
   <h1>Línea de yogures de Lácteos Altos de Teusacá</h1>
   <p>Tres productos y un recorrido completo, desde que la cisterna llega a la planta de Sopó hasta el despacho en frío. Cada etapa tiene un nombre corto para el piso de planta y su nombre técnico ISA-88.</p>
   <div class="meta">
-    <span>Versión <b>1.5 (auditada, con riesgos resueltos y OEE realista)</b></span><span>Fecha <b>8 oct 2026</b></span><span>Estado <b>propuesta para revisión</b></span>
-    <span>Responsable de recetas <b>Luis (A/R)</b></span><span>Elaboró <b>Janan Libardo · Mekvra</b></span>
+    <span>Versión <b>1.6</b></span><span>Fecha <b>9 oct 2026</b></span>
   </div>
   <p class="note">Todas las cantidades son valores de diseño. Los parámetros vienen de Tetra Pak, GEA, el Codex y la normativa colombiana, y la composición de las materias primas es un supuesto declarado. Ninguna cifra es un resultado medido en planta. El balance completo está en <span class="mono">balance_recetas_yogures.py</span>, en el repositorio.</p>
 </header>
 
 <section id="resumen">
   <span class="eyebrow">00 · Resumen</span>
-  <h2>8 lotes al día, 80.000 L de leche</h2>
+  <h2>Hoy 58.200 L al día; con la propuesta, 80.000 L</h2>
   <div class="kpis">
-    <div><b>80.000 L</b><span>de leche estandarizada a la línea por día</span></div>
+    <div><b>≈ 58.200 L</b><span>de leche por día hoy, con la llenadora de vasos al 85 %</span></div>
     <div><b>8 lotes</b><span>de 10.000 L cada uno</span></div>
-    <div><b>77.791 kg</b><span>de producto terminado por día</span></div>
+    <div><b>80.000 L</b><span>de leche por día con la nueva llenadora (77.791 kg de producto)</span></div>
     <div><b>7 referencias</b><span>en 3 llenadoras</span></div>
   </div>
   <div class="products">
@@ -274,7 +274,7 @@ footer { font-size: 12px; color: var(--muted); border-top: 1px solid var(--rule)
       <tr><td class="tag">U216</td><td>Separador centrífugo de boquillas, enfriador tubular y dosificación de crema desde U127 con Coriolis</td><td>7.000 L/h de alimentación</td></tr>
       <tr><td class="tag">U214A/B</td><td>Tanques pulmón higiénicos de 12.000 L con venteo por filtro estéril; dosificador de fruta EM-2141 a la salida</td><td>YF y YN, en alternancia</td></tr>
       <tr><td class="tag">U217A/B</td><td>Dos pulmones de griego de 4.000 L con agitador de ancla, uno por lote</td><td>≤ 12 °C; no se mezclan lotes</td></tr>
-      <tr><td class="tag">U311</td><td>Llenadora-selladora de vasos preformados, 10 carriles</td><td>15.000 vasos/h de 150 g · 12.000 vasos/h de 200 g</td></tr>
+      <tr><td class="tag">U311</td><td><b>Actual:</b> llenadora-selladora de vasos preformados. <b>Propuesta:</b> formadora-llenadora-selladora (FFS) desde rollo</td><td>Actual 12.000/h de 150 g y 10.000/h de 200 g · Propuesta 21.600/h y 17.280/h</td></tr>
       <tr><td class="tag">U312</td><td>Llenadora-taponadora rotativa con sellado por inducción</td><td>4.000 bot/h de 1000 g · 2.500 bot/h de 1750 g</td></tr>
       <tr><td class="tag">U313</td><td>Llenadora de potes con dosificadores de pistón para producto viscoso</td><td>6.000/h de 150 g · 2.400/h de 500 g</td></tr>
       <tr><td class="tag">U341/U342</td><td>Celda robotizada de encajonado y paletizado, y envolvedora de estibas</td><td>Común a las tres llenadoras</td></tr>
@@ -282,7 +282,7 @@ footer { font-size: 12px; color: var(--muted); border-top: 1px solid var(--rule)
       <tr><td class="tag">U901 · U905</td><td>CIP central de 3 circuitos · manejo de suero ácido</td><td>U905 (existente) recibe además ≈ 14.500 kg/día de suero ácido</td></tr>
     </tbody>
   </table></div>
-  <p><b>Por qué U311 va a 15.000 vasos/h.</b> A 12.000 vasos/h (≈ 10.000/h en 200 g), U311 necesitaría 16,2 h nominales; con el OEE actual (≈ 70 %) y 3,5 h de paradas planeadas serían 26,7 h, que no caben en 24. La velocidad mínima es ≈ 13.800 vasos/h. A 15.000/12.000 vasos/h, U311 trabaja 22,4 h con el OEE actual (93 %, cuello de botella) y 17,7 h con el propuesto (74 %).</p>
+  <p><b>U311 es el cuello de botella.</b> Para 80.000 L/día, la llenadora actual de 12.000 vasos/h necesitaría el 111 % del día (26,7 h). Trabajando al 85 % (techo aceptable), la línea procesa ≈ 58.200 L/día. La solución está en la <a href="#propuesta">propuesta de mejora</a>.</p>
 </section>
 
 <section id="comun">
@@ -323,7 +323,7 @@ footer { font-size: 12px; color: var(--muted); border-top: 1px solid var(--rule)
 
 <section id="yf">
   <article class="recipe yf">
-    <div class="recipe-head"><span class="code">YF</span><h2>Yogur con trozos de fresa</h2><span class="eyebrow">Receta 1.5 · YF150 · YF1000 · YF1750</span></div>
+    <div class="recipe-head"><span class="code">YF</span><h2>Yogur con trozos de fresa</h2><span class="eyebrow">Receta 1.6 · YF150 · YF1000 · YF1750</span></div>
     <div class="facts">
       <span class="fact">Grasa <b>2,79 %</b></span><span class="fact">Proteína <b>3,60 %</b></span><span class="fact">Fruta neta <b>6,5 %</b></span><span class="fact">Azúcar añadida <b>9,3 %</b></span><span class="fact">pH de corte <b>4,50</b></span><span class="fact">Lote máximo <b>10.500 L</b></span>
     </div>
@@ -383,7 +383,7 @@ footer { font-size: 12px; color: var(--muted); border-top: 1px solid var(--rule)
 
 <section id="yn">
   <article class="recipe yn">
-    <div class="recipe-head"><span class="code">YN</span><h2>Yogur natural</h2><span class="eyebrow">Receta 1.5 · YN200 · YN1000</span></div>
+    <div class="recipe-head"><span class="code">YN</span><h2>Yogur natural</h2><span class="eyebrow">Receta 1.6 · YN200 · YN1000</span></div>
     <div class="facts">
       <span class="fact">Grasa <b>3,42 %</b></span><span class="fact">Proteína <b>4,14 %</b></span><span class="fact">SNG <b>11,5 %</b></span><span class="fact">Sin azúcar</span><span class="fact">pH de corte <b>4,50</b></span><span class="fact">Primero en la campaña</span>
     </div>
@@ -427,7 +427,7 @@ footer { font-size: 12px; color: var(--muted); border-top: 1px solid var(--rule)
 
 <section id="yg">
   <article class="recipe yg">
-    <div class="recipe-head"><span class="code">YG</span><h2>Yogur griego</h2><span class="eyebrow">Receta 1.5 · YG150 · YG500</span></div>
+    <div class="recipe-head"><span class="code">YG</span><h2>Yogur griego</h2><span class="eyebrow">Receta 1.6 · YG150 · YG500</span></div>
     <div class="facts">
       <span class="fact">Proteína <b>9,23 %</b></span><span class="fact">Grasa <b>2,00 %</b></span><span class="fact">Leche <b>3,19 kg/kg</b></span><span class="fact">Rendimiento <b>0,32 kg/L</b></span><span class="fact">pH de corte <b>4,55</b></span><span class="fact">Crema pasteurizada <b>U126</b></span>
     </div>
@@ -487,10 +487,10 @@ footer { font-size: 12px; color: var(--muted); border-top: 1px solid var(--rule)
   <div class="tbl"><table>
     <thead><tr><th>Referencia</th><th>Envase</th><th>Llenadora</th><th class="r">Velocidad</th><th class="r">% del lote</th><th class="r">Und/lote</th><th class="r">Und/día</th><th class="r">Und/caja</th><th class="r">h/lote</th></tr></thead>
     <tbody>
-      <tr><td class="tag">YF150</td><td>Vaso PP termoformado, foil termosellado</td><td class="tag">U311</td><td class="r">15.000/h</td><td class="r">45</td><td class="r">39.276</td><td class="r">117.828</td><td class="r">24</td><td class="r">2,62</td></tr>
+      <tr><td class="tag">YF150</td><td>Vaso PP termoformado, foil termosellado</td><td class="tag">U311</td><td class="r">12.000/h · 21.600/h</td><td class="r">45</td><td class="r">39.276</td><td class="r">117.828</td><td class="r">24</td><td class="r">3,27 · 1,82</td></tr>
       <tr><td class="tag">YF1000</td><td>Botella PEAD, tapa rosca y sello de inducción</td><td class="tag">U312</td><td class="r">4.000/h</td><td class="r">35</td><td class="r">4.582</td><td class="r">13.747</td><td class="r">12</td><td class="r">1,15</td></tr>
       <tr><td class="tag">YF1750</td><td>Botella PEAD con asa, sello de inducción</td><td class="tag">U312</td><td class="r">2.500/h</td><td class="r">20</td><td class="r">1.496</td><td class="r">4.489</td><td class="r">6</td><td class="r">0,60</td></tr>
-      <tr><td class="tag">YN200</td><td>Vaso PP termoformado, foil termosellado</td><td class="tag">U311</td><td class="r">12.000/h</td><td class="r">40</td><td class="r">21.355</td><td class="r">64.064</td><td class="r">24</td><td class="r">1,78</td></tr>
+      <tr><td class="tag">YN200</td><td>Vaso PP termoformado, foil termosellado</td><td class="tag">U311</td><td class="r">10.000/h · 17.280/h</td><td class="r">40</td><td class="r">21.355</td><td class="r">64.064</td><td class="r">24</td><td class="r">2,14 · 1,24</td></tr>
       <tr><td class="tag">YN1000</td><td>Botella PEAD, tapa rosca y sello de inducción</td><td class="tag">U312</td><td class="r">4.000/h</td><td class="r">60</td><td class="r">6.406</td><td class="r">19.219</td><td class="r">12</td><td class="r">1,60</td></tr>
       <tr><td class="tag">YG150</td><td>Vaso PP con foil y sobretapa</td><td class="tag">U313</td><td class="r">6.000/h</td><td class="r">60</td><td class="r">12.966</td><td class="r">25.933</td><td class="r">24</td><td class="r">2,16</td></tr>
       <tr><td class="tag">YG500</td><td>Pote PP con foil y sobretapa</td><td class="tag">U313</td><td class="r">2.400/h</td><td class="r">40</td><td class="r">2.593</td><td class="r">5.187</td><td class="r">12</td><td class="r">1,08</td></tr>
@@ -558,7 +558,7 @@ footer { font-size: 12px; color: var(--muted); border-top: 1px solid var(--rule)
   </div>
   <div class="kpis">
     <div><b>71 %</b><span>carga de los 4 fermentadores (67,8 h-tanque/día); con 3 sería el 94 %</span></div>
-    <div><b>13,2 h</b><span>U311 vasos, horas nominales/día</span></div>
+    <div><b>16,2 → 9,2 h</b><span>U311 vasos, horas nominales para 80.000 L/día (actual → FFS)</span></div>
     <div><b>10,0 h</b><span>U312 botellas, horas nominales/día</span></div>
     <div><b>6,5 h</b><span>U313 griego, horas nominales/día</span></div>
   </div>
@@ -619,23 +619,23 @@ footer { font-size: 12px; color: var(--muted); border-top: 1px solid var(--rule)
   <div class="tbl"><table>
     <thead><tr><th>Dato</th><th>Valor</th></tr></thead>
     <tbody>
-      <tr><td><b>Tamaño estándar de lote</b></td><td><b>10.000 L</b> de leche estandarizada (mínimo 8.000 y máximo 10.500 L). Producto por lote: YF 13.092 kg · YN 10.677 kg · YG 3.242 kg. 8 lotes/día, uno cada 3 h</td></tr>
+      <tr><td><b>Tamaño estándar de lote</b></td><td><b>10.000 L</b> de leche estandarizada (mínimo 8.000 y máximo 10.500 L). Producto por lote: YF 13.092 kg · YN 10.677 kg · YG 3.242 kg. Actual ≈ 5,8 lotes/día (uno cada ≈ 4,1 h); propuesta 8 lotes/día (uno cada 3 h)</td></tr>
       <tr><td><b>Fermentadores</b></td><td><b>4 × 12.000 L</b> (U211, U212, U213 y U218); ciclo de 8,1–9,0 h; ocupación del 71 %</td></tr>
-      <tr><td><b>Llenadoras</b> (nominal)</td><td>U311 vasos: 15.000/h de 150 g y 12.000/h de 200 g · U312 botellas: 4.000/h de 1000 g y 2.500/h de 1750 g · U313 potes: 6.000/h de 150 g y 2.400/h de 500 g</td></tr>
-      <tr><td>Capacidad efectiva</td><td>Nominal × OEE. Ejemplo: U311 con YF150, 2.250 kg/h nominales → ≈ 1.570 kg/h (OEE 70 %) y ≈ 1.800 kg/h (OEE 80 %)</td></tr>
+      <tr><td><b>Llenadoras</b> (nominal)</td><td>U311 vasos: actual 12.000/h de 150 g y 10.000/h de 200 g; propuesta FFS 21.600/h y 17.280/h · U312 botellas: 4.000/h de 1000 g y 2.500/h de 1750 g · U313 potes: 6.000/h de 150 g y 2.400/h de 500 g</td></tr>
+      <tr><td>Capacidad efectiva</td><td>Nominal × OEE. U311 con YF150: actual 1.800 kg/h × 0,70 ≈ 1.260 kg/h; propuesta 3.240 kg/h × 0,80 ≈ 2.600 kg/h</td></tr>
       <tr><td><b>Empleados (estimado)</b></td><td><b>≈ 57 personas</b>: 13 puestos por turno × 4 cuadrillas rotativas, más 5 de día. No incluye la recepción común de leche ni el personal administrativo</td></tr>
     </tbody>
   </table></div>
   <h3>OEE de diseño de las llenadoras</h3>
   <p>Los lácteos tienen un OEE típico de 55–70 % y una clase mundial de 80–85 %. Alpina llega a ≈ 80 % y las pymes están en 50–60 %. Por eso se toma <b>≈ 70 % para la planta actual</b> y <b>≈ 80 % para la propuesta</b>, en lugar del ≈ 82 % → 90 % anterior.</p>
   <div class="tbl"><table>
-    <thead><tr><th>Escenario</th><th class="r">A</th><th class="r">P</th><th class="r">Q</th><th class="r">OEE</th><th class="r">Paradas planeadas</th><th>U311 · U312 · U313 (h/día)</th><th class="r">Uso U311</th></tr></thead>
+    <thead><tr><th>Escenario</th><th class="r">A</th><th class="r">P</th><th class="r">Q</th><th class="r">OEE</th><th class="r">Paradas planeadas</th><th class="r">Litros/día</th><th>Uso U311 · U312 · U313</th></tr></thead>
     <tbody>
-      <tr><td>Actual</td><td class="r">0,90</td><td class="r">0,80</td><td class="r">0,97</td><td class="r"><b>69,8 %</b></td><td class="r">3,5 h</td><td>22,4 · 17,9 · 12,8</td><td class="r">93 %</td></tr>
-      <tr><td>Propuesta</td><td class="r">0,93</td><td class="r">0,88</td><td class="r">0,98</td><td class="r"><b>80,2 %</b></td><td class="r">1,25 h</td><td>17,7 · 13,8 · 9,3</td><td class="r">74 %</td></tr>
+      <tr><td>Actual (llenadora de 12.000 vasos/h)</td><td class="r">0,90</td><td class="r">0,80</td><td class="r">0,97</td><td class="r"><b>69,8 %</b></td><td class="r">3,5 h</td><td class="r">≈ 58.200</td><td><b>85 %</b> · 58 % · 43 %</td></tr>
+      <tr><td>Propuesta (FFS de 21.600 vasos/h)</td><td class="r">0,93</td><td class="r">0,88</td><td class="r">0,98</td><td class="r"><b>80,2 %</b></td><td class="r">1,25 h</td><td class="r">80.000</td><td><b>53 %</b> · 57 % · 39 %</td></tr>
     </tbody>
   </table></div>
-  <p>Las llenadoras alcanzan en 24 h en los dos escenarios. En el actual, U311 es el cuello de botella sin margen; a 12.000 vasos/h no cabría (26,7 h), y la velocidad mínima es ≈ 13.800 vasos/h. Hay que alinear el documento de Pablo, que usa 81,68 % → 90,14 %.</p>
+  <p><b>Uso máximo aceptable del cuello de botella:</b> 80 % para diseñar y 85 % como techo para operar; por encima de ≈ 85 % las esperas crecen rápido (ρ/(1−ρ) vale 4 al 80 %, 5,7 al 85 % y 9 al 90 %). En el escenario actual, U311 se fija al 85 %. Ese porcentaje ya incluye las fallas promedio y las paradas planeadas, y le quedan ≈ 3,6 h diarias; solo un día con OEE menor de ≈ 58 % se atrasaría. Hay que alinear el documento de Pablo, que usa 81,68 % → 90,14 %.</p>
   <h3>Personal estimado</h3>
   <div class="tbl"><table>
     <thead><tr><th>Puesto por turno</th><th class="r">Personas</th></tr></thead>
@@ -667,7 +667,7 @@ footer { font-size: 12px; color: var(--muted); border-top: 1px solid var(--rule)
       <tr><td>U202 dedicado</td><td>13,7 h/día de carga, con 5 huecos libres de 1,8 h</td><td>Dedicado; compartirlo solo cabe en los huecos, con arbitraje en el MES</td><td>Decisión del equipo</td></tr>
       <tr><td>Calor de la carga de U201</td><td>10.320 kg × 3,93 kJ/(kg·K) × 46 K = 518 kWh por lote</td><td>EM-2014 de ≈ 1,05 MW; ≈ 4.150 kWh/día</td><td>Balance de energía</td></tr>
       <tr><td>Res. SIC 32209/2020</td><td>Res. 51039 de 2026: prórroga de 4 años</td><td>Vigente</td><td>—</td></tr>
-      <tr><td>OEE demasiado alto (nuevo)</td><td>Lácteos: típico 55–70 % y clase mundial 80–85 %; Alpina ≈ 80 %; pymes 50–60 %</td><td>OEE actual ≈ 70 % y propuesto ≈ 80 %; U311 sigue alcanzando (93 % y 74 %)</td><td>Medir el OEE real</td></tr>
+      <tr><td>OEE demasiado alto (nuevo)</td><td>Lácteos: típico 55–70 % y clase mundial 80–85 %; Alpina ≈ 80 %; pymes 50–60 %</td><td>OEE actual ≈ 70 % y propuesto ≈ 80 %. Al 85 %, la llenadora actual da ≈ 58.200 L/día; la propuesta llega a 80.000 L/día</td><td>Medir el OEE real</td></tr>
       <tr><td>Proteína del suero (nuevo)</td><td>Medida: 0,41–0,68 % (<i>Foods</i> 2022); se suponía 0,3 %</td><td>Se usa 0,5 %: el griego baja a 3.242 kg por lote</td><td>Datos del separador</td></tr>
     </tbody>
   </table></div>
@@ -727,6 +727,60 @@ footer { font-size: 12px; color: var(--muted); border-top: 1px solid var(--rule)
   </table></div>
 </section>
 
+<section id="propuesta">
+  <span class="eyebrow">Propuesta de mejora</span>
+  <h2>Nueva llenadora de vasos para llegar a 80.000 L/día</h2>
+  <h3>El problema</h3>
+  <p>La línea tiene que envasar ≈ 182.000 vasos al día (117.828 de 150 g y 64.064 de 200 g) para procesar los 80.000 L. Todos pasan por U311, una llenadora de vasos preformados de <b>12.000 vasos/h</b>. Esa velocidad viene del modelo ISA-88 del equipo y coincide con las máquinas reales de ese tipo (Hamba, Gasti: 8.000–16.000 vasos/h). La propuesta de Pablo ya mostraba que no alcanza y dejaba para cotizar máquinas de 20.000 y 24.000 vasos/h.</p>
+  <div class="tbl"><table>
+    <thead><tr><th>Equipo</th><th class="r">Uso si se procesaran 80.000 L con la llenadora actual (OEE 70 %)</th></tr></thead>
+    <tbody>
+      <tr><td><b>U311 vasos</b></td><td class="r"><b>111 %: no alcanza</b></td></tr>
+      <tr><td>U312 botellas</td><td class="r">74 %</td></tr>
+      <tr><td>Fermentadores</td><td class="r">71 %</td></tr>
+      <tr><td>U313 potes</td><td class="r">53 %</td></tr>
+    </tbody>
+  </table></div>
+  <p>Con U311 al 85 %, la línea procesa ≈ 58.200 L/día: el 73 % de la meta.</p>
+  <h3>Qué hay en el mercado</h3>
+  <div class="tbl"><table>
+    <thead><tr><th>Tipo</th><th>Cómo funciona</th><th>Velocidad</th></tr></thead>
+    <tbody>
+      <tr><td>Vaso preformado (la actual)</td><td>Recibe vasos ya fabricados, los llena y los sella</td><td>8.000–16.000 vasos/h (Hamba, Gasti); lineales grandes hasta 60.000 (Serac)</td></tr>
+      <tr><td><b>Formadora-llenadora-selladora (FFS)</b></td><td>Forma el vaso en línea desde un rollo, lo llena y lo sella</td><td><b>21.600/h</b> (Erca M-F 14) · 20.000–43.000/h (Arcil A6) · hasta 86.400/h (IMA Erca EF). Chobani usa una de 21.600/h en Idaho</td></tr>
+    </tbody>
+  </table></div>
+  <p>En el catálogo de Arcil, ≈ 20.000–22.000 vasos/h corresponden a ≈ 10.000 t/año, y los vasos de esta línea suman ≈ 9.100 t/año. <b>La máquina de nuestra escala es una FFS de ≈ 21.600 vasos/h</b>, dentro del rango que Pablo dejó para cotizar.</p>
+  <h3>Máquina propuesta</h3>
+  <div class="tbl"><table>
+    <tbody>
+      <tr><td>Tipo</td><td>Formadora-llenadora-selladora de vasos desde rollo, con dosificadores de pistón y sellado con foil</td></tr>
+      <tr><td>Referencia</td><td>Clase Erca M-F 14 / Arcil A6 (se define al cotizar)</td></tr>
+      <tr><td>Velocidad nominal</td><td><b>21.600 vasos/h de 150 g</b>; ≈ 17.280/h de 200 g (supuesto: mismos ciclos con vaso más grande)</td></tr>
+      <tr><td>Ventajas</td><td>Más del doble de capacidad. El vaso se forma en la planta, sin comprar ni almacenar vasos preformados</td></tr>
+      <tr><td>Costos y cambios</td><td>Mayor inversión. El cambio de formato exige cambio de molde, y los vasos salen cuadrados o en multipack (2×2, 2×3)</td></tr>
+    </tbody>
+  </table></div>
+  <h3>Resultados: actual frente a propuesta</h3>
+  <div class="tbl"><table>
+    <thead><tr><th>Indicador</th><th class="r">Actual (12.000 vasos/h)</th><th class="r">Propuesta (FFS 21.600 vasos/h)</th></tr></thead>
+    <tbody>
+      <tr><td>Leche procesada</td><td class="r">≈ 58.200 L/día</td><td class="r"><b>80.000 L/día</b></td></tr>
+      <tr><td>Lotes por día</td><td class="r">≈ 5,8 (uno cada ≈ 4,1 h)</td><td class="r"><b>8</b> (uno cada 3 h)</td></tr>
+      <tr><td>Leche cruda</td><td class="r">≈ 59.800 L/día</td><td class="r">≈ 82.200 L/día</td></tr>
+      <tr><td>Producto terminado</td><td class="r">≈ 56.600 kg/día</td><td class="r"><b>≈ 77.791 kg/día</b></td></tr>
+      <tr><td>Vasos YF150 + YN200</td><td class="r">≈ 132.300/día</td><td class="r">≈ 181.900/día</td></tr>
+      <tr><td>OEE de las llenadoras</td><td class="r">≈ 70 %</td><td class="r">≈ 80 %</td></tr>
+      <tr><td>Uso de U311</td><td class="r">85 % (techo)</td><td class="r"><b>53 %</b> (69 % si el OEE se quedara en 70 %)</td></tr>
+      <tr><td>Uso de U312 · U313</td><td class="r">58 % · 43 %</td><td class="r">57 % · 39 %</td></tr>
+      <tr><td>Uso de los fermentadores</td><td class="r">51 %</td><td class="r">71 %</td></tr>
+      <tr><td>Cuello de botella</td><td class="r">U311</td><td class="r">Fermentadores (máximo 8 lotes/día)</td></tr>
+    </tbody>
+  </table></div>
+  <p>Con la propuesta, la línea cumple la meta y todos los equipos quedan por debajo del 80 % recomendado. Para crecer más allá de 80.000 L/día, el siguiente límite son los fermentadores: haría falta un quinto tanque.</p>
+  <p><b>Qué falta:</b> la cotización de la FFS, que hará Daniel comparándola con las alternativas de 20.000 y 24.000 vasos/h de Pablo; la velocidad garantizada por el fabricante para vasos con trozos de fruta; el diseño del vaso y del multipack; y el modelo de Tecnomatix con los dos escenarios.</p>
+</section>
+
 <section id="fuentes" class="sources">
   <span class="eyebrow">12 · Fuentes</span>
   <h2>Fuentes</h2>
@@ -743,6 +797,7 @@ footer { font-size: 12px; color: var(--muted); border-top: 1px solid var(--rule)
     <li>Chr. Hansen, <a href="https://www.foodnavigator.com/Article/2015/10/05/pH-stable-culture-will-revolutionize-yogurt-production-says-Chr-Hansen/">cultivo de pH estable</a>; CP Kelco, <a href="https://www.cpkelco.com/wp-content/uploads/2024/05/cpk-website-cf-yogurt-fruit-prep-recipe-card-2024.pdf">preparado con fibra de cítricos</a>; Zentis, <a href="https://zentis.com/B2B/Sales-Unterlagen_B2B/pdf_GB/GB_Zentis_Clean%20Label.pdf">etiqueta limpia</a>.</li>
     <li><a href="https://normograma.invima.gov.co/compilacion/docs/resolucion_minsaludps_0557_2022.htm">Res. 5109/2005 y 557/2022</a> (rotulado); <a href="https://www.larepublica.co/empresas/colanta-pasco-y-alpina-quieren-replicar-exito-estadounidense-del-yogurt-griego-2085161">yogurt griego en Colombia</a>; <a href="https://www.tuv.com/regulations-and-standards/en/colombia-resolution-51039-of-2026-extends-the-validity-of-colombia-s-technical-metrology-regulation-for-prepackaged-products.html">Res. SIC 51039/2026</a>.</li>
     <li>OEE en lácteos: <a href="https://oxmaint.com/industries/fmcg/fmcg-production-benchmarks-oee-waste-industry">Oxmaint</a> y <a href="https://teeptrak.com/en/oee-benchmark-by-industry-2026/">TeepTrak 2026</a>. Jornada de 42 h: <a href="https://www.publimetro.co/noticias/2026/06/23/jornada-laboral-de-42-horas-en-colombia-lo-que-cambiara-desde-el-15-de-julio-para-trabajadores-y-pymes/">Ley 2101 de 2021</a>.</li>
+    <li>Llenadoras: <a href="https://imagroup.com/machines/ef-series">IMA Erca EF</a>, <a href="https://www.dairyfoods.com/articles/89590-oystar-usa-offers-the-new-compact-m-f-14-cup-form-fill-seal-packaging-line-for-dairy">Oystar Erca M-F 14</a>, <a href="https://pdf.directindustry.com/pdf/synerlink/a6-ffs-line/163854-774892.html">Arcil A6</a>, <a href="https://www.packaginginsights.com/news/synerlink-is-a-chobani-partner-in-the-yogurt-makers-new-idaho-plant.html">Synerlink y Chobani</a>, <a href="https://www.serac-group.com/serac-worldwide/filling-machines-for-yogurt-in-cups-and-bottles-us-canada/">Serac</a>, <a href="https://www.machineryworld.com/product/hamba-bk-6005-5-yoghurt-cup-filling-sealing-machine/">Hamba</a>.</li>
     <li>ANSI/ISA-88.00.01 (IEC 61512-1), <i>Batch Control</i>.</li>
     <li>Documentos del equipo: ISA88_Planta_Lactea_MEVKRA, receta de fresa del 29-sep, acta del 7-oct, y la propuesta de automatización e ISA-95 de Pablo (8-oct).</li>
   </ul>
