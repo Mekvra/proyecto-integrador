@@ -4,7 +4,7 @@
 
 | Versión | Fecha | Estado | Responsable de recetas (RACI) |
 |---|---|---|---|
-| 1.4 | 9 de octubre de 2026 | Propuesta técnica auditada en tres ciclos (sección 14) y con riesgos investigados y resueltos (sección 13), para revisión del equipo | Luis (A/R) · elaborada por Janan Libardo |
+| 1.5 | 9 de octubre de 2026 | Propuesta técnica auditada en tres ciclos (sección 14) y con riesgos investigados y resueltos (sección 13). Incluye la ficha de planta, el OEE de diseño y el personal (sección 10), para revisión del equipo | Luis (A/R) · elaborada por Janan Libardo |
 
 Recetas en formato ISA-88 (IEC 61512) para los tres productos de la línea escogida en el acta del 7 de octubre: **yogur con fresa, yogur natural y yogur griego**. Cubren todo el recorrido, desde que la cisterna llega a la planta hasta el despacho. Todas las cifras de balance y de tiempos salen de [`balance_recetas_yogures.py`](balance_recetas_yogures.py), que escribe [`recetas_yogures.json`](recetas_yogures.json) y comprueba que cierren la masa total, la grasa y la proteína. El nuevo modelo de Tecnomatix de la línea de yogures leerá ese mismo archivo; el modelo actual de Tecnomatix es de la planta anterior, de tres líneas.
 
@@ -119,7 +119,7 @@ flowchart LR
 | A4 · Frío | U411/U412 | Cámara fría de 2–4 °C con aire forzado y gestión FEFO; muelle refrigerado | Producto ≤ 6 °C en ≤ 12 h: supuesto de diseño que se valida con el dimensionamiento del frío; reposo ≥ 12 h |
 | A9 · Servicios | U901–U905 | CIP central (3 circuitos), vapor, agua helada/glicol, aire comprimido estéril y tratamiento de suero | U905 (existente) recibe además ≈ 14.500 kg/día de suero ácido del griego |
 
-**Por qué U311 va a 15.000 vasos/h.** Con la velocidad anterior (12.000 vasos/h de 150 g y ≈ 10.000/h de 200 g), U311 necesita 16,2 h nominales al día. Con los factores base de la propuesta de Pablo (desempeño 0,85 · disponibilidad 0,976 · calidad 0,985, más 3,5 h de CIP, pausa y relevo) son **23,4 h de 24**: no hay margen. A 15.000/12.000 vasos/h son 13,2 h nominales y 19,7 h reales (82 %).
+**Por qué U311 va a 15.000 vasos/h.** Con la velocidad anterior (12.000 vasos/h de 150 g y ≈ 10.000/h de 200 g), U311 necesita 16,2 h nominales al día. Con el OEE de la planta actual (≈ 70 %, sección 10.2), más 3,5 h de CIP, pausa y relevo, serían **26,7 h**: no cabe en 24 h. La velocidad mínima es ≈ 13.800 vasos/h. A 15.000/12.000 vasos/h, U311 trabaja 22,4 h con el OEE actual (93 %, es el cuello de botella) y 17,7 h con el OEE propuesto del 80 % (74 %).
 
 ---
 
@@ -165,7 +165,7 @@ flowchart LR
 
 ## 5. Receta maestra YF · Yogur con trozos de fresa
 
-**Encabezado.** Receta YF · versión 1.4 · referencias YF150, YF1000 y YF1750 · lote nominal 10.000 L de leche (10.320 kg), mínimo 8.000 L y máximo 10.500 L (la base del lote máximo ocupa ≈ 11 m³ de los 12 m³ del fermentador) · celda PC21 · estado: propuesta.
+**Encabezado.** Receta YF · versión 1.5 · referencias YF150, YF1000 y YF1750 · lote nominal 10.000 L de leche (10.320 kg), mínimo 8.000 L y máximo 10.500 L (la base del lote máximo ocupa ≈ 11 m³ de los 12 m³ del fermentador) · celda PC21 · estado: propuesta.
 
 ### 5.1 Fórmula por lote
 
@@ -240,7 +240,7 @@ flowchart LR
 
 ## 6. Receta maestra YN · Yogur natural
 
-**Encabezado.** Receta YN · versión 1.4 · referencias YN200 y YN1000 · lote nominal 10.000 L (10.320 kg), máximo 10.500 L · celda PC21 · estado: propuesta.
+**Encabezado.** Receta YN · versión 1.5 · referencias YN200 y YN1000 · lote nominal 10.000 L (10.320 kg), máximo 10.500 L · celda PC21 · estado: propuesta.
 
 ### 6.1 Fórmula por lote
 
@@ -284,7 +284,7 @@ Es un producto de etiqueta limpia: leche, leche en polvo y cultivo. No lleva az�
 
 ## 7. Receta maestra YG · Yogur griego
 
-**Encabezado.** Receta YG · versión 1.4 · referencias YG150 y YG500 · lote nominal 10.000 L de leche descremada (10.350 kg), máximo 10.500 L · celda PC21 · estado: propuesta.
+**Encabezado.** Receta YG · versión 1.5 · referencias YG150 y YG500 · lote nominal 10.000 L de leche descremada (10.350 kg), máximo 10.500 L · celda PC21 · estado: propuesta.
 
 El yogur griego industrial se hace **concentrando** un yogur de leche descremada: un separador centrífugo de boquillas retira el suero ácido hasta la proteína objetivo y después se restituye la grasa con crema pasteurizada. Es el método de GEA y Tetra Pak, que conserva el cultivo vivo; no usa termización después de la fermentación. El Codex lo clasifica como *leche fermentada concentrada* (proteína ≥ 5,6 %). En Colombia se denomina como yogur según la Res. 2310 (sección 7.3).
 
@@ -452,7 +452,7 @@ Parámetros de Tetra Pak (*Dairy Processing Handbook*, capítulo de limpieza). L
 - U201 trabaja ≈ 1,9 h de cada 3 h, y la base nunca espera fermentador. El límite de ≤ 2 h por encima de 10 °C se cumple.
 - U202 trabaja ≈ 1,2 h de cada 3 h y deja un hueco de ≈ 1,8 h, donde caben sus dos CIP-C diarios.
 
-Con las pérdidas de la propuesta de Pablo, U311 tarda ≈ 3,2 h reales por lote YF, más que el ritmo de 3 h. En los tres YF seguidos se acumulan ≈ 0,6 h, que absorbe el pulmón (≤ 8 h), y se recuperan en los YN, que solo necesitan ≈ 2,2 h.
+Con el OEE actual (≈ 70 %), U311 tarda ≈ 3,75 h reales por lote YF, más que el ritmo de 3 h. En los tres YF seguidos se acumulan ≈ 2,3 h de atraso, que absorbe el pulmón (≤ 8 h). Se recuperan en los YN (≈ 2,55 h por lote) y en las 6 h de los YG, que no usan U311. Con el OEE propuesto (80 %) el lote YF tarda ≈ 3,3 h y el atraso baja a ≈ 0,9 h.
 
 Si los lotes se encadenaran sin esperar (uno cada 1,9 h), los fermentadores se saturarían y la base esperaría caliente en U201. **El MES solo debe arrancar U201 cuando haya un fermentador libre para ese lote.** Tecnomatix verificará el ritmo con las llenadoras y las fallas.
 
@@ -461,6 +461,56 @@ Si los lotes se encadenaran sin esperar (uno cada 1,9 h), los fermentadores se s
 - YG: ≈ 11–12 h; luego ≥ 12 h de reposo.
 
 ---
+
+### 10.1 Ficha de la planta (datos para el VSM)
+
+| Dato | Valor | Dónde se detalla |
+|---|---|---|
+| **Tamaño estándar de lote** | **10.000 L** de leche estandarizada (10.320 kg de entera; 10.350 kg de descremada). Mínimo 8.000 L y máximo 10.500 L. Producto por lote: YF 13.092 kg · YN 10.677 kg · YG 3.242 kg | Secciones 0, 5–7 |
+| Lotes por día | 8 (3 YN, 2 YG y 3 YF), uno cada 3 h | Sección 10 |
+| **Fermentadores** | **4 × 12.000 L** (U211, U212, U213 y U218), con 10.000–11.400 kg útiles por lote. Ciclo de 8,1–9,0 h; ocupación del 71 % | Secciones 3 y 10 |
+| **Llenadoras** (velocidad nominal) | **U311** vasos: 15.000/h de 150 g y 12.000/h de 200 g · **U312** botellas: 4.000/h de 1000 g y 2.500/h de 1750 g · **U313** potes: 6.000/h de 150 g y 2.400/h de 500 g | Sección 8.1 |
+| Capacidad efectiva de llenado | Capacidad efectiva = nominal × OEE. Ejemplo, U311 con YF150: 2.250 kg/h nominales → ≈ 1.570 kg/h con el OEE actual (70 %) y ≈ 1.800 kg/h con el propuesto (80 %). Horas reales por día: U311 22,4 h · U312 17,9 h · U313 12,8 h (actual); 17,7 · 13,8 · 9,3 h (propuesta) | Sección 10.2 |
+| Otras capacidades | U201 12.000 L · U202 10 m³/h · separador U216 7.000 L/h · pulmones 2 × 12.000 L (U214A/B) y 2 × 4.000 L (U217A/B) | Sección 3 |
+| **Empleados (estimado)** | **≈ 57 personas en la línea de yogures**: 13 puestos por turno × 4 cuadrillas rotativas = 52, más 5 de día. No incluye la recepción común de leche ni el personal administrativo de la empresa | Sección 10.3 |
+
+### 10.2 OEE de diseño de las llenadoras
+
+El OEE de la versión anterior se tomaba de la propuesta de Pablo (≈ 82 % actual → 90 % propuesto), alto para una planta láctea. Se ajusta a referentes del sector:
+- **Referentes:** los lácteos tienen un OEE típico de 55–70 % y una clase mundial de 80–85 % (Oxmaint, TeepTrak). Según la clase con el profesor Ubaldo, Alpina llega apenas a ≈ 80 %, y las pymes del sector están en 50–60 %.
+- **Actual ≈ 70 %:** una empresa mediana con control por equipos, por encima de las pymes por su volumen.
+- **Propuesta ≈ 80 %:** el nivel de Alpina, sin pasar del límite de clase mundial del sector.
+
+| Escenario | Disponibilidad | Desempeño | Calidad | **OEE** | Paradas planeadas (CIP-L + pausa + relevo) | U311 · U312 · U313 (h/día) | Uso de U311 |
+|---|---:|---:|---:|---:|---|---|---:|
+| Actual | 0,90 | 0,80 | 0,97 | **69,8 %** | 3,5 h | 22,4 · 17,9 · 12,8 | 93 % |
+| Propuesta | 0,93 | 0,88 | 0,98 | **80,2 %** | 1,25 h | 17,7 · 13,8 · 9,3 | 74 % |
+
+- Las horas reales son nominales / OEE + paradas planeadas, siguiendo la convención de Pablo: las paradas planeadas salen del denominador del OEE.
+- Las dos llenadoras alcanzan en 24 h en ambos escenarios. En el actual, U311 es el cuello de botella sin margen (93 %); la propuesta lo deja en 74 %.
+- **Hay que alinear el documento de Pablo**, que usa 81,68 % → 90,14 %, con estos valores.
+
+### 10.3 Personal estimado de la línea
+
+| Puesto (por turno) | Personas |
+|---|---:|
+| Formulación y tratamiento térmico (U201, U202) | 1 |
+| Fermentación, separación griega y pulmones (U211–U218, U214–U217) | 2 |
+| Llenadora de vasos U311 | 2 |
+| Llenadora de botellas U312 | 1 |
+| Llenadora de potes U313 | 1 |
+| Fin de línea y cámara (U341/U342, montacargas) | 2 |
+| Alistamiento de insumos (polvos, cultivos, fruta, envases) | 1 |
+| Supervisor de turno | 1 |
+| Analista de calidad | 1 |
+| Técnico de mantenimiento | 1 |
+| **Total por turno** | **13** |
+
+- **Cuadrillas:** la línea trabaja 24 h × 6 días = 144 h/semana. Con la jornada máxima de **42 h/semana**, vigente desde el 15-jul-2026 por la Ley 2101 de 2021, se necesitan **4 cuadrillas rotativas** (144 / 42 = 3,4): 13 × 4 = **52 personas**.
+- **De día (5):** jefe de producción, jefe de calidad e inocuidad, jefe de mantenimiento, planeador de producción (MES/ERP) y analista de microbiología y vida útil.
+- **Total ≈ 57 personas** (estimado de diseño, ± 20 %).
+- **Fuera de la cuenta:** la recepción común de leche, la bodega de despacho y el personal administrativo y comercial.
+- **Con la automatización:** el MES y la coordinación por PLC eliminan el registro manual y la maniobra de válvulas. Eso permitiría reubicar ≈ 1 puesto por turno en formulación y fermentación, pero se valida en el piloto y no se cuenta como ahorro.
 
 ## 11. Balance diario de la línea
 
@@ -511,7 +561,8 @@ Cada riesgo abierto en la versión 1.3 se investigó en fuentes primarias. La ta
 | 9 | Vigencia de la Res. SIC 32209/2020 | La SIC expidió la **Res. 51039 de 2026**, que prorroga 4 años el reglamento metrológico de preempacados | Se cita la 32209/2020, prorrogada por la 51039/2026 | — |
 | 10 | Proteína del suero del separador (nuevo) | Suero ácido industrial de vaca: **0,41–0,68 %** de proteína (*Foods* 2022). La versión 1.3 suponía 0,3 % | Se usa **0,5 %**. El griego baja a **3.242 kg/lote** (3,19 kg de leche por kg) y el balance sigue cerrando exacto | Datos del fabricante del separador |
 | 11 | Ritmo de un lote cada 3 h | — | Se verifica en el modelo de Tecnomatix (siguiente tarea) | — |
-| 12 | Mezcla 3/3/2 y destino del suero y la crema | Son decisiones del equipo y del negocio | Siguen como propuesta | Acta del equipo |
+| 12 | OEE de las llenadoras demasiado alto (nuevo) | Lácteos: típico 55–70 %, clase mundial 80–85 % (Oxmaint, TeepTrak). Alpina ≈ 80 % y pymes 50–60 % (clase con el profesor Ubaldo). La versión 1.4 usaba ≈ 82 % | **OEE actual ≈ 70 % y propuesto ≈ 80 %** (sección 10.2). U311 sigue alcanzando: 93 % del día en el actual y 74 % en la propuesta | Medir el OEE real por llenadora |
+| 13 | Mezcla 3/3/2 y destino del suero y la crema | Son decisiones del equipo y del negocio | Siguen como propuesta | Acta del equipo |
 
 ### 13.1 Sensibilidad a la composición de la leche cruda
 
@@ -627,5 +678,7 @@ Con este ciclo se alcanzó el tope de tres ciclos de la auditoría. Lo que no se
 - Ministerio de Salud. Resolución 5109 de 2005 (rotulado), art. 4 modificado por la Resolución 557 de 2022. https://normograma.invima.gov.co/compilacion/docs/resolucion_minsaludps_0557_2022.htm
 - La República: Colanta, Pasco y Alpina y el yogurt griego en Colombia. https://www.larepublica.co/empresas/colanta-pasco-y-alpina-quieren-replicar-exito-estadounidense-del-yogurt-griego-2085161
 - SIC, Resolución 51039 de 2026 (prórroga de la 32209/2020). https://www.tuv.com/regulations-and-standards/en/colombia-resolution-51039-of-2026-extends-the-validity-of-colombia-s-technical-metrology-regulation-for-prepackaged-products.html · https://www.fenalco.com.co/blog/juridico-2/notijuridico-077-sic-amplia-la-vigencia-de-la-regulacion-para-productos-preempacados-8979
+- OEE en lácteos: Oxmaint, *FMCG production benchmarks* (lácteos: promedio 64 %, clase mundial 83 %). https://oxmaint.com/industries/fmcg/fmcg-production-benchmarks-oee-waste-industry · TeepTrak, *OEE benchmark by industry 2026* (alimentos y bebidas: mediana 55–62 %, clase mundial 83–85 %). https://teeptrak.com/en/oee-benchmark-by-industry-2026/
+- Ley 2101 de 2021 (jornada máxima de 42 h/semana desde el 15-jul-2026). https://www.publimetro.co/noticias/2026/06/23/jornada-laboral-de-42-horas-en-colombia-lo-que-cambiara-desde-el-15-de-julio-para-trabajadores-y-pymes/
 - ANSI/ISA-88.00.01 (IEC 61512-1). *Batch Control – Models and Terminology*.
 - Documentos del equipo: ISA88_Planta_Lactea_MEVKRA, Receta yogurt de fresa (29-sep), Acta 7-10-2026, Propuesta de automatización para Lácteos Altos de Teusacá e ISA-95 de la empresa base (Pablo, 8-oct).
