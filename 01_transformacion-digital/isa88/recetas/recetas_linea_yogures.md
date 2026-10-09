@@ -22,7 +22,7 @@ Recetas en formato ISA-88 (IEC 61512) para los tres productos de la línea escog
 
 - **Lote:** 10.000 L de leche estandarizada y pasteurizada. La meta es de 8 lotes al día, es decir, **80.000 L/día de leche para la línea**, que salen de ≈ 82.200 L de leche cruda, con ≈ 77.791 kg/día de producto (YF 39.276, YN 32.032 y YG 6.483 kg).
 - **Capacidad actual:** la llenadora de vasos U311 (12.000 vasos/h) es el cuello de botella. Trabajando al 85 % del día, la línea procesa hoy **≈ 58.200 L/día** (5,8 lotes y ≈ 56.600 kg de producto).
-- **Propuesta de mejora (sección 15):** una formadora-llenadora-selladora de 21.600 vasos/h lleva la línea a los **80.000 L/día**, con la llenadora al 53 % del día.
+- **Propuesta de mejora (sección 14):** una formadora-llenadora-selladora de 21.600 vasos/h lleva la línea a los **80.000 L/día**, con la llenadora al 53 % del día.
 - **Campaña diaria:** natural ×3 → griego ×2 → fresa ×3, siempre sin dulce antes que con dulce (sección 9.3).
 
 ---
@@ -112,7 +112,7 @@ flowchart LR
 | | **U216** | Concentración griega: separador centrífugo de boquillas, enfriador tubular y dosificación en línea de crema pasteurizada (desde U127) con medidor Coriolis | 7.000 L/h de alimentación |
 | | **U214A/U214B** | Tanques pulmón higiénicos cerrados de 12.000 L, con venteo por filtro de aire estéril; dosificador de fruta EM-2141 a la salida (bomba de lóbulos, Coriolis y mezclador estático) | YF y YN, en alternancia |
 | | **U217A/U217B** | Dos pulmones de griego de 4.000 L con agitador de ancla, uno por lote y en alternancia, para no mezclar lotes | Producto viscoso, ≤ 12 °C |
-| A3 · Envasado | U311 | **Actual:** llenadora-selladora de vasos preformados, multicarril (modelo ISA-88 del equipo). **Propuesta:** formadora-llenadora-selladora (FFS) desde rollo (sección 15) | Actual: 12.000 vasos/h de 150 g y 10.000/h de 200 g · Propuesta: 21.600/h de 150 g y 17.280/h de 200 g |
+| A3 · Envasado | U311 | **Actual:** llenadora-selladora de vasos preformados, multicarril (modelo ISA-88 del equipo). **Propuesta:** formadora-llenadora-selladora (FFS) desde rollo (sección 14) | Actual: 12.000 vasos/h de 150 g y 10.000/h de 200 g · Propuesta: 21.600/h de 150 g y 17.280/h de 200 g |
 | | U312 | Llenadora-taponadora rotativa de botellas con sellado por inducción | 4.000 bot/h de 1000 g · 2.500 bot/h de 1750 g |
 | | **U313** | Llenadora de potes con dosificadores de pistón para producto viscoso | 6.000/h de 150 g · 2.400/h de 500 g |
 | | Todas | Báscula de control (checkweigher), detector de metales, cámara de visión y codificador láser | Velocidad de la línea |
@@ -120,7 +120,7 @@ flowchart LR
 | A4 · Frío | U411/U412 | Cámara fría de 2–4 °C con aire forzado y gestión FEFO; muelle refrigerado | Producto ≤ 6 °C en ≤ 12 h: supuesto de diseño que se valida con el dimensionamiento del frío; reposo ≥ 12 h |
 | A9 · Servicios | U901–U905 | CIP central (3 circuitos), vapor, agua helada/glicol, aire comprimido estéril y tratamiento de suero | U905 (existente) recibe además ≈ 14.500 kg/día de suero ácido del griego |
 
-**U311 es el cuello de botella de la línea.** Para los 80.000 L/día, la llenadora actual (12.000 vasos/h) necesitaría 16,2 h nominales al día. Con el OEE de la planta (≈ 70 %) y 3,5 h de CIP, pausa y relevo, serían 26,7 h, el 111 % del día, así que no alcanza. Trabajando al 85 % (techo aceptable, sección 10.2), la línea procesa ≈ 58.200 L/día. La solución está en la sección 15.
+**U311 es el cuello de botella de la línea.** Para los 80.000 L/día, la llenadora actual (12.000 vasos/h) necesitaría 16,2 h nominales al día. Con el OEE de la planta (≈ 70 %) y 3,5 h de CIP, pausa y relevo, serían 26,7 h, el 111 % del día, así que no alcanza. Trabajando al 85 % (techo aceptable, sección 10.2), la línea procesa ≈ 58.200 L/día. La solución está en la sección 14.
 
 ---
 
@@ -470,10 +470,10 @@ Si los lotes se encadenaran sin esperar (uno cada 1,9 h), los fermentadores se s
 | Dato | Valor | Dónde se detalla |
 |---|---|---|
 | **Tamaño estándar de lote** | **10.000 L** de leche estandarizada (10.320 kg de entera; 10.350 kg de descremada). Mínimo 8.000 L y máximo 10.500 L. Producto por lote: YF 13.092 kg · YN 10.677 kg · YG 3.242 kg | Secciones 0, 5–7 |
-| Lotes por día | **Actual: ≈ 5,8** (≈ 58.200 L/día), uno cada ≈ 4,1 h · **Propuesta: 8** (80.000 L/día), uno cada 3 h | Secciones 10 y 15 |
+| Lotes por día | **Actual: ≈ 5,8** (≈ 58.200 L/día), uno cada ≈ 4,1 h · **Propuesta: 8** (80.000 L/día), uno cada 3 h | Secciones 10 y 14 |
 | **Fermentadores** | **4 × 12.000 L** (U211, U212, U213 y U218), con 10.000–11.400 kg útiles por lote. Ciclo de 8,1–9,0 h; ocupación del 71 % | Secciones 3 y 10 |
 | **Llenadoras** (velocidad nominal) | **U311** vasos: actual 12.000/h de 150 g y 10.000/h de 200 g; propuesta FFS 21.600/h y 17.280/h · **U312** botellas: 4.000/h de 1000 g y 2.500/h de 1750 g · **U313** potes: 6.000/h de 150 g y 2.400/h de 500 g | Sección 8.1 |
-| Capacidad efectiva de llenado | Nominal × OEE. U311 con YF150: actual 1.800 kg/h nominales × 0,70 ≈ **1.260 kg/h**; propuesta 3.240 kg/h × 0,80 ≈ **2.600 kg/h**. Horas reales por día: U311 20,4 · U312 14,0 · U313 10,3 h (actual, 58.200 L); 12,7 · 13,8 · 9,3 h (propuesta, 80.000 L) | Secciones 10.2 y 15 |
+| Capacidad efectiva de llenado | Nominal × OEE. U311 con YF150: actual 1.800 kg/h nominales × 0,70 ≈ **1.260 kg/h**; propuesta 3.240 kg/h × 0,80 ≈ **2.600 kg/h**. Horas reales por día: U311 20,4 · U312 14,0 · U313 10,3 h (actual, 58.200 L); 12,7 · 13,8 · 9,3 h (propuesta, 80.000 L) | Secciones 10.2 y 14 |
 | Otras capacidades | U201 12.000 L · U202 10 m³/h · separador U216 7.000 L/h · pulmones 2 × 12.000 L (U214A/B) y 2 × 4.000 L (U217A/B) | Sección 3 |
 | **Empleados (estimado)** | **≈ 57 personas en la línea de yogures**: 13 puestos por turno × 4 cuadrillas rotativas = 52, más 5 de día. No incluye la recepción común de leche ni el personal administrativo de la empresa | Sección 10.3 |
 
@@ -551,9 +551,9 @@ El OEE de la versión anterior se tomaba de la propuesta de Pablo (≈ 82 % actu
 
 ## 13. Riesgos y su resolución (investigación del 9 de octubre)
 
-Cada riesgo abierto en la versión 1.3 se investigó en fuentes primarias. La tabla muestra la evidencia, la resolución que ya queda escrita en la receta y lo único que no se puede cerrar sin planta: la confirmación en la prueba piloto.
+Cada riesgo de las recetas se investigó en fuentes primarias. La tabla muestra la evidencia, la resolución que ya queda escrita en la receta y lo único que no se puede cerrar sin planta: la confirmación en la prueba piloto.
 
-| N.º | Riesgo | Evidencia | Resolución en la receta (v1.4) | Queda para el piloto |
+| N.º | Riesgo | Evidencia | Resolución en la receta | Queda para el piloto |
 |---|---|---|---|---|
 | 1 | Acidez del griego mayor de 1,50 % (Res. 2310) | Griego colado industrial de vaca, con 8,6–9,6 % de proteína: acidez **1,09–1,17 %** al día 1, y el suero se lleva 0,45–0,52 % (*Foods* 2022, 11, 3953). El ácido láctico sale con el suero, así que el 1,9 % de los yogures fortificados no aplica. El riesgo está en el almacenamiento: con cultivo estándar sube hasta +0,78 % en 21 días a 4 °C (Yang y Yoon, *Foods* 2022) | **Cultivo de pH estable** (baja postacidificación; existen comerciales, p. ej. YoFlex Acidifix, y cepas deficientes en lactosa). Separar a 40–42 °C y enfriar a ≤ 10 °C de inmediato. **Liberación ≤ 1,20 %** al día 1 y **vida útil de 21 días**: 1,20 + 0,30 ≤ 1,50 % | Medir la subida real de acidez; si a 30 días queda ≤ 1,50 %, extender la vida útil a 30 días |
 | 2 | Composición real de la leche cruda | Mínimo legal (Decreto 616/2006 y Decreto 1880/2011) y dos estudios regionales (tabla 13.1) | Las recetas cumplen en **todos** los casos, incluido el mínimo legal. Si la cruda trae menos de 3,5 % de grasa, U121 remezcla crema propia (sobra crema del descremado del griego) | Promedio real de los proveedores para ajustar la LPD |
@@ -564,9 +564,9 @@ Cada riesgo abierto en la versión 1.3 se investigó en fuentes primarias. La ta
 | 7 | U202 dedicado o compartido | Carga calculada: 8 lotes × ≈ 1,2 h + 3 CIP-C × 1,4 h = 13,7 h/día, en ventanas fijas cada 3 h. Quedan 5 huecos libres de ≈ 1,8 h | **Dedicado** (recomendado): sin arbitraje y con los CIP alineados a los cambios de producto. Compartirlo con el kéfir es posible solo en los 5 huecos (≤ 5 lotes de kéfir/día de ≤ 1,2 h), con arbitraje en el MES y enjuague entre bases | Decisión del equipo al definir el kéfir |
 | 8 | Calor para la carga de U201 a 50 °C | m·cp·ΔT = 10.320 kg × 3,93 kJ/(kg·K) × 46 K = **518 kWh por lote** | EM-2014: intercambiador de placas de **≈ 1,05 MW** (carga en 0,5 h), con agua caliente de U902; **≈ 4.150 kWh/día** | Balance de energía de la planta |
 | 9 | Vigencia de la Res. SIC 32209/2020 | La SIC expidió la **Res. 51039 de 2026**, que prorroga 4 años el reglamento metrológico de preempacados | Se cita la 32209/2020, prorrogada por la 51039/2026 | — |
-| 10 | Proteína del suero del separador (nuevo) | Suero ácido industrial de vaca: **0,41–0,68 %** de proteína (*Foods* 2022). La versión 1.3 suponía 0,3 % | Se usa **0,5 %**. El griego baja a **3.242 kg/lote** (3,19 kg de leche por kg) y el balance sigue cerrando exacto | Datos del fabricante del separador |
+| 10 | Proteína del suero del separador  | Suero ácido industrial de vaca: **0,41–0,68 %** de proteína (*Foods* 2022). El supuesto inicial era 0,3 % | Se usa **0,5 %**. El griego baja a **3.242 kg/lote** (3,19 kg de leche por kg) y el balance sigue cerrando exacto | Datos del fabricante del separador |
 | 11 | Ritmo de un lote cada 3 h | — | Se verifica en el modelo de Tecnomatix (siguiente tarea) | — |
-| 12 | OEE de las llenadoras demasiado alto (nuevo) | Lácteos: típico 55–70 %, clase mundial 80–85 % (Oxmaint, TeepTrak). Alpina ≈ 80 % y pymes 50–60 % (clase con el profesor Ubaldo). La versión 1.4 usaba ≈ 82 % | **OEE actual ≈ 70 % y propuesto ≈ 80 %** (sección 10.2). Con la llenadora actual al 85 %, la línea da ≈ 58.200 L/día; la propuesta (sección 15) llega a 80.000 L/día | Medir el OEE real por llenadora |
+| 12 | OEE de las llenadoras demasiado alto  | Lácteos: típico 55–70 %, clase mundial 80–85 % (Oxmaint, TeepTrak). Alpina ≈ 80 % y pymes 50–60 % (clase con el profesor Ubaldo). El supuesto inicial era ≈ 82 % | **OEE actual ≈ 70 % y propuesto ≈ 80 %** (sección 10.2). Con la llenadora actual al 85 %, la línea da ≈ 58.200 L/día; la propuesta (sección 14) llega a 80.000 L/día | Medir el OEE real por llenadora |
 | 13 | Mezcla 3/3/2 y destino del suero y la crema | Son decisiones del equipo y del negocio | Siguen como propuesta | Acta del equipo |
 
 ### 13.1 Sensibilidad a la composición de la leche cruda
@@ -595,71 +595,7 @@ Calculada con [`sensibilidad_leche.py`](sensibilidad_leche.py), que recalcula el
 
 ---
 
-## 14. Auditoría
-
-Revisión adversarial con revisores independientes de contexto limpio, instruidos para encontrar errores, no para aprobar.
-
-### Ciclo 3 (sobre la versión 1.2, un revisor) · corregido en la versión 1.3
-
-Sin hallazgos críticos. Se corrigió:
-- **Acidez del griego:** declarada como riesgo en la versión 1.3 y resuelta con evidencia medida en la versión 1.4 (sección 13).
-- **Crema en U127:** límite de 24 h a ≤ 4 °C y CIP.
-- **Detector de metales:** pasa a la tubería antes de cada llenadora, porque el foil de aluminio impide detectar metales no ferrosos después de sellar.
-- **CIP:** frecuencias de cada equipo, con U215 y EM-2141 incluidos, y CIP completo en la transición YF → YN.
-- **U202:** tres CIP-C al día, uno en cada cambio de producto (corrida máxima de 7,2 h).
-- **PCC-2, PCC-3 y PCC-4:** monitoreo de caudal.
-- **Silos:** U123A/B para leche entera y U123C para descremada, cada uno con su código.
-- **Termización:** se hace antes de las 24 h, no después.
-- **Cambio de formato de U312:** declarado.
-- **Redondeos y página:** corregidos.
-
-Con este ciclo se alcanzó el tope de tres ciclos de la auditoría. Lo que no se puede cerrar sin datos de planta o del proveedor queda en la sección 13.
-
-### Ciclo 2 (sobre la versión 1.1, un revisor) · corregido en la versión 1.2
-
-- **Crítico:** el preparado de fresa entraba después del último tratamiento térmico sin control propio → PCC-6.
-- **Sellos frontales:** el YN está exento (art. 2.2 k); el YF solo lleva «ALTO EN AZÚCARES», porque el sello aplica al nutriente añadido (art. 32); el YG probablemente lleve el de grasas saturadas por la crema.
-- **Peroxidasa:** a 85 °C se inactiva, así que no se exige positiva en la crema.
-- **Códigos:** U213 no es nueva, U905 ya existe y U215 tenía otro significado en el modelo de Tecnomatix anterior.
-- **Pulmón del griego:** uno solo no alcanzaba para dos lotes seguidos → U217A/B.
-- **Ritmo:** los fermentadores se saturaban si los lotes se encadenaban → un lote cada 3 h.
-- **U202:** necesita un CIP intermedio → dos CIP-C al día.
-- **CIP de llenadoras:** ahora uno diario, al pasar de YF a YN.
-- **Acidez y SNG del griego:** quedan como supuestos.
-- **pH de corte:** 4,50 en YF/YN, coherente con el cultivo de baja postacidificación.
-- **Script:** verifica el cierre de grasa y proteína.
-- **Enlace de la Res. SIC 32209/2020:** corregido.
-
-### Ciclo 1 (sobre la versión 1.0, dos revisores: proceso/normativa y balance/consistencia) · corregido en la versión 1.1
-- Crema cruda añadida al griego después del último tratamiento térmico: se agregan la pasteurización de crema U126/U127 y el PCC-3.
-- Pectina del preparado de fresa, en contradicción con el art. 19 de la Res. 2310.
-- Acidez del yogur con fresa diluida por debajo de 0,70 %.
-- Norma SIC derogada (16379/2003 → 32209/2020).
-- Res. 2492/2022 y sellos frontales.
-- Peroxidasa positiva en la liberación.
-- Orden de la campaña (el griego sin dulce iba después de la fresa).
-- Tanques llamados «asépticos» sin SIP.
-- Código U214 reutilizado con otro significado.
-- Lote máximo sin holgura.
-- Denominación del griego.
-- Densidad de la leche descremada.
-- Azúcar diaria mal sumada (1.878 → 1.879 kg).
-- Redondeos de YN y del rendimiento del griego.
-- Dosis de crema expresada sobre la base equivocada.
-- Tiempos de U201 sin la transferencia y con la hidratación contradictoria.
-- Ciclo de fermentación sin la ruptura ni la agitación.
-- Justificación de U311 que no se sostenía con las cifras del documento.
-- Silo U123A/B sin holgura.
-- Validaciones del script.
-
-**Decisiones de diseño declaradas:**
-- U202 dedicado a yogures.
-- Operación continua con un lote cada 3 h.
-- Control del preparado de fruta en recepción (PCC-6), en lugar de un pasteurizador de fruta propio.
-
----
-
-## 15. Propuesta de mejora: nueva llenadora de vasos para llegar a 80.000 L/día
+## 14. Propuesta de mejora: nueva llenadora de vasos para llegar a 80.000 L/día
 
 ### 15.1 El problema: la llenadora de vasos es el cuello de botella
 
@@ -720,7 +656,7 @@ Con la propuesta, la línea cumple la meta y todos los equipos quedan por debajo
 
 ---
 
-## 16. Fuentes
+## 15. Fuentes
 
 - Tetra Pak. *Dairy Processing Handbook*, cap. 13 (productos lácteos fermentados) y cap. de limpieza. https://dairyprocessinghandbook.tetrapak.com/chapter/fermented-milk-products · https://dairyprocessinghandbook.tetrapak.com/chapter/cleaning-dairy-equipment
 - Tetra Pak. *Precision pasteurization – your path to perfect yoghurt*. https://www.tetrapak.com/en-us/insights/cases-articles/precision-pasteurization
