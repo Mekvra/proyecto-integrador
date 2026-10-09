@@ -530,14 +530,35 @@ La recepción, la clarificación, la estandarización y la pasteurización son *
 | Etapa | Equipo | Carga con 300.000 L/día | Uso |
 |---|---|---|---:|
 | Recepción | 2 bahías U111/U112 (30–40 m³/h) | Cisterna media de 20.000 L (rango 10.000–30.000): **15 cisternas/día**. Cada una ocupa la bahía ≈ 1 h: pruebas de plataforma ≈ 15 min, descarga a 35 m³/h ≈ 35 min y transición ≈ 12 min. Total: 15 h-bahía/día | 47 % de 2 bahías en una ventana de recepción de 16 h |
-| Leche cruda | Tanques U113/U114 de 60.000 L + **U115** (nuevo, 60.000 L) | La leche llega en 16 h y se trata en ≈ 18 h, así que hay que guardar ≈ 50 % del día: **≈ 150.000 L**, más un tanque libre para CIP. Con los 2 tanques del ISA-88 (120.000 L) no alcanza | 3 × 60.000 L = 180.000 L |
+| Leche cruda | Tanques U113/U114 de 60.000 L + **U115** (nuevo, 60.000 L) | La leche se pasteuriza mientras llega: el pico de acumulación es de **≈ 68.000 L**. Dos tanques reciben y uno se lava (ver la explicación abajo) | 3 × 60.000 L = 180.000 L |
 | Clarificación, estandarización y pasteurización | U121 + U122 a 20.000 L/h, en flujo continuo | 300.000 / 20.000 = **15 h** de proceso + 2 CIP-C (≈ 2,8 h) + arranques (≈ 0,5 h) = **18,3 h/día** | **76 %** |
 | Leche pasteurizada | Silos por línea: U123A/B y U123C (yogures); U124 y U125 (otras líneas) | Cada silo guarda la leche estandarizada de su línea, máximo 24 h | — |
 
 - **El tronco común tiene margen:** al 76 % queda por debajo del 80 % recomendado.
 - **Si la planta crece:** si la recepción sube de 300.000 L/día, el pasteurizador U121/U122 es el primer equipo del tronco que se queda corto. Habría que pasar a 25.000 L/h.
-- **Supuestos:** el tamaño medio de cisterna, la ventana de recepción de 16 h y el colchón del 50 % en leche cruda se confirman con la logística de acopio real.
+- **Supuestos:** el tamaño medio de cisterna y la ventana de recepción de 16 h se confirman con la logística de acopio real.
 - **En Tecnomatix:** el tronco común se modela como un flujo continuo que llena los silos de cada línea. La línea de yogures toma de su silo lotes de 10.000 L (proceso por lotes).
+
+#### Por qué 3 tanques de leche cruda y no tanques para 300.000 L
+
+Los tanques de leche cruda no guardan la leche de todo el día: funcionan como una **sala de espera**. Los camiones llegan en dos tandas, después del ordeño de la mañana y del de la tarde, y el pasteurizador va sacando leche **al mismo tiempo**, a 20.000 L/h. El tanque solo acumula lo que entra más rápido de lo que sale.
+
+| Hora | Llega (camiones) | Sale (pasteurizador) | Queda en tanques |
+|---|---:|---:|---:|
+| 05:00–11:00 (ordeño de la mañana) | 30.000 L/h | 20.000 L/h | Sube hasta **60.000 L** |
+| 11:00–14:00 (sin camiones; CIP del pasteurizador) | 0 | 20.000 L/h, menos 1,4 h de CIP | Baja a 28.000 L |
+| 14:00–18:00 (ordeño de la tarde) | 30.000 L/h | 20.000 L/h | Sube hasta **68.000 L (pico del día)** |
+| 18:00–21:00 | 0 | 20.000 L/h | Baja a 0 |
+| 21:00–05:00 | 0 | Segundo CIP; sin leche | 0 |
+
+- **El pico de acumulación es de ≈ 68.000 L**, no 300.000 L, porque la leche se va pasteurizando mientras llega.
+- **Por qué 3 tanques de 60.000 L (180.000 L):**
+  - **2 tanques reciben leche** (120.000 L). Cubren el pico de 68.000 L y dejan ≈ 52.000 L de colchón, suficientes para ≈ 1,7 h de camiones descargando con el pasteurizador parado (una falla o un CIP que se alarga).
+  - **El tercero está en lavado (CIP) o vacío**, listo para entrar. Cada tanque se lava cada vez que se vacía, y la leche cruda no puede pasar más de 24 h guardada.
+  - Con solo 2 tanques, mientras uno se lava queda 1 tanque de 60.000 L, que **no alcanza para el pico de 68.000 L**. Por eso el valor de 2 × 60.000 L del ISA-88, pensado para el alcance anterior, se amplía a 3.
+- **Por qué no hacen falta tanques para 300.000 L:** solo serían necesarios si todos los camiones llegaran juntos con el pasteurizador apagado, o si se quisiera guardar un día completo de reserva. Ninguna de las dos situaciones aplica. Además, la leche cruda guardada más de 24 h se degrada y tendría que termizarse.
+- **Supuestos:** dos olas de recolección (180.000 L en la mañana y 120.000 L en la tarde) y cisterna media de 20.000 L. Se confirman con la logística de acopio real.
+
 
 ## 11. Balance diario de la línea
 
