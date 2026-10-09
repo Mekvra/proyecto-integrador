@@ -525,7 +525,20 @@ El OEE de la versión anterior se tomaba de la propuesta de Pablo (≈ 82 % actu
 
 ### 10.4 Tronco común continuo (acopio a pasteurización, 300.000 L/día)
 
-La recepción, la clarificación, la estandarización y la pasteurización son **continuas** y atienden a **toda la planta**: 300.000 L/día de leche cruda (acta del 7-oct). La línea de yogures toma de ahí ≈ 60.000 L/día (20 %); el resto va a las líneas de quesos y bebidas fermentadas. Los equipos de esta sección se dimensionan para los 300.000 L, no solo para yogures.
+La recepción, la clarificación, la estandarización y la pasteurización son **continuas** y atienden a **toda la planta**. Según el acta del 7-oct y la propuesta de Pablo (8-oct), la planta recibe **300.000 L/día** de leche cruda y destina **80.000 L/día a la línea de yogures**. Los **220.000 L restantes** van a las otras dos líneas del portafolio, quesos y bebidas fermentadas, que todavía no tienen reparto acordado. Los equipos de esta sección se dimensionan para los 300.000 L, no solo para yogures.
+
+**Reparto propuesto de los 300.000 L/día** (por ratificar en acta):
+
+| Línea | Productos | Leche (L/día) | % | Producto aproximado |
+|---|---|---:|---:|---|
+| **Yogures** (esta línea) | Fresa, natural y griego | **80.000** (cupo del acta) | 27 % | Hoy procesa ≈ 58.300 L (≈ 56.400 kg/día); usa el cupo completo con la propuesta de la sección 14 |
+| Quesos | Mozzarella, quesillo y doble crema | 160.000 | 53 % | ≈ 16.000 kg/día (≈ 10 L de leche por kg de queso) |
+| Bebidas fermentadas | Kéfir natural, saborizado y con fruta | 60.000 | 20 % | ≈ 61.800 kg/día (≈ 1 kg por litro) |
+| **Total** | | **300.000** | 100 % | |
+
+- **Criterio:** los quesos llevan la mayor parte porque necesitan ≈ 10 L de leche por kg de producto. El kéfir es una bebida de volumen menor, como en el modelo ISA-88 anterior, donde tenía menos leche que el yogur.
+- **Hoy:** la línea de yogures procesa ≈ 58.300 L/día, limitada por la llenadora de vasos. Los ≈ 21.700 L restantes de su cupo se reciben y se pasan a quesos, o se deja de acopiar esa leche hasta instalar la mejora de la sección 14. Es una decisión del equipo.
+- **Para el tronco común no cambia nada:** con cualquier reparto, la recepción, los tanques y el pasteurizador procesan los mismos 300.000 L/día.
 
 | Etapa | Equipo | Carga con 300.000 L/día | Uso |
 |---|---|---|---:|
