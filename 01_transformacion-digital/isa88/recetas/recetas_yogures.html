@@ -179,19 +179,19 @@ footer { font-size: 12px; color: var(--muted); border-top: 1px solid var(--rule)
   <h1>Línea de yogures de Lácteos Altos de Teusacá</h1>
   <p>Tres productos y un recorrido completo, desde que la cisterna llega a la planta de Sopó hasta el despacho en frío. Cada etapa tiene un nombre corto para el piso de planta y su nombre técnico ISA-88.</p>
   <div class="meta">
-    <span>Versión <b>1.6</b></span><span>Fecha <b>9 oct 2026</b></span>
+    <span>Versión <b>1.7</b></span><span>Fecha <b>9 oct 2026</b></span>
   </div>
   <p class="note">Todas las cantidades son valores de diseño. Los parámetros vienen de Tetra Pak, GEA, el Codex y la normativa colombiana, y la composición de las materias primas es un supuesto declarado. Ninguna cifra es un resultado medido en planta. El balance completo está en <span class="mono">balance_recetas_yogures.py</span>, en el repositorio.</p>
 </header>
 
 <section id="resumen">
   <span class="eyebrow">00 · Resumen</span>
-  <h2>Hoy 58.200 L al día; con la propuesta, 80.000 L</h2>
+  <h2>≈ 58.300 L de leche al día, ≈ 5,8 lotes</h2>
   <div class="kpis">
-    <div><b>≈ 58.200 L</b><span>de leche por día hoy, con la llenadora de vasos al 85 %</span></div>
-    <div><b>8 lotes</b><span>de 10.000 L cada uno</span></div>
-    <div><b>80.000 L</b><span>de leche por día con la nueva llenadora (77.791 kg de producto)</span></div>
-    <div><b>7 referencias</b><span>en 3 llenadoras</span></div>
+    <div><b>≈ 58.300 L</b><span>de leche por día (≈ 60.000 L de cruda)</span></div>
+    <div><b>35 lotes</b><span>por semana en 6 días, de 10.000 L cada uno</span></div>
+    <div><b>≈ 56.400 kg</b><span>de producto terminado por día</span></div>
+    <div><b>181.756</b><span>envases por día en 3 llenadoras</span></div>
   </div>
   <div class="products">
     <article class="prod yf">
@@ -199,7 +199,7 @@ footer { font-size: 12px; color: var(--muted); border-top: 1px solid var(--rule)
       <h3>Yogur con trozos de fresa</h3>
       <dl>
         <dt>Denominación</dt><dd>Yogur entero con dulce, con fresa</dd>
-        <dt>Lotes/día</dt><dd>3</dd>
+        <dt>Lotes/semana</dt><dd>13</dd>
         <dt>Por lote</dt><dd>13.092 kg</dd>
         <dt>Envases</dt><dd>Vaso 150 g · botella 1000 g y 1750 g</dd>
       </dl>
@@ -209,7 +209,7 @@ footer { font-size: 12px; color: var(--muted); border-top: 1px solid var(--rule)
       <h3>Yogur natural</h3>
       <dl>
         <dt>Denominación</dt><dd>Yogur entero sin dulce</dd>
-        <dt>Lotes/día</dt><dd>3</dd>
+        <dt>Lotes/semana</dt><dd>13</dd>
         <dt>Por lote</dt><dd>10.677 kg</dd>
         <dt>Envases</dt><dd>Vaso 200 g · botella 1000 g</dd>
       </dl>
@@ -219,13 +219,24 @@ footer { font-size: 12px; color: var(--muted); border-top: 1px solid var(--rule)
       <h3>Yogur griego</h3>
       <dl>
         <dt>Denominación</dt><dd>Yogur semidescremado sin dulce; en el Codex, leche fermentada concentrada</dd>
-        <dt>Lotes/día</dt><dd>2</dd>
+        <dt>Lotes/semana</dt><dd>9</dd>
         <dt>Por lote</dt><dd>3.242 kg</dd>
         <dt>Envases</dt><dd>Vaso 150 g · pote 500 g</dd>
       </dl>
     </article>
   </div>
-  <p>Orden de la campaña diaria: <b>natural ×3 → griego ×2 → fresa ×3</b>. Siempre va primero lo sin dulce, para que ningún producto sin azúcar reciba arrastre de azúcar ni de fruta.</p>
+  <p>Orden de producción: siempre sin dulce antes que con dulce, <b>natural → griego → fresa</b>, para que ningún producto sin azúcar reciba arrastre de azúcar ni de fruta.</p>
+  <h3>Envases que se llenan al día</h3>
+  <div class="tbl"><table>
+    <thead><tr><th>Llenadora</th><th>Envases</th><th class="r">Unidades/día</th></tr></thead>
+    <tbody>
+      <tr><td>U311 · vasos</td><td>85.098 de fresa 150 g + 46.268 de natural 200 g</td><td class="r"><b>131.366</b></td></tr>
+      <tr><td>U312 · botellas</td><td>9.928 de fresa 1000 g + 3.242 de fresa 1750 g + 13.881 de natural 1000 g</td><td class="r"><b>27.051</b></td></tr>
+      <tr><td>U313 · griego</td><td>19.449 vasos de 150 g + 3.890 potes de 500 g</td><td class="r"><b>23.339</b></td></tr>
+      <tr class="total"><td>Total</td><td></td><td class="r">181.756</td></tr>
+    </tbody>
+  </table></div>
+  <p>Cuello de botella: la llenadora de vasos U311 (12.000 vasos/h), que trabaja al 85 % del día. La mejora está en la <a href="#propuesta">propuesta</a>.</p>
 </section>
 
 <section id="mapa">
@@ -260,8 +271,8 @@ footer { font-size: 12px; color: var(--muted); border-top: 1px solid var(--rule)
   <div class="tbl"><table>
     <thead><tr><th>Unidad</th><th>Equipo</th><th>Requerimiento para la línea</th></tr></thead>
     <tbody>
-      <tr><td class="tag">U111/U112</td><td>Bahías de descarga: desaireador, filtro dúplex, caudalímetro y enfriador de placas</td><td>≈ 82.200 L/día de leche cruda para yogures; salida ≤ 4 °C</td></tr>
-      <tr><td class="tag">U113/U114</td><td>Tanques de leche cruda aislados, con agitador</td><td>≤ 4 °C; máximo 24 h</td></tr>
+      <tr><td class="tag">U111/U112</td><td>Bahías de descarga: desaireador, filtro dúplex, caudalímetro y enfriador de placas</td><td>≈ 60.000 L/día de cruda para yogures, de los 300.000 L/día de la planta (ver tronco común); salida ≤ 4 °C</td></tr>
+      <tr><td class="tag">U113/U114 + U115</td><td>Tanques de leche cruda aislados, con agitador (U115 es nuevo)</td><td>3 × 60.000 L para los 300.000 L/día de la planta; ≤ 4 °C; máximo 24 h</td></tr>
       <tr><td class="tag">U121</td><td>Separadora autolimpiante con estandarización en línea</td><td>Consignas de grasa: 3,50 % y ≤ 0,05 %</td></tr>
       <tr><td class="tag">U122</td><td>Pasteurizador HTST de placas con regeneración y válvula de desvío</td><td>75 °C × 15 s</td></tr>
       <tr><td class="tag">U123A/B · U123C</td><td>Dos silos de leche entera en alternancia · silo de leche descremada</td><td>2 × 40.000 L (YF, YN) · 25.000 L (YG); 2–4 °C</td></tr>
@@ -273,7 +284,7 @@ footer { font-size: 12px; color: var(--muted); border-top: 1px solid var(--rule)
       <tr><td class="tag">U216</td><td>Separador centrífugo de boquillas, enfriador tubular y dosificación de crema desde U127 con Coriolis</td><td>7.000 L/h de alimentación</td></tr>
       <tr><td class="tag">U214A/B</td><td>Tanques pulmón higiénicos de 12.000 L con venteo por filtro estéril; dosificador de fruta EM-2141 a la salida</td><td>YF y YN, en alternancia</td></tr>
       <tr><td class="tag">U217A/B</td><td>Dos pulmones de griego de 4.000 L con agitador de ancla, uno por lote</td><td>≤ 12 °C; no se mezclan lotes</td></tr>
-      <tr><td class="tag">U311</td><td><b>Actual:</b> llenadora-selladora de vasos preformados. <b>Propuesta:</b> formadora-llenadora-selladora (FFS) desde rollo</td><td>Actual 12.000/h de 150 g y 10.000/h de 200 g · Propuesta 21.600/h y 17.280/h</td></tr>
+      <tr><td class="tag">U311</td><td>Llenadora-selladora de vasos preformados, multicarril (modelo ISA-88 del equipo)</td><td>12.000 vasos/h de 150 g y 10.000/h de 200 g; es el cuello de botella</td></tr>
       <tr><td class="tag">U312</td><td>Llenadora-taponadora rotativa con sellado por inducción</td><td>4.000 bot/h de 1000 g · 2.500 bot/h de 1750 g</td></tr>
       <tr><td class="tag">U313</td><td>Llenadora de potes con dosificadores de pistón para producto viscoso</td><td>6.000/h de 150 g · 2.400/h de 500 g</td></tr>
       <tr><td class="tag">U341/U342</td><td>Celda robotizada de encajonado y paletizado, y envolvedora de estibas</td><td>Común a las tres llenadoras</td></tr>
@@ -281,7 +292,7 @@ footer { font-size: 12px; color: var(--muted); border-top: 1px solid var(--rule)
       <tr><td class="tag">U901 · U905</td><td>CIP central de 3 circuitos · manejo de suero ácido</td><td>U905 (existente) recibe además ≈ 14.500 kg/día de suero ácido</td></tr>
     </tbody>
   </table></div>
-  <p><b>U311 es el cuello de botella.</b> Para 80.000 L/día, la llenadora actual de 12.000 vasos/h necesitaría el 111 % del día (26,7 h). Trabajando al 85 % (techo aceptable), la línea procesa ≈ 58.200 L/día. La solución está en la <a href="#propuesta">propuesta de mejora</a>.</p>
+  <p><b>U311 es el cuello de botella.</b> Llena ≈ 131.400 vasos al día. Con el OEE de la planta (≈ 70 %) y 3,5 h de CIP, pausa y relevo, eso la ocupa el 85 % del día, que es el techo aceptable, y fija la producción en ≈ 58.300 L/día. La mejora está en la <a href="#propuesta">propuesta</a>.</p>
 </section>
 
 <section id="comun">
@@ -322,7 +333,7 @@ footer { font-size: 12px; color: var(--muted); border-top: 1px solid var(--rule)
 
 <section id="yf">
   <article class="recipe yf">
-    <div class="recipe-head"><span class="code">YF</span><h2>Yogur con trozos de fresa</h2><span class="eyebrow">Receta 1.6 · YF150 · YF1000 · YF1750</span></div>
+    <div class="recipe-head"><span class="code">YF</span><h2>Yogur con trozos de fresa</h2><span class="eyebrow">Receta 1.7 · YF150 · YF1000 · YF1750</span></div>
     <div class="facts">
       <span class="fact">Grasa <b>2,79 %</b></span><span class="fact">Proteína <b>3,60 %</b></span><span class="fact">Fruta neta <b>6,5 %</b></span><span class="fact">Azúcar añadida <b>9,3 %</b></span><span class="fact">pH de corte <b>4,50</b></span><span class="fact">Lote máximo <b>10.500 L</b></span>
     </div>
@@ -382,7 +393,7 @@ footer { font-size: 12px; color: var(--muted); border-top: 1px solid var(--rule)
 
 <section id="yn">
   <article class="recipe yn">
-    <div class="recipe-head"><span class="code">YN</span><h2>Yogur natural</h2><span class="eyebrow">Receta 1.6 · YN200 · YN1000</span></div>
+    <div class="recipe-head"><span class="code">YN</span><h2>Yogur natural</h2><span class="eyebrow">Receta 1.7 · YN200 · YN1000</span></div>
     <div class="facts">
       <span class="fact">Grasa <b>3,42 %</b></span><span class="fact">Proteína <b>4,14 %</b></span><span class="fact">SNG <b>11,5 %</b></span><span class="fact">Sin azúcar</span><span class="fact">pH de corte <b>4,50</b></span><span class="fact">Primero en la campaña</span>
     </div>
@@ -426,7 +437,7 @@ footer { font-size: 12px; color: var(--muted); border-top: 1px solid var(--rule)
 
 <section id="yg">
   <article class="recipe yg">
-    <div class="recipe-head"><span class="code">YG</span><h2>Yogur griego</h2><span class="eyebrow">Receta 1.6 · YG150 · YG500</span></div>
+    <div class="recipe-head"><span class="code">YG</span><h2>Yogur griego</h2><span class="eyebrow">Receta 1.7 · YG150 · YG500</span></div>
     <div class="facts">
       <span class="fact">Proteína <b>9,23 %</b></span><span class="fact">Grasa <b>2,00 %</b></span><span class="fact">Leche <b>3,19 kg/kg</b></span><span class="fact">Rendimiento <b>0,32 kg/L</b></span><span class="fact">pH de corte <b>4,55</b></span><span class="fact">Crema pasteurizada <b>U126</b></span>
     </div>
@@ -476,7 +487,7 @@ footer { font-size: 12px; color: var(--muted); border-top: 1px solid var(--rule)
         <tr><td>Denominación legal</td><td colspan="2"><b>«Yogurt griego natural semidescremado — yogurt concentrado por separación del suero»</b>, sin espesantes. «Griego» es veraz porque el producto es colado (Res. 5109/2005, art. 4); precedente: Colanta, Pasco y Alpina</td><td>Res. 2310 · Res. 5109</td></tr>
       </tbody>
     </table></div>
-    <p><b>Suero ácido:</b> 14.526 kg/día. No se vierte, por su carga orgánica. Destinos a evaluar: concentración por ósmosis inversa, alimentación animal o biogás.</p>
+    <p><b>Suero ácido:</b> ≈ 10.900 kg/día. No se vierte, por su carga orgánica. Destinos a evaluar: concentración por ósmosis inversa, alimentación animal o biogás.</p>
   </article>
 </section>
 
@@ -486,13 +497,13 @@ footer { font-size: 12px; color: var(--muted); border-top: 1px solid var(--rule)
   <div class="tbl"><table>
     <thead><tr><th>Referencia</th><th>Envase</th><th>Llenadora</th><th class="r">Velocidad</th><th class="r">% del lote</th><th class="r">Und/lote</th><th class="r">Und/día</th><th class="r">Und/caja</th><th class="r">h/lote</th></tr></thead>
     <tbody>
-      <tr><td class="tag">YF150</td><td>Vaso PP termoformado, foil termosellado</td><td class="tag">U311</td><td class="r">12.000/h · 21.600/h</td><td class="r">45</td><td class="r">39.276</td><td class="r">117.828</td><td class="r">24</td><td class="r">3,27 · 1,82</td></tr>
-      <tr><td class="tag">YF1000</td><td>Botella PEAD, tapa rosca y sello de inducción</td><td class="tag">U312</td><td class="r">4.000/h</td><td class="r">35</td><td class="r">4.582</td><td class="r">13.747</td><td class="r">12</td><td class="r">1,15</td></tr>
-      <tr><td class="tag">YF1750</td><td>Botella PEAD con asa, sello de inducción</td><td class="tag">U312</td><td class="r">2.500/h</td><td class="r">20</td><td class="r">1.496</td><td class="r">4.489</td><td class="r">6</td><td class="r">0,60</td></tr>
-      <tr><td class="tag">YN200</td><td>Vaso PP termoformado, foil termosellado</td><td class="tag">U311</td><td class="r">10.000/h · 17.280/h</td><td class="r">40</td><td class="r">21.355</td><td class="r">64.064</td><td class="r">24</td><td class="r">2,14 · 1,24</td></tr>
-      <tr><td class="tag">YN1000</td><td>Botella PEAD, tapa rosca y sello de inducción</td><td class="tag">U312</td><td class="r">4.000/h</td><td class="r">60</td><td class="r">6.406</td><td class="r">19.219</td><td class="r">12</td><td class="r">1,60</td></tr>
-      <tr><td class="tag">YG150</td><td>Vaso PP con foil y sobretapa</td><td class="tag">U313</td><td class="r">6.000/h</td><td class="r">60</td><td class="r">12.966</td><td class="r">25.933</td><td class="r">24</td><td class="r">2,16</td></tr>
-      <tr><td class="tag">YG500</td><td>Pote PP con foil y sobretapa</td><td class="tag">U313</td><td class="r">2.400/h</td><td class="r">40</td><td class="r">2.593</td><td class="r">5.187</td><td class="r">12</td><td class="r">1,08</td></tr>
+      <tr><td class="tag">YF150</td><td>Vaso PP termoformado, foil termosellado</td><td class="tag">U311</td><td class="r">12.000/h</td><td class="r">45</td><td class="r">39.276</td><td class="r">85.098</td><td class="r">24</td><td class="r">3,27</td></tr>
+      <tr><td class="tag">YF1000</td><td>Botella PEAD, tapa rosca y sello de inducción</td><td class="tag">U312</td><td class="r">4.000/h</td><td class="r">35</td><td class="r">4.582</td><td class="r">9.928</td><td class="r">12</td><td class="r">1,15</td></tr>
+      <tr><td class="tag">YF1750</td><td>Botella PEAD con asa, sello de inducción</td><td class="tag">U312</td><td class="r">2.500/h</td><td class="r">20</td><td class="r">1.496</td><td class="r">3.242</td><td class="r">6</td><td class="r">0,60</td></tr>
+      <tr><td class="tag">YN200</td><td>Vaso PP termoformado, foil termosellado</td><td class="tag">U311</td><td class="r">10.000/h</td><td class="r">40</td><td class="r">21.355</td><td class="r">46.268</td><td class="r">24</td><td class="r">2,14</td></tr>
+      <tr><td class="tag">YN1000</td><td>Botella PEAD, tapa rosca y sello de inducción</td><td class="tag">U312</td><td class="r">4.000/h</td><td class="r">60</td><td class="r">6.406</td><td class="r">13.881</td><td class="r">12</td><td class="r">1,60</td></tr>
+      <tr><td class="tag">YG150</td><td>Vaso PP con foil y sobretapa</td><td class="tag">U313</td><td class="r">6.000/h</td><td class="r">60</td><td class="r">12.966</td><td class="r">19.449</td><td class="r">24</td><td class="r">2,16</td></tr>
+      <tr><td class="tag">YG500</td><td>Pote PP con foil y sobretapa</td><td class="tag">U313</td><td class="r">2.400/h</td><td class="r">40</td><td class="r">2.593</td><td class="r">3.890</td><td class="r">12</td><td class="r">1,08</td></tr>
     </tbody>
   </table></div>
   <p>Horas a velocidad nominal. El modelo de Tecnomatix añade desempeño, fallas, CIP y cambios de formato.</p>
@@ -539,7 +550,7 @@ footer { font-size: 12px; color: var(--muted); border-top: 1px solid var(--rule)
   </table></div>
   <p><b>Criterios microbiológicos</b> (Res. 1407/2022, numeral 1.11, leche fermentada): coliformes n = 5, c = 2, m = 10, M = 10² UFC/g · mohos y levaduras n = 5, c = 2, m = 2×10², M = 5×10² UFC/g · <i>E. coli</i> n = 5, c = 0, &lt; 10 UFC/g.</p>
   <div class="cols2">
-    <div class="note"><b>Orden de la campaña.</b> YN ×3 → YG ×2 → YF ×3, un lote cada 3 h, en ciclo continuo. Primero va lo sin dulce. Cada cambio de producto lleva CIP-C de U202; el paso de YF a YN lleva CIP completo. El separador U216 recibe su CIP-S al terminar el griego, mientras siguen los lotes de fresa.</div>
+    <div class="note"><b>Orden de producción.</b> 35 lotes por semana (13 YN, 9 YG y 13 YF), de 5 a 6 por día, siempre YN → YG → YF y con un lote cada ≈ 4,1 h. Cada cambio de producto lleva CIP-C de U202; el paso de YF a YN lleva CIP completo.</div>
     <div class="note"><b>Puntos de control.</b> Curva de pH y pH de corte, acidez del producto con fruta, tiempo y temperatura en los pulmones, integridad del sello, cadena de frío ≤ 6 °C y ATP en superficies después del CIP.</div>
   </div>
 </section>
@@ -556,26 +567,26 @@ footer { font-size: 12px; color: var(--muted); border-top: 1px solid var(--rule)
     <div class="legend yf"><span><i class="s-fill"></i>Llenar</span><span><i class="s-inoc"></i>Inocular</span><span><i class="s-inc"></i>Incubar (color del producto)</span><span><i class="s-brk"></i>Romper o agitar</span><span><i class="s-out"></i>Vaciar o separar</span><span><i class="s-cip"></i>CIP</span></div>
   </div>
   <div class="kpis">
-    <div><b>71 %</b><span>carga de los 4 fermentadores (67,8 h-tanque/día); con 3 sería el 94 %</span></div>
-    <div><b>16,2 → 9,2 h</b><span>U311 vasos, horas nominales para 80.000 L/día (actual → FFS)</span></div>
-    <div><b>10,0 h</b><span>U312 botellas, horas nominales/día</span></div>
-    <div><b>6,5 h</b><span>U313 griego, horas nominales/día</span></div>
+    <div><b>52 %</b><span>carga de los 4 fermentadores (49,5 h-tanque/día); nunca más de 3 ocupados a la vez</span></div>
+    <div><b>11,7 h</b><span>U311 vasos, horas nominales/día (85 % del día con OEE y paradas)</span></div>
+    <div><b>7,2 h</b><span>U312 botellas, horas nominales/día (58 %)</span></div>
+    <div><b>4,9 h</b><span>U313 griego, horas nominales/día (44 %)</span></div>
   </div>
-  <p><b>Ritmo: un lote cada 3 h (24 h / 8 lotes).</b> El script simula tres días seguidos y nunca hay más de 4 fermentadores ocupados a la vez. U201 trabaja ≈ 1,9 h de cada 3 h, así que la base nunca espera fermentador. U202 trabaja ≈ 1,2 h de cada 3 h, y sus dos CIP-C caben en los huecos. El MES solo arranca U201 cuando hay un fermentador libre para ese lote. Lead time por lote, del silo al último envase: ≈ 10–12 h, más ≥ 12 h de reposo en cámara. <b>Tecnomatix verificará el ritmo</b> con las llenadoras y las fallas.</p>
+  <p><b>Ritmo: un lote cada ≈ 4,1 h.</b> Lo marca la llenadora de vasos U311, que no da para más. U201 trabaja ≈ 1,9 h de cada 4,1 h, así que la base nunca espera fermentador. U202 deja huecos de ≈ 2,9 h para sus CIP-C. El MES solo arranca U201 cuando hay un fermentador libre. Lead time por lote, del silo al último envase: ≈ 10–12 h, más ≥ 12 h de reposo en cámara. <b>Tecnomatix verificará el ritmo</b> con las llenadoras y las fallas.</p>
 
   <h3>Balance diario de la línea</h3>
-  <div class="stack" role="img" aria-label="Salidas por día: YF 39.276 kg, YN 32.032 kg, YG 6.483 kg, suero ácido 14.526 kg, crema 1.880 kg">
+  <div class="stack" role="img" aria-label="Salidas por día: YF 28.366 kg, YN 23.134 kg, YG 4.862 kg, suero ácido 10.895 kg, crema 1.405 kg">
     <span class="b-yf" style="width:41.70%">YF</span><span class="b-yn" style="width:34.01%">YN</span><span class="b-yg" style="width:6.88%">YG</span><span class="b-su" style="width:15.42%">Suero</span><span class="b-cr" style="width:2.00%" title="Crema excedente"></span>
   </div>
   <div class="tbl"><table>
     <thead><tr><th>Entradas</th><th class="r">Por día</th><th>Salidas</th><th class="r">Por día</th></tr></thead>
     <tbody>
-      <tr><td>Leche cruda (82.179 L)</td><td class="r">84.809 kg</td><td>Yogur con fresa YF</td><td class="r">39.276 kg</td></tr>
-      <tr><td>Leche en polvo descremada</td><td class="r">2.403 kg</td><td>Yogur natural YN</td><td class="r">32.032 kg</td></tr>
-      <tr><td>Azúcar</td><td class="r">1.879 kg</td><td>Yogur griego YG</td><td class="r">6.483 kg</td></tr>
-      <tr><td>Preparado de fresa</td><td class="r">5.106 kg</td><td>Suero ácido (U905)</td><td class="r">14.526 kg</td></tr>
-      <tr><td>Cultivo DVS</td><td class="r">3.200 U</td><td>Crema excedente al 40 % (otras líneas)</td><td class="r">1.880 kg</td></tr>
-      <tr class="total"><td>Total</td><td class="r">94.197 kg</td><td>Total</td><td class="r">94.197 kg</td></tr>
+      <tr><td>Leche cruda (59.963 L)</td><td class="r">61.882 kg</td><td>Yogur con fresa YF</td><td class="r">28.366 kg</td></tr>
+      <tr><td>Leche en polvo descremada</td><td class="r">1.735 kg</td><td>Yogur natural YN</td><td class="r">23.134 kg</td></tr>
+      <tr><td>Azúcar</td><td class="r">1.357 kg</td><td>Yogur griego YG</td><td class="r">4.862 kg</td></tr>
+      <tr><td>Preparado de fresa</td><td class="r">3.688 kg</td><td>Suero ácido (U905)</td><td class="r">10.895 kg</td></tr>
+      <tr><td>Cultivo DVS</td><td class="r">2.333 U</td><td>Crema excedente al 40 % (otras líneas)</td><td class="r">1.405 kg</td></tr>
+      <tr class="total"><td>Total</td><td class="r">68.662 kg</td><td>Total</td><td class="r">68.662 kg</td></tr>
     </tbody>
   </table></div>
   <p>El balance cierra exacto en masa total, grasa y proteína; las cifras individuales están redondeadas. A la línea entran 60.000 L de leche entera y 20.000 L de leche descremada. No incluye las mermas de arranque, empuje, rechazo y producto retenido en líneas, que se miden en el piloto.</p>
@@ -607,7 +618,7 @@ footer { font-size: 12px; color: var(--muted); border-top: 1px solid var(--rule)
     <li>Sellos frontales: confirmar con análisis nutricional, perfil de ácidos grasos y la revisión de exenciones.</li>
     <li>Mezcla diaria 3/3/2 y presentaciones: ratificar en acta.</li>
     <li>Vida útil de 30 días y cultivo ≥ 10⁷ UFC/g al vencimiento: estudio acelerado y en tiempo real.</li>
-    <li>Ritmo de un lote cada 3 h con 4 fermentadores, llenadoras y fallas: se verifica en Tecnomatix.</li><li>U202 dedicado a yogures: ratificar con el equipo.</li><li>Acidez del griego: es el riesgo regulatorio más alto, porque puede superar 1,50 %. Además, los tiempos máximos del preparado conectado (≤ 24 h a ≤ 8 °C) y de la crema en U127 (≤ 24 h a ≤ 4 °C).</li><li>Calentamiento de la carga de U201 a 50 °C (EM-2014): dimensionarlo con el balance de energía.</li><li>Vigencia de la Res. SIC 32209/2020 en 2026: hay un proyecto de prórroga sin confirmar.</li>
+    <li>Ritmo de un lote cada ≈ 4,1 h con las llenadoras y las fallas: se verifica en Tecnomatix.</li><li>U202 dedicado a yogures: ratificar con el equipo.</li><li>Acidez del griego: es el riesgo regulatorio más alto, porque puede superar 1,50 %. Además, los tiempos máximos del preparado conectado (≤ 24 h a ≤ 8 °C) y de la crema en U127 (≤ 24 h a ≤ 4 °C).</li><li>Calentamiento de la carga de U201 a 50 °C (EM-2014): dimensionarlo con el balance de energía.</li><li>Vigencia de la Res. SIC 32209/2020 en 2026: hay un proyecto de prórroga sin confirmar.</li>
     <li>Destino del suero ácido y de la crema excedente: acordarlo con las otras líneas y con gestión ambiental.</li>
   </ul>
 </section>
@@ -618,10 +629,11 @@ footer { font-size: 12px; color: var(--muted); border-top: 1px solid var(--rule)
   <div class="tbl"><table>
     <thead><tr><th>Dato</th><th>Valor</th></tr></thead>
     <tbody>
-      <tr><td><b>Tamaño estándar de lote</b></td><td><b>10.000 L</b> de leche estandarizada (mínimo 8.000 y máximo 10.500 L). Producto por lote: YF 13.092 kg · YN 10.677 kg · YG 3.242 kg. Actual ≈ 5,8 lotes/día (uno cada ≈ 4,1 h); propuesta 8 lotes/día (uno cada 3 h)</td></tr>
-      <tr><td><b>Fermentadores</b></td><td><b>4 × 12.000 L</b> (U211, U212, U213 y U218); ciclo de 8,1–9,0 h; ocupación del 71 %</td></tr>
-      <tr><td><b>Llenadoras</b> (nominal)</td><td>U311 vasos: actual 12.000/h de 150 g y 10.000/h de 200 g; propuesta FFS 21.600/h y 17.280/h · U312 botellas: 4.000/h de 1000 g y 2.500/h de 1750 g · U313 potes: 6.000/h de 150 g y 2.400/h de 500 g</td></tr>
-      <tr><td>Capacidad efectiva</td><td>Nominal × OEE. U311 con YF150: actual 1.800 kg/h × 0,70 ≈ 1.260 kg/h; propuesta 3.240 kg/h × 0,80 ≈ 2.600 kg/h</td></tr>
+      <tr><td><b>Tamaño estándar de lote</b></td><td><b>10.000 L</b> de leche estandarizada (mínimo 8.000 y máximo 10.500 L). Producto por lote: YF 13.092 kg · YN 10.677 kg · YG 3.242 kg. ≈ 5,8 lotes/día (35 por semana), uno cada ≈ 4,1 h: ≈ 58.300 L/día</td></tr>
+      <tr><td><b>Fermentadores</b></td><td><b>4 × 12.000 L</b> (U211, U212, U213 y U218); ciclo de 8,1–9,0 h; ocupación del 52 %, con máximo 3 ocupados a la vez</td></tr>
+      <tr><td><b>Llenadoras</b> (nominal)</td><td>U311 vasos: 12.000/h de 150 g y 10.000/h de 200 g · U312 botellas: 4.000/h de 1000 g y 2.500/h de 1750 g · U313 potes: 6.000/h de 150 g y 2.400/h de 500 g</td></tr>
+      <tr><td>Capacidad efectiva</td><td>Nominal × OEE. U311 con YF150: 1.800 kg/h × 0,70 ≈ 1.260 kg/h. Uso del día: U311 85 % · U312 58 % · U313 44 %</td></tr>
+      <tr><td><b>Producción diaria</b></td><td>≈ 56.400 kg: <b>131.366 vasos</b> (U311), <b>27.051 botellas</b> (U312) y <b>23.339 envases de griego</b> (U313)</td></tr>
       <tr><td><b>Empleados (estimado)</b></td><td><b>≈ 57 personas</b>: 13 puestos por turno × 4 cuadrillas rotativas, más 5 de día. No incluye la recepción común de leche ni el personal administrativo</td></tr>
     </tbody>
   </table></div>
@@ -630,11 +642,22 @@ footer { font-size: 12px; color: var(--muted); border-top: 1px solid var(--rule)
   <div class="tbl"><table>
     <thead><tr><th>Escenario</th><th class="r">A</th><th class="r">P</th><th class="r">Q</th><th class="r">OEE</th><th class="r">Paradas planeadas</th><th class="r">Litros/día</th><th>Uso U311 · U312 · U313</th></tr></thead>
     <tbody>
-      <tr><td>Actual (llenadora de 12.000 vasos/h)</td><td class="r">0,90</td><td class="r">0,80</td><td class="r">0,97</td><td class="r"><b>69,8 %</b></td><td class="r">3,5 h</td><td class="r">≈ 58.200</td><td><b>85 %</b> · 58 % · 43 %</td></tr>
-      <tr><td>Propuesta (FFS de 21.600 vasos/h)</td><td class="r">0,93</td><td class="r">0,88</td><td class="r">0,98</td><td class="r"><b>80,2 %</b></td><td class="r">1,25 h</td><td class="r">80.000</td><td><b>53 %</b> · 57 % · 39 %</td></tr>
+      <tr><td>Planta actual (llenadora de 12.000 vasos/h)</td><td class="r">0,90</td><td class="r">0,80</td><td class="r">0,97</td><td class="r"><b>69,8 %</b></td><td class="r">3,5 h</td><td class="r">≈ 58.300</td><td><b>85 %</b> · 58 % · 44 %</td></tr>
     </tbody>
   </table></div>
   <p><b>Uso máximo aceptable del cuello de botella:</b> 80 % para diseñar y 85 % como techo para operar; por encima de ≈ 85 % las esperas crecen rápido (ρ/(1−ρ) vale 4 al 80 %, 5,7 al 85 % y 9 al 90 %). En el escenario actual, U311 se fija al 85 %. Ese porcentaje ya incluye las fallas promedio y las paradas planeadas, y le quedan ≈ 3,6 h diarias; solo un día con OEE menor de ≈ 58 % se atrasaría. Hay que alinear el documento de Pablo, que usa 81,68 % → 90,14 %.</p>
+  <h3>Tronco común continuo (acopio a pasteurización, 300.000 L/día)</h3>
+  <p>La recepción, la clarificación, la estandarización y la pasteurización son continuas y atienden a <b>toda la planta: 300.000 L/día</b>. La línea de yogures toma ≈ 60.000 L/día (20 %); el resto va a quesos y bebidas fermentadas. Estos equipos se dimensionan para los 300.000 L.</p>
+  <div class="tbl"><table>
+    <thead><tr><th>Etapa</th><th>Equipo</th><th>Carga con 300.000 L/día</th><th class="r">Uso</th></tr></thead>
+    <tbody>
+      <tr><td>Recepción</td><td>2 bahías U111/U112</td><td>≈ 15 cisternas/día de 20.000 L; ≈ 1 h por cisterna (pruebas, descarga a 35 m³/h y transición): 15 h-bahía/día</td><td class="r">47 % en 16 h</td></tr>
+      <tr><td>Leche cruda</td><td>U113/U114 + U115 (nuevo), 3 × 60.000 L</td><td>Llega en 16 h y se trata en ≈ 18 h: hay que guardar ≈ 150.000 L, más un tanque libre para CIP. Con los 2 tanques del ISA-88 no alcanza</td><td class="r">180.000 L</td></tr>
+      <tr><td>Clarificación, estandarización y pasteurización</td><td>U121 + U122 a 20.000 L/h, en flujo continuo</td><td>15 h de proceso + 2 CIP-C (≈ 2,8 h) + arranques (≈ 0,5 h) = 18,3 h/día</td><td class="r"><b>76 %</b></td></tr>
+      <tr><td>Leche pasteurizada</td><td>Silos por línea: U123A/B y U123C (yogures); U124 y U125 (otras)</td><td>Leche estandarizada de cada línea, máximo 24 h</td><td class="r">—</td></tr>
+    </tbody>
+  </table></div>
+  <p>El tronco común tiene margen (76 %). Si la planta crece por encima de 300.000 L/día, el primer equipo del tronco que se queda corto es el pasteurizador. El tamaño de cisterna, la ventana de recepción y el colchón de leche cruda son supuestos que se confirman con la logística de acopio. En Tecnomatix, el tronco se modela como flujo continuo que llena los silos, y la línea de yogures toma lotes de 10.000 L.</p>
   <h3>Personal estimado</h3>
   <div class="tbl"><table>
     <thead><tr><th>Puesto por turno</th><th class="r">Personas</th></tr></thead>
@@ -663,10 +686,10 @@ footer { font-size: 12px; color: var(--muted); border-top: 1px solid var(--rule)
       <tr><td>Término «griego»</td><td>Res. 5109/2005, art. 4: el rótulo no puede ser engañoso. El producto sí es colado; Colanta, Pasco y Alpina usan el término</td><td>«Yogurt griego natural semidescremado — concentrado por separación del suero»</td><td>Radicar el rótulo</td></tr>
       <tr><td>Dosis del cultivo</td><td>Las unidades DVS no se comparan entre proveedores</td><td>Especificación funcional: llegar a pH 4,50 en 5,0–5,5 h a 43 °C</td><td>Curvas de acidificación</td></tr>
       <tr><td>Vida útil</td><td>Yogur control: +0,28 % de acidez en 21 días a 4 °C; Tetra Pak: 21–30 días</td><td>YF y YN, 30 días; YG, 21 días; protocolo con 3 lotes a 4 y 8 °C</td><td>Ejecutar el protocolo</td></tr>
-      <tr><td>U202 dedicado</td><td>13,7 h/día de carga, con 5 huecos libres de 1,8 h</td><td>Dedicado; compartirlo solo cabe en los huecos, con arbitraje en el MES</td><td>Decisión del equipo</td></tr>
-      <tr><td>Calor de la carga de U201</td><td>10.320 kg × 3,93 kJ/(kg·K) × 46 K = 518 kWh por lote</td><td>EM-2014 de ≈ 1,05 MW; ≈ 4.150 kWh/día</td><td>Balance de energía</td></tr>
+      <tr><td>U202 dedicado</td><td>≈ 11,2 h/día de carga, con huecos de ≈ 2,9 h entre lotes</td><td>Dedicado; compartirlo con el kéfir cabe en los huecos, con arbitraje en el MES</td><td>Decisión del equipo</td></tr>
+      <tr><td>Calor de la carga de U201</td><td>10.320 kg × 3,93 kJ/(kg·K) × 46 K = 518 kWh por lote</td><td>EM-2014 de ≈ 1,05 MW; ≈ 3.030 kWh/día</td><td>Balance de energía</td></tr>
       <tr><td>Res. SIC 32209/2020</td><td>Res. 51039 de 2026: prórroga de 4 años</td><td>Vigente</td><td>—</td></tr>
-      <tr><td>OEE demasiado alto</td><td>Lácteos: típico 55–70 % y clase mundial 80–85 %; Alpina ≈ 80 %; pymes 50–60 %</td><td>OEE actual ≈ 70 % y propuesto ≈ 80 %. Al 85 %, la llenadora actual da ≈ 58.200 L/día; la propuesta llega a 80.000 L/día</td><td>Medir el OEE real</td></tr>
+      <tr><td>OEE demasiado alto</td><td>Lácteos: típico 55–70 % y clase mundial 80–85 %; Alpina ≈ 80 %; pymes 50–60 %</td><td>OEE actual ≈ 70 %. Con la llenadora al 85 %, la línea da ≈ 58.300 L/día</td><td>Medir el OEE real</td></tr>
       <tr><td>Proteína del suero</td><td>Medida: 0,41–0,68 % (<i>Foods</i> 2022); se suponía 0,3 %</td><td>Se usa 0,5 %: el griego baja a 3.242 kg por lote</td><td>Datos del separador</td></tr>
     </tbody>
   </table></div>
@@ -674,10 +697,10 @@ footer { font-size: 12px; color: var(--muted); border-top: 1px solid var(--rule)
   <div class="tbl"><table>
     <thead><tr><th>Leche cruda</th><th>Grasa / prot. / SNG</th><th>Grasa YF · YN</th><th class="r">Griego (kg/lote)</th><th class="r">Crema sobrante (kg/día)</th></tr></thead>
     <tbody>
-      <tr><td>Diseño (supuesto)</td><td>3,60 / 3,10 / 8,60 %</td><td>2,79 · 3,42 %</td><td class="r">3.242</td><td class="r">1.880</td></tr>
-      <tr><td>Manizales, 42 muestras*</td><td>3,39 / 3,44 / 9,47 %</td><td>2,81 · 3,44 %</td><td class="r">3.654</td><td class="r">1.353</td></tr>
-      <tr><td>García Rovira, 440 muestras*</td><td>3,69 / 3,31 / 8,62 %</td><td>2,79 · 3,42 %</td><td class="r">3.506</td><td class="r">2.064</td></tr>
-      <tr><td><b>Mínimo legal</b></td><td>3,00 / 2,90 / 8,30 %</td><td>2,78 · 3,41 %</td><td class="r">2.971</td><td class="r">531</td></tr>
+      <tr><td>Diseño (supuesto)</td><td>3,60 / 3,10 / 8,60 %</td><td>2,79 · 3,42 %</td><td class="r">3.242</td><td class="r">1.405</td></tr>
+      <tr><td>Manizales, 42 muestras*</td><td>3,39 / 3,44 / 9,47 %</td><td>2,81 · 3,44 %</td><td class="r">3.654</td><td class="r">1.020</td></tr>
+      <tr><td>García Rovira, 440 muestras*</td><td>3,69 / 3,31 / 8,62 %</td><td>2,79 · 3,42 %</td><td class="r">3.506</td><td class="r">1.539</td></tr>
+      <tr><td><b>Mínimo legal</b></td><td>3,00 / 2,90 / 8,30 %</td><td>2,78 · 3,41 %</td><td class="r">2.971</td><td class="r">422</td></tr>
     </tbody>
   </table></div>
   <p>*Fuente secundaria. Con la peor leche que se puede aceptar en recepción, YF y YN siguen siendo enteros, el griego conserva 9,2 % de proteína y alcanza la crema propia.</p>
@@ -697,7 +720,7 @@ footer { font-size: 12px; color: var(--muted); border-top: 1px solid var(--rule)
       <tr><td>U313 potes</td><td class="r">53 %</td></tr>
     </tbody>
   </table></div>
-  <p>Con U311 al 85 %, la línea procesa ≈ 58.200 L/día: el 73 % de la meta.</p>
+  <p>Con U311 al 85 %, la línea procesa ≈ 58.300 L/día: el 73 % de la meta de 80.000 L/día del acta del 7-oct.</p>
   <h3>Qué hay en el mercado</h3>
   <div class="tbl"><table>
     <thead><tr><th>Tipo</th><th>Cómo funciona</th><th>Velocidad</th></tr></thead>
@@ -721,19 +744,41 @@ footer { font-size: 12px; color: var(--muted); border-top: 1px solid var(--rule)
   <div class="tbl"><table>
     <thead><tr><th>Indicador</th><th class="r">Actual (12.000 vasos/h)</th><th class="r">Propuesta (FFS 21.600 vasos/h)</th></tr></thead>
     <tbody>
-      <tr><td>Leche procesada</td><td class="r">≈ 58.200 L/día</td><td class="r"><b>80.000 L/día</b></td></tr>
+      <tr><td>Leche procesada</td><td class="r">≈ 58.300 L/día</td><td class="r"><b>80.000 L/día</b></td></tr>
       <tr><td>Lotes por día</td><td class="r">≈ 5,8 (uno cada ≈ 4,1 h)</td><td class="r"><b>8</b> (uno cada 3 h)</td></tr>
-      <tr><td>Leche cruda</td><td class="r">≈ 59.800 L/día</td><td class="r">≈ 82.200 L/día</td></tr>
-      <tr><td>Producto terminado</td><td class="r">≈ 56.600 kg/día</td><td class="r"><b>≈ 77.791 kg/día</b></td></tr>
-      <tr><td>Vasos YF150 + YN200</td><td class="r">≈ 132.300/día</td><td class="r">≈ 181.900/día</td></tr>
+      <tr><td>Leche cruda</td><td class="r">≈ 60.000 L/día</td><td class="r">≈ 82.200 L/día</td></tr>
+      <tr><td>Producto terminado</td><td class="r">≈ 56.400 kg/día</td><td class="r"><b>≈ 77.791 kg/día</b></td></tr>
+      <tr><td>Envases por día (vasos · botellas · griego)</td><td class="r">131.366 · 27.051 · 23.339</td><td class="r">181.892 · 37.455 · 31.120</td></tr>
       <tr><td>OEE de las llenadoras</td><td class="r">≈ 70 %</td><td class="r">≈ 80 %</td></tr>
       <tr><td>Uso de U311</td><td class="r">85 % (techo)</td><td class="r"><b>53 %</b> (69 % si el OEE se quedara en 70 %)</td></tr>
-      <tr><td>Uso de U312 · U313</td><td class="r">58 % · 43 %</td><td class="r">57 % · 39 %</td></tr>
-      <tr><td>Uso de los fermentadores</td><td class="r">51 %</td><td class="r">71 %</td></tr>
+      <tr><td>Uso de U312 · U313</td><td class="r">58 % · 44 %</td><td class="r">57 % · 39 %</td></tr>
+      <tr><td>Uso de los fermentadores</td><td class="r">52 %</td><td class="r">71 %</td></tr>
       <tr><td>Cuello de botella</td><td class="r">U311</td><td class="r">Fermentadores (máximo 8 lotes/día)</td></tr>
     </tbody>
   </table></div>
   <p>Con la propuesta, la línea cumple la meta y todos los equipos quedan por debajo del 80 % recomendado. Para crecer más allá de 80.000 L/día, el siguiente límite son los fermentadores: haría falta un quinto tanque.</p>
+  <h3>Producción con la propuesta (80.000 L/día, 8 lotes)</h3>
+  <div class="tbl"><table>
+    <thead><tr><th>Llenadora</th><th>Envases</th><th class="r">Unidades/día</th></tr></thead>
+    <tbody>
+      <tr><td>U311 · vasos (FFS)</td><td>117.828 de fresa 150 g + 64.064 de natural 200 g</td><td class="r"><b>181.892</b></td></tr>
+      <tr><td>U312 · botellas</td><td>13.747 de 1000 g + 4.489 de 1750 g (fresa) + 19.219 de natural 1000 g</td><td class="r"><b>37.455</b></td></tr>
+      <tr><td>U313 · griego</td><td>25.933 vasos de 150 g + 5.187 potes de 500 g</td><td class="r"><b>31.120</b></td></tr>
+      <tr class="total"><td>Total</td><td></td><td class="r">250.467</td></tr>
+    </tbody>
+  </table></div>
+  <div class="tbl"><table>
+    <thead><tr><th>Entradas</th><th class="r">Por día</th><th>Salidas</th><th class="r">Por día</th></tr></thead>
+    <tbody>
+      <tr><td>Leche cruda (82.179 L)</td><td class="r">84.809 kg</td><td>Yogur con fresa YF</td><td class="r">39.276 kg</td></tr>
+      <tr><td>Leche en polvo descremada</td><td class="r">2.403 kg</td><td>Yogur natural YN</td><td class="r">32.032 kg</td></tr>
+      <tr><td>Azúcar</td><td class="r">1.879 kg</td><td>Yogur griego YG</td><td class="r">6.483 kg</td></tr>
+      <tr><td>Preparado de fresa</td><td class="r">5.106 kg</td><td>Suero ácido (U905)</td><td class="r">14.526 kg</td></tr>
+      <tr><td>Cultivo DVS</td><td class="r">3.200 U</td><td>Crema excedente al 40 %</td><td class="r">1.880 kg</td></tr>
+      <tr class="total"><td>Total</td><td class="r">94.197 kg</td><td>Total</td><td class="r">94.197 kg</td></tr>
+    </tbody>
+  </table></div>
+  <p><b>Ritmo:</b> un lote cada 3 h (YN ×3 → YG ×2 → YF ×3), con un máximo de 4 fermentadores ocupados a la vez (71 %). U201 trabaja 14,9 h y U202 9,5 h, con huecos de ≈ 1,8 h para sus tres CIP-C. La FFS llena un lote de fresa en ≈ 2,3 h reales y uno de natural en ≈ 1,5 h, así que no se acumula atraso. La línea toma ≈ 82.200 L de los 300.000 L/día del tronco común (27 %). Personal: ≈ 57 personas, igual que hoy.</p>
   <p><b>Qué falta:</b> la cotización de la FFS, que hará Daniel comparándola con las alternativas de 20.000 y 24.000 vasos/h de Pablo; la velocidad garantizada por el fabricante para vasos con trozos de fruta; el diseño del vaso y del multipack; y el modelo de Tecnomatix con los dos escenarios.</p>
 </section>
 
