@@ -1,0 +1,726 @@
+<title>Recetas Línea de Yogures</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..100,500..800&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: hoja de proceso de planta — índice lateral fijo en escritorio, columna de lectura con tablas de receta y bandas de color por producto */
+:root {
+  --bg: #f6f8fa;
+  --paper: #ffffff;
+  --ink: #14202b;
+  --muted: #5b6876;
+  --rule: #d9e0e7;
+  --accent: #1f4e79;
+  --accent-soft: #e4edf6;
+  --fresa: #b8325a;
+  --fresa-soft: #f8e3ea;
+  --natural: #3b7ea1;
+  --natural-soft: #e2eff6;
+  --griego: #8a6d1d;
+  --griego-soft: #f3ecd8;
+  --ok: #2e7d4f;
+  --pcc: #b4441b;
+  --pcc-soft: #fbe8df;
+  --font-display: "Archivo", "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
+  --font-body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0e141a; --paper: #151d25; --ink: #e6edf3; --muted: #9aa8b6; --rule: #2a3642;
+    --accent: #8cb8e3; --accent-soft: #1b2b3b;
+    --fresa: #ee8aa8; --fresa-soft: #3a1c27; --natural: #8cc4e2; --natural-soft: #16303d;
+    --griego: #d8b65c; --griego-soft: #33290f; --ok: #6cc893; --pcc: #f19a73; --pcc-soft: #3a2116;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0e141a; --paper: #151d25; --ink: #e6edf3; --muted: #9aa8b6; --rule: #2a3642;
+  --accent: #8cb8e3; --accent-soft: #1b2b3b;
+  --fresa: #ee8aa8; --fresa-soft: #3a1c27; --natural: #8cc4e2; --natural-soft: #16303d;
+  --griego: #d8b65c; --griego-soft: #33290f; --ok: #6cc893; --pcc: #f19a73; --pcc-soft: #3a2116;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 15px; line-height: 1.6; }
+.wrap { max-width: 1240px; margin: 0 auto; padding-inline: 20px; padding-block: 28px 64px; display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 40px; }
+@media (max-width: 900px) { .wrap { grid-template-columns: minmax(0, 1fr); gap: 0; padding-inline: 16px; } nav.toc { display: none; } }
+nav.toc { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 24px); align-self: start; font-size: 13px; }
+nav.toc p { font-family: var(--font-display); font-weight: 700; letter-spacing: .08em; text-transform: uppercase; font-size: 11px; color: var(--muted); margin: 0 0 8px; }
+nav.toc ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; }
+nav.toc a { display: block; padding: 4px 10px; border-radius: 6px; color: var(--ink); text-decoration: none; }
+nav.toc a:hover, nav.toc a:focus-visible { background: var(--accent-soft); outline: none; }
+nav.toc .n { font-family: var(--font-mono); color: var(--muted); font-size: 11px; margin-right: 6px; }
+main { min-width: 0; display: grid; gap: 56px; }
+h1, h2, h3 { font-family: var(--font-display); text-wrap: balance; margin: 0; line-height: 1.12; }
+h1 { font-size: clamp(34px, 5vw, 54px); font-weight: 800; font-stretch: 82%; letter-spacing: -.01em; }
+h2 { font-size: 28px; font-weight: 750; font-stretch: 85%; }
+h3 { font-size: 19px; font-weight: 700; font-stretch: 90%; }
+p { margin: 0; max-width: 72ch; }
+section { display: grid; gap: 18px; scroll-margin-top: 20px; }
+.eyebrow { font-family: var(--font-mono); font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+.mono { font-family: var(--font-mono); }
+a { color: var(--accent); }
+/* encabezado */
+header.head { display: grid; gap: 16px; padding-bottom: 24px; border-bottom: 2px solid var(--ink); }
+.meta { display: flex; flex-wrap: wrap; gap: 8px 22px; font-size: 13px; color: var(--muted); }
+.meta b { color: var(--ink); font-weight: 600; }
+.note { background: var(--accent-soft); border-radius: 10px; padding: 14px 16px; font-size: 14px; max-width: none; }
+/* productos */
+.products { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+@media (max-width: 760px) { .products { grid-template-columns: minmax(0, 1fr); } }
+.prod { background: var(--paper); border: 1px solid var(--rule); border-radius: 12px; padding: 18px; display: grid; gap: 10px; align-content: start; border-top: 5px solid var(--c); }
+.prod .code { font-family: var(--font-display); font-weight: 800; font-size: 30px; font-stretch: 80%; color: var(--c); line-height: 1; }
+.prod dl { display: grid; grid-template-columns: auto 1fr; gap: 4px 12px; margin: 0; font-size: 13px; }
+.prod dt { color: var(--muted); }
+.prod dd { margin: 0; font-variant-numeric: tabular-nums; }
+.yf { --c: var(--fresa); --cs: var(--fresa-soft); }
+.yn { --c: var(--natural); --cs: var(--natural-soft); }
+.yg { --c: var(--griego); --cs: var(--griego-soft); }
+.kpis { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1px; background: var(--rule); border: 1px solid var(--rule); border-radius: 12px; overflow: hidden; }
+@media (max-width: 760px) { .kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.kpis div { background: var(--paper); padding: 14px 16px; display: grid; gap: 2px; }
+.kpis b { font-family: var(--font-display); font-size: 26px; font-weight: 750; font-stretch: 85%; font-variant-numeric: tabular-nums; }
+.kpis span { font-size: 12px; color: var(--muted); }
+/* mapa de proceso */
+.filter { display: flex; flex-wrap: wrap; gap: 8px; }
+.filter button { font: 500 13px var(--font-body); padding: 6px 14px; border-radius: 999px; border: 1px solid var(--rule); background: var(--paper); color: var(--ink); cursor: pointer; }
+.filter button[aria-pressed="true"] { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.filter button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.stages { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(196px, 1fr)); gap: 10px; counter-reset: st; }
+.stage { background: var(--paper); border: 1px solid var(--rule); border-radius: 10px; padding: 14px; display: grid; gap: 6px; align-content: start; transition: opacity .2s ease, filter .2s ease; }
+.stage.off { opacity: .28; filter: grayscale(1); }
+@media (prefers-reduced-motion: reduce) { .stage { transition: none; } }
+.stage .num { font-family: var(--font-mono); font-size: 12px; color: var(--muted); }
+.stage .name { font-family: var(--font-display); font-weight: 800; font-size: 22px; font-stretch: 78%; letter-spacing: .04em; color: var(--accent); line-height: 1; }
+.stage .what { font-size: 13px; line-height: 1.4; }
+.stage .units { font-family: var(--font-mono); font-size: 11.5px; color: var(--muted); }
+.dots { display: flex; gap: 5px; }
+.dot { font: 600 10px var(--font-mono); padding: 1px 6px; border-radius: 4px; background: var(--cs); color: var(--c); }
+.stage.transv { border-style: dashed; }
+/* tablas */
+.tbl { overflow-x: auto; border: 1px solid var(--rule); border-radius: 10px; background: var(--paper); }
+table { border-collapse: collapse; width: 100%; font-size: 13.5px; }
+th, td { text-align: left; vertical-align: top; padding: 9px 12px; border-bottom: 1px solid var(--rule); }
+th { font-family: var(--font-display); font-weight: 650; font-stretch: 92%; font-size: 12px; letter-spacing: .05em; text-transform: uppercase; color: var(--muted); background: var(--bg); white-space: nowrap; }
+tr:last-child td { border-bottom: 0; }
+td.r, th.r { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+tr.total td { font-weight: 600; border-top: 2px solid var(--ink); }
+.pcc { display: inline-block; font: 600 11px var(--font-mono); color: var(--pcc); background: var(--pcc-soft); padding: 1px 6px; border-radius: 4px; white-space: nowrap; }
+.tag { font-family: var(--font-mono); font-size: 12.5px; }
+.stagelabel { font-family: var(--font-display); font-weight: 750; font-stretch: 85%; letter-spacing: .04em; color: var(--accent); white-space: nowrap; }
+/* recetas */
+.recipe { display: grid; gap: 18px; padding: 24px; border-radius: 14px; background: var(--paper); border: 1px solid var(--rule); border-left: 6px solid var(--c); }
+@media (max-width: 560px) { .recipe { padding: 18px 14px; } }
+.recipe-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 16px; }
+.recipe-head .code { font-family: var(--font-display); font-weight: 800; font-size: 44px; font-stretch: 78%; color: var(--c); line-height: 1; }
+.recipe .tbl { background: var(--paper); }
+.recipe th { background: var(--cs); color: var(--ink); }
+.facts { display: flex; flex-wrap: wrap; gap: 8px; }
+.fact { font-size: 13px; padding: 4px 10px; border-radius: 6px; background: var(--cs); }
+.fact b { font-variant-numeric: tabular-nums; }
+/* barras a escala */
+.gantt { display: grid; gap: 10px; }
+.grow { display: grid; grid-template-columns: 48px minmax(0, 1fr) 64px; gap: 10px; align-items: center; font-size: 13px; }
+.grow .lab { font-family: var(--font-display); font-weight: 800; font-stretch: 80%; font-size: 18px; color: var(--c); }
+.bar { display: flex; height: 26px; border-radius: 6px; overflow: hidden; background: var(--bg); }
+.bar span { display: block; height: 100%; border-right: 1px solid var(--paper); }
+.s-fill { background: var(--muted); opacity: .45; }
+.s-inoc { background: var(--muted); opacity: .7; }
+.s-inc { background: var(--c); }
+.s-out { background: var(--c); opacity: .55; }
+.s-cip { background: var(--accent); opacity: .35; }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 12px; color: var(--muted); }
+.legend i { display: inline-block; width: 12px; height: 12px; border-radius: 3px; margin-right: 6px; vertical-align: -1px; }
+.axis { display: grid; grid-template-columns: 48px minmax(0, 1fr) 64px; gap: 10px; font-family: var(--font-mono); font-size: 11px; color: var(--muted); }
+.axis div:nth-child(2) { display: flex; justify-content: space-between; }
+.stack { display: flex; height: 40px; border-radius: 8px; overflow: hidden; }
+.stack span { display: flex; align-items: center; justify-content: center; font: 600 12px var(--font-mono); color: var(--paper); white-space: nowrap; overflow: hidden; }
+.b-yf { background: var(--fresa); } .b-yn { background: var(--natural); } .b-yg { background: var(--griego); }
+.b-su { background: var(--muted); } .b-cr { background: var(--accent); }
+.cols2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+@media (max-width: 760px) { .cols2 { grid-template-columns: minmax(0, 1fr); } }
+ul.clean { margin: 0; padding-left: 18px; display: grid; gap: 6px; max-width: 80ch; }
+.sources { font-size: 13px; }
+.sources li { overflow-wrap: anywhere; }
+footer { font-size: 12px; color: var(--muted); border-top: 1px solid var(--rule); padding-top: 16px; }
+.s-brk { background: var(--c); opacity: .8; }
+.axis div:nth-child(2) { position: relative; display: block; height: 14px; }
+.axis div:nth-child(2) span { position: absolute; transform: translateX(-50%); }
+.axis div:nth-child(2) span:first-child { transform: none; }
+.audit { display: grid; gap: 10px; }
+</style>
+
+<div class="wrap">
+<nav class="toc" aria-label="Contenido">
+  <p>Contenido</p>
+  <ol>
+    <li><a href="#resumen"><span class="n">00</span>Resumen</a></li>
+    <li><a href="#mapa"><span class="n">01</span>Mapa del proceso</a></li>
+    <li><a href="#equipos"><span class="n">02</span>Equipos de la línea</a></li>
+    <li><a href="#comun"><span class="n">03</span>Origen y Pureza</a></li>
+    <li><a href="#yf"><span class="n">04</span>Receta YF · Fresa</a></li>
+    <li><a href="#yn"><span class="n">05</span>Receta YN · Natural</a></li>
+    <li><a href="#yg"><span class="n">06</span>Receta YG · Griego</a></li>
+    <li><a href="#envasado"><span class="n">07</span>Sello, Estiba, Reposo</a></li>
+    <li><a href="#custodia"><span class="n">08</span>Custodia: CIP y HACCP</a></li>
+    <li><a href="#tiempos"><span class="n">09</span>Tiempos y balance</a></li>
+    <li><a href="#cambios"><span class="n">10</span>Cambios y supuestos</a></li>
+    <li><a href="#riesgos"><span class="n">11</span>Riesgos resueltos</a></li>
+    <li><a href="#auditoria"><span class="n">12</span>Auditoría</a></li>
+    <li><a href="#fuentes"><span class="n">13</span>Fuentes</a></li>
+  </ol>
+</nav>
+
+<main>
+<header class="head">
+  <span class="eyebrow">Recetas maestras ISA-88 · Celda PC21</span>
+  <h1>Línea de yogures de Lácteos Altos de Teusacá</h1>
+  <p>Tres productos y un recorrido completo, desde que la cisterna llega a la planta de Sopó hasta el despacho en frío. Cada etapa tiene un nombre corto para el piso de planta y su nombre técnico ISA-88.</p>
+  <div class="meta">
+    <span>Versión <b>1.4 (auditada y con riesgos resueltos)</b></span><span>Fecha <b>8 oct 2026</b></span><span>Estado <b>propuesta para revisión</b></span>
+    <span>Responsable de recetas <b>Luis (A/R)</b></span><span>Elaboró <b>Janan Libardo · Mekvra</b></span>
+  </div>
+  <p class="note">Todas las cantidades son valores de diseño. Los parámetros vienen de Tetra Pak, GEA, el Codex y la normativa colombiana, y la composición de las materias primas es un supuesto declarado. Ninguna cifra es un resultado medido en planta. El balance completo está en <span class="mono">balance_recetas_yogures.py</span>, en el repositorio.</p>
+</header>
+
+<section id="resumen">
+  <span class="eyebrow">00 · Resumen</span>
+  <h2>8 lotes al día, 80.000 L de leche</h2>
+  <div class="kpis">
+    <div><b>80.000 L</b><span>de leche estandarizada a la línea por día</span></div>
+    <div><b>8 lotes</b><span>de 10.000 L cada uno</span></div>
+    <div><b>77.791 kg</b><span>de producto terminado por día</span></div>
+    <div><b>7 referencias</b><span>en 3 llenadoras</span></div>
+  </div>
+  <div class="products">
+    <article class="prod yf">
+      <span class="code">YF</span>
+      <h3>Yogur con trozos de fresa</h3>
+      <dl>
+        <dt>Denominación</dt><dd>Yogur entero con dulce, con fresa</dd>
+        <dt>Lotes/día</dt><dd>3</dd>
+        <dt>Por lote</dt><dd>13.092 kg</dd>
+        <dt>Envases</dt><dd>Vaso 150 g · botella 1000 g y 1750 g</dd>
+      </dl>
+    </article>
+    <article class="prod yn">
+      <span class="code">YN</span>
+      <h3>Yogur natural</h3>
+      <dl>
+        <dt>Denominación</dt><dd>Yogur entero sin dulce</dd>
+        <dt>Lotes/día</dt><dd>3</dd>
+        <dt>Por lote</dt><dd>10.677 kg</dd>
+        <dt>Envases</dt><dd>Vaso 200 g · botella 1000 g</dd>
+      </dl>
+    </article>
+    <article class="prod yg">
+      <span class="code">YG</span>
+      <h3>Yogur griego</h3>
+      <dl>
+        <dt>Denominación</dt><dd>Yogur semidescremado sin dulce; en el Codex, leche fermentada concentrada</dd>
+        <dt>Lotes/día</dt><dd>2</dd>
+        <dt>Por lote</dt><dd>3.242 kg</dd>
+        <dt>Envases</dt><dd>Vaso 150 g · pote 500 g</dd>
+      </dl>
+    </article>
+  </div>
+  <p>Orden de la campaña diaria: <b>natural ×3 → griego ×2 → fresa ×3</b>. Siempre va primero lo sin dulce, para que ningún producto sin azúcar reciba arrastre de azúcar ni de fruta.</p>
+</section>
+
+<section id="mapa">
+  <span class="eyebrow">01 · Mapa del proceso</span>
+  <h2>Once etapas, de la cisterna a la cámara</h2>
+  <div class="filter" role="group" aria-label="Ver etapas por producto">
+    <button type="button" id="f-all" data-p="all" aria-pressed="true">Todos</button>
+    <button type="button" id="f-yf" data-p="yf" aria-pressed="false">Fresa</button>
+    <button type="button" id="f-yn" data-p="yn" aria-pressed="false">Natural</button>
+    <button type="button" id="f-yg" data-p="yg" aria-pressed="false">Griego</button>
+  </div>
+  <ol class="stages">
+    <li class="stage" data-p="yf yn yg"><span class="num">01 · UP-LB1</span><span class="name">ORIGEN</span><span class="what">Recepción y aceptación de leche cruda</span><span class="units">U111/U112 → U113/U114</span><span class="dots"><i class="dot yf">YF</i><i class="dot yn">YN</i><i class="dot yg">YG</i></span></li>
+    <li class="stage" data-p="yf yn yg"><span class="num">02 · UP-LB2/LB3</span><span class="name">PUREZA</span><span class="what">Clarificación, estandarización y pasteurización de leche y crema</span><span class="units">U121 → U122 → U123A–C · U126 → U127</span><span class="dots"><i class="dot yf">YF</i><i class="dot yn">YN</i><i class="dot yg">YG</i></span></li>
+    <li class="stage" data-p="yf yn yg"><span class="num">03 · UP-Y1</span><span class="name">CUERPO</span><span class="what">Formulación y fortificación de la base</span><span class="units">U201</span><span class="dots"><i class="dot yf">YF</i><i class="dot yn">YN</i><i class="dot yg">YG</i></span></li>
+    <li class="stage" data-p="yf yn yg"><span class="num">04 · UP-Y2</span><span class="name">TEMPLE</span><span class="what">Desaireación, homogeneización y 92 °C × 5 min</span><span class="units">U202</span><span class="dots"><i class="dot yf">YF</i><i class="dot yn">YN</i><i class="dot yg">YG</i></span></li>
+    <li class="stage" data-p="yf yn yg"><span class="num">05 · UP-Y3</span><span class="name">CULTIVO</span><span class="what">Inoculación y fermentación a 43 °C hasta el pH de corte</span><span class="units">U211–U213 · U218</span><span class="dots"><i class="dot yf">YF</i><i class="dot yn">YN</i><i class="dot yg">YG</i></span></li>
+    <li class="stage" data-p="yf yn"><span class="num">06 · UP-Y4</span><span class="name">SEDA</span><span class="what">Ruptura del coágulo y enfriamiento suave a 20 °C</span><span class="units">U215</span><span class="dots"><i class="dot yf">YF</i><i class="dot yn">YN</i></span></li>
+    <li class="stage" data-p="yg"><span class="num">07 · UP-Y5</span><span class="name">ESENCIA</span><span class="what">Concentración griega en separador de boquillas y crema pasteurizada</span><span class="units">U216 · suero → U905</span><span class="dots"><i class="dot yg">YG</i></span></li>
+    <li class="stage" data-p="yf yn yg"><span class="num">08 · UP-Y6</span><span class="name">MATIZ</span><span class="what">Pulmón de llenado y fruta dosificada en línea</span><span class="units">U214A/B · U217A/B</span><span class="dots"><i class="dot yf">YF</i><i class="dot yn">YN</i><i class="dot yg">YG</i></span></li>
+    <li class="stage" data-p="yf yn yg"><span class="num">09 · UP-Y7</span><span class="name">SELLO</span><span class="what">Envasado, sellado, pesaje e inspección</span><span class="units">U311 · U312 · U313</span><span class="dots"><i class="dot yf">YF</i><i class="dot yn">YN</i><i class="dot yg">YG</i></span></li>
+    <li class="stage" data-p="yf yn yg"><span class="num">10 · UP-Y8</span><span class="name">ESTIBA</span><span class="what">Encajonado y paletizado robotizado</span><span class="units">U341 · U342</span><span class="dots"><i class="dot yf">YF</i><i class="dot yn">YN</i><i class="dot yg">YG</i></span></li>
+    <li class="stage" data-p="yf yn yg"><span class="num">11 · UP-Y9</span><span class="name">REPOSO</span><span class="what">Enfriamiento final, maduración en frío y despacho FEFO</span><span class="units">U411 → U412</span><span class="dots"><i class="dot yf">YF</i><i class="dot yn">YN</i><i class="dot yg">YG</i></span></li>
+    <li class="stage transv" data-p="yf yn yg"><span class="num">Transversal</span><span class="name">CUSTODIA</span><span class="what">Limpieza CIP, plan HACCP y liberación por calidad</span><span class="units">U901 · laboratorio</span><span class="dots"><i class="dot yf">YF</i><i class="dot yn">YN</i><i class="dot yg">YG</i></span></li>
+  </ol>
+</section>
+
+<section id="equipos">
+  <span class="eyebrow">02 · Modelo físico</span>
+  <h2>Equipos de la línea</h2>
+  <p>Se conservan los códigos y significados del documento ISA-88 del equipo; ningún código existente cambia de significado. Son nuevas U123A/B (leche entera) y U123C (descremada), U126/U127, U215, U216, U217A/B, U218 y U313. Se amplían U214, que pasa a dos tanques (U214A/B), y U905, que recibe además el suero ácido. En el modelo de Tecnomatix anterior, U215 era un segundo pulmón; ese modelo se reemplaza.</p>
+  <div class="tbl"><table>
+    <thead><tr><th>Unidad</th><th>Equipo</th><th>Requerimiento para la línea</th></tr></thead>
+    <tbody>
+      <tr><td class="tag">U111/U112</td><td>Bahías de descarga: desaireador, filtro dúplex, caudalímetro y enfriador de placas</td><td>≈ 82.200 L/día de leche cruda para yogures; salida ≤ 4 °C</td></tr>
+      <tr><td class="tag">U113/U114</td><td>Tanques de leche cruda aislados, con agitador</td><td>≤ 4 °C; máximo 24 h</td></tr>
+      <tr><td class="tag">U121</td><td>Separadora autolimpiante con estandarización en línea</td><td>Consignas de grasa: 3,50 % y ≤ 0,05 %</td></tr>
+      <tr><td class="tag">U122</td><td>Pasteurizador HTST de placas con regeneración y válvula de desvío</td><td>75 °C × 15 s</td></tr>
+      <tr><td class="tag">U123A/B · U123C</td><td>Dos silos de leche entera en alternancia · silo de leche descremada</td><td>2 × 40.000 L (YF, YN) · 25.000 L (YG); 2–4 °C</td></tr>
+      <tr><td class="tag">U126 · U127</td><td>Pasteurizador de crema con desvío · tanque de crema pasteurizada</td><td>85 °C × 15 s · 1.000 L a 2–4 °C</td></tr>
+      <tr><td class="tag">U201</td><td>Tanque de formulación de 12.000 L con mezclador de polvos al vacío, celdas de carga e intercambiador EM-2014</td><td>Carga a 20 m³/h calentada de 4 a 50 °C: ≈ 1,05 MW, 518 kWh por lote</td></tr>
+      <tr><td class="tag">U202</td><td>Módulo térmico dedicado a yogures (recomendado por carga: 13,7 h/día con 3 CIP): regeneración, desaireador, homogeneizador de 2 etapas, celda de retención de 5 min y enfriador</td><td>10 m³/h; hasta 250 bar</td></tr>
+      <tr><td class="tag">U211–U213 · U218</td><td>Cuatro fermentadores aislados de 12.000 L con camisa, agitador lento y pH en línea (U218 es el nuevo)</td><td>43 ± 0,5 °C</td></tr>
+      <tr><td class="tag">U215</td><td>Bomba de lóbulos, texturizador y enfriador de placas de canal ancho</td><td>10 m³/h; salida a 20 °C</td></tr>
+      <tr><td class="tag">U216</td><td>Separador centrífugo de boquillas, enfriador tubular y dosificación de crema desde U127 con Coriolis</td><td>7.000 L/h de alimentación</td></tr>
+      <tr><td class="tag">U214A/B</td><td>Tanques pulmón higiénicos de 12.000 L con venteo por filtro estéril; dosificador de fruta EM-2141 a la salida</td><td>YF y YN, en alternancia</td></tr>
+      <tr><td class="tag">U217A/B</td><td>Dos pulmones de griego de 4.000 L con agitador de ancla, uno por lote</td><td>≤ 12 °C; no se mezclan lotes</td></tr>
+      <tr><td class="tag">U311</td><td>Llenadora-selladora de vasos preformados, 10 carriles</td><td>15.000 vasos/h de 150 g · 12.000 vasos/h de 200 g</td></tr>
+      <tr><td class="tag">U312</td><td>Llenadora-taponadora rotativa con sellado por inducción</td><td>4.000 bot/h de 1000 g · 2.500 bot/h de 1750 g</td></tr>
+      <tr><td class="tag">U313</td><td>Llenadora de potes con dosificadores de pistón para producto viscoso</td><td>6.000/h de 150 g · 2.400/h de 500 g</td></tr>
+      <tr><td class="tag">U341/U342</td><td>Celda robotizada de encajonado y paletizado, y envolvedora de estibas</td><td>Común a las tres llenadoras</td></tr>
+      <tr><td class="tag">U411/U412</td><td>Cámara fría con aire forzado y gestión FEFO; muelle refrigerado</td><td>Producto ≤ 6 °C en ≤ 12 h (supuesto, se valida); reposo ≥ 12 h</td></tr>
+      <tr><td class="tag">U901 · U905</td><td>CIP central de 3 circuitos · manejo de suero ácido</td><td>U905 (existente) recibe además ≈ 14.500 kg/día de suero ácido</td></tr>
+    </tbody>
+  </table></div>
+  <p><b>Por qué U311 va a 15.000 vasos/h.</b> A 12.000 vasos/h (≈ 10.000/h en 200 g), U311 necesitaría 16,2 h nominales al día. Con los factores base de la propuesta de Pablo (desempeño 0,85, disponibilidad 0,976 y calidad 0,985, más 3,5 h de CIP, pausa y relevo), eso da 23,4 h de 24, sin margen. A 15.000/12.000 vasos/h son 13,2 h nominales y 19,7 h reales (82 %).</p>
+</section>
+
+<section id="comun">
+  <span class="eyebrow">03 · Procedimiento P-LB · leche base y crema</span>
+  <h2>Origen y Pureza: la leche que entra a la línea</h2>
+  <h3><span class="stagelabel">ORIGEN</span> · Recepción y aceptación de leche cruda</h3>
+  <div class="tbl"><table>
+    <thead><tr><th>Fase</th><th>Criterio</th><th>Valor</th><th>Si no cumple</th></tr></thead>
+    <tbody>
+      <tr><td>Registrar</td><td>Proveedor, ruta, volumen y sellos en el MES</td><td>Completo</td><td>No se descarga</td></tr>
+      <tr><td>Muestrear</td><td>Temperatura</td><td>≤ 6 °C (leche enfriada: 4 ± 2 °C)</td><td>Rechazo</td></tr>
+      <tr><td></td><td>Olor, color, aspecto · prueba de alcohol al 68 %</td><td>Característicos · negativa</td><td>Rechazo</td></tr>
+      <tr><td></td><td>Acidez titulable · densidad a 15 °C</td><td>0,13–0,17 % · 1,030–1,033 g/mL</td><td>Rechazo</td></tr>
+      <tr><td></td><td>Crioscopia</td><td>−0,530 a −0,510 °C</td><td>Rechazo por aguado</td></tr>
+      <tr><td></td><td><b>Residuos de antibióticos</b> (β-lactámicos, tetraciclinas)</td><td><b>Negativo</b></td><td><span class="pcc">PCC-1</span> rechazo y bloqueo del proveedor</td></tr>
+      <tr><td></td><td>Grasa · proteína · SNG</td><td>≥ 3,0 % · ≥ 2,9 % · ≥ 8,3 %</td><td>Pago por calidad</td></tr>
+      <tr><td></td><td>Recuento total · células somáticas (especificación interna supuesta)</td><td>≤ 100.000 UFC/mL · ≤ 400.000 cél/mL</td><td>Laboratorio</td></tr>
+      <tr><td>Descargar</td><td>Desaireación, filtro dúplex, caudalímetro</td><td>30–40 m³/h</td><td>Alarma de ΔP del filtro</td></tr>
+      <tr><td>Enfriar y almacenar</td><td>Salida de placas · permanencia</td><td>≤ 4 °C · máximo 24 h</td><td>Si va a esperar más, termizar a 63–65 °C × 15 s antes de cumplir las 24 h</td></tr>
+    </tbody>
+  </table></div>
+  <h3><span class="stagelabel">PUREZA</span> · Clarificación, estandarización y pasteurización</h3>
+  <div class="tbl"><table>
+    <thead><tr><th>Fase</th><th>Parámetro</th><th>Valor de receta</th><th>Control</th></tr></thead>
+    <tbody>
+      <tr><td>Precalentar</td><td>Temperatura de separación</td><td>55 °C (50–60 °C)</td><td class="tag">TT-1201</td></tr>
+      <tr><td>Estandarizar</td><td>Grasa hacia U123A/B (YF, YN)</td><td><b>3,50 %</b> ± 0,03</td><td class="tag">DT-1202 · FCV-1202</td></tr>
+      <tr><td></td><td>Grasa hacia U123C (YG)</td><td><b>≤ 0,05 %</b></td><td>Muestra por lote LB</td></tr>
+      <tr><td>Pasteurizar leche</td><td>HTST en U122</td><td><b>75 °C × 15 s</b> (límite 72 °C × 15 s)</td><td><span class="pcc">PCC-2</span> desvío por FDV-1212</td></tr>
+      <tr><td></td><td>Presión diferencial del regenerador</td><td>Lado pasteurizado mayor por 0,3 bar</td><td class="tag">PDT-1213</td></tr>
+      <tr><td>Pasteurizar crema</td><td>Crema al 40 % en U126, luego U127 a ≤ 4 °C</td><td><b>85 °C × 15 s</b> (límite 80 °C × 15 s); en U127 ≤ 24 h</td><td><span class="pcc">PCC-3</span> desvío por FDV; CIP de U127 al vaciarse</td></tr>
+      <tr><td>Almacenar</td><td>Silo</td><td>2–4 °C, máximo 24 h</td><td class="tag">TT-1231</td></tr>
+      <tr><td>Liberar lote LB</td><td>Fosfatasa alcalina · peroxidasa</td><td>Fosfatasa negativa y peroxidasa positiva (Decreto 616/2006, art. 18)</td><td>Sin liberación no se transfiere</td></tr><tr><td>Liberar lote de crema</td><td>Fosfatasa alcalina</td><td>Fosfatasa negativa (a 85 °C la peroxidasa se inactiva)</td><td>Laboratorio</td></tr>
+    </tbody>
+  </table></div>
+  <p>La crema del griego se añade después de la fermentación, así que su única barrera térmica es U126; por eso tiene su propio PCC.</p>
+</section>
+
+<section id="yf">
+  <article class="recipe yf">
+    <div class="recipe-head"><span class="code">YF</span><h2>Yogur con trozos de fresa</h2><span class="eyebrow">Receta 1.4 · YF150 · YF1000 · YF1750</span></div>
+    <div class="facts">
+      <span class="fact">Grasa <b>2,79 %</b></span><span class="fact">Proteína <b>3,60 %</b></span><span class="fact">Fruta neta <b>6,5 %</b></span><span class="fact">Azúcar añadida <b>9,3 %</b></span><span class="fact">pH de corte <b>4,50</b></span><span class="fact">Lote máximo <b>10.500 L</b></span>
+    </div>
+    <h3>Fórmula por lote</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Materia prima</th><th>Especificación</th><th class="r">kg/lote</th><th class="r">%</th></tr></thead>
+      <tbody>
+        <tr><td>Leche entera estandarizada (U123A/B)</td><td>3,50 % grasa · 3,10 % proteína · 8,61 % SNG</td><td class="r">10.320</td><td class="r">78,8</td></tr>
+        <tr><td>Leche en polvo descremada</td><td>≥ 34 % proteína</td><td class="r">444</td><td class="r">3,4</td></tr>
+        <tr><td>Azúcar (sacarosa)</td><td>Refinada, grado alimentario</td><td class="r">626,5</td><td class="r">4,8</td></tr>
+        <tr><td>Preparado de fresa en trozos</td><td>Etiqueta limpia: ≥ 50 % fresa en trozos de 8–10 mm, ≈ 35 % sacarosa y <b>fibra de cítricos ≤ 2 % (ingrediente, no aditivo)</b>; sin pectina, almidón modificado ni conservantes; pH 3,4–3,8; pasteurizado en bolsa aséptica</td><td class="r">1.702</td><td class="r">13,0</td></tr>
+        <tr><td>Cultivo DVS</td><td><i>S. thermophilus</i> + <i>L. delbrueckii</i> subsp. <i>bulgaricus</i>; dosis según la ficha del proveedor</td><td class="r">400 U</td><td class="r">—</td></tr>
+        <tr class="total"><td>Producto</td><td></td><td class="r">13.092</td><td class="r">100,0</td></tr>
+      </tbody>
+    </table></div>
+    <p>Sin estabilizantes, gelificantes ni emulsificantes añadidos: la Res. 2310/1986 (art. 19) solo los permite en la leche fermentada de larga vida y nombra expresamente la pectina. La textura sale de los sólidos lácteos (base con 11,5 % de SNG) y del tratamiento a 92 °C. Antes de comprar el preparado se pide concepto a regulatorio/INVIMA. Como el preparado entra después del último tratamiento térmico, tiene su propio control, <span class="pcc">PCC-6</span>: certificado por lote del proceso térmico validado del proveedor, envase íntegro y bolsa conectada máximo 24 h a ≤ 8 °C (supuesto).</p>
+    <h3>Procedimiento</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Etapa</th><th>Fase</th><th>Valor de receta</th><th>Tolerancia / alarma</th></tr></thead>
+      <tbody>
+        <tr><td class="stagelabel">CUERPO</td><td>Cargar leche desde U123A/B</td><td>10.320 kg</td><td>± 0,5 % (WT-2011)</td></tr>
+        <tr><td></td><td>Dosificar LPD y azúcar al mezclador de vacío</td><td>444 + 626,5 kg</td><td>± 1 % (WT-2012)</td></tr>
+        <tr><td></td><td>Dispersar e hidratar</td><td>50 °C · 20 min; calentamiento en línea durante la carga (EM-2014, supuesto)</td><td>Supuesto: ≤ 2 h por encima de 10 °C, contando la transferencia</td></tr>
+        <tr><td class="stagelabel">TEMPLE</td><td>Desairear</td><td>68 °C</td><td>Vacío del proveedor</td></tr>
+        <tr><td></td><td>Homogeneizar (etapa 1 + 2)</td><td>200 + 50 bar a 65–70 °C</td><td>± 10 bar</td></tr>
+        <tr><td></td><td>Tratar térmicamente</td><td><b>92 °C × 5 min</b></td><td><span class="pcc">PCC-4</span> desvío si T &lt; 90 °C</td></tr>
+        <tr><td></td><td>Enfriar a inoculación</td><td>43 °C</td><td>± 0,5 °C</td></tr>
+        <tr><td class="stagelabel">CULTIVO</td><td>Inocular al iniciar el llenado; agitar</td><td>10 min a 15–20 rpm</td><td>Lote del cultivo por código de barras</td></tr>
+        <tr><td></td><td>Incubar sin agitación</td><td>43 °C · ≈ 5,25 h</td><td>42–44 °C · 4,75–6,25 h</td></tr>
+        <tr><td></td><td>Cortar fermentación</td><td><b>pH 4,50</b> · acidez de la base ≥ 0,90 %</td><td>Alarma si t &gt; 6,5 h; Held si se sale de la curva</td></tr>
+        <tr><td class="stagelabel">SEDA</td><td>Romper coágulo</td><td>5–10 min a ≤ 20 rpm</td><td>Sin incorporar aire</td></tr>
+        <tr><td></td><td>Enfriar en placas</td><td>20 °C (15–22 °C)</td><td>Vaciado en ≈ 1,1 h</td></tr>
+        <tr><td class="stagelabel">MATIZ</td><td>Mantener en pulmón U214A/B</td><td>18–22 °C · ≤ 8 h (supuesto, se valida)</td><td>Tetra Pak: minimizar el tiempo en el pulmón</td></tr>
+        <tr><td></td><td>Dosificar preparado de fresa en línea</td><td><b>13,0 %</b></td><td>± 0,5 % (Coriolis FT-2141)</td></tr>
+        <tr><td class="stagelabel">SELLO</td><td>Envasar</td><td>Llenado a 18–22 °C</td><td>Sección 07</td></tr>
+        <tr><td class="stagelabel">REPOSO</td><td>Enfriar y madurar</td><td>≤ 6 °C · ≥ 12 h a 2–4 °C</td><td>Liberación por calidad</td></tr>
+      </tbody>
+    </table></div>
+    <h3>Especificación del producto</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Parámetro</th><th>Diseño</th><th>Requisito</th><th>Norma</th></tr></thead>
+      <tbody>
+        <tr><td>Grasa láctea</td><td>2,79 %</td><td>≥ 2,5 % (entero)</td><td>Res. 2310/1986, art. 13</td></tr>
+        <tr><td>Proteína láctea</td><td>3,60 %</td><td>≥ 2,7 %</td><td>Codex CXS 243-2003</td></tr>
+        <tr><td>SNG lácteos</td><td>10,0 %</td><td>≥ 7,0 %</td><td>Res. 2310/1986</td></tr>
+        <tr><td>Acidez titulable</td><td>≈ 0,86 % (la base aporta 0,90 × 0,87 = 0,78 % y el preparado ≈ 0,08 %, estimado); liberación <b>≥ 0,75 %</b> medida con fruta</td><td>0,70–1,50 % · Codex ≥ 0,6 %</td><td>Res. 2310 · Codex</td></tr>
+        <tr><td>pH de liberación</td><td>4,2–4,5</td><td>—</td><td>Tetra Pak</td></tr>
+        <tr><td>Fruta neta</td><td>6,5 %</td><td>≥ 3 %</td><td>Res. 2310/1986, art. 20</td></tr>
+        <tr><td>Sellos frontales (estimación)</td><td><b>«ALTO EN AZÚCARES»</b> (azúcares libres ≈ 37 % de la energía). Sin sello de grasas saturadas: no se añade grasa (art. 32)</td><td>≥ 10 % de la energía</td><td>Res. 810/2021, 2492/2022 y 254/2023</td></tr>
+        <tr><td>Cultivo viable</td><td>Requisito de diseño: ≥ 10⁷ UFC/g al vencimiento</td><td>≥ 10⁷ UFC/g</td><td>Codex CXS 243-2003</td></tr>
+        <tr><td>Vida útil</td><td><b>30 días a 2–6 °C</b> (acidez al vencimiento ≈ 1,16 %); protocolo de vida útil</td><td>≤ 1,50 %</td><td>Tetra Pak: 21–30 días en líneas de alta higiene</td></tr>
+        <tr><td>Denominación</td><td colspan="2">«Yogur entero con dulce, con fresa»</td><td>Res. 2310/1986, art. 21</td></tr>
+      </tbody>
+    </table></div>
+  </article>
+</section>
+
+<section id="yn">
+  <article class="recipe yn">
+    <div class="recipe-head"><span class="code">YN</span><h2>Yogur natural</h2><span class="eyebrow">Receta 1.4 · YN200 · YN1000</span></div>
+    <div class="facts">
+      <span class="fact">Grasa <b>3,42 %</b></span><span class="fact">Proteína <b>4,14 %</b></span><span class="fact">SNG <b>11,5 %</b></span><span class="fact">Sin azúcar</span><span class="fact">pH de corte <b>4,50</b></span><span class="fact">Primero en la campaña</span>
+    </div>
+    <h3>Fórmula por lote</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Materia prima</th><th>Especificación</th><th class="r">kg/lote</th><th class="r">%</th></tr></thead>
+      <tbody>
+        <tr><td>Leche entera estandarizada (U123A/B)</td><td>3,50 % grasa · 3,10 % proteína · 8,61 % SNG</td><td class="r">10.320</td><td class="r">96,7</td></tr>
+        <tr><td>Leche en polvo descremada</td><td>≥ 34 % proteína</td><td class="r">357</td><td class="r">3,3</td></tr>
+        <tr><td>Cultivo DVS suave</td><td><i>S. thermophilus</i> + <i>L. bulgaricus</i>, de baja postacidificación</td><td class="r">400 U</td><td class="r">—</td></tr>
+        <tr class="total"><td>Producto</td><td></td><td class="r">10.677</td><td class="r">100,0</td></tr>
+      </tbody>
+    </table></div>
+    <p>Etiqueta limpia: leche, leche en polvo y cultivo. Sin azúcar, saborizantes, estabilizantes ni fruta.</p>
+    <h3>Diferencias con la receta YF</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Etapa</th><th>YN</th><th>Motivo</th></tr></thead>
+      <tbody>
+        <tr><td class="stagelabel">CUERPO</td><td>Solo LPD (357 kg); sin azúcar</td><td>Base con 11,5 % de SNG</td></tr>
+        <tr><td class="stagelabel">TEMPLE</td><td>Igual: 200 + 50 bar · 92 °C × 5 min · 43 °C</td><td><span class="pcc">PCC-4</span></td></tr>
+        <tr><td class="stagelabel">CULTIVO</td><td><b>pH de corte 4,50</b> · ≈ 5,0 h (4,5–6,0 h)</td><td>El cultivo de baja postacidificación evita que siga bajando el pH en la cámara; el sabor suave lo da el cultivo</td></tr>
+        <tr><td class="stagelabel">MATIZ</td><td>No se saboriza; el dosificador EM-2141 queda aislado con válvulas a prueba de mezcla</td><td>El YN abre la campaña</td></tr>
+        <tr><td class="stagelabel">SELLO a REPOSO</td><td>Igual que YF</td><td></td></tr>
+      </tbody>
+    </table></div>
+    <h3>Especificación del producto</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Parámetro</th><th>Diseño</th><th>Requisito</th><th>Norma</th></tr></thead>
+      <tbody>
+        <tr><td>Grasa láctea</td><td>3,42 %</td><td>≥ 2,5 %</td><td>Res. 2310/1986</td></tr>
+        <tr><td>Proteína láctea</td><td>4,14 %</td><td>≥ 2,7 %</td><td>Codex CXS 243-2003</td></tr>
+        <tr><td>Acidez titulable</td><td>0,85–1,05 % (supuesto); liberación ≥ 0,75 %</td><td>0,70–1,50 %</td><td>Res. 2310/1986</td></tr>
+        <tr><td>pH de liberación</td><td>4,2–4,5</td><td>—</td><td>Tetra Pak</td></tr>
+        <tr><td>Sellos frontales</td><td><b>Exento</b>: no se le añade sal, azúcar ni grasa</td><td>Art. 2.2 k</td><td>Res. 810/2021 y 2492/2022</td></tr>
+        <tr><td>Cultivo viable</td><td>Requisito de diseño: ≥ 10⁷ UFC/g al vencimiento</td><td>≥ 10⁷ UFC/g</td><td>Codex</td></tr>
+        <tr><td>Denominación</td><td colspan="2">«Yogur entero sin dulce» (nombre comercial: natural)</td><td>Res. 2310/1986, art. 21</td></tr>
+      </tbody>
+    </table></div>
+  </article>
+</section>
+
+<section id="yg">
+  <article class="recipe yg">
+    <div class="recipe-head"><span class="code">YG</span><h2>Yogur griego</h2><span class="eyebrow">Receta 1.4 · YG150 · YG500</span></div>
+    <div class="facts">
+      <span class="fact">Proteína <b>9,23 %</b></span><span class="fact">Grasa <b>2,00 %</b></span><span class="fact">Leche <b>3,19 kg/kg</b></span><span class="fact">Rendimiento <b>0,32 kg/L</b></span><span class="fact">pH de corte <b>4,55</b></span><span class="fact">Crema pasteurizada <b>U126</b></span>
+    </div>
+    <p>El griego industrial se hace concentrando un yogur de leche descremada: un separador centrífugo de boquillas retira el suero ácido hasta la proteína objetivo, y luego se restituye la grasa con crema pasteurizada. Es el método de GEA y Tetra Pak, que conserva vivo el cultivo. El Codex lo clasifica como leche fermentada concentrada (proteína ≥ 5,6 %).</p>
+    <h3>Balance por lote</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Corriente</th><th class="r">kg/lote</th><th class="r">Grasa</th><th class="r">Proteína</th><th>Destino</th></tr></thead>
+      <tbody>
+        <tr><td>Leche descremada (U123C), 10.000 L</td><td class="r">10.350</td><td class="r">0,05 %</td><td class="r">3,21 %</td><td>Formulación, sin fortificar</td></tr>
+        <tr><td>Cultivo DVS de pH estable y baja producción de exopolisacáridos</td><td class="r">400 U</td><td class="r"></td><td class="r"></td><td>Facilita la separación del suero</td></tr>
+        <tr><td>→ Concentrado del separador U216</td><td class="r">3.087</td><td class="r">0,10 %</td><td class="r">9,60 %</td><td>Restitución de grasa</td></tr>
+        <tr><td>→ Suero ácido (pH 4,4–4,6)</td><td class="r">7.263</td><td class="r">0,03 %</td><td class="r">0,5 %</td><td>U905: valorización</td></tr>
+        <tr><td>Crema pasteurizada al 40 % (U127)</td><td class="r">155</td><td class="r">40 %</td><td class="r">1,9 %</td><td>5,0 % del concentrado, dosificada en línea</td></tr>
+        <tr class="total"><td>Yogur griego</td><td class="r">3.242</td><td class="r">2,00 %</td><td class="r">9,23 %</td><td>Pulmón U217A o U217B (uno por lote) → U313</td></tr>
+      </tbody>
+    </table></div>
+    <p>Por cada kg de griego se usan 3,19 kg de leche descremada y salen 2,24 kg de suero ácido. La referencia de la industria es ≈ 3 kg de leche y 2–3 kg de suero por kg (GEA; <i>Foods</i> 2022).</p>
+    <h3>Procedimiento</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Etapa</th><th>Fase</th><th>Valor de receta</th><th>Tolerancia / alarma</th></tr></thead>
+      <tbody>
+        <tr><td class="stagelabel">CUERPO</td><td>Cargar leche desde U123C</td><td>10.350 kg, sin fortificar</td><td>La proteína la da la concentración</td></tr>
+        <tr><td class="stagelabel">TEMPLE</td><td>Homogeneizar</td><td>Opcional en leche descremada: 100 bar o en derivación</td><td></td></tr>
+        <tr><td></td><td>Tratar térmicamente</td><td><b>92 °C × 5 min</b> · enfriar a 43 °C</td><td><span class="pcc">PCC-4</span></td></tr>
+        <tr><td class="stagelabel">CULTIVO</td><td>Incubar</td><td>43 °C · ≈ 5,5 h</td><td>5,0–6,5 h; alarma si t &gt; 7 h</td></tr>
+        <tr><td></td><td>Cortar y agitar</td><td><b>pH 4,55</b> · 10–15 min lento</td><td>Coágulo sin grumos (protege las boquillas)</td></tr>
+        <tr><td class="stagelabel">ESENCIA</td><td>Separar</td><td>Alimentación a 40–42 °C · 7.000 L/h (≈ 1,4 h)</td><td>Proteína en línea o en laboratorio: 9,6 ± 0,2 %</td></tr>
+        <tr><td></td><td>Enfriar el concentrado</td><td>10–12 °C, de inmediato (enfriador tubular)</td><td>Detiene la acidificación</td></tr>
+        <tr><td></td><td>Restituir grasa</td><td>Crema pasteurizada desde U127: 155 kg/lote</td><td>± 0,1 % de grasa; lote de crema liberado (<span class="pcc">PCC-3</span>)</td></tr>
+        <tr><td class="stagelabel">MATIZ</td><td>Mantener en U217A/B, un pulmón por lote</td><td>≤ 12 °C · ≤ 12 h (supuesto, se valida)</td><td>U313 tarda ≈ 3,2 h por lote y el siguiente YG llega 3 h después</td></tr>
+        <tr><td class="stagelabel">SELLO</td><td>Envasar en U313</td><td>Llenado a 10–12 °C</td><td>Dosificador de pistón</td></tr>
+        <tr><td class="stagelabel">REPOSO</td><td>Madurar</td><td>≤ 6 °C · ≥ 12 h a 2–4 °C</td><td>Liberación</td></tr>
+      </tbody>
+    </table></div>
+    <h3>Especificación del producto</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Parámetro</th><th>Diseño</th><th>Requisito</th><th>Norma</th></tr></thead>
+      <tbody>
+        <tr><td>Proteína láctea</td><td><b>9,23 %</b></td><td>≥ 5,6 % (leche fermentada concentrada)</td><td>Codex CXS 243-2003</td></tr>
+        <tr><td>Grasa láctea</td><td>2,00 %</td><td>≥ 1,5 % (semidescremado)</td><td>Res. 2310/1986</td></tr>
+        <tr><td>SNG lácteos</td><td>≈ 13 % (estimado)</td><td>≥ 7,0 %</td><td>Res. 2310/1986</td></tr>
+        <tr><td>Acidez titulable</td><td><b>≈ 1,15 % al día 1</b>: el griego colado industrial mide 1,09–1,17 %, porque el ácido láctico sale con el suero (<i>Foods</i> 2022). Liberación ≤ 1,20 %; con cultivo de pH estable y 21 días de vida útil, ≤ 1,50 % al vencimiento</td><td>0,70–1,50 %</td><td>Res. 2310/1986</td></tr>
+        <tr><td>pH de liberación</td><td>4,3–4,6</td><td>—</td><td></td></tr>
+        <tr><td>Sellos frontales (estimación)</td><td>Probable <b>«ALTO EN GRASAS SATURADAS»</b> (≈ 17 % de la energía; la crema añadida cuenta como grasa añadida). Confirmar con regulatorio</td><td>≥ 10 % de la energía</td><td>Res. 810/2021 y 2492/2022, art. 32</td></tr>
+        <tr><td>Cultivo viable</td><td>Requisito de diseño: ≥ 10⁷ UFC/g al vencimiento</td><td>≥ 10⁷ UFC/g</td><td>Codex</td></tr>
+        <tr><td>Vida útil</td><td><b>21 días a 2–6 °C</b>; con cultivo estándar el griego sube hasta +0,78 % de acidez en 21 días (Yang y Yoon, 2022)</td><td>≤ 1,50 % al vencimiento</td><td>Protocolo de vida útil</td></tr>
+        <tr><td>Denominación legal</td><td colspan="2"><b>«Yogurt griego natural semidescremado — yogurt concentrado por separación del suero»</b>, sin espesantes. «Griego» es veraz porque el producto es colado (Res. 5109/2005, art. 4); precedente: Colanta, Pasco y Alpina</td><td>Res. 2310 · Res. 5109</td></tr>
+      </tbody>
+    </table></div>
+    <p><b>Suero ácido:</b> 14.526 kg/día. No se vierte, por su carga orgánica. Destinos a evaluar: concentración por ósmosis inversa, alimentación animal o biogás.</p>
+  </article>
+</section>
+
+<section id="envasado">
+  <span class="eyebrow">07 · Sello · Estiba · Reposo</span>
+  <h2>Siete referencias en tres llenadoras</h2>
+  <div class="tbl"><table>
+    <thead><tr><th>Referencia</th><th>Envase</th><th>Llenadora</th><th class="r">Velocidad</th><th class="r">% del lote</th><th class="r">Und/lote</th><th class="r">Und/día</th><th class="r">Und/caja</th><th class="r">h/lote</th></tr></thead>
+    <tbody>
+      <tr><td class="tag">YF150</td><td>Vaso PP termoformado, foil termosellado</td><td class="tag">U311</td><td class="r">15.000/h</td><td class="r">45</td><td class="r">39.276</td><td class="r">117.828</td><td class="r">24</td><td class="r">2,62</td></tr>
+      <tr><td class="tag">YF1000</td><td>Botella PEAD, tapa rosca y sello de inducción</td><td class="tag">U312</td><td class="r">4.000/h</td><td class="r">35</td><td class="r">4.582</td><td class="r">13.747</td><td class="r">12</td><td class="r">1,15</td></tr>
+      <tr><td class="tag">YF1750</td><td>Botella PEAD con asa, sello de inducción</td><td class="tag">U312</td><td class="r">2.500/h</td><td class="r">20</td><td class="r">1.496</td><td class="r">4.489</td><td class="r">6</td><td class="r">0,60</td></tr>
+      <tr><td class="tag">YN200</td><td>Vaso PP termoformado, foil termosellado</td><td class="tag">U311</td><td class="r">12.000/h</td><td class="r">40</td><td class="r">21.355</td><td class="r">64.064</td><td class="r">24</td><td class="r">1,78</td></tr>
+      <tr><td class="tag">YN1000</td><td>Botella PEAD, tapa rosca y sello de inducción</td><td class="tag">U312</td><td class="r">4.000/h</td><td class="r">60</td><td class="r">6.406</td><td class="r">19.219</td><td class="r">12</td><td class="r">1,60</td></tr>
+      <tr><td class="tag">YG150</td><td>Vaso PP con foil y sobretapa</td><td class="tag">U313</td><td class="r">6.000/h</td><td class="r">60</td><td class="r">12.966</td><td class="r">25.933</td><td class="r">24</td><td class="r">2,16</td></tr>
+      <tr><td class="tag">YG500</td><td>Pote PP con foil y sobretapa</td><td class="tag">U313</td><td class="r">2.400/h</td><td class="r">40</td><td class="r">2.593</td><td class="r">5.187</td><td class="r">12</td><td class="r">1,08</td></tr>
+    </tbody>
+  </table></div>
+  <p>Horas a velocidad nominal. El modelo de Tecnomatix añade desempeño, fallas, CIP y cambios de formato.</p>
+  <div class="tbl"><table>
+    <thead><tr><th>Etapa</th><th>Fase</th><th>Valor</th><th>Control</th></tr></thead>
+    <tbody>
+      <tr><td class="stagelabel">SELLO</td><td>Peso neto</td><td>Nominal, con control metrológico de preempacados</td><td>Báscula WT-3111 · Res. SIC 32209/2020 (derogó la 16379/2003; prorrogada por la 51039/2026) · OIML R 87</td></tr>
+      <tr><td></td><td>Sellado de vasos (U311, U313)</td><td>Mordaza a 180–220 °C según el foil</td><td>TT-3111; hermeticidad por turno</td></tr>
+      <tr><td></td><td>Sello de inducción (U312)</td><td>Según el cabezal</td><td>Visión AE-3112</td></tr>
+      <tr><td></td><td>Detector de metales de tubería, en el producto antes de cada llenadora (el foil de aluminio impide detectar no ferrosos después de sellar)</td><td>Patrones definidos en la validación; rayos X opcional</td><td><span class="pcc">PCC-5</span> válvula de rechazo; verificación cada hora</td></tr>
+      <tr><td></td><td>Codificar y rotular</td><td>Lote <span class="tag">YF150-261009-03</span>, vencimiento, sellos frontales y tabla nutricional</td><td>Visión · Res. 810/2021 y 2492/2022</td></tr>
+      <tr><td class="stagelabel">ESTIBA</td><td>Encajonar y paletizar (U341/U342)</td><td>Patrón de estiba por referencia; estiba envuelta</td><td>Etiqueta logística por estiba</td></tr>
+      <tr><td class="stagelabel">REPOSO</td><td>Enfriar y madurar (U411)</td><td>Producto ≤ 6 °C en ≤ 12 h (aire forzado; supuesto que se valida) · reposo ≥ 12 h a 2–4 °C</td><td>Registro continuo de la cámara</td></tr>
+      <tr><td></td><td>Liberar y despachar (U412)</td><td>pH, acidez y sensorial; FEFO; transporte a 2–6 °C</td><td>Lote retenido hasta liberarse</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section id="custodia">
+  <span class="eyebrow">08 · Custodia</span>
+  <h2>Limpieza, plan HACCP y orden de la campaña</h2>
+  <h3>Programas CIP (U901)</h3>
+  <div class="tbl"><table>
+    <thead><tr><th>Programa</th><th>Equipos</th><th>Secuencia (Tetra Pak)</th><th class="r">Duración</th></tr></thead>
+    <tbody>
+      <tr><td class="tag">CIP-C</td><td>U122, U126, U202 (superficies calientes)</td><td>Agua tibia 10 min → NaOH 0,5–2 % a 75 °C, 30 min → agua 5 min → HNO₃ 0,5–1,5 % a 70 °C, 20 min → agua fría → enfriamiento 8 min. Antes de producir: agua a 90–95 °C, 10–15 min</td><td class="r">≈ 85 min</td></tr>
+      <tr><td class="tag">CIP-F</td><td>U201, fermentadores, U214A/B, U215, EM-2141, U217A/B, U127, tuberías (superficies frías)</td><td>Agua 3 min (≤ 55 °C) → NaOH 0,5–1,5 % a 75 °C, 10 min → agua 3 min → agua a 90–95 °C, 5 min. Ácido una vez por semana</td><td class="r">≈ 45 min con llenados y drenajes</td></tr>
+      <tr><td class="tag">CIP-S</td><td>U216 separador</td><td>CIP-F del circuito + descargas del bowl según el fabricante</td><td class="r">Al terminar los lotes YG</td></tr>
+      <tr><td class="tag">CIP-L</td><td>U311–U313 llenadoras</td><td>CIP/SIP del fabricante, al pasar de YF a YN; de YN a YF basta un empuje y un enjuague. U312 cambia de formato (1000 ↔ 1750 g) en cada lote YF</td><td class="r">1 al día</td></tr>
+    </tbody>
+  </table></div>
+  <p>Velocidad en tuberías de 1,5–3,0 m/s, con registro de la conductividad y la temperatura de retorno. U202 lleva tres CIP-C al día, uno en cada cambio de producto (después de los lotes 3, 5 y 8). La corrida más larga dura ≈ 7,2 h, y cada CIP (≈ 1,4 h) cabe en el hueco de ≈ 1,8 h entre lotes. Fermentadores y pulmones se lavan cada vez que se vacían. U201, U215 y la línea de fruta se lavan a diario en la transición YF → YN, junto con las llenadoras, para que no pase azúcar ni fruta al yogur sin dulce. Los pulmones son tanques higiénicos, no asépticos, porque no hay esterilización con vapor (SIP).</p>
+  <h3>Puntos críticos de control</h3>
+  <div class="tbl"><table>
+    <thead><tr><th>PCC</th><th>Etapa</th><th>Peligro</th><th>Límite crítico</th><th>Acción correctiva</th></tr></thead>
+    <tbody>
+      <tr><td><span class="pcc">PCC-1</span></td><td class="stagelabel">ORIGEN</td><td>Químico: antibióticos</td><td>Prueba negativa</td><td>Rechazar la cisterna y bloquear al proveedor</td></tr>
+      <tr><td><span class="pcc">PCC-2</span></td><td class="stagelabel">PUREZA</td><td>Biológico: patógenos en la leche</td><td>≥ 72 °C × 15 s (temperatura + caudal)</td><td>Desvío automático y reproceso</td></tr>
+      <tr><td><span class="pcc">PCC-3</span></td><td class="stagelabel">PUREZA · U126</td><td>Biológico: patógenos en la crema que se añade al griego</td><td>≥ 80 °C × 15 s; crema ≤ 24 h a ≤ 4 °C en U127</td><td>Desvío; la crema no se libera o se descarta</td></tr>
+      <tr><td><span class="pcc">PCC-4</span></td><td class="stagelabel">TEMPLE</td><td>Biológico: patógenos y flora competitiva</td><td>≥ 90 °C × 300 s (temperatura + caudal)</td><td>Desvío; el lote no pasa al fermentador</td></tr>
+      <tr><td><span class="pcc">PCC-5</span></td><td class="stagelabel">SELLO</td><td>Físico: metales</td><td>Sin metal ≥ patrón validado (detector de tubería)</td><td>Rechazo; reinspección desde la última verificación</td></tr>
+      <tr><td><span class="pcc">PCC-6</span></td><td class="stagelabel">MATIZ</td><td>Biológico: preparado de fruta añadido después del último tratamiento térmico</td><td>Certificado conforme del proceso térmico del proveedor · envase íntegro · conectado ≤ 24 h a ≤ 8 °C</td><td>Rechazar el lote del preparado; desechar el remanente</td></tr>
+    </tbody>
+  </table></div>
+  <p><b>Criterios microbiológicos</b> (Res. 1407/2022, numeral 1.11, leche fermentada): coliformes n = 5, c = 2, m = 10, M = 10² UFC/g · mohos y levaduras n = 5, c = 2, m = 2×10², M = 5×10² UFC/g · <i>E. coli</i> n = 5, c = 0, &lt; 10 UFC/g.</p>
+  <div class="cols2">
+    <div class="note"><b>Orden de la campaña.</b> YN ×3 → YG ×2 → YF ×3, un lote cada 3 h, en ciclo continuo. Primero va lo sin dulce. Cada cambio de producto lleva CIP-C de U202; el paso de YF a YN lleva CIP completo. El separador U216 recibe su CIP-S al terminar el griego, mientras siguen los lotes de fresa.</div>
+    <div class="note"><b>Puntos de control.</b> Curva de pH y pH de corte, acidez del producto con fruta, tiempo y temperatura en los pulmones, integridad del sello, cadena de frío ≤ 6 °C y ATP en superficies después del CIP.</div>
+  </div>
+</section>
+
+<section id="tiempos">
+  <span class="eyebrow">09 · Tiempos y balance</span>
+  <h2>Ciclo del fermentador por producto</h2>
+  <p>Llenado y vaciado a 10 m³/h, inoculación, incubación hasta el pH de corte, ruptura o agitación, y CIP. El griego se vacía al ritmo del separador. Barras a escala de 10 h.</p>
+  <div class="gantt" aria-label="Ciclo del fermentador">
+    <div class="axis"><div></div><div><span style="left:0%">0 h</span><span style="left:20%">2</span><span style="left:40%">4</span><span style="left:60%">6</span><span style="left:80%">8</span><span style="left:100%">10 h</span></div><div></div></div>
+    <div class="grow yf"><span class="lab">YF</span><div class="bar"><span class="s-fill" style="width:10.85%"></span><span class="s-inoc" style="width:1.70%"></span><span class="s-inc" style="width:52.50%"></span><span class="s-brk" style="width:1.50%"></span><span class="s-out" style="width:10.85%"></span><span class="s-cip" style="width:7.50%"></span></div><span class="mono">8,49 h</span></div>
+    <div class="grow yn"><span class="lab">YN</span><div class="bar"><span class="s-fill" style="width:10.17%"></span><span class="s-inoc" style="width:1.70%"></span><span class="s-inc" style="width:50%"></span><span class="s-brk" style="width:1.50%"></span><span class="s-out" style="width:10.17%"></span><span class="s-cip" style="width:7.50%"></span></div><span class="mono">8,10 h</span></div>
+    <div class="grow yg"><span class="lab">YG</span><div class="bar"><span class="s-fill" style="width:9.86%"></span><span class="s-inoc" style="width:1.70%"></span><span class="s-inc" style="width:55%"></span><span class="s-brk" style="width:2.00%"></span><span class="s-out" style="width:14.22%"></span><span class="s-cip" style="width:7.50%"></span></div><span class="mono">9,03 h</span></div>
+    <div class="legend yf"><span><i class="s-fill"></i>Llenar</span><span><i class="s-inoc"></i>Inocular</span><span><i class="s-inc"></i>Incubar (color del producto)</span><span><i class="s-brk"></i>Romper o agitar</span><span><i class="s-out"></i>Vaciar o separar</span><span><i class="s-cip"></i>CIP</span></div>
+  </div>
+  <div class="kpis">
+    <div><b>71 %</b><span>carga de los 4 fermentadores (67,8 h-tanque/día); con 3 sería el 94 %</span></div>
+    <div><b>13,2 h</b><span>U311 vasos, horas nominales/día</span></div>
+    <div><b>10,0 h</b><span>U312 botellas, horas nominales/día</span></div>
+    <div><b>6,5 h</b><span>U313 griego, horas nominales/día</span></div>
+  </div>
+  <p><b>Ritmo: un lote cada 3 h (24 h / 8 lotes).</b> El script simula tres días seguidos y nunca hay más de 4 fermentadores ocupados a la vez. U201 trabaja ≈ 1,9 h de cada 3 h, así que la base nunca espera fermentador. U202 trabaja ≈ 1,2 h de cada 3 h, y sus dos CIP-C caben en los huecos. El MES solo arranca U201 cuando hay un fermentador libre para ese lote. Lead time por lote, del silo al último envase: ≈ 10–12 h, más ≥ 12 h de reposo en cámara. <b>Tecnomatix verificará el ritmo</b> con las llenadoras y las fallas.</p>
+
+  <h3>Balance diario de la línea</h3>
+  <div class="stack" role="img" aria-label="Salidas por día: YF 39.276 kg, YN 32.032 kg, YG 6.483 kg, suero ácido 14.526 kg, crema 1.880 kg">
+    <span class="b-yf" style="width:41.70%">YF</span><span class="b-yn" style="width:34.01%">YN</span><span class="b-yg" style="width:6.88%">YG</span><span class="b-su" style="width:15.42%">Suero</span><span class="b-cr" style="width:2.00%" title="Crema excedente"></span>
+  </div>
+  <div class="tbl"><table>
+    <thead><tr><th>Entradas</th><th class="r">Por día</th><th>Salidas</th><th class="r">Por día</th></tr></thead>
+    <tbody>
+      <tr><td>Leche cruda (82.179 L)</td><td class="r">84.809 kg</td><td>Yogur con fresa YF</td><td class="r">39.276 kg</td></tr>
+      <tr><td>Leche en polvo descremada</td><td class="r">2.403 kg</td><td>Yogur natural YN</td><td class="r">32.032 kg</td></tr>
+      <tr><td>Azúcar</td><td class="r">1.879 kg</td><td>Yogur griego YG</td><td class="r">6.483 kg</td></tr>
+      <tr><td>Preparado de fresa</td><td class="r">5.106 kg</td><td>Suero ácido (U905)</td><td class="r">14.526 kg</td></tr>
+      <tr><td>Cultivo DVS</td><td class="r">3.200 U</td><td>Crema excedente al 40 % (otras líneas)</td><td class="r">1.880 kg</td></tr>
+      <tr class="total"><td>Total</td><td class="r">94.197 kg</td><td>Total</td><td class="r">94.197 kg</td></tr>
+    </tbody>
+  </table></div>
+  <p>El balance cierra exacto en masa total, grasa y proteína; las cifras individuales están redondeadas. A la línea entran 60.000 L de leche entera y 20.000 L de leche descremada. No incluye las mermas de arranque, empuje, rechazo y producto retenido en líneas, que se miden en el piloto.</p>
+</section>
+
+<section id="cambios">
+  <span class="eyebrow">10 · Cambios y supuestos</span>
+  <h2>Qué cambia frente a la receta del 29 de septiembre</h2>
+  <div class="tbl"><table>
+    <thead><tr><th>Antes</th><th>Ahora</th><th>Motivo</th></tr></thead>
+    <tbody>
+      <tr><td>Estabilizante 1 % y emulsificante 0,3 %</td><td>Ninguno, y preparado sin pectina añadida</td><td>La Res. 2310/1986 (art. 19) solo los admite, pectina incluida, en la leche fermentada de larga vida</td></tr>
+      <tr><td>Fruta 3 %</td><td>Preparado 13 % (fruta neta 6,5 %)</td><td>Con 3 % de preparado la fruta neta no llega al 3 % del art. 20</td></tr>
+      <tr><td>Base a 85 °C × 5 min</td><td>92 °C × 5 min</td><td>Tetra Pak: 90–95 °C × 5 min desnaturaliza 70–80 % de la proteína sérica y da cuerpo</td></tr>
+      <tr><td>≈ 192 bar a 60 °C</td><td>200 + 50 bar a 65–70 °C</td><td>Rango de Tetra Pak: 200–250 bar a 65–70 °C</td></tr>
+      <tr><td>42 °C, corte a pH 4,6</td><td>43 °C; corte a pH 4,50 (YF, YN) y 4,55 (YG, para separar)</td><td>Tetra Pak: 42–43 °C y pH final ≈ 4,2–4,5</td></tr>
+      <tr><td>Enfriar a &lt; 15 °C y luego a 4 °C en el tanque</td><td>Placas a 15–22 °C; el producto llega a ≤ 6 °C en la cámara</td><td>Enfriar el batido a 4 °C en el tanque daña la viscosidad</td></tr>
+      <tr><td>Leche semidescremada</td><td>Leche estandarizada al 3,50 %</td><td>Con semidescremada la grasa no llega al 2,5 % de «entero»</td></tr>
+      <tr><td>Una receta</td><td>Tres recetas y siete referencias</td><td>Alcance del acta del 7 de octubre</td></tr>
+    </tbody>
+  </table></div>
+  <h3>Supuestos que se deben validar</h3>
+  <ul class="clean">
+    <li>Composición de la leche cruda (3,6 / 3,1 / 8,6 %). Si la grasa baja de 3,5 %, la estandarización necesita añadir crema; el script lo detecta y se detiene.</li>
+    <li>Dosis del cultivo, tiempos de fermentación, pH de corte y tiempo máximo en los pulmones, con la ficha del proveedor y curvas de pH y viscosidad.</li>
+    <li>Proteína del concentrado y del suero, con los datos del fabricante del separador.</li>
+    <li>Preparado de fresa sin gelificantes añadidos: disponibilidad comercial y concepto del INVIMA (art. 19, parágrafo 2).</li>
+    <li>Uso del término «griego» ante el INVIMA.</li>
+    <li>Sellos frontales: confirmar con análisis nutricional, perfil de ácidos grasos y la revisión de exenciones.</li>
+    <li>Mezcla diaria 3/3/2 y presentaciones: ratificar en acta.</li>
+    <li>Vida útil de 30 días y cultivo ≥ 10⁷ UFC/g al vencimiento: estudio acelerado y en tiempo real.</li>
+    <li>Ritmo de un lote cada 3 h con 4 fermentadores, llenadoras y fallas: se verifica en Tecnomatix.</li><li>U202 dedicado a yogures: ratificar con el equipo.</li><li>Acidez del griego: es el riesgo regulatorio más alto, porque puede superar 1,50 %. Además, los tiempos máximos del preparado conectado (≤ 24 h a ≤ 8 °C) y de la crema en U127 (≤ 24 h a ≤ 4 °C).</li><li>Calentamiento de la carga de U201 a 50 °C (EM-2014): dimensionarlo con el balance de energía.</li><li>Vigencia de la Res. SIC 32209/2020 en 2026: hay un proyecto de prórroga sin confirmar.</li>
+    <li>Destino del suero ácido y de la crema excedente: acordarlo con las otras líneas y con gestión ambiental.</li>
+  </ul>
+</section>
+
+<section id="riesgos" class="audit">
+  <span class="eyebrow">Riesgos · investigación del 9 de octubre</span>
+  <h2>Riesgos abiertos y su resolución</h2>
+  <div class="tbl"><table>
+    <thead><tr><th>Riesgo</th><th>Evidencia</th><th>Resolución en la receta</th><th>Queda para el piloto</th></tr></thead>
+    <tbody>
+      <tr><td>Acidez del griego &gt; 1,50 %</td><td>Griego colado industrial: 1,09–1,17 % al día 1, porque el ácido láctico sale con el suero (<i>Foods</i> 2022). Con cultivo estándar sube hasta +0,78 % en 21 días (Yang y Yoon, 2022)</td><td>Cultivo de pH estable, enfriamiento inmediato, liberación ≤ 1,20 % y vida útil de 21 días</td><td>Medir la subida real; extender a 30 días si cumple</td></tr>
+      <tr><td>Composición de la leche</td><td>Mínimo legal y estudios regionales (tabla abajo)</td><td>Cumple en todos los casos; U121 remezcla crema propia si la cruda trae menos de 3,5 % de grasa</td><td>Promedio real de los proveedores</td></tr>
+      <tr><td>Preparado sin gelificantes</td><td>Hay preparados de etiqueta limpia (Zentis, CP Kelco)</td><td>Fibra de cítricos ≤ 2 % como ingrediente; sin pectina ni conservantes</td><td>Concepto del INVIMA y prueba de sinéresis</td></tr>
+      <tr><td>Término «griego»</td><td>Res. 5109/2005, art. 4: el rótulo no puede ser engañoso. El producto sí es colado; Colanta, Pasco y Alpina usan el término</td><td>«Yogurt griego natural semidescremado — concentrado por separación del suero»</td><td>Radicar el rótulo</td></tr>
+      <tr><td>Dosis del cultivo</td><td>Las unidades DVS no se comparan entre proveedores</td><td>Especificación funcional: llegar a pH 4,50 en 5,0–5,5 h a 43 °C</td><td>Curvas de acidificación</td></tr>
+      <tr><td>Vida útil</td><td>Yogur control: +0,28 % de acidez en 21 días a 4 °C; Tetra Pak: 21–30 días</td><td>YF y YN, 30 días; YG, 21 días; protocolo con 3 lotes a 4 y 8 °C</td><td>Ejecutar el protocolo</td></tr>
+      <tr><td>U202 dedicado</td><td>13,7 h/día de carga, con 5 huecos libres de 1,8 h</td><td>Dedicado; compartirlo solo cabe en los huecos, con arbitraje en el MES</td><td>Decisión del equipo</td></tr>
+      <tr><td>Calor de la carga de U201</td><td>10.320 kg × 3,93 kJ/(kg·K) × 46 K = 518 kWh por lote</td><td>EM-2014 de ≈ 1,05 MW; ≈ 4.150 kWh/día</td><td>Balance de energía</td></tr>
+      <tr><td>Res. SIC 32209/2020</td><td>Res. 51039 de 2026: prórroga de 4 años</td><td>Vigente</td><td>—</td></tr>
+      <tr><td>Proteína del suero (nuevo)</td><td>Medida: 0,41–0,68 % (<i>Foods</i> 2022); se suponía 0,3 %</td><td>Se usa 0,5 %: el griego baja a 3.242 kg por lote</td><td>Datos del separador</td></tr>
+    </tbody>
+  </table></div>
+  <h3>Sensibilidad a la leche cruda</h3>
+  <div class="tbl"><table>
+    <thead><tr><th>Leche cruda</th><th>Grasa / prot. / SNG</th><th>Grasa YF · YN</th><th class="r">Griego (kg/lote)</th><th class="r">Crema sobrante (kg/día)</th></tr></thead>
+    <tbody>
+      <tr><td>Diseño (supuesto)</td><td>3,60 / 3,10 / 8,60 %</td><td>2,79 · 3,42 %</td><td class="r">3.242</td><td class="r">1.880</td></tr>
+      <tr><td>Manizales, 42 muestras*</td><td>3,39 / 3,44 / 9,47 %</td><td>2,81 · 3,44 %</td><td class="r">3.654</td><td class="r">1.353</td></tr>
+      <tr><td>García Rovira, 440 muestras*</td><td>3,69 / 3,31 / 8,62 %</td><td>2,79 · 3,42 %</td><td class="r">3.506</td><td class="r">2.064</td></tr>
+      <tr><td><b>Mínimo legal</b></td><td>3,00 / 2,90 / 8,30 %</td><td>2,78 · 3,41 %</td><td class="r">2.971</td><td class="r">531</td></tr>
+    </tbody>
+  </table></div>
+  <p>*Fuente secundaria. Con la peor leche que se puede aceptar en recepción, YF y YN siguen siendo enteros, el griego conserva 9,2 % de proteína y alcanza la crema propia.</p>
+</section>
+
+<section id="auditoria" class="audit">
+  <span class="eyebrow">11 · Auditoría</span>
+  <h2>Revisión adversarial en tres ciclos</h2>
+  <p>Revisores independientes, de contexto limpio e instruidos para encontrar errores, revisaron las recetas. En el ciclo 1, dos revisores examinaron la versión 1.0: uno el proceso y la normativa, el otro el balance y la consistencia entre archivos. En el ciclo 2, un tercer revisor examinó la versión 1.1. En el ciclo 3, un cuarto revisor examinó la versión 1.2 y no encontró hallazgos críticos. Esta versión 1.3 corrige los tres ciclos, que es el tope de la auditoría; lo que necesita datos de planta o del proveedor queda en los supuestos.</p>
+  <h3>Ciclo 3 (versión 1.2)</h3>
+  <div class="tbl"><table>
+    <thead><tr><th>Severidad</th><th>Hallazgo</th><th>Corrección</th></tr></thead>
+    <tbody>
+      <tr><td>Importante</td><td>Por la alta proteína, la acidez del griego puede superar 1,50 %</td><td>Declarado como riesgo; se mide en piloto, con opciones si falla</td></tr>
+      <tr><td>Importante</td><td>La crema en U127 no tenía tiempo máximo ni CIP</td><td>≤ 24 h a ≤ 4 °C dentro del PCC-3, y CIP</td></tr>
+      <tr><td>Importante</td><td>El detector de metales después del foil de aluminio no detecta no ferrosos</td><td>Detector de tubería antes de cada llenadora</td></tr>
+      <tr><td>Importante</td><td>CIP sin frecuencias y sin U215 ni la línea de fruta; corrida de U202 mayor de 10 h</td><td>Frecuencias por equipo; tres CIP-C diarios de U202, uno por cambio de producto</td></tr>
+      <tr><td>Menor</td><td>Monitoreo de caudal en los PCC térmicos, códigos de silos, termización, redondeos, formato de U312</td><td>Corregidos</td></tr>
+    </tbody>
+  </table></div>
+  <h3>Ciclo 2 (versión 1.1)</h3>
+  <div class="tbl"><table>
+    <thead><tr><th>Severidad</th><th>Hallazgo</th><th>Corrección</th></tr></thead>
+    <tbody>
+      <tr><td><span class="pcc">Crítico</span></td><td>El preparado de fresa entraba después del último tratamiento térmico sin control propio</td><td>PCC-6: certificado del proceso térmico del proveedor, envase íntegro y tiempo conectado</td></tr>
+      <tr><td>Importante</td><td>Sellos: el YN está exento (art. 2.2 k) y el sello aplica solo al nutriente añadido (art. 32)</td><td>YN sin sello · YF «ALTO EN AZÚCARES» · YG probable «ALTO EN GRASAS SATURADAS»</td></tr>
+      <tr><td>Importante</td><td>Se exigía peroxidasa positiva a una crema pasteurizada a 85 °C, donde la peroxidasa se inactiva</td><td>Para la crema, solo fosfatasa negativa</td></tr>
+      <tr><td>Importante</td><td>Un solo pulmón de griego para dos lotes seguidos; fermentadores saturados si los lotes se encadenan; U202 sin CIP intermedio</td><td>U217A/B, un lote cada 3 h y dos CIP-C diarios</td></tr>
+      <tr><td>Importante</td><td>Códigos: U213 y U905 se declaraban nuevas, y U215 tenía otro uso en Tecnomatix</td><td>Listas de unidades corregidas</td></tr>
+      <tr><td>Menor</td><td>Acidez y SNG del griego, pH de corte del natural, CIP de llenadoras, cierre de componentes en el script, enlace de la SIC</td><td>Corregidos o declarados como supuestos</td></tr>
+    </tbody>
+  </table></div>
+  <h3>Ciclo 1 (versión 1.0)</h3>
+  <div class="tbl"><table>
+    <thead><tr><th>Severidad</th><th>Hallazgo</th><th>Corrección</th></tr></thead>
+    <tbody>
+      <tr><td><span class="pcc">Crítico</span></td><td>La crema del griego era cruda y se añadía después de la fermentación</td><td>Pasteurización de crema U126/U127 y nuevo PCC-3</td></tr>
+      <tr><td>Importante</td><td>El preparado de fresa llevaba pectina, contra el art. 19 de la Res. 2310</td><td>Preparado sin gelificantes añadidos y concepto del INVIMA</td></tr>
+      <tr><td>Importante</td><td>Al diluir con fruta, la acidez del YF quedaba por debajo de 0,70 %</td><td>Acidez de la base ≥ 0,90 % y liberación ≥ 0,75 % medida en el producto</td></tr>
+      <tr><td>Importante</td><td>Res. SIC 16379/2003 derogada; faltaban la Res. 2492/2022 y los sellos frontales</td><td>Res. SIC 32209/2020; sellos estimados por producto</td></tr>
+      <tr><td>Importante</td><td>El griego sin dulce iba después de la fresa con azúcar</td><td>Campaña YN → YG → YF</td></tr>
+      <tr><td>Importante</td><td>Tiempo de U201 sin la transferencia; la campaña excede 24 h</td><td>Ciclos completos y calendario continuo declarado</td></tr>
+      <tr><td>Importante</td><td>Azúcar diaria mal sumada, redondeos de YN y del rendimiento, dosis de crema sobre la base equivocada</td><td>Cifras recalculadas desde el script; el balance cierra exacto</td></tr>
+      <tr><td>Menor</td><td>Peroxidasa, código U214 reutilizado, tanques llamados «asépticos», lote máximo sin holgura, densidad de la descremada, denominación del griego, silo sin holgura, validaciones del script</td><td>Corregidos</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section id="fuentes" class="sources">
+  <span class="eyebrow">12 · Fuentes</span>
+  <h2>Fuentes</h2>
+  <ul class="clean">
+    <li>Tetra Pak, <i>Dairy Processing Handbook</i>: <a href="https://dairyprocessinghandbook.tetrapak.com/chapter/fermented-milk-products">productos lácteos fermentados</a> y <a href="https://dairyprocessinghandbook.tetrapak.com/chapter/cleaning-dairy-equipment">limpieza de equipos</a>.</li>
+    <li>Tetra Pak, <a href="https://www.tetrapak.com/en-us/insights/cases-articles/precision-pasteurization">Precision pasteurization</a> y <a href="https://tetrapak.com/en-gr/solutions/integrated-solutions-equipment/processing-equipment/separation/nozzle-separators">separadores de boquillas</a>.</li>
+    <li>GEA, <a href="https://www.gea.com/en/campaigns/fresh-cheese-uncovered/strained-yoghurt/">Strained yoghurt</a> y <a href="https://www.gea.com/es/products/centrifuges-separation/centrifugal-separator/nozzle-separator/nozzle-separators-fresh-cheese-cream-yoghurt">separadores para yogur y queso fresco</a>.</li>
+    <li>Budhkar et al. (2014), <a href="https://elearning.unite.it/pluginfile.php/203132/mod_resource/content/0/Budhkar%20et%20al.%202014-%20Cream%20and%20butter.pdf">Cream and butter</a>: pasteurización de crema.</li>
+    <li><i>Foods</i> (MDPI) 2022, 11(24), 3953: <a href="https://www.mdpi.com/2304-8158/11/24/3953">suero ácido del yogur griego</a>. Packaging Insights: <a href="https://www.packaginginsights.com/news/reverse-osmosis-of-greekstyle-yogurt-whey.html">ósmosis inversa del suero</a>.</li>
+    <li>Codex Alimentarius, <a href="https://www.fao.org/input/download/standards/400/CXS_243s.pdf">CXS 243-2003, leches fermentadas</a>.</li>
+    <li>Minsalud: <a href="https://www.funcionpublica.gov.co/eva/gestornormativo/norma.php?i=21980">Decreto 616 de 2006</a>, <a href="https://normograma.invima.gov.co/compilacion/docs/resolucion_minsalud_2310_1986.htm">Resolución 2310 de 1986</a>, <a href="https://normograma.invima.gov.co/normograma/compilacion/docs/resolucion_minsaludps_1407_2022.htm">Resolución 1407 de 2022</a>, <a href="https://normograma.invima.gov.co/normograma/compilacion/docs/resolucion_minsaludps_2492_2022.htm">Resolución 2492 de 2022</a> (modifica la 810 de 2021; corregida por la 254 de 2023) y Resolución 2674 de 2013 (BPM).</li>
+    <li>SIC: <a href="https://normograma.invima.gov.co/normograma/compilacion/docs/resolucion_superindustria_32209_2020.htm">Resolución 32209 de 2020</a>, que derogó la <a href="https://normas.cra.gov.co/Gestor/Docs/resolucion_superindustria_16379_2003.htm">Resolución 16379 de 2003</a>.</li>
+    <li><i>Foods</i> 2022: <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9778196/">griego colado y su suero</a>; Yang y Yoon 2022: <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9740215/">acidez del griego en almacenamiento</a>.</li>
+    <li>Chr. Hansen, <a href="https://www.foodnavigator.com/Article/2015/10/05/pH-stable-culture-will-revolutionize-yogurt-production-says-Chr-Hansen/">cultivo de pH estable</a>; CP Kelco, <a href="https://www.cpkelco.com/wp-content/uploads/2024/05/cpk-website-cf-yogurt-fruit-prep-recipe-card-2024.pdf">preparado con fibra de cítricos</a>; Zentis, <a href="https://zentis.com/B2B/Sales-Unterlagen_B2B/pdf_GB/GB_Zentis_Clean%20Label.pdf">etiqueta limpia</a>.</li>
+    <li><a href="https://normograma.invima.gov.co/compilacion/docs/resolucion_minsaludps_0557_2022.htm">Res. 5109/2005 y 557/2022</a> (rotulado); <a href="https://www.larepublica.co/empresas/colanta-pasco-y-alpina-quieren-replicar-exito-estadounidense-del-yogurt-griego-2085161">yogurt griego en Colombia</a>; <a href="https://www.tuv.com/regulations-and-standards/en/colombia-resolution-51039-of-2026-extends-the-validity-of-colombia-s-technical-metrology-regulation-for-prepackaged-products.html">Res. SIC 51039/2026</a>.</li>
+    <li>ANSI/ISA-88.00.01 (IEC 61512-1), <i>Batch Control</i>.</li>
+    <li>Documentos del equipo: ISA88_Planta_Lactea_MEVKRA, receta de fresa del 29-sep, acta del 7-oct, y la propuesta de automatización e ISA-95 de Pablo (8-oct).</li>
+  </ul>
+</section>
+
+<footer>Mekvra · Grupo 6 · Automatización de Procesos de Manufactura 2026-2S · Universidad Nacional de Colombia. Empresa del caso ficticia; valores de diseño para simulación y planeación.</footer>
+</main>
+</div>
+
+<script>
+(function () {
+  var buttons = document.querySelectorAll('.filter button');
+  var stages = document.querySelectorAll('.stage');
+  function apply(p) {
+    buttons.forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.p === p)); });
+    stages.forEach(function (s) {
+      var on = p === 'all' || s.dataset.p.split(' ').indexOf(p) !== -1;
+      s.classList.toggle('off', !on);
+    });
+  }
+  buttons.forEach(function (b) { b.addEventListener('click', function () { apply(b.dataset.p); }); });
+})();
+</script>
