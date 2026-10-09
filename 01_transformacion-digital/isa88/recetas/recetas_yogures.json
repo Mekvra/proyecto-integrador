@@ -1,0 +1,418 @@
+{
+ "version": "1.3",
+ "supuestos": {
+  "densidad": {
+   "entera": 1.032,
+   "descremada": 1.035
+  },
+  "leche_cruda": {
+   "grasa": 0.036,
+   "prot": 0.031,
+   "sng": 0.086
+  },
+  "crema": {
+   "grasa": 0.4,
+   "prot": 0.019295,
+   "sng": 0.053527
+  },
+  "lpd": {
+   "grasa": 0.01,
+   "prot": 0.34,
+   "sng": 0.95
+  },
+  "grasa_descremada": 0.0005,
+  "suero_acido": {
+   "prot": 0.005,
+   "grasa": 0.0003
+  },
+  "proteina_concentrado": 0.096,
+  "grasa_griego": 0.02,
+  "preparado_fresa": {
+   "frac": 0.13,
+   "fruta": 0.5,
+   "sacarosa": 0.35,
+   "grasa": 0.0,
+   "prot": 0.0
+  },
+  "lote_L": 10000,
+  "lote_max_L": 10500,
+  "caudal_base_kg_h": 10500,
+  "separador_L_h": 7000,
+  "secuencia": [
+   "YN",
+   "YN",
+   "YN",
+   "YG",
+   "YG",
+   "YF",
+   "YF",
+   "YF"
+  ],
+  "lotes_dia": {
+   "YN": 3,
+   "YG": 2,
+   "YF": 3
+  }
+ },
+ "productos": {
+  "YF": {
+   "codigo": "YF",
+   "nombre": "Yogur con trozos de fresa",
+   "leche": {
+    "cruda_kg": 10348.351648,
+    "cruda_L": 10027.472527,
+    "crema_kg": 28.351648,
+    "leche_kg": 10320.0,
+    "leche_L": 10000,
+    "grasa": 0.035,
+    "prot": 0.031032,
+    "sng": 0.086089
+   },
+   "base": {
+    "lpd_kg": 443.594472,
+    "azucar_kg": 626.452588,
+    "base_kg": 11390.04706,
+    "sng": 0.115,
+    "grasa": 0.032101,
+    "prot": 0.041358
+   },
+   "preparado_kg": 1701.961055,
+   "producto_kg": 13092.008115,
+   "grasa": 0.027928,
+   "prot": 0.035982,
+   "sng": 0.10005,
+   "fruta_neta": 0.065,
+   "azucar_añadida": 0.09335,
+   "dilucion_base": 0.87,
+   "ph_corte": 4.5
+  },
+  "YN": {
+   "codigo": "YN",
+   "nombre": "Yogur natural",
+   "leche": {
+    "cruda_kg": 10348.351648,
+    "cruda_L": 10027.472527,
+    "crema_kg": 28.351648,
+    "leche_kg": 10320.0,
+    "leche_L": 10000,
+    "grasa": 0.035,
+    "prot": 0.031032,
+    "sng": 0.086089
+   },
+   "base": {
+    "lpd_kg": 357.31657,
+    "azucar_kg": 0.0,
+    "base_kg": 10677.31657,
+    "sng": 0.115,
+    "grasa": 0.034163,
+    "prot": 0.041372
+   },
+   "producto_kg": 10677.31657,
+   "grasa": 0.034163,
+   "prot": 0.041372,
+   "sng": 0.115,
+   "azucar_añadida": 0.0,
+   "ph_corte": 4.5
+  },
+  "YG": {
+   "codigo": "YG",
+   "nombre": "Yogur griego",
+   "leche": {
+    "cruda_kg": 11359.409341,
+    "cruda_L": 11007.179594,
+    "crema_kg": 1009.409341,
+    "leche_kg": 10350.0,
+    "leche_L": 10000,
+    "grasa": 0.0005,
+    "prot": 0.032142,
+    "sng": 0.089167
+   },
+   "concentrado_kg": 3086.983893,
+   "grasa_concentrado": 0.000971,
+   "suero_acido_kg": 7263.016107,
+   "crema_kg": 154.588375,
+   "crema_sobre_concentrado": 0.050077,
+   "producto_kg": 3241.572268,
+   "grasa": 0.02,
+   "prot": 0.092342,
+   "leche_kg_por_kg": 3.192895,
+   "suero_kg_por_kg": 2.240584,
+   "rendimiento_kg_L": 0.324157,
+   "azucar_añadida": 0.0,
+   "ph_corte": 4.55
+  }
+ },
+ "referencias": [
+  {
+   "codigo": "YF150",
+   "producto": "YF",
+   "gramos": 150,
+   "envase": "Vaso PP termoformado, tapa foil termosellada",
+   "llenadora": "U311",
+   "und_h": 15000,
+   "und_caja": 24,
+   "fraccion": 0.45,
+   "kg_lote": 5891.403652,
+   "und_lote": 39276.024344,
+   "cajas_lote": 1636.501014,
+   "h_nominal_lote": 2.618402,
+   "kg_dia": 17674.210955,
+   "und_dia": 117828.073033
+  },
+  {
+   "codigo": "YF1000",
+   "producto": "YF",
+   "gramos": 1000,
+   "envase": "Botella PEAD, tapa rosca y sello de inducción",
+   "llenadora": "U312",
+   "und_h": 4000,
+   "und_caja": 12,
+   "fraccion": 0.35,
+   "kg_lote": 4582.20284,
+   "und_lote": 4582.20284,
+   "cajas_lote": 381.850237,
+   "h_nominal_lote": 1.145551,
+   "kg_dia": 13746.608521,
+   "und_dia": 13746.608521
+  },
+  {
+   "codigo": "YF1750",
+   "producto": "YF",
+   "gramos": 1750,
+   "envase": "Botella PEAD con asa, tapa rosca y sello de inducción",
+   "llenadora": "U312",
+   "und_h": 2500,
+   "und_caja": 6,
+   "fraccion": 0.2,
+   "kg_lote": 2618.401623,
+   "und_lote": 1496.229499,
+   "cajas_lote": 249.371583,
+   "h_nominal_lote": 0.598492,
+   "kg_dia": 7855.204869,
+   "und_dia": 4488.688496
+  },
+  {
+   "codigo": "YN200",
+   "producto": "YN",
+   "gramos": 200,
+   "envase": "Vaso PP termoformado, tapa foil termosellada",
+   "llenadora": "U311",
+   "und_h": 12000,
+   "und_caja": 24,
+   "fraccion": 0.4,
+   "kg_lote": 4270.926628,
+   "und_lote": 21354.63314,
+   "cajas_lote": 889.776381,
+   "h_nominal_lote": 1.779553,
+   "kg_dia": 12812.779884,
+   "und_dia": 64063.899421
+  },
+  {
+   "codigo": "YN1000",
+   "producto": "YN",
+   "gramos": 1000,
+   "envase": "Botella PEAD, tapa rosca y sello de inducción",
+   "llenadora": "U312",
+   "und_h": 4000,
+   "und_caja": 12,
+   "fraccion": 0.6,
+   "kg_lote": 6406.389942,
+   "und_lote": 6406.389942,
+   "cajas_lote": 533.865829,
+   "h_nominal_lote": 1.601597,
+   "kg_dia": 19219.169826,
+   "und_dia": 19219.169826
+  },
+  {
+   "codigo": "YG150",
+   "producto": "YG",
+   "gramos": 150,
+   "envase": "Vaso PP con foil y sobretapa",
+   "llenadora": "U313",
+   "und_h": 6000,
+   "und_caja": 24,
+   "fraccion": 0.6,
+   "kg_lote": 1944.943361,
+   "und_lote": 12966.289073,
+   "cajas_lote": 540.262045,
+   "h_nominal_lote": 2.161048,
+   "kg_dia": 3889.886722,
+   "und_dia": 25932.578145
+  },
+  {
+   "codigo": "YG500",
+   "producto": "YG",
+   "gramos": 500,
+   "envase": "Pote PP con foil y sobretapa",
+   "llenadora": "U313",
+   "und_h": 2400,
+   "und_caja": 12,
+   "fraccion": 0.4,
+   "kg_lote": 1296.628907,
+   "und_lote": 2593.257815,
+   "cajas_lote": 216.104818,
+   "h_nominal_lote": 1.080524,
+   "kg_dia": 2593.257815,
+   "und_dia": 5186.515629
+  }
+ ],
+ "tiempos": {
+  "YF": {
+   "U201": {
+    "cargar": 0.5,
+    "dispersar_hidratar": 0.33,
+    "transferir": 1.084766
+   },
+   "U201_total": 1.914766,
+   "U202": {
+    "procesar": 1.084766,
+    "empuje": 0.15
+   },
+   "U202_total": 1.234766,
+   "fermentador": {
+    "llenar": 1.084766,
+    "inocular_agitar": 0.17,
+    "incubar": 5.25,
+    "romper": 0.15,
+    "vaciar_enfriar": 1.084766,
+    "cip": 0.75
+   },
+   "fermentador_total": 8.489533
+  },
+  "YN": {
+   "U201": {
+    "cargar": 0.5,
+    "dispersar_hidratar": 0.33,
+    "transferir": 1.016887
+   },
+   "U201_total": 1.846887,
+   "U202": {
+    "procesar": 1.016887,
+    "empuje": 0.15
+   },
+   "U202_total": 1.166887,
+   "fermentador": {
+    "llenar": 1.016887,
+    "inocular_agitar": 0.17,
+    "incubar": 5.0,
+    "romper": 0.15,
+    "vaciar_enfriar": 1.016887,
+    "cip": 0.75
+   },
+   "fermentador_total": 8.103775
+  },
+  "YG": {
+   "U201": {
+    "cargar": 0.5,
+    "dispersar_hidratar": 0.33,
+    "transferir": 0.985714
+   },
+   "U201_total": 1.815714,
+   "U202": {
+    "procesar": 0.985714,
+    "empuje": 0.15
+   },
+   "U202_total": 1.135714,
+   "fermentador": {
+    "llenar": 0.985714,
+    "inocular_agitar": 0.17,
+    "incubar": 5.5,
+    "agitar": 0.2,
+    "separar": 1.421703,
+    "cip": 0.75
+   },
+   "fermentador_total": 9.027418
+  },
+  "U216_arranque": 0.25
+ },
+ "dia": {
+  "leche_linea_L": 80000,
+  "leche_cruda_kg": 84808.928571,
+  "leche_cruda_L": 82179.194352,
+  "ingredientes": {
+   "lpd_kg": 2402.733125,
+   "azucar_kg": 1879.357765,
+   "preparado_kg": 5105.883165,
+   "cultivo_U": 3200
+  },
+  "salidas_kg": {
+   "YN": 32031.949711,
+   "YG": 6483.144536,
+   "YF": 39276.024344,
+   "suero_acido": 14526.032215,
+   "crema_excedente": 1879.75182
+  },
+  "entradas_total_kg": 94196.902626,
+  "salidas_total_kg": 94196.902626,
+  "cierre_componentes": {
+   "grasa": {
+    "entra_kg": 3077.14876,
+    "sale_kg": 3077.14876
+   },
+   "prot": {
+    "entra_kg": 3446.006048,
+    "sale_kg": 3446.006048
+   }
+  },
+  "programa": {
+   "ritmo_h": 3.0,
+   "max_fermentadores_simultaneos": 4,
+   "hueco_U202_h": 1.765234,
+   "CIP_C_U202_h": 1.416667
+  },
+  "energia_U201": {
+   "YF": {
+    "kWh_lote": 518.236,
+    "kW_en_carga": 1036.472
+   },
+   "YN": {
+    "kWh_lote": 518.236,
+    "kW_en_carga": 1036.472
+   },
+   "YG": {
+    "kWh_lote": 519.7425,
+    "kW_en_carga": 1039.485
+   },
+   "kWh_dia": 4148.901
+  },
+  "vida_util": {
+   "YF": {
+    "dias": 30,
+    "acidez_dia1": 0.86,
+    "aumento_max": 0.3,
+    "acidez_al_vencimiento": 1.16
+   },
+   "YN": {
+    "dias": 30,
+    "acidez_dia1": 0.95,
+    "aumento_max": 0.3,
+    "acidez_al_vencimiento": 1.25
+   },
+   "YG": {
+    "dias": 21,
+    "acidez_dia1": 1.15,
+    "aumento_max": 0.3,
+    "liberacion_max": 1.2,
+    "acidez_al_vencimiento": 1.45
+   }
+  },
+  "horas_llenadora": {
+   "U311": 13.193863,
+   "U312": 10.03692,
+   "U313": 6.483145
+  },
+  "horas_fermentadores": 67.834757,
+  "carga_4_fermentadores": 0.706612,
+  "carga_3_fermentadores": 0.942149,
+  "horas_U201": 14.91639,
+  "horas_U202": 9.47639,
+  "U311_12000": {
+   "h_nominal": 16.225396,
+   "h_con_APQ_y_paradas": 23.363877
+  },
+  "U311_15000": {
+   "h_nominal": 13.193863,
+   "h_con_APQ_y_paradas": 19.652535
+  }
+ }
+}
