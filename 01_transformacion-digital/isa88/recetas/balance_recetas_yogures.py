@@ -159,6 +159,36 @@ for p, v in VIDA_UTIL.items():
     if v['acidez_al_vencimiento'] > 1.50:
         raise ValueError(f'{p}: acidez al vencimiento {v["acidez_al_vencimiento"]:.2f} % supera 1,50 %')
 
+# ---------------- OEE de las llenadoras (supuestos de diseño) ----------------
+# Lácteos: típico 55–70 %, clase mundial 80–85 % (referentes del sector); Alpina ≈ 80 % (clase con el profesor Ubaldo).
+# Actual ≈ 70 % (empresa base); propuesta ≈ 80 %. Paradas planeadas fuera del OEE (CIP-L, pausa, relevo), tabla 6 de Pablo.
+OEE = dict(actual=dict(A=0.90, P=0.80, Q=0.97, paradas_h=1.5 + 1.5 + 0.5),
+           propuesta=dict(A=0.93, P=0.88, Q=0.98, paradas_h=1.0 + 0.0 + 0.25))
+for esc_, o in OEE.items():
+    o['OEE'] = o['A'] * o['P'] * o['Q']
+    o['llenadoras'] = {fl: dict(h_nominal=h, h_reales=h / o['OEE'] + o['paradas_h'], uso=(h / o['OEE'] + o['paradas_h']) / 24)
+                       for fl, h in horas_llen.items()}
+    o['U311_a_12000'] = u311_12k / o['OEE'] + o['paradas_h']
+    o['U311_vasos_h_minimos'] = 15000 * horas_llen['U311'] / ((24 - o['paradas_h']) * o['OEE'])   # velocidad mínima de 150 g
+    if max(v['uso'] for v in o['llenadoras'].values()) > 1:
+        raise ValueError(f'Escenario {esc_}: una llenadora no alcanza en 24 h')
+
+# ---------------- Personal estimado de la línea (puestos por turno) ----------------
+PUESTOS_TURNO = {'Formulación y tratamiento térmico (U201, U202)': 1,
+                 'Fermentación, separación griega y pulmones (U211–U218, U214–U217)': 2,
+                 'Llenadora de vasos U311': 2, 'Llenadora de botellas U312': 1, 'Llenadora de potes U313': 1,
+                 'Fin de línea y cámara (U341/U342, montacargas U411/U412)': 2,
+                 'Alistamiento de insumos (polvos, cultivos, fruta, envases)': 1,
+                 'Supervisor de turno': 1, 'Analista de calidad': 1, 'Técnico de mantenimiento': 1}
+HORAS_SEMANA_PLANTA = 24 * 6                               # 3 turnos, lunes a sábado; domingo CIP profundo y mantenimiento
+JORNADA_MAX = 42                                           # h/semana desde el 15-jul-2026 (Ley 2101 de 2021)
+CUADRILLAS = -(-HORAS_SEMANA_PLANTA // JORNADA_MAX)        # 144 / 42 = 3,4 → 4 cuadrillas rotativas
+PERSONAL_DIA = {'Jefe de producción': 1, 'Jefe de calidad e inocuidad': 1, 'Jefe de mantenimiento': 1,
+                'Planeador de producción (MES/ERP)': 1, 'Analista de microbiología y vida útil': 1}
+por_turno = sum(PUESTOS_TURNO.values())
+PERSONAL = dict(puestos_turno=PUESTOS_TURNO, por_turno=por_turno, cuadrillas=CUADRILLAS, en_turnos=por_turno * CUADRILLAS,
+                de_dia=PERSONAL_DIA, total=por_turno * CUADRILLAS + sum(PERSONAL_DIA.values()), jornada_max_h=JORNADA_MAX)
+
 # ---------------- Verificación de cierre por componente (grasa y proteína) ----------------
 def componente(k):
     ent = sum(PROD[p]['leche']['cruda_kg'] * n for p, n in LOTES_DIA.items()) * CRUDA[k] + ing['lpd_kg'] * LPD[k] + ing['preparado_kg'] * PREP[k]
@@ -201,7 +231,7 @@ OUT = dict(
     dia=dict(leche_linea_L=LOTE_L * len(SECUENCIA), leche_cruda_kg=cruda_kg, leche_cruda_L=cruda_kg / DENS['entera'],
              ingredientes=ing, salidas_kg=salidas, entradas_total_kg=cruda_kg + ing['lpd_kg'] + ing['azucar_kg'] + ing['preparado_kg'],
              salidas_total_kg=sum(salidas.values()), cierre_componentes=CIERRE, programa=PROGRAMA, energia_U201=ENERGIA,
-             vida_util=VIDA_UTIL, horas_llenadora=horas_llen,
+             vida_util=VIDA_UTIL, oee=OEE, personal=PERSONAL, horas_llenadora=horas_llen,
              horas_fermentadores=h_ferm, carga_4_fermentadores=h_ferm / 96, carga_3_fermentadores=h_ferm / 72,
              horas_U201=h_201, horas_U202=h_202,
              U311_12000=dict(h_nominal=u311_12k, h_con_APQ_y_paradas=u311_12k / APQ_BASE + FIJO_BASE),

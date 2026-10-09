@@ -396,6 +396,86 @@
     "acidez_al_vencimiento": 1.45
    }
   },
+  "oee": {
+   "actual": {
+    "A": 0.9,
+    "P": 0.8,
+    "Q": 0.97,
+    "paradas_h": 3.5,
+    "OEE": 0.6984,
+    "llenadoras": {
+     "U311": {
+      "h_nominal": 13.193863,
+      "h_reales": 22.391557,
+      "uso": 0.932982
+     },
+     "U312": {
+      "h_nominal": 10.03692,
+      "h_reales": 17.871306,
+      "uso": 0.744638
+     },
+     "U313": {
+      "h_nominal": 6.483145,
+      "h_reales": 12.782853,
+      "uso": 0.532619
+     }
+    },
+    "U311_a_12000": 26.732239,
+    "U311_vasos_h_minimos": 13823.090221
+   },
+   "propuesta": {
+    "A": 0.93,
+    "P": 0.88,
+    "Q": 0.98,
+    "paradas_h": 1.25,
+    "OEE": 0.802032,
+    "llenadoras": {
+     "U311": {
+      "h_nominal": 13.193863,
+      "h_reales": 17.700545,
+      "uso": 0.737523
+     },
+     "U312": {
+      "h_nominal": 10.03692,
+      "h_reales": 13.764363,
+      "uso": 0.573515
+     },
+     "U313": {
+      "h_nominal": 6.483145,
+      "h_reales": 9.333399,
+      "uso": 0.388892
+     }
+    },
+    "U311_a_12000": 21.48036,
+    "U311_vasos_h_minimos": 10846.512896
+   }
+  },
+  "personal": {
+   "puestos_turno": {
+    "Formulación y tratamiento térmico (U201, U202)": 1,
+    "Fermentación, separación griega y pulmones (U211–U218, U214–U217)": 2,
+    "Llenadora de vasos U311": 2,
+    "Llenadora de botellas U312": 1,
+    "Llenadora de potes U313": 1,
+    "Fin de línea y cámara (U341/U342, montacargas U411/U412)": 2,
+    "Alistamiento de insumos (polvos, cultivos, fruta, envases)": 1,
+    "Supervisor de turno": 1,
+    "Analista de calidad": 1,
+    "Técnico de mantenimiento": 1
+   },
+   "por_turno": 13,
+   "cuadrillas": 4,
+   "en_turnos": 52,
+   "de_dia": {
+    "Jefe de producción": 1,
+    "Jefe de calidad e inocuidad": 1,
+    "Jefe de mantenimiento": 1,
+    "Planeador de producción (MES/ERP)": 1,
+    "Analista de microbiología y vida útil": 1
+   },
+   "total": 57,
+   "jornada_max_h": 42
+  },
   "horas_llenadora": {
    "U311": 13.193863,
    "U312": 10.03692,
