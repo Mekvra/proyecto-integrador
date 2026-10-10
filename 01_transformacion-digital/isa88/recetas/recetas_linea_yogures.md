@@ -4,7 +4,7 @@
 
 | Versión | Fecha |
 |---|---|
-| 1.7 | 9 de octubre de 2026 |
+| 1.8 | 10 de octubre de 2026 |
 
 Recetas en formato ISA-88 (IEC 61512) para los tres productos de la línea escogida en el acta del 7 de octubre: **yogur con fresa, yogur natural y yogur griego**. Cubren todo el recorrido, desde que la cisterna llega a la planta hasta el despacho. Todas las cifras de balance y de tiempos salen de [`balance_recetas_yogures.py`](balance_recetas_yogures.py), que escribe [`recetas_yogures.json`](recetas_yogures.json) y comprueba que cierren la masa total, la grasa y la proteína. El nuevo modelo de Tecnomatix de la línea de yogures leerá ese mismo archivo; el modelo actual de Tecnomatix es de la planta anterior, de tres líneas.
 
@@ -43,7 +43,7 @@ Recetas en formato ISA-88 (IEC 61512) para los tres productos de la línea escog
 
 | Concepto | Valor | Origen |
 |---|---|---|
-| Recepción de la planta | 300.000 L/día (todas las líneas) | Acta 7-oct-2026 |
+| Recepción de la planta | 150.000 L/día (yogures ≈ 57.000 · quesos 50.000 · leche UHT 43.000) | Acta 9-oct-2026 |
 | Leche procesada por la línea | ≈ 58.300 L/día (capacidad actual, limitada por la llenadora de vasos U311) | Cálculo de la sección 10. La meta del acta del 7-oct se trata en la sección 14 |
 | Mezcla | 35 lotes por semana: 13 YF · 13 YN · 9 YG (proporción 3:3:2 acordada el 8-oct) | Por ratificar en acta |
 | Densidad a 15 °C | Entera 1,032 kg/L · descremada 1,035 kg/L | Supuesto. El Decreto 616/2006 fija 1,030–1,033 para la cruda entera; la descremada es más densa |
@@ -109,8 +109,8 @@ flowchart LR
 
 | Área / celda | Unidad | Equipo | Requerimiento para la línea |
 |---|---|---|---|
-| A1 · Tronco común (compartido) | U111/U112 | Bahías de descarga: desaireador, filtro dúplex, caudalímetro y enfriador de placas | ≈ 60.000 L/día de cruda para yogures, de los 300.000 L/día de la planta (sección 10.4); salida ≤ 4 °C |
-| | U113/U114 + U115 | Tanques de leche cruda aislados, con agitador (U115 es nuevo; sección 10.4) | 3 × 60.000 L para los 300.000 L/día de la planta; ≤ 4 °C; máximo 24 h |
+| A1 · Tronco común (compartido) | U111/U112 | Bahías de descarga: desaireador, filtro dúplex, caudalímetro y enfriador de placas | ≈ 60.000 L/día de cruda para yogures, de los 150.000 L/día de la planta (sección 10.4); salida ≤ 4 °C |
+| | U113/U114 | Tanques de leche cruda aislados, con agitador (sección 10.4) | 2 × 60.000 L para los 150.000 L/día de la planta; ≤ 4 °C; máximo 24 h |
 | | U121 | Separadora centrífuga autolimpiante con estandarización en línea | Dos consignas de grasa: 3,50 % y ≤ 0,05 % |
 | | U122 | Pasteurizador HTST de placas con regeneración y válvula de desvío (FDV) | 75 °C × 15 s |
 | | **U123A/B** | Dos silos de leche entera estandarizada, cada uno con su código, en alternancia (uno se llena mientras el otro alimenta la línea o está en CIP). U124 y U125 siguen siendo los silos de las otras líneas | 2 × 40.000 L, 2–4 °C (YF y YN) |
@@ -178,7 +178,7 @@ flowchart LR
 
 ## 5. Receta maestra YF · Yogur con trozos de fresa
 
-**Encabezado.** Receta YF · versión 1.7 · referencias YF150, YF1000 y YF1750 · lote nominal 10.000 L de leche (10.320 kg), mínimo 8.000 L y máximo 10.500 L (la base del lote máximo ocupa ≈ 11 m³ de los 12 m³ del fermentador) · celda PC21 · estado: propuesta.
+**Encabezado.** Receta YF · versión 1.8 · referencias YF150, YF1000 y YF1750 · lote nominal 10.000 L de leche (10.320 kg), mínimo 8.000 L y máximo 10.500 L (la base del lote máximo ocupa ≈ 11 m³ de los 12 m³ del fermentador) · celda PC21 · estado: propuesta.
 
 ### 5.1 Fórmula por lote
 
@@ -253,7 +253,7 @@ flowchart LR
 
 ## 6. Receta maestra YN · Yogur natural
 
-**Encabezado.** Receta YN · versión 1.7 · referencias YN200 y YN1000 · lote nominal 10.000 L (10.320 kg), máximo 10.500 L · celda PC21 · estado: propuesta.
+**Encabezado.** Receta YN · versión 1.8 · referencias YN200 y YN1000 · lote nominal 10.000 L (10.320 kg), máximo 10.500 L · celda PC21 · estado: propuesta.
 
 ### 6.1 Fórmula por lote
 
@@ -297,7 +297,7 @@ Es un producto de etiqueta limpia: leche, leche en polvo y cultivo. No lleva az�
 
 ## 7. Receta maestra YG · Yogur griego
 
-**Encabezado.** Receta YG · versión 1.7 · referencias YG150 y YG500 · lote nominal 10.000 L de leche descremada (10.350 kg), máximo 10.500 L · celda PC21 · estado: propuesta.
+**Encabezado.** Receta YG · versión 1.8 · referencias YG150 y YG500 · lote nominal 10.000 L de leche descremada (10.350 kg), máximo 10.500 L · celda PC21 · estado: propuesta.
 
 El yogur griego industrial se hace **concentrando** un yogur de leche descremada: un separador centrífugo de boquillas retira el suero ácido hasta la proteína objetivo y después se restituye la grasa con crema pasteurizada. Es el método de GEA y Tetra Pak, que conserva el cultivo vivo; no usa termización después de la fermentación. El Codex lo clasifica como *leche fermentada concentrada* (proteína ≥ 5,6 %). En Colombia se denomina como yogur según la Res. 2310 (sección 7.3).
 
@@ -495,11 +495,13 @@ El OEE de la versión anterior se tomaba de la propuesta de Pablo (≈ 82 % actu
 | Disponibilidad | Desempeño | Calidad | **OEE** | Paradas planeadas (CIP-L + pausa + relevo) | Litros/día | Uso de U311 · U312 · U313 |
 |---:|---:|---:|---:|---|---:|---|
 | 0,90 | 0,80 | 0,97 | **69,8 %** | 3,5 h | **≈ 58.300** | **85 %** · 58 % · 44 % |
+| Tecnomatix, 12 semanas con fallas y cambios de formato | | | | | ≈ 57.600 | **88 %** · 67 % · 43 % |
 
 - Las horas reales son nominales / OEE + paradas planeadas, siguiendo la convención de Pablo: las paradas planeadas salen del denominador del OEE.
 - **Uso máximo aceptable del cuello de botella:** 80 % para diseñar y 85 % como techo para operar. Por encima de ≈ 85 % las esperas crecen rápido: el factor ρ/(1−ρ) vale 4 al 80 %, 5,7 al 85 % y 9 al 90 %.
 - **U311 se fija al 85 %.** Ese 85 % ya incluye las fallas promedio (dentro del OEE) y las paradas planeadas, y le quedan ≈ 3,6 h diarias para imprevistos. Solo un día con OEE menor de ≈ 58 % se atrasaría, y lo absorben los pulmones y el domingo sin producción.
 - **Hay que alinear el documento de Pablo**, que usa 81,68 % → 90,14 %, con estos valores.
+- **Tecnomatix confirma el cuello de botella:** con fallas aleatorias da ≈ 57.600 L/día y U311 al 88 %. U312 sube a 67 % porque el modelo cuenta cada cambio de formato 1000 ↔ 1750 g (0,75 h), que la cuenta de horas nominales no incluye.
 
 ### 10.3 Personal estimado de la línea
 
@@ -510,7 +512,7 @@ El OEE de la versión anterior se tomaba de la propuesta de Pablo (≈ 82 % actu
 | Llenadora de vasos U311 | 2 |
 | Llenadora de botellas U312 | 1 |
 | Llenadora de potes U313 | 1 |
-| Fin de línea y cámara (U341/U342, montacargas) | 2 |
+| Fin de línea y cámara (paletizado manual U341, envolvedora U342, montacargas) | 2 |
 | Alistamiento de insumos (polvos, cultivos, fruta, envases) | 1 |
 | Supervisor de turno | 1 |
 | Analista de calidad | 1 |
@@ -523,54 +525,29 @@ El OEE de la versión anterior se tomaba de la propuesta de Pablo (≈ 82 % actu
 - **Fuera de la cuenta:** la recepción común de leche, la bodega de despacho y el personal administrativo y comercial.
 - **Con la automatización:** el MES y la coordinación por PLC eliminan el registro manual y la maniobra de válvulas. Eso permitiría reubicar ≈ 1 puesto por turno en formulación y fermentación, pero se valida en el piloto y no se cuenta como ahorro.
 
-### 10.4 Tronco común continuo (acopio a pasteurización, 300.000 L/día)
+### 10.4 Tronco común continuo (acopio a pasteurización, 150.000 L/día)
 
-La recepción, la clarificación, la estandarización y la pasteurización son **continuas** y atienden a **toda la planta**. Según el acta del 7-oct y la propuesta de Pablo (8-oct), la planta recibe **300.000 L/día** de leche cruda y destina **80.000 L/día a la línea de yogures**. Los **220.000 L restantes** van a las otras dos líneas del portafolio, quesos y bebidas fermentadas, que todavía no tienen reparto acordado. Los equipos de esta sección se dimensionan para los 300.000 L, no solo para yogures.
-
-**Reparto propuesto de los 300.000 L/día** (por ratificar en acta):
+La recepción, la clarificación, la estandarización y la pasteurización son **continuas** y atienden a **toda la planta**. Según el acta del 9-oct-2026, la planta recibe **150.000 L/día** de leche cruda y tiene tres líneas: yogures, quesos y **leche UHT**, que reemplaza al kéfir del alcance anterior.
 
 | Línea | Productos | Leche (L/día) | % | Producto aproximado |
 |---|---|---:|---:|---|
-| **Yogures** (esta línea) | Fresa, natural y griego | **80.000** (cupo del acta) | 27 % | Hoy procesa ≈ 58.300 L (≈ 56.400 kg/día); usa el cupo completo con la propuesta de la sección 14 |
-| Quesos | Mozzarella, quesillo y doble crema | 160.000 | 53 % | ≈ 16.000 kg/día (≈ 10 L de leche por kg de queso) |
-| Bebidas fermentadas | Kéfir natural, saborizado y con fruta | 60.000 | 20 % | ≈ 61.800 kg/día (≈ 1 kg por litro) |
-| **Total** | | **300.000** | 100 % | |
+| **Yogures** (esta línea) | Fresa, natural y griego | **≈ 57.000** | 38 % | ≈ 56.400 kg/día; lo que alcanza la llenadora de vasos |
+| Quesos | Mozzarella, quesillo y doble crema | 50.000 | 33 % | ≈ 5.000 kg/día (≈ 10 L por kg) |
+| Leche UHT | Entera, descremada y con chocolate, envase aséptico de 1 L | 43.000 | 29 % | ≈ 42.000 envases/día |
+| **Total** | | **150.000** | 100 % | |
 
-- **Criterio:** los quesos llevan la mayor parte porque necesitan ≈ 10 L de leche por kg de producto. El kéfir es una bebida de volumen menor, como en el modelo ISA-88 anterior, donde tenía menos leche que el yogur.
-- **Hoy:** la línea de yogures procesa ≈ 58.300 L/día, limitada por la llenadora de vasos. Los ≈ 21.700 L restantes de su cupo se reciben y se pasan a quesos, o se deja de acopiar esa leche hasta instalar la mejora de la sección 14. Es una decisión del equipo.
-- **Para el tronco común no cambia nada:** con cualquier reparto, la recepción, los tanques y el pasteurizador procesan los mismos 300.000 L/día.
+- **Cupo de yogures:** la línea está diseñada para 80.000 L/día, pero hoy procesa ≈ 57.000 porque la llenadora de vasos está al límite. La propuesta de la sección 14 la lleva a 80.000; los ≈ 23.000 L adicionales salen del contrato de un año para aumentar el acopio en 30.000 L/día (acta 9-oct).
 
-| Etapa | Equipo | Carga con 300.000 L/día | Uso |
+| Etapa | Equipo | Carga con 150.000 L/día | Uso |
 |---|---|---|---:|
-| Recepción | 2 bahías U111/U112 (30–40 m³/h) | Cisterna media de 20.000 L (rango 10.000–30.000): **15 cisternas/día**. Cada una ocupa la bahía ≈ 1 h: pruebas de plataforma ≈ 15 min, descarga a 35 m³/h ≈ 35 min y transición ≈ 12 min. Total: 15 h-bahía/día | 47 % de 2 bahías en una ventana de recepción de 16 h |
-| Leche cruda | Tanques U113/U114 de 60.000 L + **U115** (nuevo, 60.000 L) | La leche se pasteuriza mientras llega: el pico de acumulación es de **≈ 68.000 L**. Dos tanques reciben y uno se lava (ver la explicación abajo) | 3 × 60.000 L = 180.000 L |
-| Clarificación, estandarización y pasteurización | U121 + U122 a 20.000 L/h, en flujo continuo | 300.000 / 20.000 = **15 h** de proceso + 2 CIP-C (≈ 2,8 h) + arranques (≈ 0,5 h) = **18,3 h/día** | **76 %** |
-| Leche pasteurizada | Silos por línea: U123A/B y U123C (yogures); U124 y U125 (otras líneas) | Cada silo guarda la leche estandarizada de su línea, máximo 24 h | — |
+| Recepción | 2 bahías U111/U112 (30–40 m³/h) | ≈ 8 cisternas/día de 20.000 L, ≈ 1 h por cisterna: ≈ 8 h-bahía/día | 24 % en 16 h |
+| Leche cruda | Tanques U113/U114 de 60.000 L | Pico de ≈ 7.500 L en un día normal y ≈ 37.500 L si el pasteurizador se para 2 h en plena descarga. Uno recibe y el otro se lava | 2 × 60.000 L |
+| Clarificación, estandarización y pasteurización | U121 + U122 a 20.000 L/h | 7,5 h de proceso + 2 CIP-C (≈ 2,8 h) + arranques (≈ 0,5 h) = **10,8 h/día** | **45 %** |
+| Leche pasteurizada | U123A/B y U123C (yogures), U124 (quesos), U125 (leche UHT) | Máximo 24 h. Con 80.000 L/día los silos de yogures mueven ≈ 36.700 L al día y alcanzan, aun con uno en lavado | — |
 
-- **El tronco común tiene margen:** al 76 % queda por debajo del 80 % recomendado.
-- **Si la planta crece:** si la recepción sube de 300.000 L/día, el pasteurizador U121/U122 es el primer equipo del tronco que se queda corto. Habría que pasar a 25.000 L/h.
-- **Supuestos:** el tamaño medio de cisterna y la ventana de recepción de 16 h se confirman con la logística de acopio real.
-- **En Tecnomatix:** el tronco común se modela como un flujo continuo que llena los silos de cada línea. La línea de yogures toma de su silo lotes de 10.000 L (proceso por lotes).
-
-#### Por qué 3 tanques de leche cruda y no tanques para 300.000 L
-
-Los tanques de leche cruda no guardan la leche de todo el día: funcionan como una **sala de espera**. Los camiones llegan en dos tandas, después del ordeño de la mañana y del de la tarde, y el pasteurizador va sacando leche **al mismo tiempo**, a 20.000 L/h. El tanque solo acumula lo que entra más rápido de lo que sale.
-
-| Hora | Llega (camiones) | Sale (pasteurizador) | Queda en tanques |
-|---|---:|---:|---:|
-| 05:00–11:00 (ordeño de la mañana) | 30.000 L/h | 20.000 L/h | Sube hasta **60.000 L** |
-| 11:00–14:00 (sin camiones; CIP del pasteurizador) | 0 | 20.000 L/h, menos 1,4 h de CIP | Baja a 28.000 L |
-| 14:00–18:00 (ordeño de la tarde) | 30.000 L/h | 20.000 L/h | Sube hasta **68.000 L (pico del día)** |
-| 18:00–21:00 | 0 | 20.000 L/h | Baja a 0 |
-| 21:00–05:00 | 0 | Segundo CIP; sin leche | 0 |
-
-- **El pico de acumulación es de ≈ 68.000 L**, no 300.000 L, porque la leche se va pasteurizando mientras llega.
-- **Por qué 3 tanques de 60.000 L (180.000 L):**
-  - **2 tanques reciben leche** (120.000 L). Cubren el pico de 68.000 L y dejan ≈ 52.000 L de colchón, suficientes para ≈ 1,7 h de camiones descargando con el pasteurizador parado (una falla o un CIP que se alarga).
-  - **El tercero está en lavado (CIP) o vacío**, listo para entrar. Cada tanque se lava cada vez que se vacía, y la leche cruda no puede pasar más de 24 h guardada.
-  - Con solo 2 tanques, mientras uno se lava queda 1 tanque de 60.000 L, que **no alcanza para el pico de 68.000 L**. Por eso el valor de 2 × 60.000 L del ISA-88, pensado para el alcance anterior, se amplía a 3.
-- **Por qué no hacen falta tanques para 300.000 L:** solo serían necesarios si todos los camiones llegaran juntos con el pasteurizador apagado, o si se quisiera guardar un día completo de reserva. Ninguna de las dos situaciones aplica. Además, la leche cruda guardada más de 24 h se degrada y tendría que termizarse.
-- **Supuestos:** dos olas de recolección (180.000 L en la mañana y 120.000 L en la tarde) y cisterna media de 20.000 L. Se confirman con la logística de acopio real.
+- **El tronco queda holgado:** bastan los dos tanques existentes. El tercer tanque U115 que se había propuesto para 300.000 L/día ya no hace falta. Simulación hora a hora en `tanques_150k.py`.
+- **Supuestos:** dos olas de recolección (60 % entre 05:00 y 11:00 y 40 % entre 14:00 y 18:00) y cisterna media de 20.000 L; se confirman con la logística de acopio.
+- **En Tecnomatix** (`02_gestion-produccion/simulacion-tecnomatix/planta-150k/`): el tronco recibe los lotes de las tres líneas, ≈ 151.700 L/día, con el pasteurizador al 32 % sin contar arranques.
 
 
 ## 11. Balance diario de la línea
@@ -617,7 +594,7 @@ Cada riesgo de las recetas se investigó en fuentes primarias. La tabla muestra 
 | 4 | Uso del término «griego» | Res. 5109/2005, art. 4 (mod. Res. 557/2022): el rótulo no puede presentar el producto de forma falsa o engañosa. El griego tradicional se obtiene colando el suero, que es este proceso. Colanta, Pasco y Alpina venden «yogurt griego» en Colombia | **«Yogurt griego natural semidescremado — yogurt concentrado por separación del suero»**, sin espesantes; ingredientes: leche descremada, crema y cultivos | Radicar el rótulo con el registro sanitario |
 | 5 | Dosis del cultivo | Las unidades DVS no son comparables entre proveedores: 1 U/100 L en un producto, 10 g/100 L en otro | **Especificación funcional:** la dosis que lleve la base a pH 4,50 en 5,0–5,5 h a 43 °C (YF/YN) y a 4,55 en ≈ 5,5 h (YG). Las 400 U/lote quedan como valor de diseño para costos | Curvas de acidificación con el cultivo elegido |
 | 6 | Vida útil y cultivo viable | Yogur control a 4 °C: +0,28 % de acidez del día 1 al 21 y casi nada del 21 al 28. *L. bulgaricus* puede caer después de unos 20 días. Tetra Pak: 21–30 días en líneas higiénicas | **YF y YN, 30 días; YG, 21 días.** Protocolo de validación en la sección 13.2 | Ejecutar el protocolo |
-| 7 | U202 dedicado o compartido | Carga calculada: ≈ 5,8 lotes × ≈ 1,2 h + 3 CIP-C × 1,4 h ≈ 11,2 h/día. Quedan huecos de ≈ 2,9 h entre lotes | **Dedicado** (recomendado): sin arbitraje y con los CIP alineados a los cambios de producto. Compartirlo con el kéfir es posible en los huecos libres, con arbitraje en el MES y enjuague entre bases | Decisión del equipo al definir el kéfir |
+| 7 | U202 dedicado o compartido | Carga calculada: ≈ 5,8 lotes × ≈ 1,2 h + 3 CIP-C × 1,4 h ≈ 11,2 h/día. Quedan huecos de ≈ 2,9 h entre lotes | **Dedicado** (recomendado): sin arbitraje y con los CIP alineados a los cambios de producto. La leche UHT tiene su propio esterilizador, así que U202 no se comparte | Resuelto con el acta del 9-oct |
 | 8 | Calor para la carga de U201 a 50 °C | m·cp·ΔT = 10.320 kg × 3,93 kJ/(kg·K) × 46 K = **518 kWh por lote** | EM-2014: intercambiador de placas de **≈ 1,05 MW** (carga en 0,5 h), con agua caliente de U902; **≈ 3.030 kWh/día** | Balance de energía de la planta |
 | 9 | Vigencia de la Res. SIC 32209/2020 | La SIC expidió la **Res. 51039 de 2026**, que prorroga 4 años el reglamento metrológico de preempacados | Se cita la 32209/2020, prorrogada por la 51039/2026 | — |
 | 10 | Proteína del suero del separador  | Suero ácido industrial de vaca: **0,41–0,68 %** de proteína (*Foods* 2022). El supuesto inicial era 0,3 % | Se usa **0,5 %**. El griego baja a **3.242 kg/lote** (3,19 kg de leche por kg) y el balance sigue cerrando exacto | Datos del fabricante del separador |
@@ -723,7 +700,7 @@ Con la propuesta, la línea cumple la meta y todos los equipos quedan por debajo
 | Cultivo DVS | 3.200 U | Crema excedente al 40 % | 1.880 kg |
 | **Total** | **94.197 kg** | **Total** | **94.197 kg** |
 
-Leche a la línea: 80.000 L, de los cuales 60.000 L son entera y 20.000 L descremada. Del tronco común de 300.000 L/día la línea toma ≈ 82.200 L de cruda (27 %), y el pasteurizador U121/U122 sigue con margen (sección 10.4).
+Leche a la línea: 80.000 L, de los cuales 60.000 L son entera y 20.000 L descremada. La línea toma ≈ 82.200 L de cruda: los ≈ 60.000 actuales más ≈ 23.000 del aumento de acopio del contrato (acta 9-oct). El pasteurizador U121/U122 sigue con margen (sección 10.4).
 
 ### 14.7 Ritmo y cargas con la propuesta
 
