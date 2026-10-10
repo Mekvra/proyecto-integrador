@@ -1,0 +1,40 @@
+{
+  "nombre": "Mekvra",
+  "descripcion": "Mekvra, integradora de Transformación Digital Industrial: propuesta de automatización para una planta de derivados lácteos. Proyecto Integrador APM 2026-2S, Universidad Nacional de Colombia.",
+  "repositorio": "https://github.com/Mekvra/proyecto-integrador",
+  "video": "",
+  "curso": "Automatización de Procesos de Manufactura 2026-2S",
+  "universidad": "Universidad Nacional de Colombia · Sede Bogotá",
+  "lema": "Automatización e integración industrial",
+  "datos": [
+    {
+      "valor": "5,85 M L",
+      "texto": "de leche al día produce Cundinamarca",
+      "fuente": "Gobernación de Cundinamarca, 2025"
+    },
+    {
+      "valor": "350 mil L",
+      "texto": "de leche recibe al día una planta de referencia de la región (Sabanalac)",
+      "fuente": "Investigación del equipo"
+    },
+    {
+      "valor": "3 líneas",
+      "texto": "por lotes comparten recepción, pasteurización y almacenamiento",
+      "fuente": "Enunciado del proyecto"
+    }
+  ],
+  "tecnologias": [
+    "Siemens NX",
+    "Logix Emulate",
+    "Ignition",
+    "Node-RED",
+    "Tecnomatix",
+    "RobotStudio",
+    "SAP",
+    "Power BI",
+    "ISA-95",
+    "ISA-88",
+    "ISA-101",
+    "OPC UA"
+  ]
+}

@@ -1,0 +1,38 @@
+---
+// Monograma estático de Mekvra (misma geometría que el logo de partículas).
+import { MONOGRAM_PATH, JOINT } from '../scripts/shapes';
+
+interface Props {
+  size?: number;
+  class?: string;
+}
+
+const { size = 20, class: className } = Astro.props;
+const id = `mosaic-${Math.random().toString(36).slice(2, 8)}`;
+const mosaic = size >= 64;
+---
+
+<svg
+  class={className}
+  width={size}
+  height={size}
+  viewBox="0 0 200 200"
+  role="img"
+  aria-label="Mekvra"
+>
+  {
+    mosaic && (
+      <defs>
+        <pattern id={id} width="8" height="8" patternUnits="userSpaceOnUse">
+          <rect x="1" y="1" width="6" height="6" fill="#c8ad86" />
+        </pattern>
+      </defs>
+    )
+  }
+  <g fill={mosaic ? `url(#${id})` : '#c8ad86'} fill-rule="evenodd">
+    <path d={MONOGRAM_PATH} />
+    <path
+      d={`M${JOINT.x + JOINT.r} ${JOINT.y}a${JOINT.r} ${JOINT.r} 0 1 0 ${-2 * JOINT.r} 0a${JOINT.r} ${JOINT.r} 0 1 0 ${2 * JOINT.r} 0zM${JOINT.x + JOINT.hole} ${JOINT.y}a${JOINT.hole} ${JOINT.hole} 0 1 1 ${-2 * JOINT.hole} 0a${JOINT.hole} ${JOINT.hole} 0 1 1 ${2 * JOINT.hole} 0z`}
+    />
+  </g>
+</svg>
