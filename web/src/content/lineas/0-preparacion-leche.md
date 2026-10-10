@@ -1,40 +1,33 @@
 ---
 # orden 0 = etapas compartidas por las tres líneas (se muestran antes de las pestañas)
-nombre: Preparación de la leche
+nombre: Tronco común · 150.000 L/día
 orden: 0
-resumen: Recursos compartidos por las tres líneas, desde que llega el carrotanque hasta que la leche queda lista en el silo.
+resumen: Recursos compartidos por las tres líneas, desde que llega la cisterna hasta que la leche queda lista en el silo de cada línea.
 etapas:
   - nombre: Recepción
     tipo: Discreto · Batch
     variables:
-      - "Temperatura en cisterna ≤ 4–6 °C"
-      - "Acidez 13–18 °D"
-      - "Crioscopia −0,512 a −0,550 °C"
-      - "Antibióticos: negativo"
-  - nombre: Refrigeración
+      - "≈ 8 cisternas de 20.000 L al día"
+      - "Leche ≤ 6 °C al llegar"
+      - "Antibióticos: negativo (PCC-1)"
+  - nombre: Leche cruda
+    tipo: Batch
+    variables:
+      - "2 tanques de 60.000 L"
+      - "≤ 4 °C, máximo 24 h"
+  - nombre: Clarificación y estandarización
     tipo: Continuo
     variables:
-      - "Salida 2–4 °C"
-      - "Caudal 10 000–50 000 L/h"
-  - nombre: Filtración por membranas
-    tipo: Continuo
-    variables:
-      - "Presión transmembrana 1–10 bar"
-      - "Flux 15–50 L/(m²·h)"
-  - nombre: Normalización
-    tipo: Continuo
-    variables:
-      - "Centrífuga 4 000–6 500 rpm"
-      - "Separación 45–55 °C"
+      - "Grasa a la medida de cada línea"
+      - "La crema sobrante va a U126"
   - nombre: Pasteurización HTST
     tipo: Continuo
     variables:
-      - "72–75 °C durante 15–20 s"
-      - "Válvula FDV recircula si T < 72 °C"
-  - nombre: Almacenamiento en silos
+      - "≥ 72 °C × 15 s (75 °C de diseño)"
+      - "20.000 L/h, válvula de desvío (PCC-2)"
+  - nombre: Silos por línea
     tipo: Batch
     variables:
-      - "2–4 °C"
-      - "Agitación 20–30 rpm"
-      - "Residencia máx. 24–48 h"
+      - "Yogures U123A–C · quesos U124 · leche U125"
+      - "2–4 °C, máximo 24 h"
 ---

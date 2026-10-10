@@ -1,43 +1,38 @@
 ---
-nombre: Queso fresco
-orden: 1
-detallada: true
-resumen: Línea detallada del proyecto. Aquí desarrollamos la automatización, la celda robotizada y el gemelo digital.
+nombre: Quesos
+orden: 2
+resumen: 50.000 L/día de leche para mozzarella, quesillo y doble crema, tres quesos de pasta hilada que comparten tinas, hiladora y salmuera.
 etapas:
   - nombre: Coagulación
     tipo: Batch
     variables:
-      - "Leche a 32–36 °C, pH 6,4–6,5"
-      - "Cuajo 1–3 mL por cada 10 L"
-      - "CaCl₂ 10–20 g por cada 100 L"
-      - "Reposo 30–45 min"
-  - nombre: Corte de la cuajada
+      - "Tinas Q201–Q203 de 10.000 L"
+      - "Leche a 32–35 °C, CaCl₂ y cultivo"
+      - "Cuajo: coagula en 30–40 min"
+  - nombre: Corte y cocción
     tipo: Batch
     variables:
-      - "Grano de 1–2 cm"
-      - "Liras a 10–20 rpm"
-      - "5–10 min"
-  - nombre: Agitación y desuerado
+      - "Cubos de 1–1,5 cm"
+      - "Cocción hasta 40–42 °C"
+      - "Se retira ≈ 85 % del suero"
+  - nombre: Acidificación
     tipo: Batch
     variables:
-      - "15–30 rpm, 35–38 °C"
-      - "10–20 min"
-      - "Retiro del 30–50 % del suero"
-  - nombre: Moldeo y prensado
-    tipo: Batch · Discreto
+      - "Cuajada hasta pH 5,1–5,3"
+      - "Tina: 3,5 h por lote con CIP"
+  - nombre: Hilado y moldeo
+    tipo: Continuo
     variables:
-      - "Moldes de 250 g, 500 g o 1 kg"
-      - "Masa a 30–35 °C"
-      - "Prensado 0,5–1,5 bar, 15–60 min"
-  - nombre: Salado
+      - "Hiladora Q301, 1.000–1.300 kg/h"
+      - "Agua de hilado a 75–85 °C"
+  - nombre: Salmuera
     tipo: Batch
     variables:
-      - "Salmuera 18–22 °Bé, 10–12 °C"
-      - "Sal final 1,2–2,0 %"
+      - "NaCl 18–22 % a 8–12 °C"
+      - "8 h por lote"
   - nombre: Empaque
     tipo: Discreto
     variables:
-      - "Producto ≤ 4–6 °C"
-      - "Sellado 130–160 °C"
-      - "Peso 500 g ± 5 g"
+      - "Al vacío en Q311"
+      - "Cámara de quesos a 2–4 °C"
 ---

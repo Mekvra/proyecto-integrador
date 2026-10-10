@@ -1,0 +1,17 @@
+{
+  "titulo": "Yogur con fresa · perfil de temperatura del lote",
+  "nota": "Lote YF de 10.000 L con los tiempos de las recetas v1.8: formulación en U201, tratamiento a 92 °C × 5 min en U202, incubación a 43 °C hasta pH 4,50, ruptura y enfriamiento, fruta en línea y envasado. Es la receta de diseño, no un registro de planta.",
+  "limite": { "valor": 90, "etiqueta": "PCC-4 · 90 °C × 300 s mín." },
+  "fases": [
+    { "nombre": "Formulación en U201: carga, polvos y calentamiento a 50 °C", "corto": "Formulación", "desde": 0, "hasta": 112 },
+    { "nombre": "Tratamiento en U202: homogeneización, 92 °C × 5 min y enfriamiento a 43 °C", "corto": "92 °C", "desde": 112, "hasta": 183 },
+    { "nombre": "Inoculación e incubación a 43 °C hasta pH 4,50", "corto": "Fermentación", "desde": 183, "hasta": 508 },
+    { "nombre": "Ruptura y enfriamiento a 20 °C en U215", "corto": "Enfriar", "desde": 508, "hasta": 573 },
+    { "nombre": "Fruta en línea y envasado en U311/U312", "corto": "Envasado", "desde": 573, "hasta": 783 },
+    { "nombre": "Cámara a 2–4 °C (el reposo sigue ≥ 12 h)", "corto": "Cámara", "desde": 783, "hasta": 840 }
+  ],
+  "puntos": [
+    [0, 4], [30, 30], [60, 50], [112, 50], [130, 75], [140, 92], [145, 92], [160, 60], [183, 43],
+    [508, 43], [520, 32], [573, 20], [783, 20], [810, 8], [840, 5]
+  ]
+}
