@@ -1,0 +1,377 @@
+---
+import { getCollection } from 'astro:content';
+
+const todas = (await getCollection('lineas')).sort((a, b) => a.data.orden - b.data.orden);
+const comun = todas.find((l) => l.data.orden === 0);
+const lineas = todas.filter((l) => l.data.orden > 0);
+---
+
+{
+  comun && (
+    <div class="trunk">
+      <div class="trunk-head">
+        <span class="mono gold">00 · {comun.data.nombre}</span>
+        <p class="muted">{comun.data.resumen}</p>
+      </div>
+      <ol class="trunk-flow">
+        {comun.data.etapas.map((e, i) => (
+          <li>
+            <span class="mono idx">{String(i + 1).padStart(2, '0')}</span>
+            <span class="trunk-name">{e.nombre}</span>
+            <span class="mono tipo">{e.tipo}</span>
+            <ul class="vars mono">
+              {e.variables.map((v) => (
+                <li>{v}</li>
+              ))}
+            </ul>
+          </li>
+        ))}
+      </ol>
+    </div>
+  )
+}
+
+<div class="tabs" data-tabs>
+  <div class="tablist" role="tablist" aria-label="Líneas de producción">
+    {
+      lineas.map((l, i) => (
+        <button
+          class="tab mono"
+          role="tab"
+          id={`tab-${l.id}`}
+          aria-controls={`panel-${l.id}`}
+          aria-selected={i === 0 ? 'true' : 'false'}
+          tabindex={i === 0 ? 0 : -1}
+        >
+          {String(i + 1).padStart(2, '0')} {l.data.nombre}
+        </button>
+      ))
+    }
+    <span class="tab-ink" aria-hidden="true" data-ink></span>
+  </div>
+
+  {
+    lineas.map((l, i) => (
+      <section
+        class="panel"
+        role="tabpanel"
+        id={`panel-${l.id}`}
+        aria-labelledby={`tab-${l.id}`}
+        hidden={i !== 0}
+        tabindex="0"
+      >
+        <div class="panel-head">
+          <h3>{l.data.nombre}</h3>
+          {l.data.detallada && <span class="pill">Línea detallada · gemelo digital</span>}
+          <p class="muted">{l.data.resumen}</p>
+        </div>
+        <ol class="stages">
+          {l.data.etapas.map((e, k) => (
+            <li class="stage">
+              <div class="stage-top">
+                <span class="mono idx">{String(k + 1).padStart(2, '0')}</span>
+                <span class="mono tipo">{e.tipo}</span>
+              </div>
+              <h4>{e.nombre}</h4>
+              {e.variables.length > 0 ? (
+                <ul class="vars mono">
+                  {e.variables.map((v) => (
+                    <li>{v}</li>
+                  ))}
+                </ul>
+              ) : (
+                <p class="mono pending">Variables en análisis</p>
+              )}
+            </li>
+          ))}
+        </ol>
+      </section>
+    ))
+  }
+</div>
+
+<style>
+  .gold {
+    color: var(--gold);
+  }
+
+  .trunk {
+    border: 1px solid var(--cream-12);
+    border-radius: var(--radius);
+    padding: 24px;
+    margin-bottom: 56px;
+  }
+
+  .trunk-head {
+    display: grid;
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+
+  .trunk-flow {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 0;
+  }
+
+  .trunk-flow > li {
+    display: grid;
+    align-content: start;
+    gap: 6px;
+    padding: 16px 14px 0 0;
+    border-top: 1px solid var(--cream-16);
+    position: relative;
+  }
+
+  .trunk-flow > li::before {
+    content: '';
+    position: absolute;
+    top: -3px;
+    left: 0;
+    width: 5px;
+    height: 5px;
+    background: var(--gold);
+  }
+
+  .trunk-name {
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: -0.2px;
+  }
+
+  .idx {
+    color: var(--gold);
+  }
+
+  .tipo {
+    color: var(--granite);
+    font-size: 11px;
+  }
+
+  .vars {
+    list-style: none;
+    margin: 4px 0 0;
+    padding: 0;
+    display: grid;
+    gap: 5px;
+    font-size: 11px;
+    line-height: 1.35;
+    text-transform: none;
+    letter-spacing: 0.01em;
+    color: var(--cream-70);
+  }
+
+  /* La barra de pestañas se queda fija bajo el menú mientras se leen las etapas. */
+  .tablist {
+    position: sticky;
+    top: var(--nav-offset, 0px);
+    z-index: 5;
+    background: var(--black);
+    transition: top 320ms var(--ease-out-expo);
+    display: flex;
+    gap: 28px;
+    padding-top: 8px;
+    border-bottom: 1px solid var(--cream-12);
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .tablist[data-stuck] {
+    border-bottom-color: var(--cream-16);
+  }
+
+  .tab {
+    appearance: none;
+    background: none;
+    border: 0;
+    display: inline-flex;
+    align-items: flex-end;
+    padding: 0 0 14px;
+    color: var(--granite);
+    cursor: pointer;
+    white-space: nowrap;
+    transition: color 150ms var(--ease-switch);
+  }
+
+  .tab:hover {
+    color: var(--cream-70);
+  }
+
+  .tab[aria-selected='true'] {
+    color: var(--cream);
+  }
+
+  .tab-ink {
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    height: 1px;
+    width: 0;
+    background: var(--gold);
+    transition:
+      transform 250ms var(--ease-out-expo),
+      width 250ms var(--ease-out-expo);
+  }
+
+  .panel {
+    padding-top: 24px;
+    scroll-margin-top: 64px;
+    animation: fade 150ms var(--ease-switch);
+  }
+
+  .panel:focus-visible {
+    outline-offset: 8px;
+  }
+
+  @keyframes fade {
+    from {
+      opacity: 0;
+    }
+  }
+
+  .panel-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px 16px;
+    margin-bottom: 20px;
+  }
+
+  .panel-head h3 {
+    font-size: 28px;
+    letter-spacing: -1px;
+    line-height: 1.1;
+  }
+
+  .panel-head p {
+    flex-basis: 100%;
+    max-width: 60ch;
+    font-size: 14px;
+  }
+
+  .stages {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 12px;
+  }
+
+  .stage {
+    border: 1px solid var(--cream-16);
+    border-radius: var(--radius);
+    padding: 16px;
+    display: grid;
+    align-content: start;
+    gap: 8px;
+    transition: border-color 150ms var(--ease-switch);
+  }
+
+  .stage:hover {
+    border-color: var(--gold-60);
+  }
+
+  .stage-top {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  .stage h4 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: -0.3px;
+  }
+
+  .pending {
+    color: var(--granite);
+    font-size: 11px;
+  }
+
+  @media (max-width: 960px) {
+    .trunk-flow {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      row-gap: 20px;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .trunk {
+      padding: 18px;
+    }
+    .trunk-flow {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .panel {
+      animation: none;
+    }
+  }
+</style>
+
+<script>
+  function init(root: HTMLElement) {
+    const tabs = [...root.querySelectorAll<HTMLButtonElement>('[role="tab"]')];
+    const ink = root.querySelector<HTMLElement>('[data-ink]')!;
+
+    function moveInk(tab: HTMLElement) {
+      ink.style.width = `${tab.offsetWidth}px`;
+      ink.style.transform = `translateX(${tab.offsetLeft}px)`;
+    }
+
+    const tablist = root.querySelector<HTMLElement>('[role="tablist"]')!;
+
+    function select(tab: HTMLButtonElement, focus = false) {
+      // Si ya bajaste dentro de un producto, al cambiar te lleva al inicio del nuevo.
+      const stuck = tablist.getBoundingClientRect().top <= navHeight() + 1 && root.getBoundingClientRect().top < navHeight();
+      for (const t of tabs) {
+        const on = t === tab;
+        t.setAttribute('aria-selected', String(on));
+        t.tabIndex = on ? 0 : -1;
+        const panel = document.getElementById(t.getAttribute('aria-controls')!);
+        if (panel) panel.hidden = !on;
+      }
+      moveInk(tab);
+      if (focus) tab.focus({ preventScroll: true });
+      if (stuck) {
+        const top = root.getBoundingClientRect().top + window.scrollY - navHeight() + 1;
+        window.scrollTo({ top, behavior: 'smooth' });
+      }
+    }
+
+    // Alto de la barra superior cuando está visible (0 cuando se escondió al bajar).
+    function navHeight() {
+      return parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--nav-offset')) || 0;
+    }
+
+    // Marca cuando la barra está pegada bajo el menú.
+    const syncStuck = () =>
+      tablist.toggleAttribute('data-stuck', tablist.getBoundingClientRect().top <= navHeight() + 1);
+    window.addEventListener('scroll', syncStuck, { passive: true });
+
+    tabs.forEach((tab, i) => {
+      tab.addEventListener('click', () => select(tab));
+      tab.addEventListener('keydown', (e) => {
+        const dir = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
+        if (e.key === 'Home') select(tabs[0], true);
+        else if (e.key === 'End') select(tabs[tabs.length - 1], true);
+        else if (dir) select(tabs[(i + dir + tabs.length) % tabs.length], true);
+        else return;
+        e.preventDefault();
+      });
+    });
+
+    const current = () => tabs.find((t) => t.getAttribute('aria-selected') === 'true') ?? tabs[0];
+    moveInk(current());
+    new ResizeObserver(() => moveInk(current())).observe(root);
+  }
+
+  document.querySelectorAll<HTMLElement>('[data-tabs]').forEach(init);
+</script>

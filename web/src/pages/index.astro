@@ -1,23 +1,709 @@
 ---
-// Página temporal mientras se construye el sitio definitivo.
+import { getCollection, getEntry, render } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import ParticleLogo from '../components/ParticleLogo.astro';
+import AutomationCell from '../components/AutomationCell.astro';
+import ProcessTabs from '../components/ProcessTabs.astro';
+import Isa95 from '../components/Isa95.astro';
+import BatchChart from '../components/BatchChart.astro';
+import Monogram from '../components/Monogram.astro';
+import Lockup from '../components/Lockup.astro';
+import sitio from '../data/sitio.json';
+
+const empresa = await getEntry('textos', 'empresa');
+const reto = await getEntry('textos', 'reto');
+const solucion = await getEntry('textos', 'solucion');
+const propuesta = await getEntry('textos', 'propuesta');
+const aprendizaje = await getEntry('textos', 'aprendizaje');
+if (!empresa || !reto || !solucion || !propuesta || !aprendizaje) throw new Error('Falta un texto en src/content/textos');
+
+const { Content: EmpresaTexto } = await render(empresa);
+const { Content: RetoTexto } = await render(reto);
+const { Content: AprendizajeTexto } = await render(aprendizaje);
+
+const modulos = (await getCollection('modulos')).sort((a, b) => a.data.numero.localeCompare(b.data.numero));
+const equipo = await Promise.all(
+  (await getCollection('equipo'))
+    .sort((a, b) => a.data.numero - b.data.numero)
+    .map(async (m) => ({ ...m, Reflexion: (await render(m)).Content, tieneReflexion: Boolean(m.body?.trim()) })),
+);
+
+const estados = { pendiente: 'Pendiente', 'en-desarrollo': 'En desarrollo', completado: 'Completado' } as const;
+const repoTree = `${sitio.repositorio}/tree/main`;
+// Une las palabras cortas (a, la, de…) con la siguiente para que no queden sueltas al final de una línea.
+const sinHuerfanas = (t: string) => t.replace(/\s(\p{L}{1,2})\s/gu, ' $1\u00a0');
+
+const kpis = [
+  { nombre: 'OEE', unidad: '%', nota: 'Disponibilidad × Desempeño × Calidad' },
+  { nombre: 'Takt Time', unidad: 'min/lote', nota: 'Ritmo que exige la demanda' },
+  { nombre: 'Throughput', unidad: 'kg/h', nota: 'Producción por hora' },
+  { nombre: 'MLT', unidad: 'h', nota: 'Tiempo total de fabricación del lote' },
+];
 ---
-<html lang="es">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Mekvra · Proyecto Integrador APM</title>
-    <style>
-      :root { color-scheme: dark; }
-      body { margin: 0; min-height: 100dvh; display: grid; place-items: center; background: #07090d; color: #e9f1f7; font-family: system-ui, sans-serif; }
-      main { padding: 2rem; text-align: center; }
-      h1 { font-size: clamp(3rem, 12vw, 7rem); letter-spacing: -0.04em; margin: 0; }
-      p { color: #9fb0bd; }
-    </style>
-  </head>
-  <body>
-    <main>
-      <h1>Mekvra</h1>
-      <p>Transformación Digital Industrial para la industria láctea. Sitio en construcción.</p>
-    </main>
-  </body>
-</html>
+
+<Base>
+  <Nav />
+
+  <main>
+    <!-- HERO -->
+    <section class="hero wrap">
+      <div class="stack-strip" role="region" aria-label="Tecnologías y estándares del proyecto">
+        <div class="stack-track">
+          {
+            [...sitio.tecnologias, ...sitio.tecnologias].map((t, i) => (
+              <span class="mono stack-item" aria-hidden={i >= sitio.tecnologias.length ? 'true' : undefined}>
+                {t}
+              </span>
+            ))
+          }
+        </div>
+      </div>
+
+      <div class="hero-main">
+        <h1>{sinHuerfanas(sitio.lema)}</h1>
+        <ParticleLogo />
+      </div>
+    </section>
+
+    <!-- 01 EMPRESA Y RETO -->
+    <section id="empresa" class="section wrap">
+      <div class="two-col">
+        <div class="section-head">
+          <span class="mono">01 · La empresa</span>
+          <h2>{empresa.data.titulo}</h2>
+          <p>{empresa.data.resumen}</p>
+          <div class="prose"><EmpresaTexto /></div>
+        </div>
+        <div class="section-head">
+          <span class="mono">02 · El cliente</span>
+          <h2>{reto.data.titulo}</h2>
+          <p>{reto.data.resumen}</p>
+          <div class="prose"><RetoTexto /></div>
+        </div>
+      </div>
+
+      <dl class="facts">
+        {
+          sitio.datos.map((d) => (
+            <div class="fact">
+              <dt class="fact-value">{d.valor}</dt>
+              <dd>
+                <span>{d.texto}</span>
+                <span class="mono fact-src">{d.fuente}</span>
+              </dd>
+            </div>
+          ))
+        }
+      </dl>
+    </section>
+
+    <!-- 03 AUTOMATIZACIÓN -->
+    <section id="automatizacion" class="section wrap">
+      <div class="section-head">
+        <span class="mono">03 · Automatización</span>
+        <h2>Máquinas que trabajan, datos que suben.</h2>
+        <p>
+          Así se ve una celda de paletizado de la línea de quesos: el sensor detecta la pieza, la banda se detiene,
+          el PLC ordena el ciclo y el brazo apila. Cada evento llega al tablero en tiempo real.
+        </p>
+      </div>
+      <AutomationCell />
+    </section>
+
+    <!-- 04 PROCESO -->
+    <section id="proceso" class="section wrap">
+      <div class="section-head">
+        <span class="mono">04 · Proceso</span>
+        <h2>Tres líneas. Una sola planta.</h2>
+        <p>
+          Operaciones continuas, secuenciales por lotes y discretas conviven en la misma planta. Estas son las etapas y
+          variables críticas de cada línea, desde la recepción de la leche hasta el empaque.
+        </p>
+      </div>
+      <ProcessTabs />
+    </section>
+
+    <!-- 05 ARQUITECTURA -->
+    <section id="arquitectura" class="section wrap">
+      <div class="section-head">
+        <span class="mono">05 · Arquitectura</span>
+        <h2>{solucion.data.titulo}</h2>
+        <p>{solucion.data.resumen}</p>
+      </div>
+      <Isa95 />
+    </section>
+
+    <!-- 06 EVIDENCIAS -->
+    <section id="evidencias" class="section wrap">
+      <div class="section-head">
+        <span class="mono">06 · Evidencias</span>
+        <h2>Datos de proceso, no promesas.</h2>
+        <p>
+          Cada indicador se publicará con su memoria de cálculo y su simulación. Mientras tanto, mostramos solo lo que
+          ya está respaldado por la investigación del equipo.
+        </p>
+      </div>
+
+      <BatchChart>
+        <div class="kpi-grid">
+          {
+            kpis.map((k) => (
+              <div class="kpi">
+                <span class="mono kpi-label">{k.nombre}</span>
+                <span class="kpi-value">
+                  —<span class="mono unit">{k.unidad}</span>
+                </span>
+                <span class="kpi-note">{k.nota}</span>
+                <span class="mono kpi-pending">Pendiente · VSM y Tecnomatix</span>
+              </div>
+            ))
+          }
+        </div>
+      </BatchChart>
+    </section>
+
+    <!-- 07 MÓDULOS -->
+    <section id="modulos" class="section wrap">
+      <div class="section-head">
+        <span class="mono">07 · Módulos</span>
+        <h2>Cada entregable, en su lugar.</h2>
+        <p>Cada módulo del curso tiene su carpeta de evidencias en el repositorio.</p>
+      </div>
+      <div class="cards">
+        {
+          modulos.map((m) => (
+            <article class="card">
+              <div class="card-top">
+                <span class="mono gold">{m.data.numero}</span>
+                <span class="pill" data-estado={m.data.estado}>
+                  {estados[m.data.estado]}
+                </span>
+              </div>
+              <h3>{m.data.titulo}</h3>
+              <ul class="deliverables">
+                {m.data.entregables.map((e) => (
+                  <li>{e}</li>
+                ))}
+              </ul>
+              <div class="card-foot">
+                <a class="ghost-link" href={`${repoTree}/${m.data.carpeta}`} target="_blank" rel="noopener">
+                  Ver carpeta <span class="arrow" aria-hidden="true">→</span>
+                </a>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </section>
+
+    <!-- 08 PROPUESTA -->
+    <section id="propuesta" class="section wrap">
+      <div class="proposal">
+        <Monogram size={96} />
+        <div class="section-head">
+          <span class="mono">08 · Propuesta de valor</span>
+          <h2>{propuesta.data.titulo}</h2>
+          <p>{propuesta.data.resumen}</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 09 EQUIPO -->
+    <section id="equipo" class="section wrap">
+      <div class="section-head">
+        <span class="mono">09 · Proceso de aprendizaje</span>
+        <h2>{aprendizaje.data.titulo}</h2>
+        <p>{aprendizaje.data.resumen}</p>
+        <div class="prose"><AprendizajeTexto /></div>
+      </div>
+
+      <div class="team">
+        {
+          equipo.map(({ data, Reflexion, tieneReflexion }) => (
+            <article class="member">
+              <span class="mono gold">{String(data.numero).padStart(2, '0')}</span>
+              <h3>{data.nombre}</h3>
+              <span class="member-role">{data.rol}</span>
+              <div class="member-reflection">
+                {tieneReflexion ? <Reflexion /> : <p class="mono pending">Reflexión individual pendiente</p>}
+              </div>
+              <a class="ghost-link member-gh" href={`https://github.com/${data.github}`} target="_blank" rel="noopener">
+                @{data.github} <span class="arrow" aria-hidden="true">→</span>
+              </a>
+            </article>
+          ))
+        }
+      </div>
+    </section>
+  </main>
+
+  <footer class="wrap">
+    <div class="footer">
+    <div class="footer-brand">
+      <Lockup size="lg" />
+    </div>
+    <div class="footer-cols">
+      <div>
+        <span class="mono footer-h">Proyecto</span>
+        <p>Proyecto Integrador · APM 2026-2S</p>
+        <p>{sitio.curso}</p>
+        <p>{sitio.universidad}</p>
+      </div>
+      <div>
+        <span class="mono footer-h">Enlaces</span>
+        <p>
+          <a class="ghost-link" href={sitio.repositorio} target="_blank" rel="noopener">
+            Repositorio <span class="arrow" aria-hidden="true">→</span>
+          </a>
+        </p>
+        <p>
+          {sitio.video ? (
+            <a class="ghost-link" href={sitio.video} target="_blank" rel="noopener">
+              Video de sustentación <span class="arrow" aria-hidden="true">→</span>
+            </a>
+          ) : (
+            <span class="muted">Video de sustentación · próximamente</span>
+          )}
+        </p>
+      </div>
+    </div>
+    </div>
+  </footer>
+</Base>
+
+<style>
+  /* Inicio sereno (referencia: Balsa): píldora, titular condensado, texto breve y
+     el logo de partículas como pieza central debajo. */
+  .hero {
+    min-height: calc(100svh - 61px);
+    display: grid;
+    grid-template-rows: auto 1fr;
+    padding-bottom: clamp(24px, 4svh, 40px);
+    text-align: center;
+  }
+
+  /* Franja de tecnologías: se desplaza lento, como la banda de logos de Factory. */
+  .stack-strip {
+    position: relative;
+    overflow: hidden;
+    border-top: 1px solid var(--cream-08);
+    border-bottom: 1px solid var(--cream-08);
+    mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+  }
+
+  .stack-track {
+    display: flex;
+    width: max-content;
+    animation: stack-scroll 48s linear infinite;
+  }
+
+  .stack-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 28px;
+    padding: 14px 0 14px 28px;
+    color: var(--granite);
+    white-space: nowrap;
+  }
+
+  .stack-item::after {
+    content: '';
+    width: 4px;
+    height: 4px;
+    background: var(--gold);
+    opacity: 0.8;
+  }
+
+  @keyframes stack-scroll {
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .stack-track {
+      animation: none;
+    }
+  }
+
+  .hero-main {
+    display: grid;
+    align-content: center;
+    justify-items: center;
+    padding-top: clamp(28px, 5svh, 56px);
+  }
+
+  .hero h1 {
+    font-family: var(--font-display), 'Arial Narrow', sans-serif;
+    font-weight: 600;
+    font-size: clamp(34px, min(5vw, 7svh), 60px);
+    line-height: 0.95;
+    letter-spacing: 0.005em;
+    text-transform: uppercase;
+  }
+
+  .hero-sub {
+    margin-top: clamp(14px, 2.4svh, 22px);
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--cream-70);
+    max-width: 46ch;
+  }
+
+  .hero :global(.plogo) {
+    margin-top: clamp(24px, 4.5svh, 48px);
+    width: min(420px, 80vw, 42svh);
+  }
+
+  @media (max-width: 560px) {
+    .hero :global(.plogo) {
+      width: min(92vw, 44svh);
+    }
+  }
+
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 56px;
+  }
+
+  .two-col .section-head {
+    margin-bottom: 0;
+  }
+
+  .prose {
+    display: grid;
+    gap: 12px;
+    font-size: 16px;
+    line-height: 1.5;
+    letter-spacing: -0.2px;
+    color: var(--cream-70);
+    max-width: 60ch;
+  }
+
+  .prose :global(p) {
+    margin: 0;
+  }
+
+  .prose :global(em) {
+    color: var(--granite);
+  }
+
+  .facts {
+    margin: 64px 0 0;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    border-top: 1px solid var(--cream-12);
+  }
+
+  .fact {
+    padding: 24px 24px 0 0;
+    display: grid;
+    align-content: start;
+    gap: 10px;
+  }
+
+  .fact + .fact {
+    padding-left: 24px;
+    border-left: 1px solid var(--cream-12);
+  }
+
+  .fact-value {
+    font-size: 28px;
+    letter-spacing: -1px;
+    line-height: 1;
+    color: var(--gold);
+  }
+
+  .fact dd {
+    margin: 0;
+    display: grid;
+    gap: 8px;
+    color: var(--cream-70);
+  }
+
+  .fact-src {
+    color: var(--granite);
+    font-size: 11px;
+  }
+
+  .gold {
+    color: var(--gold);
+  }
+
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .kpi {
+    padding: 16px 20px;
+    display: grid;
+    gap: 8px;
+    border-bottom: 1px solid var(--stroke);
+  }
+
+  .kpi-pending {
+    color: var(--granite);
+    font-size: 11px;
+  }
+
+  .kpi + .kpi {
+    border-left: 1px solid var(--stroke);
+  }
+
+  .kpi-label {
+    color: var(--granite);
+  }
+
+  .kpi-value {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    font-size: 28px;
+    line-height: 1;
+    letter-spacing: -1px;
+    color: var(--granite);
+  }
+
+  .unit {
+    color: var(--gold);
+  }
+
+  .kpi-note {
+    font-size: 12px;
+    color: var(--granite);
+  }
+
+  .frame-foot {
+    padding: 12px 20px 16px;
+    color: var(--granite);
+    font-size: 11px;
+  }
+
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .card {
+    border: 1px solid var(--cream-16);
+    border-radius: var(--radius);
+    padding: 28px;
+    display: grid;
+    grid-template-rows: auto auto 1fr auto;
+    gap: 16px;
+    transition: border-color 150ms var(--ease-switch);
+  }
+
+  .card:hover {
+    border-color: var(--gold-60);
+  }
+
+  .card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .card h3 {
+    font-size: 20px;
+    line-height: 1.2;
+    letter-spacing: -0.5px;
+  }
+
+  .deliverables {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 8px;
+    align-content: start;
+    color: var(--cream-70);
+  }
+
+  .deliverables li {
+    padding-left: 14px;
+    position: relative;
+  }
+
+  .deliverables li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 10px;
+    width: 5px;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  .card-foot {
+    display: grid;
+    gap: 12px;
+    padding-top: 16px;
+    border-top: 1px solid var(--cream-08);
+  }
+
+  .proposal {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 40px;
+    align-items: center;
+    border: 1px solid var(--cream-12);
+    border-radius: var(--radius);
+    padding: 40px;
+  }
+
+  .proposal .section-head {
+    margin: 0;
+  }
+
+  .team {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .member {
+    border: 1px solid var(--cream-16);
+    border-radius: var(--radius);
+    padding: 24px 20px;
+    display: grid;
+    grid-template-rows: auto auto auto 1fr auto;
+    gap: 8px;
+    transition: border-color 150ms var(--ease-switch);
+  }
+
+  .member:hover {
+    border-color: var(--gold-60);
+  }
+
+  .member h3 {
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: -0.3px;
+    line-height: 1.25;
+  }
+
+  .member-role {
+    font-size: 12px;
+    color: var(--cream-70);
+  }
+
+  .member-reflection {
+    padding-top: 12px;
+    font-size: 13px;
+    color: var(--cream-70);
+  }
+
+  .pending {
+    color: var(--granite);
+    font-size: 11px;
+  }
+
+  .member-gh {
+    font-size: 12px;
+    padding-top: 12px;
+  }
+
+  .footer {
+    margin-top: var(--section-gap);
+    padding-top: 56px;
+    padding-bottom: 56px;
+    border-top: 1px solid var(--cream-08);
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 40px;
+  }
+
+  .footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: -0.5px;
+    align-self: start;
+  }
+
+  .footer-cols {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+  }
+
+  .footer-cols > div {
+    display: grid;
+    gap: 8px;
+    align-content: start;
+    color: var(--cream-70);
+  }
+
+  .footer-h {
+    color: var(--cream);
+    margin-bottom: 4px;
+  }
+
+  @media (max-width: 1080px) {
+    .team {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 900px) {
+    .two-col {
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+    .cards {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .kpi-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .kpi:nth-child(3) {
+      border-left: 0;
+    }
+    .footer {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .facts {
+      grid-template-columns: 1fr;
+    }
+    .fact + .fact {
+      padding-left: 0;
+      border-left: 0;
+      border-top: 1px solid var(--cream-12);
+      margin-top: 24px;
+    }
+    .cards,
+    .team {
+      grid-template-columns: 1fr;
+    }
+    .proposal {
+      grid-template-columns: 1fr;
+      padding: 24px;
+      gap: 24px;
+    }
+    .footer-cols {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .kpi {
+      padding: 14px;
+    }
+    .kpi-value {
+      font-size: 22px;
+    }
+    .kpi-note {
+      display: none;
+    }
+  }
+</style>

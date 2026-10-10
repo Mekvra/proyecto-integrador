@@ -1,0 +1,751 @@
+---
+// Celda robótica de paletizado (demostración) + dashboard en vivo del PLC.
+// Todo se simula en el navegador: no son resultados del proyecto.
+const rollers = Array.from({ length: 10 }, (_, i) => 45 + i * 30);
+---
+
+<div class="cell" data-cell>
+  <div class="cell-stage">
+    <svg viewBox="0 125 640 265" role="img" aria-labelledby="cell-title">
+      <title id="cell-title">
+        Brazo robot de tres ejes tomando bloques de queso de una banda transportadora y apilándolos en una estiba
+      </title>
+
+      <!-- piso -->
+      <line x1="16" y1="340.5" x2="624" y2="340.5" class="floor" />
+
+      <!-- banda transportadora -->
+      <g class="conveyor">
+        <line x1="60" y1="302" x2="60" y2="340" />
+        <line x1="300" y1="302" x2="300" y2="340" />
+        <rect x="30" y="280" width="300" height="22" rx="11" />
+        {
+          rollers.map((x) => (
+            <g class="roller" transform={`translate(${x} 291)`}>
+              <circle r="6" />
+              <line x1="-4" y1="0" x2="4" y2="0" data-spoke />
+            </g>
+          ))
+        }
+      </g>
+      <text x="30" y="362" class="tag">M-01 · BANDA</text>
+      <text x="138" y="362" class="tag state" data-belt-state>RUN</text>
+
+      <!-- sensor fotoeléctrico -->
+      <g class="sensor">
+        <rect x="300" y="222" width="12" height="12" rx="2" />
+        <line x1="306" y1="234" x2="306" y2="278" class="beam" data-beam />
+        <circle cx="318" cy="228" r="3" class="led" data-sensor-led />
+      </g>
+      <text x="258" y="362" class="tag">PE-01 · SENSOR</text>
+
+      <!-- bloques de queso (los mueve el script) -->
+      <g data-items></g>
+
+      <!-- estiba -->
+      <g class="pallet">
+        <rect x="524" y="322" width="76" height="6" rx="1" />
+        <line x1="530" y1="328" x2="530" y2="340" />
+        <line x1="562" y1="328" x2="562" y2="340" />
+        <line x1="594" y1="328" x2="594" y2="340" />
+      </g>
+      <text x="632" y="362" class="tag" text-anchor="end">ESTIBA · 500 g</text>
+
+      <!-- robot -->
+      <g class="robot">
+        <path d="M414 340 L420 306 H460 L466 340 Z" class="pedestal" />
+        <ellipse cx="440" cy="304" rx="30" ry="6" class="turntable" />
+        <g data-link1>
+          <line class="link-o" data-l1 x1="440" y1="290" x2="440" y2="160" />
+          <line class="link-i" data-l1 x1="440" y1="290" x2="440" y2="160" />
+        </g>
+        <g data-link2>
+          <line class="link-o thin" data-l2 x1="440" y1="160" x2="560" y2="160" />
+          <line class="link-i thin" data-l2 x1="440" y1="160" x2="560" y2="160" />
+        </g>
+        <g data-tool>
+          <line class="tool" x1="0" y1="0" x2="0" y2="20" />
+          <path class="gripper" data-gripper d="M-10 20 H10 M-10 20 V30 M10 20 V30" />
+        </g>
+        <circle class="joint" data-j0 cx="440" cy="290" r="8" />
+        <circle class="joint" data-j1 cx="440" cy="160" r="7" />
+        <circle class="joint small" data-j2 cx="560" cy="160" r="5" />
+      </g>
+      <text x="410" y="378" class="tag">R-01 · 3 EJES</text>
+    </svg>
+
+    <button class="cell-toggle mono" type="button" data-toggle aria-pressed="false">
+      Pausar
+    </button>
+  </div>
+
+  <div class="frame dashboard">
+    <div class="frame-bar">
+      <span class="frame-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+      <span class="frame-title mono">PLC-01 · Celda de paletizado</span>
+      <span class="frame-status mono"><span class="pulse" data-live data-status-pulse></span>Simulación</span>
+    </div>
+
+    <div class="tiles">
+      <div class="tile">
+        <span class="mono tile-label">Piezas paletizadas</span>
+        <span class="tile-value"><span data-v="piezas">0</span><span class="unit mono">u</span></span>
+        <svg class="spark" viewBox="0 0 120 40" preserveAspectRatio="none" aria-hidden="true">
+          <polyline data-spark="piezas" class="spark-line" points="" />
+        </svg>
+      </div>
+      <div class="tile">
+        <span class="mono tile-label">Tiempo de ciclo</span>
+        <span class="tile-value"><span data-v="ciclo">—</span><span class="unit mono">s</span></span>
+        <svg class="spark" viewBox="0 0 120 40" preserveAspectRatio="none" aria-hidden="true">
+          <polyline data-spark="ciclo" class="spark-line" points="" />
+        </svg>
+      </div>
+      <div class="tile">
+        <span class="mono tile-label">TT-101 · Tina de cuajado</span>
+        <span class="tile-value"><span data-v="temp">34.0</span><span class="unit mono">°C</span></span>
+        <svg class="spark" viewBox="0 0 120 40" preserveAspectRatio="none" aria-hidden="true">
+          <line x1="0" x2="120" y1="6" y2="6" class="limit" />
+          <line x1="0" x2="120" y1="34" y2="34" class="limit" />
+          <polyline data-spark="temp" class="spark-line" points="" />
+        </svg>
+        <span class="mono tile-note">Límites 32–36 °C</span>
+      </div>
+      <div class="tile">
+        <span class="mono tile-label">Estado de la celda</span>
+        <span class="tile-value state"><span class="pulse" data-live></span><span data-v="estado">Esperando pieza</span></span>
+        <ul class="io mono">
+          <li><span>PE-01</span><span data-io="sensor">Libre</span></li>
+          <li><span>M-01</span><span data-io="banda">Marcha</span></li>
+          <li><span>Pinza</span><span data-io="pinza">Abierta</span></li>
+        </ul>
+      </div>
+    </div>
+    <p class="frame-foot mono">Demostración en el navegador · valores ilustrativos</p>
+  </div>
+</div>
+
+<style>
+  .cell {
+    display: grid;
+    grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+    gap: 24px;
+    align-items: stretch;
+  }
+
+  .cell-stage {
+    position: relative;
+    border: 1px solid var(--cream-12);
+    border-radius: var(--radius-frame);
+    padding: 12px;
+    display: grid;
+    align-items: center;
+  }
+
+  svg {
+    width: 100%;
+    height: auto;
+  }
+
+  .floor {
+    stroke: var(--cream-12);
+  }
+
+  .conveyor rect,
+  .conveyor line,
+  .roller circle,
+  .pallet rect,
+  .pallet line,
+  .sensor rect,
+  .pedestal,
+  .turntable {
+    fill: none;
+    stroke: var(--cream);
+    stroke-width: 1.5;
+  }
+
+  .roller line {
+    stroke: var(--cream-40);
+    stroke-width: 1;
+  }
+
+  .beam {
+    stroke: var(--green);
+    stroke-width: 1;
+    stroke-dasharray: 3 3;
+  }
+
+  .beam[data-broken] {
+    stroke: var(--cream-16);
+  }
+
+  .led {
+    fill: var(--stroke);
+  }
+
+  .led[data-on] {
+    fill: var(--green);
+  }
+
+  .link-o {
+    stroke: var(--cream);
+    stroke-width: 19;
+    stroke-linecap: round;
+  }
+
+  .link-i {
+    stroke: var(--black);
+    stroke-width: 16;
+    stroke-linecap: round;
+  }
+
+  .link-o.thin {
+    stroke-width: 15;
+  }
+
+  .link-i.thin {
+    stroke-width: 12;
+  }
+
+  .joint {
+    fill: var(--black);
+    stroke: var(--gold);
+    stroke-width: 1.5;
+  }
+
+  .tool,
+  .gripper {
+    stroke: var(--cream);
+    stroke-width: 1.5;
+    fill: none;
+    stroke-linecap: round;
+  }
+
+  :global(.cheese) {
+    fill: var(--black);
+    stroke: var(--gold);
+    stroke-width: 1.5;
+  }
+
+  :global(.cheese-line) {
+    stroke: var(--gold);
+    stroke-width: 1;
+    opacity: 0.5;
+  }
+
+  .tag.state {
+    fill: var(--green);
+  }
+
+  .tag {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    fill: var(--cream-70);
+  }
+
+  .cell-toggle {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: transparent;
+    color: var(--cream-70);
+    border: 1px solid var(--cream-16);
+    border-radius: var(--radius);
+    padding: 6px 10px;
+    cursor: pointer;
+    transition:
+      color 150ms var(--ease-switch),
+      border-color 150ms var(--ease-switch);
+  }
+
+  .cell-toggle:hover {
+    color: var(--cream);
+    border-color: var(--gold);
+  }
+
+  .dashboard {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .tiles {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    flex: 1;
+  }
+
+  .tile {
+    display: grid;
+    align-content: start;
+    gap: 10px;
+    padding: 20px;
+    border-bottom: 1px solid var(--stroke);
+    min-width: 0;
+  }
+
+  .tile:nth-child(odd) {
+    border-right: 1px solid var(--stroke);
+  }
+
+  .tile-label {
+    color: var(--granite);
+  }
+
+  .tile-value {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    font-size: 28px;
+    line-height: 1;
+    letter-spacing: -1px;
+  }
+
+  .tile-value.state {
+    align-items: center;
+    font-size: 16px;
+    letter-spacing: -0.3px;
+    gap: 10px;
+  }
+
+  .unit {
+    color: var(--gold);
+  }
+
+  .spark {
+    width: 100%;
+    height: 40px;
+    overflow: visible;
+  }
+
+  .spark-line {
+    fill: none;
+    stroke: var(--gold);
+    stroke-width: 1.5;
+    vector-effect: non-scaling-stroke;
+    stroke-linejoin: round;
+  }
+
+  .limit {
+    stroke: var(--orange);
+    stroke-width: 1;
+    stroke-dasharray: 3 3;
+    vector-effect: non-scaling-stroke;
+    opacity: 0.6;
+  }
+
+  .tile-note {
+    color: var(--granite);
+    font-size: 11px;
+  }
+
+  .io {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 6px;
+    font-size: 11px;
+  }
+
+  .io li {
+    display: flex;
+    justify-content: space-between;
+    color: var(--granite);
+  }
+
+  .io li span:last-child {
+    color: var(--cream-70);
+  }
+
+  .frame-foot {
+    padding: 12px 20px;
+    color: var(--granite);
+    font-size: 11px;
+  }
+
+  @media (max-width: 900px) {
+    .cell {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 420px) {
+    .tile {
+      padding: 14px;
+    }
+    .tile-value {
+      font-size: 22px;
+    }
+  }
+</style>
+
+<script>
+  const SVGNS = 'http://www.w3.org/2000/svg';
+
+  // Geometría (unidades del viewBox 640 × 400).
+  const SHOULDER = { x: 440, y: 290 };
+  const L1 = 130;
+  const L2 = 120;
+  const TOOL = 20; // muñeca → punta de la pinza (la pinza mide 10 más)
+  const GRIP = 30;
+  const ITEM_W = 44;
+  const ITEM_H = 22;
+  const BELT_TOP = 280;
+  const PICK_X = 296;
+  const PALLET_X = 562;
+  const PALLET_TOP = 322;
+  const STACK_MAX = 4;
+  const BELT_SPEED = 120; // px/s
+  const SENSOR_X = 306;
+  const SPAWN_X = 54;
+
+  type Pt = { x: number; y: number };
+
+  function ik(target: Pt) {
+    const dx = target.x - SHOULDER.x;
+    const dy = target.y - SHOULDER.y;
+    const dist = Math.min(Math.hypot(dx, dy), L1 + L2 - 0.001);
+    const cos2 = (dist * dist - L1 * L1 - L2 * L2) / (2 * L1 * L2);
+    const base = Math.atan2(dy, dx);
+    // Dos soluciones: elegimos la de codo arriba (y menor en pantalla).
+    const solve = (sign: number) => {
+      const q2 = sign * Math.acos(Math.max(-1, Math.min(1, cos2)));
+      const q1 = base - Math.atan2(L2 * Math.sin(q2), L1 + L2 * Math.cos(q2));
+      const elbow = { x: SHOULDER.x + L1 * Math.cos(q1), y: SHOULDER.y + L1 * Math.sin(q1) };
+      return elbow;
+    };
+    const a = solve(1);
+    const b = solve(-1);
+    const elbow = a.y < b.y ? a : b;
+    const k = dist / Math.hypot(dx, dy || 0.0001);
+    const wrist = { x: SHOULDER.x + dx * k, y: SHOULDER.y + dy * k };
+    return { elbow, wrist };
+  }
+
+  const easeInOut = (t: number) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
+  const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
+
+  function init(root: HTMLElement) {
+    const svg = root.querySelector('svg')!;
+    const itemsLayer = svg.querySelector<SVGGElement>('[data-items]')!;
+    const l1 = svg.querySelectorAll<SVGLineElement>('[data-l1]');
+    const l2 = svg.querySelectorAll<SVGLineElement>('[data-l2]');
+    const j1 = svg.querySelector<SVGCircleElement>('[data-j1]')!;
+    const j2 = svg.querySelector<SVGCircleElement>('[data-j2]')!;
+    const tool = svg.querySelector<SVGGElement>('[data-tool]')!;
+    const gripper = svg.querySelector<SVGPathElement>('[data-gripper]')!;
+    const beam = svg.querySelector<SVGLineElement>('[data-beam]')!;
+    const led = svg.querySelector<SVGCircleElement>('[data-sensor-led]')!;
+    const beltState = svg.querySelector<SVGTextElement>('[data-belt-state]')!;
+    const spokes = svg.querySelectorAll<SVGLineElement>('[data-spoke]');
+    const toggle = root.querySelector<HTMLButtonElement>('[data-toggle]')!;
+    const v = (k: string) => root.querySelector<HTMLElement>(`[data-v="${k}"]`)!;
+    const io = (k: string) => root.querySelector<HTMLElement>(`[data-io="${k}"]`)!;
+    const spark = (k: string) => root.querySelector<SVGPolylineElement>(`[data-spark="${k}"]`)!;
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // --- piezas ---
+    interface Item {
+      el: SVGGElement;
+      x: number;
+      y: number;
+      state: 'belt' | 'held' | 'stacked';
+    }
+    const items: Item[] = [];
+    function makeItem(x: number): Item {
+      const g = document.createElementNS(SVGNS, 'g');
+      const r = document.createElementNS(SVGNS, 'rect');
+      r.setAttribute('class', 'cheese');
+      r.setAttribute('x', String(-ITEM_W / 2));
+      r.setAttribute('y', String(-ITEM_H / 2));
+      r.setAttribute('width', String(ITEM_W));
+      r.setAttribute('height', String(ITEM_H));
+      r.setAttribute('rx', '4');
+      const line = document.createElementNS(SVGNS, 'line');
+      line.setAttribute('class', 'cheese-line');
+      line.setAttribute('x1', String(-ITEM_W / 2 + 6));
+      line.setAttribute('x2', String(ITEM_W / 2 - 6));
+      line.setAttribute('y1', '-3');
+      line.setAttribute('y2', '-3');
+      g.append(r, line);
+      itemsLayer.append(g);
+      const item: Item = { el: g, x, y: BELT_TOP - ITEM_H / 2, state: 'belt' };
+      place(item);
+      items.push(item);
+      return item;
+    }
+    function place(item: Item) {
+      item.el.setAttribute('transform', `translate(${item.x.toFixed(1)} ${item.y.toFixed(1)})`);
+    }
+
+    // --- brazo ---
+    function setArm(wrist: Pt, gripClosed: boolean) {
+      const { elbow, wrist: w } = ik(wrist);
+      l1.forEach((l) => {
+        l.setAttribute('x2', elbow.x.toFixed(1));
+        l.setAttribute('y2', elbow.y.toFixed(1));
+      });
+      l2.forEach((l) => {
+        l.setAttribute('x1', elbow.x.toFixed(1));
+        l.setAttribute('y1', elbow.y.toFixed(1));
+        l.setAttribute('x2', w.x.toFixed(1));
+        l.setAttribute('y2', w.y.toFixed(1));
+      });
+      j1.setAttribute('cx', elbow.x.toFixed(1));
+      j1.setAttribute('cy', elbow.y.toFixed(1));
+      j2.setAttribute('cx', w.x.toFixed(1));
+      j2.setAttribute('cy', w.y.toFixed(1));
+      tool.setAttribute('transform', `translate(${w.x.toFixed(1)} ${w.y.toFixed(1)})`);
+      const half = gripClosed ? ITEM_W / 2 + 1 : ITEM_W / 2 + 7;
+      gripper.setAttribute('d', `M${-half} 20 H${half} M${-half} 20 V${GRIP + 6} M${half} 20 V${GRIP + 6}`);
+      return w;
+    }
+
+    // Poses de la muñeca.
+    const HOME: Pt = { x: 470, y: 150 };
+    const pickTop = BELT_TOP - ITEM_H; // parte superior de la pieza en la banda
+    const PICK: Pt = { x: PICK_X, y: pickTop - TOOL + 8 };
+    const ABOVE_PICK: Pt = { x: PICK_X, y: PICK.y - 44 };
+    const stackTop = (n: number) => PALLET_TOP - ITEM_H * (n + 1);
+    const PLACE = (n: number): Pt => ({ x: PALLET_X, y: stackTop(n) - TOOL + 8 });
+    const ABOVE_PLACE = (n: number): Pt => ({ x: PALLET_X, y: Math.min(PLACE(n).y - 44, 200) });
+
+    // --- secuencia (máquina de estados, como un Grafcet) ---
+    type Step = { name: string; from: () => Pt; to: () => Pt; dur: number; grip: boolean; enter?: () => void };
+    let stack = 0;
+    let held: Item | null = null;
+    let wristNow: Pt = { ...HOME };
+
+    const steps: Step[] = [
+      { name: 'Hacia la pieza', from: () => HOME, to: () => ABOVE_PICK, dur: 700, grip: false },
+      { name: 'Bajando', from: () => ABOVE_PICK, to: () => PICK, dur: 380, grip: false },
+      {
+        name: 'Sujetando',
+        from: () => PICK,
+        to: () => PICK,
+        dur: 220,
+        grip: true,
+        enter: () => {
+          held = items.find((i) => i.state === 'belt' && Math.abs(i.x - PICK_X) < 2) ?? null;
+          if (held) held.state = 'held';
+          io('pinza').textContent = 'Cerrada';
+        },
+      },
+      { name: 'Subiendo', from: () => PICK, to: () => ABOVE_PICK, dur: 380, grip: true },
+      { name: 'Hacia la estiba', from: () => ABOVE_PICK, to: () => ABOVE_PLACE(stack), dur: 820, grip: true },
+      { name: 'Depositando', from: () => ABOVE_PLACE(stack), to: () => PLACE(stack), dur: 380, grip: true },
+      {
+        name: 'Soltando',
+        from: () => PLACE(stack),
+        to: () => PLACE(stack),
+        dur: 220,
+        grip: false,
+        enter: () => {
+          if (held) {
+            held.state = 'stacked';
+            held.x = PALLET_X;
+            held.y = stackTop(stack) + ITEM_H / 2;
+            place(held);
+            held = null;
+          }
+          stack++;
+          io('pinza').textContent = 'Abierta';
+          onPlaced();
+        },
+      },
+      { name: 'Regresando', from: () => PLACE(stack - 1), to: () => HOME, dur: 760, grip: false },
+    ];
+
+    let stepIndex = -1; // -1 = esperando pieza
+    let stepStart = 0;
+
+    // --- dashboard ---
+    let piezas = 0;
+    let lastPlaced = 0;
+    const series: Record<string, number[]> = { piezas: [], ciclo: [], temp: [] };
+    let temp = 34;
+
+    function pushSeries(key: string, value: number, max = 24) {
+      const s = series[key];
+      s.push(value);
+      if (s.length > max) s.shift();
+      drawSpark(key);
+    }
+
+    function drawSpark(key: string) {
+      const s = series[key];
+      if (s.length < 2) return;
+      let min = Math.min(...s);
+      let max = Math.max(...s);
+      if (key === 'temp') {
+        min = 31.5;
+        max = 36.5;
+      }
+      const span = max - min || 1;
+      const pts = s
+        .map((val, i) => {
+          const x = (i / (s.length - 1)) * 120;
+          const y = key === 'temp' ? 40 - ((val - min) / span) * 40 : 36 - ((val - min) / span) * 32;
+          return `${x.toFixed(1)},${y.toFixed(1)}`;
+        })
+        .join(' ');
+      spark(key).setAttribute('points', pts);
+    }
+
+    function onPlaced() {
+      piezas++;
+      v('piezas').textContent = String(piezas);
+      pushSeries('piezas', piezas);
+      const now = performance.now();
+      if (lastPlaced) {
+        const ciclo = (now - lastPlaced) / 1000;
+        v('ciclo').textContent = ciclo.toFixed(1);
+        pushSeries('ciclo', ciclo);
+      }
+      lastPlaced = now;
+    }
+
+    function setState(text: string) {
+      v('estado').textContent = text;
+    }
+
+    // Temperatura simulada de la tina de cuajado (setpoint 34 °C).
+    let tempTimer = 0;
+    function tickTemp() {
+      temp += (34 - temp) * 0.2 + (Math.random() - 0.5) * 0.35;
+      v('temp').textContent = temp.toFixed(1);
+      pushSeries('temp', temp);
+    }
+
+    // --- bucle ---
+    let spawnTimer = 0;
+    let last = 0;
+    let rollerAngle = 0;
+    let running = false;
+    let raf = 0;
+
+    function sensorBlocked() {
+      return items.some((i) => i.state === 'belt' && Math.abs(i.x - SENSOR_X) < ITEM_W / 2);
+    }
+
+    function frame(now: number) {
+      const dt = Math.min(0.05, (now - (last || now)) / 1000);
+      last = now;
+
+      // Banda: avanza hasta que la pieza llega al tope del sensor.
+      const beltItems = items.filter((i) => i.state === 'belt').sort((a, b) => b.x - a.x);
+      const lead = beltItems[0];
+      const beltRunning = !lead || lead.x < PICK_X;
+      if (beltRunning) {
+        for (const it of beltItems) {
+          const limit = it === lead ? PICK_X : Infinity;
+          it.x = Math.min(limit, it.x + BELT_SPEED * dt);
+          place(it);
+        }
+        rollerAngle += BELT_SPEED * dt * 9.5;
+        spokes.forEach((s) => s.setAttribute('transform', `rotate(${rollerAngle % 360})`));
+      }
+      beltState.textContent = beltRunning ? 'RUN' : 'STOP';
+      io('banda').textContent = beltRunning ? 'Marcha' : 'Detenida';
+
+      const blocked = sensorBlocked();
+      beam.toggleAttribute('data-broken', blocked);
+      led.toggleAttribute('data-on', blocked);
+      io('sensor').textContent = blocked ? 'Pieza detectada' : 'Libre';
+
+      // Nueva pieza cuando la banda queda libre.
+      spawnTimer -= dt;
+      if (beltItems.length === 0 && spawnTimer <= 0) {
+        makeItem(SPAWN_X);
+        spawnTimer = 0.4;
+      }
+
+      // Robot.
+      if (stepIndex === -1) {
+        wristNow = setArm(HOME, false);
+        if (blocked && lead && lead.x >= PICK_X) {
+          stepIndex = 0;
+          stepStart = now;
+          setState(steps[0].name);
+        }
+      } else {
+        const step = steps[stepIndex];
+        const t = Math.min(1, (now - stepStart) / step.dur);
+        const a = step.from();
+        const b = step.to();
+        const e = easeInOut(t);
+        wristNow = setArm({ x: lerp(a.x, b.x, e), y: lerp(a.y, b.y, e) }, step.grip);
+        if (held) {
+          held.x = wristNow.x;
+          held.y = wristNow.y + TOOL - 8 + ITEM_H / 2;
+          place(held);
+        }
+        if (t >= 1) {
+          stepIndex++;
+          if (stepIndex >= steps.length) {
+            stepIndex = -1;
+            setState('Esperando pieza');
+            if (stack >= STACK_MAX) {
+              // Estiba completa: se retira.
+              items.filter((i) => i.state === 'stacked').forEach((i) => i.el.remove());
+              for (let k = items.length - 1; k >= 0; k--) if (items[k].state === 'stacked') items.splice(k, 1);
+              stack = 0;
+            }
+          } else {
+            stepStart = now;
+            steps[stepIndex].enter?.();
+            setState(steps[stepIndex].name);
+          }
+        }
+      }
+
+      tempTimer -= dt;
+      if (tempTimer <= 0) {
+        tickTemp();
+        tempTimer = 1;
+      }
+
+      raf = requestAnimationFrame(frame);
+    }
+
+    function start() {
+      if (running || toggle.getAttribute('aria-pressed') === 'true') return;
+      running = true;
+      last = 0;
+      raf = requestAnimationFrame(frame);
+    }
+
+    function stop() {
+      running = false;
+      cancelAnimationFrame(raf);
+    }
+
+    for (let i = 0; i < 24; i++) tickTemp();
+    pushSeries('piezas', 0);
+    pushSeries('piezas', 0);
+
+    if (reduced) {
+      makeItem(PICK_X);
+      setArm(ABOVE_PICK, false);
+      toggle.hidden = true;
+      return;
+    }
+
+    makeItem(120);
+    setArm(HOME, false);
+
+    toggle.addEventListener('click', () => {
+      const paused = toggle.getAttribute('aria-pressed') === 'true';
+      toggle.setAttribute('aria-pressed', String(!paused));
+      toggle.textContent = paused ? 'Pausar' : 'Reanudar';
+      if (paused) start();
+      else stop();
+    });
+
+    new IntersectionObserver(([entry]) => (entry.isIntersecting ? start() : stop())).observe(root);
+    document.addEventListener('visibilitychange', () => (document.hidden ? stop() : start()));
+  }
+
+  document.querySelectorAll<HTMLElement>('[data-cell]').forEach(init);
+</script>

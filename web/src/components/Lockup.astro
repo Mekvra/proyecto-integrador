@@ -1,0 +1,136 @@
+---
+// Marca de Mekvra: la M hecha de teselas (el mismo mosaico del logo de partículas)
+// dentro de una placa, junto al nombre en la condensada industrial del titular.
+import sitio from '../data/sitio.json';
+
+interface Props {
+  href?: string;
+  size?: 'sm' | 'lg';
+  /** false = solo el nombre, sin la placa con la M. */
+  badge?: boolean;
+}
+
+const { href = '#top', size = 'sm', badge = true } = Astro.props;
+
+// M de 9 × 9 módulos: dos columnas y una V que se cruza en el centro.
+const M = [
+  '110000011',
+  '111000111',
+  '111101111',
+  '110111011',
+  '110010011',
+  '110000011',
+  '110000011',
+  '110000011',
+  '110000011',
+];
+const cells = M.flatMap((row, y) => [...row].flatMap((c, x) => (c === '1' ? [{ x, y }] : [])));
+---
+
+<a class:list={['lockup', size]} href={href} aria-label={`${sitio.nombre}, inicio`}>
+  {
+    badge && (
+      <span class="badge" aria-hidden="true">
+        <svg viewBox="0 0 9 9">
+          {cells.map(({ x, y }) => (
+            <rect x={x + 0.12} y={y + 0.12} width="0.76" height="0.76" style={`--d:${(x + y) * 35}ms`} />
+          ))}
+        </svg>
+      </span>
+    )
+  }
+  <span class="wordmark">{sitio.nombre}</span>
+</a>
+
+<style>
+  .lockup {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--cream);
+  }
+
+  .badge {
+    display: grid;
+    place-items: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    background: var(--carbon);
+    border: 1px solid var(--cream-12);
+    transition: border-color 200ms var(--ease-switch);
+  }
+
+  .badge svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  rect {
+    fill: var(--gold);
+    opacity: 0.85;
+  }
+
+  .wordmark {
+    font-family: var(--font-display), 'Arial Narrow', sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 1;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    /* Compensa el espacio que deja el tracking después de la última letra. */
+    margin-right: -0.14em;
+  }
+
+  .lockup.lg .badge {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+  }
+
+  .lockup.lg .badge svg {
+    width: 26px;
+    height: 26px;
+  }
+
+  .lockup.lg .wordmark {
+    font-size: 26px;
+  }
+
+  .lockup:hover .wordmark {
+    color: var(--gold);
+  }
+
+  .wordmark {
+    transition: color 150ms var(--ease-switch);
+  }
+
+  .lockup:hover .badge,
+  .lockup:focus-visible .badge {
+    border-color: var(--gold);
+  }
+
+  /* Al pasar el cursor, las teselas se encienden en una onda diagonal. */
+  .lockup:hover rect,
+  .lockup:focus-visible rect {
+    animation: tile-wave 700ms var(--ease-out-expo) var(--d) both;
+  }
+
+  @keyframes tile-wave {
+    40% {
+      opacity: 1;
+      fill: var(--cream);
+    }
+    100% {
+      opacity: 0.85;
+      fill: var(--gold);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .lockup:hover rect,
+    .lockup:focus-visible rect {
+      animation: none;
+    }
+  }
+</style>

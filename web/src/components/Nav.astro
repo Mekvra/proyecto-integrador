@@ -1,0 +1,360 @@
+---
+import Lockup from './Lockup.astro';
+import sitio from '../data/sitio.json';
+
+const links = [
+  { href: '#empresa', label: 'Empresa' },
+  { href: '#automatizacion', label: 'Automatización' },
+  { href: '#proceso', label: 'Proceso' },
+  { href: '#arquitectura', label: 'Arquitectura' },
+  { href: '#modulos', label: 'Módulos' },
+  { href: '#equipo', label: 'Equipo' },
+];
+---
+
+<header class="nav" data-nav>
+  <div class="nav-inner">
+    <Lockup badge={false} />
+    <nav aria-label="Secciones">
+      <ul>
+        {
+          links.map((l) => (
+            <li>
+              <a href={l.href} data-navlink>
+                {l.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+    <a class="ghost-link repo" href={sitio.repositorio} target="_blank" rel="noopener">
+      Repositorio <span class="arrow" aria-hidden="true">→</span>
+    </a>
+    <button
+      class="menu-btn"
+      type="button"
+      aria-expanded="false"
+      aria-controls="menu-movil"
+      aria-label="Abrir menú"
+      data-menu-btn
+    >
+      <span class="menu-icon" aria-hidden="true"><i></i><i></i></span>
+    </button>
+  </div>
+
+  <div class="menu" id="menu-movil" data-menu hidden>
+    <nav aria-label="Secciones (móvil)">
+      <ol>
+        {
+          links.map((l, i) => (
+            <li style={`--i:${i}`}>
+              <a href={l.href} data-navlink data-menu-link>
+                <span class="menu-label">{l.label}</span>
+              </a>
+            </li>
+          ))
+        }
+      </ol>
+    </nav>
+    <a
+      class="ghost-link menu-repo"
+      style={`--i:${links.length}`}
+      href={sitio.repositorio}
+      target="_blank"
+      rel="noopener"
+    >
+      Repositorio en GitHub <span class="arrow" aria-hidden="true">→</span>
+    </a>
+  </div>
+</header>
+
+<style>
+  /* Barra estilo X: se esconde al bajar y reaparece al subir. */
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: var(--black);
+    border-bottom: 1px solid transparent;
+    transition:
+      transform 320ms var(--ease-out-expo),
+      border-color 200ms var(--ease-switch);
+  }
+
+  /* Solo lleva transform cuando está escondida: así el panel fijo del menú
+     (que vive dentro de la barra) se posiciona respecto a la pantalla. */
+  .nav[data-hidden] {
+    transform: translateY(-100%);
+  }
+
+  .nav[data-scrolled],
+  .nav[data-open] {
+    border-bottom-color: var(--cream-08);
+  }
+
+  .nav-inner {
+    max-width: calc(var(--page) + 2 * var(--gutter));
+    margin: 0 auto;
+    min-height: 60px;
+    padding: 8px var(--gutter);
+    display: flex;
+    align-items: center;
+    gap: 32px;
+  }
+
+  nav {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  ul {
+    display: flex;
+    gap: 24px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  nav a {
+    font-size: 14px;
+    color: var(--cream-70);
+    transition: color 150ms var(--ease-switch);
+  }
+
+  nav a:hover,
+  nav a[aria-current='true'] {
+    color: var(--cream);
+  }
+
+  /* Botón de menú (solo celular y tablet): únicamente las dos rayitas. */
+  .menu-btn {
+    display: none;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    margin-left: auto;
+    margin-right: -10px;
+    padding: 0;
+    background: transparent;
+    color: var(--cream);
+    border: 0;
+    cursor: pointer;
+  }
+
+  .menu-icon {
+    position: relative;
+    width: 22px;
+    height: 10px;
+  }
+
+  .menu-icon i {
+    position: absolute;
+    left: 0;
+    width: 22px;
+    height: 1.5px;
+    background: currentColor;
+    transition:
+      transform 250ms var(--ease-out-expo),
+      top 250ms var(--ease-out-expo),
+      background-color 150ms var(--ease-switch);
+  }
+
+  .menu-icon i:first-child {
+    top: 0;
+  }
+
+  .menu-icon i:last-child {
+    top: 8.5px;
+  }
+
+  .menu-btn:hover .menu-icon i {
+    background: var(--gold);
+  }
+
+  .menu-btn[aria-expanded='true'] .menu-icon i:first-child {
+    top: 4.25px;
+    transform: rotate(45deg);
+  }
+
+  .menu-btn[aria-expanded='true'] .menu-icon i:last-child {
+    top: 4.25px;
+    transform: rotate(-45deg);
+  }
+
+  /* Panel del menú */
+  .menu {
+    position: fixed;
+    inset: var(--menu-top, 61px) 0 0 0;
+    background: var(--black);
+    padding: 8px var(--gutter) 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+
+  .menu nav {
+    flex: none;
+    display: block;
+  }
+
+  .menu ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+  }
+
+  .menu li,
+  .menu-repo {
+    opacity: 0;
+    transform: translateY(16px);
+    filter: blur(4px);
+  }
+
+  .menu[data-visible] li,
+  .menu[data-visible] .menu-repo {
+    opacity: 1;
+    transform: none;
+    filter: none;
+    transition:
+      opacity 600ms var(--ease-out-expo),
+      transform 700ms var(--ease-out-expo),
+      filter 500ms var(--ease-out-expo);
+    transition-delay: calc(var(--i) * 45ms);
+  }
+
+  .menu a[data-menu-link] {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--cream-08);
+    color: var(--cream-70);
+  }
+
+  .menu-label {
+    font-size: 16px;
+    line-height: 1.3;
+    letter-spacing: -0.2px;
+    transition: color 150ms var(--ease-switch);
+  }
+
+  .menu a[aria-current='true'] .menu-label,
+  .menu a:hover .menu-label {
+    color: var(--gold);
+  }
+
+  .menu-repo {
+    font-size: 14px;
+  }
+
+  @media (max-width: 960px) {
+    .nav-inner > nav,
+    .nav-inner > .repo {
+      display: none;
+    }
+    .menu-btn {
+      display: inline-grid;
+    }
+  }
+
+  @media (min-width: 961px) {
+    .menu {
+      display: none !important;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .nav {
+      transition: none;
+    }
+    .menu li,
+    .menu-repo {
+      opacity: 1;
+      transform: none;
+      filter: none;
+    }
+  }
+</style>
+
+<script>
+  const nav = document.querySelector<HTMLElement>('[data-nav]')!;
+  const root = document.documentElement;
+
+  // --- Barra que se esconde al bajar y aparece al subir (como en X) ---
+  const THRESHOLD = 8; // px de movimiento antes de reaccionar (evita parpadeos)
+  let lastY = window.scrollY;
+  let ticking = false;
+
+  function setHidden(hidden: boolean) {
+    if (nav.hasAttribute('data-hidden') === hidden) return;
+    nav.toggleAttribute('data-hidden', hidden);
+    // Las pestañas fijas de la página se acomodan debajo de la barra cuando está visible.
+    root.style.setProperty('--nav-offset', hidden ? '0px' : `${nav.offsetHeight}px`);
+  }
+
+  function update() {
+    ticking = false;
+    const y = window.scrollY;
+    nav.toggleAttribute('data-scrolled', y > 8);
+    if (nav.hasAttribute('data-open') || y < nav.offsetHeight) {
+      setHidden(false);
+      lastY = y;
+      return;
+    }
+    const delta = y - lastY;
+    if (Math.abs(delta) < THRESHOLD) return;
+    setHidden(delta > 0);
+    lastY = y;
+  }
+
+  window.addEventListener(
+    'scroll',
+    () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(update);
+      }
+    },
+    { passive: true },
+  );
+  // Si alguien navega con teclado, la barra aparece al recibir el foco.
+  nav.addEventListener('focusin', () => setHidden(false));
+  root.style.setProperty('--nav-offset', `${nav.offsetHeight}px`);
+  update();
+
+  // --- Menú de celular ---
+  const btn = nav.querySelector<HTMLButtonElement>('[data-menu-btn]')!;
+  const menu = nav.querySelector<HTMLElement>('[data-menu]')!;
+
+  function setOpen(open: boolean) {
+    btn.setAttribute('aria-expanded', String(open));
+    btn.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
+    nav.toggleAttribute('data-open', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+    if (open) {
+      menu.style.setProperty('--menu-top', `${Math.max(0, nav.getBoundingClientRect().bottom)}px`);
+      menu.hidden = false;
+      requestAnimationFrame(() => requestAnimationFrame(() => menu.setAttribute('data-visible', '')));
+      menu.querySelector<HTMLElement>('a')?.focus({ preventScroll: true });
+    } else {
+      menu.removeAttribute('data-visible');
+      menu.hidden = true;
+    }
+  }
+
+  btn.addEventListener('click', () => setOpen(btn.getAttribute('aria-expanded') !== 'true'));
+  menu.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => setOpen(false)));
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && btn.getAttribute('aria-expanded') === 'true') {
+      setOpen(false);
+      btn.focus();
+    }
+  });
+  window.matchMedia('(min-width: 961px)').addEventListener('change', (e) => e.matches && setOpen(false));
+
+</script>
