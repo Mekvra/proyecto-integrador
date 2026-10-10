@@ -1,0 +1,441 @@
+{
+ "coord": {
+  "Programa_semanal": [
+   70,
+   1110
+  ],
+  "Cisternas": [
+   80,
+   330
+  ],
+  "U111_Recepcion": [
+   180,
+   330
+  ],
+  "U113_Leche_cruda": [
+   280,
+   330
+  ],
+  "U121_Pasteurizador": [
+   380,
+   330
+  ],
+  "U123AB_Silo_entera": [
+   480,
+   260
+  ],
+  "U123C_Silo_descremada": [
+   480,
+   400
+  ],
+  "U124_Silo_quesos": [
+   480,
+   765
+  ],
+  "U125_Silo_leche": [
+   480,
+   1035
+  ],
+  "U201_Formulacion": [
+   640,
+   330
+  ],
+  "U202_Tratamiento": [
+   760,
+   330
+  ],
+  "U211_Fermentador": [
+   900,
+   270
+  ],
+  "U212_Fermentador": [
+   1010,
+   270
+  ],
+  "U213_Fermentador": [
+   900,
+   390
+  ],
+  "U218_Fermentador": [
+   1010,
+   390
+  ],
+  "U215_Enfriamiento": [
+   1170,
+   260
+  ],
+  "U216_Separador_griego": [
+   1170,
+   420
+  ],
+  "U214A_Pulmon_fresa": [
+   1280,
+   210
+  ],
+  "U214B_Pulmon_natural": [
+   1280,
+   310
+  ],
+  "U217_Pulmones_griego": [
+   1280,
+   420
+  ],
+  "Reparto_fresa": [
+   1390,
+   210
+  ],
+  "Reparto_natural": [
+   1390,
+   310
+  ],
+  "Reparto_griego": [
+   1390,
+   420
+  ],
+  "U311_Vasos": [
+   1520,
+   210
+  ],
+  "U312_Botellas": [
+   1520,
+   310
+  ],
+  "U313_Griego": [
+   1520,
+   420
+  ],
+  "Registro_de_lotes": [
+   1390,
+   540
+  ],
+  "U321_Encajonadora_vasos": [
+   1650,
+   210
+  ],
+  "U322_Encajonadora_botellas": [
+   1650,
+   310
+  ],
+  "U323_Encajonadora_griego": [
+   1650,
+   420
+  ],
+  "Banda_cajas_vasos": [
+   1676,
+   210
+  ],
+  "Banda_cajas_botellas": [
+   1676,
+   310
+  ],
+  "Banda_cajas_griego": [
+   1676,
+   420
+  ],
+  "U341_Paletizado": [
+   1830,
+   310
+  ],
+  "U342_Envolvedora": [
+   1920,
+   310
+  ],
+  "U411_Camara": [
+   2080,
+   330
+  ],
+  "Pista_ida": [
+   1935,
+   390
+  ],
+  "Pista_vuelta": [
+   2025,
+   410
+  ],
+  "Despacho_YF150": [
+   2190,
+   165
+  ],
+  "Despacho_YF1000": [
+   2190,
+   220
+  ],
+  "Despacho_YF1750": [
+   2190,
+   275
+  ],
+  "Despacho_YN200": [
+   2190,
+   330
+  ],
+  "Despacho_YN1000": [
+   2190,
+   385
+  ],
+  "Despacho_YG150": [
+   2190,
+   440
+  ],
+  "Despacho_YG500": [
+   2190,
+   495
+  ],
+  "Q201_Tina": [
+   680,
+   690
+  ],
+  "Q202_Tina": [
+   680,
+   765
+  ],
+  "Q203_Tina": [
+   680,
+   840
+  ],
+  "Q301_Hilado": [
+   900,
+   765
+  ],
+  "Q302_Salmuera": [
+   1080,
+   765
+  ],
+  "Q311_Empaque_vacio": [
+   1280,
+   765
+  ],
+  "Q312_Registro": [
+   1280,
+   855
+  ],
+  "Q321_Banda_quesos": [
+   1310,
+   765
+  ],
+  "Q341_Paletizado": [
+   1680,
+   765
+  ],
+  "Q411_Camara_quesos": [
+   1880,
+   765
+  ],
+  "Despacho_quesos": [
+   2120,
+   765
+  ],
+  "L201_Mezcla": [
+   680,
+   1035
+  ],
+  "L202_UHT": [
+   900,
+   1035
+  ],
+  "L203_Tanque_aseptico": [
+   1080,
+   1035
+  ],
+  "L311_Envasadora_aseptica": [
+   1280,
+   1035
+  ],
+  "L312_Registro": [
+   1280,
+   1125
+  ],
+  "L321_Banda_leche": [
+   1310,
+   1035
+  ],
+  "L341_Paletizado": [
+   1680,
+   1035
+  ],
+  "L411_Bodega_ambiente": [
+   1880,
+   1035
+  ],
+  "Despacho_leche": [
+   2120,
+   1035
+  ]
+ },
+ "ferm": [
+  "U211_Fermentador",
+  "U212_Fermentador",
+  "U213_Fermentador",
+  "U218_Fermentador"
+ ],
+ "desp": [
+  "YF150",
+  "YF1000",
+  "YF1750",
+  "YN200",
+  "YN1000",
+  "YG150",
+  "YG500"
+ ],
+ "secciones": [
+  [
+   "1",
+   "RECEPCIÓN Y TRONCO COMÚN",
+   "150.000 L/día · 2 tanques · pasteurización · 5 silos",
+   30,
+   545,
+   150,
+   1160,
+   [
+    232,
+    236,
+    244
+   ],
+   [
+    90,
+    105,
+    135
+   ]
+  ],
+  [
+   "2",
+   "PREPARACIÓN",
+   "formulación · 92 °C × 5 min",
+   565,
+   825,
+   150,
+   620,
+   [
+    226,
+    240,
+    236
+   ],
+   [
+    45,
+    125,
+    105
+   ]
+  ],
+  [
+   "3",
+   "FERMENTACIÓN",
+   "4 × 12.000 L · 43 °C · pH 4,50",
+   845,
+   1065,
+   150,
+   620,
+   [
+    252,
+    236,
+    225
+   ],
+   [
+    200,
+    105,
+    40
+   ]
+  ],
+  [
+   "4",
+   "ACONDICIONAMIENTO",
+   "un pulmón por producto",
+   1085,
+   1440,
+   150,
+   620,
+   [
+    238,
+    232,
+    248
+   ],
+   [
+    115,
+    85,
+    165
+   ]
+  ],
+  [
+   "5",
+   "ENVASADO Y ENCAJONADO",
+   "llenadoras → encajonadoras",
+   1460,
+   1700,
+   150,
+   620,
+   [
+    252,
+    228,
+    236
+   ],
+   [
+    195,
+    60,
+    100
+   ]
+  ],
+  [
+   "6",
+   "PALETIZADO, CÁMARA Y DESPACHO",
+   "robot · envolvedora · montacargas · cámara 2–4 °C",
+   1720,
+   2240,
+   150,
+   620,
+   [
+    228,
+    238,
+    248
+   ],
+   [
+    45,
+    105,
+    165
+   ]
+  ],
+  [
+   "7",
+   "LÍNEA DE QUESOS · 50.000 L/día",
+   "tinas · hilado y moldeo · salmuera · empaque al vacío · cámara 2–4 °C",
+   565,
+   2240,
+   640,
+   890,
+   [
+    250,
+    243,
+    220
+   ],
+   [
+    163,
+    124,
+    18
+   ]
+  ],
+  [
+   "8",
+   "LÍNEA DE LECHE UHT · 43.000 L/día",
+   "mezcla · UHT 137 °C × 4 s · envasado aséptico · bodega ambiente",
+   565,
+   2240,
+   910,
+   1160,
+   [
+    227,
+    242,
+    230
+   ],
+   [
+    61,
+    138,
+    82
+   ]
+  ]
+ ],
+ "Y0": 330,
+ "YQ": 765,
+ "YL": 1035,
+ "tinas": [
+  "Q201_Tina",
+  "Q202_Tina",
+  "Q203_Tina"
+ ]
+}
