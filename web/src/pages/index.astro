@@ -34,11 +34,28 @@ const repoTree = `${sitio.repositorio}/tree/main`;
 // Une las palabras cortas (a, la, de…) con la siguiente para que no queden sueltas al final de una línea.
 const sinHuerfanas = (t: string) => t.replace(/\s(\p{L}{1,2})\s/gu, ' $1\u00a0');
 
+// Indicadores de la línea de yogures, planta actual: simulación de 12 semanas en Tecnomatix y recetas v1.8.
 const kpis = [
-  { nombre: 'OEE', unidad: '%', nota: 'Disponibilidad × Desempeño × Calidad' },
-  { nombre: 'Takt Time', unidad: 'min/lote', nota: 'Ritmo que exige la demanda' },
-  { nombre: 'Throughput', unidad: 'kg/h', nota: 'Producción por hora' },
-  { nombre: 'MLT', unidad: 'h', nota: 'Tiempo total de fabricación del lote' },
+  { nombre: 'OEE', valor: '≈ 70', unidad: '%', nota: 'Llenadoras: 0,90 × 0,80 × 0,97' },
+  { nombre: 'Takt Time', valor: '4,2', unidad: 'h/lote', nota: '24 h ÷ 5,75 lotes de 10.000 L' },
+  { nombre: 'Throughput', valor: '≈ 2.350', unidad: 'kg/h', nota: 'Yogur terminado, 24 h al día' },
+  { nombre: 'MLT', valor: '≈ 35', unidad: 'h', nota: 'Lote de fresa, del camión a la cámara' },
+];
+const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
+const blob = `${sitio.repositorio}/blob/main`;
+// Galería de la sección de simulación: imagen en public/evidencias y documento completo en el repositorio.
+const galeria = [
+  { img: 'planta-3d.webp', titulo: 'Planta con tres líneas en Tecnomatix', nota: 'Tronco común de 150.000 L/día, yogures, quesos y leche UHT. 66 de los 80 objetos de la licencia.', doc: '02_gestion-produccion/simulacion-tecnomatix/planta-150k', tipo: 'Modelo 3D', ancho: true },
+  { img: 'planta-vsm.webp', titulo: 'VSM de la planta', nota: 'Un VSM por línea sobre el tronco común, con el uso de cada equipo simulado.', doc: '02_gestion-produccion/vsm/vsm_planta_3_lineas.pdf', tipo: 'VSM' },
+  { img: 'planta-layout.webp', titulo: 'Distribución de la planta', nota: 'Nave de 110 × 60 m con los mismos códigos de equipo del modelo.', doc: '02_gestion-produccion/distribucion-planta/layout_planta_3_lineas.pdf', tipo: 'Layout' },
+  { img: 'yogur-3d-manual.webp', titulo: 'Línea de yogures con paletizado manual', nota: 'Escenario actual: dos personas estiban las cajas que llegan por las bandas.', doc: '02_gestion-produccion/simulacion-tecnomatix/linea-yogures', tipo: 'Modelo 3D', ancho: true },
+  { img: 'yogur-vsm.webp', titulo: 'VSM de la línea de yogures', nota: 'Lead time ≈ 35 h con 30 % de valor agregado. La llenadora de vasos marca el ritmo.', doc: '02_gestion-produccion/vsm/vsm_linea_yogures_paletizado_manual.pdf', tipo: 'VSM', ancho: true },
+  { img: 'espagueti-actual.webp', titulo: 'Espagueti actual', nota: '≈ 23 km de recorridos al día y ≈ 11.600 cajas estibadas a mano.', doc: '02_gestion-produccion/distribucion-planta/espagueti_linea_yogures_actual.pdf', tipo: 'Espagueti' },
+  { img: 'espagueti-propuesto.webp', titulo: 'Espagueti con la propuesta', nota: 'Robot, llenadora FFS, pH en línea y MES: ≈ 11,7 km al día, 49 % menos.', doc: '02_gestion-produccion/distribucion-planta/espagueti_linea_yogures_propuesto.pdf', tipo: 'Espagueti' },
+];
+const recetas = [
+  { titulo: 'Recetas de la planta', nota: 'Yogures, quesos y leche UHT con sus máquinas', doc: '01_transformacion-digital/isa88/recetas/Recetas_basicas_planta_v1.0.pdf' },
+  { titulo: 'Recetas de la línea de yogures v1.8', nota: 'Fresa, natural y griego, de la recepción al despacho', doc: '01_transformacion-digital/isa88/recetas/Recetas_linea_yogures_v1.8.pdf' },
 ];
 ---
 
@@ -104,8 +121,9 @@ const kpis = [
         <span class="mono">03 · Automatización</span>
         <h2>Máquinas que trabajan, datos que suben.</h2>
         <p>
-          Así se ve una celda de paletizado de la línea de quesos: el sensor detecta la pieza, la banda se detiene,
-          el PLC ordena el ciclo y el brazo apila. Cada evento llega al tablero en tiempo real.
+          Así se verá la celda de paletizado de la línea de yogures: el sensor detecta la caja, la banda se detiene,
+          el PLC ordena el ciclo y el brazo apila. Hoy lo hacen dos personas a mano; con la celda, cada evento llega al
+          tablero en tiempo real.
         </p>
       </div>
       <AutomationCell />
@@ -140,8 +158,8 @@ const kpis = [
         <span class="mono">06 · Evidencias</span>
         <h2>Datos de proceso, no promesas.</h2>
         <p>
-          Cada indicador se publicará con su memoria de cálculo y su simulación. Mientras tanto, mostramos solo lo que
-          ya está respaldado por la investigación del equipo.
+          Indicadores de la línea de yogures en la planta actual, con su memoria de cálculo en las recetas v1.8 y en la
+          simulación de 12 semanas en Tecnomatix. Son valores de diseño y de simulación, no medidas de planta.
         </p>
       </div>
 
@@ -152,10 +170,10 @@ const kpis = [
               <div class="kpi">
                 <span class="mono kpi-label">{k.nombre}</span>
                 <span class="kpi-value">
-                  —<span class="mono unit">{k.unidad}</span>
+                  {k.valor}<span class="mono unit">{k.unidad}</span>
                 </span>
                 <span class="kpi-note">{k.nota}</span>
-                <span class="mono kpi-pending">Pendiente · VSM y Tecnomatix</span>
+                <span class="mono kpi-pending">Simulación · Tecnomatix</span>
               </div>
             ))
           }
@@ -163,10 +181,50 @@ const kpis = [
       </BatchChart>
     </section>
 
-    <!-- 07 MÓDULOS -->
+    <!-- 07 SIMULACIÓN -->
+    <section id="simulacion" class="section wrap">
+      <div class="section-head">
+        <span class="mono">07 · Simulación y planta</span>
+        <h2>La planta, modelada antes de tocarla.</h2>
+        <p>
+          Modelos de Plant Simulation, VSM, distribución en planta y diagramas de espagueti de la planta de 150.000 L/día
+          y de la línea de yogures. Cada imagen abre su documento completo en el repositorio.
+        </p>
+      </div>
+      <div class="gallery">
+        {
+          galeria.map((g) => (
+            <figure class:list={['shot', { wide: g.ancho }]}>
+              <a href={`${g.doc.endsWith('.pdf') ? blob : repoTree}/${g.doc}`} target="_blank" rel="noopener" class="shot-link">
+                <img src={`${base}evidencias/${g.img}`} alt={`${g.titulo}. ${g.nota}`} loading="lazy" decoding="async" />
+              </a>
+              <figcaption>
+                <span class="mono gold">{g.tipo}</span>
+                <strong>{g.titulo}</strong>
+                <span>{g.nota}</span>
+              </figcaption>
+            </figure>
+          ))
+        }
+      </div>
+      <div class="docs">
+        {
+          recetas.map((r) => (
+            <a class="doc" href={`${blob}/${r.doc}`} target="_blank" rel="noopener">
+              <span class="mono gold">PDF</span>
+              <span class="doc-t">{r.titulo}</span>
+              <span class="doc-n">{r.nota}</span>
+              <span class="arrow" aria-hidden="true">→</span>
+            </a>
+          ))
+        }
+      </div>
+    </section>
+
+    <!-- 08 MÓDULOS -->
     <section id="modulos" class="section wrap">
       <div class="section-head">
-        <span class="mono">07 · Módulos</span>
+        <span class="mono">08 · Módulos</span>
         <h2>Cada entregable, en su lugar.</h2>
         <p>Cada módulo del curso tiene su carpeta de evidencias en el repositorio.</p>
       </div>
@@ -197,22 +255,22 @@ const kpis = [
       </div>
     </section>
 
-    <!-- 08 PROPUESTA -->
+    <!-- 09 PROPUESTA -->
     <section id="propuesta" class="section wrap">
       <div class="proposal">
         <Monogram size={96} />
         <div class="section-head">
-          <span class="mono">08 · Propuesta de valor</span>
+          <span class="mono">09 · Propuesta de valor</span>
           <h2>{propuesta.data.titulo}</h2>
           <p>{propuesta.data.resumen}</p>
         </div>
       </div>
     </section>
 
-    <!-- 09 EQUIPO -->
+    <!-- 10 EQUIPO -->
     <section id="equipo" class="section wrap">
       <div class="section-head">
-        <span class="mono">09 · Proceso de aprendizaje</span>
+        <span class="mono">10 · Proceso de aprendizaje</span>
         <h2>{aprendizaje.data.titulo}</h2>
         <p>{aprendizaje.data.resumen}</p>
         <div class="prose"><AprendizajeTexto /></div>
@@ -476,6 +534,110 @@ const kpis = [
     color: var(--granite);
   }
 
+  .kpi .kpi-value {
+    color: var(--cream);
+  }
+
+  /* Galería de simulación: capturas en marco fino, como pantallas de instrumento. */
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .shot {
+    margin: 0;
+    border: 1px solid var(--cream-16);
+    border-radius: var(--radius-frame);
+    overflow: hidden;
+    background: var(--carbon);
+    display: grid;
+    grid-template-rows: auto 1fr;
+    transition: border-color 150ms var(--ease-switch);
+  }
+
+  .shot:hover {
+    border-color: var(--gold-60);
+  }
+
+  .shot.wide {
+    grid-column: 1 / -1;
+  }
+
+  .shot-link {
+    display: block;
+    background: #f6f8fa;
+  }
+
+  .shot img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .shot figcaption {
+    display: grid;
+    gap: 6px;
+    padding: 16px 20px 20px;
+    border-top: 1px solid var(--stroke);
+    color: var(--cream-70);
+    font-size: 14px;
+  }
+
+  .shot figcaption strong {
+    font-weight: 500;
+    font-size: 16px;
+    letter-spacing: -0.3px;
+    color: var(--cream);
+  }
+
+  .docs {
+    margin-top: 16px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .doc {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    column-gap: 16px;
+    row-gap: 4px;
+    align-items: center;
+    min-height: 44px;
+    padding: 18px 20px;
+    border: 1px solid var(--cream-16);
+    border-radius: var(--radius);
+    color: var(--cream);
+    text-decoration: none;
+    transition: border-color 150ms var(--ease-switch);
+  }
+
+  .doc:hover {
+    border-color: var(--gold-60);
+  }
+
+  .doc .mono {
+    grid-row: 1 / 3;
+  }
+
+  .doc-t {
+    font-size: 16px;
+    letter-spacing: -0.3px;
+  }
+
+  .doc-n {
+    grid-column: 2;
+    font-size: 12px;
+    color: var(--granite);
+  }
+
+  .doc .arrow {
+    grid-column: 3;
+    grid-row: 1 / 3;
+    color: var(--gold);
+  }
+
   .frame-foot {
     padding: 12px 20px 16px;
     color: var(--granite);
@@ -665,6 +827,10 @@ const kpis = [
     }
     .kpi:nth-child(3) {
       border-left: 0;
+    }
+    .gallery,
+    .docs {
+      grid-template-columns: 1fr;
     }
     .footer {
       grid-template-columns: 1fr;
