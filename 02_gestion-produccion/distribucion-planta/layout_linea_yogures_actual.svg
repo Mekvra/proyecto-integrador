@@ -1,0 +1,167 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2000 1414" width="2000" height="1414"><defs><marker id="f" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,1 L8,4.5 L0,8 z" fill="context-stroke"/></marker></defs><rect width="2000" height="1414" fill="#f6f8fa"/>
+<rect x="20.0" y="20.0" width="1960.0" height="1374.0" rx="10" fill="#ffffff" stroke="#c9d2dc" stroke-width="1" />
+<text x="48.0" y="64.0" font-family="'IBM Plex Mono', Consolas, monospace" font-size="12" font-weight="600" fill="#5b6876" text-anchor="start" letter-spacing="1.5">DISTRIBUCIÓN EN PLANTA · LÍNEA DE YOGURES · ESTADO ACTUAL</text>
+<text x="48.0" y="98.0" font-family="Archivo, 'Arial Narrow', Arial, sans-serif" font-size="30" font-weight="800" fill="#14202b" text-anchor="start" >Línea de yogures · paletizado manual</text>
+<text x="48.0" y="124.0" font-family="'IBM Plex Sans', 'Segoe UI', Arial, sans-serif" font-size="13" font-weight="400" fill="#5b6876" text-anchor="start" >Planta de 150.000 L/día · la línea de yogures en color y las demás áreas en gris · 2 operarios estiban las cajas en U341 · medidas en m</text>
+<text x="1952.0" y="64.0" font-family="'IBM Plex Mono', Consolas, monospace" font-size="12" font-weight="600" fill="#5b6876" text-anchor="end" >Mekvra · APM 2026-2S · UNAL</text>
+<rect x="50.0" y="206.0" width="1430.0" height="780.0" rx="0" fill="#ffffff" stroke="#14202b" stroke-width="3" />
+<rect x="50.0" y="206.0" width="338.0" height="260.0" rx="0" fill="#e8ecf4" stroke="#5a6987" stroke-width="1.2" />
+<text x="58.0" y="224.0" font-family="Archivo, 'Arial Narrow', Arial, sans-serif" font-size="13" font-weight="800" fill="#5a6987" text-anchor="start" >1 RECEPCIÓN</text>
+<text x="58.0" y="239.0" font-family="'IBM Plex Sans', 'Segoe UI', Arial, sans-serif" font-size="10" font-weight="400" fill="#5b6876" text-anchor="start" >bahías · laboratorio de calidad</text>
+<rect x="69.5" y="290.5" width="65.0" height="58.5" rx="2" fill="#ffffff" stroke="#5a6987" stroke-width="1.2" />
+<text x="102.0" y="323.2" font-family="'IBM Plex Mono', Consolas, monospace" font-size="10" font-weight="600" fill="#5a6987" text-anchor="middle" >U111</text>
+<rect x="69.5" y="368.5" width="65.0" height="58.5" rx="2" fill="#ffffff" stroke="#5a6987" stroke-width="1.2" />
+<text x="102.0" y="401.2" font-family="'IBM Plex Mono', Consolas, monospace" font-size="10" font-weight="600" fill="#5a6987" text-anchor="middle" >U112</text>
+<rect x="167.0" y="290.5" width="104.0" height="78.0" rx="2" fill="#ffffff" stroke="#5a6987" stroke-width="1.2" />
+<text x="219.0" y="333.0" font-family="'IBM Plex Mono', Consolas, monospace" font-size="10" font-weight="600" fill="#5a6987" text-anchor="middle" >LAB.</text>
+<circle cx="212.5" cy="420.5" r="28.6" fill="#fff" stroke="#5a6987" stroke-width="1.3"/>
+<text x="212.5" y="461.1" font-family="'IBM Plex Mono', Consolas, monospace" font-size="9.5" font-weight="600" fill="#5a6987" text-anchor="middle" >U113</text>
+<circle cx="303.5" cy="420.5" r="28.6" fill="#fff" stroke="#5a6987" stroke-width="1.3"/>
+<text x="303.5" y="461.1" font-family="'IBM Plex Mono', Consolas, monospace" font-size="9.5" font-weight="600" fill="#5a6987" text-anchor="middle" >U114</text>
+<rect x="388.0" y="206.0" width="182.0" height="260.0" rx="0" fill="#e8ecf4" stroke="#5a6987" stroke-width="1.2" />
+<text x="396.0" y="224.0" font-family="Archivo, 'Arial Narrow', Arial, sans-serif" font-size="13" font-weight="800" fill="#5a6987" text-anchor="start" >TRONCO COMÚN</text>
+<text x="396.0" y="239.0" font-family="'IBM Plex Sans', 'Segoe UI', Arial, sans-serif" font-size="10" font-weight="400" fill="#5b6876" text-anchor="start" >pasteurización</text>
+<rect x="407.5" y="297.0" width="52.0" height="39.0" rx="2" fill="#ffffff" stroke="#5a6987" stroke-width="1.2" />
+<text x="433.5" y="320.0" font-family="'IBM Plex Mono', Consolas, monospace" font-size="10" font-weight="600" fill="#5a6987" text-anchor="middle" >U121</text>
+<rect x="472.5" y="297.0" width="78.0" height="39.0" rx="2" fill="#ffffff" stroke="#5a6987" stroke-width="1.2" />
+<text x="511.5" y="320.0" font-family="'IBM Plex Mono', Consolas, monospace" font-size="10" font-weight="600" fill="#5a6987" text-anchor="middle" >U122</text>
+<rect x="50.0" y="466.0" width="520.0" height="143.0" rx="0" fill="#e8ecf4" stroke="#5a6987" stroke-width="1.2" />
+<text x="58.0" y="484.0" font-family="Archivo, 'Arial Narrow', Arial, sans-serif" font-size="13" font-weight="800" fill="#5a6987" text-anchor="start" >SILOS</text>
+<circle cx="115.0" cy="544.0" r="23.4" fill="#fff" stroke="#5a6987" stroke-width="1.3"/>
+<text x="115.0" y="579.4" font-family="'IBM Plex Mono', Consolas, monospace" font-size="9.5" font-weight="600" fill="#5a6987" text-anchor="middle" >U123A</text>
+<circle cx="213.8" cy="544.0" r="23.4" fill="#fff" stroke="#5a6987" stroke-width="1.3"/>
+<text x="213.8" y="579.4" font-family="'IBM Plex Mono', Consolas, monospace" font-size="9.5" font-weight="600" fill="#5a6987" text-anchor="middle" >U123B</text>
+<circle cx="312.6" cy="544.0" r="23.4" fill="#fff" stroke="#5a6987" stroke-width="1.3"/>
+<text x="312.6" y="579.4" font-family="'IBM Plex Mono', Consolas, monospace" font-size="9.5" font-weight="600" fill="#5a6987" text-anchor="middle" >U123C</text>
+<circle cx="411.4" cy="544.0" r="23.4" fill="#fff" stroke="#5a6987" stroke-width="1.3"/>
+<text x="411.4" y="579.4" font-family="'IBM Plex Mono', Consolas, monospace" font-size="9.5" font-weight="600" fill="#5a6987" text-anchor="middle" >U124</text>
+<circle cx="510.2" cy="544.0" r="23.4" fill="#fff" stroke="#5a6987" stroke-width="1.3"/>
+<text x="510.2" y="579.4" font-family="'IBM Plex Mono', Consolas, monospace" font-size="9.5" font-weight="600" fill="#5a6987" text-anchor="middle" >U125</text>
+<rect x="570.0" y="206.0" width="156.0" height="260.0" rx="0" fill="#e2f0ec" stroke="#2d7d69" stroke-width="1.2" />
+<text x="578.0" y="224.0" font-family="Archivo, 'Arial Narrow', Arial, sans-serif" font-size="13" font-weight="800" fill="#2d7d69" text-anchor="start" >2 PREPARACIÓN</text>
+<circle cx="622.0" cy="336.0" r="18.2" fill="#fff" stroke="#2d7d69" stroke-width="1.3"/>
+<text x="622.0" y="366.2" font-family="'IBM Plex Mono', Consolas, monospace" font-size="9.5" font-weight="600" fill="#2d7d69" text-anchor="middle" >U201</text>
+<rect x="674.0" y="290.5" width="39.0" height="32.5" rx="2" fill="#ffffff" stroke="#2d7d69" stroke-width="1.2" />
+<text x="693.5" y="310.2" font-family="'IBM Plex Mono', Consolas, monospace" font-size="8" font-weight="600" fill="#2d7d69" text-anchor="middle" >tolva</text>
+<rect x="589.5" y="394.5" width="117.0" height="39.0" rx="2" fill="#ffffff" stroke="#2d7d69" stroke-width="1.2" />
+<text x="648.0" y="417.5" font-family="'IBM Plex Mono', Consolas, monospace" font-size="10" font-weight="600" fill="#2d7d69" text-anchor="middle" >U202</text>
+<rect x="726.0" y="206.0" width="182.0" height="260.0" rx="0" fill="#fcece1" stroke="#c86928" stroke-width="1.2" />
+<text x="734.0" y="224.0" font-family="Archivo, 'Arial Narrow', Arial, sans-serif" font-size="13" font-weight="800" fill="#c86928" text-anchor="start" >3 FERMENTACIÓN</text>
+<circle cx="778.0" cy="316.5" r="19.5" fill="#fff" stroke="#c86928" stroke-width="1.3"/>
+<text x="778.0" y="348.0" font-family="'IBM Plex Mono', Consolas, monospace" font-size="9.5" font-weight="600" fill="#c86928" text-anchor="middle" >U211</text>
+<circle cx="856.0" cy="316.5" r="19.5" fill="#fff" stroke="#c86928" stroke-width="1.3"/>
+<text x="856.0" y="348.0" font-family="'IBM Plex Mono', Consolas, monospace" font-size="9.5" font-weight="600" fill="#c86928" text-anchor="middle" >U212</text>
+<circle cx="778.0" cy="401.0" r="19.5" fill="#fff" stroke="#c86928" stroke-width="1.3"/>
+<text x="778.0" y="432.5" font-family="'IBM Plex Mono', Consolas, monospace" font-size="9.5" font-weight="600" fill="#c86928" text-anchor="middle" >U213</text>
+<circle cx="856.0" cy="401.0" r="19.5" fill="#fff" stroke="#c86928" stroke-width="1.3"/>
+<text x="856.0" y="432.5" font-family="'IBM Plex Mono', Consolas, monospace" font-size="9.5" font-weight="600" fill="#c86928" text-anchor="middle" >U218</text>
+<rect x="908.0" y="206.0" width="169.0" height="260.0" rx="0" fill="#eee8f8" stroke="#7355a5" stroke-width="1.2" />
+<text x="916.0" y="224.0" font-family="Archivo, 'Arial Narrow', Arial, sans-serif" font-size="13" font-weight="800" fill="#7355a5" text-anchor="start" >4 ACONDICIONAM.</text>
+<rect x="927.5" y="290.5" width="45.5" height="32.5" rx="2" fill="#ffffff" stroke="#7355a5" stroke-width="1.2" />
+<text x="950.2" y="310.2" font-family="'IBM Plex Mono', Consolas, monospace" font-size="10" font-weight="600" fill="#7355a5" text-anchor="middle" >U215</text>
+<rect x="927.5" y="375.0" width="45.5" height="32.5" rx="2" fill="#ffffff" stroke="#7355a5" stroke-width="1.2" />
+<text x="950.2" y="394.8" font-family="'IBM Plex Mono', Consolas, monospace" font-size="10" font-weight="600" fill="#7355a5" text-anchor="middle" >U216</text>
+<circle cx="1012.0" cy="303.5" r="16.9" fill="#fff" stroke="#7355a5" stroke-width="1.3"/>
+<text x="1012.0" y="332.4" font-family="'IBM Plex Mono', Consolas, monospace" font-size="9.5" font-weight="600" fill="#7355a5" text-anchor="middle" >U214A</text>
+<circle cx="1012.0" cy="381.5" r="16.9" fill="#fff" stroke="#7355a5" stroke-width="1.3"/>
+<text x="1012.0" y="410.4" font-family="'IBM Plex Mono', Consolas, monospace" font-size="9.5" font-weight="600" fill="#7355a5" text-anchor="middle" >U214B</text>
+<circle cx="1054.9" cy="342.5" r="11.0" fill="#fff" stroke="#7355a5" stroke-width="1.3"/>
+<text x="1054.9" y="365.6" font-family="'IBM Plex Mono', Consolas, monospace" font-size="9.5" font-weight="600" fill="#7355a5" text-anchor="middle" >U217</text>
+<rect x="1077.0" y="206.0" width="208.0" height="260.0" rx="0" fill="#fce4ec" stroke="#c33c64" stroke-width="1.2" />
+<text x="1085.0" y="224.0" font-family="Archivo, 'Arial Narrow', Arial, sans-serif" font-size="13" font-weight="800" fill="#c33c64" text-anchor="start" >5 ENVASADO</text>
+<text x="1085.0" y="239.0" font-family="'IBM Plex Sans', 'Segoe UI', Arial, sans-serif" font-size="10" font-weight="400" fill="#5b6876" text-anchor="start" >sala limpia</text>
+<rect x="1090.0" y="290.5" width="91.0" height="33.8" rx="2" fill="#ffffff" stroke="#c33c64" stroke-width="1.2" />
+<text x="1135.5" y="310.9" font-family="'IBM Plex Mono', Consolas, monospace" font-size="10" font-weight="600" fill="#c33c64" text-anchor="middle" >U311</text>
+<rect x="1200.5" y="290.5" width="65.0" height="33.8" rx="2" fill="#ffffff" stroke="#c33c64" stroke-width="1.2" />
+<text x="1233.0" y="310.9" font-family="'IBM Plex Mono', Consolas, monospace" font-size="9" font-weight="600" fill="#c33c64" text-anchor="middle" >U321</text>
+<rect x="1090.0" y="346.4" width="91.0" height="33.8" rx="2" fill="#ffffff" stroke="#c33c64" stroke-width="1.2" />
+<text x="1135.5" y="366.8" font-family="'IBM Plex Mono', Consolas, monospace" font-size="10" font-weight="600" fill="#c33c64" text-anchor="middle" >U312</text>
+<rect x="1200.5" y="346.4" width="65.0" height="33.8" rx="2" fill="#ffffff" stroke="#c33c64" stroke-width="1.2" />
+<text x="1233.0" y="366.8" font-family="'IBM Plex Mono', Consolas, monospace" font-size="9" font-weight="600" fill="#c33c64" text-anchor="middle" >U322</text>
+<rect x="1090.0" y="402.3" width="91.0" height="33.8" rx="2" fill="#ffffff" stroke="#c33c64" stroke-width="1.2" />
+<text x="1135.5" y="422.7" font-family="'IBM Plex Mono', Consolas, monospace" font-size="10" font-weight="600" fill="#c33c64" text-anchor="middle" >U313</text>
+<rect x="1200.5" y="402.3" width="65.0" height="33.8" rx="2" fill="#ffffff" stroke="#c33c64" stroke-width="1.2" />
+<text x="1233.0" y="422.7" font-family="'IBM Plex Mono', Consolas, monospace" font-size="9" font-weight="600" fill="#c33c64" text-anchor="middle" >U323</text>
+<rect x="1285.0" y="206.0" width="195.0" height="260.0" rx="0" fill="#e4eef8" stroke="#2d69a5" stroke-width="1.2" />
+<text x="1293.0" y="224.0" font-family="Archivo, 'Arial Narrow', Arial, sans-serif" font-size="13" font-weight="800" fill="#2d69a5" text-anchor="start" >6 PALETIZADO</text>
+<rect x="1304.5" y="290.5" width="65.0" height="65.0" rx="2" fill="#ffffff" stroke="#2d69a5" stroke-width="1.2" />
+<text x="1337.0" y="326.5" font-family="'IBM Plex Mono', Consolas, monospace" font-size="9" font-weight="600" fill="#2d69a5" text-anchor="middle" >U341</text>
+<rect x="1389.0" y="290.5" width="65.0" height="65.0" rx="2" fill="#ffffff" stroke="#2d69a5" stroke-width="1.2" />
+<text x="1421.5" y="326.5" font-family="'IBM Plex Mono', Consolas, monospace" font-size="10" font-weight="600" fill="#2d69a5" text-anchor="middle" >U342</text>
+<rect x="1304.5" y="388.0" width="149.5" height="45.5" rx="2" fill="#ffffff" stroke="#2d69a5" stroke-width="1.2" />
+<text x="1379.2" y="414.2" font-family="'IBM Plex Mono', Consolas, monospace" font-size="9" font-weight="600" fill="#2d69a5" text-anchor="middle" >estibas</text>
+<circle cx="1324.0" cy="375.0" r="5" fill="#14202b"/><path d="M1317.0,388.0 Q1324.0,377.0 1331.0,388.0" fill="#14202b"/>
+<circle cx="1356.5" cy="375.0" r="5" fill="#14202b"/><path d="M1349.5,388.0 Q1356.5,377.0 1363.5,388.0" fill="#14202b"/>
+<rect x="570.0" y="466.0" width="910.0" height="45.5" rx="0" fill="#fff8e1" stroke="#e0b400" stroke-width="1" />
+<text x="1025.0" y="497.2" font-family="'IBM Plex Mono', Consolas, monospace" font-size="10" font-weight="700" fill="#8a6d00" text-anchor="middle" >PASILLO DE MONTACARGAS · 3,5 m</text>
+<rect x="1285.0" y="511.5" width="195.0" height="292.5" rx="0" fill="#e1f1fb" stroke="#2b7bb0" stroke-width="1.2" />
+<text x="1293.0" y="529.5" font-family="Archivo, 'Arial Narrow', Arial, sans-serif" font-size="13" font-weight="800" fill="#2b7bb0" text-anchor="start" >CÁMARA 2–4 °C</text>
+<text x="1293.0" y="544.5" font-family="'IBM Plex Sans', 'Segoe UI', Arial, sans-serif" font-size="10" font-weight="400" fill="#5b6876" text-anchor="start" >U411</text>
+<rect x="921.0" y="511.5" width="364.0" height="182.0" rx="0" fill="#eef0f2" stroke="#6b7682" stroke-width="1.2" />
+<text x="929.0" y="529.5" font-family="Archivo, 'Arial Narrow', Arial, sans-serif" font-size="13" font-weight="800" fill="#6b7682" text-anchor="start" >BODEGA DE ENVASES Y FRUTA</text>
+<text x="929.0" y="544.5" font-family="'IBM Plex Sans', 'Segoe UI', Arial, sans-serif" font-size="10" font-weight="400" fill="#5b6876" text-anchor="start" >vasos · botellas · fruta (≤ 8 °C)</text>
+<rect x="570.0" y="791.0" width="182.0" height="195.0" rx="0" fill="#eef0f2" stroke="#6b7682" stroke-width="1.2" />
+<text x="578.0" y="809.0" font-family="Archivo, 'Arial Narrow', Arial, sans-serif" font-size="13" font-weight="800" fill="#6b7682" text-anchor="start" >BODEGA DE INSUMOS</text>
+<text x="578.0" y="824.0" font-family="'IBM Plex Sans', 'Segoe UI', Arial, sans-serif" font-size="10" font-weight="400" fill="#5b6876" text-anchor="start" >polvos · azúcar</text>
+<rect x="752.0" y="791.0" width="169.0" height="195.0" rx="0" fill="#f3eef6" stroke="#7a5f8e" stroke-width="1.2" />
+<text x="760.0" y="809.0" font-family="Archivo, 'Arial Narrow', Arial, sans-serif" font-size="13" font-weight="800" fill="#7a5f8e" text-anchor="start" >ESCLUSA</text>
+<text x="760.0" y="824.0" font-family="'IBM Plex Sans', 'Segoe UI', Arial, sans-serif" font-size="10" font-weight="400" fill="#5b6876" text-anchor="start" >sanitaria</text>
+<rect x="1285.0" y="804.0" width="195.0" height="182.0" rx="0" fill="#eef0f2" stroke="#6b7682" stroke-width="1.2" />
+<text x="1293.0" y="822.0" font-family="Archivo, 'Arial Narrow', Arial, sans-serif" font-size="13" font-weight="800" fill="#6b7682" text-anchor="start" >SALA DE CONTROL</text>
+<text x="1293.0" y="837.0" font-family="'IBM Plex Sans', 'Segoe UI', Arial, sans-serif" font-size="10" font-weight="400" fill="#5b6876" text-anchor="start" >registros en papel</text>
+<rect x="50.0" y="609.0" width="520.0" height="377.0" rx="0" fill="#f4f4f1" stroke="#a3a39a" stroke-width="1.2" />
+<text x="58.0" y="627.0" font-family="Archivo, 'Arial Narrow', Arial, sans-serif" font-size="13" font-weight="800" fill="#a3a39a" text-anchor="start" >LÍNEA DE QUESOS</text>
+<text x="58.0" y="642.0" font-family="'IBM Plex Sans', 'Segoe UI', Arial, sans-serif" font-size="10" font-weight="400" fill="#5b6876" text-anchor="start" >(otra línea)</text>
+<rect x="570.0" y="511.5" width="351.0" height="279.5" rx="0" fill="#f4f4f1" stroke="#a3a39a" stroke-width="1.2" />
+<text x="578.0" y="529.5" font-family="Archivo, 'Arial Narrow', Arial, sans-serif" font-size="13" font-weight="800" fill="#a3a39a" text-anchor="start" >LÍNEA DE LECHE UHT</text>
+<text x="578.0" y="544.5" font-family="'IBM Plex Sans', 'Segoe UI', Arial, sans-serif" font-size="10" font-weight="400" fill="#5b6876" text-anchor="start" >(otra línea)</text>
+<rect x="921.0" y="693.5" width="182.0" height="292.5" rx="0" fill="#f4f4f1" stroke="#a3a39a" stroke-width="1.2" />
+<text x="929.0" y="711.5" font-family="Archivo, 'Arial Narrow', Arial, sans-serif" font-size="13" font-weight="800" fill="#a3a39a" text-anchor="start" >CIP CENTRAL</text>
+<rect x="1103.0" y="693.5" width="182.0" height="292.5" rx="0" fill="#f4f4f1" stroke="#a3a39a" stroke-width="1.2" />
+<text x="1111.0" y="711.5" font-family="Archivo, 'Arial Narrow', Arial, sans-serif" font-size="13" font-weight="800" fill="#a3a39a" text-anchor="start" >MANTENIMIENTO</text>
+<rect x="902.8" y="511.5" width="15.6" height="279.5" rx="0" fill="#e6f4ea" stroke="#3d8a52" stroke-width="0.8" />
+<rect x="1477.0" y="310.0" width="6.0" height="41.6" rx="0" fill="#fff" stroke="#1f4e79" stroke-width="1" />
+<rect x="1477.0" y="427.0" width="6.0" height="41.6" rx="0" fill="#fff" stroke="#1f4e79" stroke-width="1" />
+<rect x="1477.0" y="544.0" width="6.0" height="41.6" rx="0" fill="#fff" stroke="#1f4e79" stroke-width="1" />
+<text x="1488.0" y="277.5" font-family="'IBM Plex Mono', Consolas, monospace" font-size="10" font-weight="700" fill="#1f4e79" text-anchor="start" >MUELLES</text>
+<rect x="50.0" y="1012.0" width="130.0" height="7.0" rx="0" fill="#14202b" stroke="#14202b" stroke-width="1" />
+<rect x="180.0" y="1012.0" width="130.0" height="7.0" rx="0" fill="#ffffff" stroke="#14202b" stroke-width="1" />
+<rect x="310.0" y="1012.0" width="130.0" height="7.0" rx="0" fill="#14202b" stroke="#14202b" stroke-width="1" />
+<text x="50.0" y="1034.0" font-family="'IBM Plex Mono', Consolas, monospace" font-size="10" font-weight="600" fill="#5b6876" text-anchor="middle" >0</text>
+<text x="180.0" y="1034.0" font-family="'IBM Plex Mono', Consolas, monospace" font-size="10" font-weight="600" fill="#5b6876" text-anchor="middle" >10</text>
+<text x="310.0" y="1034.0" font-family="'IBM Plex Mono', Consolas, monospace" font-size="10" font-weight="600" fill="#5b6876" text-anchor="middle" >20</text>
+<text x="440.0" y="1034.0" font-family="'IBM Plex Mono', Consolas, monospace" font-size="10" font-weight="600" fill="#5b6876" text-anchor="middle" >30 m</text>
+<polygon points="1454,1013.5 1446,1039.5 1454,1033.5 1462,1039.5" fill="#14202b"/>
+<text x="1454.0" y="1007.5" font-family="Archivo, 'Arial Narrow', Arial, sans-serif" font-size="13" font-weight="800" fill="#14202b" text-anchor="middle" >N</text>
+<text x="1545.0" y="200.0" font-family="Archivo, 'Arial Narrow', Arial, sans-serif" font-size="15" font-weight="800" fill="#1f4e79" text-anchor="start" >Cómo está organizada</text>
+<text x="1545.0" y="228.0" font-family="'IBM Plex Sans', 'Segoe UI', Arial, sans-serif" font-size="11.5" font-weight="400" fill="#14202b" text-anchor="start" >El producto avanza de oeste a este en 6 secciones,</text>
+<text x="1545.0" y="246.0" font-family="'IBM Plex Sans', 'Segoe UI', Arial, sans-serif" font-size="11.5" font-weight="400" fill="#14202b" text-anchor="start" >las mismas del modelo de Tecnomatix.</text>
+<text x="1545.0" y="264.0" font-family="'IBM Plex Sans', 'Segoe UI', Arial, sans-serif" font-size="11.5" font-weight="400" fill="#14202b" text-anchor="start" ></text>
+<text x="1545.0" y="282.0" font-family="'IBM Plex Sans', 'Segoe UI', Arial, sans-serif" font-size="11.5" font-weight="400" fill="#14202b" text-anchor="start" >Fin de línea manual: las encajonadoras</text>
+<text x="1545.0" y="300.0" font-family="'IBM Plex Sans', 'Segoe UI', Arial, sans-serif" font-size="11.5" font-weight="400" fill="#14202b" text-anchor="start" >entregan cajas a una mesa y 2 operarios</text>
+<text x="1545.0" y="318.0" font-family="'IBM Plex Sans', 'Segoe UI', Arial, sans-serif" font-size="11.5" font-weight="400" fill="#14202b" text-anchor="start" >por turno las estiban en U341.</text>
+<text x="1545.0" y="336.0" font-family="'IBM Plex Sans', 'Segoe UI', Arial, sans-serif" font-size="11.5" font-weight="400" fill="#14202b" text-anchor="start" ></text>
+<text x="1545.0" y="354.0" font-family="'IBM Plex Sans', 'Segoe UI', Arial, sans-serif" font-size="11.5" font-weight="400" fill="#14202b" text-anchor="start" >Los insumos llegan desde dos bodegas al sur:</text>
+<text x="1545.0" y="372.0" font-family="'IBM Plex Sans', 'Segoe UI', Arial, sans-serif" font-size="11.5" font-weight="400" fill="#14202b" text-anchor="start" >cruzan la zona de leche UHT por el pasillo</text>
+<text x="1545.0" y="390.0" font-family="'IBM Plex Sans', 'Segoe UI', Arial, sans-serif" font-size="11.5" font-weight="400" fill="#14202b" text-anchor="start" >peatonal y el de montacargas.</text>
+<text x="1545.0" y="408.0" font-family="'IBM Plex Sans', 'Segoe UI', Arial, sans-serif" font-size="11.5" font-weight="400" fill="#14202b" text-anchor="start" ></text>
+<text x="1545.0" y="426.0" font-family="'IBM Plex Sans', 'Segoe UI', Arial, sans-serif" font-size="11.5" font-weight="400" fill="#14202b" text-anchor="start" >El analista de calidad sale del laboratorio</text>
+<text x="1545.0" y="444.0" font-family="'IBM Plex Sans', 'Segoe UI', Arial, sans-serif" font-size="11.5" font-weight="400" fill="#14202b" text-anchor="start" >de recepción hasta fermentación y envasado</text>
+<text x="1545.0" y="462.0" font-family="'IBM Plex Sans', 'Segoe UI', Arial, sans-serif" font-size="11.5" font-weight="400" fill="#14202b" text-anchor="start" >para tomar muestras de pH.</text>
+<text x="1545.0" y="520.0" font-family="Archivo, 'Arial Narrow', Arial, sans-serif" font-size="15" font-weight="800" fill="#1f4e79" text-anchor="start" >Áreas de la línea</text>
+<text x="1545.0" y="548.0" font-family="'IBM Plex Sans', 'Segoe UI', Arial, sans-serif" font-size="11.5" font-weight="400" fill="#14202b" text-anchor="start" >Preparación</text>
+<text x="1875.0" y="548.0" font-family="'IBM Plex Mono', Consolas, monospace" font-size="11.5" font-weight="600" fill="#14202b" text-anchor="end" >240 m²</text>
+<text x="1545.0" y="568.0" font-family="'IBM Plex Sans', 'Segoe UI', Arial, sans-serif" font-size="11.5" font-weight="400" fill="#14202b" text-anchor="start" >Fermentación</text>
+<text x="1875.0" y="568.0" font-family="'IBM Plex Mono', Consolas, monospace" font-size="11.5" font-weight="600" fill="#14202b" text-anchor="end" >280 m²</text>
+<text x="1545.0" y="588.0" font-family="'IBM Plex Sans', 'Segoe UI', Arial, sans-serif" font-size="11.5" font-weight="400" fill="#14202b" text-anchor="start" >Acondicionamiento</text>
+<text x="1875.0" y="588.0" font-family="'IBM Plex Mono', Consolas, monospace" font-size="11.5" font-weight="600" fill="#14202b" text-anchor="end" >260 m²</text>
+<text x="1545.0" y="608.0" font-family="'IBM Plex Sans', 'Segoe UI', Arial, sans-serif" font-size="11.5" font-weight="400" fill="#14202b" text-anchor="start" >Envasado</text>
+<text x="1875.0" y="608.0" font-family="'IBM Plex Mono', Consolas, monospace" font-size="11.5" font-weight="600" fill="#14202b" text-anchor="end" >320 m²</text>
+<text x="1545.0" y="628.0" font-family="'IBM Plex Sans', 'Segoe UI', Arial, sans-serif" font-size="11.5" font-weight="400" fill="#14202b" text-anchor="start" >Paletizado</text>
+<text x="1875.0" y="628.0" font-family="'IBM Plex Mono', Consolas, monospace" font-size="11.5" font-weight="600" fill="#14202b" text-anchor="end" >300 m²</text>
+<text x="1545.0" y="648.0" font-family="'IBM Plex Sans', 'Segoe UI', Arial, sans-serif" font-size="11.5" font-weight="400" fill="#14202b" text-anchor="start" >Cámara 2–4 °C</text>
+<text x="1875.0" y="648.0" font-family="'IBM Plex Mono', Consolas, monospace" font-size="11.5" font-weight="600" fill="#14202b" text-anchor="end" >338 m²</text>
+<text x="1545.0" y="668.0" font-family="'IBM Plex Sans', 'Segoe UI', Arial, sans-serif" font-size="11.5" font-weight="400" fill="#14202b" text-anchor="start" >Bodega de envases y fruta</text>
+<text x="1875.0" y="668.0" font-family="'IBM Plex Mono', Consolas, monospace" font-size="11.5" font-weight="600" fill="#14202b" text-anchor="end" >392 m²</text>
+<text x="1545.0" y="688.0" font-family="'IBM Plex Sans', 'Segoe UI', Arial, sans-serif" font-size="11.5" font-weight="400" fill="#14202b" text-anchor="start" >Bodega de insumos</text>
+<text x="1875.0" y="688.0" font-family="'IBM Plex Mono', Consolas, monospace" font-size="11.5" font-weight="600" fill="#14202b" text-anchor="end" >210 m²</text></svg>
