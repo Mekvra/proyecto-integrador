@@ -1,0 +1,276 @@
+{
+ "dias_produccion": 72,
+ "chunks": {
+  "YF150": 65,
+  "YF1000": 23,
+  "YF1750": 12,
+  "YN200": 43,
+  "YN1000": 32,
+  "YG150": 43,
+  "YG500": 22
+ },
+ "t_chunk_h": 0.07543374402816193,
+ "lotes": {
+  "YF": 153,
+  "YN": 154,
+  "YG": 107
+ },
+ "lotes_dia": 5.75,
+ "litros_dia": 57500.0,
+ "unidades_dia": {
+  "YF150": 82916.05139288888,
+  "YF1000": 9673.53932888889,
+  "YF1750": 3158.7067201111113,
+  "YN200": 45082.003295555565,
+  "YN1000": 13613.57862675,
+  "YG150": 19089.258913027777,
+  "YG500": 3817.851783194444
+ },
+ "recepcion_dia": 151666.66666666666,
+ "quesos_lotes_dia": 4.944444444444445,
+ "leche_lotes_dia": 4.305555555555555,
+ "debug": {
+  "Q312_Registro": 356,
+  "Q341_Paletizado": 7120,
+  "Despacho_quesos": 7060,
+  "L312_Registro": 309,
+  "L341_Paletizado": 12360,
+  "Despacho_leche": 12240,
+  "U124_Silo_quesos": 359,
+  "U125_Silo_leche": 311
+ },
+ "quesos_L_dia": 49444.444444444445,
+ "leche_L_dia": 43055.555555555555,
+ "queso_kg_dia": 5669.6296296296305,
+ "leche_envases_dia": 42343.482905982906,
+ "vasos_U311_dia": 127998.05468844445,
+ "botellas_U312_dia": 26445.824675750002,
+ "griego_U313_dia": 22907.110696222222,
+ "uso": {
+  "U111_Recepcion": {
+   "trabajando": 0.3792,
+   "cambio": 0.0,
+   "falla": 0.0,
+   "bloqueado": 0.0,
+   "esperando": 0.6208,
+   "ocupado": 0.3792
+  },
+  "U121_Pasteurizador": {
+   "trabajando": 0.3151,
+   "cambio": 0.0,
+   "falla": 0.0044,
+   "bloqueado": 0.0,
+   "esperando": 0.6804,
+   "ocupado": 0.3195
+  },
+  "U201_Formulacion": {
+   "trabajando": 0.4509,
+   "cambio": 0.0,
+   "falla": 0.0066,
+   "bloqueado": 0.0019,
+   "esperando": 0.5405,
+   "ocupado": 0.4575
+  },
+  "U202_Tratamiento": {
+   "trabajando": 0.2861,
+   "cambio": 0.1763,
+   "falla": 0.0058,
+   "bloqueado": 0.0,
+   "esperando": 0.5318,
+   "ocupado": 0.4682
+  },
+  "U211_Fermentador": {
+   "trabajando": 0.4516,
+   "cambio": 0.0,
+   "falla": 0.0,
+   "bloqueado": 0.0,
+   "esperando": 0.5484,
+   "ocupado": 0.4516
+  },
+  "U212_Fermentador": {
+   "trabajando": 0.4484,
+   "cambio": 0.0,
+   "falla": 0.0,
+   "bloqueado": 0.0009,
+   "esperando": 0.5507,
+   "ocupado": 0.4484
+  },
+  "U213_Fermentador": {
+   "trabajando": 0.4484,
+   "cambio": 0.0,
+   "falla": 0.0,
+   "bloqueado": 0.0,
+   "esperando": 0.5516,
+   "ocupado": 0.4484
+  },
+  "U218_Fermentador": {
+   "trabajando": 0.4483,
+   "cambio": 0.0,
+   "falla": 0.0,
+   "bloqueado": 0.0006,
+   "esperando": 0.5511,
+   "ocupado": 0.4483
+  },
+  "U215_Enfriamiento": {
+   "trabajando": 0.1873,
+   "cambio": 0.0,
+   "falla": 0.0015,
+   "bloqueado": 0.0063,
+   "esperando": 0.8048,
+   "ocupado": 0.1888
+  },
+  "U216_Separador_griego": {
+   "trabajando": 0.1035,
+   "cambio": 0.0,
+   "falla": 0.0042,
+   "bloqueado": 0.0,
+   "esperando": 0.8923,
+   "ocupado": 0.1077
+  },
+  "U311_Vasos": {
+   "trabajando": 0.7237,
+   "cambio": 0.0703,
+   "falla": 0.0785,
+   "bloqueado": 0.0,
+   "esperando": 0.1275,
+   "ocupado": 0.8725
+  },
+  "U312_Botellas": {
+   "trabajando": 0.4496,
+   "cambio": 0.168,
+   "falla": 0.0537,
+   "bloqueado": 0.0,
+   "esperando": 0.3287,
+   "ocupado": 0.6713
+  },
+  "U313_Griego": {
+   "trabajando": 0.3041,
+   "cambio": 0.0929,
+   "falla": 0.0252,
+   "bloqueado": 0.0,
+   "esperando": 0.5778,
+   "ocupado": 0.4222
+  },
+  "U321_Encajonadora_vasos": {
+   "trabajando": 0.5055,
+   "cambio": 0.0,
+   "falla": 0.0,
+   "bloqueado": 0.0,
+   "esperando": 0.4945,
+   "ocupado": 0.5055
+  },
+  "U322_Encajonadora_botellas": {
+   "trabajando": 0.3141,
+   "cambio": 0.0,
+   "falla": 0.0,
+   "bloqueado": 0.0,
+   "esperando": 0.6859,
+   "ocupado": 0.3141
+  },
+  "U323_Encajonadora_griego": {
+   "trabajando": 0.2124,
+   "cambio": 0.0,
+   "falla": 0.0,
+   "bloqueado": 0.0,
+   "esperando": 0.7876,
+   "ocupado": 0.2124
+  },
+  "U341_Paletizado": {
+   "trabajando": 0.0559,
+   "cambio": 0.0,
+   "falla": 0.0,
+   "bloqueado": 0.0284,
+   "esperando": 0.9157,
+   "ocupado": 0.0559
+  },
+  "U342_Envolvedora": {
+   "trabajando": 0.391,
+   "cambio": 0.0,
+   "falla": 0.0,
+   "bloqueado": 0.0,
+   "esperando": 0.609,
+   "ocupado": 0.391
+  },
+  "Q201_Tina": {
+   "trabajando": 0.2431,
+   "cambio": 0.0,
+   "falla": 0.0,
+   "bloqueado": 0.0,
+   "esperando": 0.7569,
+   "ocupado": 0.2431
+  },
+  "Q202_Tina": {
+   "trabajando": 0.2414,
+   "cambio": 0.0,
+   "falla": 0.0,
+   "bloqueado": 0.0,
+   "esperando": 0.7586,
+   "ocupado": 0.2414
+  },
+  "Q203_Tina": {
+   "trabajando": 0.241,
+   "cambio": 0.0,
+   "falla": 0.0,
+   "bloqueado": 0.0002,
+   "esperando": 0.7588,
+   "ocupado": 0.241
+  },
+  "Q301_Hilado": {
+   "trabajando": 0.2072,
+   "cambio": 0.0622,
+   "falla": 0.0053,
+   "bloqueado": 0.0,
+   "esperando": 0.7253,
+   "ocupado": 0.2747
+  },
+  "Q311_Empaque_vacio": {
+   "trabajando": 0.2472,
+   "cambio": 0.0,
+   "falla": 0.0261,
+   "bloqueado": 0.0181,
+   "esperando": 0.7085,
+   "ocupado": 0.2733
+  },
+  "Q341_Paletizado": {
+   "trabajando": 0.1236,
+   "cambio": 0.0,
+   "falla": 0.0,
+   "bloqueado": 0.0,
+   "esperando": 0.8764,
+   "ocupado": 0.1236
+  },
+  "L201_Mezcla": {
+   "trabajando": 0.18,
+   "cambio": 0.0622,
+   "falla": 0.0,
+   "bloqueado": 0.0,
+   "esperando": 0.7578,
+   "ocupado": 0.2422
+  },
+  "L202_UHT": {
+   "trabajando": 0.1799,
+   "cambio": 0.0,
+   "falla": 0.0056,
+   "bloqueado": 0.0,
+   "esperando": 0.8146,
+   "ocupado": 0.1855
+  },
+  "L311_Envasadora_aseptica": {
+   "trabajando": 0.3588,
+   "cambio": 0.0,
+   "falla": 0.0405,
+   "bloqueado": 0.0488,
+   "esperando": 0.5519,
+   "ocupado": 0.3993
+  },
+  "L341_Paletizado": {
+   "trabajando": 0.1431,
+   "cambio": 0.0,
+   "falla": 0.0,
+   "bloqueado": 0.0,
+   "esperando": 0.8569,
+   "ocupado": 0.1431
+  }
+ },
+ "cola_en_cisternas": 1092
+}
