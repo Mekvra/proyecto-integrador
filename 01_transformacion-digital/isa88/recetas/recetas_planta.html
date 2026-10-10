@@ -1,0 +1,261 @@
+<title>Recetas básicas de la planta</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..100,500..800&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: hoja de proceso de planta — índice lateral fijo en escritorio, columna de lectura con tablas de receta y bandas de color por producto */
+:root {
+  --bg: #f6f8fa;
+  --paper: #ffffff;
+  --ink: #14202b;
+  --muted: #5b6876;
+  --rule: #d9e0e7;
+  --accent: #1f4e79;
+  --accent-soft: #e4edf6;
+  --fresa: #b8325a;
+  --fresa-soft: #f8e3ea;
+  --natural: #3b7ea1;
+  --natural-soft: #e2eff6;
+  --griego: #8a6d1d;
+  --griego-soft: #f3ecd8;
+  --ok: #2e7d4f;
+  --pcc: #b4441b;
+  --pcc-soft: #fbe8df;
+  --font-display: "Archivo", "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
+  --font-body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0e141a; --paper: #151d25; --ink: #e6edf3; --muted: #9aa8b6; --rule: #2a3642;
+    --accent: #8cb8e3; --accent-soft: #1b2b3b;
+    --fresa: #ee8aa8; --fresa-soft: #3a1c27; --natural: #8cc4e2; --natural-soft: #16303d;
+    --griego: #d8b65c; --griego-soft: #33290f; --ok: #6cc893; --pcc: #f19a73; --pcc-soft: #3a2116;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0e141a; --paper: #151d25; --ink: #e6edf3; --muted: #9aa8b6; --rule: #2a3642;
+  --accent: #8cb8e3; --accent-soft: #1b2b3b;
+  --fresa: #ee8aa8; --fresa-soft: #3a1c27; --natural: #8cc4e2; --natural-soft: #16303d;
+  --griego: #d8b65c; --griego-soft: #33290f; --ok: #6cc893; --pcc: #f19a73; --pcc-soft: #3a2116;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 15px; line-height: 1.6; }
+.wrap { max-width: 1240px; margin: 0 auto; padding-inline: 20px; padding-block: 28px 64px; display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 40px; }
+@media (max-width: 900px) { .wrap { grid-template-columns: minmax(0, 1fr); gap: 0; padding-inline: 16px; } nav.toc { display: none; } }
+nav.toc { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 24px); align-self: start; font-size: 13px; }
+nav.toc p { font-family: var(--font-display); font-weight: 700; letter-spacing: .08em; text-transform: uppercase; font-size: 11px; color: var(--muted); margin: 0 0 8px; }
+nav.toc ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; }
+nav.toc a { display: block; padding: 4px 10px; border-radius: 6px; color: var(--ink); text-decoration: none; }
+nav.toc a:hover, nav.toc a:focus-visible { background: var(--accent-soft); outline: none; }
+nav.toc .n { font-family: var(--font-mono); color: var(--muted); font-size: 11px; margin-right: 6px; }
+main { min-width: 0; display: grid; gap: 56px; }
+h1, h2, h3 { font-family: var(--font-display); text-wrap: balance; margin: 0; line-height: 1.12; }
+h1 { font-size: clamp(34px, 5vw, 54px); font-weight: 800; font-stretch: 82%; letter-spacing: -.01em; }
+h2 { font-size: 28px; font-weight: 750; font-stretch: 85%; }
+h3 { font-size: 19px; font-weight: 700; font-stretch: 90%; }
+p { margin: 0; max-width: 72ch; }
+section { display: grid; gap: 18px; scroll-margin-top: 20px; }
+.eyebrow { font-family: var(--font-mono); font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+.mono { font-family: var(--font-mono); }
+a { color: var(--accent); }
+/* encabezado */
+header.head { display: grid; gap: 16px; padding-bottom: 24px; border-bottom: 2px solid var(--ink); }
+.meta { display: flex; flex-wrap: wrap; gap: 8px 22px; font-size: 13px; color: var(--muted); }
+.meta b { color: var(--ink); font-weight: 600; }
+.note { background: var(--accent-soft); border-radius: 10px; padding: 14px 16px; font-size: 14px; max-width: none; }
+/* productos */
+.products { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+@media (max-width: 760px) { .products { grid-template-columns: minmax(0, 1fr); } }
+.prod { background: var(--paper); border: 1px solid var(--rule); border-radius: 12px; padding: 18px; display: grid; gap: 10px; align-content: start; border-top: 5px solid var(--c); }
+.prod .code { font-family: var(--font-display); font-weight: 800; font-size: 30px; font-stretch: 80%; color: var(--c); line-height: 1; }
+.prod dl { display: grid; grid-template-columns: auto 1fr; gap: 4px 12px; margin: 0; font-size: 13px; }
+.prod dt { color: var(--muted); }
+.prod dd { margin: 0; font-variant-numeric: tabular-nums; }
+.yf { --c: var(--fresa); --cs: var(--fresa-soft); }
+.yn { --c: var(--natural); --cs: var(--natural-soft); }
+.yg { --c: var(--griego); --cs: var(--griego-soft); }
+.kpis { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1px; background: var(--rule); border: 1px solid var(--rule); border-radius: 12px; overflow: hidden; }
+@media (max-width: 760px) { .kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.kpis div { background: var(--paper); padding: 14px 16px; display: grid; gap: 2px; }
+.kpis b { font-family: var(--font-display); font-size: 26px; font-weight: 750; font-stretch: 85%; font-variant-numeric: tabular-nums; }
+.kpis span { font-size: 12px; color: var(--muted); }
+/* mapa de proceso */
+.filter { display: flex; flex-wrap: wrap; gap: 8px; }
+.filter button { font: 500 13px var(--font-body); padding: 6px 14px; border-radius: 999px; border: 1px solid var(--rule); background: var(--paper); color: var(--ink); cursor: pointer; }
+.filter button[aria-pressed="true"] { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.filter button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.stages { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(196px, 1fr)); gap: 10px; counter-reset: st; }
+.stage { background: var(--paper); border: 1px solid var(--rule); border-radius: 10px; padding: 14px; display: grid; gap: 6px; align-content: start; transition: opacity .2s ease, filter .2s ease; }
+.stage.off { opacity: .28; filter: grayscale(1); }
+@media (prefers-reduced-motion: reduce) { .stage { transition: none; } }
+.stage .num { font-family: var(--font-mono); font-size: 12px; color: var(--muted); }
+.stage .name { font-family: var(--font-display); font-weight: 800; font-size: 22px; font-stretch: 78%; letter-spacing: .04em; color: var(--accent); line-height: 1; }
+.stage .what { font-size: 13px; line-height: 1.4; }
+.stage .units { font-family: var(--font-mono); font-size: 11.5px; color: var(--muted); }
+.dots { display: flex; gap: 5px; }
+.dot { font: 600 10px var(--font-mono); padding: 1px 6px; border-radius: 4px; background: var(--cs); color: var(--c); }
+.stage.transv { border-style: dashed; }
+/* tablas */
+.tbl { overflow-x: auto; border: 1px solid var(--rule); border-radius: 10px; background: var(--paper); }
+table { border-collapse: collapse; width: 100%; font-size: 13.5px; }
+th, td { text-align: left; vertical-align: top; padding: 9px 12px; border-bottom: 1px solid var(--rule); }
+th { font-family: var(--font-display); font-weight: 650; font-stretch: 92%; font-size: 12px; letter-spacing: .05em; text-transform: uppercase; color: var(--muted); background: var(--bg); white-space: nowrap; }
+tr:last-child td { border-bottom: 0; }
+td.r, th.r { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+tr.total td { font-weight: 600; border-top: 2px solid var(--ink); }
+.pcc { display: inline-block; font: 600 11px var(--font-mono); color: var(--pcc); background: var(--pcc-soft); padding: 1px 6px; border-radius: 4px; white-space: nowrap; }
+.tag { font-family: var(--font-mono); font-size: 12.5px; }
+.stagelabel { font-family: var(--font-display); font-weight: 750; font-stretch: 85%; letter-spacing: .04em; color: var(--accent); white-space: nowrap; }
+/* recetas */
+.recipe { display: grid; gap: 18px; padding: 24px; border-radius: 14px; background: var(--paper); border: 1px solid var(--rule); border-left: 6px solid var(--c); }
+@media (max-width: 560px) { .recipe { padding: 18px 14px; } }
+.recipe-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 16px; }
+.recipe-head .code { font-family: var(--font-display); font-weight: 800; font-size: 44px; font-stretch: 78%; color: var(--c); line-height: 1; }
+.recipe .tbl { background: var(--paper); }
+.recipe th { background: var(--cs); color: var(--ink); }
+.facts { display: flex; flex-wrap: wrap; gap: 8px; }
+.fact { font-size: 13px; padding: 4px 10px; border-radius: 6px; background: var(--cs); }
+.fact b { font-variant-numeric: tabular-nums; }
+/* barras a escala */
+.gantt { display: grid; gap: 10px; }
+.grow { display: grid; grid-template-columns: 48px minmax(0, 1fr) 64px; gap: 10px; align-items: center; font-size: 13px; }
+.grow .lab { font-family: var(--font-display); font-weight: 800; font-stretch: 80%; font-size: 18px; color: var(--c); }
+.bar { display: flex; height: 26px; border-radius: 6px; overflow: hidden; background: var(--bg); }
+.bar span { display: block; height: 100%; border-right: 1px solid var(--paper); }
+.s-fill { background: var(--muted); opacity: .45; }
+.s-inoc { background: var(--muted); opacity: .7; }
+.s-inc { background: var(--c); }
+.s-out { background: var(--c); opacity: .55; }
+.s-cip { background: var(--accent); opacity: .35; }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 12px; color: var(--muted); }
+.legend i { display: inline-block; width: 12px; height: 12px; border-radius: 3px; margin-right: 6px; vertical-align: -1px; }
+.axis { display: grid; grid-template-columns: 48px minmax(0, 1fr) 64px; gap: 10px; font-family: var(--font-mono); font-size: 11px; color: var(--muted); }
+.axis div:nth-child(2) { display: flex; justify-content: space-between; }
+.stack { display: flex; height: 40px; border-radius: 8px; overflow: hidden; }
+.stack span { display: flex; align-items: center; justify-content: center; font: 600 12px var(--font-mono); color: var(--paper); white-space: nowrap; overflow: hidden; }
+.b-yf { background: var(--fresa); } .b-yn { background: var(--natural); } .b-yg { background: var(--griego); }
+.b-su { background: var(--muted); } .b-cr { background: var(--accent); }
+.cols2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+@media (max-width: 760px) { .cols2 { grid-template-columns: minmax(0, 1fr); } }
+ul.clean { margin: 0; padding-left: 18px; display: grid; gap: 6px; max-width: 80ch; }
+.sources { font-size: 13px; }
+.sources li { overflow-wrap: anywhere; }
+footer { font-size: 12px; color: var(--muted); border-top: 1px solid var(--rule); padding-top: 16px; }
+.s-brk { background: var(--c); opacity: .8; }
+.axis div:nth-child(2) { position: relative; display: block; height: 14px; }
+.axis div:nth-child(2) span { position: absolute; transform: translateX(-50%); }
+.axis div:nth-child(2) span:first-child { transform: none; }
+.audit { display: grid; gap: 10px; }
+
+.q { --c: #a37c12; --cs: #fbf3dc; } .l { --c: #3d8a52; --cs: #e3f2e6; } .y { --c: #b8325a; --cs: #f8e3ea; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .q { --c: #e0bb55; --cs: #33290f; } :root:not([data-theme="light"]) .l { --c: #7fcc95; --cs: #14301d; } }
+.line-head { display: flex; align-items: baseline; gap: 14px; border-bottom: 3px solid var(--c); padding-bottom: 8px; }
+.line-head .code { font-family: var(--font-display); font-weight: 800; font-size: 34px; font-stretch: 80%; color: var(--c); line-height: 1; }
+.chip { display: inline-block; font-family: var(--font-mono); font-size: 11px; padding: 1px 7px; border-radius: 999px; background: var(--cs); color: var(--c); border: 1px solid var(--c); }
+</style>
+<div class="wrap">
+<nav class="toc" aria-label="Contenido">
+  <p>Contenido</p>
+  <ol>
+    <li><a href="#resumen"><span class="n">00</span>Resumen de la planta</a></li>
+    <li><a href="#tronco"><span class="n">01</span>Tronco común</a></li>
+    <li><a href="#yogures"><span class="n">02</span>Línea de yogures</a></li>
+    <li><a href="#quesos"><span class="n">03</span>Línea de quesos</a></li>
+    <li><a href="#uht"><span class="n">04</span>Línea de leche UHT</a></li>
+    <li><a href="#fin"><span class="n">05</span>Fin de línea y despacho</a></li>
+    <li><a href="#tiempos"><span class="n">06</span>Tiempos y programa</a></li>
+    <li><a href="#haccp"><span class="n">07</span>Controles críticos</a></li>
+    <li><a href="#fuentes"><span class="n">08</span>Supuestos y fuentes</a></li>
+  </ol>
+</nav>
+<main>
+<header class="head">
+  <span class="eyebrow">Recetas básicas ISA-88 · Planta completa</span>
+  <h1>Planta láctea de Lácteos Altos de Teusacá</h1>
+  <p>Tres líneas sobre un mismo tronco común: yogures, quesos y leche UHT. Para cada producto, la fórmula por lote, las etapas con sus parámetros, las máquinas que las hacen y los controles que no se pueden saltar.</p>
+  <div class="meta"><span>Versión <b>1.0</b></span><span>Fecha <b>10 oct 2026</b></span><span>Base <b>acta del 9-oct-2026</b></span></div>
+  <p class="note">Todas las cantidades son valores de diseño de Mekvra, no resultados medidos en planta. Las tres recetas de yogur están completas en <span class="mono">Recetas_linea_yogures_v1.8.pdf</span>. Las de quesos y leche UHT son recetas básicas: sus parámetros salen de Tetra Pak, el Codex y la normativa colombiana, y se afinan cuando el equipo defina cada producto. Los tiempos por lote son los mismos del modelo de Tecnomatix de la planta.</p>
+</header>
+<section id="resumen">
+  <span class="eyebrow">00 · Resumen</span>
+  <h2>150.000 L de leche al día, 91 lotes por semana</h2>
+  <div class="kpis">
+    <div><b>150.000 L</b><span>de leche cruda por día, 6 días por semana</span></div>
+    <div><b>91 lotes</b><span>por semana de 10.000 L: 35 de yogur, 30 de queso y 26 de leche</span></div>
+    <div><b>≈ 5.733 kg</b><span>de queso por día</span></div>
+    <div><b>≈ 42.617</b><span>envases de leche UHT de 1 L por día</span></div>
+  </div>
+  <div class="products">
+    <article class="prod y"><span class="code">Y</span><h3>Yogures · ≈ 57.000 L/día</h3>
+      <dl><dt>Productos</dt><dd>Fresa (YF), natural (YN) y griego (YG)</dd><dt>Lotes/semana</dt><dd>35 (13 · 13 · 9)</dd>
+      <dt>Producto</dt><dd>≈ 56.400 kg/día en vasos, botellas y potes</dd><dt>Cuello de botella</dt><dd>Llenadora de vasos U311</dd></dl></article>
+    <article class="prod q"><span class="code">Q</span><h3>Quesos · 50.000 L/día</h3>
+      <dl><dt>Productos</dt><dd>Mozzarella (QM), quesillo (QQ) y doble crema (QD)</dd><dt>Lotes/semana</dt><dd>30 (10 de cada uno)</dd>
+      <dt>Producto</dt><dd>≈ 5.733 kg/día, empacado al vacío</dd><dt>Equipo clave</dt><dd>3 tinas de 10.000 L y una hiladora</dd></dl></article>
+    <article class="prod l"><span class="code">L</span><h3>Leche UHT · 43.000 L/día</h3>
+      <dl><dt>Productos</dt><dd>Entera (LE), descremada (LD) y con chocolate (LC)</dd><dt>Lotes/semana</dt><dd>26 (14 · 6 · 6)</dd>
+      <dt>Producto</dt><dd>≈ 42.617 envases asépticos de 1 L/día</dd><dt>Equipo clave</dt><dd>Esterilizador UHT y envasadora aséptica</dd></dl></article>
+  </div>
+  <p>La leche UHT reemplaza al kéfir del alcance anterior (acta del 9-oct). La línea de yogures tiene un cupo de diseño de 80.000 L/día, pero hoy procesa ≈ 57.000 porque la llenadora de vasos está al límite; la propuesta de automatización la lleva a 80.000 con el aumento de acopio del contrato de un año.</p>
+</section>
+<section id="tronco">
+  <span class="eyebrow">01 · Tronco común · Origen y Pureza</span>
+  <h2>Recepción, pasteurización y silos para las tres líneas</h2>
+  <p>La leche llega en cisternas, se analiza en plataforma, se enfría y espera en tanques. Luego se clarifica, se descrema y estandariza, y se pasteuriza en flujo continuo. Cada línea toma su leche de su propio silo.</p>
+<div class="tbl"><table><thead><tr><th>Etapa</th><th>Equipo</th><th>Parámetros</th><th>Control</th></tr></thead><tbody><tr><td>Recepción y aceptación</td><td>2 bahías U111/U112 · laboratorio de calidad</td><td>Cisternas de ≈ 20.000 L, ≈ 8 por día. Leche ≤ 6 °C; prueba de antibióticos, alcohol, acidez, densidad y grasa</td><td><b>PCC-1:</b> antibióticos negativos o se rechaza la cisterna</td></tr><tr><td>Leche cruda</td><td>Tanques U113/U114, 2 × 60.000 L</td><td>≤ 4 °C con agitación, máximo 24 h</td><td>Temperatura continua</td></tr><tr><td>Clarificación y estandarización</td><td>Separadora-clarificadora U121</td><td>Grasa a la medida de cada línea; la crema sobrante va a U126</td><td>Densímetro y analizador de grasa en línea</td></tr><tr><td>Pasteurización HTST</td><td>Intercambiador de placas U122, 20.000 L/h</td><td>≥ 72 °C × 15 s (75 °C de diseño) y enfriamiento a ≤ 4 °C</td><td><b>PCC-2:</b> registro de temperatura y válvula de desvío</td></tr><tr><td>Silos de leche pasteurizada</td><td>U123A/B y U123C (yogures) · U124 (quesos) · U125 (leche UHT)</td><td>2–4 °C, máximo 24 h</td><td>Temperatura y tiempo por silo</td></tr></tbody></table></div>
+  <p>Carga del tronco con 150.000 L/día: recepción 24 % de las 16 h de ventana, pasteurizador 45 % del día (10,8 h con lavados y arranques). Bastan los dos tanques de leche cruda: el pico de un día normal es de ≈ 7.500 L. El cálculo está en <span class="mono">tanques_150k.py</span>.</p>
+</section>
+<section id="yogures" class="y">
+  <div class="line-head"><span class="code">Y</span><h2>Línea de yogures · ≈ 57.000 L/día</h2></div>
+  <p>Resumen de las recetas maestras v1.8. El detalle (fórmulas, balances, especificaciones y HACCP) está en <span class="mono">Recetas_linea_yogures_v1.8.pdf</span>.</p>
+<div class="tbl"><table><thead><tr><th>Producto</th><th>Base por lote</th><th>Proceso clave</th><th>Presentaciones</th><th class="r">Por lote</th></tr></thead><tbody><tr><td><span class="chip">YF</span> Yogur con fresa</td><td>10.000 L de leche entera estandarizada + leche en polvo + azúcar</td><td>Base a 92 °C × 5 min → fermentación a 43 °C hasta pH 4,50 → ruptura y enfriamiento → fruta en línea (13 %)</td><td>Vaso 150 g · botella 1000 y 1750 g</td><td class="r">13.092 kg</td></tr><tr><td><span class="chip">YN</span> Yogur natural</td><td>10.000 L de leche entera estandarizada + leche en polvo</td><td>Igual que YF, sin azúcar ni fruta</td><td>Vaso 200 g · botella 1000 g</td><td class="r">10.677 kg</td></tr><tr><td><span class="chip">YG</span> Yogur griego</td><td>10.000 L de leche descremada</td><td>Fermentación a 43 °C → separación del suero en U216 → crema propia al final</td><td>Vaso 150 g · pote 500 g</td><td class="r">3.242 kg</td></tr></tbody></table></div><div class="tbl"><table><thead><tr><th>Etapa</th><th>Máquinas</th><th>Capacidad</th></tr></thead><tbody><tr><td>Formulación y tratamiento de la base</td><td>U201 tanque de formulación con tolva de polvos · U202 homogeneizador + placas, 92 °C × 5 min</td><td>12.000 L · 10 m³/h</td></tr><tr><td>Fermentación</td><td>U211, U212, U213 y U218, fermentadores de 12.000 L</td><td>Ciclo de 8,1–9,0 h por lote</td></tr><tr><td>Acondicionamiento</td><td>U215 ruptura y enfriamiento · U216 separador del griego · pulmones U214A (fresa), U214B (natural) y U217A/B (griego)</td><td>7.000 L/h en U216</td></tr><tr><td>Envasado y encajonado</td><td>U311 vasos · U312 botellas · U313 potes · U321–U323 encajonadoras</td><td>U311: 12.000 vasos/h de 150 g</td></tr><tr><td>Fin de línea</td><td>U341 paletizado (manual en la planta actual) · U342 envolvedora · U411 cámara 2–4 °C</td><td>Reposo ≥ 12 h antes de despacho</td></tr></tbody></table></div></section>
+<section id="quesos" class="q">
+  <div class="line-head"><span class="code">Q</span><h2>Línea de quesos · 50.000 L/día</h2></div>
+  <p>Tres quesos de pasta hilada, muy consumidos en Colombia, que comparten las mismas máquinas: la diferencia está en la grasa de la leche, en cómo se acidifica la cuajada y en la sal. Lote de 10.000 L de leche pasteurizada del silo U124.</p>
+<div class="tbl"><table><thead><tr><th>Queso</th><th>Grasa de la leche</th><th class="r">Rendimiento</th><th class="r">Queso por lote</th><th>Rasgos</th></tr></thead><tbody><tr><td><span class="chip">QM</span> Mozzarella</td><td>3,0 %</td><td class="r">≈ 10,0 L/kg</td><td class="r">≈ 1.000 kg</td><td>pasta hilada de acidificación con cultivo termófilo; bloque de 2,5 kg y barra de 1 kg</td></tr><tr><td><span class="chip">QQ</span> Quesillo</td><td>3,2 %</td><td class="r">≈ 9,0 L/kg</td><td class="r">≈ 1.110 kg</td><td>pasta hilada fresca, típica del Huila y el Tolima; bloque de 500 g y 1 kg</td></tr><tr><td><span class="chip">QD</span> Doble crema</td><td>4,2 % (leche + crema propia)</td><td class="r">≈ 7,5 L/kg</td><td class="r">≈ 1.330 kg</td><td>pasta hilada con más grasa y humedad; bloque de 500 g y 2,5 kg</td></tr></tbody></table></div>
+  <h3>Fórmula por lote (10.000 L de leche estandarizada)</h3>
+<div class="tbl"><table><thead><tr><th>Insumo</th><th>Mozzarella QM</th><th>Quesillo QQ</th><th>Doble crema QD</th><th>Función</th></tr></thead><tbody><tr><td>Leche pasteurizada (U124)</td><td>10.000 L al 3,0 %</td><td>10.000 L al 3,2 %</td><td>9.840 L al 3,6 % + 160 L de crema al 40 % (≈ 4,2 %)</td><td>Base; la crema sale de U126</td></tr><tr><td>Cloruro de calcio (solución al 40 %)</td><td>5 L</td><td>5 L</td><td>5 L</td><td>Repone el calcio que se pierde al pasteurizar y da firmeza a la cuajada</td></tr><tr><td>Cultivo</td><td>Termófilo (<i>S. thermophilus</i> + <i>L. bulgaricus</i>), dosis del proveedor</td><td>Mesófilo láctico, dosis del proveedor</td><td>Mesófilo láctico, dosis del proveedor</td><td>Acidifica la cuajada hasta el pH de hilado</td></tr><tr><td>Cuajo de quimosina</td><td>≈ 2,0 L</td><td>≈ 2,0 L</td><td>≈ 2,2 L</td><td>Coagula en 30–40 min (dosis del proveedor)</td></tr><tr><td>Sal</td><td>Salmuera al 20 %, 8 h</td><td>1,5 % en el hilado + salmuera corta</td><td>1,2 % en el hilado</td><td>Sabor, conservación y corteza</td></tr><tr><td>Suero dulce</td><td>≈ 9.000 kg</td><td>≈ 8.900 kg</td><td>≈ 8.700 kg</td><td>Va a venta o a la PTAR; no se bota sin tratar</td></tr></tbody></table></div>
+  <h3>Procedimiento y parámetros</h3>
+<div class="tbl"><table><thead><tr><th>Fase</th><th>Máquina</th><th>Parámetros</th><th class="r">Tiempo por lote</th></tr></thead><tbody><tr><td>Llenar y madurar</td><td>Tina quesera Q201, Q202 o Q203 (10.000 L, doble pared, liras)</td><td>Leche a 32–35 °C, CaCl₂ y cultivo; maduración 20–30 min</td><td class="r">Incluido en la tina</td></tr><tr><td>Coagular y cortar</td><td>La misma tina</td><td>Cuajo; coagulación 30–40 min; corte en cubos de 1–1,5 cm</td><td class="r">Incluido en la tina</td></tr><tr><td>Cocinar y desuerar</td><td>La misma tina</td><td>Cocción hasta 40–42 °C con agitación; se retira ≈ 85 % del suero</td><td class="r">Tina: <b>3,0 h</b> + CIP 0,5 h</td></tr><tr><td>Acidificar la cuajada</td><td>Banda de cuajada hacia la hiladora</td><td>Hasta pH 5,1–5,3 (QM) o 5,2–5,3 (QQ y QD), que es cuando la cuajada hila</td><td class="r">Dentro del tiempo de la tina</td></tr><tr><td>Hilar y moldear</td><td>Hiladora-moldeadora Q301 de tornillos (1.000–1.300 kg/h)</td><td>Agua de hilado a 75–85 °C; la pasta sale a 58–62 °C; sal en QQ y QD</td><td class="r"><b>1,0 h</b> (0,5 h al cambiar de queso)</td></tr><tr><td>Enfriar y salar</td><td>Piscinas de salmuera Q302</td><td>Salmuera al 18–22 % de NaCl a 8–12 °C; QM 8 h</td><td class="r"><b>8,0 h</b></td></tr><tr><td>Empacar</td><td>Empacadora al vacío Q311 (termoformadora)</td><td>Vacío y sellado; etiqueta con lote y fecha; detector de metales antes</td><td class="r"><b>1,2 h</b></td></tr><tr><td>Paletizar y enfriar</td><td>Paletizado manual Q341 · cámara de quesos Q411</td><td>Cámara a 2–4 °C, reposo de 12 h antes del despacho</td><td class="r">12 h</td></tr></tbody></table></div>
+  <h3>Especificación del producto (valores de diseño)</h3>
+<div class="tbl"><table><thead><tr><th>Queso</th><th>Humedad</th><th>Grasa en extracto seco</th><th>pH</th><th>Vida útil a 2–4 °C</th></tr></thead><tbody><tr><td>Mozzarella QM</td><td>45–52 %</td><td>≥ 40 %</td><td>5,1–5,4</td><td>45 días al vacío</td></tr><tr><td>Quesillo QQ</td><td>50–56 %</td><td>≥ 40 %</td><td>5,2–5,5</td><td>25 días al vacío</td></tr><tr><td>Doble crema QD</td><td>50–55 %</td><td>≥ 45 %</td><td>5,1–5,4</td><td>30 días al vacío</td></tr></tbody></table></div></section>
+<section id="uht" class="l">
+  <div class="line-head"><span class="code">L</span><h2>Línea de leche UHT · 43.000 L/día</h2></div>
+  <p>Leche de larga vida, esterilizada a ultra alta temperatura y envasada en condiciones asépticas en cajas de 1 L. Se guarda sin frío. Lote de 10.000 L de leche pasteurizada del silo U125; el orden del día es entera → descremada → chocolate, porque el cacao va al final.</p>
+<div class="tbl"><table><thead><tr><th>Producto</th><th>Grasa</th><th class="r">Envases de 1 L por lote</th><th>Rasgos</th></tr></thead><tbody><tr><td><span class="chip">LE</span> Leche entera UHT</td><td>≥ 3,0 %</td><td class="r">≈ 9.800</td><td>leche estandarizada y homogeneizada; 14 lotes por semana</td></tr><tr><td><span class="chip">LD</span> Leche descremada UHT</td><td>≤ 0,5 %</td><td class="r">≈ 9.800</td><td>leche descremada con la crema retirada en U121; 6 lotes por semana</td></tr><tr><td><span class="chip">LC</span> Leche con chocolate UHT</td><td>≥ 3,0 % en la leche base</td><td class="r">≈ 9.950</td><td>leche entera con azúcar, cacao y carragenina; 6 lotes por semana</td></tr></tbody></table></div>
+  <h3>Fórmula por lote</h3>
+<div class="tbl"><table><thead><tr><th>Insumo</th><th>Entera LE</th><th>Descremada LD</th><th>Chocolate LC</th><th>Función</th></tr></thead><tbody><tr><td>Leche pasteurizada (U125)</td><td>10.000 L al 3,0 %</td><td>10.000 L al ≤ 0,5 %</td><td>9.210 L al 3,0 %</td><td>Base</td></tr><tr><td>Azúcar</td><td>—</td><td>—</td><td>620 kg (6,0 %)</td><td>Dulzor</td></tr><tr><td>Cacao en polvo alcalinizado</td><td>—</td><td>—</td><td>125 kg (1,2 %)</td><td>Sabor y color</td></tr><tr><td>Carragenina</td><td>—</td><td>—</td><td>2,6 kg (0,025 %)</td><td>Mantiene el cacao en suspensión</td></tr><tr><td>Producto por lote</td><td>≈ 10.000 L</td><td>≈ 10.000 L</td><td>≈ 10.250 kg (≈ 9.950 L)</td><td>2 % de merma en purgas y arranques</td></tr></tbody></table></div>
+  <h3>Procedimiento y parámetros</h3>
+<div class="tbl"><table><thead><tr><th>Fase</th><th>Máquina</th><th>Parámetros</th><th class="r">Tiempo por lote</th></tr></thead><tbody><tr><td>Mezclar y estandarizar</td><td>Tanque de mezcla L201 con tolva y mezclador de alto cizallamiento</td><td>Ajuste de grasa y sólidos; en LC se dispersan azúcar, cacao y carragenina a 60–65 °C</td><td class="r"><b>1,0 h</b> (0,5 h de lavado al cambiar de producto)</td></tr><tr><td>Homogeneizar y esterilizar</td><td>Planta UHT indirecta L202 (placas y tubos, 10.000 L/h) con homogeneizador aséptico</td><td>Homogeneización 200/50 bar a 70 °C · esterilización a <b>137 °C × 4 s</b> · enfriamiento a 20–25 °C</td><td class="r"><b>1,0 h</b></td></tr><tr><td>Guardar en estéril</td><td>Tanque aséptico L203 (20.000 L)</td><td>Presión positiva con aire estéril; alimenta la envasadora sin parar el UHT</td><td class="r">Pulmón</td></tr><tr><td>Envasar</td><td>Envasadora aséptica L311 (≈ 7.000 envases/h)</td><td>Esterilización del material con peróxido de hidrógeno; sellado de la caja de 1 L; tapa</td><td class="r"><b>2,0 h</b></td></tr><tr><td>Paletizar y liberar</td><td>Paletizado manual L341 · bodega ambiente L411</td><td>Retención por lote hasta la liberación: prueba rápida de esterilidad (24–48 h) y muestras incubadas 7 días a 30 °C</td><td class="r">24 h en el modelo</td></tr></tbody></table></div>
+  <p>Especificación: leche entera con ≥ 3,0 % de grasa y descremada con ≤ 0,5 %; esterilidad comercial; vida útil de 6 meses a temperatura ambiente sin abrir.</p>
+</section>
+<section id="fin">
+  <span class="eyebrow">05 · Fin de línea</span>
+  <h2>Cajas, estibas y despacho</h2>
+<div class="tbl"><table><thead><tr><th>Línea</th><th>Encajonado</th><th>Paletizado</th><th>Almacén</th><th>Despacho</th></tr></thead><tbody><tr><td>Yogures</td><td>Encajonadoras U321–U323</td><td>U341 (2 operarios en la planta actual) + envolvedora U342</td><td>Cámara U411 a 2–4 °C, reposo ≥ 12 h</td><td>Camión refrigerado a 2–6 °C</td></tr><tr><td>Quesos</td><td>A la salida de la empacadora Q311</td><td>Q341 manual, 2 operarios</td><td>Cámara de quesos Q411 a 2–4 °C</td><td>Camión refrigerado a 2–6 °C</td></tr><tr><td>Leche UHT</td><td>En la envasadora L311 (bandejas de 12)</td><td>L341 manual, 2 operarios</td><td>Bodega L411 a temperatura ambiente</td><td>Camión seco</td></tr></tbody></table></div></section>
+<section id="tiempos">
+  <span class="eyebrow">06 · Tiempos por lote (insumo de Tecnomatix)</span>
+  <h2>Programa semanal y tiempos por lote</h2>
+<div class="tbl"><table><thead><tr><th>Línea</th><th>Lotes por semana</th><th>Orden dentro del día</th><th>Etapas y tiempos por lote</th></tr></thead><tbody><tr><td>Yogures</td><td>35 (13 YN · 9 YG · 13 YF)</td><td>Natural → griego → fresa</td><td>U201 1,9 h · U202 1,2 h · fermentador 8,1–9,0 h · U215 1,1 h · llenado ≈ 3,5 h</td></tr><tr><td>Quesos</td><td>30 (10 QM · 10 QQ · 10 QD)</td><td>Mozzarella → quesillo → doble crema</td><td>Tina 3,5 h · hilado 1,0 h · salmuera 8,0 h · empaque 1,2 h · cámara 12 h</td></tr><tr><td>Leche UHT</td><td>26 (14 LE · 6 LD · 6 LC)</td><td>Entera → descremada → chocolate</td><td>Mezcla 1,0 h · UHT 1,0 h · envasado 2,0 h · retención 24 h</td></tr></tbody></table></div>
+  <p>En el modelo de la planta (12 semanas simuladas, con fallas) el tronco recibe ≈ 151.700 L/día, el cuello de botella sigue siendo la llenadora de vasos de yogur (88 %) y las líneas de quesos y leche UHT quedan holgadas: tinas al 24 %, hiladora al 27 % y envasadora aséptica al 40 %.</p>
+</section>
+<section id="haccp">
+  <span class="eyebrow">07 · Controles críticos</span>
+  <h2>Puntos críticos de control de la planta</h2>
+<div class="tbl"><table><thead><tr><th>PCC</th><th>Línea</th><th>Peligro</th><th>Límite crítico</th><th>Monitoreo y acción</th></tr></thead><tbody><tr><td>PCC-1</td><td>Tronco</td><td>Antibióticos en la leche</td><td>Prueba negativa</td><td>Kit rápido por cisterna; se rechaza</td></tr><tr><td>PCC-2</td><td>Tronco</td><td>Patógenos en la leche</td><td>≥ 72 °C × 15 s</td><td>Registro continuo y válvula de desvío</td></tr><tr><td>PCC-Y</td><td>Yogures</td><td>Ver el plan de la línea de yogures</td><td>92 °C × 5 min, pH, metales</td><td>Recetas de yogures v1.8, sección 9</td></tr><tr><td>PCC-Q1</td><td>Quesos</td><td>Metales en el producto</td><td>Sin metal ≥ patrón validado</td><td>Detector antes de Q311; se rechaza y reinspecciona</td></tr><tr><td>PC-Q</td><td>Quesos</td><td>Salmuera contaminada</td><td>NaCl 18–22 %, 8–12 °C</td><td>Medición por turno; filtrado y pasteurización de la salmuera</td></tr><tr><td>PCC-L1</td><td>Leche UHT</td><td>Supervivencia de esporas</td><td>≥ 137 °C × 4 s</td><td>Registro continuo; si baja, se desvía y se reprocesa</td></tr><tr><td>PCC-L2</td><td>Leche UHT</td><td>Contaminación del envase</td><td>Concentración y temperatura del H₂O₂ del fabricante</td><td>Registro continuo; el lote queda retenido</td></tr></tbody></table></div></section>
+<section id="fuentes">
+  <span class="eyebrow">08 · Supuestos y fuentes</span>
+  <h2>De dónde salen los números</h2>
+  <ul>
+    <li>Reparto de 150.000 L/día y cambio de kéfir por leche UHT: acta de Mekvra del 9 de octubre de 2026.</li>
+    <li>Leche y leche UHT: Decreto 616 de 2006 (Ministerio de la Protección Social), requisitos de la leche y tratamiento UAT de 135–150 °C por 2–4 s.</li>
+    <li>Derivados lácteos y quesos: Resolución 2310 de 1986 y NTC 750; mozzarella, norma Codex CXS 262-2006.</li>
+    <li>Procesos de queso de pasta hilada y de leche UHT: Tetra Pak, <i>Dairy Processing Handbook</i>, capítulos de queso y de leche de larga vida.</li>
+    <li>Rendimientos de queso (10, 9 y 7,5 L de leche por kg), dosis de cuajo y cultivo y vidas útiles: valores de diseño por confirmar con los proveedores y con pruebas piloto.</li>
+    <li>Tiempos por lote de quesos y leche UHT: supuestos de diseño, los mismos del modelo de Tecnomatix de la planta (<span class="mono">planta-150k/construir_planta.py</span>).</li>
+  </ul>
+</section>
+</main></div>
