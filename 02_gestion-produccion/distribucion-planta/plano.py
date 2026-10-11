@@ -95,9 +95,10 @@ MANT = [(83, 42, 10, 2), (83, 50, 4, 6)]
 # muros interiores (x1, y1, x2, y2) y vanos en ellos [(desde, hasta)] medidos a lo largo del muro
 # vano: (desde, hasta) = puerta de personas con su giro · (desde, hasta, 'p') = portón o paso de banda, sin hoja
 MUROS = [
-    ((40, 0, 40, 20), [(16, 19.5, 'p')]), ((0, 20, 40, 20), [(22, 25.5, 'p')]), ((0, 31, 40, 31), [(34, 37.5, 'p')]),
-    ((40, 23.5, 40, 60), [(2.5, 6, 'p')]), ((79, 0, 79, 20), []), ((95, 0, 95, 20), [(6.6, 8.4, 'p'), (10.9, 12.7, 'p'), (15.2, 17, 'p')]),
-    ((79, 20, 95, 20), [(6, 7.5)]), ((40, 23.5, 110, 23.5), [(7, 10.5, 'p'), (40, 43.5, 'p'), (61, 64.5, 'p')]),
+    # solo hay muros donde la función los exige (sala limpia, frío, bodegas, esclusa, CIP, mantenimiento, sala de control);
+    # recepción, tronco común, silos, preparación, fermentación, acondicionamiento, quesos y leche UHT son nave abierta
+    ((40, 45, 40, 60), []), ((79, 0, 79, 20), []), ((95, 0, 95, 20), [(6.6, 8.4, 'p'), (10.9, 12.7, 'p'), (15.2, 17, 'p')]),
+    ((79, 20, 95, 20), [(6, 7.5)]), ((67, 23.5, 110, 23.5), [(13, 16.5, 'p'), (34, 37.5, 'p')]),
     ((67, 23.5, 67, 45), []), ((67, 37.5, 95, 37.5), [(6, 7.5), (20, 21.5)]), ((81, 37.5, 81, 60), []),
     ((95, 23.5, 95, 60), [(25, 26.5)]), ((95, 46, 110, 46), [(3, 4.5)]), ((40, 45, 67, 45), [(8, 9.5), (24, 25.2)]),
     ((54, 45, 54, 60), [(4, 5.5)]), ((0, 52.5, 40, 52.5), [(35, 38.5, 'p')]),
@@ -189,6 +190,9 @@ def plano(h, enfoque=None, kicker='', titulo='', sub='', etiquetas_equipo=True):
     h.rect(X(x0), Y(y0), (x1 - x0) * PX, (y1 - y0) * PX, '#e9f5ec', 'none', 0)
     for xx in (x0, x1):
         h.line(X(xx), Y(y0), X(xx), Y(y1), '#3d8a52', 1.2, 'stroke-dasharray="6 4"')
+    # límites de área sin muro (línea fina discontinua)
+    for nom, x0_, y0_, x1_, y1_, _ in RECINTOS:
+        h.rect(X(x0_), Y(y0_), (x1_ - x0_) * PX, (y1_ - y0_) * PX, 'none', '#aab3bd', 0.9, 0, 'stroke-dasharray="2 4"')
     # equipos
     color_de = lambda l: LINEA[l] if (enfoque is None or l == enfoque or l == 'tronco') else GRIS
     for kind, (x, y, w, hh) in RACKS:
@@ -305,7 +309,7 @@ def plano(h, enfoque=None, kicker='', titulo='', sub='', etiquetas_equipo=True):
 
 def leyenda(h, x, y, enfoque=None):
     h.t(x, y, 'Convenciones', 15, ACC, 800, FD)
-    items = [('muro', 'Muro exterior (30 cm)'), ('int', 'Muro interior y puerta con su giro'), ('porton', 'Portón, o paso de banda en un muro'),
+    items = [('muro', 'Muro exterior (30 cm)'), ('int', 'Muro interior y puerta con su giro'), ('porton', 'Portón, o paso de banda en un muro'), ('limite', 'Límite de área sin muro (nave abierta)'),
              ('pasillo', 'Pasillo de montacargas (3,5 m)'), ('peatonal', 'Pasillo peatonal (1,2 m)'), ('libre', 'Piso libre')]
     for i, (k, s) in enumerate(items):
         yy = y + 24 + i * 22
@@ -313,6 +317,8 @@ def leyenda(h, x, y, enfoque=None):
             h.rect(x, yy - 9, 30, 9, 'url(#muro)', '#2a3440', 0.8)
         elif k == 'int':
             h.rect(x, yy - 6, 30, 3.5, '#2a3440', 'none', 0)
+        elif k == 'limite':
+            h.line(x, yy - 4, x + 30, yy - 4, '#aab3bd', 1, 'stroke-dasharray="2 4"')
         elif k == 'porton':
             h.line(x, yy - 4, x + 30, yy - 4, ACC, 2, 'stroke-dasharray="5 3"')
         elif k == 'pasillo':

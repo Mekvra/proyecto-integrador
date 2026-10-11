@@ -69,6 +69,24 @@
 <rect x="944.6" y="558.1" width="15.1" height="270.9" rx="0" fill="#e9f5ec" stroke="none" stroke-width="0" />
 <line x1="944.6" y1="558.1" x2="944.6" y2="829.0" stroke="#3d8a52" stroke-width="1.2" stroke-dasharray="6 4"/>
 <line x1="959.7" y1="558.1" x2="959.7" y2="829.0" stroke="#3d8a52" stroke-width="1.2" stroke-dasharray="6 4"/>
+<rect x="118.0" y="262.0" width="327.6" height="252.0" rx="0" fill="none" stroke="#aab3bd" stroke-width="0.9" stroke-dasharray="2 4"/>
+<rect x="445.6" y="262.0" width="176.4" height="252.0" rx="0" fill="none" stroke="#aab3bd" stroke-width="0.9" stroke-dasharray="2 4"/>
+<rect x="118.0" y="514.0" width="504.0" height="138.6" rx="0" fill="none" stroke="#aab3bd" stroke-width="0.9" stroke-dasharray="2 4"/>
+<rect x="622.0" y="262.0" width="151.2" height="252.0" rx="0" fill="none" stroke="#aab3bd" stroke-width="0.9" stroke-dasharray="2 4"/>
+<rect x="773.2" y="262.0" width="176.4" height="252.0" rx="0" fill="none" stroke="#aab3bd" stroke-width="0.9" stroke-dasharray="2 4"/>
+<rect x="949.6" y="262.0" width="163.8" height="252.0" rx="0" fill="none" stroke="#aab3bd" stroke-width="0.9" stroke-dasharray="2 4"/>
+<rect x="1113.4" y="262.0" width="201.6" height="252.0" rx="0" fill="none" stroke="#aab3bd" stroke-width="0.9" stroke-dasharray="2 4"/>
+<rect x="1315.0" y="262.0" width="189.0" height="252.0" rx="0" fill="none" stroke="#aab3bd" stroke-width="0.9" stroke-dasharray="2 4"/>
+<rect x="118.0" y="652.6" width="504.0" height="270.9" rx="0" fill="none" stroke="#aab3bd" stroke-width="0.9" stroke-dasharray="2 4"/>
+<rect x="118.0" y="923.5" width="504.0" height="94.5" rx="0" fill="none" stroke="#aab3bd" stroke-width="0.9" stroke-dasharray="2 4"/>
+<rect x="622.0" y="558.1" width="340.2" height="270.9" rx="0" fill="none" stroke="#aab3bd" stroke-width="0.9" stroke-dasharray="2 4"/>
+<rect x="962.2" y="558.1" width="352.8" height="176.4" rx="0" fill="none" stroke="#aab3bd" stroke-width="0.9" stroke-dasharray="2 4"/>
+<rect x="1315.0" y="558.1" width="189.0" height="283.5" rx="0" fill="none" stroke="#aab3bd" stroke-width="0.9" stroke-dasharray="2 4"/>
+<rect x="622.0" y="829.0" width="176.4" height="189.0" rx="0" fill="none" stroke="#aab3bd" stroke-width="0.9" stroke-dasharray="2 4"/>
+<rect x="798.4" y="829.0" width="163.8" height="189.0" rx="0" fill="none" stroke="#aab3bd" stroke-width="0.9" stroke-dasharray="2 4"/>
+<rect x="962.2" y="734.5" width="176.4" height="283.5" rx="0" fill="none" stroke="#aab3bd" stroke-width="0.9" stroke-dasharray="2 4"/>
+<rect x="1138.6" y="734.5" width="176.4" height="283.5" rx="0" fill="none" stroke="#aab3bd" stroke-width="0.9" stroke-dasharray="2 4"/>
+<rect x="1315.0" y="841.6" width="189.0" height="176.4" rx="0" fill="none" stroke="#aab3bd" stroke-width="0.9" stroke-dasharray="2 4"/>
 <rect x="1340.2" y="627.4" width="151.2" height="27.7" rx="0" fill="url(#rack)" stroke="#2b7bb0" stroke-width="1" />
 <rect x="1340.2" y="680.3" width="151.2" height="27.7" rx="0" fill="url(#rack)" stroke="#2b7bb0" stroke-width="1" />
 <rect x="1340.2" y="733.2" width="151.2" height="27.7" rx="0" fill="url(#rack)" stroke="#2b7bb0" stroke-width="1" />
@@ -200,18 +218,7 @@
 <text x="892.9" y="662.4" font-family="'IBM Plex Mono', Consolas, monospace" font-size="9" font-weight="600" fill="#9aa3ad" text-anchor="middle" >L311</text>
 <rect x="855.1" y="715.6" width="75.6" height="31.5" rx="1.5" fill="#eff0f2" stroke="#9aa3ad" stroke-width="1.2" />
 <text x="892.9" y="734.8" font-family="'IBM Plex Mono', Consolas, monospace" font-size="9" font-weight="600" fill="#9aa3ad" text-anchor="middle" >L341</text>
-<rect x="620.0" y="262.0" width="4.0" height="201.6" rx="0" fill="#2a3440" stroke="none" stroke-width="0" />
-<rect x="620.0" y="507.7" width="4.0" height="6.3" rx="0" fill="#2a3440" stroke="none" stroke-width="0" />
-<line x1="622.0" y1="463.6" x2="622.0" y2="507.7" stroke="#1f4e79" stroke-width="1.6" stroke-dasharray="4 3"/>
-<rect x="118.0" y="512.0" width="277.2" height="4.0" rx="0" fill="#2a3440" stroke="none" stroke-width="0" />
-<rect x="439.3" y="512.0" width="182.7" height="4.0" rx="0" fill="#2a3440" stroke="none" stroke-width="0" />
-<line x1="395.2" y1="514.0" x2="439.3" y2="514.0" stroke="#1f4e79" stroke-width="1.6" stroke-dasharray="4 3"/>
-<rect x="118.0" y="650.6" width="428.4" height="4.0" rx="0" fill="#2a3440" stroke="none" stroke-width="0" />
-<rect x="590.5" y="650.6" width="31.5" height="4.0" rx="0" fill="#2a3440" stroke="none" stroke-width="0" />
-<line x1="546.4" y1="652.6" x2="590.5" y2="652.6" stroke="#1f4e79" stroke-width="1.6" stroke-dasharray="4 3"/>
-<rect x="620.0" y="558.1" width="4.0" height="31.5" rx="0" fill="#2a3440" stroke="none" stroke-width="0" />
-<rect x="620.0" y="633.7" width="4.0" height="384.3" rx="0" fill="#2a3440" stroke="none" stroke-width="0" />
-<line x1="622.0" y1="589.6" x2="622.0" y2="633.7" stroke="#1f4e79" stroke-width="1.6" stroke-dasharray="4 3"/>
+<rect x="620.0" y="829.0" width="4.0" height="189.0" rx="0" fill="#2a3440" stroke="none" stroke-width="0" />
 <rect x="1111.4" y="262.0" width="4.0" height="252.0" rx="0" fill="#2a3440" stroke="none" stroke-width="0" />
 <rect x="1313.0" y="262.0" width="4.0" height="83.2" rx="0" fill="#2a3440" stroke="none" stroke-width="0" />
 <rect x="1313.0" y="367.8" width="4.0" height="31.5" rx="0" fill="#2a3440" stroke="none" stroke-width="0" />
@@ -223,11 +230,9 @@
 <rect x="1113.4" y="512.0" width="75.6" height="4.0" rx="0" fill="#2a3440" stroke="none" stroke-width="0" />
 <rect x="1207.9" y="512.0" width="107.1" height="4.0" rx="0" fill="#2a3440" stroke="none" stroke-width="0" />
 <path d="M1189.0,514.0 L1189.0,532.9 A18.9,18.9 0 0,0 1207.9,514.0" fill="none" stroke="#5b6876" stroke-width="0.8"/>
-<rect x="622.0" y="556.1" width="88.2" height="4.0" rx="0" fill="#2a3440" stroke="none" stroke-width="0" />
-<rect x="754.3" y="556.1" width="371.7" height="4.0" rx="0" fill="#2a3440" stroke="none" stroke-width="0" />
+<rect x="962.2" y="556.1" width="163.8" height="4.0" rx="0" fill="#2a3440" stroke="none" stroke-width="0" />
 <rect x="1170.1" y="556.1" width="220.5" height="4.0" rx="0" fill="#2a3440" stroke="none" stroke-width="0" />
 <rect x="1434.7" y="556.1" width="69.3" height="4.0" rx="0" fill="#2a3440" stroke="none" stroke-width="0" />
-<line x1="710.2" y1="558.1" x2="754.3" y2="558.1" stroke="#1f4e79" stroke-width="1.6" stroke-dasharray="4 3"/>
 <line x1="1126.0" y1="558.1" x2="1170.1" y2="558.1" stroke="#1f4e79" stroke-width="1.6" stroke-dasharray="4 3"/>
 <line x1="1390.6" y1="558.1" x2="1434.7" y2="558.1" stroke="#1f4e79" stroke-width="1.6" stroke-dasharray="4 3"/>
 <rect x="960.2" y="558.1" width="4.0" height="270.9" rx="0" fill="#2a3440" stroke="none" stroke-width="0" />
@@ -379,81 +384,83 @@
 <text x="1627.0" y="246.0" font-family="'IBM Plex Sans', 'Segoe UI', Arial, sans-serif" font-size="11.5" font-weight="400" fill="#14202b" text-anchor="start" >Muro interior y puerta con su giro</text>
 <line x1="1585.0" y1="264.0" x2="1615.0" y2="264.0" stroke="#1f4e79" stroke-width="2" stroke-dasharray="5 3"/>
 <text x="1627.0" y="268.0" font-family="'IBM Plex Sans', 'Segoe UI', Arial, sans-serif" font-size="11.5" font-weight="400" fill="#14202b" text-anchor="start" >Portón, o paso de banda en un muro</text>
-<rect x="1585.0" y="279.0" width="30.0" height="12.0" rx="0" fill="url(#pasillo)" stroke="#d9a400" stroke-width="1" />
-<text x="1627.0" y="290.0" font-family="'IBM Plex Sans', 'Segoe UI', Arial, sans-serif" font-size="11.5" font-weight="400" fill="#14202b" text-anchor="start" >Pasillo de montacargas (3,5 m)</text>
-<rect x="1585.0" y="301.0" width="30.0" height="12.0" rx="0" fill="#e9f5ec" stroke="#3d8a52" stroke-width="1" />
-<text x="1627.0" y="312.0" font-family="'IBM Plex Sans', 'Segoe UI', Arial, sans-serif" font-size="11.5" font-weight="400" fill="#14202b" text-anchor="start" >Pasillo peatonal (1,2 m)</text>
-<rect x="1585.0" y="323.0" width="30.0" height="12.0" rx="0" fill="#ffffff" stroke="#c9d2dc" stroke-width="1" />
-<text x="1627.0" y="334.0" font-family="'IBM Plex Sans', 'Segoe UI', Arial, sans-serif" font-size="11.5" font-weight="400" fill="#14202b" text-anchor="start" >Piso libre</text>
-<rect x="1585.0" y="351.0" width="30.0" height="12.0" rx="1.5" fill="#e5e7ec" stroke="#5a6987" stroke-width="1.2" />
-<text x="1627.0" y="362.0" font-family="'IBM Plex Sans', 'Segoe UI', Arial, sans-serif" font-size="11.5" font-weight="400" fill="#14202b" text-anchor="start" >Tronco común</text>
-<rect x="1585.0" y="373.0" width="30.0" height="12.0" rx="1.5" fill="#f5e0e6" stroke="#c33c64" stroke-width="1.2" />
-<text x="1627.0" y="384.0" font-family="'IBM Plex Sans', 'Segoe UI', Arial, sans-serif" font-size="11.5" font-weight="400" fill="#14202b" text-anchor="start" >Línea de yogures</text>
-<rect x="1585.0" y="395.0" width="30.0" height="12.0" rx="1.5" fill="#eff0f2" stroke="#9aa3ad" stroke-width="1.2" />
-<text x="1627.0" y="406.0" font-family="'IBM Plex Sans', 'Segoe UI', Arial, sans-serif" font-size="11.5" font-weight="400" fill="#14202b" text-anchor="start" >Línea de quesos (otra línea)</text>
+<line x1="1585.0" y1="286.0" x2="1615.0" y2="286.0" stroke="#aab3bd" stroke-width="1" stroke-dasharray="2 4"/>
+<text x="1627.0" y="290.0" font-family="'IBM Plex Sans', 'Segoe UI', Arial, sans-serif" font-size="11.5" font-weight="400" fill="#14202b" text-anchor="start" >Límite de área sin muro (nave abierta)</text>
+<rect x="1585.0" y="301.0" width="30.0" height="12.0" rx="0" fill="url(#pasillo)" stroke="#d9a400" stroke-width="1" />
+<text x="1627.0" y="312.0" font-family="'IBM Plex Sans', 'Segoe UI', Arial, sans-serif" font-size="11.5" font-weight="400" fill="#14202b" text-anchor="start" >Pasillo de montacargas (3,5 m)</text>
+<rect x="1585.0" y="323.0" width="30.0" height="12.0" rx="0" fill="#e9f5ec" stroke="#3d8a52" stroke-width="1" />
+<text x="1627.0" y="334.0" font-family="'IBM Plex Sans', 'Segoe UI', Arial, sans-serif" font-size="11.5" font-weight="400" fill="#14202b" text-anchor="start" >Pasillo peatonal (1,2 m)</text>
+<rect x="1585.0" y="345.0" width="30.0" height="12.0" rx="0" fill="#ffffff" stroke="#c9d2dc" stroke-width="1" />
+<text x="1627.0" y="356.0" font-family="'IBM Plex Sans', 'Segoe UI', Arial, sans-serif" font-size="11.5" font-weight="400" fill="#14202b" text-anchor="start" >Piso libre</text>
+<rect x="1585.0" y="373.0" width="30.0" height="12.0" rx="1.5" fill="#e5e7ec" stroke="#5a6987" stroke-width="1.2" />
+<text x="1627.0" y="384.0" font-family="'IBM Plex Sans', 'Segoe UI', Arial, sans-serif" font-size="11.5" font-weight="400" fill="#14202b" text-anchor="start" >Tronco común</text>
+<rect x="1585.0" y="395.0" width="30.0" height="12.0" rx="1.5" fill="#f5e0e6" stroke="#c33c64" stroke-width="1.2" />
+<text x="1627.0" y="406.0" font-family="'IBM Plex Sans', 'Segoe UI', Arial, sans-serif" font-size="11.5" font-weight="400" fill="#14202b" text-anchor="start" >Línea de yogures</text>
 <rect x="1585.0" y="417.0" width="30.0" height="12.0" rx="1.5" fill="#eff0f2" stroke="#9aa3ad" stroke-width="1.2" />
-<text x="1627.0" y="428.0" font-family="'IBM Plex Sans', 'Segoe UI', Arial, sans-serif" font-size="11.5" font-weight="400" fill="#14202b" text-anchor="start" >Línea de leche UHT (otra línea)</text>
-<rect x="1585.0" y="439.0" width="30.0" height="12.0" rx="1.5" fill="#e7e9eb" stroke="#6b7682" stroke-width="1.2" />
-<text x="1627.0" y="450.0" font-family="'IBM Plex Sans', 'Segoe UI', Arial, sans-serif" font-size="11.5" font-weight="400" fill="#14202b" text-anchor="start" >Servicios y almacén</text>
-<rect x="1585.0" y="461.0" width="30.0" height="12.0" rx="0" fill="url(#rack)" stroke="#9aa3ad" stroke-width="1" />
-<text x="1627.0" y="472.0" font-family="'IBM Plex Sans', 'Segoe UI', Arial, sans-serif" font-size="11.5" font-weight="400" fill="#14202b" text-anchor="start" >Estanterías</text>
-<circle cx="1600.0" cy="488.0" r="5" fill="#b4441b"/>
-<text x="1627.0" y="492.0" font-family="'IBM Plex Sans', 'Segoe UI', Arial, sans-serif" font-size="11.5" font-weight="400" fill="#14202b" text-anchor="start" >Operario de paletizado manual</text>
-<text x="1585.0" y="518.0" font-family="Archivo, 'Arial Narrow', Arial, sans-serif" font-size="15" font-weight="800" fill="#1f4e79" text-anchor="start" >Áreas y espacio libre</text>
-<text x="1585.0" y="542.0" font-family="'IBM Plex Mono', Consolas, monospace" font-size="10" font-weight="600" fill="#5b6876" text-anchor="start" >Recinto</text>
-<text x="1835.0" y="542.0" font-family="'IBM Plex Mono', Consolas, monospace" font-size="10" font-weight="600" fill="#5b6876" text-anchor="end" >m²</text>
-<text x="1915.0" y="542.0" font-family="'IBM Plex Mono', Consolas, monospace" font-size="10" font-weight="600" fill="#5b6876" text-anchor="end" >libre</text>
-<text x="1585.0" y="562.0" font-family="'IBM Plex Sans', 'Segoe UI', Arial, sans-serif" font-size="10.5" font-weight="400" fill="#14202b" text-anchor="start" >Silos</text>
-<text x="1835.0" y="562.0" font-family="'IBM Plex Mono', Consolas, monospace" font-size="10.5" font-weight="600" fill="#14202b" text-anchor="end" >440</text>
-<rect x="1847.0" y="553.0" width="40.0" height="9.0" rx="0" fill="#eef1f4" stroke="none" stroke-width="0" />
-<rect x="1847.0" y="553.0" width="35.3" height="9.0" rx="0" fill="#9fd0b0" stroke="none" stroke-width="0" />
-<text x="1915.0" y="562.0" font-family="'IBM Plex Mono', Consolas, monospace" font-size="10.5" font-weight="700" fill="#2e7d4f" text-anchor="end" >88 %</text>
-<text x="1585.0" y="581.0" font-family="'IBM Plex Sans', 'Segoe UI', Arial, sans-serif" font-size="10.5" font-weight="400" fill="#14202b" text-anchor="start" >Preparación</text>
-<text x="1835.0" y="581.0" font-family="'IBM Plex Mono', Consolas, monospace" font-size="10.5" font-weight="600" fill="#14202b" text-anchor="end" >240</text>
-<rect x="1847.0" y="572.0" width="40.0" height="9.0" rx="0" fill="#eef1f4" stroke="none" stroke-width="0" />
-<rect x="1847.0" y="572.0" width="33.2" height="9.0" rx="0" fill="#9fd0b0" stroke="none" stroke-width="0" />
-<text x="1915.0" y="581.0" font-family="'IBM Plex Mono', Consolas, monospace" font-size="10.5" font-weight="700" fill="#2e7d4f" text-anchor="end" >83 %</text>
-<text x="1585.0" y="600.0" font-family="'IBM Plex Sans', 'Segoe UI', Arial, sans-serif" font-size="10.5" font-weight="400" fill="#14202b" text-anchor="start" >Fermentación</text>
-<text x="1835.0" y="600.0" font-family="'IBM Plex Mono', Consolas, monospace" font-size="10.5" font-weight="600" fill="#14202b" text-anchor="end" >280</text>
-<rect x="1847.0" y="591.0" width="40.0" height="9.0" rx="0" fill="#eef1f4" stroke="none" stroke-width="0" />
-<rect x="1847.0" y="591.0" width="36.0" height="9.0" rx="0" fill="#9fd0b0" stroke="none" stroke-width="0" />
-<text x="1915.0" y="600.0" font-family="'IBM Plex Mono', Consolas, monospace" font-size="10.5" font-weight="700" fill="#2e7d4f" text-anchor="end" >90 %</text>
-<text x="1585.0" y="619.0" font-family="'IBM Plex Sans', 'Segoe UI', Arial, sans-serif" font-size="10.5" font-weight="400" fill="#14202b" text-anchor="start" >Acondicionamiento</text>
-<text x="1835.0" y="619.0" font-family="'IBM Plex Mono', Consolas, monospace" font-size="10.5" font-weight="600" fill="#14202b" text-anchor="end" >260</text>
-<rect x="1847.0" y="610.0" width="40.0" height="9.0" rx="0" fill="#eef1f4" stroke="none" stroke-width="0" />
-<rect x="1847.0" y="610.0" width="35.3" height="9.0" rx="0" fill="#9fd0b0" stroke="none" stroke-width="0" />
-<text x="1915.0" y="619.0" font-family="'IBM Plex Mono', Consolas, monospace" font-size="10.5" font-weight="700" fill="#2e7d4f" text-anchor="end" >88 %</text>
-<text x="1585.0" y="638.0" font-family="'IBM Plex Sans', 'Segoe UI', Arial, sans-serif" font-size="10.5" font-weight="400" fill="#14202b" text-anchor="start" >Envasado · sala limpia</text>
-<text x="1835.0" y="638.0" font-family="'IBM Plex Mono', Consolas, monospace" font-size="10.5" font-weight="600" fill="#14202b" text-anchor="end" >320</text>
-<rect x="1847.0" y="629.0" width="40.0" height="9.0" rx="0" fill="#eef1f4" stroke="none" stroke-width="0" />
-<rect x="1847.0" y="629.0" width="28.3" height="9.0" rx="0" fill="#9fd0b0" stroke="none" stroke-width="0" />
-<text x="1915.0" y="638.0" font-family="'IBM Plex Mono', Consolas, monospace" font-size="10.5" font-weight="700" fill="#2e7d4f" text-anchor="end" >71 %</text>
-<text x="1585.0" y="657.0" font-family="'IBM Plex Sans', 'Segoe UI', Arial, sans-serif" font-size="10.5" font-weight="400" fill="#14202b" text-anchor="start" >Paletizado</text>
-<text x="1835.0" y="657.0" font-family="'IBM Plex Mono', Consolas, monospace" font-size="10.5" font-weight="600" fill="#14202b" text-anchor="end" >300</text>
-<rect x="1847.0" y="648.0" width="40.0" height="9.0" rx="0" fill="#eef1f4" stroke="none" stroke-width="0" />
-<rect x="1847.0" y="648.0" width="28.0" height="9.0" rx="0" fill="#9fd0b0" stroke="none" stroke-width="0" />
-<text x="1915.0" y="657.0" font-family="'IBM Plex Mono', Consolas, monospace" font-size="10.5" font-weight="700" fill="#2e7d4f" text-anchor="end" >70 %</text>
-<text x="1585.0" y="676.0" font-family="'IBM Plex Sans', 'Segoe UI', Arial, sans-serif" font-size="10.5" font-weight="400" fill="#14202b" text-anchor="start" >Bodega de envases y fruta</text>
-<text x="1835.0" y="676.0" font-family="'IBM Plex Mono', Consolas, monospace" font-size="10.5" font-weight="600" fill="#14202b" text-anchor="end" >392</text>
-<rect x="1847.0" y="667.0" width="40.0" height="9.0" rx="0" fill="#eef1f4" stroke="none" stroke-width="0" />
-<rect x="1847.0" y="667.0" width="32.2" height="9.0" rx="0" fill="#9fd0b0" stroke="none" stroke-width="0" />
-<text x="1915.0" y="676.0" font-family="'IBM Plex Mono', Consolas, monospace" font-size="10.5" font-weight="700" fill="#2e7d4f" text-anchor="end" >80 %</text>
-<text x="1585.0" y="695.0" font-family="'IBM Plex Sans', 'Segoe UI', Arial, sans-serif" font-size="10.5" font-weight="400" fill="#14202b" text-anchor="start" >Cámara 2–4 °C</text>
-<text x="1835.0" y="695.0" font-family="'IBM Plex Mono', Consolas, monospace" font-size="10.5" font-weight="600" fill="#14202b" text-anchor="end" >338</text>
-<rect x="1847.0" y="686.0" width="40.0" height="9.0" rx="0" fill="#eef1f4" stroke="none" stroke-width="0" />
-<rect x="1847.0" y="686.0" width="27.5" height="9.0" rx="0" fill="#9fd0b0" stroke="none" stroke-width="0" />
-<text x="1915.0" y="695.0" font-family="'IBM Plex Mono', Consolas, monospace" font-size="10.5" font-weight="700" fill="#2e7d4f" text-anchor="end" >69 %</text>
-<text x="1585.0" y="714.0" font-family="'IBM Plex Sans', 'Segoe UI', Arial, sans-serif" font-size="10.5" font-weight="400" fill="#14202b" text-anchor="start" >Bodega de insumos</text>
-<text x="1835.0" y="714.0" font-family="'IBM Plex Mono', Consolas, monospace" font-size="10.5" font-weight="600" fill="#14202b" text-anchor="end" >210</text>
-<rect x="1847.0" y="705.0" width="40.0" height="9.0" rx="0" fill="#eef1f4" stroke="none" stroke-width="0" />
-<rect x="1847.0" y="705.0" width="31.2" height="9.0" rx="0" fill="#9fd0b0" stroke="none" stroke-width="0" />
-<text x="1915.0" y="714.0" font-family="'IBM Plex Mono', Consolas, monospace" font-size="10.5" font-weight="700" fill="#2e7d4f" text-anchor="end" >78 %</text>
-<line x1="1585.0" y1="729.0" x2="1915.0" y2="729.0" stroke="#14202b" stroke-width="0.8" />
-<text x="1585.0" y="743.0" font-family="'IBM Plex Sans', 'Segoe UI', Arial, sans-serif" font-size="11" font-weight="700" fill="#14202b" text-anchor="start" >Total</text>
-<text x="1835.0" y="743.0" font-family="'IBM Plex Mono', Consolas, monospace" font-size="11" font-weight="700" fill="#14202b" text-anchor="end" >2.780</text>
-<text x="1915.0" y="743.0" font-family="'IBM Plex Mono', Consolas, monospace" font-size="11" font-weight="800" fill="#2e7d4f" text-anchor="end" >80 %</text>
-<text x="1585.0" y="763.0" font-family="'IBM Plex Sans', 'Segoe UI', Arial, sans-serif" font-size="9.5" font-weight="400" fill="#5b6876" text-anchor="start" >Libre = área del recinto sin equipos ni estanterías;</text>
-<text x="1585.0" y="776.0" font-family="'IBM Plex Sans', 'Segoe UI', Arial, sans-serif" font-size="9.5" font-weight="400" fill="#5b6876" text-anchor="start" >incluye las zonas de operación y mantenimiento.</text>
+<text x="1627.0" y="428.0" font-family="'IBM Plex Sans', 'Segoe UI', Arial, sans-serif" font-size="11.5" font-weight="400" fill="#14202b" text-anchor="start" >Línea de quesos (otra línea)</text>
+<rect x="1585.0" y="439.0" width="30.0" height="12.0" rx="1.5" fill="#eff0f2" stroke="#9aa3ad" stroke-width="1.2" />
+<text x="1627.0" y="450.0" font-family="'IBM Plex Sans', 'Segoe UI', Arial, sans-serif" font-size="11.5" font-weight="400" fill="#14202b" text-anchor="start" >Línea de leche UHT (otra línea)</text>
+<rect x="1585.0" y="461.0" width="30.0" height="12.0" rx="1.5" fill="#e7e9eb" stroke="#6b7682" stroke-width="1.2" />
+<text x="1627.0" y="472.0" font-family="'IBM Plex Sans', 'Segoe UI', Arial, sans-serif" font-size="11.5" font-weight="400" fill="#14202b" text-anchor="start" >Servicios y almacén</text>
+<rect x="1585.0" y="483.0" width="30.0" height="12.0" rx="0" fill="url(#rack)" stroke="#9aa3ad" stroke-width="1" />
+<text x="1627.0" y="494.0" font-family="'IBM Plex Sans', 'Segoe UI', Arial, sans-serif" font-size="11.5" font-weight="400" fill="#14202b" text-anchor="start" >Estanterías</text>
+<circle cx="1600.0" cy="510.0" r="5" fill="#b4441b"/>
+<text x="1627.0" y="514.0" font-family="'IBM Plex Sans', 'Segoe UI', Arial, sans-serif" font-size="11.5" font-weight="400" fill="#14202b" text-anchor="start" >Operario de paletizado manual</text>
+<text x="1585.0" y="540.0" font-family="Archivo, 'Arial Narrow', Arial, sans-serif" font-size="15" font-weight="800" fill="#1f4e79" text-anchor="start" >Áreas y espacio libre</text>
+<text x="1585.0" y="564.0" font-family="'IBM Plex Mono', Consolas, monospace" font-size="10" font-weight="600" fill="#5b6876" text-anchor="start" >Recinto</text>
+<text x="1835.0" y="564.0" font-family="'IBM Plex Mono', Consolas, monospace" font-size="10" font-weight="600" fill="#5b6876" text-anchor="end" >m²</text>
+<text x="1915.0" y="564.0" font-family="'IBM Plex Mono', Consolas, monospace" font-size="10" font-weight="600" fill="#5b6876" text-anchor="end" >libre</text>
+<text x="1585.0" y="584.0" font-family="'IBM Plex Sans', 'Segoe UI', Arial, sans-serif" font-size="10.5" font-weight="400" fill="#14202b" text-anchor="start" >Silos</text>
+<text x="1835.0" y="584.0" font-family="'IBM Plex Mono', Consolas, monospace" font-size="10.5" font-weight="600" fill="#14202b" text-anchor="end" >440</text>
+<rect x="1847.0" y="575.0" width="40.0" height="9.0" rx="0" fill="#eef1f4" stroke="none" stroke-width="0" />
+<rect x="1847.0" y="575.0" width="35.3" height="9.0" rx="0" fill="#9fd0b0" stroke="none" stroke-width="0" />
+<text x="1915.0" y="584.0" font-family="'IBM Plex Mono', Consolas, monospace" font-size="10.5" font-weight="700" fill="#2e7d4f" text-anchor="end" >88 %</text>
+<text x="1585.0" y="603.0" font-family="'IBM Plex Sans', 'Segoe UI', Arial, sans-serif" font-size="10.5" font-weight="400" fill="#14202b" text-anchor="start" >Preparación</text>
+<text x="1835.0" y="603.0" font-family="'IBM Plex Mono', Consolas, monospace" font-size="10.5" font-weight="600" fill="#14202b" text-anchor="end" >240</text>
+<rect x="1847.0" y="594.0" width="40.0" height="9.0" rx="0" fill="#eef1f4" stroke="none" stroke-width="0" />
+<rect x="1847.0" y="594.0" width="33.2" height="9.0" rx="0" fill="#9fd0b0" stroke="none" stroke-width="0" />
+<text x="1915.0" y="603.0" font-family="'IBM Plex Mono', Consolas, monospace" font-size="10.5" font-weight="700" fill="#2e7d4f" text-anchor="end" >83 %</text>
+<text x="1585.0" y="622.0" font-family="'IBM Plex Sans', 'Segoe UI', Arial, sans-serif" font-size="10.5" font-weight="400" fill="#14202b" text-anchor="start" >Fermentación</text>
+<text x="1835.0" y="622.0" font-family="'IBM Plex Mono', Consolas, monospace" font-size="10.5" font-weight="600" fill="#14202b" text-anchor="end" >280</text>
+<rect x="1847.0" y="613.0" width="40.0" height="9.0" rx="0" fill="#eef1f4" stroke="none" stroke-width="0" />
+<rect x="1847.0" y="613.0" width="36.0" height="9.0" rx="0" fill="#9fd0b0" stroke="none" stroke-width="0" />
+<text x="1915.0" y="622.0" font-family="'IBM Plex Mono', Consolas, monospace" font-size="10.5" font-weight="700" fill="#2e7d4f" text-anchor="end" >90 %</text>
+<text x="1585.0" y="641.0" font-family="'IBM Plex Sans', 'Segoe UI', Arial, sans-serif" font-size="10.5" font-weight="400" fill="#14202b" text-anchor="start" >Acondicionamiento</text>
+<text x="1835.0" y="641.0" font-family="'IBM Plex Mono', Consolas, monospace" font-size="10.5" font-weight="600" fill="#14202b" text-anchor="end" >260</text>
+<rect x="1847.0" y="632.0" width="40.0" height="9.0" rx="0" fill="#eef1f4" stroke="none" stroke-width="0" />
+<rect x="1847.0" y="632.0" width="35.3" height="9.0" rx="0" fill="#9fd0b0" stroke="none" stroke-width="0" />
+<text x="1915.0" y="641.0" font-family="'IBM Plex Mono', Consolas, monospace" font-size="10.5" font-weight="700" fill="#2e7d4f" text-anchor="end" >88 %</text>
+<text x="1585.0" y="660.0" font-family="'IBM Plex Sans', 'Segoe UI', Arial, sans-serif" font-size="10.5" font-weight="400" fill="#14202b" text-anchor="start" >Envasado · sala limpia</text>
+<text x="1835.0" y="660.0" font-family="'IBM Plex Mono', Consolas, monospace" font-size="10.5" font-weight="600" fill="#14202b" text-anchor="end" >320</text>
+<rect x="1847.0" y="651.0" width="40.0" height="9.0" rx="0" fill="#eef1f4" stroke="none" stroke-width="0" />
+<rect x="1847.0" y="651.0" width="28.3" height="9.0" rx="0" fill="#9fd0b0" stroke="none" stroke-width="0" />
+<text x="1915.0" y="660.0" font-family="'IBM Plex Mono', Consolas, monospace" font-size="10.5" font-weight="700" fill="#2e7d4f" text-anchor="end" >71 %</text>
+<text x="1585.0" y="679.0" font-family="'IBM Plex Sans', 'Segoe UI', Arial, sans-serif" font-size="10.5" font-weight="400" fill="#14202b" text-anchor="start" >Paletizado</text>
+<text x="1835.0" y="679.0" font-family="'IBM Plex Mono', Consolas, monospace" font-size="10.5" font-weight="600" fill="#14202b" text-anchor="end" >300</text>
+<rect x="1847.0" y="670.0" width="40.0" height="9.0" rx="0" fill="#eef1f4" stroke="none" stroke-width="0" />
+<rect x="1847.0" y="670.0" width="28.0" height="9.0" rx="0" fill="#9fd0b0" stroke="none" stroke-width="0" />
+<text x="1915.0" y="679.0" font-family="'IBM Plex Mono', Consolas, monospace" font-size="10.5" font-weight="700" fill="#2e7d4f" text-anchor="end" >70 %</text>
+<text x="1585.0" y="698.0" font-family="'IBM Plex Sans', 'Segoe UI', Arial, sans-serif" font-size="10.5" font-weight="400" fill="#14202b" text-anchor="start" >Bodega de envases y fruta</text>
+<text x="1835.0" y="698.0" font-family="'IBM Plex Mono', Consolas, monospace" font-size="10.5" font-weight="600" fill="#14202b" text-anchor="end" >392</text>
+<rect x="1847.0" y="689.0" width="40.0" height="9.0" rx="0" fill="#eef1f4" stroke="none" stroke-width="0" />
+<rect x="1847.0" y="689.0" width="32.2" height="9.0" rx="0" fill="#9fd0b0" stroke="none" stroke-width="0" />
+<text x="1915.0" y="698.0" font-family="'IBM Plex Mono', Consolas, monospace" font-size="10.5" font-weight="700" fill="#2e7d4f" text-anchor="end" >80 %</text>
+<text x="1585.0" y="717.0" font-family="'IBM Plex Sans', 'Segoe UI', Arial, sans-serif" font-size="10.5" font-weight="400" fill="#14202b" text-anchor="start" >Cámara 2–4 °C</text>
+<text x="1835.0" y="717.0" font-family="'IBM Plex Mono', Consolas, monospace" font-size="10.5" font-weight="600" fill="#14202b" text-anchor="end" >338</text>
+<rect x="1847.0" y="708.0" width="40.0" height="9.0" rx="0" fill="#eef1f4" stroke="none" stroke-width="0" />
+<rect x="1847.0" y="708.0" width="27.5" height="9.0" rx="0" fill="#9fd0b0" stroke="none" stroke-width="0" />
+<text x="1915.0" y="717.0" font-family="'IBM Plex Mono', Consolas, monospace" font-size="10.5" font-weight="700" fill="#2e7d4f" text-anchor="end" >69 %</text>
+<text x="1585.0" y="736.0" font-family="'IBM Plex Sans', 'Segoe UI', Arial, sans-serif" font-size="10.5" font-weight="400" fill="#14202b" text-anchor="start" >Bodega de insumos</text>
+<text x="1835.0" y="736.0" font-family="'IBM Plex Mono', Consolas, monospace" font-size="10.5" font-weight="600" fill="#14202b" text-anchor="end" >210</text>
+<rect x="1847.0" y="727.0" width="40.0" height="9.0" rx="0" fill="#eef1f4" stroke="none" stroke-width="0" />
+<rect x="1847.0" y="727.0" width="31.2" height="9.0" rx="0" fill="#9fd0b0" stroke="none" stroke-width="0" />
+<text x="1915.0" y="736.0" font-family="'IBM Plex Mono', Consolas, monospace" font-size="10.5" font-weight="700" fill="#2e7d4f" text-anchor="end" >78 %</text>
+<line x1="1585.0" y1="751.0" x2="1915.0" y2="751.0" stroke="#14202b" stroke-width="0.8" />
+<text x="1585.0" y="765.0" font-family="'IBM Plex Sans', 'Segoe UI', Arial, sans-serif" font-size="11" font-weight="700" fill="#14202b" text-anchor="start" >Total</text>
+<text x="1835.0" y="765.0" font-family="'IBM Plex Mono', Consolas, monospace" font-size="11" font-weight="700" fill="#14202b" text-anchor="end" >2.780</text>
+<text x="1915.0" y="765.0" font-family="'IBM Plex Mono', Consolas, monospace" font-size="11" font-weight="800" fill="#2e7d4f" text-anchor="end" >80 %</text>
+<text x="1585.0" y="785.0" font-family="'IBM Plex Sans', 'Segoe UI', Arial, sans-serif" font-size="9.5" font-weight="400" fill="#5b6876" text-anchor="start" >Libre = área del recinto sin equipos ni estanterías;</text>
+<text x="1585.0" y="798.0" font-family="'IBM Plex Sans', 'Segoe UI', Arial, sans-serif" font-size="9.5" font-weight="400" fill="#5b6876" text-anchor="start" >incluye las zonas de operación y mantenimiento.</text>
 <rect x="1575.0" y="1236.0" width="385.0" height="150.0" rx="6" fill="#f6f8fa" stroke="#c9d2dc" stroke-width="1" />
 <text x="1591.0" y="1260.0" font-family="'IBM Plex Mono', Consolas, monospace" font-size="9.5" font-weight="600" fill="#5b6876" text-anchor="start" >PROYECTO</text>
 <text x="1591.0" y="1278.0" font-family="'IBM Plex Sans', 'Segoe UI', Arial, sans-serif" font-size="12" font-weight="700" fill="#14202b" text-anchor="start" >Proyecto integrador APM 2026-2S · UNAL</text>
