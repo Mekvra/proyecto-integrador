@@ -144,7 +144,7 @@ P = [
     ('FERMENTACIÓN', '4 × 12.000 L', [('C/T', '8,1–9,0 h ciclo'), ('C/O', 'CIP-F 0,75 h'), ('Disp.', '100 %'), ('Uso', pct('U211_Fermentador')), ('Op.', '2')]),
     ('ACONDICIONAM.', 'U215 · U216 · pulmones', [('C/T', '1,0–1,7 h/lote'), ('C/O', 'CIP 1/día'), ('Disp.', '98 %'), ('Uso', f'{pct("U215_Enfriamiento")} · {pct("U216_Separador_griego")}'), ('Op.', '—')]),
     ('ENVASADO', 'U311 · U312 · U313', [('C/T', '≈ 3,5 h/lote'), ('C/O', 'formato 0,75 h'), ('OEE', '≈ 70 %'), ('Uso', f'{pct("U311_Vasos")} · {pct("U312_Botellas")} · {pct("U313_Griego")}'), ('Op.', '4')]),
-    ('FIN DE LÍNEA', 'U321–U323 · U341 manual' if MANUAL else 'U321–U323 · U341 · U342', [('C/T', '108 s/bulto' if MANUAL else 'en línea'), ('C/O', '—'), ('Disp.', '100 %'),
+    ('FIN DE LÍNEA', 'U321–U323 · U341 manual' if MANUAL else 'U321–U323 · U341 · U342', [('C/T', '150 s/bulto' if MANUAL else 'en línea'), ('C/O', '—'), ('Disp.', '100 %'),
      ('Uso', f'{pct("U321_Encajonadora_vasos")} · {pct("U341_Paletizado")}' if MANUAL else f'{pct("U321_Encajonadora_vasos")} · {pct("U342_Envolvedora")}'), ('Op.', '2 a mano' if MANUAL else '2')]),
 ]
 XS = [X0 + i * (BW + GAP) for i in range(len(P))]
@@ -216,7 +216,7 @@ notas = [
     'Fuentes: recetas v1.8 (tiempos de ciclo, OEE, personal) y Tecnomatix Plant Simulation, 12 semanas simuladas (uso de equipos). C/T por lote de 10.000 L; uso = trabajo + alistamiento + fallas.',
 ]
 if MANUAL:
-    notas[1] = (f'Paletizado manual: 2 operarios estiban cada bulto de cajas en ≈ 108 s; quedan al {pct("U341_Paletizado")} del tiempo, casi al límite: una pausa o una '
+    notas[1] = (f'Paletizado manual: 2 operarios estiban cada bulto de cajas en ≈ 150 s; quedan al {pct("U341_Paletizado")} del tiempo, casi al límite: una pausa o una '
                 'ausencia llena las bandas y frena las encajonadoras. La celda robotizada (kaizen) elimina ese riesgo.')
 for i, s in enumerate(notas):
     t(60, yN + 50 + 20 * i, s, 12, INK)

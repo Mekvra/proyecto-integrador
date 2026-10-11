@@ -180,7 +180,7 @@ banda('Banda_cajas_botellas', 'Conveyor', 1676, Y0 - 20, [(0, 5.7)], VEL_BANDA)
 banda('Banda_cajas_griego', 'Conveyor', 1676, Y0 + 90, [(0, 2.2), (-90, 4.0), (90, 3.5)], VEL_BANDA)
 CON += [('U321_Encajonadora_vasos', 'Banda_cajas_vasos'), ('U322_Encajonadora_botellas', 'Banda_cajas_botellas'),
         ('U323_Encajonadora_griego', 'Banda_cajas_griego')]
-obj('U341_Paletizado', MF + '.PickAndPlace', 1830, Y0 - 20)                  # robot real: toma cada caja de su banda y la deja en la estiba
+obj('U341_Paletizado', MF + '.Station', 1830, Y0 - 20, 150 / 3600, 'vsm_paletizado')   # paletizado MANUAL (estado actual): 2 operarios, ≈ 150 s por bulto
 obj('U342_Envolvedora', MF + '.Station', 1920, Y0 - 20, SUP['paletizado'], 'vsm_paletizado')
 obj('U411_Camara', MF + '.Buffer', 2080, Y0, icon='vsm_camara', extra=['@.Capacity := -1', f'@.ProcTime := {h(SUP["camara"])}'])
 CON += [('Banda_cajas_vasos', 'U341_Paletizado'), ('Banda_cajas_botellas', 'U341_Paletizado'), ('Banda_cajas_griego', 'U341_Paletizado'),

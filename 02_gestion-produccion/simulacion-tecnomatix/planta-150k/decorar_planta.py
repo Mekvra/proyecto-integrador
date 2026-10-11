@@ -9,7 +9,7 @@ import os, sys, json
 
 D = os.path.dirname(os.path.abspath(__file__))
 C = json.load(open(os.path.join(D, 'coords_planta.json'), encoding='utf-8'))
-MANUAL = os.environ.get('PALETIZADO') == 'manual'      # variante con paletizado por personas (sin robot)
+MANUAL = os.environ.get('PALETIZADO', 'manual') == 'manual'   # estado actual: paletizado de yogures por personas (sin robot)
 COORD, SECC, Y0, YQ, YL = C['coord'], C['secciones'], C['Y0'], C['YQ'], C['YL']
 LIB = r'C:\Program Files\Siemens\Tecnomatix Plant Simulation 2404\3D\jt-graphics' + '\\'
 FRESA, NATURAL, GRIEGO = (236, 112, 140), (95, 150, 215), (215, 175, 70)
@@ -614,7 +614,7 @@ ORD.append('\n'.join(f'.MUs.{c}._3D.ScaleAutomatically := false' for c in ['Mont
 OCULTAR = ['U113_Leche_cruda', 'U123AB_Silo_entera', 'U123C_Silo_descremada', 'U201_Formulacion', 'U202_Tratamiento',
            'U121_Pasteurizador', 'U215_Enfriamiento', 'U216_Separador_griego', 'U214A_Pulmon_fresa', 'U214B_Pulmon_natural',
            'U217_Pulmones_griego', 'U311_Vasos', 'U312_Botellas', 'U313_Griego', 'U411_Camara',
-           'U321_Encajonadora_vasos', 'U322_Encajonadora_botellas', 'U323_Encajonadora_griego', 'U342_Envolvedora',
+           'U321_Encajonadora_vasos', 'U322_Encajonadora_botellas', 'U323_Encajonadora_griego', 'U342_Envolvedora', 'U341_Paletizado',
            'U111_Recepcion', 'Cisternas', 'Reparto_fresa', 'Reparto_natural', 'Reparto_griego', 'Registro_de_lotes',
            'Programa_semanal', 'U124_Silo_quesos', 'U125_Silo_leche', 'Q301_Hilado', 'Q302_Salmuera', 'Q311_Empaque_vacio',
            'Q312_Registro', 'Q341_Paletizado', 'Q411_Camara_quesos', 'Despacho_quesos', 'L201_Mezcla', 'L202_UHT', 'L203_Tanque_aseptico',
