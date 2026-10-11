@@ -61,7 +61,7 @@ LINEAS = [
         ('FERMENTACIÓN', '4 × 12.000 L', '8,1–9,0 h', pct('U211_Fermentador')),
         ('ACONDICIONAM.', 'U215 · U216 · pulmones', '1,0–1,7 h', pct('U215_Enfriamiento')),
         ('ENVASADO', 'U311 · U312 · U313', '≈ 3,5 h', pct('U311_Vasos')),
-        ('FIN DE LÍNEA', 'encajonado · robot U341', 'en línea', pct('U321_Encajonadora_vasos'))],
+        ('FIN DE LÍNEA', 'U341 manual · 2 op.', '150 s/bulto', pct('U341_Paletizado'))],
      ('≤ 8 h', 'pulmones', 2), ('≥ 12 h', 'cámara 2–4 °C'), 3, (35.4, 10.45),
      f'{miles(R["vasos_U311_dia"])} vasos · {miles(R["botellas_U312_dia"])} botellas · {miles(R["griego_U313_dia"])} griego'),
     ('QUESOS', '≈ 49.400 L/día · 30 lotes/semana', Q, QS, [

@@ -115,8 +115,8 @@
    "trabajando": 0.1873,
    "cambio": 0.0,
    "falla": 0.0015,
-   "bloqueado": 0.0063,
-   "esperando": 0.8048,
+   "bloqueado": 0.0108,
+   "esperando": 0.8004,
    "ocupado": 0.1888
   },
   "U216_Separador_griego": {
@@ -128,68 +128,68 @@
    "ocupado": 0.1077
   },
   "U311_Vasos": {
-   "trabajando": 0.7237,
-   "cambio": 0.0703,
+   "trabajando": 0.7235,
+   "cambio": 0.072,
    "falla": 0.0785,
-   "bloqueado": 0.0,
-   "esperando": 0.1275,
-   "ocupado": 0.8725
+   "bloqueado": 0.0104,
+   "esperando": 0.1156,
+   "ocupado": 0.874
   },
   "U312_Botellas": {
    "trabajando": 0.4496,
-   "cambio": 0.168,
+   "cambio": 0.1688,
    "falla": 0.0537,
-   "bloqueado": 0.0,
-   "esperando": 0.3287,
-   "ocupado": 0.6713
+   "bloqueado": 0.0007,
+   "esperando": 0.3271,
+   "ocupado": 0.6721
   },
   "U313_Griego": {
    "trabajando": 0.3041,
    "cambio": 0.0929,
    "falla": 0.0252,
-   "bloqueado": 0.0,
-   "esperando": 0.5778,
+   "bloqueado": 0.0003,
+   "esperando": 0.5776,
    "ocupado": 0.4222
   },
   "U321_Encajonadora_vasos": {
-   "trabajando": 0.5055,
+   "trabajando": 0.5053,
    "cambio": 0.0,
    "falla": 0.0,
-   "bloqueado": 0.0,
-   "esperando": 0.4945,
-   "ocupado": 0.5055
+   "bloqueado": 0.0208,
+   "esperando": 0.4739,
+   "ocupado": 0.5053
   },
   "U322_Encajonadora_botellas": {
    "trabajando": 0.3141,
    "cambio": 0.0,
    "falla": 0.0,
-   "bloqueado": 0.0,
-   "esperando": 0.6859,
+   "bloqueado": 0.0016,
+   "esperando": 0.6843,
    "ocupado": 0.3141
   },
   "U323_Encajonadora_griego": {
    "trabajando": 0.2124,
    "cambio": 0.0,
    "falla": 0.0,
-   "bloqueado": 0.0,
-   "esperando": 0.7876,
+   "bloqueado": 0.0006,
+   "esperando": 0.787,
    "ocupado": 0.2124
   },
   "U341_Paletizado": {
-   "trabajando": 0.0559,
-   "cambio": 0.0,
-   "falla": 0.0,
-   "bloqueado": 0.0284,
-   "esperando": 0.9157,
-   "ocupado": 0.0559
-  },
-  "U342_Envolvedora": {
-   "trabajando": 0.391,
+   "trabajando": 0.8144,
    "cambio": 0.0,
    "falla": 0.0,
    "bloqueado": 0.0,
-   "esperando": 0.609,
-   "ocupado": 0.391
+   "esperando": 0.1856,
+   "ocupado": 0.8144
+  },
+  "U342_Envolvedora": {
+   "trabajando": 0.3909,
+   "cambio": 0.0,
+   "falla": 0.0,
+   "bloqueado": 0.0,
+   "esperando": 0.6091,
+   "ocupado": 0.3909
   },
   "Q201_Tina": {
    "trabajando": 0.2431,
