@@ -215,18 +215,6 @@ t(1572, YT + 138, '(30 % del lead time)', 12, G)
 # ---------------- pie ----------------
 t(36, H - 70, 'C/T y C/O por lote de 10.000 L, según las recetas v1.8. Uso = trabajo + alistamiento + fallas, de la simulación de 12 semanas.', 12.5, G)
 t(36, H - 50, 'La espera en pulmones (≤ 8 h) no se suma al lead time: el lote se envasa mientras el siguiente fermenta.', 12.5, G)
-# cajetín
-cx0, cy0 = 1290, H - 104
-rect(cx0, cy0, 496, 90, '#fff', K, 1.2)
-line(cx0, cy0 + 30, cx0 + 496, cy0 + 30, 1)
-line(cx0, cy0 + 60, cx0 + 496, cy0 + 60, 1)
-line(cx0 + 300, cy0 + 30, cx0 + 300, cy0 + 90, 1)
-t(cx0 + 10, cy0 + 21, 'Mekvra · Grupo 6 · Automatización de Procesos de Manufactura 2026-2S · UNAL', 12, K, 700)
-t(cx0 + 10, cy0 + 51, 'VSM estado actual · línea de yogures', 12.5)
-t(cx0 + 310, cy0 + 51, 'Paletizado manual', 12.5)
-t(cx0 + 10, cy0 + 81, 'Elaboró: J. Carreño', 12.5)
-t(cx0 + 310, cy0 + 81, '12-oct-2026', 12.5)
-
 defs = (f'<defs><marker id="p" markerWidth="12" markerHeight="12" refX="10" refY="5" orient="auto" markerUnits="userSpaceOnUse">'
         f'<path d="M0,0 L10,5 L0,10 z" fill="{K}"/></marker></defs>')
 svg = f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" width="{W}" height="{H}">{defs}' + '\n'.join(s for s in S if s) + '</svg>'

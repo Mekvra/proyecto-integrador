@@ -39,7 +39,6 @@ def hoja(titulo, sub):
 h = hoja('Diagrama de espagueti – estado actual', 'Línea de yogures · recorridos que se repiten cada día (viajes estimados para ≈ 57.600 L/día de leche a yogures)')
 filas, tot_act = P.espagueti(h, P.ACTUAL, False)
 P.tabla_rutas(h, filas, tot_act, 1585, 200, False)
-rotulo(h, 'Espagueti · línea de yogures, estado actual', 'hoja 1/2')
 h.svg('espagueti_linea_yogures_actual_clasico', 'Espagueti actual')
 
 h = hoja('Diagrama de espagueti – con la propuesta', 'Línea de yogures · robot en U341, llenadora FFS, pH en línea y registro en el MES')
@@ -49,6 +48,22 @@ h.t(1585, y + 4, 'Qué cambia', 15, '#000', 700, A)
 for i, s in enumerate(['Robot en U341: nadie estiba cajas a mano.', 'FFS: bobinas en lugar de vasos preformados.',
                        'pH en línea en el MES: el analista solo verifica.', 'MES: el supervisor deja las planillas.']):
     h.t(1585, y + 28 + i * 18, s, 11.5, '#000', 400, A)
-rotulo(h, 'Espagueti · línea de yogures, propuesta', 'hoja 2/2')
 h.svg('espagueti_linea_yogures_propuesto_clasico', 'Espagueti propuesto')
+
+# layout de la planta (tres líneas) y de la línea de yogures en el mismo formato, con el color de cada línea en el contorno
+P.LINEA = {'tronco': '#000000', 'yogur': '#c33c64', 'queso': '#a37c12', 'uht': '#3d8a52', 'serv': '#6b7682', 'frio': '#2b7bb0'}
+for nombre, enf, tit, sub in (('layout_planta_3_lineas_clasico', None, 'Distribución en planta – tres líneas',
+                               'Edificio de 110 × 60 m · yogures, quesos y leche UHT · 150.000 L/día · paletizado manual'),
+                              ('layout_linea_yogures_actual_clasico', 'yogur', 'Distribución en planta – línea de yogures',
+                               'La línea de yogures en color y las demás áreas en gris · paletizado manual con dos operarios')):
+    h = P.Hoja()
+    P.plano(h, enf, '', tit, sub)
+    h.S = [s.replace('rx="10"', 'rx="0"').replace('font-size="30" font-weight="800"', 'font-size="26" font-weight="700"') for s in h.S if 'Mekvra · APM 2026-2S · UNAL' not in s]
+    for px_, py_ in ((98.3, 12.6), (100.8, 12.6)):
+        h.S.append(f'<circle cx="{P.X(px_):.1f}" cy="{P.Y(py_):.1f}" r="5" fill="#c00000"/>')
+    y = P.leyenda(h, 1585, 200, enf)
+    h.S.append(f'<circle cx="1600" cy="{y - 14:.1f}" r="5" fill="#c00000"/>')
+    h.t(1627, y - 10, 'Operario de paletizado manual', 11.5, '#000', 400, A)
+    P.tabla_areas(h, 1585, y + 16)
+    h.svg(nombre, tit)
 print('ok', round(tot_act), round(tot_pro))
