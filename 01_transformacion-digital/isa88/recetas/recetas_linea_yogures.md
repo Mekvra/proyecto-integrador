@@ -6,7 +6,7 @@
 |---|---|
 | 1.8 | 10 de octubre de 2026 |
 
-Recetas en formato ISA-88 (IEC 61512) para los tres productos de la línea escogida en el acta del 7 de octubre: **yogur con fresa, yogur natural y yogur griego**. Cubren todo el recorrido, desde que la cisterna llega a la planta hasta el despacho. Todas las cifras de balance y de tiempos salen de [`balance_recetas_yogures.py`](balance_recetas_yogures.py), que escribe [`recetas_yogures.json`](recetas_yogures.json) y comprueba que cierren la masa total, la grasa y la proteína. El nuevo modelo de Tecnomatix de la línea de yogures leerá ese mismo archivo; el modelo actual de Tecnomatix es de la planta anterior, de tres líneas.
+Recetas en formato ISA-88 (IEC 61512) para los tres productos de la línea escogida en el acta del 7 de octubre: **yogur con fresa, yogur natural y yogur griego**. Cubren todo el recorrido, desde que la cisterna llega a la planta hasta el despacho. El nuevo modelo de Tecnomatix de la línea de yogures leerá ese mismo archivo; el modelo actual de Tecnomatix es de la planta anterior, de tres líneas.
 
 > Todas las cantidades son **valores de diseño**: los parámetros vienen de la literatura técnica y de la normativa citadas, y la composición de las materias primas es un supuesto declarado (sección 1). Se reemplazan por los datos del proveedor y por mediciones cuando existan. Ningún valor es un resultado medido en planta.
 
@@ -545,7 +545,7 @@ La recepción, la clarificación, la estandarización y la pasteurización son *
 | Clarificación, estandarización y pasteurización | U121 + U122 a 20.000 L/h | 7,5 h de proceso + 2 CIP-C (≈ 2,8 h) + arranques (≈ 0,5 h) = **10,8 h/día** | **45 %** |
 | Leche pasteurizada | U123A/B y U123C (yogures), U124 (quesos), U125 (leche UHT) | Máximo 24 h. Con 80.000 L/día los silos de yogures mueven ≈ 36.700 L al día y alcanzan, aun con uno en lavado | — |
 
-- **El tronco queda holgado:** bastan los dos tanques existentes. El tercer tanque U115 que se había propuesto para 300.000 L/día ya no hace falta. Simulación hora a hora en `tanques_150k.py`.
+- **El tronco queda holgado:** bastan los dos tanques existentes. El tercer tanque U115 que se había propuesto para 300.000 L/día ya no hace falta.
 - **Supuestos:** dos olas de recolección (60 % entre 05:00 y 11:00 y 40 % entre 14:00 y 18:00) y cisterna media de 20.000 L; se confirman con la logística de acopio.
 - **En Tecnomatix** (`02_gestion-produccion/simulacion-tecnomatix/planta-150k/`): el tronco recibe los lotes de las tres líneas, ≈ 151.700 L/día, con el pasteurizador al 32 % sin contar arranques.
 
@@ -603,8 +603,6 @@ Cada riesgo de las recetas se investigó en fuentes primarias. La tabla muestra 
 | 13 | Mezcla 3/3/2 y destino del suero y la crema | Son decisiones del equipo y del negocio | Siguen como propuesta | Acta del equipo |
 
 ### 13.1 Sensibilidad a la composición de la leche cruda
-
-Calculada con [`sensibilidad_leche.py`](sensibilidad_leche.py), que recalcula el balance completo para cada leche sin tocar `recetas_yogures.json`.
 
 | Leche cruda | Grasa / proteína / SNG | Grasa YF · YN | Proteína YF | LPD YF · YN (kg/lote) | Griego (kg/lote) | Crema propia sobrante (kg/día) |
 |---|---|---|---|---|---|---|

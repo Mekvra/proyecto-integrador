@@ -68,7 +68,7 @@ B.append('''<div class="wrap">
   <h1>Planta láctea de Lácteos Altos de Teusacá</h1>
   <p>Tres líneas sobre un mismo tronco común: yogures, quesos y leche UHT. Para cada producto, la fórmula por lote, las etapas con sus parámetros, las máquinas que las hacen y los controles que no se pueden saltar.</p>
   <div class="meta"><span>Versión <b>1.0</b></span><span>Fecha <b>10 oct 2026</b></span><span>Base <b>acta del 9-oct-2026</b></span></div>
-  <p class="note">Todas las cantidades son valores de diseño de Mekvra, no resultados medidos en planta. Las tres recetas de yogur están completas en <span class="mono">Recetas_linea_yogures_v1.8.pdf</span>. Las de quesos y leche UHT son recetas básicas: sus parámetros salen de Tetra Pak, el Codex y la normativa colombiana, y se afinan cuando el equipo defina cada producto. Los tiempos por lote son los mismos del modelo de Tecnomatix de la planta.</p>
+  <p class="note">Todas las cantidades son valores de diseño de Mekvra, no resultados medidos en planta. Las de quesos y leche UHT son recetas básicas: sus parámetros salen de Tetra Pak, el Codex y la normativa colombiana, y se afinan cuando el equipo defina cada producto.</p>
 </header>
 ''')
 
@@ -107,13 +107,13 @@ B.append('''<section id="tronco">
     ['Pasteurización HTST', 'Intercambiador de placas U122, 20.000 L/h', '≥ 72 °C × 15 s (75 °C de diseño) y enfriamiento a ≤ 4 °C', '<b>PCC-2:</b> registro de temperatura y válvula de desvío'],
     ['Silos de leche pasteurizada', 'U123A/B y U123C (yogures) · U124 (quesos) · U125 (leche UHT)', '2–4 °C, máximo 24 h', 'Temperatura y tiempo por silo'],
 ], ()) + '''
-  <p>Carga del tronco con 150.000 L/día: recepción 24 % de las 16 h de ventana, pasteurizador 45 % del día (10,8 h con lavados y arranques). Bastan los dos tanques de leche cruda: el pico de un día normal es de ≈ 7.500 L. El cálculo está en <span class="mono">tanques_150k.py</span>.</p>
+  <p>Carga del tronco con 150.000 L/día: recepción 24 % de las 16 h de ventana, pasteurizador 45 % del día (10,8 h con lavados y arranques). Bastan los dos tanques de leche cruda: el pico de un día normal es de ≈ 7.500 L.</p>
 </section>
 ''')
 
 B.append('''<section id="yogures" class="y">
   <div class="line-head"><span class="code">Y</span><h2>Línea de yogures · ≈ 57.000 L/día</h2></div>
-  <p>Resumen de las recetas maestras v1.8. El detalle (fórmulas, balances, especificaciones y HACCP) está en <span class="mono">Recetas_linea_yogures_v1.8.pdf</span>.</p>
+  <p>Resumen de las recetas maestras de la línea de yogures.</p>
 ''' + tabla(['Producto', 'Base por lote', 'Proceso clave', 'Presentaciones', 'Por lote'], [
     ['<span class="chip">YF</span> Yogur con fresa', '10.000 L de leche entera estandarizada + leche en polvo + azúcar', 'Base a 92 °C × 5 min → fermentación a 43 °C hasta pH 4,50 → ruptura y enfriamiento → fruta en línea (13 %)', 'Vaso 150 g · botella 1000 y 1750 g', '13.092 kg'],
     ['<span class="chip">YN</span> Yogur natural', '10.000 L de leche entera estandarizada + leche en polvo', 'Igual que YF, sin azúcar ni fruta', 'Vaso 200 g · botella 1000 g', '10.677 kg'],
@@ -230,7 +230,7 @@ B.append('''<section id="fuentes">
     <li>Derivados lácteos y quesos: Resolución 2310 de 1986 y NTC 750; mozzarella, norma Codex CXS 262-2006.</li>
     <li>Procesos de queso de pasta hilada y de leche UHT: Tetra Pak, <i>Dairy Processing Handbook</i>, capítulos de queso y de leche de larga vida.</li>
     <li>Rendimientos de queso (10, 9 y 7,5 L de leche por kg), dosis de cuajo y cultivo y vidas útiles: valores de diseño por confirmar con los proveedores y con pruebas piloto.</li>
-    <li>Tiempos por lote de quesos y leche UHT: supuestos de diseño, los mismos del modelo de Tecnomatix de la planta (<span class="mono">planta-150k/construir_planta.py</span>).</li>
+    <li>Tiempos por lote de quesos y leche UHT: supuestos de diseño.</li>
   </ul>
 </section>
 </main></div>
