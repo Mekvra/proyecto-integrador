@@ -52,37 +52,44 @@ RECINTOS = [
     ('LÍNEA DE LECHE UHT', 40, 23.5, 67, 45, (53.5, 25.9)),
     ('BODEGA DE ENVASES Y FRUTA', 67, 23.5, 95, 37.5, (81, 25.9)), ('CÁMARA 2–4 °C', 95, 23.5, 110, 46, (102.5, 25.9)),
     ('BODEGA DE INSUMOS', 40, 45, 54, 60, (47, 47.4)), ('ESCLUSA SANITARIA', 54, 45, 67, 60, (60.5, 47.4)),
-    ('CIP CENTRAL', 67, 37.5, 81, 60, (74, 39.9)), ('MANTENIMIENTO', 81, 37.5, 95, 60, (88, 39.9)),
+    ('CIP CENTRAL Y SUERO', 67, 37.5, 81, 60, (74, 39.9)), ('MANTENIMIENTO', 81, 37.5, 95, 60, (88, 39.9)),
     ('SALA DE CONTROL', 95, 46, 110, 60, (102.5, 48.4)),
 ]
 PASILLO = (40, 20, 110, 23.5)                       # pasillo de montacargas, 3,5 m
 PEATONAL = (65.6, 23.5, 66.8, 45)                   # pasillo peatonal de 1,2 m desde la esclusa
 
 # equipos: (código, línea, forma, datos) · rect: x, y, w, h · circ: cx, cy, diámetro · rack: x, y, w, h (estantería)
-EQ = [
+EQ = [  # códigos ISA-88 del grupo, iguales a los de Recetas_y_procesos_planta.pdf, el P&ID y el ISA-95
     ('U111', 'tronco', 'rect', (1.5, 6.5, 5, 4.5)), ('U112', 'tronco', 'rect', (1.5, 12.5, 5, 4.5)),
     ('LAB', 'tronco', 'rect', (9, 6.5, 8, 6)), ('CIP-R', 'tronco', 'rect', (18.5, 6.5, 6, 4)),
     ('U113', 'tronco', 'circ', (12.5, 16.3, 4.4)), ('U114', 'tronco', 'circ', (19.5, 16.3, 4.4)),
     ('U121', 'tronco', 'rect', (27.5, 7, 4, 3)), ('U122', 'tronco', 'rect', (32.5, 7, 6, 3)),
     ('U126', 'tronco', 'rect', (27.5, 12, 4, 3)), ('CIP-C', 'tronco', 'rect', (32.5, 12, 6, 3)),
-    ('U123A', 'yogur', 'circ', (5, 26, 3.6)), ('U123B', 'yogur', 'circ', (12.6, 26, 3.6)), ('U123C', 'yogur', 'circ', (20.2, 26, 3.0)),
-    ('U124', 'queso', 'circ', (27.8, 26, 4.0)), ('U125', 'uht', 'circ', (35.4, 26, 3.8)),
+    ('U127', 'tronco', 'circ', (29.5, 17.2, 1.8)),
+    ('U123A', 'yogur', 'circ', (3.5, 26, 3.6)), ('U123B', 'yogur', 'circ', (9.2, 26, 3.6)), ('U123C', 'yogur', 'circ', (14.7, 26, 3.0)),
+    ('U124A', 'queso', 'circ', (20.2, 26, 3.0)), ('U124B', 'queso', 'circ', (25.6, 26, 3.0)),
+    ('U125A', 'uht', 'circ', (31, 26, 3.0)), ('U125B', 'uht', 'circ', (36.4, 26, 3.0)),
     ('U201', 'yogur', 'circ', (44, 10, 2.8)), ('tolva', 'yogur', 'rect', (48, 6.5, 3, 2.5)), ('U202', 'yogur', 'rect', (41.5, 14.5, 9, 3)),
     ('U211', 'yogur', 'circ', (56, 8.5, 3.0)), ('U212', 'yogur', 'circ', (62, 8.5, 3.0)),
     ('U213', 'yogur', 'circ', (56, 15, 3.0)), ('U218', 'yogur', 'circ', (62, 15, 3.0)),
     ('U215', 'yogur', 'rect', (67.5, 6.5, 3.5, 2.5)), ('U216', 'yogur', 'rect', (67.5, 13, 3.5, 2.5)),
-    ('U214A', 'yogur', 'circ', (74, 7.5, 2.6)), ('U214B', 'yogur', 'circ', (74, 13.5, 2.6)), ('U217', 'yogur', 'circ', (77.2, 10.5, 1.7)),
-    ('U311', 'yogur', 'rect', (80, 6.5, 7, 2.6)), ('U321', 'yogur', 'rect', (88.5, 6.5, 5, 2.6)),
-    ('U312', 'yogur', 'rect', (80, 10.8, 7, 2.6)), ('U322', 'yogur', 'rect', (88.5, 10.8, 5, 2.6)),
-    ('U313', 'yogur', 'rect', (80, 15.1, 7, 2.6)), ('U323', 'yogur', 'rect', (88.5, 15.1, 5, 2.6)),
+    ('U214A', 'yogur', 'circ', (74, 7.5, 2.6)), ('U214B', 'yogur', 'circ', (74, 13.5, 2.6)),
+    ('EM-2141', 'yogur', 'rect', (69.6, 10.0, 3.2, 1.5)),
+    ('U217A', 'yogur', 'circ', (77.4, 8.6, 1.6)), ('U217B', 'yogur', 'circ', (77.4, 12.6, 1.6)),
+    ('U311', 'yogur', 'rect', (80, 6.5, 7, 2.6)), ('cajas', 'yogur', 'rect', (88.5, 6.5, 5, 2.6)),
+    ('U312', 'yogur', 'rect', (80, 10.8, 7, 2.6)), ('cajas', 'yogur', 'rect', (88.5, 10.8, 5, 2.6)),
+    ('U313', 'yogur', 'rect', (80, 15.1, 7, 2.6)), ('cajas', 'yogur', 'rect', (88.5, 15.1, 5, 2.6)),
     ('U341', 'yogur', 'rect', (96.5, 6.5, 5, 5)), ('U342', 'yogur', 'rect', (103, 6.5, 5, 5)),
     ('estibas', 'yogur', 'rect', (96.5, 14, 11.5, 3.5)),
-    ('Q201', 'queso', 'rect', (2, 37.5, 6.5, 3.2)), ('Q202', 'queso', 'rect', (9.5, 37.5, 6.5, 3.2)), ('Q203', 'queso', 'rect', (17, 37.5, 6.5, 3.2)),
-    ('Q301', 'queso', 'rect', (26, 37.5, 6, 3.2)), ('Q311', 'queso', 'rect', (33.5, 37.5, 5, 3.2)),
-    ('Q302 salmuera', 'queso', 'rect', (2, 44.5, 22, 5)), ('Q341', 'queso', 'rect', (26, 44.5, 6, 4)),
-    ('L201', 'uht', 'circ', (43.5, 31.5, 2.6)), ('L202 UHT', 'uht', 'rect', (47, 30, 6, 3)), ('L203', 'uht', 'circ', (56, 31.5, 2.6)),
-    ('L311', 'uht', 'rect', (58.5, 30, 6, 3)), ('L341', 'uht', 'rect', (58.5, 36, 6, 2.5)),
+    ('U221A', 'queso', 'rect', (2, 37.5, 6.5, 3.2)), ('U221B', 'queso', 'rect', (9.5, 37.5, 6.5, 3.2)), ('U221C', 'queso', 'rect', (17, 37.5, 6.5, 3.2)),
+    ('U222 banda de acidificación', 'queso', 'rect', (2, 41.6, 30, 1.6)),
+    ('U223', 'queso', 'rect', (26, 37.5, 6, 3.2)), ('U321', 'queso', 'rect', (33.5, 37.5, 5, 3.2)),
+    ('U224 enfriamiento y salmuera', 'queso', 'rect', (2, 44.5, 22, 5)), ('paletizado', 'queso', 'rect', (26, 44.5, 6, 4)),
+    ('U231', 'uht', 'circ', (43.5, 31.5, 2.6)), ('U232 UHT', 'uht', 'rect', (47, 30, 6, 3)), ('U233', 'uht', 'circ', (56, 31.5, 2.6)),
+    ('U331', 'uht', 'rect', (58.5, 30, 6, 3)), ('paletizado', 'uht', 'rect', (58.5, 36, 6, 2.5)),
 ]
+# rótulos de almacenes (van sobre las estanterías)
+ALMACENES = [('U411', 102, 28.3), ('U414 · 2–4 °C', 15, 55), ('U413 · bodega ambiente', 49.5, 39), ('U905 · suero', 74.5, 50.6), ('U901 · CIP', 74, 47.4)]
 RACKS = [  # estanterías de almacenamiento (se dibujan rayadas)
     ('frio', (97, 29, 12, 2.2)), ('frio', (97, 33.2, 12, 2.2)), ('frio', (97, 37.4, 12, 2.2)), ('frio', (97, 41.6, 12, 2.2)),
     ('queso', (2, 55.5, 26, 1.6)), ('queso', (2, 58, 26, 1.4)),
@@ -90,7 +97,7 @@ RACKS = [  # estanterías de almacenamiento (se dibujan rayadas)
     ('serv', (69, 29.5, 24, 1.6)), ('serv', (69, 33, 24, 1.6)),
     ('serv', (41.5, 50, 11, 1.4)), ('serv', (41.5, 53.6, 11, 1.4)), ('serv', (41.5, 57.2, 11, 1.4)),
 ]
-CIP_TANQUES = [(70, 44, 2.6), (74, 44, 2.6), (78, 44, 2.6)]
+CIP_TANQUES = [(70, 44, 2.6), (74, 44, 2.6), (78, 44, 2.6), (71.5, 54, 3.2), (77.5, 54, 3.2)]   # U901 (3) y U905 (2)
 MANT = [(83, 42, 10, 2), (83, 50, 4, 6)]
 # muros interiores (x1, y1, x2, y2) y vanos en ellos [(desde, hasta)] medidos a lo largo del muro
 # vano: (desde, hasta) = puerta de personas con su giro · (desde, hasta, 'p') = portón o paso de banda, sin hoja
@@ -208,13 +215,15 @@ def plano(h, enfoque=None, kicker='', titulo='', sub='', etiquetas_equipo=True):
             x, y, w, hh = d
             h.rect(X(x), Y(y), w * PX, hh * PX, tinte(c, 0.16), c, 1.2, 1.5)
             if etiquetas_equipo:
-                h.t(X(x + w / 2), Y(y + hh / 2) + 3.5, cod, 9 if len(cod) < 9 else 8, c, 600, FM, 'middle')
+                h.t(X(x + w / 2), Y(y + hh / 2) + 3.5, cod, 9 if len(cod) < 9 else 8 if len(cod) < 20 else 7.5, c, 600, FM, 'middle')
         else:
             cx, cy, dd = d
             h.S.append(f'<circle cx="{X(cx):.1f}" cy="{Y(cy):.1f}" r="{dd / 2 * PX:.1f}" fill="{tinte(c, 0.16)}" stroke="{c}" stroke-width="1.2"/>')
             h.S.append(f'<circle cx="{X(cx):.1f}" cy="{Y(cy):.1f}" r="2" fill="{c}"/>')
             if etiquetas_equipo:
                 h.t(X(cx), Y(cy + dd / 2) + 11, cod, 8.5, c, 600, FM, 'middle')
+    for s, lx, ly in ALMACENES:
+        h.t(X(lx), Y(ly), s, 9, MUTED, 700, FM, 'middle')
     # muros interiores con vanos
     for (x1, y1, x2, y2), vanos in MUROS:
         largo = abs(x2 - x1) + abs(y2 - y1)
@@ -376,7 +385,7 @@ def rotulo(h, plano_txt, y=1236):
     h.t(x + 6, y + 108, 'ESCALA', 9.5, MUTED, 600, FM)
     h.t(x + 6, y + 126, '1:750 en A3 · cotas en m', 12, INK, 700)
     h.t(x + 220, y + 108, 'FECHA', 9.5, MUTED, 600, FM)
-    h.t(x + 220, y + 126, '10-oct-2026', 12, INK, 700)
+    h.t(x + 220, y + 126, '11-oct-2026', 12, INK, 700)
     h.t(x + 6, y + 144, 'Mekvra · medidas propuestas, sin plano del terreno', 9.5, MUTED)
 
 
@@ -453,9 +462,13 @@ if __name__ == '__main__':
     # 1 · planta con las tres líneas
     h = Hoja()
     plano(h, None, 'PLANO DE DISTRIBUCIÓN · PLANTA CON TRES LÍNEAS · ESTADO ACTUAL', 'Lácteos Altos de Teusacá · edificio de producción',
-          'Nave de 110 × 60 m · 150.000 L/día: yogures ≈ 57.000, quesos 50.000 y leche UHT 43.000 L/día · códigos de equipo iguales a los del modelo de Tecnomatix')
+          'Nave de 110 × 60 m · 150.000 L/día: yogures ≈ 57.000, quesos 50.000 y leche UHT 43.000 L/día · códigos ISA-88 de las recetas, el P&ID y el ISA-95 · paletizado manual')
+    for px_, py_ in ((98.3, 12.6), (100.8, 12.6)):                     # paletizado manual (2 operarios)
+        h.S.append(f'<circle cx="{X(px_):.1f}" cy="{Y(py_):.1f}" r="5" fill="{PCC}"/><circle cx="{X(px_):.1f}" cy="{Y(py_):.1f}" r="9" fill="none" stroke="{PCC}" stroke-width="1"/>')
     y = leyenda(h, 1585, 200)
-    tabla_areas(h, 1585, y + 10)
+    h.S.append(f'<circle cx="{1600:.1f}" cy="{y - 14:.1f}" r="5" fill="{PCC}"/>')
+    h.t(1627, y - 10, 'Operario de paletizado manual', 11.5)
+    tabla_areas(h, 1585, y + 16)
     rotulo(h, 'Distribución en planta · tres líneas')
     h.svg('layout_planta_3_lineas', 'Plano de la planta')
 

@@ -12,6 +12,7 @@ MANUAL = len(sys.argv) > 1 and sys.argv[1] == 'manual'
 if MANUAL:
     M = json.load(open(os.path.join(D, '..', 'simulacion-tecnomatix', 'linea-yogures', 'resultados_paletizado_manual.json'), encoding='utf-8'))
     U.update({k: v['ocupado'] for k, v in M['uso'].items()})
+    U['Cajas_vasos'] = U.get('U321_Encajonadora_vasos', U.get('Cajas_vasos'))   # el modelo de la línea sola conserva el nombre anterior
 NOMBRE = 'vsm_linea_yogures_paletizado_manual' if MANUAL else 'vsm_linea_yogures_actual'
 
 
@@ -144,8 +145,8 @@ P = [
     ('FERMENTACIÓN', '4 × 12.000 L', [('C/T', '8,1–9,0 h ciclo'), ('C/O', 'CIP-F 0,75 h'), ('Disp.', '100 %'), ('Uso', pct('U211_Fermentador')), ('Op.', '2')]),
     ('ACONDICIONAM.', 'U215 · U216 · pulmones', [('C/T', '1,0–1,7 h/lote'), ('C/O', 'CIP 1/día'), ('Disp.', '98 %'), ('Uso', f'{pct("U215_Enfriamiento")} · {pct("U216_Separador_griego")}'), ('Op.', '—')]),
     ('ENVASADO', 'U311 · U312 · U313', [('C/T', '≈ 3,5 h/lote'), ('C/O', 'formato 0,75 h'), ('OEE', '≈ 70 %'), ('Uso', f'{pct("U311_Vasos")} · {pct("U312_Botellas")} · {pct("U313_Griego")}'), ('Op.', '4')]),
-    ('FIN DE LÍNEA', 'U321–U323 · U341 manual' if MANUAL else 'U321–U323 · U341 · U342', [('C/T', '150 s/bulto' if MANUAL else 'en línea'), ('C/O', '—'), ('Disp.', '100 %'),
-     ('Uso', f'{pct("U321_Encajonadora_vasos")} · {pct("U341_Paletizado")}' if MANUAL else f'{pct("U321_Encajonadora_vasos")} · {pct("U342_Envolvedora")}'), ('Op.', '2 a mano' if MANUAL else '2')]),
+    ('FIN DE LÍNEA', 'cajas · U341 manual' if MANUAL else 'cajas · U341 · U342', [('C/T', '150 s/bulto' if MANUAL else 'en línea'), ('C/O', '—'), ('Disp.', '100 %'),
+     ('Uso', f'{pct("Cajas_vasos")} · {pct("U341_Paletizado")}' if MANUAL else f'{pct("Cajas_vasos")} · {pct("U342_Envolvedora")}'), ('Op.', '2 a mano' if MANUAL else '2')]),
 ]
 XS = [X0 + i * (BW + GAP) for i in range(len(P))]
 CUELLO = 6

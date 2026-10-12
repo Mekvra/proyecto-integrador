@@ -28,6 +28,6 @@ etapas:
   - nombre: Silos por línea
     tipo: Batch
     variables:
-      - "Yogures U123A–C · quesos U124 · leche U125"
+      - "Yogures U123A–C · quesos U124A/B · leche U125A/B"
       - "2–4 °C, máximo 24 h"
 ---

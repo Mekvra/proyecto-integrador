@@ -107,11 +107,11 @@ obj('U113_Leche_cruda', MF + '.Buffer', 280, Y0, icon='vsm_crudo', extra=['@.Cap
 obj('U121_Pasteurizador', MF + '.Station', 380, Y0, SUP['htst'], 'vsm_htst')
 obj('U123AB_Silo_entera', MF + '.Buffer', 480, Y0 - 70, icon='vsm_silo1', extra=['@.Capacity := -1', f'@.ProcTime := {h(SUP["silo"])}'])
 obj('U123C_Silo_descremada', MF + '.Buffer', 480, Y0 + 70, icon='vsm_silo3', extra=['@.Capacity := -1', f'@.ProcTime := {h(SUP["silo"])}'])
-obj('U124_Silo_quesos', MF + '.Buffer', 480, YQ, icon='vsm_silo2', extra=['@.Capacity := -1', f'@.ProcTime := {h(SUP["silo"])}'])
-obj('U125_Silo_leche', MF + '.Buffer', 480, YL, icon='vsm_silo3', extra=['@.Capacity := -1', f'@.ProcTime := {h(SUP["silo"])}'])
+obj('U124AB_Silos_quesos', MF + '.Buffer', 480, YQ, icon='vsm_silo2', extra=['@.Capacity := -1', f'@.ProcTime := {h(SUP["silo"])}'])
+obj('U125AB_Silos_leche', MF + '.Buffer', 480, YL, icon='vsm_silo3', extra=['@.Capacity := -1', f'@.ProcTime := {h(SUP["silo"])}'])
 CON += [('Cisternas', 'U111_Recepcion'), ('U111_Recepcion', 'U113_Leche_cruda'), ('U113_Leche_cruda', 'U121_Pasteurizador'),
         ('U121_Pasteurizador', 'U123AB_Silo_entera'), ('U121_Pasteurizador', 'U123C_Silo_descremada')]
-CON += [('U121_Pasteurizador', 'U124_Silo_quesos'), ('U121_Pasteurizador', 'U125_Silo_leche')]   # sucesores 3 y 4 de U121
+CON += [('U121_Pasteurizador', 'U124AB_Silos_quesos'), ('U121_Pasteurizador', 'U125AB_Silos_leche')]   # sucesores 3 y 4 de U121
 # 2 · preparación de la base
 obj('U201_Formulacion', MF + '.Station', 640, Y0, T_U201, 'formulacion')
 obj('U202_Tratamiento', MF + '.Station', 760, Y0, T_U202, 'u202', extra=[f'@.SetupTime := {h(SUP["cip_c"])}'])
@@ -129,9 +129,9 @@ for f in FERM:
 # cada producto tiene su propio tanque pulmón: fresa (U214A) y natural (U214B) no comparten tanque
 obj('U214A_Pulmon_fresa', MF + '.Buffer', 1280, Y0 - 120, icon='pulmones', extra=['@.Capacity := 1'])
 obj('U214B_Pulmon_natural', MF + '.Buffer', 1280, Y0 - 20, icon='pulmones', extra=['@.Capacity := 1'])
-obj('U217_Pulmones_griego', MF + '.Buffer', 1280, Y0 + 90, icon='pulmones', extra=['@.Capacity := 2'])
+obj('U217AB_Pulmones_griego', MF + '.Buffer', 1280, Y0 + 90, icon='pulmones', extra=['@.Capacity := 2'])
 CON += [('U215_Enfriamiento', 'U214A_Pulmon_fresa'), ('U215_Enfriamiento', 'U214B_Pulmon_natural'),
-        ('U216_Separador_griego', 'U217_Pulmones_griego')]
+        ('U216_Separador_griego', 'U217AB_Pulmones_griego')]
 
 
 def reparto(name, x, y, filas):
@@ -146,7 +146,7 @@ def reparto(name, x, y, filas):
 reparto('Reparto_fresa', 1390, Y0 - 120, [('YF150', CHUNKS['YF150'], 1), ('YF1000', CHUNKS['YF1000'], 2), ('YF1750', CHUNKS['YF1750'], 2)])
 reparto('Reparto_natural', 1390, Y0 - 20, [('YN200', CHUNKS['YN200'], 1), ('YN1000', CHUNKS['YN1000'], 2)])
 reparto('Reparto_griego', 1390, Y0 + 90, [('YG150', CHUNKS['YG150'], 1), ('YG500', CHUNKS['YG500'], 1)])
-CON += [('U214A_Pulmon_fresa', 'Reparto_fresa'), ('U214B_Pulmon_natural', 'Reparto_natural'), ('U217_Pulmones_griego', 'Reparto_griego')]
+CON += [('U214A_Pulmon_fresa', 'Reparto_fresa'), ('U214B_Pulmon_natural', 'Reparto_natural'), ('U217AB_Pulmones_griego', 'Reparto_griego')]
 # 5 · envasado y encajonado: cada llenadora entrega a su encajonadora (forma la caja de cartón, mete los envases y la cierra)
 for nm, y, ic in (('U311_Vasos', Y0 - 120, 'vsm_u311'), ('U312_Botellas', Y0 - 20, 'vsm_u312'), ('U313_Griego', Y0 + 90, 'llenadora_yogur')):
     obj(nm, MF + '.Station', 1520, y, T_CHUNK, ic, extra=[f'@.SetupTime := {h(SUP["formato"])}'])
@@ -155,7 +155,7 @@ CON += [('Reparto_fresa', 'U311_Vasos'), ('Reparto_fresa', 'U312_Botellas'), ('R
 obj('Registro_de_lotes', MF + '.Drain', 1390, Y0 + 210, icon='pedidos_yogur')
 CON += [('Reparto_fresa', 'Registro_de_lotes'), ('Reparto_natural', 'Registro_de_lotes'), ('Reparto_griego', 'Registro_de_lotes')]
 L += [f'm.{r}.MainMU := 3' for r in ('Reparto_fresa', 'Reparto_natural')] + ['m.Reparto_griego.MainMU := 2']
-ENC = {'U311_Vasos': 'U321_Encajonadora_vasos', 'U312_Botellas': 'U322_Encajonadora_botellas', 'U313_Griego': 'U323_Encajonadora_griego'}
+ENC = {'U311_Vasos': 'Cajas_vasos', 'U312_Botellas': 'Cajas_botellas', 'U313_Griego': 'Cajas_griego'}
 for fil, enc in ENC.items():
     obj(enc, MF + '.Station', 1650, COORD[fil][1], T_ENC, 'vsm_u321')
     CON.append((fil, enc))
@@ -178,8 +178,8 @@ VEL_BANDA, VEL_MONTACARGAS, TIEMPO_REAL = 0.03, 0.06, 30
 banda('Banda_cajas_vasos', 'Conveyor', 1676, Y0 - 120, [(0, 2.2), (90, 3.5), (-90, 3.5)], VEL_BANDA)
 banda('Banda_cajas_botellas', 'Conveyor', 1676, Y0 - 20, [(0, 5.7)], VEL_BANDA)
 banda('Banda_cajas_griego', 'Conveyor', 1676, Y0 + 90, [(0, 2.2), (-90, 4.0), (90, 3.5)], VEL_BANDA)
-CON += [('U321_Encajonadora_vasos', 'Banda_cajas_vasos'), ('U322_Encajonadora_botellas', 'Banda_cajas_botellas'),
-        ('U323_Encajonadora_griego', 'Banda_cajas_griego')]
+CON += [('Cajas_vasos', 'Banda_cajas_vasos'), ('Cajas_botellas', 'Banda_cajas_botellas'),
+        ('Cajas_griego', 'Banda_cajas_griego')]
 obj('U341_Paletizado', MF + '.Station', 1830, Y0 - 20, 150 / 3600, 'vsm_paletizado')   # paletizado MANUAL (estado actual): 2 operarios, ≈ 150 s por bulto
 obj('U342_Envolvedora', MF + '.Station', 1920, Y0 - 20, SUP['paletizado'], 'vsm_paletizado')
 obj('U411_Camara', MF + '.Buffer', 2080, Y0, icon='vsm_camara', extra=['@.Capacity := -1', f'@.ProcTime := {h(SUP["camara"])}'])
@@ -207,36 +207,36 @@ def empaque(name, x, y, proc, mu, n, icon):
 
 
 # 7 · línea de quesos (supuestos SQ)
-TINAS = ['Q201_Tina', 'Q202_Tina', 'Q203_Tina']
+TINAS = ['U221A_Tina', 'U221B_Tina', 'U221C_Tina']
 for i, nm in enumerate(TINAS):
     obj(nm, MF + '.Station', 680, YQ - 75 + 75 * i, SQ['tina'] + SQ['cip_tina'], 'tina')
-    CON += [('U124_Silo_quesos', nm), (nm, 'Q301_Hilado')]
-obj('Q301_Hilado', MF + '.Station', 900, YQ, SQ['hilado'], 'hiladora', extra=[f'@.SetupTime := {h(SQ["cambio_hilado"])}'])
-obj('Q302_Salmuera', MF + '.Buffer', 1080, YQ, icon='salmuera', extra=['@.Capacity := -1', f'@.ProcTime := {h(SQ["salmuera"])}'])
-empaque('Q311_Empaque_vacio', 1280, YQ, SQ['empaque'], 'Bulto_queso', SQ['bultos'], 'llenadora_queso')
-obj('Q312_Registro', MF + '.Drain', 1280, YQ + 90, icon='pedidos_queso')
-banda('Q321_Banda_quesos', 'Conveyor', 1310, YQ, [(0, 16.0)], VEL_BANDA)
-obj('Q341_Paletizado', MF + '.Station', 1680, YQ, SQ['paletizar'], 'vsm_paletizado')
-obj('Q411_Camara_quesos', MF + '.Buffer', 1880, YQ, icon='camara_queso', extra=['@.Capacity := -1', f'@.ProcTime := {h(SQ["camara"])}'])
+    CON += [('U124AB_Silos_quesos', nm), (nm, 'U223_Hilado')]
+obj('U223_Hilado', MF + '.Station', 900, YQ, SQ['hilado'], 'hiladora', extra=[f'@.SetupTime := {h(SQ["cambio_hilado"])}'])
+obj('U224_Salmuera', MF + '.Buffer', 1080, YQ, icon='salmuera', extra=['@.Capacity := -1', f'@.ProcTime := {h(SQ["salmuera"])}'])
+empaque('U321_Empaque_vacio', 1280, YQ, SQ['empaque'], 'Bulto_queso', SQ['bultos'], 'llenadora_queso')
+obj('Registro_quesos', MF + '.Drain', 1280, YQ + 90, icon='pedidos_queso')
+banda('Banda_quesos', 'Conveyor', 1310, YQ, [(0, 16.0)], VEL_BANDA)
+obj('Paletizado_quesos', MF + '.Station', 1680, YQ, SQ['paletizar'], 'vsm_paletizado')
+obj('U414_Camara_quesos', MF + '.Buffer', 1880, YQ, icon='camara_queso', extra=['@.Capacity := -1', f'@.ProcTime := {h(SQ["camara"])}'])
 obj('Despacho_quesos', MF + '.Drain', 2120, YQ, icon='vsm_despacho_q')
-CON += [('Q301_Hilado', 'Q302_Salmuera'), ('Q302_Salmuera', 'Q311_Empaque_vacio'), ('Q311_Empaque_vacio', 'Q321_Banda_quesos'),
-        ('Q311_Empaque_vacio', 'Q312_Registro'), ('Q321_Banda_quesos', 'Q341_Paletizado'), ('Q341_Paletizado', 'Q411_Camara_quesos'),
-        ('Q411_Camara_quesos', 'Despacho_quesos')]
+CON += [('U223_Hilado', 'U224_Salmuera'), ('U224_Salmuera', 'U321_Empaque_vacio'), ('U321_Empaque_vacio', 'Banda_quesos'),
+        ('U321_Empaque_vacio', 'Registro_quesos'), ('Banda_quesos', 'Paletizado_quesos'), ('Paletizado_quesos', 'U414_Camara_quesos'),
+        ('U414_Camara_quesos', 'Despacho_quesos')]
 # 8 · línea de leche UHT (supuestos SL)
-obj('L201_Mezcla', MF + '.Station', 680, YL, SL['mezcla'], 'formulacion', extra=[f'@.SetupTime := {h(SL["cambio_mezcla"])}'])
-obj('L202_UHT', MF + '.Station', 900, YL, SL['uht'], 'vsm_htst')
-obj('L203_Tanque_aseptico', MF + '.Buffer', 1080, YL, icon='tanque_kefir', extra=['@.Capacity := 2'])
-empaque('L311_Envasadora_aseptica', 1280, YL, SL['empaque'], 'Bulto_leche', SL['bultos'], 'llenadora_kefir')
-obj('L312_Registro', MF + '.Drain', 1280, YL + 90, icon='pedidos_kefir')
-banda('L321_Banda_leche', 'Conveyor', 1310, YL, [(0, 16.0)], VEL_BANDA)
-obj('L341_Paletizado', MF + '.Station', 1680, YL, SL['paletizar'], 'vsm_paletizado')
-obj('L411_Bodega_ambiente', MF + '.Buffer', 1880, YL, icon='vsm_camara', extra=['@.Capacity := -1', f'@.ProcTime := {h(SL["cuarentena"])}'])
+obj('U231_Mezcla', MF + '.Station', 680, YL, SL['mezcla'], 'formulacion', extra=[f'@.SetupTime := {h(SL["cambio_mezcla"])}'])
+obj('U232_UHT', MF + '.Station', 900, YL, SL['uht'], 'vsm_htst')
+obj('U233_Tanque_aseptico', MF + '.Buffer', 1080, YL, icon='tanque_kefir', extra=['@.Capacity := 2'])
+empaque('U331_Envasadora_aseptica', 1280, YL, SL['empaque'], 'Bulto_leche', SL['bultos'], 'llenadora_kefir')
+obj('Registro_leche', MF + '.Drain', 1280, YL + 90, icon='pedidos_kefir')
+banda('Banda_leche', 'Conveyor', 1310, YL, [(0, 16.0)], VEL_BANDA)
+obj('Paletizado_leche', MF + '.Station', 1680, YL, SL['paletizar'], 'vsm_paletizado')
+obj('U413_Bodega_ambiente', MF + '.Buffer', 1880, YL, icon='vsm_camara', extra=['@.Capacity := -1', f'@.ProcTime := {h(SL["cuarentena"])}'])
 obj('Despacho_leche', MF + '.Drain', 2120, YL, icon='vsm_despacho_k')
-CON += [('U125_Silo_leche', 'L201_Mezcla'), ('L201_Mezcla', 'L202_UHT'), ('L202_UHT', 'L203_Tanque_aseptico'),
-        ('L203_Tanque_aseptico', 'L311_Envasadora_aseptica'), ('L311_Envasadora_aseptica', 'L321_Banda_leche'),
-        ('L311_Envasadora_aseptica', 'L312_Registro'), ('L321_Banda_leche', 'L341_Paletizado'), ('L341_Paletizado', 'L411_Bodega_ambiente'),
-        ('L411_Bodega_ambiente', 'Despacho_leche')]
-L += ['m.Q311_Empaque_vacio.MainMU := 2', 'm.L311_Envasadora_aseptica.MainMU := 2', 's.deleteObject']
+CON += [('U125AB_Silos_leche', 'U231_Mezcla'), ('U231_Mezcla', 'U232_UHT'), ('U232_UHT', 'U233_Tanque_aseptico'),
+        ('U233_Tanque_aseptico', 'U331_Envasadora_aseptica'), ('U331_Envasadora_aseptica', 'Banda_leche'),
+        ('U331_Envasadora_aseptica', 'Registro_leche'), ('Banda_leche', 'Paletizado_leche'), ('Paletizado_leche', 'U413_Bodega_ambiente'),
+        ('U413_Bodega_ambiente', 'Despacho_leche')]
+L += ['m.U321_Empaque_vacio.MainMU := 2', 'm.U331_Envasadora_aseptica.MainMU := 2', 's.deleteObject']
 
 for a, b in CON:
     L.append(f'.MaterialFlow.Connector.connect(m.{a}, m.{b})')
@@ -257,8 +257,8 @@ L += ruta('U411_Camara', [(c, i) for i, c in enumerate(DESP, 1)])
 MTBF = {'llenadora': (OEE['A'], 1.0), 'proceso': (0.98, 1.5)}
 FALLAS = {n: 'llenadora' for n in ('U311_Vasos', 'U312_Botellas', 'U313_Griego')}
 FALLAS.update({n: 'proceso' for n in ('U121_Pasteurizador', 'U201_Formulacion', 'U202_Tratamiento', 'U215_Enfriamiento', 'U216_Separador_griego',
-                                      'Q301_Hilado', 'L202_UHT')})
-FALLAS.update({n: 'llenadora' for n in ('Q311_Empaque_vacio', 'L311_Envasadora_aseptica')})
+                                      'U223_Hilado', 'U232_UHT')})
+FALLAS.update({n: 'llenadora' for n in ('U321_Empaque_vacio', 'U331_Envasadora_aseptica')})
 for nm, k in FALLAS.items():
     a, mttr = MTBF[k]
     L += [f'm.{nm}.Failures.createFailure("Falla")', f'm.{nm}.Failures.Falla.AvailabilityOn := true',
@@ -318,7 +318,7 @@ ETIQ = {'Cisternas': 'Cisternas', 'U111_Recepcion': 'Recepción U111/U112', 'U11
         'U121_Pasteurizador': 'Clarificación + HTST', 'U123AB_Silo_entera': 'Silos leche entera', 'U123C_Silo_descremada': 'Silo descremada',
         'U201_Formulacion': 'Formulación U201', 'U202_Tratamiento': 'Tratamiento U202', 'U215_Enfriamiento': 'Ruptura y enfriamiento',
         'U216_Separador_griego': 'Separador griego', 'U214A_Pulmon_fresa': 'Pulmón fresa U214A', 'U214B_Pulmon_natural': 'Pulmón natural U214B',
-        'U217_Pulmones_griego': 'Pulmones griego',
+        'U217AB_Pulmones_griego': 'Pulmones griego',
         'Reparto_fresa': 'Reparto fresa', 'Reparto_natural': 'Reparto natural', 'Reparto_griego': 'Reparto griego',
         'U311_Vasos': 'U311 vasos 12.000/h', 'U312_Botellas': 'U312 botellas', 'U313_Griego': 'U313 griego',
         'Registro_de_lotes': 'Registro de lotes', 'U341_Paletizado': 'Paletizado U341', 'U411_Camara': 'Cámara 2–4 °C'}
@@ -363,9 +363,9 @@ R['litros_dia'] = R['lotes_dia'] * 10000
 und = {c: gv(f'Despacho_{c}.StatNumIn') * UND_CHUNK[c] / DIAS for c in DESP}
 R['unidades_dia'] = und
 R['recepcion_dia'] = gv('U111_Recepcion.StatNumOut') * 10000 / DIAS
-R['quesos_lotes_dia'] = gv('Q311_Empaque_vacio.StatNumIn') / DIAS
-R['leche_lotes_dia'] = gv('L311_Envasadora_aseptica.StatNumIn') / DIAS
-R['debug'] = {k: gv(k + '.StatNumIn') for k in ('Q312_Registro', 'Q341_Paletizado', 'Despacho_quesos', 'L312_Registro', 'L341_Paletizado', 'Despacho_leche', 'U124_Silo_quesos', 'U125_Silo_leche')}
+R['quesos_lotes_dia'] = gv('U321_Empaque_vacio.StatNumIn') / DIAS
+R['leche_lotes_dia'] = gv('U331_Envasadora_aseptica.StatNumIn') / DIAS
+R['debug'] = {k: gv(k + '.StatNumIn') for k in ('Registro_quesos', 'Paletizado_quesos', 'Despacho_quesos', 'Registro_leche', 'Paletizado_leche', 'Despacho_leche', 'U124AB_Silos_quesos', 'U125AB_Silos_leche')}
 R['quesos_L_dia'] = R['quesos_lotes_dia'] * 10000
 R['leche_L_dia'] = R['leche_lotes_dia'] * 10000
 R['queso_kg_dia'] = R['quesos_lotes_dia'] * (1000 + 1110 + 1330) / 3   # kg por lote según las recetas básicas (10 · 9 · 7,5 L/kg)
@@ -375,9 +375,9 @@ R['botellas_U312_dia'] = und['YF1000'] + und['YF1750'] + und['YN1000']
 R['griego_U313_dia'] = und['YG150'] + und['YG500']
 U = {}
 for o in ['U111_Recepcion', 'U121_Pasteurizador', 'U201_Formulacion', 'U202_Tratamiento'] + FERM + \
-         ['U215_Enfriamiento', 'U216_Separador_griego', 'U311_Vasos', 'U312_Botellas', 'U313_Griego', 'U321_Encajonadora_vasos', 'U322_Encajonadora_botellas',
-          'U323_Encajonadora_griego', 'U341_Paletizado', 'U342_Envolvedora'] + TINAS + \
-         ['Q301_Hilado', 'Q311_Empaque_vacio', 'Q341_Paletizado', 'L201_Mezcla', 'L202_UHT', 'L311_Envasadora_aseptica', 'L341_Paletizado']:
+         ['U215_Enfriamiento', 'U216_Separador_griego', 'U311_Vasos', 'U312_Botellas', 'U313_Griego', 'Cajas_vasos', 'Cajas_botellas',
+          'Cajas_griego', 'U341_Paletizado', 'U342_Envolvedora'] + TINAS + \
+         ['U223_Hilado', 'U321_Empaque_vacio', 'Paletizado_quesos', 'U231_Mezcla', 'U232_UHT', 'U331_Envasadora_aseptica', 'Paletizado_leche']:
     U[o] = {k: round(gv(f'{o}.Stat{a}Portion'), 4) for k, a in (('trabajando', 'Working'), ('cambio', 'Setup'), ('falla', 'Fail'),
                                                                    ('bloqueado', 'Blocking'), ('esperando', 'Waiting'))}
     U[o]['ocupado'] = round(U[o]['trabajando'] + U[o]['cambio'] + U[o]['falla'], 4)
@@ -389,8 +389,8 @@ json.dump(R, open(os.path.join(D, 'resultados_planta.json'), 'w', encoding='utf-
 # resultados dibujados en el modelo
 res = [f'Resultados de la simulación ({DIAS} días de producción)',
        f'Tronco común: {n1(R["recepcion_dia"], 0)} L/día recibidos · pasteurizador {n1(U["U121_Pasteurizador"]["ocupado"] * 100, 0)} %',
-       f'Quesos: {n1(R["quesos_L_dia"], 0)} L/día ≈ {n1(R["queso_kg_dia"], 0)} kg de queso · hilado {n1(U["Q301_Hilado"]["ocupado"] * 100, 0)} % · tinas {n1(sum(U[x]["ocupado"] for x in TINAS) / 3 * 100, 0)} %',
-       f'Leche UHT: {n1(R["leche_L_dia"], 0)} L/día ≈ {n1(R["leche_envases_dia"], 0)} envases de 1 L · UHT {n1(U["L202_UHT"]["ocupado"] * 100, 0)} % · envasadora {n1(U["L311_Envasadora_aseptica"]["ocupado"] * 100, 0)} %',
+       f'Quesos: {n1(R["quesos_L_dia"], 0)} L/día ≈ {n1(R["queso_kg_dia"], 0)} kg de queso · hilado {n1(U["U223_Hilado"]["ocupado"] * 100, 0)} % · tinas {n1(sum(U[x]["ocupado"] for x in TINAS) / 3 * 100, 0)} %',
+       f'Leche UHT: {n1(R["leche_L_dia"], 0)} L/día ≈ {n1(R["leche_envases_dia"], 0)} envases de 1 L · UHT {n1(U["U232_UHT"]["ocupado"] * 100, 0)} % · envasadora {n1(U["U331_Envasadora_aseptica"]["ocupado"] * 100, 0)} %',
        f'Leche a yogures: {n1(R["litros_dia"], 0)} L/día ({n1(R["lotes_dia"], 2)} lotes/día)',
        f'Envases por día: {n1(R["vasos_U311_dia"], 0)} vasos · {n1(R["botellas_U312_dia"], 0)} botellas · {n1(R["griego_U313_dia"], 0)} griego',
        f'Uso U311 vasos: {n1(U["U311_Vasos"]["ocupado"] * 100, 0)} % · U312: {n1(U["U312_Botellas"]["ocupado"] * 100, 0)} % · U313: {n1(U["U313_Griego"]["ocupado"] * 100, 0)} %',

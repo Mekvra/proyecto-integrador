@@ -28,11 +28,11 @@
    480,
    400
   ],
-  "U124_Silo_quesos": [
+  "U124AB_Silos_quesos": [
    480,
    765
   ],
-  "U125_Silo_leche": [
+  "U125AB_Silos_leche": [
    480,
    1035
   ],
@@ -76,7 +76,7 @@
    1280,
    310
   ],
-  "U217_Pulmones_griego": [
+  "U217AB_Pulmones_griego": [
    1280,
    420
   ],
@@ -108,15 +108,15 @@
    1390,
    540
   ],
-  "U321_Encajonadora_vasos": [
+  "Cajas_vasos": [
    1650,
    210
   ],
-  "U322_Encajonadora_botellas": [
+  "Cajas_botellas": [
    1650,
    310
   ],
-  "U323_Encajonadora_griego": [
+  "Cajas_griego": [
    1650,
    420
   ],
@@ -180,43 +180,43 @@
    2190,
    495
   ],
-  "Q201_Tina": [
+  "U221A_Tina": [
    680,
    690
   ],
-  "Q202_Tina": [
+  "U221B_Tina": [
    680,
    765
   ],
-  "Q203_Tina": [
+  "U221C_Tina": [
    680,
    840
   ],
-  "Q301_Hilado": [
+  "U223_Hilado": [
    900,
    765
   ],
-  "Q302_Salmuera": [
+  "U224_Salmuera": [
    1080,
    765
   ],
-  "Q311_Empaque_vacio": [
+  "U321_Empaque_vacio": [
    1280,
    765
   ],
-  "Q312_Registro": [
+  "Registro_quesos": [
    1280,
    855
   ],
-  "Q321_Banda_quesos": [
+  "Banda_quesos": [
    1310,
    765
   ],
-  "Q341_Paletizado": [
+  "Paletizado_quesos": [
    1680,
    765
   ],
-  "Q411_Camara_quesos": [
+  "U414_Camara_quesos": [
    1880,
    765
   ],
@@ -224,35 +224,35 @@
    2120,
    765
   ],
-  "L201_Mezcla": [
+  "U231_Mezcla": [
    680,
    1035
   ],
-  "L202_UHT": [
+  "U232_UHT": [
    900,
    1035
   ],
-  "L203_Tanque_aseptico": [
+  "U233_Tanque_aseptico": [
    1080,
    1035
   ],
-  "L311_Envasadora_aseptica": [
+  "U331_Envasadora_aseptica": [
    1280,
    1035
   ],
-  "L312_Registro": [
+  "Registro_leche": [
    1280,
    1125
   ],
-  "L321_Banda_leche": [
+  "Banda_leche": [
    1310,
    1035
   ],
-  "L341_Paletizado": [
+  "Paletizado_leche": [
    1680,
    1035
   ],
-  "L411_Bodega_ambiente": [
+  "U413_Bodega_ambiente": [
    1880,
    1035
   ],
@@ -434,8 +434,8 @@
  "YQ": 765,
  "YL": 1035,
  "tinas": [
-  "Q201_Tina",
-  "Q202_Tina",
-  "Q203_Tina"
+  "U221A_Tina",
+  "U221B_Tina",
+  "U221C_Tina"
  ]
 }

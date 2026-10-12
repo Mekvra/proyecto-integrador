@@ -359,7 +359,7 @@ cartel('U123C_Silo_descremada', 'SILO DESCREMADA', SEC['1'], dy=2.2)
 QUESO, UHT = (225, 175, 40), (70, 150, 95)
 tuberia([(430, Y0 + 70), (430, YL), (480, YL)], LECHE)
 tuberia([(430, YQ), (480, YQ)], LECHE)
-for nm, txt, c in (('U124_Silo_quesos', 'U124 SILO QUESOS', QUESO), ('U125_Silo_leche', 'U125 SILO LECHE UHT', UHT)):
+for nm, txt, c in (('U124AB_Silos_quesos', 'U124A/B SILOS QUESOS', QUESO), ('U125AB_Silos_leche', 'U125A/B SILOS LECHE UHT', UHT)):
     tanque(nm, 1.15, 5.2, c)
     cartel(nm, txt, c, dy=-2.0, esc=0.36)
 # laboratorio de calidad (andén de recepción): vidrio, escritorio, mesa y analista
@@ -408,8 +408,8 @@ tanque('U214A_Pulmon_fresa', 1.0, 3.6, FRESA)
 cartel('U214A_Pulmon_fresa', 'U214A PULMÓN FRESA', FRESA, dy=-1.1, esc=0.36, alto=2.4, postes=False)   # placa en la cara del tanque
 tanque('U214B_Pulmon_natural', 1.0, 3.6, NATURAL)
 cartel('U214B_Pulmon_natural', 'U214B PULMÓN NATURAL', NATURAL, dy=-1.9, esc=0.36)
-tanque('U217_Pulmones_griego', 0.75, 2.6, GRIEGO, n=2, paso=1.8)
-cartel('U217_Pulmones_griego', 'U217 PULMONES GRIEGO', GRIEGO, dy=-1.9, esc=0.36)
+tanque('U217AB_Pulmones_griego', 0.75, 2.6, GRIEGO, n=2, paso=1.8)
+cartel('U217AB_Pulmones_griego', 'U217A/B PULMONES GRIEGO', GRIEGO, dy=-1.9, esc=0.36)
 x, y = W(*COORD['Reparto_fresa'])                                   # dosificación de fruta en línea
 tanque('Reparto_fresa', 0.45, 1.4, FRESA, dy=-1.4)
 caja(x, y, 0, 0.9, 0.7, 0.9, (225, 228, 234), 0.6)                  # dosificador
@@ -424,9 +424,9 @@ for nm, s, c in (('Reparto_natural', 'VÁLVULAS NATURAL', NATURAL), ('Reparto_gr
 llenadora('U311_Vasos', [('vaso', FRESA, 1.0), ('vaso', NATURAL, 1.15)], 'U311 VASOS · 12.000/h', SEC['5'])
 llenadora('U312_Botellas', [('botella', FRESA, 1.0), ('botella', NATURAL, 1.0)], 'U312 BOTELLAS', SEC['5'])
 llenadora('U313_Griego', [('vaso', GRIEGO, 1.0), ('pote', GRIEGO, 1.0)], 'U313 GRIEGO', GRIEGO)
-encajonadora('U321_Encajonadora_vasos', 'U311_Vasos', 'U321 ENCAJONADORA', SEC['5'], 'vaso', NATURAL, 1.0)
-encajonadora('U322_Encajonadora_botellas', 'U312_Botellas', 'U322 ENCAJONADORA', SEC['5'], 'botella', FRESA, 1.0)
-encajonadora('U323_Encajonadora_griego', 'U313_Griego', 'U323 ENCAJONADORA', GRIEGO, 'pote', GRIEGO, 1.0)
+encajonadora('Cajas_vasos', 'U311_Vasos', 'CAJAS VASOS', SEC['5'], 'vaso', NATURAL, 1.0)
+encajonadora('Cajas_botellas', 'U312_Botellas', 'CAJAS BOTELLAS', SEC['5'], 'botella', FRESA, 1.0)
+encajonadora('Cajas_griego', 'U313_Griego', 'CAJAS GRIEGO', GRIEGO, 'pote', GRIEGO, 1.0)
 xp, yp = W(*COORD['U341_Paletizado'])
 # las bandas de cajas son objetos Conveyor reales del modelo: las cajas (MU) viajan por ellas hasta el robot
 
@@ -498,7 +498,7 @@ for nm in C['tinas']:
         caja(x + k * 1.3, y, 1.7, 0.06, 1.9, 0.9, (150, 155, 165))
     caja(x, y, 2.6, 4.6, 0.12, 0.12, (150, 155, 165))                          # puente del agitador
     tablero(x, y + 1.7, nm.split('_')[0] + ' TINA 10.000 L', QUESO, 0.3, 1.9, ancho_max=3.4, letra=LETRA_EQUIPO)
-x, y = W(*COORD['Q301_Hilado'])
+x, y = W(*COORD['U223_Hilado'])
 caja(780 / 20, y, 0, 6.0, 0.7, 0.75, (70, 74, 84))                             # banda de cuajada de las tinas a la hiladora
 for k in range(5):
     caja(780 / 20 - 2.4 + k * 1.2, y, 0.78, 0.8, 0.5, 0.18, CUAJO)
@@ -509,29 +509,29 @@ caja(x + 2.1, y, 0.9, 1.0, 1.2, 0.08, (60, 62, 70))                            #
 for k in range(3):
     caja(x + 1.8 + k * 0.3, y, 0.98, 0.22, 0.9, 0.18, CUAJO)
 operario(x, y - 1.8)
-cartel('Q301_Hilado', 'Q301 HILADO Y MOLDEO', QUESO, dy=1.8)
-x, y = W(*COORD['Q302_Salmuera'])
+cartel('U223_Hilado', 'U223 HILADO Y MOLDEO', QUESO, dy=1.8)
+x, y = W(*COORD['U224_Salmuera'])
 for sy in (-1.3, 1.3):                                                          # dos piscinas de salmuera
     caja(x, y + sy, 0, 5.0, 2.0, 0.9, (205, 210, 218), 0.6)
     caja(x, y + sy, 0.75, 4.7, 1.7, 0.1, (120, 180, 220), 0.9, transp=0.3)
     for k in range(6):
         caja(x - 1.9 + k * 0.75, y + sy, 0.82, 0.5, 0.8, 0.12, CUAJO)        # quesos flotando
-cartel('Q302_Salmuera', 'Q302 SALMUERA 8 h', QUESO, dy=2.9)
-x, y = W(*COORD['Q311_Empaque_vacio'])
+cartel('U224_Salmuera', 'U224 SALMUERA 8 h', QUESO, dy=2.9)
+x, y = W(*COORD['U321_Empaque_vacio'])
 caja(x, y, 0, 3.0, 1.6, 1.0, (232, 235, 240), 0.4)                              # empacadora al vacío
 cil(x, y, 1.0, 0.75, 0.55, (200, 225, 240), r2=0.6, transp=0.5)                  # campana de vacío
 caja(x, y, 1.0, 3.0, 0.5, 0.05, (60, 62, 70))
 caja(x - 1.15, y - 0.83, 0.65, 0.45, 0.05, 0.4, (40, 70, 110), 0.9)             # HMI
 operario(x - 1.0, y - 1.6)
-cartel('Q311_Empaque_vacio', 'Q311 EMPAQUE AL VACÍO', QUESO, dy=1.7)
-x, y = W(*COORD['Q341_Paletizado'])
+cartel('U321_Empaque_vacio', 'U321 EMPAQUE AL VACÍO', QUESO, dy=1.7)
+x, y = W(*COORD['Paletizado_quesos'])
 caja(x - 0.2, y, 0, 1.4, 1.2, 0.8, (150, 155, 165), 0.5)                        # mesa de llegada
 estiba(x + 1.6, y - 0.9, (QUESO, CUAJO), niveles=2)
 estiba(x + 1.6, y + 0.9, (QUESO, CUAJO), niveles=1)
 operario(x + 0.7, y - 0.9, giro=180)
 operario(x + 0.7, y + 0.9, giro=180)
-cartel('Q341_Paletizado', 'Q341 PALETIZADO MANUAL', QUESO, dy=2.6)
-x, y = W(*COORD['Q411_Camara_quesos'])
+cartel('Paletizado_quesos', 'PALETIZADO MANUAL QUESOS', QUESO, dy=2.6)
+x, y = W(*COORD['U414_Camara_quesos'])
 caja(x, y, 0, 7.0, 6.0, 3.4, (210, 230, 245), transp=0.62)                      # cámara de quesos
 caja(x, y, 3.4, 7.1, 6.1, 0.08, (225, 238, 250), transp=0.7)
 for i in range(3):
@@ -541,7 +541,7 @@ for i in range(3):
         for nivel in range(3):
             caja(xx, y + sy, 0.06 + nivel * 1.05, 1.3, 1.1, 0.05, (230, 120, 30))
             caja(xx, y + sy, 0.12 + nivel * 1.05, 1.1, 0.9, 0.6, (QUESO, CUAJO)[(i + nivel) % 2], 0.3)
-cartel('Q411_Camara_quesos', 'Q411 CÁMARA QUESOS 2-4 °C', QUESO, dy=3.8, alto=2.6)
+cartel('U414_Camara_quesos', 'U414 CÁMARA QUESOS 2-4 °C', QUESO, dy=3.8, alto=2.6)
 x, y = W(*COORD['Despacho_quesos'])
 caja(x - 0.4, y, 0, 1.2, 3.4, 1.2, (150, 155, 165))                             # muelle
 camion(x + 0.4, y, 7.0, (200, 150, 30), carga='caja', hacia=1)
@@ -550,21 +550,21 @@ camion(x + 0.4, y, 7.0, (200, 150, 30), carga='caja', hacia=1)
 CACAO, BLANCO_L = (110, 70, 45), (240, 244, 248)
 tuberia([(480, YL), (680, YL)], UHT)
 tuberia([(680, YL), (1080, YL)], UHT, z=0.5)
-tanque('L201_Mezcla', 1.25, 2.8, UHT)
-x, y = W(*COORD['L201_Mezcla'])
+tanque('U231_Mezcla', 1.25, 2.8, UHT)
+x, y = W(*COORD['U231_Mezcla'])
 caja(x - 2.0, y, 0, 1.0, 1.0, 1.5, CACAO, 0.3)                                  # tolva de cacao y azúcar
-cartel('L201_Mezcla', 'L201 MEZCLA Y ESTANDARIZACIÓN', UHT, dy=2.1)
-x, y = W(*COORD['L202_UHT'])
+cartel('U231_Mezcla', 'U231 MEZCLA Y ESTANDARIZACIÓN', UHT, dy=2.1)
+x, y = W(*COORD['U232_UHT'])
 caja(x - 1.2, y, 0, 2.2, 1.2, 2.0, ACERO, 0.85)                                 # intercambiador de placas
 caja(x + 1.0, y, 0, 1.6, 1.0, 1.4, (60, 90, 140), 0.6)                          # homogeneizador aséptico
 for k in range(4):                                                              # tubo de retención en serpentín
     cil(x - 2.4, y - 0.8 + k * 0.5, 0.6, 0.08, 2.4, (200, 70, 60), brillo=0.9, rot=(90, 0, 1, 0))
 caja(x + 2.3, y - 0.6, 0.6, 0.5, 0.06, 0.8, (40, 70, 110), 0.9)               # tablero de control
 operario(x + 2.3, y - 1.6)
-cartel('L202_UHT', 'L202 UHT 137 °C x 4 s', UHT, dy=1.9)
-tanque('L203_Tanque_aseptico', 1.1, 4.6, UHT, tapa=BLANCO_L)
-cartel('L203_Tanque_aseptico', 'L203 TANQUE ASÉPTICO', UHT, dy=2.0)
-x, y = W(*COORD['L311_Envasadora_aseptica'])
+cartel('U232_UHT', 'U232 UHT 137 °C x 4 s', UHT, dy=1.9)
+tanque('U233_Tanque_aseptico', 1.1, 4.6, UHT, tapa=BLANCO_L)
+cartel('U233_Tanque_aseptico', 'U233 TANQUE ASÉPTICO', UHT, dy=2.0)
+x, y = W(*COORD['U331_Envasadora_aseptica'])
 caja(x, y, 0, 3.2, 1.8, 2.9, (236, 240, 245), 0.5)                              # envasadora aséptica
 caja(x, y - 0.91, 0.9, 2.4, 0.02, 1.4, (150, 190, 220), 0.9, transp=0.4)        # ventana
 caja(x, y, 2.9, 3.2, 1.8, 0.15, UHT)
@@ -573,15 +573,15 @@ for k in range(5):                                                              
     caja(x + 1.9 + k * 0.28, y, 0.85, 0.2, 0.2, 0.32, (BLANCO_L, UHT, CACAO)[k % 3])
 caja(x + 2.2, y, 0, 1.0, 0.5, 0.85, (60, 62, 70))
 operario(x - 1.0, y - 1.7)
-cartel('L311_Envasadora_aseptica', 'L311 ENVASADO ASÉPTICO 1 L', UHT, dy=2.0)
-x, y = W(*COORD['L341_Paletizado'])
+cartel('U331_Envasadora_aseptica', 'U331 ENVASADO ASÉPTICO 1 L', UHT, dy=2.0)
+x, y = W(*COORD['Paletizado_leche'])
 caja(x - 0.2, y, 0, 1.4, 1.2, 0.8, (150, 155, 165), 0.5)
 estiba(x + 1.6, y - 0.9, (BLANCO_L, UHT), niveles=2)
 estiba(x + 1.6, y + 0.9, (BLANCO_L, CACAO), niveles=1)
 operario(x + 0.7, y - 0.9, giro=180)
 operario(x + 0.7, y + 0.9, giro=180)
-cartel('L341_Paletizado', 'L341 PALETIZADO MANUAL', UHT, dy=2.6)
-x, y = W(*COORD['L411_Bodega_ambiente'])
+cartel('Paletizado_leche', 'PALETIZADO MANUAL LECHE', UHT, dy=2.6)
+x, y = W(*COORD['U413_Bodega_ambiente'])
 caja(x, y, 0, 7.0, 6.0, 0.06, (200, 205, 212))                                  # bodega a temperatura ambiente (sin frío)
 for i in range(3):
     xx = x - 2.4 + i * 2.4
@@ -592,7 +592,7 @@ for i in range(3):
         for nivel in range(3):
             caja(xx, y + sy, 0.06 + nivel * 1.05, 1.3, 1.1, 0.05, (230, 120, 30))
             caja(xx, y + sy, 0.12 + nivel * 1.05, 1.1, 0.9, 0.6, (BLANCO_L, UHT, CACAO)[(i + nivel) % 3], 0.3)
-cartel('L411_Bodega_ambiente', 'L411 BODEGA AMBIENTE · CUARENTENA', UHT, dy=3.8, alto=2.6)
+cartel('U413_Bodega_ambiente', 'U413 BODEGA AMBIENTE · CUARENTENA', UHT, dy=3.8, alto=2.6)
 x, y = W(*COORD['Despacho_leche'])
 caja(x - 0.4, y, 0, 1.2, 3.4, 1.2, (150, 155, 165))
 camion(x + 0.4, y, 7.0, (60, 130, 80), carga='caja', hacia=1)
@@ -613,12 +613,12 @@ for mu, col in (('Bulto_queso', QUESO), ('Bulto_leche', UHT)):                # 
 ORD.append('\n'.join(f'.MUs.{c}._3D.ScaleAutomatically := false' for c in ['Montacargas', 'Bulto_queso', 'Bulto_leche'] + C['desp']))
 OCULTAR = ['U113_Leche_cruda', 'U123AB_Silo_entera', 'U123C_Silo_descremada', 'U201_Formulacion', 'U202_Tratamiento',
            'U121_Pasteurizador', 'U215_Enfriamiento', 'U216_Separador_griego', 'U214A_Pulmon_fresa', 'U214B_Pulmon_natural',
-           'U217_Pulmones_griego', 'U311_Vasos', 'U312_Botellas', 'U313_Griego', 'U411_Camara',
-           'U321_Encajonadora_vasos', 'U322_Encajonadora_botellas', 'U323_Encajonadora_griego', 'U342_Envolvedora', 'U341_Paletizado',
+           'U217AB_Pulmones_griego', 'U311_Vasos', 'U312_Botellas', 'U313_Griego', 'U411_Camara',
+           'Cajas_vasos', 'Cajas_botellas', 'Cajas_griego', 'U342_Envolvedora', 'U341_Paletizado',
            'U111_Recepcion', 'Cisternas', 'Reparto_fresa', 'Reparto_natural', 'Reparto_griego', 'Registro_de_lotes',
-           'Programa_semanal', 'U124_Silo_quesos', 'U125_Silo_leche', 'Q301_Hilado', 'Q302_Salmuera', 'Q311_Empaque_vacio',
-           'Q312_Registro', 'Q341_Paletizado', 'Q411_Camara_quesos', 'Despacho_quesos', 'L201_Mezcla', 'L202_UHT', 'L203_Tanque_aseptico',
-           'L311_Envasadora_aseptica', 'L312_Registro', 'L341_Paletizado', 'L411_Bodega_ambiente', 'Despacho_leche'] + C['tinas'] + C['ferm'] + [f'Despacho_{c}' for c in C['desp']]
+           'Programa_semanal', 'U124AB_Silos_quesos', 'U125AB_Silos_leche', 'U223_Hilado', 'U224_Salmuera', 'U321_Empaque_vacio',
+           'Registro_quesos', 'Paletizado_quesos', 'U414_Camara_quesos', 'Despacho_quesos', 'U231_Mezcla', 'U232_UHT', 'U233_Tanque_aseptico',
+           'U331_Envasadora_aseptica', 'Registro_leche', 'Paletizado_leche', 'U413_Bodega_ambiente', 'Despacho_leche'] + C['tinas'] + C['ferm'] + [f'Despacho_{c}' for c in C['desp']]
 ORD.append('\n'.join(['var m: object := .Models.Model'] + [f'm.{n}._3D.Scale := [0.02, 0.02, 0.02]' for n in OCULTAR]))
 ORD.append('var m: object := .Models.Model\nm.Analizador_cuellos._3D.Scale := [0.02, 0.02, 0.02]')
 ORD.append('var m: object := .Models.Model\nm.EventController._3D.Scale := [0.02, 0.02, 0.02]')
@@ -627,9 +627,9 @@ ORD.append('var mt: object := str_to_obj(".Models.Model.Init")\nmt._3D.Scale := 
 # esperando la llenadora) no muestran su contenido para que su cola no se vea como una torre
 ORD.append('\n'.join(['var m: object := .Models.Model'] + [f'm.{b}._3D.ShowContentsAs := "Fill level"' for b in (
     'U113_Leche_cruda', 'U123AB_Silo_entera', 'U123C_Silo_descremada', 'U214A_Pulmon_fresa', 'U214B_Pulmon_natural',
-    'U217_Pulmones_griego', 'U411_Camara', 'U124_Silo_quesos', 'U125_Silo_leche', 'Q302_Salmuera', 'Q411_Camara_quesos',
-    'L203_Tanque_aseptico', 'L411_Bodega_ambiente')] + ['m.' + r + '._3D.ShowContent := false'
-    for r in ('Reparto_fresa', 'Reparto_natural', 'Reparto_griego', 'Q311_Empaque_vacio', 'L311_Envasadora_aseptica')]))
+    'U217AB_Pulmones_griego', 'U411_Camara', 'U124AB_Silos_quesos', 'U125AB_Silos_leche', 'U224_Salmuera', 'U414_Camara_quesos',
+    'U233_Tanque_aseptico', 'U413_Bodega_ambiente')] + ['m.' + r + '._3D.ShowContent := false'
+    for r in ('Reparto_fresa', 'Reparto_natural', 'Reparto_griego', 'U321_Empaque_vacio', 'U331_Envasadora_aseptica')]))
 
 if __name__ == '__main__':
     dst = sys.argv[1] if len(sys.argv) > 1 else D

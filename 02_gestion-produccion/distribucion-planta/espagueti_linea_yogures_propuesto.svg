@@ -103,6 +103,8 @@
 <circle cx="1000.0" cy="816.4" r="16.4" fill="#ecedef" stroke="#6b7682" stroke-width="1.1"/>
 <circle cx="1050.4" cy="816.4" r="16.4" fill="#ecedef" stroke="#6b7682" stroke-width="1.1"/>
 <circle cx="1100.8" cy="816.4" r="16.4" fill="#ecedef" stroke="#6b7682" stroke-width="1.1"/>
+<circle cx="1018.9" cy="942.4" r="20.2" fill="#ecedef" stroke="#6b7682" stroke-width="1.1"/>
+<circle cx="1094.5" cy="942.4" r="20.2" fill="#ecedef" stroke="#6b7682" stroke-width="1.1"/>
 <rect x="1163.8" y="791.2" width="126.0" height="25.2" rx="0" fill="#ecedef" stroke="#6b7682" stroke-width="1" />
 <rect x="1163.8" y="892.0" width="50.4" height="75.6" rx="0" fill="#ecedef" stroke="#6b7682" stroke-width="1" />
 <rect x="136.9" y="343.9" width="63.0" height="56.7" rx="1.5" fill="#e5e7ec" stroke="#5a6987" stroke-width="1.2" />
@@ -117,16 +119,22 @@
 <rect x="527.5" y="350.2" width="75.6" height="37.8" rx="1.5" fill="#e5e7ec" stroke="#5a6987" stroke-width="1.2" />
 <rect x="464.5" y="413.2" width="50.4" height="37.8" rx="1.5" fill="#e5e7ec" stroke="#5a6987" stroke-width="1.2" />
 <rect x="527.5" y="413.2" width="75.6" height="37.8" rx="1.5" fill="#e5e7ec" stroke="#5a6987" stroke-width="1.2" />
-<circle cx="181.0" cy="589.6" r="22.7" fill="#f5e0e6" stroke="#c33c64" stroke-width="1.2"/>
-<circle cx="181.0" cy="589.6" r="2" fill="#c33c64"/>
-<circle cx="276.8" cy="589.6" r="22.7" fill="#f5e0e6" stroke="#c33c64" stroke-width="1.2"/>
-<circle cx="276.8" cy="589.6" r="2" fill="#c33c64"/>
-<circle cx="372.5" cy="589.6" r="18.9" fill="#f5e0e6" stroke="#c33c64" stroke-width="1.2"/>
-<circle cx="372.5" cy="589.6" r="2" fill="#c33c64"/>
-<circle cx="468.3" cy="589.6" r="25.2" fill="#eff0f2" stroke="#9aa3ad" stroke-width="1.2"/>
-<circle cx="468.3" cy="589.6" r="2" fill="#9aa3ad"/>
-<circle cx="564.0" cy="589.6" r="23.9" fill="#eff0f2" stroke="#9aa3ad" stroke-width="1.2"/>
-<circle cx="564.0" cy="589.6" r="2" fill="#9aa3ad"/>
+<circle cx="489.7" cy="478.7" r="11.3" fill="#e5e7ec" stroke="#5a6987" stroke-width="1.2"/>
+<circle cx="489.7" cy="478.7" r="2" fill="#5a6987"/>
+<circle cx="162.1" cy="589.6" r="22.7" fill="#f5e0e6" stroke="#c33c64" stroke-width="1.2"/>
+<circle cx="162.1" cy="589.6" r="2" fill="#c33c64"/>
+<circle cx="233.9" cy="589.6" r="22.7" fill="#f5e0e6" stroke="#c33c64" stroke-width="1.2"/>
+<circle cx="233.9" cy="589.6" r="2" fill="#c33c64"/>
+<circle cx="303.2" cy="589.6" r="18.9" fill="#f5e0e6" stroke="#c33c64" stroke-width="1.2"/>
+<circle cx="303.2" cy="589.6" r="2" fill="#c33c64"/>
+<circle cx="372.5" cy="589.6" r="18.9" fill="#eff0f2" stroke="#9aa3ad" stroke-width="1.2"/>
+<circle cx="372.5" cy="589.6" r="2" fill="#9aa3ad"/>
+<circle cx="440.6" cy="589.6" r="18.9" fill="#eff0f2" stroke="#9aa3ad" stroke-width="1.2"/>
+<circle cx="440.6" cy="589.6" r="2" fill="#9aa3ad"/>
+<circle cx="508.6" cy="589.6" r="18.9" fill="#eff0f2" stroke="#9aa3ad" stroke-width="1.2"/>
+<circle cx="508.6" cy="589.6" r="2" fill="#9aa3ad"/>
+<circle cx="576.6" cy="589.6" r="18.9" fill="#eff0f2" stroke="#9aa3ad" stroke-width="1.2"/>
+<circle cx="576.6" cy="589.6" r="2" fill="#9aa3ad"/>
 <circle cx="672.4" cy="388.0" r="17.6" fill="#f5e0e6" stroke="#c33c64" stroke-width="1.2"/>
 <circle cx="672.4" cy="388.0" r="2" fill="#c33c64"/>
 <rect x="722.8" y="343.9" width="37.8" height="31.5" rx="1.5" fill="#f5e0e6" stroke="#c33c64" stroke-width="1.2" />
@@ -145,8 +153,11 @@
 <circle cx="1050.4" cy="356.5" r="2" fill="#c33c64"/>
 <circle cx="1050.4" cy="432.1" r="16.4" fill="#f5e0e6" stroke="#c33c64" stroke-width="1.2"/>
 <circle cx="1050.4" cy="432.1" r="2" fill="#c33c64"/>
-<circle cx="1090.7" cy="394.3" r="10.7" fill="#f5e0e6" stroke="#c33c64" stroke-width="1.2"/>
-<circle cx="1090.7" cy="394.3" r="2" fill="#c33c64"/>
+<rect x="995.0" y="388.0" width="40.3" height="18.9" rx="1.5" fill="#f5e0e6" stroke="#c33c64" stroke-width="1.2" />
+<circle cx="1093.2" cy="370.4" r="10.1" fill="#f5e0e6" stroke="#c33c64" stroke-width="1.2"/>
+<circle cx="1093.2" cy="370.4" r="2" fill="#c33c64"/>
+<circle cx="1093.2" cy="420.8" r="10.1" fill="#f5e0e6" stroke="#c33c64" stroke-width="1.2"/>
+<circle cx="1093.2" cy="420.8" r="2" fill="#c33c64"/>
 <rect x="1126.0" y="343.9" width="88.2" height="32.8" rx="1.5" fill="#f5e0e6" stroke="#c33c64" stroke-width="1.2" />
 <rect x="1233.1" y="343.9" width="63.0" height="32.8" rx="1.5" fill="#f5e0e6" stroke="#c33c64" stroke-width="1.2" />
 <rect x="1126.0" y="398.1" width="88.2" height="32.8" rx="1.5" fill="#f5e0e6" stroke="#c33c64" stroke-width="1.2" />
@@ -159,6 +170,7 @@
 <rect x="143.2" y="734.5" width="81.9" height="40.3" rx="1.5" fill="#eff0f2" stroke="#9aa3ad" stroke-width="1.2" />
 <rect x="237.7" y="734.5" width="81.9" height="40.3" rx="1.5" fill="#eff0f2" stroke="#9aa3ad" stroke-width="1.2" />
 <rect x="332.2" y="734.5" width="81.9" height="40.3" rx="1.5" fill="#eff0f2" stroke="#9aa3ad" stroke-width="1.2" />
+<rect x="143.2" y="786.2" width="378.0" height="20.2" rx="1.5" fill="#eff0f2" stroke="#9aa3ad" stroke-width="1.2" />
 <rect x="445.6" y="734.5" width="75.6" height="40.3" rx="1.5" fill="#eff0f2" stroke="#9aa3ad" stroke-width="1.2" />
 <rect x="540.1" y="734.5" width="63.0" height="40.3" rx="1.5" fill="#eff0f2" stroke="#9aa3ad" stroke-width="1.2" />
 <rect x="143.2" y="822.7" width="277.2" height="63.0" rx="1.5" fill="#eff0f2" stroke="#9aa3ad" stroke-width="1.2" />
@@ -170,6 +182,11 @@
 <circle cx="823.6" cy="658.9" r="2" fill="#9aa3ad"/>
 <rect x="855.1" y="640.0" width="75.6" height="37.8" rx="1.5" fill="#eff0f2" stroke="#9aa3ad" stroke-width="1.2" />
 <rect x="855.1" y="715.6" width="75.6" height="31.5" rx="1.5" fill="#eff0f2" stroke="#9aa3ad" stroke-width="1.2" />
+<text x="1403.2" y="618.6" font-family="'IBM Plex Mono', Consolas, monospace" font-size="9" font-weight="700" fill="#5b6876" text-anchor="middle" >U411</text>
+<text x="307.0" y="955.0" font-family="'IBM Plex Mono', Consolas, monospace" font-size="9" font-weight="700" fill="#5b6876" text-anchor="middle" >U414 · 2–4 °C</text>
+<text x="741.7" y="753.4" font-family="'IBM Plex Mono', Consolas, monospace" font-size="9" font-weight="700" fill="#5b6876" text-anchor="middle" >U413 · bodega ambiente</text>
+<text x="1056.7" y="899.6" font-family="'IBM Plex Mono', Consolas, monospace" font-size="9" font-weight="700" fill="#5b6876" text-anchor="middle" >U905 · suero</text>
+<text x="1050.4" y="859.2" font-family="'IBM Plex Mono', Consolas, monospace" font-size="9" font-weight="700" fill="#5b6876" text-anchor="middle" >U901 · CIP</text>
 <rect x="620.0" y="829.0" width="4.0" height="189.0" rx="0" fill="#2a3440" stroke="none" stroke-width="0" />
 <rect x="1111.4" y="262.0" width="4.0" height="252.0" rx="0" fill="#2a3440" stroke="none" stroke-width="0" />
 <rect x="1313.0" y="262.0" width="4.0" height="83.2" rx="0" fill="#2a3440" stroke="none" stroke-width="0" />
@@ -265,7 +282,7 @@
 <text x="710.2" y="872.2" font-family="'IBM Plex Mono', Consolas, monospace" font-size="9.5" font-weight="500" fill="#5b6876" text-anchor="middle" >210 m²</text>
 <text x="880.3" y="859.2" font-family="Archivo, 'Arial Narrow', Arial, sans-serif" font-size="10.5" font-weight="700" fill="#14202b" text-anchor="middle" letter-spacing="0.4">ESCLUSA SANITARIA</text>
 <text x="880.3" y="872.2" font-family="'IBM Plex Mono', Consolas, monospace" font-size="9.5" font-weight="500" fill="#5b6876" text-anchor="middle" >195 m²</text>
-<text x="1050.4" y="764.7" font-family="Archivo, 'Arial Narrow', Arial, sans-serif" font-size="10.5" font-weight="700" fill="#14202b" text-anchor="middle" letter-spacing="0.4">CIP CENTRAL</text>
+<text x="1050.4" y="764.7" font-family="Archivo, 'Arial Narrow', Arial, sans-serif" font-size="10.5" font-weight="700" fill="#14202b" text-anchor="middle" letter-spacing="0.4">CIP CENTRAL Y SUERO</text>
 <text x="1050.4" y="777.7" font-family="'IBM Plex Mono', Consolas, monospace" font-size="9.5" font-weight="500" fill="#5b6876" text-anchor="middle" >315 m²</text>
 <text x="1226.8" y="764.7" font-family="Archivo, 'Arial Narrow', Arial, sans-serif" font-size="10.5" font-weight="700" fill="#14202b" text-anchor="middle" letter-spacing="0.4">MANTENIMIENTO</text>
 <text x="1226.8" y="777.7" font-family="'IBM Plex Mono', Consolas, monospace" font-size="9.5" font-weight="500" fill="#5b6876" text-anchor="middle" >315 m²</text>
@@ -418,5 +435,5 @@
 <text x="1591.0" y="1344.0" font-family="'IBM Plex Mono', Consolas, monospace" font-size="9.5" font-weight="600" fill="#5b6876" text-anchor="start" >ESCALA</text>
 <text x="1591.0" y="1362.0" font-family="'IBM Plex Sans', 'Segoe UI', Arial, sans-serif" font-size="12" font-weight="700" fill="#14202b" text-anchor="start" >1:750 en A3 · cotas en m</text>
 <text x="1805.0" y="1344.0" font-family="'IBM Plex Mono', Consolas, monospace" font-size="9.5" font-weight="600" fill="#5b6876" text-anchor="start" >FECHA</text>
-<text x="1805.0" y="1362.0" font-family="'IBM Plex Sans', 'Segoe UI', Arial, sans-serif" font-size="12" font-weight="700" fill="#14202b" text-anchor="start" >10-oct-2026</text>
+<text x="1805.0" y="1362.0" font-family="'IBM Plex Sans', 'Segoe UI', Arial, sans-serif" font-size="12" font-weight="700" fill="#14202b" text-anchor="start" >11-oct-2026</text>
 <text x="1591.0" y="1380.0" font-family="'IBM Plex Sans', 'Segoe UI', Arial, sans-serif" font-size="9.5" font-weight="400" fill="#5b6876" text-anchor="start" >Mekvra · medidas propuestas, sin plano del terreno</text></svg>

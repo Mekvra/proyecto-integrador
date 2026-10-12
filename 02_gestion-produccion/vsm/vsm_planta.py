@@ -51,7 +51,7 @@ for i, (nom, sub, dat) in enumerate(bloques):
         flecha(165, y + 118, 165, y + 138)
 flecha(165, YL0 + 116, 165, YL0 + 138)
 t(165, YL0 + 640, 'Silos por línea', 11.5, INK, 700, FB, 'middle')
-t(165, YL0 + 658, 'U123A–C · U124 · U125', 10.5, MUTED, 400, FB, 'middle')
+t(165, YL0 + 658, 'U123A–C · U124A/B · U125A/B', 10.5, MUTED, 400, FB, 'middle')
 inventario(165, YL0 + 672, '≤ 2 h', 'leche pasteurizada')
 
 # ---------------- tres franjas ----------------
@@ -65,18 +65,18 @@ LINEAS = [
      ('≤ 8 h', 'pulmones', 2), ('≥ 12 h', 'cámara 2–4 °C'), 3, (35.4, 10.45),
      f'{miles(R["vasos_U311_dia"])} vasos · {miles(R["botellas_U312_dia"])} botellas · {miles(R["griego_U313_dia"])} griego'),
     ('QUESOS', '≈ 49.400 L/día · 30 lotes/semana', Q, QS, [
-        ('TINAS', 'Q201–Q203 · 10.000 L', '3,5 h', pct('Q201_Tina')),
-        ('HILADO', 'Q301 hiladora', '1,0 h', pct('Q301_Hilado')),
-        ('SALMUERA', 'Q302 · 20 % NaCl', '8,0 h', '—'),
-        ('EMPAQUE', 'Q311 al vacío', '1,2 h', pct('Q311_Empaque_vacio')),
-        ('PALETIZADO', 'Q341 manual · 2 op.', '108 s/bulto', pct('Q341_Paletizado'))],
+        ('TINAS', 'U221A–C · 10.000 L', '3,5 h', pct('U221A_Tina')),
+        ('HILADO', 'U223 hiladora', '1,0 h', pct('U223_Hilado')),
+        ('SALMUERA', 'U224 · 20 % NaCl', '8,0 h', '—'),
+        ('EMPAQUE', 'U321 al vacío', '1,2 h', pct('U321_Empaque_vacio')),
+        ('PALETIZADO', 'manual · 2 op.', '108 s/bulto', pct('Paletizado_quesos'))],
      None, ('12 h', 'cámara quesos'), None, (32.3, 13.7), f'≈ {miles(R["queso_kg_dia"])} kg de queso'),
     ('LECHE UHT', '≈ 43.100 L/día · 26 lotes/semana', L_, LS, [
-        ('MEZCLA', 'L201 · cacao en LC', '1,0 h', pct('L201_Mezcla')),
-        ('UHT', 'L202 · 137 °C × 4 s', '1,0 h', pct('L202_UHT')),
-        ('TANQUE ASÉPTICO', 'L203 · 20.000 L', 'pulmón', '—'),
-        ('ENVASADO', 'L311 aséptica 1 L', '2,0 h', pct('L311_Envasadora_aseptica')),
-        ('PALETIZADO', 'L341 manual · 2 op.', '72 s/bulto', pct('L341_Paletizado'))],
+        ('MEZCLA', 'U231 · cacao en LC', '1,0 h', pct('U231_Mezcla')),
+        ('UHT', 'U232 · 137 °C × 4 s', '1,0 h', pct('U232_UHT')),
+        ('TANQUE ASÉPTICO', 'U233 · 20.000 L', 'pulmón', '—'),
+        ('ENVASADO', 'U331 aséptica 1 L', '2,0 h', pct('U331_Envasadora_aseptica')),
+        ('PALETIZADO', 'manual · 2 op.', '72 s/bulto', pct('Paletizado_leche'))],
      None, ('24 h', 'cuarentena · bodega'), None, (35.1, 4.5), f'≈ {miles(R["leche_envases_dia"])} envases de 1 L'),
 ]
 X0, BW, GAP, LH = 330, 182, 42, 262
