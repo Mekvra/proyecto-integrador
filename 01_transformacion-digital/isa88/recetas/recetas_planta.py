@@ -67,8 +67,6 @@ B.append('''<div class="wrap">
   <span class="eyebrow">Recetas básicas ISA-88 · Planta completa</span>
   <h1>Planta láctea de Lácteos Altos de Teusacá</h1>
   <p>Tres líneas sobre un mismo tronco común: yogures, quesos y leche UHT. Para cada producto, la fórmula por lote, las etapas con sus parámetros, las máquinas que las hacen y los controles que no se pueden saltar.</p>
-  <div class="meta"><span>Versión <b>1.0</b></span><span>Fecha <b>10 oct 2026</b></span><span>Base <b>acta del 9-oct-2026</b></span></div>
-  <p class="note">Todas las cantidades son valores de diseño de Mekvra, no resultados medidos en planta. Las de quesos y leche UHT son recetas básicas: sus parámetros salen de Tetra Pak, el Codex y la normativa colombiana, y se afinan cuando el equipo defina cada producto.</p>
 </header>
 ''')
 
