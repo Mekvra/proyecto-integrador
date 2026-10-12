@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://mekvra.github.io/proyecto-integrador/">
-    <img src=".github/assets/banner.png" alt="Mekvra — Automatización e integración industrial" width="100%">
+    <img src=".github/assets/banner.png" alt="Mekvra S.A.S — Automatización e integración industrial" width="100%">
   </a>
 </p>
 
@@ -25,38 +25,31 @@
 
 <br>
 
-**Mekvra** es una empresa integradora de soluciones de **Transformación Digital Industrial**, formada por ingenieros mecatrónicos. Le proponemos a una planta de derivados lácteos, tomando como referencia los procesos de Alpina en Sopó, una solución que conecta todos sus niveles productivos: del sensor en la tina de cuajado a la decisión en la gerencia.
+**Mekvra S.A.S** es una empresa integradora de soluciones de **Transformación Digital Industrial**, formada por ingenieros mecatrónicos. Nuestro cliente es **Lácteos Altos de Teusacá**, una planta de derivados lácteos que recibe 150.000 L de leche al día, y le proponemos una solución que conecta todos sus niveles productivos: del sensor en el tanque a la decisión en la gerencia.
 
 > Proyecto Integrador del curso **Automatización de Procesos de Manufactura 2026-2S** · Universidad Nacional de Colombia · Sede Bogotá.
 
-## La arquitectura
-
-La información sube desde la planta hasta la gerencia; las órdenes, recetas y decisiones bajan de vuelta. Organizamos la integración con **ISA-95** y la producción por lotes con **ISA-88**.
-
-```mermaid
-flowchart BT
-    P["<b>N0 · Proceso</b> — gemelo digital en Siemens NX"]
-    F["<b>N1 · Campo</b> — sensores y actuadores"]
-    C["<b>N2 · Control</b> — PLC en Logix Emulate"]
-    S["<b>N3 · SCADA</b> — Ignition · OPC"]
-    M["<b>N4 · MES</b> — Node-RED · Power BI"]
-    E["<b>N5 · ERP</b> — SAP"]
-    P -- "datos" --> F --> C --> S --> M --> E
-    E -. "órdenes y recetas" .-> M
-    classDef nivel fill:#141312,stroke:#c8ad86,stroke-width:1px,color:#fff7dd
-    class P,F,C,S,M,E nivel
-    linkStyle default stroke:#c8ad86,color:#8a8380
-```
-
 ## Líneas de producción
 
-Tres líneas por lotes que comparten la recepción, la pasteurización y el almacenamiento de la leche.
+Tres líneas por lotes que comparten la recepción, la pasteurización y los silos de leche (acta del 9 de octubre de 2026).
 
-| Línea | Alcance en el proyecto |
+| Línea | Leche al día | Productos | Alcance en el proyecto |
+|:--|--:|:--|:--|
+| **Yogures** | ≈ 57.000 L | Fresa, natural y griego | Línea detallada: recetas ISA-88, simulación, VSM, layout y espagueti |
+| **Quesos** | 50.000 L | Mozzarella, quesillo y doble crema | Recetas básicas y simulación de la planta |
+| **Leche UHT** | 43.000 L | Entera, descremada y con chocolate | Recetas básicas y simulación de la planta |
+
+## Avances
+
+| Entregable | Contenido |
 |:--|:--|
-| **Queso fresco** | Línea detallada: automatización, celda robotizada, SCADA y gemelo digital |
-| **Yogurt** | Caracterización del proceso, recetas ISA-88 y análisis de producción |
-| **Kéfir** | Caracterización del proceso, recetas ISA-88 y análisis de producción |
+| [**Simulación en Tecnomatix**](02_gestion-produccion/simulacion-tecnomatix) | Planta con las tres líneas y línea de yogures con paletizado manual, en 3D, con 12 semanas simuladas |
+| [**VSM**](02_gestion-produccion/vsm) | [Planta completa](02_gestion-produccion/vsm/vsm_planta_3_lineas_clasico.pdf) y [línea de yogures](02_gestion-produccion/vsm/vsm_linea_yogures_clasico.pdf): lead time ≈ 35 h con 30 % de valor agregado |
+| [**Distribución en planta**](02_gestion-produccion/distribucion-planta) | [Layout de la planta](02_gestion-produccion/distribucion-planta/layout_planta_3_lineas_clasico.pdf) (edificio de 110 × 60 m) y [layout de la línea de yogures](02_gestion-produccion/distribucion-planta/layout_linea_yogures_actual_clasico.pdf) |
+| [**Diagrama de espagueti**](02_gestion-produccion/distribucion-planta/espagueti_linea_yogures_actual_clasico.pdf) | Recorridos diarios de la línea de yogures: ≈ 21 km al día y ≈ 11.600 cajas estibadas a mano |
+| [**Recetas ISA-88**](01_transformacion-digital/isa88/recetas) | [Recetas de la línea de yogures](01_transformacion-digital/isa88/recetas/Recetas_linea_yogures_v1.8.pdf) y [recetas básicas de la planta](01_transformacion-digital/isa88/recetas/Recetas_basicas_planta_v1.0.pdf) |
+
+Todas las cifras son valores de diseño o de simulación, no medidas en planta.
 
 <h2 id="estructura">Estructura</h2>
 
@@ -94,5 +87,5 @@ Sube tus archivos a la carpeta de tu módulo, directamente desde GitHub y sin in
 <p align="center">
   <img src=".github/assets/avatar.png" width="44" alt="">
   <br>
-  <sub><b>MEKVRA</b> · Automatización e integración industrial</sub>
+  <sub><b>MEKVRA S.A.S</b> · Automatización e integración industrial</sub>
 </p>
