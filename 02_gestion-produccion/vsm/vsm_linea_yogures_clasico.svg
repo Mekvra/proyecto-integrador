@@ -1,0 +1,217 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1800 1100" width="1800" height="1100"><defs><marker id="p" markerWidth="12" markerHeight="12" refX="10" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L10,5 L0,10 z" fill="#000000"/></marker></defs><rect x="0" y="0" width="1800" height="1100" fill="#fff" stroke="#fff" stroke-width="0" />
+<rect x="14" y="14" width="1772" height="1072" fill="none" stroke="#000000" stroke-width="1.2" />
+<text x="36" y="52" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" fill="#000000" text-anchor="start">Mapa de flujo de valor – estado actual</text>
+<text x="36" y="76" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="400" fill="#555555" text-anchor="start">Línea de yogures (natural, griego y fresa) · Lácteos Altos de Teusacá</text>
+<polygon points="52.0,178.0 52.0,126.0 102.0,100.0 102.0,126.0 152.0,100.0 152.0,126.0 202.0,100.0 202.0,178.0" fill="#fff" stroke="#000000" stroke-width="1.5" stroke-linejoin="miter"/>
+<text x="127.0" y="160" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700" fill="#000000" text-anchor="middle">Ganaderos</text>
+<rect x="52" y="188" width="150" height="52" fill="#fff" stroke="#000000" stroke-width="1.5" />
+<text x="60" y="211" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#000000" text-anchor="start">150.000 L/día planta</text>
+<text x="60" y="232" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#000000" text-anchor="start">57.500 L/día yogur</text>
+<rect x="60" y="262" width="62" height="32" fill="#fff" stroke="#000000" stroke-width="1.5" />
+<rect x="122" y="272" width="24" height="22" fill="#fff" stroke="#000000" stroke-width="1.5" />
+<circle cx="74" cy="298" r="6" fill="#fff" stroke="#000000" stroke-width="1.5"/>
+<circle cx="106" cy="298" r="6" fill="#fff" stroke="#000000" stroke-width="1.5"/>
+<circle cx="134" cy="298" r="6" fill="#fff" stroke="#000000" stroke-width="1.5"/>
+<text x="103" y="324" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#000000" text-anchor="middle"></text>
+<text x="156" y="290" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#000000" text-anchor="start">≈ 8 cisternas/día</text>
+<polygon points="96.0,312.0 96.0,374.0 88.0,374.0 103.0,396.0 118.0,374.0 110.0,374.0 110.0,312.0" fill="#fff" stroke="#000000" stroke-width="1.5" stroke-linejoin="miter"/>
+<polygon points="1612.0,178.0 1612.0,126.0 1662.0,100.0 1662.0,126.0 1712.0,100.0 1712.0,126.0 1762.0,100.0 1762.0,178.0" fill="#fff" stroke="#000000" stroke-width="1.5" stroke-linejoin="miter"/>
+<text x="1687.0" y="160" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700" fill="#000000" text-anchor="middle">Clientes</text>
+<rect x="1390" y="100" width="205" height="115" fill="#fff" stroke="#000000" stroke-width="1.5" />
+<text x="1398" y="123" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#000000" text-anchor="start">127.998 vasos/día</text>
+<text x="1398" y="144" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#000000" text-anchor="start">26.446 botellas/día</text>
+<text x="1398" y="165" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#000000" text-anchor="start">22.907 griego/día</text>
+<text x="1398" y="186" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#000000" text-anchor="start">35 lotes/semana</text>
+<text x="1398" y="207" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#000000" text-anchor="start">Takt = 4,2 h/lote</text>
+<rect x="1632" y="200" width="62" height="32" fill="#fff" stroke="#000000" stroke-width="1.5" />
+<rect x="1694" y="210" width="24" height="22" fill="#fff" stroke="#000000" stroke-width="1.5" />
+<circle cx="1646" cy="236" r="6" fill="#fff" stroke="#000000" stroke-width="1.5"/>
+<circle cx="1678" cy="236" r="6" fill="#fff" stroke="#000000" stroke-width="1.5"/>
+<circle cx="1706" cy="236" r="6" fill="#fff" stroke="#000000" stroke-width="1.5"/>
+<text x="1675" y="262" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#000000" text-anchor="middle"></text>
+<text x="1622" y="236" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#000000" text-anchor="end">Despacho diario</text>
+<rect x="700" y="100" width="400" height="92" fill="#fff" stroke="#000000" stroke-width="1.5" />
+<text x="900" y="128" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="#000000" text-anchor="middle">Control de producción</text>
+<text x="900" y="152" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#000000" text-anchor="middle">Programa semanal en hoja de cálculo</text>
+<text x="900" y="172" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#000000" text-anchor="middle">Registro de lotes en papel · sin MES</text>
+<polyline points="1386,150 1259.0,150 1239.0,136 1251.0,164 1231.0,150 1104,150" fill="none" stroke="#000000" stroke-width="1.5" marker-end="url(#p)"/>
+<text x="1245.0" y="128" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#000000" text-anchor="middle">Pedidos diarios</text>
+<polyline points="696,150 465.0,150 445.0,136 457.0,164 437.0,150 206,150" fill="none" stroke="#000000" stroke-width="1.5" marker-end="url(#p)"/>
+<text x="451.0" y="128" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#000000" text-anchor="middle">Programa de acopio semanal</text>
+<line x1="900" y1="192" x2="900" y2="320" stroke="#000000" stroke-width="1.5" />
+<line x1="327" y1="320" x2="1527" y2="320" stroke="#000000" stroke-width="1.5" />
+<line x1="327" y1="320" x2="327" y2="394" stroke="#000000" stroke-width="1.5" marker-end="url(#p)"/>
+<line x1="727" y1="320" x2="727" y2="394" stroke="#000000" stroke-width="1.5" marker-end="url(#p)"/>
+<line x1="1127" y1="320" x2="1127" y2="394" stroke="#000000" stroke-width="1.5" marker-end="url(#p)"/>
+<line x1="1527" y1="320" x2="1527" y2="394" stroke="#000000" stroke-width="1.5" marker-end="url(#p)"/>
+<text x="910" y="310" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#000000" text-anchor="start">Programa impreso por turno</text>
+<rect x="52" y="400" width="150" height="86" fill="#fff" stroke="#000000" stroke-width="1.5" />
+<line x1="52" y1="430" x2="202" y2="430" stroke="#000000" stroke-width="1" />
+<text x="127.0" y="421" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700" fill="#000000" text-anchor="middle">Recepción</text>
+<text x="127.0" y="450" font-family="Arial, Helvetica, sans-serif" font-size="11.5" font-weight="400" fill="#555555" text-anchor="middle">U111 · U112</text>
+<rect x="52" y="496" width="150" height="94" fill="#fff" stroke="#000000" stroke-width="1.5" />
+<text x="60" y="519" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#000000" text-anchor="start">C/T = 0,6 h</text>
+<text x="60" y="540" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#000000" text-anchor="start">C/O = —</text>
+<text x="60" y="561" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#000000" text-anchor="start">Disp. = 100 %</text>
+<text x="60" y="582" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#000000" text-anchor="start">Uso = 15 %</text>
+<rect x="207" y="437" width="8" height="12" fill="#000000" stroke="#000000" stroke-width="1" />
+<rect x="215" y="437" width="8" height="12" fill="#fff" stroke="#000000" stroke-width="1" />
+<rect x="223" y="437" width="8" height="12" fill="#000000" stroke="#000000" stroke-width="1" />
+<polygon points="231.0,430.0 247.0,443.0 231.0,456.0" fill="#000000" stroke="#000000" stroke-width="1" stroke-linejoin="miter"/>
+<rect x="252" y="400" width="150" height="86" fill="#fff" stroke="#000000" stroke-width="1.5" />
+<line x1="252" y1="430" x2="402" y2="430" stroke="#000000" stroke-width="1" />
+<text x="327.0" y="421" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700" fill="#000000" text-anchor="middle">Pasteurización</text>
+<text x="327.0" y="450" font-family="Arial, Helvetica, sans-serif" font-size="11.5" font-weight="400" fill="#555555" text-anchor="middle">U121 · U122 HTST</text>
+<rect x="252" y="496" width="150" height="94" fill="#fff" stroke="#000000" stroke-width="1.5" />
+<text x="260" y="519" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#000000" text-anchor="start">C/T = 0,5 h</text>
+<text x="260" y="540" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#000000" text-anchor="start">C/O = CIP 1,4 h</text>
+<text x="260" y="561" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#000000" text-anchor="start">Disp. = 98 %</text>
+<text x="260" y="582" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#000000" text-anchor="start">Uso = 12 %</text>
+<rect x="407" y="437" width="8" height="12" fill="#000000" stroke="#000000" stroke-width="1" />
+<rect x="415" y="437" width="8" height="12" fill="#fff" stroke="#000000" stroke-width="1" />
+<rect x="423" y="437" width="8" height="12" fill="#000000" stroke="#000000" stroke-width="1" />
+<polygon points="431.0,430.0 447.0,443.0 431.0,456.0" fill="#000000" stroke="#000000" stroke-width="1" stroke-linejoin="miter"/>
+<rect x="452" y="400" width="150" height="86" fill="#fff" stroke="#000000" stroke-width="1.5" />
+<line x1="452" y1="430" x2="602" y2="430" stroke="#000000" stroke-width="1" />
+<text x="527.0" y="421" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700" fill="#000000" text-anchor="middle">Formulación</text>
+<text x="527.0" y="450" font-family="Arial, Helvetica, sans-serif" font-size="11.5" font-weight="400" fill="#555555" text-anchor="middle">U201</text>
+<circle cx="474" cy="463" r="5" fill="#fff" stroke="#000000" stroke-width="1.4"/>
+<path d="M465,478 Q474,464 483,478" fill="none" stroke="#000000" stroke-width="1.4"/>
+<text x="489" y="476" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" fill="#000000" text-anchor="start">1</text>
+<rect x="452" y="496" width="150" height="94" fill="#fff" stroke="#000000" stroke-width="1.5" />
+<text x="460" y="519" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#000000" text-anchor="start">C/T = 1,9 h</text>
+<text x="460" y="540" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#000000" text-anchor="start">C/O = CIP 1/día</text>
+<text x="460" y="561" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#000000" text-anchor="start">Disp. = 98 %</text>
+<text x="460" y="582" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#000000" text-anchor="start">Uso = 46 %</text>
+<rect x="607" y="437" width="8" height="12" fill="#000000" stroke="#000000" stroke-width="1" />
+<rect x="615" y="437" width="8" height="12" fill="#fff" stroke="#000000" stroke-width="1" />
+<rect x="623" y="437" width="8" height="12" fill="#000000" stroke="#000000" stroke-width="1" />
+<polygon points="631.0,430.0 647.0,443.0 631.0,456.0" fill="#000000" stroke="#000000" stroke-width="1" stroke-linejoin="miter"/>
+<rect x="652" y="400" width="150" height="86" fill="#fff" stroke="#000000" stroke-width="1.5" />
+<line x1="652" y1="430" x2="802" y2="430" stroke="#000000" stroke-width="1" />
+<text x="727.0" y="421" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700" fill="#000000" text-anchor="middle">Tratamiento</text>
+<text x="727.0" y="450" font-family="Arial, Helvetica, sans-serif" font-size="11.5" font-weight="400" fill="#555555" text-anchor="middle">U202 · 92 °C, 5 min</text>
+<rect x="652" y="496" width="150" height="94" fill="#fff" stroke="#000000" stroke-width="1.5" />
+<text x="660" y="519" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#000000" text-anchor="start">C/T = 1,2 h</text>
+<text x="660" y="540" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#000000" text-anchor="start">C/O = CIP 1,4 h</text>
+<text x="660" y="561" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#000000" text-anchor="start">Disp. = 98 %</text>
+<text x="660" y="582" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#000000" text-anchor="start">Uso = 47 %</text>
+<rect x="807" y="437" width="8" height="12" fill="#000000" stroke="#000000" stroke-width="1" />
+<rect x="815" y="437" width="8" height="12" fill="#fff" stroke="#000000" stroke-width="1" />
+<rect x="823" y="437" width="8" height="12" fill="#000000" stroke="#000000" stroke-width="1" />
+<polygon points="831.0,430.0 847.0,443.0 831.0,456.0" fill="#000000" stroke="#000000" stroke-width="1" stroke-linejoin="miter"/>
+<rect x="852" y="400" width="150" height="86" fill="#fff" stroke="#000000" stroke-width="1.5" />
+<line x1="852" y1="430" x2="1002" y2="430" stroke="#000000" stroke-width="1" />
+<text x="927.0" y="421" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700" fill="#000000" text-anchor="middle">Fermentación</text>
+<text x="927.0" y="450" font-family="Arial, Helvetica, sans-serif" font-size="11.5" font-weight="400" fill="#555555" text-anchor="middle">4 tanques × 12.000 L</text>
+<circle cx="874" cy="463" r="5" fill="#fff" stroke="#000000" stroke-width="1.4"/>
+<path d="M865,478 Q874,464 883,478" fill="none" stroke="#000000" stroke-width="1.4"/>
+<text x="889" y="476" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" fill="#000000" text-anchor="start">2</text>
+<rect x="852" y="496" width="150" height="94" fill="#fff" stroke="#000000" stroke-width="1.5" />
+<text x="860" y="519" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#000000" text-anchor="start">C/T = 8,1–9,0 h</text>
+<text x="860" y="540" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#000000" text-anchor="start">C/O = CIP 0,75 h</text>
+<text x="860" y="561" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#000000" text-anchor="start">Disp. = 100 %</text>
+<text x="860" y="582" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#000000" text-anchor="start">Uso = 45 %</text>
+<rect x="1007" y="437" width="8" height="12" fill="#000000" stroke="#000000" stroke-width="1" />
+<rect x="1015" y="437" width="8" height="12" fill="#fff" stroke="#000000" stroke-width="1" />
+<rect x="1023" y="437" width="8" height="12" fill="#000000" stroke="#000000" stroke-width="1" />
+<polygon points="1031.0,430.0 1047.0,443.0 1031.0,456.0" fill="#000000" stroke="#000000" stroke-width="1" stroke-linejoin="miter"/>
+<rect x="1052" y="400" width="150" height="86" fill="#fff" stroke="#000000" stroke-width="1.5" />
+<line x1="1052" y1="430" x2="1202" y2="430" stroke="#000000" stroke-width="1" />
+<text x="1127.0" y="421" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700" fill="#000000" text-anchor="middle">Acondicionam.</text>
+<text x="1127.0" y="450" font-family="Arial, Helvetica, sans-serif" font-size="11.5" font-weight="400" fill="#555555" text-anchor="middle">U215 · U216</text>
+<rect x="1052" y="496" width="150" height="94" fill="#fff" stroke="#000000" stroke-width="1.5" />
+<text x="1060" y="519" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#000000" text-anchor="start">C/T = 1,0–1,7 h</text>
+<text x="1060" y="540" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#000000" text-anchor="start">C/O = CIP 1/día</text>
+<text x="1060" y="561" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#000000" text-anchor="start">Disp. = 98 %</text>
+<text x="1060" y="582" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#000000" text-anchor="start">Uso = 19 %</text>
+<rect x="1207" y="437" width="8" height="12" fill="#000000" stroke="#000000" stroke-width="1" />
+<rect x="1215" y="437" width="8" height="12" fill="#fff" stroke="#000000" stroke-width="1" />
+<rect x="1223" y="437" width="8" height="12" fill="#000000" stroke="#000000" stroke-width="1" />
+<polygon points="1231.0,430.0 1247.0,443.0 1231.0,456.0" fill="#000000" stroke="#000000" stroke-width="1" stroke-linejoin="miter"/>
+<rect x="1252" y="400" width="150" height="86" fill="#fff" stroke="#000000" stroke-width="2.4" />
+<line x1="1252" y1="430" x2="1402" y2="430" stroke="#000000" stroke-width="1" />
+<text x="1327.0" y="421" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700" fill="#000000" text-anchor="middle">Envasado</text>
+<text x="1327.0" y="450" font-family="Arial, Helvetica, sans-serif" font-size="11.5" font-weight="400" fill="#555555" text-anchor="middle">U311 · U312 · U313</text>
+<circle cx="1274" cy="463" r="5" fill="#fff" stroke="#000000" stroke-width="1.4"/>
+<path d="M1265,478 Q1274,464 1283,478" fill="none" stroke="#000000" stroke-width="1.4"/>
+<text x="1289" y="476" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" fill="#000000" text-anchor="start">4</text>
+<rect x="1252" y="496" width="150" height="94" fill="#fff" stroke="#000000" stroke-width="1.5" />
+<text x="1260" y="519" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#000000" text-anchor="start">C/T = 3,5 h</text>
+<text x="1260" y="540" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#000000" text-anchor="start">C/O = 0,75 h</text>
+<text x="1260" y="561" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#000000" text-anchor="start">OEE = 70 %</text>
+<text x="1260" y="582" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#000000" text-anchor="start">Uso U311 = 88 %</text>
+<rect x="1407" y="437" width="8" height="12" fill="#000000" stroke="#000000" stroke-width="1" />
+<rect x="1415" y="437" width="8" height="12" fill="#fff" stroke="#000000" stroke-width="1" />
+<rect x="1423" y="437" width="8" height="12" fill="#000000" stroke="#000000" stroke-width="1" />
+<polygon points="1431.0,430.0 1447.0,443.0 1431.0,456.0" fill="#000000" stroke="#000000" stroke-width="1" stroke-linejoin="miter"/>
+<rect x="1452" y="400" width="150" height="86" fill="#fff" stroke="#000000" stroke-width="1.5" />
+<line x1="1452" y1="430" x2="1602" y2="430" stroke="#000000" stroke-width="1" />
+<text x="1527.0" y="421" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700" fill="#000000" text-anchor="middle">Paletizado</text>
+<text x="1527.0" y="450" font-family="Arial, Helvetica, sans-serif" font-size="11.5" font-weight="400" fill="#555555" text-anchor="middle">manual · U341</text>
+<circle cx="1474" cy="463" r="5" fill="#fff" stroke="#000000" stroke-width="1.4"/>
+<path d="M1465,478 Q1474,464 1483,478" fill="none" stroke="#000000" stroke-width="1.4"/>
+<text x="1489" y="476" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" fill="#000000" text-anchor="start">2</text>
+<rect x="1452" y="496" width="150" height="94" fill="#fff" stroke="#000000" stroke-width="1.5" />
+<text x="1460" y="519" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#000000" text-anchor="start">C/T = 150 s/bulto</text>
+<text x="1460" y="540" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#000000" text-anchor="start">C/O = —</text>
+<text x="1460" y="561" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#000000" text-anchor="start">Disp. = 100 %</text>
+<text x="1460" y="582" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#000000" text-anchor="start">Uso = 81 %</text>
+<polygon points="227.0,606.0 207.0,640.0 247.0,640.0" fill="#fff" stroke="#000000" stroke-width="1.5" stroke-linejoin="miter"/>
+<text x="227.0" y="635" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="#000000" text-anchor="middle">I</text>
+<text x="227.0" y="660" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" fill="#000000" text-anchor="middle">4 h</text>
+<text x="227.0" y="676" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400" fill="#555555" text-anchor="middle">leche cruda</text>
+<polygon points="427.0,606.0 407.0,640.0 447.0,640.0" fill="#fff" stroke="#000000" stroke-width="1.5" stroke-linejoin="miter"/>
+<text x="427.0" y="635" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="#000000" text-anchor="middle">I</text>
+<text x="427.0" y="660" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" fill="#000000" text-anchor="middle">2 h</text>
+<text x="427.0" y="676" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400" fill="#555555" text-anchor="middle">silos</text>
+<polygon points="1227.0,606.0 1207.0,640.0 1247.0,640.0" fill="#fff" stroke="#000000" stroke-width="1.5" stroke-linejoin="miter"/>
+<text x="1227.0" y="635" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="#000000" text-anchor="middle">I</text>
+<text x="1227.0" y="660" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" fill="#000000" text-anchor="middle">≤ 8 h</text>
+<text x="1227.0" y="676" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400" fill="#555555" text-anchor="middle">pulmones</text>
+<polygon points="1675.0,426.0 1655.0,460.0 1695.0,460.0" fill="#fff" stroke="#000000" stroke-width="1.5" stroke-linejoin="miter"/>
+<text x="1675" y="455" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="#000000" text-anchor="middle">I</text>
+<text x="1675" y="480" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" fill="#000000" text-anchor="middle">12 h</text>
+<text x="1675" y="496" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400" fill="#555555" text-anchor="middle">cámara 2–4 °C</text>
+<line x1="1606" y1="443" x2="1659" y2="443" stroke="#000000" stroke-width="1.5" marker-end="url(#p)"/>
+<polygon points="1668.0,420.0 1668.0,274.0 1660.0,274.0 1675.0,252.0 1690.0,274.0 1682.0,274.0 1682.0,420.0" fill="#fff" stroke="#000000" stroke-width="1.5" stroke-linejoin="miter"/>
+<polygon points="1421.6,365.4 1387.0,371.4 1389.0,384.4 1350.9,381.6 1327.4,392.0 1303.7,381.7 1265.6,384.6 1267.3,371.6 1232.5,365.7 1258.9,356.1 1243.6,344.1 1282.3,342.4 1293.8,330.0 1326.7,337.0 1359.4,329.9 1371.2,342.3 1409.9,343.9 1395.0,355.9" fill="#fff" stroke="#c00000" stroke-width="1.8" stroke-linejoin="miter"/>
+<text x="1327.0" y="358" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="700" fill="#c00000" text-anchor="middle">Llenadora FFS</text>
+<text x="1327.0" y="374" font-family="Arial, Helvetica, sans-serif" font-size="11.5" font-weight="400" fill="#c00000" text-anchor="middle">21.600 vasos/h</text>
+<polygon points="1015.7,365.4 983.3,371.4 985.2,384.4 949.4,381.6 927.4,392.0 905.1,381.7 869.5,384.6 871.0,371.6 838.4,365.7 863.1,356.1 848.9,344.1 885.1,342.4 895.8,330.0 926.7,337.0 957.4,329.9 968.4,342.3 1004.7,343.9 990.8,355.9" fill="#fff" stroke="#c00000" stroke-width="1.8" stroke-linejoin="miter"/>
+<text x="927.0" y="358" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="700" fill="#c00000" text-anchor="middle">pH en línea</text>
+<text x="927.0" y="374" font-family="Arial, Helvetica, sans-serif" font-size="11.5" font-weight="400" fill="#c00000" text-anchor="middle">menos muestreo</text>
+<polygon points="1340.7,255.4 1307.5,261.4 1309.5,274.4 1272.9,271.6 1250.4,282.0 1227.6,271.7 1191.2,274.6 1192.8,261.6 1159.5,255.7 1184.7,246.1 1170.1,234.1 1207.2,232.4 1218.1,220.0 1249.7,227.0 1281.1,219.9 1292.3,232.3 1329.5,233.9 1315.2,245.9" fill="#fff" stroke="#c00000" stroke-width="1.8" stroke-linejoin="miter"/>
+<text x="1250" y="248" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="700" fill="#c00000" text-anchor="middle">MES + ISA-95</text>
+<text x="1250" y="264" font-family="Arial, Helvetica, sans-serif" font-size="11.5" font-weight="400" fill="#c00000" text-anchor="middle">registro digital</text>
+<polygon points="1609.8,705.4 1579.5,711.4 1581.3,724.4 1547.9,721.6 1527.4,732.0 1506.6,721.7 1473.3,724.6 1474.8,711.6 1444.3,705.7 1467.4,696.1 1454.1,684.1 1487.9,682.4 1497.9,670.0 1526.7,677.0 1555.4,669.9 1565.7,682.3 1599.6,683.9 1586.5,695.9" fill="#fff" stroke="#c00000" stroke-width="1.8" stroke-linejoin="miter"/>
+<text x="1527.0" y="698" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="700" fill="#c00000" text-anchor="middle">Paletizado</text>
+<text x="1527.0" y="714" font-family="Arial, Helvetica, sans-serif" font-size="11.5" font-weight="400" fill="#c00000" text-anchor="middle">robotizado</text>
+<text x="1327.0" y="612" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" fill="#c00000" text-anchor="middle">Cuello de botella</text>
+<text x="127.0" y="858" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="400" fill="#000000" text-anchor="middle">0,6 h</text>
+<text x="227.0" y="780" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="400" fill="#000000" text-anchor="middle">4 h</text>
+<text x="327.0" y="858" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="400" fill="#000000" text-anchor="middle">0,5 h</text>
+<text x="427.0" y="780" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="400" fill="#000000" text-anchor="middle">2 h</text>
+<text x="527.0" y="858" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="400" fill="#000000" text-anchor="middle">1,9 h</text>
+<text x="727.0" y="858" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="400" fill="#000000" text-anchor="middle">1,2 h</text>
+<text x="927.0" y="858" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="400" fill="#000000" text-anchor="middle">8,5 h</text>
+<text x="1127.0" y="858" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="400" fill="#000000" text-anchor="middle">1,1 h</text>
+<text x="1327.0" y="858" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="400" fill="#000000" text-anchor="middle">3,5 h</text>
+<text x="1527.0" y="858" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="400" fill="#000000" text-anchor="middle">0,1 h</text>
+<text x="1675" y="780" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="400" fill="#000000" text-anchor="middle">12 h</text>
+<polyline points="22.0,790.0 52.0,790.0 52.0,836.0 202.0,836.0 202.0,790.0 252.0,790.0 252.0,836.0 402.0,836.0 402.0,790.0 452.0,790.0 452.0,836.0 602.0,836.0 602.0,790.0 652.0,790.0 652.0,836.0 802.0,836.0 802.0,790.0 852.0,790.0 852.0,836.0 1002.0,836.0 1002.0,790.0 1052.0,790.0 1052.0,836.0 1202.0,836.0 1202.0,790.0 1252.0,790.0 1252.0,836.0 1402.0,836.0 1402.0,790.0 1452.0,790.0 1452.0,836.0 1602.0,836.0 1602.0,790.0 1715.0,790.0" fill="none" stroke="#000000" stroke-width="1.6" stroke-linejoin="miter"/>
+<rect x="1560" y="860" width="210" height="76" fill="#fff" stroke="#000000" stroke-width="1.5" />
+<text x="1572" y="886" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700" fill="#000000" text-anchor="start">Lead time = 35 h</text>
+<text x="1572" y="910" font-family="Arial, Helvetica, sans-serif" font-size="13.5" font-weight="400" fill="#000000" text-anchor="start">T. valor agregado = 10,5 h</text>
+<text x="1572" y="928" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="400" fill="#555555" text-anchor="start">(30 % del lead time)</text>
+<text x="36" y="1030" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#555555" text-anchor="start">C/T y C/O por lote de 10.000 L, según las recetas v1.8. Uso = trabajo + alistamiento + fallas, de la simulación de 12 semanas.</text>
+<text x="36" y="1050" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#555555" text-anchor="start">La espera en pulmones (≤ 8 h) no se suma al lead time: el lote se envasa mientras el siguiente fermenta.</text>
+<rect x="1290" y="996" width="496" height="90" fill="#fff" stroke="#000000" stroke-width="1.2" />
+<line x1="1290" y1="1026" x2="1786" y2="1026" stroke="#000000" stroke-width="1" />
+<line x1="1290" y1="1056" x2="1786" y2="1056" stroke="#000000" stroke-width="1" />
+<line x1="1590" y1="1026" x2="1590" y2="1086" stroke="#000000" stroke-width="1" />
+<text x="1300" y="1017" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="700" fill="#000000" text-anchor="start">Mekvra · Grupo 6 · Automatización de Procesos de Manufactura 2026-2S · UNAL</text>
+<text x="1300" y="1047" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#000000" text-anchor="start">VSM estado actual · línea de yogures</text>
+<text x="1600" y="1047" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#000000" text-anchor="start">Paletizado manual</text>
+<text x="1300" y="1077" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#000000" text-anchor="start">Elaboró: J. Carreño</text>
+<text x="1600" y="1077" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#000000" text-anchor="start">12-oct-2026</text></svg>
