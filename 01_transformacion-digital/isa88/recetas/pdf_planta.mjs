@@ -16,7 +16,7 @@ await p.addStyleTag({ content: `
 await p.emulateMedia({ media: 'print', colorScheme: 'light' });
 await p.pdf({ path: out, format: 'Letter', printBackground: true, margin: { top: '14mm', bottom: '16mm', left: '12mm', right: '12mm' },
   displayHeaderFooter: true, headerTemplate: '<span></span>',
-  footerTemplate: '<div style="font-size:8px;width:100%;text-align:center;color:#5b6876">Recetas básicas · Planta láctea de 150.000 L/día · Lácteos Altos de Teusacá · v1.0 · página <span class="pageNumber"></span> de <span class="totalPages"></span></div>' });
+  footerTemplate: '<div style="font-size:8px;width:100%;text-align:center;color:#5b6876">Recetas básicas · Planta láctea de 150.000 L/día · Lácteos Altos de Teusacá · página <span class="pageNumber"></span> de <span class="totalPages"></span></div>' });
 await b.close();
 console.log('ok');
 

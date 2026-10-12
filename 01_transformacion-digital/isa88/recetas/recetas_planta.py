@@ -212,7 +212,7 @@ B.append('''<section id="haccp">
 ''' + tabla(['PCC', 'Línea', 'Peligro', 'Límite crítico', 'Monitoreo y acción'], [
     ['PCC-1', 'Tronco', 'Antibióticos en la leche', 'Prueba negativa', 'Kit rápido por cisterna; se rechaza'],
     ['PCC-2', 'Tronco', 'Patógenos en la leche', '≥ 72 °C × 15 s', 'Registro continuo y válvula de desvío'],
-    ['PCC-Y', 'Yogures', 'Ver el plan de la línea de yogures', '92 °C × 5 min, pH, metales', 'Recetas de yogures v1.8, sección 9'],
+    ['PCC-Y', 'Yogures', 'Ver el plan de la línea de yogures', '92 °C × 5 min, pH, metales', 'Recetas de la línea de yogures, sección 9'],
     ['PCC-Q1', 'Quesos', 'Metales en el producto', 'Sin metal ≥ patrón validado', 'Detector antes de Q311; se rechaza y reinspecciona'],
     ['PC-Q', 'Quesos', 'Salmuera contaminada', 'NaCl 18–22 %, 8–12 °C', 'Medición por turno; filtrado y pasteurización de la salmuera'],
     ['PCC-L1', 'Leche UHT', 'Supervivencia de esporas', '≥ 137 °C × 4 s', 'Registro continuo; si baja, se desvía y se reprocesa'],
