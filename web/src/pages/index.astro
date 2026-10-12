@@ -46,7 +46,7 @@ const blob = `${sitio.repositorio}/blob/main`;
 // Galería de la sección de simulación: imagen en public/evidencias y documento completo en el repositorio.
 const galeria = [
   { img: 'planta-3d.webp', titulo: 'Planta con tres líneas en Tecnomatix', nota: 'Tronco común de 150.000 L/día, yogures, quesos y leche UHT, con paletizado manual en las tres líneas. 66 de los 80 objetos de la licencia.', doc: '02_gestion-produccion/simulacion-tecnomatix/planta-150k', tipo: 'Modelo 3D', ancho: true },
-  { img: 'planta-vsm.webp', titulo: 'VSM de la planta', nota: 'Un VSM por línea sobre el tronco común, con el uso de cada equipo simulado.', doc: '02_gestion-produccion/vsm/vsm_planta_3_lineas.pdf', tipo: 'VSM' },
+  { img: 'planta-vsm.webp', titulo: 'VSM de la planta', nota: 'Un VSM por línea sobre el tronco común, con el uso de cada equipo simulado.', doc: '02_gestion-produccion/vsm/vsm_planta_3_lineas_clasico.pdf', tipo: 'VSM' },
   { img: 'planta-layout.webp', titulo: 'Distribución de la planta', nota: 'Plano de la nave de 110 × 60 m: muros, puertas, pasillos y 80 % de piso libre.', doc: '02_gestion-produccion/distribucion-planta/layout_planta_3_lineas.pdf', tipo: 'Layout' },
   { img: 'yogur-3d-manual.webp', titulo: 'Línea de yogures con paletizado manual', nota: 'Escenario actual: dos personas estiban las cajas que llegan por las bandas.', doc: '02_gestion-produccion/simulacion-tecnomatix/linea-yogures', tipo: 'Modelo 3D', ancho: true },
   { img: 'yogur-vsm.webp', titulo: 'VSM de la línea de yogures', nota: 'Lead time ≈ 35 h con 30 % de valor agregado. La llenadora de vasos marca el ritmo.', doc: '02_gestion-produccion/vsm/vsm_linea_yogures_clasico.pdf', tipo: 'VSM', ancho: true },
@@ -187,27 +187,25 @@ const recetas = [
         <h2>La planta, modelada antes de tocarla.</h2>
         <p>
           Modelos de Plant Simulation, VSM, distribución en planta y diagramas de espagueti de la planta de 150.000 L/día
-          y de la línea de yogures. Haz clic en una imagen para verla en grande y abrir su documento.
+          y de la línea de yogures. Abre cada uno para verlo en grande y descargar el documento completo.
         </p>
       </div>
-      <div class="gallery">
+      <ol class="fichas">
         {
-          galeria.map((g) => (
-            <figure class:list={['shot', { wide: g.ancho }]}>
-              <button type="button" class="shot-link" data-visor data-img={`${base}evidencias/${g.img}`} data-titulo={g.titulo}
-                data-nota={g.nota} data-doc={`${g.doc.endsWith('.pdf') ? blob : repoTree}/${g.doc}`} aria-label={`Ampliar: ${g.titulo}`}>
-                <span class="sheet"><img src={`${base}evidencias/${g.img}`} alt={`${g.titulo}. ${g.nota}`} loading="lazy" decoding="async" /></span>
-                <span class="zoom mono" aria-hidden="true">Ampliar ↗</span>
+          galeria.map((g, i) => (
+            <li>
+              <button type="button" class="ficha" data-visor data-img={`${base}evidencias/${g.img}`} data-titulo={g.titulo}
+                data-nota={g.nota} data-doc={`${g.doc.endsWith('.pdf') ? blob : repoTree}/${g.doc}`}>
+                <span class="ficha-n mono">{String(i + 1).padStart(2, '0')}</span>
+                <span class="ficha-tipo mono gold">{g.tipo}</span>
+                <span class="ficha-t">{g.titulo}</span>
+                <span class="ficha-nota">{g.nota}</span>
+                <span class="ficha-ver mono" aria-hidden="true">Ver ↗</span>
               </button>
-              <figcaption>
-                <span class="mono gold">{g.tipo}</span>
-                <strong>{g.titulo}</strong>
-                <span>{g.nota}</span>
-              </figcaption>
-            </figure>
+            </li>
           ))
         }
-      </div>
+      </ol>
       <dialog class="visor" aria-label="Imagen ampliada">
         <div class="visor-bar">
           <strong data-visor-titulo></strong>
@@ -639,6 +637,81 @@ const recetas = [
   .shot-link:hover .zoom,
   .shot-link:focus-visible .zoom {
     opacity: 1;
+  }
+
+  /* índice de documentos de simulación: filas sobrias; cada una abre su lámina en el visor */
+  .fichas {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid var(--cream-16);
+  }
+
+  .ficha {
+    display: grid;
+    grid-template-columns: 40px 110px minmax(0, 1fr) auto;
+    column-gap: 20px;
+    row-gap: 4px;
+    align-items: baseline;
+    width: 100%;
+    min-height: 44px;
+    padding: 22px 8px;
+    border: 0;
+    border-bottom: 1px solid var(--cream-16);
+    background: none;
+    color: var(--cream);
+    text-align: left;
+    font: inherit;
+    cursor: pointer;
+    transition: background-color 150ms var(--ease-switch);
+  }
+
+  .ficha:hover,
+  .ficha:focus-visible {
+    background: var(--cream-08);
+  }
+
+  .ficha-n {
+    color: var(--granite);
+    font-size: 12px;
+  }
+
+  .ficha-tipo {
+    font-size: 12px;
+  }
+
+  .ficha-t {
+    font-size: 18px;
+    letter-spacing: -0.3px;
+  }
+
+  .ficha-nota {
+    grid-column: 3;
+    color: var(--cream-70);
+    font-size: 14px;
+  }
+
+  .ficha-ver {
+    grid-column: 4;
+    grid-row: 1;
+    color: var(--gold);
+    font-size: 12px;
+  }
+
+  @media (max-width: 640px) {
+    .ficha {
+      grid-template-columns: 32px minmax(0, 1fr) auto;
+    }
+    .ficha-tipo {
+      grid-column: 2;
+    }
+    .ficha-t,
+    .ficha-nota {
+      grid-column: 2 / -1;
+    }
+    .ficha-ver {
+      grid-column: 3;
+    }
   }
 
   .visor {
