@@ -14,6 +14,8 @@ const textos = defineCollection({
       .array(
         z.object({
           codigo: z.string(),
+          capa: z.string().optional(),
+          icono: z.string().optional(),
           nombre: z.string(),
           herramienta: z.string(),
           funcion: z.string(),

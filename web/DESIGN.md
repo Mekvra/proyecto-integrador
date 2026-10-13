@@ -348,3 +348,7 @@ Todo movimiento continuo se pausa cuando sale de la pantalla y se congela con `p
 ## Menú
 
 La barra superior solo lleva la marca y el botón de dos rayitas, también en PC; no hay enlaces en línea. En PC el menú es un desplegable de 300 px que baja desde el botón (lista vertical a 16 px, como en el celular, borde `--cream-12`, se abre con un recorte de arriba hacia abajo) y se cierra al tocar fuera, al hacer scroll o con Esc; la página sigue visible detrás. En celular el panel ocupa la pantalla.
+
+## Arquitectura ISA-95 (pirámide)
+
+Los seis niveles del curso (N0 Proceso a N5 ERP) se dibujan como pirámide: cada nivel es un trapecio SVG que se ensancha hacia abajo (44 % arriba, 100 % abajo), con ícono de trazo fino, código en dorado, nombre del sistema y su función en Geist Mono (Gestión, Operación, Supervisión, Control, Campo, Proceso). El relleno sube de tono hacia la base; el nivel activo va en `--carbon` con borde dorado. Se conservan los rieles animados de datos (suben) y órdenes (bajan) y el panel de detalle.

@@ -4,6 +4,8 @@ resumen: La información sube desde la planta hasta la gerencia, y las órdenes,
 # Niveles de la arquitectura ISA-95, de arriba (empresa) hacia abajo (proceso).
 niveles:
   - codigo: N5
+    capa: Gestión
+    icono: erp
     nombre: ERP
     herramienta: SAP
     funcion: Gestiona la empresa. Pedidos, inventarios, compras, costos, ventas y logística. Horizonte de días a meses.
@@ -16,6 +18,8 @@ niveles:
       - "Cantidades y fechas"
       - "Prioridades"
   - codigo: N4
+    capa: Operación
+    icono: mes
     nombre: MES
     herramienta: Base de datos · Node-RED · Power BI
     funcion: Gestiona la ejecución de la producción. Órdenes, lotes, calidad, paradas, trazabilidad y OEE. Horizonte de turno o día.
@@ -27,6 +31,8 @@ niveles:
       - "Recetas y parámetros por lote"
       - "Programación de lotes"
   - codigo: N3
+    capa: Supervisión
+    icono: scada
     nombre: SCADA
     herramienta: Ignition · OPC
     funcion: Supervisa el proceso bajo ISA-101. Estados de equipos, variables, alarmas, tendencias, receta activa y estado del lote.
@@ -39,7 +45,9 @@ niveles:
       - "Selección de receta"
       - "Setpoints"
   - codigo: N2
-    nombre: Control
+    capa: Control
+    icono: plc
+    nombre: PLC
     herramienta: Logix Emulate (PLC)
     funcion: Ejecuta la lógica secuencial (Grafcet y Ladder) y la regulación de temperatura, nivel, caudal y presión.
     sube:
@@ -49,7 +57,9 @@ niveles:
       - "Mando de válvulas, bombas y agitadores"
       - "Trayectorias del robot"
   - codigo: N1
-    nombre: Campo
+    capa: Campo
+    icono: campo
+    nombre: Sensores y actuadores
     herramienta: Sensores y actuadores virtuales
     funcion: Mide y actúa sobre el proceso. Transmisores de temperatura, caudal, nivel, presión y pH; válvulas, bombas, agitadores y el brazo robot.
     sube:
@@ -57,7 +67,9 @@ niveles:
     baja:
       - "Señales de mando a los actuadores"
   - codigo: N0
-    nombre: Proceso
+    capa: Proceso
+    icono: proceso
+    nombre: Planta láctea
     herramienta: Gemelo digital en Siemens NX
     funcion: La transformación física. La leche se recibe, se trata y se convierte en yogurts, quesos y leche UHT.
     sube: []

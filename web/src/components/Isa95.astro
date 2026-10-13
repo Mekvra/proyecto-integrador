@@ -5,6 +5,16 @@ const solucion = await getEntry('textos', 'solucion');
 const niveles = solucion?.data.niveles ?? [];
 const defecto = niveles.findIndex((n) => n.codigo === 'N4');
 const activo = defecto === -1 ? 0 : defecto;
+const total = niveles.length;
+// Íconos de trazo fino, uno por nivel (24 × 24).
+const ICONOS: Record<string, string> = {
+  erp: 'M4 20V10M10 20V4M16 20v-7M22 20H2',
+  mes: 'M8 4h8v3H8zM6 5.5H5v15h14v-15h-1M8.5 12h7M8.5 16h5',
+  scada: 'M3 5h18v11H3zM9 20h6M12 16v4M6 13l3-3 3 2 5-5',
+  plc: 'M5 4h14v16H5zM9 8h6M9 12h6M9 16h2M2 9h3M2 14h3M19 9h3M19 14h3',
+  campo: 'M12 13a7 7 0 1 0-7-7M12 13l4-4M5 6H2M12 13v8M8 21h8',
+  proceso: 'M7 3h10M8 3v4l-4 9a3 3 0 0 0 3 4h10a3 3 0 0 0 3-4l-4-9V3M6 13h12',
+};
 ---
 
 <div class="isa" data-isa>
@@ -18,15 +28,26 @@ const activo = defecto === -1 ? 0 : defecto;
         niveles.map((n, i) => (
           <button
             class="level"
+            style={`--w:${Math.round(44 + (56 * i) / Math.max(1, total - 1))}%;--k:${i}`}
             role="tab"
             id={`isa-tab-${n.codigo}`}
             aria-controls={`isa-panel-${n.codigo}`}
             aria-selected={i === activo ? 'true' : 'false'}
             tabindex={i === activo ? 0 : -1}
           >
-            <span class="mono code">{n.codigo}</span>
-            <span class="lname">{n.nombre}</span>
-            <span class="mono tool">{n.herramienta}</span>
+            <svg class="shape" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+              <polygon points="9,0 91,0 100,100 0,100" vector-effect="non-scaling-stroke" />
+            </svg>
+            <span class="lvl-in">
+              {n.icono && (
+                <svg class="ico" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d={ICONOS[n.icono]} />
+                </svg>
+              )}
+              <span class="mono code">{n.codigo}</span>
+              <span class="lname">{n.nombre}</span>
+              {n.capa && <span class="mono capa">{n.capa}</span>}
+            </span>
           </button>
         ))
       }
@@ -107,45 +128,84 @@ const activo = defecto === -1 ? 0 : defecto;
     gap: 12px;
   }
 
+  /* Pirámide: el nivel más alto es el más angosto y cada nivel se ensancha hacia abajo. */
   .levels {
     display: grid;
-    align-content: start;
-    gap: 8px;
+    align-content: center;
+    justify-items: center;
+    gap: 6px;
   }
 
   .level {
+    position: relative;
+    width: var(--w);
+    min-height: 58px;
     appearance: none;
     background: transparent;
     color: var(--cream);
     font: inherit;
-    text-align: left;
-    border: 1px solid var(--cream-16);
-    border-radius: var(--radius);
-    padding: 14px 16px;
+    border: 0;
+    padding: 0 8%;
     display: grid;
-    grid-template-columns: 36px 1fr;
-    grid-template-rows: auto auto;
-    column-gap: 12px;
-    row-gap: 4px;
+    place-items: center;
     cursor: pointer;
+  }
+
+  .shape {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+  }
+
+  .shape polygon {
+    fill: rgb(200 173 134 / calc(0.04 + var(--k) * 0.012));
+    stroke: var(--cream-16);
+    stroke-width: 1;
     transition:
-      border-color 150ms var(--ease-switch),
-      background-color 150ms var(--ease-switch);
+      fill 200ms var(--ease-switch),
+      stroke 150ms var(--ease-switch);
   }
 
-  .level:hover {
-    border-color: var(--gold-60);
+  .level:hover .shape polygon {
+    stroke: var(--gold-60);
   }
 
-  .level[aria-selected='true'] {
-    border-color: var(--gold);
-    background: var(--carbon);
+  .level[aria-selected='true'] .shape polygon {
+    fill: var(--carbon);
+    stroke: var(--gold);
+  }
+
+  .lvl-in {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    padding: 10px 0;
+    text-align: center;
+  }
+
+  .ico {
+    width: 20px;
+    height: 20px;
+    flex: none;
+    fill: none;
+    stroke: var(--cream-70);
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: stroke 150ms var(--ease-switch);
+  }
+
+  .level[aria-selected='true'] .ico {
+    stroke: var(--gold);
   }
 
   .code {
     color: var(--gold);
-    grid-row: span 2;
-    align-self: center;
   }
 
   .lname {
@@ -154,11 +214,9 @@ const activo = defecto === -1 ? 0 : defecto;
     letter-spacing: -0.3px;
   }
 
-  .tool {
+  .capa {
     color: var(--granite);
     font-size: 11px;
-    text-transform: none;
-    letter-spacing: 0.01em;
   }
 
   .rail {
@@ -252,10 +310,6 @@ const activo = defecto === -1 ? 0 : defecto;
     gap: 12px;
   }
 
-  .panel-top .code {
-    grid-row: auto;
-  }
-
   .panel-top h3 {
     font-size: 28px;
     letter-spacing: -1px;
@@ -323,6 +377,13 @@ const activo = defecto === -1 ? 0 : defecto;
   }
 
   @media (max-width: 480px) {
+    .level {
+      width: calc(62% + var(--k) * 7.6%);
+      padding: 0 9%;
+    }
+    .capa {
+      display: none;
+    }
     .stack {
       grid-template-columns: 18px minmax(0, 1fr) 18px;
       gap: 8px;
