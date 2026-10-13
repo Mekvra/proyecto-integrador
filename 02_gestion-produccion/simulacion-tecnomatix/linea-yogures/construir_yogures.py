@@ -54,16 +54,7 @@ DIAS_PROG = [['YN', 'YN', 'YG', 'YG', 'YF', 'YF'], ['YN', 'YN', 'YG', 'YG', 'YF'
              ['YN', 'YN', 'YG', 'YF', 'YF', 'YF'], ['YN', 'YN', 'YN', 'YG', 'YF', 'YF'], ['YN', 'YN', 'YG', 'YF', 'YF']]
 SEQ = [p for d in DIAS_PROG for p in d]
 assert len(SEQ) == 35 and SEQ.count('YN') == 13 and SEQ.count('YG') == 9 and SEQ.count('YF') == 13
-# tronco común (acta 9-oct-2026): la planta recibe 150.000 L/día; yogures ≈ 57.000, quesos 50.000 y leche UHT 43.000.
-# Los lotes de quesos y de leche UHT pasan por recepción, tanques y pasteurizador y salen hacia su línea (fuera del modelo).
-OTRAS = {'Q': ('quesos', 50_000), 'UHT': ('leche UHT', 43_000)}
-N_SEM = {'Q': round(OTRAS['Q'][1] * 6 / 10_000), 'UHT': round(OTRAS['UHT'][1] * 6 / 10_000)}   # lotes de 10.000 L en 6 días
-_ev = [((k + 0.5) / 35, 0, p) for k, p in enumerate(SEQ)]
-for j, (c, n) in enumerate(N_SEM.items(), 1):
-    _ev += [((k + 0.5) / n, j, c) for k in range(n)]
-SEQ_PLANTA = [p for _, _, p in sorted(_ev)]                 # yogures conserva su orden; los demás se intercalan parejos
-INTERVALO = 6 * 24 / len(SEQ_PLANTA)
-RECEPCION_DIA = len(SEQ_PLANTA) * 10_000 / 6
+INTERVALO = 6 * 24 / 35
 
 # ---------------- objetos ----------------
 MF = '.MaterialFlow'
@@ -82,14 +73,14 @@ def obj(name, cls, x, y, proc=None, icon=None, extra=()):
     COORD[name] = (x, y)
 
 
-for nm in ('Lote_YF', 'Lote_YN', 'Lote_YG', 'Lote_Q', 'Lote_UHT') + tuple(REFS):
+for nm in ('Lote_YF', 'Lote_YN', 'Lote_YG') + tuple(REFS):
     L.append(f'o := .MUs.Part.duplicate(.MUs, "{nm}")')
 
 Y0 = 330                                     # fila principal
 # 1 · recepción y tronco común
 obj('Programa_semanal', '.InformationFlow.DataTable', 70, 560)
 L += ['o.setDataType(1, "object")', 'o.setDataType(2, "integer")', 'o.setDataType(3, "string")']
-for i, p in enumerate(SEQ_PLANTA, 1):
+for i, p in enumerate(SEQ, 1):
     L += [f'o[1, {i}] := .MUs.Lote_{p}', f'o[2, {i}] := 1', f'o[3, {i}] := "Lote_{p}"']
 obj('Cisternas', MF + '.Source', 80, Y0, icon='vsm_cisterna',
     extra=['@.MUSelection := "Sequence Cyclical"', '@.Path := m.Programa_semanal', f'@.Interval := {h(INTERVALO)}'])
@@ -98,11 +89,8 @@ obj('U113_Leche_cruda', MF + '.Buffer', 280, Y0, icon='vsm_crudo', extra=['@.Cap
 obj('U121_Pasteurizador', MF + '.Station', 380, Y0, SUP['htst'], 'vsm_htst')
 obj('U123AB_Silo_entera', MF + '.Buffer', 480, Y0 - 70, icon='vsm_silo1', extra=['@.Capacity := -1', f'@.ProcTime := {h(SUP["silo"])}'])
 obj('U123C_Silo_descremada', MF + '.Buffer', 480, Y0 + 70, icon='vsm_silo3', extra=['@.Capacity := -1', f'@.ProcTime := {h(SUP["silo"])}'])
-obj('Hacia_quesos', MF + '.Drain', 480, Y0 + 150, icon='pedidos_queso')       # silo U124 y línea de quesos (fuera del modelo)
-obj('Hacia_leche_UHT', MF + '.Drain', 480, Y0 + 225, icon='pedidos_kefir')    # silo U125 y línea de leche UHT (fuera del modelo)
 CON += [('Cisternas', 'U111_Recepcion'), ('U111_Recepcion', 'U113_Leche_cruda'), ('U113_Leche_cruda', 'U121_Pasteurizador'),
         ('U121_Pasteurizador', 'U123AB_Silo_entera'), ('U121_Pasteurizador', 'U123C_Silo_descremada')]
-CON += [('U121_Pasteurizador', 'Hacia_quesos'), ('U121_Pasteurizador', 'Hacia_leche_UHT')]   # sucesores 3 y 4 de U121
 # 2 · preparación de la base
 obj('U201_Formulacion', MF + '.Station', 640, Y0, T_U201, 'formulacion')
 obj('U202_Tratamiento', MF + '.Station', 760, Y0, T_U202, 'u202', extra=[f'@.SetupTime := {h(SUP["cip_c"])}'])
@@ -199,7 +187,7 @@ def ruta(nm, filas):
     return out + [f'm.{nm}.ExitStrategyMUAttributeList := t']
 
 
-L += ruta('U121_Pasteurizador', [('Lote_YF', 1), ('Lote_YN', 1), ('Lote_YG', 2), ('Lote_Q', 3), ('Lote_UHT', 4)])
+L += ruta('U121_Pasteurizador', [('Lote_YF', 1), ('Lote_YN', 1), ('Lote_YG', 2)])
 for f in FERM:
     L += ruta(f, [('Lote_YF', 1), ('Lote_YN', 1), ('Lote_YG', 2)])
 L += ruta('U215_Enfriamiento', [('Lote_YF', 1), ('Lote_YN', 2)])
@@ -222,7 +210,7 @@ for nm, f in ICONOS.items():
 G = []
 NAVY, INK, SOFT, ACC = (27, 42, 120), (20, 33, 61), (91, 100, 117), (163, 72, 11)
 SECC = [  # (número, título, subtítulo, x0, x1, color de fondo, color de borde)
-    ('1', 'RECEPCIÓN Y TRONCO COMÚN', '150.000 L/día · 2 tanques · pasteurización · silos', 30, 545, (232, 236, 244), (90, 105, 135)),
+    ('1', 'RECEPCIÓN Y TRONCO COMÚN', 'acopio · leche cruda · pasteurización · silos', 30, 545, (232, 236, 244), (90, 105, 135)),
     ('2', 'PREPARACIÓN', 'formulación · 92 °C × 5 min', 565, 825, (226, 240, 236), (45, 125, 105)),
     ('3', 'FERMENTACIÓN', '4 × 12.000 L · 43 °C · pH 4,50', 845, 1065, (252, 236, 225), (200, 105, 40)),
     ('4', 'ACONDICIONAMIENTO', 'un pulmón por producto', 1085, 1440, (238, 232, 248), (115, 85, 165)),
@@ -249,7 +237,6 @@ def text(x, y, s, size=12, c=INK):
 
 YT, YB = 150, 620
 text(60, 28, 'Línea de yogures · Lácteos Altos de Teusacá · Escenario actual (sin automatización)', 22, NAVY)
-text(1500, 34, 'Planta: 150.000 L/día · yogures ≈ 57.000 · quesos 50.000 · leche UHT 43.000', 11, ACC)
 text(60, 80, 'Plant Simulation 2404 · un lote = 10.000 L · 35 lotes por semana (13 natural, 9 griego, 13 fresa) · llenadora de vasos de 12.000/h · OEE ≈ 70 %', 11, SOFT)
 line(60, 104, 2230, 104, NAVY, 2)
 for num, tit, sub, x0, x1, fondo, borde in SECC:
@@ -260,7 +247,7 @@ for num, tit, sub, x0, x1, fondo, borde in SECC:
     text(x0 + 22, YT + 14, num, 18, borde)
     text(x0 + 58, YT + 9, tit, 14, (255, 255, 255))
     text(x0 + 58, YT + 34, sub, 9, (255, 255, 255))
-ETIQ = {'Cisternas': 'Cisternas', 'U111_Recepcion': 'Recepción U111/U112', 'U113_Leche_cruda': 'Leche cruda 2 × 60.000 L',
+ETIQ = {'Cisternas': 'Cisternas', 'U111_Recepcion': 'Recepción U111/U112', 'U113_Leche_cruda': 'Leche cruda 3 × 60.000 L',
         'U121_Pasteurizador': 'Clarificación + HTST', 'U123AB_Silo_entera': 'Silos leche entera', 'U123C_Silo_descremada': 'Silo descremada',
         'U201_Formulacion': 'Formulación U201', 'U202_Tratamiento': 'Tratamiento U202', 'U215_Enfriamiento': 'Ruptura y enfriamiento',
         'U216_Separador_griego': 'Separador griego', 'U214A_Pulmon_fresa': 'Pulmón fresa U214A', 'U214B_Pulmon_natural': 'Pulmón natural U214B',
@@ -278,7 +265,7 @@ rect(60, 655, 2170, 112, NAVY, 2, 2)
 text(80, 665, 'Cómo leer el modelo', 13, NAVY)
 text(80, 690, f'Cada lote es una entidad de 10.000 L. En las llenadoras, cada entidad es {int(CHUNK_H * 60)} min de llenado a velocidad nominal (≈ {n1(T_CHUNK * 60)} min reales con OEE y paradas planeadas).', 10, INK)
 text(80, 712, 'U202 hace un CIP-C de 1,4 h al cambiar de producto; las llenadoras, un cambio de formato de 0,75 h. El orden es natural → griego → fresa.', 10, INK)
-text(80, 734, 'Los tiempos salen de las recetas v1.7 (recetas_yogures.json). Se simulan solo los días de producción (6 por semana). El tronco común recibe también la leche de quesos y de leche UHT (acta 9-oct), que sale hacia su línea.', 10, INK)
+text(80, 734, 'Los tiempos salen de las recetas v1.7 (recetas_yogures.json). Se simulan solo los días de producción (6 por semana).', 10, INK)
 
 json.dump({'coord': COORD, 'ferm': FERM, 'desp': DESP, 'secciones': SECC, 'Y0': Y0},
           open(os.path.join(D, 'coords_yogures.json'), 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
@@ -306,9 +293,6 @@ R['lotes_dia'] = sum(lotes.values()) / DIAS
 R['litros_dia'] = R['lotes_dia'] * 10000
 und = {c: gv(f'Despacho_{c}.StatNumIn') * UND_CHUNK[c] / DIAS for c in DESP}
 R['unidades_dia'] = und
-R['recepcion_dia'] = gv('U111_Recepcion.StatNumOut') * 10000 / DIAS
-R['hacia_quesos_dia'] = gv('Hacia_quesos.StatNumIn') * 10000 / DIAS
-R['hacia_uht_dia'] = gv('Hacia_leche_UHT.StatNumIn') * 10000 / DIAS
 R['vasos_U311_dia'] = und['YF150'] + und['YN200']
 R['botellas_U312_dia'] = und['YF1000'] + und['YF1750'] + und['YN1000']
 R['griego_U313_dia'] = und['YG150'] + und['YG500']
@@ -326,14 +310,13 @@ json.dump(R, open(os.path.join(D, 'resultados_actual.json'), 'w', encoding='utf-
 
 # resultados dibujados en el modelo
 res = [f'Resultados de la simulación ({DIAS} días de producción)',
-       f'Tronco común: {n1(R["recepcion_dia"], 0)} L/día recibidos · a quesos {n1(R["hacia_quesos_dia"], 0)} · a leche UHT {n1(R["hacia_uht_dia"], 0)} · pasteurizador {n1(U["U121_Pasteurizador"]["ocupado"] * 100, 0)} %',
-       f'Leche a yogures: {n1(R["litros_dia"], 0)} L/día ({n1(R["lotes_dia"], 2)} lotes/día)',
+       f'Leche procesada: {n1(R["litros_dia"], 0)} L/día ({n1(R["lotes_dia"], 2)} lotes/día)',
        f'Envases por día: {n1(R["vasos_U311_dia"], 0)} vasos · {n1(R["botellas_U312_dia"], 0)} botellas · {n1(R["griego_U313_dia"], 0)} griego',
        f'Uso U311 vasos: {n1(U["U311_Vasos"]["ocupado"] * 100, 0)} % · U312: {n1(U["U312_Botellas"]["ocupado"] * 100, 0)} % · U313: {n1(U["U313_Griego"]["ocupado"] * 100, 0)} %',
        f'Fermentadores: {n1(sum(U[f]["ocupado"] for f in FERM) / 4 * 100, 0)} % · cuello de botella: U311 vasos']
-G2 = [f'm.drawRectangle(1, 1150, 785, 840, 165, {rgb((255, 255, 255))}, -1)', f'm.drawRectangle(2, 1150, 785, 840, 165, {rgb(NAVY)}, 2)']
+G2 = [f'm.drawRectangle(1, 1250, 785, 740, 140, {rgb((255, 255, 255))}, -1)', f'm.drawRectangle(2, 1250, 785, 740, 140, {rgb(NAVY)}, 2)']
 for i, s in enumerate(res):
-    G2.append(f'm.drawText(3, 1168, {795 + i * 25}, {rgb(NAVY if i == 0 else INK)}, {12 if i == 0 else 11}, "{s}")')
+    G2.append(f'm.drawText(3, 1268, {795 + i * 25}, {rgb(NAVY if i == 0 else INK)}, {12 if i == 0 else 11}, "{s}")')
 ps.ExecuteSimTalk('var m: object := .Models.Model\n' + '\n'.join(G2))
 if OUT != '-':
     ps.ExecuteSimTalk('var b: object := .Tools.BottleneckAnalyzer.BottleneckAnalyzer.createObject(.Models.Model, 200, 120)\n'

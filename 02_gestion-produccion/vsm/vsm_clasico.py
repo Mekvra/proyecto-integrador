@@ -1,6 +1,7 @@
 # VSM del estado actual de la línea de yogures con la notación clásica de Rother y Shook (Learning to See):
 # íconos estándar en negro sobre blanco, cajas de datos, flechas de empuje, triángulos de inventario,
-# escalera de tiempos y kaizen en rojo. Mismos datos que vsm_actual.py (recetas v1.8 + simulación de 12 semanas).
+# escalera de tiempos y kaizen en rojo. Datos: recetas de la línea de yogures y simulación de 12 semanas
+# (planta-150k/resultados_planta.json y linea-yogures/resultados_paletizado_manual.json).
 # Uso: python vsm_clasico.py   → vsm_linea_yogures_clasico.svg / .html (exportar con exportar.mjs 1800 1100)
 import json, os, math
 
@@ -213,7 +214,7 @@ t(1572, YT + 120, 'T. valor agregado = 10,5 h', 13.5)
 t(1572, YT + 138, '(30 % del lead time)', 12, G)
 
 # ---------------- pie ----------------
-t(36, H - 70, 'C/T y C/O por lote de 10.000 L, según las recetas v1.8. Uso = trabajo + alistamiento + fallas, de la simulación de 12 semanas.', 12.5, G)
+t(36, H - 70, 'C/T y C/O por lote de 10.000 L, según las recetas. Uso = trabajo + alistamiento + fallas, de la simulación de 12 semanas.', 12.5, G)
 t(36, H - 50, 'La espera en pulmones (≤ 8 h) no se suma al lead time: el lote se envasa mientras el siguiente fermenta.', 12.5, G)
 defs = (f'<defs><marker id="p" markerWidth="12" markerHeight="12" refX="10" refY="5" orient="auto" markerUnits="userSpaceOnUse">'
         f'<path d="M0,0 L10,5 L0,10 z" fill="{K}"/></marker></defs>')

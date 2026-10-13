@@ -335,8 +335,8 @@ caja(x - 3.4, y, 4.4, 8.6, 4.0, 0.15, (150, 155, 165), transp=0.35)   # techo
 caja(x + 0.6, y - 0.9, 0, 0.6, 0.5, 1.4, ACERO, 0.8)              # bomba y caudalímetro
 cartel('U111_Recepcion', 'U111/U112 RECEPCIÓN', SEC['1'], dy=2.6)
 operario(x + 0.3, y - 2.0)
-tanque('U113_Leche_cruda', 1.1, 4.5, SEC['1'], n=2, paso=2.6)
-cartel('U113_Leche_cruda', 'U113-U114 LECHE CRUDA', SEC['1'], dy=2.4)
+tanque('U113_Leche_cruda', 1.0, 4.5, SEC['1'], n=3, paso=2.4)
+cartel('U113_Leche_cruda', 'U113-U115 LECHE CRUDA', SEC['1'], dy=2.4)
 x, y = W(*COORD['U121_Pasteurizador'])
 caja(x - 0.8, y, 0, 1.2, 1.0, 1.8, ACERO, 0.8)                    # separadora
 caja(x + 0.8, y, 0, 1.6, 0.8, 1.6, (180, 186, 196), 0.8)          # placas HTST
@@ -347,17 +347,6 @@ tanque('U123AB_Silo_entera', 1.1, 5.5, NATURAL, n=2, paso=2.6)
 cartel('U123AB_Silo_entera', 'SILOS LECHE ENTERA', SEC['1'], dy=2.5)
 tanque('U123C_Silo_descremada', 1.0, 5.0, GRIEGO)
 cartel('U123C_Silo_descremada', 'SILO DESCREMADA', SEC['1'], dy=2.2)
-# silos de las otras dos líneas de la planta (acta 9-oct): la leche sale hacia su línea, fuera de este modelo
-QUESO, UHT = (240, 200, 90), (110, 170, 120)
-tuberia([(430, Y0 + 70), (430, Y0 + 225), (480, Y0 + 225)], LECHE)
-tuberia([(430, Y0 + 150), (480, Y0 + 150)], LECHE)
-for nm, txt, c in (('Hacia_quesos', 'U124 A QUESOS 50.000 L/día', QUESO), ('Hacia_leche_UHT', 'U125 A LECHE UHT 43.000 L/día', UHT)):
-    tanque(nm, 1.0, 4.6, c)
-    x, y = W(*COORD[nm])
-    tubo_x(x, x + 2.6, y, 0.35, c, r=0.1)                                       # sale hacia su línea, al sur de la planta
-    tubo_y(x + 2.6, y, -YB / 20 - 1.5, 0.35, c, r=0.1)
-    cil(x + 2.6, y, 0.25, 0.2, 0.2, c, brillo=0.9)                              # codo
-    cartel(nm, txt, c, dx=0.6, dy=-1.8, esc=0.36)
 # laboratorio de calidad (andén de recepción): vidrio, escritorio, mesa y analista
 lx, ly = 13.0, -27.0
 caja(lx, ly, 0, 9.0, 4.4, 0.06, (236, 238, 242))
@@ -495,7 +484,7 @@ OCULTAR = ['U113_Leche_cruda', 'U123AB_Silo_entera', 'U123C_Silo_descremada', 'U
            'U217_Pulmones_griego', 'U311_Vasos', 'U312_Botellas', 'U313_Griego', 'U411_Camara',
            'U321_Encajonadora_vasos', 'U322_Encajonadora_botellas', 'U323_Encajonadora_griego', 'U342_Envolvedora',
            'U111_Recepcion', 'Cisternas', 'Reparto_fresa', 'Reparto_natural', 'Reparto_griego', 'Registro_de_lotes',
-           'Programa_semanal', 'Hacia_quesos', 'Hacia_leche_UHT'] + C['ferm'] + [f'Despacho_{c}' for c in C['desp']]
+           'Programa_semanal'] + C['ferm'] + [f'Despacho_{c}' for c in C['desp']]
 ORD.append('\n'.join(['var m: object := .Models.Model'] + [f'm.{n}._3D.Scale := [0.02, 0.02, 0.02]' for n in OCULTAR]))
 ORD.append('var m: object := .Models.Model\nm.Analizador_cuellos._3D.Scale := [0.02, 0.02, 0.02]')
 ORD.append('var m: object := .Models.Model\nm.EventController._3D.Scale := [0.02, 0.02, 0.02]')
