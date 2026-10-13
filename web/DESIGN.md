@@ -344,3 +344,7 @@ Todo movimiento continuo se pausa cuando sale de la pantalla y se congela con `p
 - **EDT (`Edt.astro`)**: diagrama clásico de desglose, no lista. Raíz centrada en recuadro `--carbon` con borde dorado al 60 %; una barra horizontal de la que bajan las fases en columnas (todas en una fila en PC; entre 720 y 1180 px el diagrama se desliza); cada fase en recuadro con borde dorado y sus entregables debajo con una sola guía vertical (`--cream-12`) y un trazo corto a cada uno. En celular, árbol vertical con la guía a la izquierda.
 - **Cronograma (`Gantt.astro`)**: marco de dashboard (barra `--carbon`, bordes `--stroke`). Barras de fase en `--cream-16` con avance en verde métrica; paradas en naranja señal; hitos como rombos dorados; fecha de corte como línea dorada. Cada fase es un `<details>` que despliega sus tareas con responsable; los hitos también se despliegan, uno por fila con su fecha. En celular el diagrama se desliza y la columna de nombres queda fija.
 - Datos en `src/data/edt.json` y `src/data/cronograma.json`, generados desde los archivos del Drive del grupo.
+
+## Menú (decisión del 12-oct-2026)
+
+La barra superior solo lleva la marca y el botón de dos rayitas, también en PC (Janan no quiere los enlaces en línea). Al abrirlo, el panel ocupa la pantalla; en PC las secciones van en dos columnas a 24 px alineadas con el ancho de la página, y en celular en una columna a 16 px.
