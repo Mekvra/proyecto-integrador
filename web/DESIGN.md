@@ -345,6 +345,6 @@ Todo movimiento continuo se pausa cuando sale de la pantalla y se congela con `p
 - **Cronograma (`Gantt.astro`)**: marco de dashboard (barra `--carbon`, bordes `--stroke`). Barras de fase en `--cream-16` con avance en verde métrica; paradas en naranja señal; hitos como rombos dorados; fecha de corte como línea dorada. Cada fase es un `<details>` que despliega sus tareas con responsable; los hitos también se despliegan, uno por fila con su fecha. En celular el diagrama se desliza y la columna de nombres queda fija.
 - Datos en `src/data/edt.json` y `src/data/cronograma.json`, generados desde los archivos del Drive del grupo.
 
-## Menú (decisión del 12-oct-2026)
+## Menú
 
-La barra superior solo lleva la marca y el botón de dos rayitas, también en PC (Janan no quiere los enlaces en línea). En PC el menú es un desplegable de 300 px que baja desde el botón (lista vertical a 16 px, como en el celular, borde `--cream-12`, se abre con un recorte de arriba hacia abajo) y se cierra al tocar fuera, al hacer scroll o con Esc; la página sigue visible detrás. En celular el panel ocupa la pantalla.
+La barra superior solo lleva la marca y el botón de dos rayitas, también en PC; no hay enlaces en línea. En PC el menú es un desplegable de 300 px que baja desde el botón (lista vertical a 16 px, como en el celular, borde `--cream-12`, se abre con un recorte de arriba hacia abajo) y se cierra al tocar fuera, al hacer scroll o con Esc; la página sigue visible detrás. En celular el panel ocupa la pantalla.

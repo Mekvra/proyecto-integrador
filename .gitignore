@@ -19,5 +19,5 @@ web/.astro/
 .impeccable/decision-*.json
 .impeccable/mocks/
 
-# Configuración local de Claude Code
+# Archivos de trabajo locales (no se suben)
 .claude/

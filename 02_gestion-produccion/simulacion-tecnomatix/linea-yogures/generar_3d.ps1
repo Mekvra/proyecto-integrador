@@ -2,7 +2,7 @@
 # 1) construye y simula el modelo 2D, 2) lo abre en Plant Simulation visible, 3) crea la escena 3D (Open 2D/3D),
 # 4) aplica la decoración (decorar_3d.py) y oculta las conexiones, 5) simula 30 h (arranque en caliente) y guarda
 # linea_yogures_actual_3d.spp con tiempo real ×30 para que al dar Play se vea la línea trabajando.
-# Requiere las herramientas de .claude/historial/archivos-de-trabajo/tecnomatix-automatizacion copiadas en $tx.
+# Requiere las herramientas de control de Plant Simulation (live.py, sendq.ps1, uia2.ps1 y yes3d.ps1) copiadas en $tx.
 param([string]$tx = "$env:TEMP\tx3d", [int]$semanas = 12, [switch]$abierto, [int[]]$conservar = @())
 $here = Split-Path -Parent $MyInvocation.MyCommand.Path
 Set-Location $here
