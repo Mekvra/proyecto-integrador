@@ -6,6 +6,13 @@ const niveles = solucion?.data.niveles ?? [];
 const defecto = niveles.findIndex((n) => n.codigo === 'N4');
 const activo = defecto === -1 ? 0 : defecto;
 const total = niveles.length;
+// Ancho del triángulo (en % de la columna de la pirámide) en el borde superior e inferior de cada nivel.
+const PUNTA = 30;
+const ancho = (k: number) => PUNTA + ((100 - PUNTA) * k) / total;
+const poligono = (i: number) => {
+  const a = ancho(i), b = ancho(i + 1);
+  return `${50 - a / 2},0 ${50 + a / 2},0 ${50 + b / 2},100 ${50 - b / 2},100`;
+};
 // Íconos de trazo fino, uno por nivel (24 × 24).
 const ICONOS: Record<string, string> = {
   erp: 'M4 20V10M10 20V4M16 20v-7M22 20H2',
@@ -28,26 +35,28 @@ const ICONOS: Record<string, string> = {
         niveles.map((n, i) => (
           <button
             class="level"
-            style={`--w:${Math.round(44 + (56 * i) / Math.max(1, total - 1))}%;--k:${i}`}
+            style={`--k:${i}`}
             role="tab"
             id={`isa-tab-${n.codigo}`}
             aria-controls={`isa-panel-${n.codigo}`}
             aria-selected={i === activo ? 'true' : 'false'}
             tabindex={i === activo ? 0 : -1}
           >
-            <svg class="shape" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
-              <polygon points="9,0 91,0 100,100 0,100" vector-effect="non-scaling-stroke" />
-            </svg>
-            <span class="lvl-in">
+            <span class="tri">
+              <svg class="shape" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+                <polygon points={poligono(i)} vector-effect="non-scaling-stroke" />
+              </svg>
+              <span class="lvl-in">
               {n.icono && (
                 <svg class="ico" viewBox="0 0 24 24" aria-hidden="true">
                   <path d={ICONOS[n.icono]} />
                 </svg>
               )}
-              <span class="mono code">{n.codigo}</span>
-              <span class="lname">{n.nombre}</span>
-              {n.capa && <span class="mono capa">{n.capa}</span>}
+                <span class="mono code">{n.codigo}</span>
+                <span class="lname">{n.nombre}</span>
+              </span>
             </span>
+            {n.capa && <span class="mono capa">{n.capa}</span>}
           </button>
         ))
       }
@@ -128,27 +137,33 @@ const ICONOS: Record<string, string> = {
     gap: 12px;
   }
 
-  /* Pirámide: el nivel más alto es el más angosto y cada nivel se ensancha hacia abajo. */
+  /* Pirámide: un solo triángulo con la punta arriba; cada nivel es una franja con los bordes alineados a los de
+     los vecinos. La función de cada nivel va a la derecha, fuera del triángulo. */
   .levels {
     display: grid;
     align-content: center;
-    justify-items: center;
-    gap: 6px;
+    gap: 3px;
   }
 
   .level {
-    position: relative;
-    width: var(--w);
-    min-height: 58px;
     appearance: none;
     background: transparent;
     color: var(--cream);
     font: inherit;
     border: 0;
-    padding: 0 8%;
+    padding: 0;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 104px;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+  }
+
+  .tri {
+    position: relative;
+    min-height: 60px;
     display: grid;
     place-items: center;
-    cursor: pointer;
   }
 
   .shape {
@@ -160,7 +175,7 @@ const ICONOS: Record<string, string> = {
   }
 
   .shape polygon {
-    fill: rgb(200 173 134 / calc(0.04 + var(--k) * 0.012));
+    fill: rgb(200 173 134 / calc(0.05 + var(--k) * 0.014));
     stroke: var(--cream-16);
     stroke-width: 1;
     transition:
@@ -182,15 +197,14 @@ const ICONOS: Record<string, string> = {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
-    flex-wrap: wrap;
-    padding: 10px 0;
+    gap: 8px;
+    padding: 8px 0;
     text-align: center;
   }
 
   .ico {
-    width: 20px;
-    height: 20px;
+    width: 18px;
+    height: 18px;
     flex: none;
     fill: none;
     stroke: var(--cream-70);
@@ -206,17 +220,39 @@ const ICONOS: Record<string, string> = {
 
   .code {
     color: var(--gold);
+    font-size: 11px;
   }
 
   .lname {
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 500;
     letter-spacing: -0.3px;
+    white-space: nowrap;
   }
 
+  /* Etiqueta de función con una guía corta, como una ficha al lado de cada nivel. */
   .capa {
+    position: relative;
+    justify-self: start;
+    padding-left: 14px;
     color: var(--granite);
     font-size: 11px;
+    text-align: left;
+    transition: color 150ms var(--ease-switch);
+  }
+
+  .capa::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 8px;
+    height: 1px;
+    background: var(--cream-16);
+  }
+
+  .level[aria-selected='true'] .capa {
+    color: var(--gold);
   }
 
   .rail {
@@ -378,11 +414,26 @@ const ICONOS: Record<string, string> = {
 
   @media (max-width: 480px) {
     .level {
-      width: calc(62% + var(--k) * 7.6%);
-      padding: 0 9%;
+      grid-template-columns: minmax(0, 1fr) 70px;
+      gap: 6px;
+    }
+    .lvl-in .code {
+      display: none;
     }
     .capa {
-      display: none;
+      font-size: 9.5px;
+      letter-spacing: 0.02em;
+      padding-left: 10px;
+    }
+    .capa::before {
+      width: 6px;
+    }
+    .lname {
+      font-size: 13px;
+    }
+    .ico {
+      width: 15px;
+      height: 15px;
     }
     .stack {
       grid-template-columns: 18px minmax(0, 1fr) 18px;
