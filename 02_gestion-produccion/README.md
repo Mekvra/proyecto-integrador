@@ -2,8 +2,6 @@
 
 Análisis del proceso productivo, indicadores y comparación cuantitativa **antes vs. después** de la automatización.
 
-**Responsable:** Integrante 3 (David Steven Pinzón Hernández)
-**Entrega:** intermedia, 5 de octubre de 2026 (la simulación en Tecnomatix se completa para la final)
 
 ## Entregables
 
