@@ -65,6 +65,32 @@ const lineas = todas.filter((l) => l.data.orden > 0);
           {l.data.detallada && <span class="pill">Línea detallada · gemelo digital</span>}
           <p class="muted">{l.data.resumen}</p>
         </div>
+        {l.data.productos.length > 0 && (
+          <div class="products">
+            {l.data.productos.map((pr) => (
+              <article class="product">
+                <div class="product-top">
+                  <span class="mono gold">{pr.codigo}</span>
+                  <h4>{pr.nombre}</h4>
+                </div>
+                <p class="product-desc">{pr.descripcion}</p>
+                <dl class="product-data">
+                  {pr.datos.map((d) => (
+                    <div>
+                      <dt class="mono">{d.k}</dt>
+                      <dd>{d.v}</dd>
+                    </div>
+                  ))}
+                </dl>
+                <ul class="product-packs mono">
+                  {pr.presentaciones.map((x) => (
+                    <li>{x}</li>
+                  ))}
+                </ul>
+              </article>
+            ))}
+          </div>
+        )}
         <ol class="stages">
           {l.data.etapas.map((e, k) => (
             <li class="stage">
@@ -91,6 +117,96 @@ const lineas = todas.filter((l) => l.data.orden > 0);
 </div>
 
 <style>
+  .products {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+    margin-bottom: 40px;
+  }
+
+  .product {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 24px;
+    border: 1px solid var(--cream-12);
+    border-radius: var(--radius);
+    background: var(--carbon);
+    transition: border-color 150ms var(--ease-switch);
+  }
+
+  .product:hover {
+    border-color: var(--gold-60);
+  }
+
+  .product-top {
+    display: grid;
+    gap: 6px;
+  }
+
+  .product-top h4 {
+    margin: 0;
+    line-height: 1.2;
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: -0.4px;
+  }
+
+  .product-desc {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--cream-70);
+  }
+
+  .product-data {
+    margin: 0;
+    display: grid;
+    border-top: 1px solid var(--stroke);
+  }
+
+  .product-data > div {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 9px 0;
+    border-bottom: 1px solid var(--stroke);
+    font-size: 13px;
+  }
+
+  .product-data dt {
+    color: var(--granite);
+    font-size: 11px;
+  }
+
+  .product-data dd {
+    margin: 0;
+    text-align: right;
+  }
+
+  .product-packs {
+    list-style: none;
+    margin: auto 0 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    font-size: 11px;
+  }
+
+  .product-packs li {
+    padding: 5px 8px;
+    border: 1px solid var(--cream-16);
+    border-radius: var(--radius);
+    color: var(--cream-70);
+  }
+
+  @media (max-width: 960px) {
+    .products {
+      grid-template-columns: 1fr;
+    }
+  }
+
   .gold {
     color: var(--gold);
   }

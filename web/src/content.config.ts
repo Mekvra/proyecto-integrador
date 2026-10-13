@@ -39,6 +39,17 @@ const lineas = defineCollection({
     orden: z.number(),
     detallada: z.boolean().default(false),
     resumen: z.string(),
+    productos: z
+      .array(
+        z.object({
+          codigo: z.string(),
+          nombre: z.string(),
+          descripcion: z.string(),
+          datos: z.array(z.object({ k: z.string(), v: z.string() })),
+          presentaciones: z.array(z.string()),
+        }),
+      )
+      .default([]),
     etapas: z.array(etapa),
   }),
 });
