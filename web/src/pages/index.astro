@@ -358,15 +358,13 @@ const recetas = [
             Repositorio <span class="arrow" aria-hidden="true">→</span>
           </a>
         </p>
-        <p>
-          {sitio.video ? (
+        {sitio.video && (
+          <p>
             <a class="ghost-link" href={sitio.video} target="_blank" rel="noopener">
               Video de sustentación <span class="arrow" aria-hidden="true">→</span>
             </a>
-          ) : (
-            <span class="muted">Video de sustentación · próximamente</span>
-          )}
-        </p>
+          </p>
+        )}
       </div>
     </div>
     </div>
