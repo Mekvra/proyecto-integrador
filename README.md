@@ -101,55 +101,13 @@ Estado actual de la planta, antes de la propuesta de automatización. Cada image
 
 <h2 id="equipo">Equipo</h2>
 
-<table>
-  <tr>
-    <td align="center" valign="top" width="20%">
-      <a href="https://github.com/lmendozar2001"><img src=".github/assets/equipo/luis.png" width="128" alt="Luis Alberto Mendoza"></a>
-      <br><br>
-      <b>Luis Alberto Mendoza</b>
-      <br>
-      <sub>Líder de automatización</sub>
-      <br><br>
-      <a href="https://github.com/lmendozar2001"><img src="https://img.shields.io/badge/lmendozar2001-141312?style=flat-square&logo=github&logoColor=c8ad86" alt="@lmendozar2001"></a>
-    </td>
-    <td align="center" valign="top" width="20%">
-      <a href="https://github.com/Kreiop"><img src=".github/assets/equipo/pablo.png" width="128" alt="Pablo de Jesús Arcila Mora"></a>
-      <br><br>
-      <b>Pablo de Jesús Arcila Mora</b>
-      <br>
-      <sub>Líder de ingeniería</sub>
-      <br><br>
-      <a href="https://github.com/Kreiop"><img src="https://img.shields.io/badge/Kreiop-141312?style=flat-square&logo=github&logoColor=c8ad86" alt="@Kreiop"></a>
-    </td>
-    <td align="center" valign="top" width="20%">
-      <a href="https://github.com/david-pi3141"><img src=".github/assets/equipo/david.png" width="128" alt="David Steven Pinzón Hernández"></a>
-      <br><br>
-      <b>David Steven Pinzón Hernández</b>
-      <br>
-      <sub>Líder de gestión y administración</sub>
-      <br><br>
-      <a href="https://github.com/david-pi3141"><img src="https://img.shields.io/badge/david--pi3141-141312?style=flat-square&logo=github&logoColor=c8ad86" alt="@david-pi3141"></a>
-    </td>
-    <td align="center" valign="top" width="20%">
-      <a href="https://github.com/DanielCastro-02"><img src=".github/assets/equipo/daniel.png" width="128" alt="Daniel Felipe Castro"></a>
-      <br><br>
-      <b>Daniel Felipe Castro</b>
-      <br>
-      <sub>Gerencia, desarrollo y finanzas</sub>
-      <br><br>
-      <a href="https://github.com/DanielCastro-02"><img src="https://img.shields.io/badge/DanielCastro--02-141312?style=flat-square&logo=github&logoColor=c8ad86" alt="@DanielCastro-02"></a>
-    </td>
-    <td align="center" valign="top" width="20%">
-      <a href="https://github.com/JananLC"><img src=".github/assets/equipo/janan.png" width="128" alt="Janan Libardo Carreño Riaño"></a>
-      <br><br>
-      <b>Janan Libardo Carreño Riaño</b>
-      <br>
-      <sub>Líder de instrumentación y software</sub>
-      <br><br>
-      <a href="https://github.com/JananLC"><img src="https://img.shields.io/badge/JananLC-141312?style=flat-square&logo=github&logoColor=c8ad86" alt="@JananLC"></a>
-    </td>
-  </tr>
-</table>
+<p align="center">
+  <a href="https://github.com/lmendozar2001"><img src=".github/assets/equipo/tarjeta_luis.jpg" width="19%" alt="Luis Alberto Mendoza, líder de automatización"></a>
+  <a href="https://github.com/Kreiop"><img src=".github/assets/equipo/tarjeta_pablo.jpg" width="19%" alt="Pablo de Jesús Arcila Mora, líder de ingeniería"></a>
+  <a href="https://github.com/david-pi3141"><img src=".github/assets/equipo/tarjeta_david.jpg" width="19%" alt="David Steven Pinzón Hernández, líder de gestión y administración"></a>
+  <a href="https://github.com/DanielCastro-02"><img src=".github/assets/equipo/tarjeta_daniel.jpg" width="19%" alt="Daniel Felipe Castro, gerencia, desarrollo y finanzas"></a>
+  <a href="https://github.com/JananLC"><img src=".github/assets/equipo/tarjeta_janan.jpg" width="19%" alt="Janan Libardo Carreño Riaño, líder de instrumentación y software"></a>
+</p>
 
 <br>
 
