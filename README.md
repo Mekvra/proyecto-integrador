@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://mekvra.github.io/proyecto-integrador/">
-    <img src=".github/assets/banner.png" alt="Mekvra S.A.S — Automatización e integración industrial" width="100%">
+    <img src=".github/assets/banner-mekvra-sas.png" alt="Mekvra S.A.S — Automatización e integración industrial" width="100%">
   </a>
 </p>
 
@@ -28,7 +28,7 @@
 <br>
 
 <a id="la-empresa"></a>
-<img src=".github/assets/secciones/h1.png" alt="01 · La empresa" width="100%">
+<img src=".github/assets/secciones/seccion-1.png" alt="01 · La empresa" width="100%">
 
 **Mekvra S.A.S** es una empresa integradora de soluciones de **Transformación Digital Industrial**, formada por ingenieros mecatrónicos. Conectamos el proceso físico con la gestión del negocio: del sensor en el tanque a la decisión en la gerencia.
 
@@ -52,11 +52,11 @@
 <br>
 
 <a id="la-planta"></a>
-<img src=".github/assets/secciones/h2.png" alt="02 · La planta" width="100%">
+<img src=".github/assets/secciones/seccion-2.png" alt="02 · La planta" width="100%">
 
 La planta recibe la leche por un tronco común (recepción, pasteurización y silos) y la reparte entre tres líneas por lotes, según el acta del 9 de octubre de 2026.
 
-<img src=".github/assets/cifras.png" alt="Producción diaria: 150.000 L de leche recibida, 57.600 L en yogurts, 50.000 L en quesos y 43.000 L en leche UHT" width="100%">
+<img src=".github/assets/produccion-diaria.png" alt="Producción diaria: 150.000 L de leche recibida, 57.600 L en yogurts, 50.000 L en quesos y 43.000 L en leche UHT" width="100%">
 
 | Línea | Productos | Alcance en el proyecto |
 |:--|:--|:--|
@@ -67,38 +67,38 @@ La planta recibe la leche por un tronco común (recepción, pasteurización y si
 <br>
 
 <a id="avances"></a>
-<img src=".github/assets/secciones/h3.png" alt="03 · Avances" width="100%">
+<img src=".github/assets/secciones/seccion-3.png" alt="03 · Avances" width="100%">
 
 Análisis de la planta en su estado actual, antes de la propuesta de automatización. Cada imagen abre el documento completo.
 
 <table>
   <tr>
     <td width="50%" valign="top">
-      <a href="02_gestion-produccion/simulacion-tecnomatix/planta-150k"><img src=".github/assets/avances/d1.jpg" alt="Modelo 3D de la planta con tres líneas en Tecnomatix" width="100%"></a>
+      <a href="02_gestion-produccion/simulacion-tecnomatix/planta-150k"><img src=".github/assets/avances/avance-1.jpg" alt="Modelo 3D de la planta con tres líneas en Tecnomatix" width="100%"></a>
       <sub>Planta completa en Plant Simulation: tronco común y líneas de yogurts, quesos y leche UHT.</sub>
     </td>
     <td width="50%" valign="top">
-      <a href="02_gestion-produccion/simulacion-tecnomatix/linea-yogures"><img src=".github/assets/avances/d2.jpg" alt="Modelo 3D de la línea de yogurts con paletizado manual" width="100%"></a>
+      <a href="02_gestion-produccion/simulacion-tecnomatix/linea-yogures"><img src=".github/assets/avances/avance-2.jpg" alt="Modelo 3D de la línea de yogurts con paletizado manual" width="100%"></a>
       <sub>Línea de yogurts en seis secciones, de la recepción al despacho, con paletizado manual.</sub>
     </td>
   </tr>
   <tr>
     <td width="50%" valign="top">
-      <a href="02_gestion-produccion/vsm/vsm_planta_3_lineas_clasico.pdf"><img src=".github/assets/avances/d3.jpg" alt="VSM de la planta con tres líneas" width="100%"></a>
+      <a href="02_gestion-produccion/vsm/vsm_planta_3_lineas_clasico.pdf"><img src=".github/assets/avances/avance-3.jpg" alt="VSM de la planta con tres líneas" width="100%"></a>
       <sub>Mapa de flujo de valor de las tres líneas sobre el tronco común.</sub>
     </td>
     <td width="50%" valign="top">
-      <a href="02_gestion-produccion/vsm/vsm_linea_yogures_clasico.pdf"><img src=".github/assets/avances/d4.jpg" alt="VSM de la línea de yogurts" width="100%"></a>
+      <a href="02_gestion-produccion/vsm/vsm_linea_yogures_clasico.pdf"><img src=".github/assets/avances/avance-4.jpg" alt="VSM de la línea de yogurts" width="100%"></a>
       <sub>Mapa de flujo de valor de la línea de yogurts, de la recepción a la cámara.</sub>
     </td>
   </tr>
   <tr>
     <td width="50%" valign="top">
-      <a href="02_gestion-produccion/distribucion-planta/layout_planta_3_lineas_clasico.pdf"><img src=".github/assets/avances/d5.jpg" alt="Distribución en planta de la nave de 110 por 60 metros" width="100%"></a>
+      <a href="02_gestion-produccion/distribucion-planta/layout_planta_3_lineas_clasico.pdf"><img src=".github/assets/avances/avance-5.jpg" alt="Distribución en planta de la nave de 110 por 60 metros" width="100%"></a>
       <sub>Plano de la nave de 110 × 60 m con las tres líneas.</sub>
     </td>
     <td width="50%" valign="top">
-      <a href="02_gestion-produccion/distribucion-planta/espagueti_linea_yogures_actual_clasico.pdf"><img src=".github/assets/avances/d6.jpg" alt="Diagrama de espagueti de la línea de yogurts" width="100%"></a>
+      <a href="02_gestion-produccion/distribucion-planta/espagueti_linea_yogures_actual_clasico.pdf"><img src=".github/assets/avances/avance-6.jpg" alt="Diagrama de espagueti de la línea de yogurts" width="100%"></a>
       <sub>Recorridos diarios de personas y montacargas en la línea de yogurts.</sub>
     </td>
   </tr>
@@ -119,20 +119,20 @@ Análisis de la planta en su estado actual, antes de la propuesta de automatizac
 <br>
 
 <a id="equipo"></a>
-<img src=".github/assets/secciones/h4.png" alt="04 · Equipo" width="100%">
+<img src=".github/assets/secciones/seccion-4.png" alt="04 · Equipo" width="100%">
 
 <p align="center">
-  <a href="https://github.com/lmendozar2001"><img src=".github/assets/equipo/tarjeta_luis.jpg" width="19%" alt="Luis Alberto Mendoza, líder de automatización"></a>
-  <a href="https://github.com/Kreiop"><img src=".github/assets/equipo/tarjeta_pablo.jpg" width="19%" alt="Pablo de Jesús Arcila Mora, líder de ingeniería"></a>
-  <a href="https://github.com/david-pi3141"><img src=".github/assets/equipo/tarjeta_david.jpg" width="19%" alt="David Steven Pinzón Hernández, líder de gestión y administración"></a>
-  <a href="https://github.com/DanielCastro-02"><img src=".github/assets/equipo/tarjeta_daniel.jpg" width="19%" alt="Daniel Felipe Castro, gerencia, desarrollo y finanzas"></a>
-  <a href="https://github.com/JananLC"><img src=".github/assets/equipo/tarjeta_janan.jpg" width="19%" alt="Janan Libardo Carreño Riaño, líder de instrumentación y software"></a>
+  <a href="https://github.com/lmendozar2001"><img src=".github/assets/equipo/integrante-luis.jpg" width="19%" alt="Luis Alberto Mendoza, líder de automatización"></a>
+  <a href="https://github.com/Kreiop"><img src=".github/assets/equipo/integrante-pablo.jpg" width="19%" alt="Pablo de Jesús Arcila Mora, líder de ingeniería"></a>
+  <a href="https://github.com/david-pi3141"><img src=".github/assets/equipo/integrante-david.jpg" width="19%" alt="David Steven Pinzón Hernández, líder de gestión y administración"></a>
+  <a href="https://github.com/DanielCastro-02"><img src=".github/assets/equipo/integrante-daniel.jpg" width="19%" alt="Daniel Felipe Castro, gerencia, desarrollo y finanzas"></a>
+  <a href="https://github.com/JananLC"><img src=".github/assets/equipo/integrante-janan.jpg" width="19%" alt="Janan Libardo Carreño Riaño, líder de instrumentación y software"></a>
 </p>
 
 <br>
 
 <a id="estructura"></a>
-<img src=".github/assets/secciones/h5.png" alt="05 · Estructura" width="100%">
+<img src=".github/assets/secciones/seccion-5.png" alt="05 · Estructura" width="100%">
 
 El repositorio sigue los módulos del curso. Cada carpeta tiene su propio `README.md` con sus entregables.
 

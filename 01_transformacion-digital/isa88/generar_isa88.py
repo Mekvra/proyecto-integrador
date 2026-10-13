@@ -5,12 +5,10 @@
 #   diagramas/modelo_fisico.svg    jerarquía empresa → sitio → áreas → celdas → unidades
 #   diagramas/procedimiento_*.svg  modelo procedimental de cada línea (procedimientos de unidad y operaciones)
 #   diagramas/pfc_*.svg            diagrama de procedimiento de cada producto
-#   ../../web/src/data/isa88.json  y ../../web/public/isa88/*.svg para la página
 # Uso: python generar_isa88.py
-import os, json, shutil, textwrap
+import os, textwrap
 
 D = os.path.dirname(os.path.abspath(__file__))
-WEB = os.path.join(D, '..', '..', 'web')
 os.makedirs(os.path.join(D, 'recetas-maestras'), exist_ok=True)
 os.makedirs(os.path.join(D, 'diagramas'), exist_ok=True)
 
@@ -436,7 +434,7 @@ def indice():
                  f'[pfc_{p["codigo"]}.svg](../diagramas/pfc_{p["codigo"]}.svg) |')
     L += ['', '## Diagramas de la planta', '', '- [Modelo físico](../diagramas/modelo_fisico.svg)'] + [
         f'- [Modelo procedimental de la línea de {low(l)}](../diagramas/{v[0]}.svg)' for l, v in LINEAS.items()]
-    L += ['', 'Se generan con `python generar_isa88.py` (carpeta `isa88`), que también actualiza la página web.', '']
+    L += ['', 'Se generan con `python generar_isa88.py` (carpeta `isa88`).', '']
     return '\n'.join(L)
 
 
@@ -454,16 +452,4 @@ for p in P:
 for k, s in svgs.items():
     guardar(os.path.join(D, 'diagramas', k + '.svg'), s)
 
-# ---------------- datos y diagramas para la página ----------------
-pub = os.path.join(WEB, 'public', 'isa88')
-os.makedirs(pub, exist_ok=True)
-for k in svgs:
-    shutil.copyfile(os.path.join(D, 'diagramas', k + '.svg'), os.path.join(pub, k + '.svg'))
-web = {'lineas': [{'nombre': l, 'procedimiento': v[0] + '.svg', 'titulo': v[1]} for l, v in LINEAS.items()],
-       'productos': [{k: p[k] for k in ('codigo', 'nombre', 'linea', 'celda', 'lotes', 'orden', 'denominacion', 'silo', 'grasa',
-                                         'producto', 'presentaciones', 'vida', 'equipos', 'espec')} |
-                     {'formula': [{'insumo': a, 'cantidad': b} for a, b in p['formula']],
-                      'up': [{'codigo': c, 'nombre': n, 'unidad': u, 'fases': len(f)} for c, n, u, f in p['up']],
-                      'pcc': [{'codigo': c, 'texto': PCC[c]} for c in p['pcc']], 'diagrama': f'pfc_{p["codigo"]}.svg'} for p in P]}
-guardar(os.path.join(WEB, 'src', 'data', 'isa88.json'), json.dumps(web, ensure_ascii=False, indent=1))
 print('ok:', len(P), 'recetas ·', len(svgs), 'diagramas')

@@ -1,6 +1,6 @@
 # Simulación en Tecnomatix Plant Simulation
 
-Modelos de la planta de Lácteos Altos de Teusacá en su **estado actual** (sin la automatización de Mekvra), hechos en Plant Simulation 2404 con licencia estudiantil (máximo 80 objetos). Cada modelo se arma con SimTalk desde Python por la interfaz COM. Se simulan 12 semanas de 6 días de producción, con lotes de 10.000 L, el programa semanal de producción, fallas aleatorias, limpiezas CIP, cambios de formato y un OEE de llenadoras de ≈ 70 %. Todas las cifras son de simulación, no medidas de planta.
+Modelos de la planta de Lácteos Altos de Teusacá en su **estado actual** (sin la automatización de Mekvra), hechos en Plant Simulation 2404 con licencia estudiantil (máximo 80 objetos). Cada modelo se arma con SimTalk desde Python por la interfaz COM. Se simulan 12 semanas de 6 días de producción, con lotes de 10.000 L, el programa semanal de producción, fallas aleatorias, limpiezas CIP y cambios de formato. Todas las cifras son de simulación, no medidas de planta.
 
 ## Modelos
 
