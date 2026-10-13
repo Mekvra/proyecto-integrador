@@ -2,8 +2,6 @@
 
 Arquitectura integral de automatización según **ISA-95** y modelos de producción por lotes según **ISA-88**.
 
-**Responsables:** Integrante 1 (Luis Alberto Mendoza), ISA-88 · Integrante 2 (Pablo de Jesús Arcila), ISA-95 y arquitectura
-**Entrega:** intermedia, 5 de octubre de 2026
 
 ## Entregables
 
@@ -23,7 +21,3 @@ Arquitectura integral de automatización según **ISA-95** y modelos de producci
 | [Modelo ISA-88](isa88) | Modelo físico, modelo procedimental y recetas de los nueve productos |
 | [Recetas maestras](isa88/recetas-maestras) | Una receta maestra completa por producto, con su diagrama de procedimiento |
 | [Diagramas ISA-88](isa88/diagramas) | Modelo físico, modelo procedimental por línea y procedimiento de cada producto |
-
-## Guía de evidencias (enunciado)
-
-> El proyecto debe evidenciar una arquitectura integral de automatización, considerando ISA-95 para estructurar la integración entre proceso, control, supervisión, gestión de producción y gestión empresarial. Asimismo, deberá aplicar conceptos de ISA-88 para estructurar los modelos físicos y procedimentales, así como las recetas y lotes asociados a las líneas de producción.
