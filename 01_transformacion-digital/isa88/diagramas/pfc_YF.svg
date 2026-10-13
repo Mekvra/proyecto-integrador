@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1150" width="900" height="1150"><defs><marker id="f" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L10,5 L0,10 z" fill="#000"/></marker></defs><rect width="900" height="1150" fill="#ffffff"/><text x="70" y="34" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" fill="#000000" text-anchor="start">Receta maestra YF · Yogurt con fresa</text>
+<text x="70" y="58" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#555555" text-anchor="start">Diagrama de procedimiento ISA-88 · celda PC21 · lote de 10.000 L · 13 lotes por semana</text>
+<rect x="70" y="84" width="760" height="52" rx="26" fill="none" stroke="#000000" stroke-width="1.2" stroke-dasharray="5 4"/>
+<text x="450.0" y="106" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" fill="#000000" text-anchor="middle">Tronco común · UP-LB1 recepción → UP-LB2 pasteurización → UP-LB3 silo</text>
+<text x="450.0" y="124" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#555555" text-anchor="middle">Lote de leche base liberado del silo U123A/B · grasa 3,50 %</text>
+<text x="816" y="106" font-family="Arial, Helvetica, sans-serif" font-size="11.5" font-weight="700" fill="#b00020" text-anchor="end">PCC-1 · PCC-2</text>
+<line x1="450.0" y1="136" x2="450.0" y2="162" stroke="#000000" stroke-width="1.2" marker-end="url(#f)"/>
+<rect x="70" y="162" width="760" height="99" rx="0" fill="none" stroke="#000000" stroke-width="1.2"/>
+<rect x="70" y="162" width="760" height="30" rx="0" fill="#f2f2f2" stroke="#000000" stroke-width="1.2"/>
+<text x="82" y="182" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="700" fill="#000000" text-anchor="start">UP-Y1  ·  Formulación</text>
+<text x="818" y="182" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#000000" text-anchor="end">U201</text>
+<text x="92" y="212" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#000000" text-anchor="start">–  Cargar la leche: 10.320 kg desde U123A/B (± 0,5 %)</text>
+<text x="92" y="231" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#000000" text-anchor="start">–  Dosificar sólidos en el mezclador de vacío: leche en polvo 444 kg + azúcar 626,5 kg (± 1 %)</text>
+<text x="92" y="250" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#000000" text-anchor="start">–  Dispersar e hidratar: 50 °C por 20 min</text>
+<line x1="450.0" y1="261" x2="450.0" y2="287" stroke="#000000" stroke-width="1.2" marker-end="url(#f)"/>
+<rect x="70" y="287" width="760" height="118" rx="0" fill="none" stroke="#000000" stroke-width="1.2"/>
+<rect x="70" y="287" width="760" height="30" rx="0" fill="#f2f2f2" stroke="#000000" stroke-width="1.2"/>
+<text x="82" y="307" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="700" fill="#000000" text-anchor="start">UP-Y2  ·  Tratamiento de la base</text>
+<text x="818" y="307" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#000000" text-anchor="end">U202</text>
+<text x="92" y="337" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#000000" text-anchor="start">–  Desairear: 68 °C</text>
+<text x="92" y="356" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#000000" text-anchor="start">–  Homogeneizar en dos etapas: 200 + 50 bar a 65 a 70 °C</text>
+<text x="92" y="375" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#000000" text-anchor="start">–  Calentar y retener: 92 °C por 5 min; desvío si baja de 90 °C</text>
+<text x="818" y="375" font-family="Arial, Helvetica, sans-serif" font-size="11.5" font-weight="700" fill="#b00020" text-anchor="end">PCC-4</text>
+<text x="92" y="394" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#000000" text-anchor="start">–  Enfriar a inoculación: 43 °C ± 0,5</text>
+<line x1="450.0" y1="405" x2="450.0" y2="431" stroke="#000000" stroke-width="1.2" marker-end="url(#f)"/>
+<rect x="70" y="431" width="760" height="99" rx="0" fill="none" stroke="#000000" stroke-width="1.2"/>
+<rect x="70" y="431" width="760" height="30" rx="0" fill="#f2f2f2" stroke="#000000" stroke-width="1.2"/>
+<text x="82" y="451" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="700" fill="#000000" text-anchor="start">UP-Y3  ·  Fermentación</text>
+<text x="818" y="451" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#000000" text-anchor="end">U211 · U212 · U213 · U218</text>
+<text x="92" y="481" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#000000" text-anchor="start">–  Inocular al llenar y agitar: 400 U; 10 min a 15 a 20 rpm</text>
+<text x="92" y="500" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#000000" text-anchor="start">–  Incubar sin agitación: 43 °C, unas 5,25 h (4,75 a 6,25 h)</text>
+<text x="92" y="519" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#000000" text-anchor="start">–  Cortar la fermentación: pH 4,50; alarma si pasan 6,5 h</text>
+<line x1="450.0" y1="530" x2="450.0" y2="556" stroke="#000000" stroke-width="1.2" marker-end="url(#f)"/>
+<rect x="70" y="556" width="760" height="80" rx="0" fill="none" stroke="#000000" stroke-width="1.2"/>
+<rect x="70" y="556" width="760" height="30" rx="0" fill="#f2f2f2" stroke="#000000" stroke-width="1.2"/>
+<text x="82" y="576" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="700" fill="#000000" text-anchor="start">UP-Y4  ·  Ruptura y enfriamiento</text>
+<text x="818" y="576" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#000000" text-anchor="end">U215</text>
+<text x="92" y="606" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#000000" text-anchor="start">–  Romper el coágulo: 5 a 10 min a 20 rpm o menos, sin aire</text>
+<text x="92" y="625" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#000000" text-anchor="start">–  Enfriar en placas: 20 °C (15 a 22 °C)</text>
+<line x1="450.0" y1="636" x2="450.0" y2="662" stroke="#000000" stroke-width="1.2" marker-end="url(#f)"/>
+<rect x="70" y="662" width="760" height="61" rx="0" fill="none" stroke="#000000" stroke-width="1.2"/>
+<rect x="70" y="662" width="760" height="30" rx="0" fill="#f2f2f2" stroke="#000000" stroke-width="1.2"/>
+<text x="82" y="682" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="700" fill="#000000" text-anchor="start">UP-Y6  ·  Pulmón</text>
+<text x="818" y="682" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#000000" text-anchor="end">U214A</text>
+<text x="92" y="712" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#000000" text-anchor="start">–  Mantener hasta el llenado: 18 a 22 °C, máximo 8 h</text>
+<line x1="450.0" y1="723" x2="450.0" y2="749" stroke="#000000" stroke-width="1.2" marker-end="url(#f)"/>
+<rect x="70" y="749" width="760" height="61" rx="0" fill="none" stroke="#000000" stroke-width="1.2"/>
+<rect x="70" y="749" width="760" height="30" rx="0" fill="#f2f2f2" stroke="#000000" stroke-width="1.2"/>
+<text x="82" y="769" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="700" fill="#000000" text-anchor="start">UP-Y7  ·  Saborizado</text>
+<text x="818" y="769" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#000000" text-anchor="end">EM-2141</text>
+<text x="92" y="799" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#000000" text-anchor="start">–  Dosificar el preparado de fresa en línea: 13,0 % ± 0,5</text>
+<text x="818" y="799" font-family="Arial, Helvetica, sans-serif" font-size="11.5" font-weight="700" fill="#b00020" text-anchor="end">PCC-6</text>
+<line x1="450.0" y1="810" x2="450.0" y2="836" stroke="#000000" stroke-width="1.2" marker-end="url(#f)"/>
+<rect x="70" y="836" width="760" height="80" rx="0" fill="none" stroke="#000000" stroke-width="1.2"/>
+<rect x="70" y="836" width="760" height="30" rx="0" fill="#f2f2f2" stroke="#000000" stroke-width="1.2"/>
+<text x="82" y="856" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="700" fill="#000000" text-anchor="start">UP-Y8  ·  Envasado</text>
+<text x="818" y="856" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#000000" text-anchor="end">U311 · U312</text>
+<text x="92" y="886" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#000000" text-anchor="start">–  Detectar metales en la tubería: sin metal sobre el patrón</text>
+<text x="818" y="886" font-family="Arial, Helvetica, sans-serif" font-size="11.5" font-weight="700" fill="#b00020" text-anchor="end">PCC-5</text>
+<text x="92" y="905" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#000000" text-anchor="start">–  Llenar, sellar y codificar: llenado a 18 a 22 °C; mordaza a 180 a 220 °C</text>
+<line x1="450.0" y1="916" x2="450.0" y2="942" stroke="#000000" stroke-width="1.2" marker-end="url(#f)"/>
+<rect x="70" y="942" width="760" height="80" rx="0" fill="none" stroke="#000000" stroke-width="1.2"/>
+<rect x="70" y="942" width="760" height="30" rx="0" fill="#f2f2f2" stroke="#000000" stroke-width="1.2"/>
+<text x="82" y="962" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="700" fill="#000000" text-anchor="start">UP-Y9  ·  Cámara</text>
+<text x="818" y="962" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#000000" text-anchor="end">U411</text>
+<text x="92" y="992" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#000000" text-anchor="start">–  Enfriar y madurar: 6 °C o menos en 12 h; reposo de 12 h a 2 a 4 °C</text>
+<text x="92" y="1011" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#000000" text-anchor="start">–  Despachar: FEFO, camión de 2 a 6 °C</text>
+<line x1="450.0" y1="1022" x2="450.0" y2="1048" stroke="#000000" stroke-width="1.2" marker-end="url(#f)"/>
+<rect x="70" y="1048" width="760" height="52" rx="26" fill="none" stroke="#000000" stroke-width="1.6"/>
+<text x="450.0" y="1070" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" fill="#000000" text-anchor="middle">Producto terminado · 13.092 kg</text>
+<text x="450.0" y="1088" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#555555" text-anchor="middle">Vaso 150 g · U311 · Botella 1.000 g · U312 · Botella 1.750 g · U312</text>
+<text x="70" y="1130" font-family="Arial, Helvetica, sans-serif" font-size="11.5" font-weight="400" fill="#555555" text-anchor="start">Rojo: punto crítico de control (PCC) del plan HACCP. Valores de diseño tomados de las recetas y del modelo procedimental.</text></svg>

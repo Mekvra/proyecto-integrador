@@ -11,6 +11,7 @@ import Monogram from '../components/Monogram.astro';
 import Lockup from '../components/Lockup.astro';
 import Edt from '../components/Edt.astro';
 import Gantt from '../components/Gantt.astro';
+import Isa88 from '../components/Isa88.astro';
 import sitio from '../data/sitio.json';
 
 const empresa = await getEntry('textos', 'empresa');
@@ -137,20 +138,30 @@ const recetas = [
       <ProcessTabs />
     </section>
 
-    <!-- 05 ARQUITECTURA -->
+    <!-- 05 ISA-88 -->
+    <section id="isa88" class="section wrap">
+      <div class="section-head">
+        <span class="mono">05 · ISA-88</span>
+        <h2>Nueve recetas, un mismo estándar.</h2>
+        <p>Modelo físico, modelo procedimental y receta maestra de las nueve referencias de la planta: tres yogurts, tres quesos y tres leches UHT, con sus unidades, fases, valores de receta y puntos críticos de control.</p>
+      </div>
+      <Isa88 />
+    </section>
+
+    <!-- 06 ARQUITECTURA -->
     <section id="arquitectura" class="section wrap">
       <div class="section-head">
-        <span class="mono">05 · Arquitectura</span>
+        <span class="mono">06 · Arquitectura</span>
         <h2>{solucion.data.titulo}</h2>
         <p>{solucion.data.resumen}</p>
       </div>
       <Isa95 />
     </section>
 
-    <!-- 06 EVIDENCIAS -->
+    <!-- 07 EVIDENCIAS -->
     <section id="evidencias" class="section wrap">
       <div class="section-head">
-        <span class="mono">06 · Evidencias</span>
+        <span class="mono">07 · Evidencias</span>
         <h2>Datos de proceso, no promesas.</h2>
         <p>
           Indicadores de la línea de yogurts en la planta actual, con su memoria de cálculo en las recetas y en la
@@ -176,10 +187,10 @@ const recetas = [
       </BatchChart>
     </section>
 
-    <!-- 07 SIMULACIÓN -->
+    <!-- 08 SIMULACIÓN -->
     <section id="simulacion" class="section wrap">
       <div class="section-head">
-        <span class="mono">07 · Simulación y planta</span>
+        <span class="mono">08 · Simulación y planta</span>
         <h2>La planta, modelada antes de tocarla.</h2>
         <p>
           Modelos de Plant Simulation, VSM, distribución en planta y diagramas de espagueti de la planta de 150.000 L/día
@@ -243,10 +254,10 @@ const recetas = [
       </div>
     </section>
 
-    <!-- 08 PLANEACIÓN -->
+    <!-- 09 PLANEACIÓN -->
     <section id="planeacion" class="section wrap">
       <div class="section-head">
-        <span class="mono">08 · Planeación</span>
+        <span class="mono">09 · Planeación</span>
         <h2>Doce meses, de la ingeniería a la operación.</h2>
         <p>El semestre es la primera fase de un proyecto de doce meses: después de la propuesta vienen las compras, el montaje, dos paradas breves de planta y la puesta en marcha de la línea de yogurts con su MES.</p>
       </div>
@@ -268,10 +279,10 @@ const recetas = [
       </div>
     </section>
 
-    <!-- 09 MÓDULOS -->
+    <!-- 10 MÓDULOS -->
     <section id="modulos" class="section wrap">
       <div class="section-head">
-        <span class="mono">09 · Módulos</span>
+        <span class="mono">10 · Módulos</span>
         <h2>Cada entregable, en su lugar.</h2>
         <p>Cada módulo del curso tiene su carpeta de evidencias en el repositorio.</p>
       </div>
@@ -302,22 +313,22 @@ const recetas = [
       </div>
     </section>
 
-    <!-- 10 PROPUESTA -->
+    <!-- 11 PROPUESTA -->
     <section id="propuesta" class="section wrap">
       <div class="proposal">
         <Monogram size={96} />
         <div class="section-head">
-          <span class="mono">10 · Propuesta de valor</span>
+          <span class="mono">11 · Propuesta de valor</span>
           <h2>{propuesta.data.titulo}</h2>
           <p>{propuesta.data.resumen}</p>
         </div>
       </div>
     </section>
 
-    <!-- 11 EQUIPO -->
+    <!-- 12 EQUIPO -->
     <section id="equipo" class="section wrap">
       <div class="section-head">
-        <span class="mono">11 · Equipo</span>
+        <span class="mono">12 · Equipo</span>
         <h2>Las personas detrás de Mekvra.</h2>
         <p>Cinco ingenieros mecatrónicos a cargo de la automatización, la ingeniería, la gestión, las finanzas y el software del proyecto.</p>
       </div>

@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 919" width="900" height="919"><defs><marker id="f" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L10,5 L0,10 z" fill="#000"/></marker></defs><rect width="900" height="919" fill="#ffffff"/><text x="70" y="34" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" fill="#000000" text-anchor="start">Receta maestra QM · Mozzarella</text>
+<text x="70" y="58" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="400" fill="#555555" text-anchor="start">Diagrama de procedimiento ISA-88 · celda PC22 · lote de 10.000 L · 10 lotes por semana</text>
+<rect x="70" y="84" width="760" height="52" rx="26" fill="none" stroke="#000000" stroke-width="1.2" stroke-dasharray="5 4"/>
+<text x="450.0" y="106" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" fill="#000000" text-anchor="middle">Tronco común · UP-LB1 recepción → UP-LB2 pasteurización → UP-LB3 silo</text>
+<text x="450.0" y="124" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#555555" text-anchor="middle">Lote de leche base liberado del silo U124A/B · grasa 3,0 %</text>
+<text x="816" y="106" font-family="Arial, Helvetica, sans-serif" font-size="11.5" font-weight="700" fill="#b00020" text-anchor="end">PCC-1 · PCC-2</text>
+<line x1="450.0" y1="136" x2="450.0" y2="162" stroke="#000000" stroke-width="1.2" marker-end="url(#f)"/>
+<rect x="70" y="162" width="760" height="137" rx="0" fill="none" stroke="#000000" stroke-width="1.2"/>
+<rect x="70" y="162" width="760" height="30" rx="0" fill="#f2f2f2" stroke="#000000" stroke-width="1.2"/>
+<text x="82" y="182" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="700" fill="#000000" text-anchor="start">UP-Q1  ·  Tina</text>
+<text x="818" y="182" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#000000" text-anchor="end">U221A · U221B · U221C</text>
+<text x="92" y="212" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#000000" text-anchor="start">–  Llenar y atemperar: leche al 3,0 % a 32 a 35 °C en E-2210</text>
+<text x="92" y="231" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#000000" text-anchor="start">–  Madurar: CaCl₂ 5 L + cultivo termófilo 200 U; 20 a 30 min, agitación lenta</text>
+<text x="92" y="250" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#000000" text-anchor="start">–  Coagular: cuajo 2,0 L; reposo 30 a 40 min hasta corte limpio</text>
+<text x="92" y="269" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#000000" text-anchor="start">–  Cortar: cubos de 1 a 1,5 cm; reposo de 5 min</text>
+<text x="92" y="288" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#000000" text-anchor="start">–  Cocinar y desuerar: 40 a 42 °C; retirar el 85 % del suero</text>
+<line x1="450.0" y1="299" x2="450.0" y2="325" stroke="#000000" stroke-width="1.2" marker-end="url(#f)"/>
+<rect x="70" y="325" width="760" height="61" rx="0" fill="none" stroke="#000000" stroke-width="1.2"/>
+<rect x="70" y="325" width="760" height="30" rx="0" fill="#f2f2f2" stroke="#000000" stroke-width="1.2"/>
+<text x="82" y="345" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="700" fill="#000000" text-anchor="start">UP-Q2  ·  Acidificación</text>
+<text x="818" y="345" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#000000" text-anchor="end">U222</text>
+<text x="92" y="375" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#000000" text-anchor="start">–  Acidificar la cuajada: 35 a 38 °C hasta pH 5,1 a 5,3; prueba de estiramiento</text>
+<line x1="450.0" y1="386" x2="450.0" y2="412" stroke="#000000" stroke-width="1.2" marker-end="url(#f)"/>
+<rect x="70" y="412" width="760" height="80" rx="0" fill="none" stroke="#000000" stroke-width="1.2"/>
+<rect x="70" y="412" width="760" height="30" rx="0" fill="#f2f2f2" stroke="#000000" stroke-width="1.2"/>
+<text x="82" y="432" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="700" fill="#000000" text-anchor="start">UP-Q3  ·  Hilado y moldeo</text>
+<text x="818" y="432" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#000000" text-anchor="end">U223</text>
+<text x="92" y="462" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#000000" text-anchor="start">–  Hilar: agua de hilado a 75 a 85 °C; pasta a 58 a 62 °C</text>
+<text x="92" y="481" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#000000" text-anchor="start">–  Moldear: bloques de 2,5 kg y barras de 1 kg</text>
+<line x1="450.0" y1="492" x2="450.0" y2="518" stroke="#000000" stroke-width="1.2" marker-end="url(#f)"/>
+<rect x="70" y="518" width="760" height="80" rx="0" fill="none" stroke="#000000" stroke-width="1.2"/>
+<rect x="70" y="518" width="760" height="30" rx="0" fill="#f2f2f2" stroke="#000000" stroke-width="1.2"/>
+<text x="82" y="538" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="700" fill="#000000" text-anchor="start">UP-Q4  ·  Enfriamiento y salado</text>
+<text x="818" y="538" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#000000" text-anchor="end">U224</text>
+<text x="92" y="568" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#000000" text-anchor="start">–  Enfriar: canal de agua a 4 a 10 °C</text>
+<text x="92" y="587" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#000000" text-anchor="start">–  Salar en salmuera: salmuera al 20 % (18 a 22 %) a 8 a 12 °C por 8 h</text>
+<text x="818" y="587" font-family="Arial, Helvetica, sans-serif" font-size="11.5" font-weight="700" fill="#b00020" text-anchor="end">PC-Q</text>
+<line x1="450.0" y1="598" x2="450.0" y2="624" stroke="#000000" stroke-width="1.2" marker-end="url(#f)"/>
+<rect x="70" y="624" width="760" height="80" rx="0" fill="none" stroke="#000000" stroke-width="1.2"/>
+<rect x="70" y="624" width="760" height="30" rx="0" fill="#f2f2f2" stroke="#000000" stroke-width="1.2"/>
+<text x="82" y="644" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="700" fill="#000000" text-anchor="start">UP-Q5  ·  Empaque</text>
+<text x="818" y="644" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#000000" text-anchor="end">U321</text>
+<text x="92" y="674" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#000000" text-anchor="start">–  Detectar metales: antes de la empacadora</text>
+<text x="818" y="674" font-family="Arial, Helvetica, sans-serif" font-size="11.5" font-weight="700" fill="#b00020" text-anchor="end">PCC-7</text>
+<text x="92" y="693" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#000000" text-anchor="start">–  Empacar al vacío y sellar: etiqueta con lote, fecha y vencimiento</text>
+<line x1="450.0" y1="704" x2="450.0" y2="730" stroke="#000000" stroke-width="1.2" marker-end="url(#f)"/>
+<rect x="70" y="730" width="760" height="61" rx="0" fill="none" stroke="#000000" stroke-width="1.2"/>
+<rect x="70" y="730" width="760" height="30" rx="0" fill="#f2f2f2" stroke="#000000" stroke-width="1.2"/>
+<text x="82" y="750" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="700" fill="#000000" text-anchor="start">UP-Q6  ·  Cámara</text>
+<text x="818" y="750" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#000000" text-anchor="end">U414</text>
+<text x="92" y="780" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#000000" text-anchor="start">–  Conservar: 2 a 4 °C, reposo de 12 h; camión de 2 a 6 °C</text>
+<line x1="450.0" y1="791" x2="450.0" y2="817" stroke="#000000" stroke-width="1.2" marker-end="url(#f)"/>
+<rect x="70" y="817" width="760" height="52" rx="26" fill="none" stroke="#000000" stroke-width="1.6"/>
+<text x="450.0" y="839" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" fill="#000000" text-anchor="middle">Producto terminado · ≈ 1.000 kg (≈ 10 L de leche por kg)</text>
+<text x="450.0" y="857" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#555555" text-anchor="middle">Bloque 2,5 kg · U321 · Barra 1 kg · U321</text>
+<text x="70" y="899" font-family="Arial, Helvetica, sans-serif" font-size="11.5" font-weight="400" fill="#555555" text-anchor="start">Rojo: punto crítico de control (PCC) del plan HACCP. Valores de diseño tomados de las recetas y del modelo procedimental.</text></svg>
