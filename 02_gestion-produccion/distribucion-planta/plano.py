@@ -5,7 +5,7 @@
 #
 # Genera (svg + html; PNG y PDF con ../vsm/exportar.mjs, 2000 × 1414):
 #   layout_planta_3_lineas            · planta con las tres líneas en color
-#   layout_linea_yogures_actual       · la línea de yogures en color y lo demás en gris (paletizado manual)
+#   layout_linea_yogures_actual       · la línea de yogurts en color y lo demás en gris (paletizado manual)
 #   espagueti_linea_yogures_actual    · recorridos diarios sobre el plano, hoy
 #   espagueti_linea_yogures_propuesto · recorridos con la propuesta de automatización
 import os, math
@@ -19,7 +19,7 @@ ACC, PCC, OK, AMAR = '#1f4e79', '#b4441b', '#2e7d4f', '#d9a400'
 FD = "Archivo, 'Arial Narrow', Arial, sans-serif"
 FB = "'IBM Plex Sans', 'Segoe UI', Arial, sans-serif"
 FM = "'IBM Plex Mono', Consolas, monospace"
-LINEA = {'tronco': '#5a6987', 'yogur': '#c33c64', 'queso': '#a37c12', 'uht': '#3d8a52', 'serv': '#6b7682', 'frio': '#2b7bb0'}
+LINEA = {'tronco': '#5a6987', 'yogurt': '#c33c64', 'queso': '#a37c12', 'uht': '#3d8a52', 'serv': '#6b7682', 'frio': '#2b7bb0'}
 GRIS = '#9aa3ad'
 
 
@@ -66,21 +66,21 @@ EQ = [  # códigos ISA-88 del grupo, iguales a los de Recetas_y_procesos_planta.
     ('U121', 'tronco', 'rect', (27.5, 7, 4, 3)), ('U122', 'tronco', 'rect', (32.5, 7, 6, 3)),
     ('U126', 'tronco', 'rect', (27.5, 12, 4, 3)), ('CIP-C', 'tronco', 'rect', (32.5, 12, 6, 3)),
     ('U127', 'tronco', 'circ', (29.5, 17.2, 1.8)),
-    ('U123A', 'yogur', 'circ', (3.5, 26, 3.6)), ('U123B', 'yogur', 'circ', (9.2, 26, 3.6)), ('U123C', 'yogur', 'circ', (14.7, 26, 3.0)),
+    ('U123A', 'yogurt', 'circ', (3.5, 26, 3.6)), ('U123B', 'yogurt', 'circ', (9.2, 26, 3.6)), ('U123C', 'yogurt', 'circ', (14.7, 26, 3.0)),
     ('U124A', 'queso', 'circ', (20.2, 26, 3.0)), ('U124B', 'queso', 'circ', (25.6, 26, 3.0)),
     ('U125A', 'uht', 'circ', (31, 26, 3.0)), ('U125B', 'uht', 'circ', (36.4, 26, 3.0)),
-    ('U201', 'yogur', 'circ', (44, 10, 2.8)), ('tolva', 'yogur', 'rect', (48, 6.5, 3, 2.5)), ('U202', 'yogur', 'rect', (41.5, 14.5, 9, 3)),
-    ('U211', 'yogur', 'circ', (56, 8.5, 3.0)), ('U212', 'yogur', 'circ', (62, 8.5, 3.0)),
-    ('U213', 'yogur', 'circ', (56, 15, 3.0)), ('U218', 'yogur', 'circ', (62, 15, 3.0)),
-    ('U215', 'yogur', 'rect', (67.5, 6.5, 3.5, 2.5)), ('U216', 'yogur', 'rect', (67.5, 13, 3.5, 2.5)),
-    ('U214A', 'yogur', 'circ', (74, 7.5, 2.6)), ('U214B', 'yogur', 'circ', (74, 13.5, 2.6)),
-    ('EM-2141', 'yogur', 'rect', (69.6, 10.0, 3.2, 1.5)),
-    ('U217A', 'yogur', 'circ', (77.4, 8.6, 1.6)), ('U217B', 'yogur', 'circ', (77.4, 12.6, 1.6)),
-    ('U311', 'yogur', 'rect', (80, 6.5, 7, 2.6)), ('cajas', 'yogur', 'rect', (88.5, 6.5, 5, 2.6)),
-    ('U312', 'yogur', 'rect', (80, 10.8, 7, 2.6)), ('cajas', 'yogur', 'rect', (88.5, 10.8, 5, 2.6)),
-    ('U313', 'yogur', 'rect', (80, 15.1, 7, 2.6)), ('cajas', 'yogur', 'rect', (88.5, 15.1, 5, 2.6)),
-    ('U341', 'yogur', 'rect', (96.5, 6.5, 5, 5)), ('U342', 'yogur', 'rect', (103, 6.5, 5, 5)),
-    ('estibas', 'yogur', 'rect', (96.5, 14, 11.5, 3.5)),
+    ('U201', 'yogurt', 'circ', (44, 10, 2.8)), ('tolva', 'yogurt', 'rect', (48, 6.5, 3, 2.5)), ('U202', 'yogurt', 'rect', (41.5, 14.5, 9, 3)),
+    ('U211', 'yogurt', 'circ', (56, 8.5, 3.0)), ('U212', 'yogurt', 'circ', (62, 8.5, 3.0)),
+    ('U213', 'yogurt', 'circ', (56, 15, 3.0)), ('U218', 'yogurt', 'circ', (62, 15, 3.0)),
+    ('U215', 'yogurt', 'rect', (67.5, 6.5, 3.5, 2.5)), ('U216', 'yogurt', 'rect', (67.5, 13, 3.5, 2.5)),
+    ('U214A', 'yogurt', 'circ', (74, 7.5, 2.6)), ('U214B', 'yogurt', 'circ', (74, 13.5, 2.6)),
+    ('EM-2141', 'yogurt', 'rect', (69.6, 10.0, 3.2, 1.5)),
+    ('U217A', 'yogurt', 'circ', (77.4, 8.6, 1.6)), ('U217B', 'yogurt', 'circ', (77.4, 12.6, 1.6)),
+    ('U311', 'yogurt', 'rect', (80, 6.5, 7, 2.6)), ('cajas', 'yogurt', 'rect', (88.5, 6.5, 5, 2.6)),
+    ('U312', 'yogurt', 'rect', (80, 10.8, 7, 2.6)), ('cajas', 'yogurt', 'rect', (88.5, 10.8, 5, 2.6)),
+    ('U313', 'yogurt', 'rect', (80, 15.1, 7, 2.6)), ('cajas', 'yogurt', 'rect', (88.5, 15.1, 5, 2.6)),
+    ('U341', 'yogurt', 'rect', (96.5, 6.5, 5, 5)), ('U342', 'yogurt', 'rect', (103, 6.5, 5, 5)),
+    ('estibas', 'yogurt', 'rect', (96.5, 14, 11.5, 3.5)),
     ('U221A', 'queso', 'rect', (2, 37.5, 6.5, 3.2)), ('U221B', 'queso', 'rect', (9.5, 37.5, 6.5, 3.2)), ('U221C', 'queso', 'rect', (17, 37.5, 6.5, 3.2)),
     ('U222 banda de acidificación', 'queso', 'rect', (2, 41.6, 30, 1.6)),
     ('U223', 'queso', 'rect', (26, 37.5, 6, 3.2)), ('U321', 'queso', 'rect', (33.5, 37.5, 5, 3.2)),
@@ -169,7 +169,7 @@ def cuadro_areas():
 
 
 def plano(h, enfoque=None, kicker='', titulo='', sub='', etiquetas_equipo=True):
-    """Dibuja el plano. enfoque = None (todas las líneas en color) o 'yogur' (solo la línea de yogures en color)."""
+    """Dibuja el plano. enfoque = None (todas las líneas en color) o 'yogurt' (solo la línea de yogurts en color)."""
     h.S.append(f'<rect width="{W}" height="{H}" fill="{BG}"/>')
     h.rect(20, 20, W - 40, H - 40, PAPER, RULE, 1, 10)
     h.t(48, 62, kicker, 12, MUTED, 600, FM, extra='letter-spacing="1.5"')
@@ -338,7 +338,7 @@ def leyenda(h, x, y, enfoque=None):
             h.rect(x, yy - 11, 30, 12, '#ffffff', RULE, 1)
         h.t(x + 42, yy, s, 11.5)
     y2 = y + 24 + len(items) * 22 + 6
-    lins = [('tronco', 'Tronco común'), ('yogur', 'Línea de yogures'), ('queso', 'Línea de quesos'), ('uht', 'Línea de leche UHT'),
+    lins = [('tronco', 'Tronco común'), ('yogurt', 'Línea de yogurts'), ('queso', 'Línea de quesos'), ('uht', 'Línea de leche UHT'),
             ('serv', 'Servicios y almacén')]
     for i, (k, s) in enumerate(lins):
         yy = y2 + i * 22
@@ -462,7 +462,7 @@ if __name__ == '__main__':
     # 1 · planta con las tres líneas
     h = Hoja()
     plano(h, None, 'PLANO DE DISTRIBUCIÓN · PLANTA CON TRES LÍNEAS · ESTADO ACTUAL', 'Lácteos Altos de Teusacá · edificio de producción',
-          'Nave de 110 × 60 m · 150.000 L/día: yogures ≈ 57.000, quesos 50.000 y leche UHT 43.000 L/día · códigos ISA-88 de las recetas, el P&ID y el ISA-95 · paletizado manual')
+          'Nave de 110 × 60 m · 150.000 L/día: yogurts ≈ 57.000, quesos 50.000 y leche UHT 43.000 L/día · códigos ISA-88 de las recetas, el P&ID y el ISA-95 · paletizado manual')
     for px_, py_ in ((98.3, 12.6), (100.8, 12.6)):                     # paletizado manual (2 operarios)
         h.S.append(f'<circle cx="{X(px_):.1f}" cy="{Y(py_):.1f}" r="5" fill="{PCC}"/><circle cx="{X(px_):.1f}" cy="{Y(py_):.1f}" r="9" fill="none" stroke="{PCC}" stroke-width="1"/>')
     y = leyenda(h, 1585, 200)
@@ -472,31 +472,31 @@ if __name__ == '__main__':
     rotulo(h, 'Distribución en planta · tres líneas')
     h.svg('layout_planta_3_lineas', 'Plano de la planta')
 
-    # 2 · línea de yogures, paletizado manual
+    # 2 · línea de yogurts, paletizado manual
     h = Hoja()
-    plano(h, 'yogur', 'PLANO DE DISTRIBUCIÓN · LÍNEA DE YOGURES · ESTADO ACTUAL', 'Línea de yogures · paletizado manual',
-          'La línea de yogures en color y las demás áreas en gris · en U341 dos operarios estiban a mano las cajas que llegan por las bandas')
+    plano(h, 'yogurt', 'PLANO DE DISTRIBUCIÓN · LÍNEA DE YOGURTS · ESTADO ACTUAL', 'Línea de yogurts · paletizado manual',
+          'La línea de yogurts en color y las demás áreas en gris · en U341 dos operarios estiban a mano las cajas que llegan por las bandas')
     for px_, py_ in ((98.3, 12.6), (100.8, 12.6)):                     # los dos operarios de paletizado
         h.S.append(f'<circle cx="{X(px_):.1f}" cy="{Y(py_):.1f}" r="5" fill="{PCC}"/><circle cx="{X(px_):.1f}" cy="{Y(py_):.1f}" r="9" fill="none" stroke="{PCC}" stroke-width="1"/>')
-    y = leyenda(h, 1585, 200, 'yogur')
+    y = leyenda(h, 1585, 200, 'yogurt')
     h.S.append(f'<circle cx="{1600:.1f}" cy="{y - 14:.1f}" r="5" fill="{PCC}"/>')
     h.t(1627, y - 10, 'Operario de paletizado manual', 11.5)
     tabla_areas(h, 1585, y + 16, solo={'SILOS', 'PREPARACIÓN', 'FERMENTACIÓN', 'ACONDICIONAMIENTO', 'ENVASADO · SALA LIMPIA', 'PALETIZADO',
                                        'CÁMARA 2–4 °C', 'BODEGA DE ENVASES Y FRUTA', 'BODEGA DE INSUMOS'})
-    rotulo(h, 'Distribución · línea de yogures')
-    h.svg('layout_linea_yogures_actual', 'Plano de la línea de yogures')
+    rotulo(h, 'Distribución · línea de yogurts')
+    h.svg('layout_linea_yogures_actual', 'Plano de la línea de yogurts')
 
     # 3 y 4 · espagueti actual y propuesto
     h = Hoja()
-    plano(h, 'yogur', 'DIAGRAMA DE ESPAGUETI · ESTADO ACTUAL', 'Recorridos de la línea de yogures hoy',
-          'Cada línea es una ruta que se repite durante el día: más líneas, más viajes · viajes estimados para ≈ 57.600 L/día de leche a yogures', etiquetas_equipo=False)
+    plano(h, 'yogurt', 'DIAGRAMA DE ESPAGUETI · ESTADO ACTUAL', 'Recorridos de la línea de yogurts hoy',
+          'Cada línea es una ruta que se repite durante el día: más líneas, más viajes · viajes estimados para ≈ 57.600 L/día de leche a yogurts', etiquetas_equipo=False)
     filas, tot_act = espagueti(h, ACTUAL, False)
     tabla_rutas(h, filas, tot_act, 1585, 200, False)
-    rotulo(h, 'Espagueti · línea de yogures, hoy')
+    rotulo(h, 'Espagueti · línea de yogurts, hoy')
     h.svg('espagueti_linea_yogures_actual', 'Espagueti actual')
 
     h = Hoja()
-    plano(h, 'yogur', 'DIAGRAMA DE ESPAGUETI · PROPUESTA DE AUTOMATIZACIÓN', 'Recorridos de la línea de yogures con la propuesta',
+    plano(h, 'yogurt', 'DIAGRAMA DE ESPAGUETI · PROPUESTA DE AUTOMATIZACIÓN', 'Recorridos de la línea de yogurts con la propuesta',
           'Celda robotizada en U341, llenadora FFS que forma el vaso desde bobina, pH en línea y registro en el MES', etiquetas_equipo=False)
     filas, tot_pro = espagueti(h, PROPUESTO, True)
     y = tabla_rutas(h, filas, tot_pro, 1585, 200, True, tot_act)
@@ -511,7 +511,7 @@ if __name__ == '__main__':
         h.t(1585, yy + 14, lab, 11, INK, 600)
         h.rect(1670, yy, 230 * v / tot_act, 18, c, 'none', 0, 3, 'fill-opacity="0.85"')
         h.t(1678 + 230 * v / tot_act, yy + 14, f'{v / 1000:.1f} km'.replace('.', ','), 12, c, 800, FD)
-    rotulo(h, 'Espagueti · línea de yogures, propuesta')
+    rotulo(h, 'Espagueti · línea de yogurts, propuesta')
     h.svg('espagueti_linea_yogures_propuesto', 'Espagueti propuesto')
     print('ok', round(tot_act), round(tot_pro))
     for f in cuadro_areas():

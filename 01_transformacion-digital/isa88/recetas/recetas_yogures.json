@@ -62,7 +62,7 @@
  "productos": {
   "YF": {
    "codigo": "YF",
-   "nombre": "Yogur con trozos de fresa",
+   "nombre": "Yogurt con trozos de fresa",
    "leche": {
     "cruda_kg": 10348.351648,
     "cruda_L": 10027.472527,
@@ -93,7 +93,7 @@
   },
   "YN": {
    "codigo": "YN",
-   "nombre": "Yogur natural",
+   "nombre": "Yogurt natural",
    "leche": {
     "cruda_kg": 10348.351648,
     "cruda_L": 10027.472527,
@@ -121,7 +121,7 @@
   },
   "YG": {
    "codigo": "YG",
-   "nombre": "Yogur griego",
+   "nombre": "Yogurt griego",
    "leche": {
     "cruda_kg": 11359.409341,
     "cruda_L": 11007.179594,

@@ -1,4 +1,4 @@
-﻿# Regenera el modelo de la línea de yogures con su escena 3D decorada.
+﻿# Regenera el modelo de la línea de yogurts con su escena 3D decorada.
 # 1) construye y simula el modelo 2D, 2) lo abre en Plant Simulation visible, 3) crea la escena 3D (Open 2D/3D),
 # 4) aplica la decoración (decorar_3d.py) y oculta las conexiones, 5) simula 30 h (arranque en caliente) y guarda
 # linea_yogures_actual_3d.spp con tiempo real ×30 para que al dar Play se vea la línea trabajando.

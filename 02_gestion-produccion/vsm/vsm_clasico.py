@@ -1,6 +1,6 @@
-# VSM del estado actual de la línea de yogures con la notación clásica de Rother y Shook (Learning to See):
+# VSM del estado actual de la línea de yogurts con la notación clásica de Rother y Shook (Learning to See):
 # íconos estándar en negro sobre blanco, cajas de datos, flechas de empuje, triángulos de inventario,
-# escalera de tiempos y kaizen en rojo. Datos: recetas de la línea de yogures y simulación de 12 semanas
+# escalera de tiempos y kaizen en rojo. Datos: recetas de la línea de yogurts y simulación de 12 semanas
 # (planta-150k/resultados_planta.json y linea-yogures/resultados_paletizado_manual.json).
 # Uso: python vsm_clasico.py   → vsm_linea_yogures_clasico.svg / .html (exportar con exportar.mjs 1800 1100)
 import json, os, math
@@ -130,11 +130,11 @@ def kaizen(cx, cy, l1, l2='', rx=78, ry=34):
 rect(0, 0, W, H, '#fff', '#fff', 0)
 rect(14, 14, W - 28, H - 28, 'none', K, 1.2)
 t(36, 52, 'Mapa de flujo de valor – estado actual', 24, K, 700)
-t(36, 76, 'Línea de yogures (natural, griego y fresa) · Lácteos Altos de Teusacá', 15, G)
+t(36, 76, 'Línea de yogurts (natural, griego y fresa) · Lácteos Altos de Teusacá', 15, G)
 
 # ---------------- proveedor, control de producción y cliente ----------------
 fabrica(52, 100, 'Ganaderos')
-caja_datos(52, 188, 150, ['150.000 L/día planta', f'{miles(R["litros_dia"])} L/día yogur'], 12.5)
+caja_datos(52, 188, 150, ['150.000 L/día planta', f'{miles(R["litros_dia"])} L/día yogurt'], 12.5)
 camion(60, 262, '')
 t(156, 290, '≈ 8 cisternas/día', 12.5)
 envio_v(103, 312, 396)
@@ -222,6 +222,6 @@ svg = f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" width="{W}
 N = 'vsm_linea_yogures_clasico'
 open(os.path.join(D, N + '.svg'), 'w', encoding='utf-8').write(svg)
 open(os.path.join(D, N + '.html'), 'w', encoding='utf-8').write(
-    '<!doctype html><html lang="es"><head><meta charset="utf-8"><title>VSM línea de yogures</title>'
+    '<!doctype html><html lang="es"><head><meta charset="utf-8"><title>VSM línea de yogurts</title>'
     f'<style>@page{{size:{W}px {H}px;margin:0}}html,body{{margin:0;background:#fff}}svg{{display:block}}</style></head><body>{svg}</body></html>')
 print('ok')

@@ -1,12 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1800 1100" width="1800" height="1100"><defs><marker id="p" markerWidth="12" markerHeight="12" refX="10" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L10,5 L0,10 z" fill="#000000"/></marker></defs><rect x="0" y="0" width="1800" height="1100" fill="#fff" stroke="#fff" stroke-width="0" />
 <rect x="14" y="14" width="1772" height="1072" fill="none" stroke="#000000" stroke-width="1.2" />
 <text x="36" y="52" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" fill="#000000" text-anchor="start">Mapa de flujo de valor – estado actual</text>
-<text x="36" y="76" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="400" fill="#555555" text-anchor="start">Línea de yogures (natural, griego y fresa) · Lácteos Altos de Teusacá</text>
+<text x="36" y="76" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="400" fill="#555555" text-anchor="start">Línea de yogurts (natural, griego y fresa) · Lácteos Altos de Teusacá</text>
 <polygon points="52.0,178.0 52.0,126.0 102.0,100.0 102.0,126.0 152.0,100.0 152.0,126.0 202.0,100.0 202.0,178.0" fill="#fff" stroke="#000000" stroke-width="1.5" stroke-linejoin="miter"/>
 <text x="127.0" y="160" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700" fill="#000000" text-anchor="middle">Ganaderos</text>
 <rect x="52" y="188" width="150" height="52" fill="#fff" stroke="#000000" stroke-width="1.5" />
 <text x="60" y="211" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#000000" text-anchor="start">150.000 L/día planta</text>
-<text x="60" y="232" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#000000" text-anchor="start">57.500 L/día yogur</text>
+<text x="60" y="232" font-family="Arial, Helvetica, sans-serif" font-size="12.5" font-weight="400" fill="#000000" text-anchor="start">57.500 L/día yogurt</text>
 <rect x="60" y="262" width="62" height="32" fill="#fff" stroke="#000000" stroke-width="1.5" />
 <rect x="122" y="272" width="24" height="22" fill="#fff" stroke="#000000" stroke-width="1.5" />
 <circle cx="74" cy="298" r="6" fill="#fff" stroke="#000000" stroke-width="1.5"/>

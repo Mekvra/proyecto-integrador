@@ -15,7 +15,7 @@ Fuente principal: *Recetas y procesos de la planta* (11 de octubre de 2026). Los
 
 ```mermaid
 flowchart LR
-    RG["Receta general<br/>yogur con fresa en %"] --> RS["Receta de sitio<br/>norma colombiana"]
+    RG["Receta general<br/>yogurt con fresa en %"] --> RS["Receta de sitio<br/>norma colombiana"]
     RS --> RM["Receta maestra YF<br/>U201, U202, U211-U218, U215,<br/>U214A, EM-2141, U311, U312, U411"]
     RM --> RC["Receta de control<br/>lote YF150-261009-03<br/>U123A, U212, U311..."]
 ```
@@ -34,9 +34,9 @@ Cada receta de la sección 4 tiene las mismas partes:
 
 | Código | Producto | Línea | Lotes por semana | Orden en la campaña | Producto por lote | Presentaciones | Vida útil |
 |---|---|---|---|---|---|---|---|
-| YN | Yogur natural | Yogures | 13 | Primero | 10.677 kg | Vaso de 200 g, botella de 1000 g | 30 días a 2 a 6 °C |
-| YG | Yogur griego | Yogures | 9 | Segundo | 3.242 kg | Vaso de 150 g, pote de 500 g | 21 días a 2 a 6 °C |
-| YF | Yogur con fresa | Yogures | 13 | Último | 13.092 kg | Vaso de 150 g, botellas de 1000 y 1750 g | 30 días a 2 a 6 °C |
+| YN | Yogurt natural | Yogurts | 13 | Primero | 10.677 kg | Vaso de 200 g, botella de 1000 g | 30 días a 2 a 6 °C |
+| YG | Yogurt griego | Yogurts | 9 | Segundo | 3.242 kg | Vaso de 150 g, pote de 500 g | 21 días a 2 a 6 °C |
+| YF | Yogurt con fresa | Yogurts | 13 | Último | 13.092 kg | Vaso de 150 g, botellas de 1000 y 1750 g | 30 días a 2 a 6 °C |
 | QM | Mozzarella | Quesos | 10 | Primero | ≈ 1.000 kg | Bloque de 2,5 kg, barra de 1 kg | 45 días al vacío |
 | QQ | Quesillo | Quesos | 10 | Segundo | ≈ 1.110 kg | Bloques de 500 g y 1 kg | 25 días al vacío |
 | QD | Doble crema | Quesos | 10 | Último | ≈ 1.330 kg | Bloques de 500 g y 2,5 kg | 30 días al vacío |
@@ -44,13 +44,13 @@ Cada receta de la sección 4 tiene las mismas partes:
 | LD | Leche descremada UHT | Leche UHT | 6 | Segunda | 9.800 cajas de 1 L | Caja de 1 L en bandejas de 12 | 6 meses sin frío |
 | LC | Leche con chocolate UHT | Leche UHT | 6 | Última | ≈ 9.520 cajas de 1 L | Caja de 1 L en bandejas de 12 | 6 meses sin frío |
 
-Producción diaria: yogures unos 58.300 L de leche y 56.400 kg de producto; quesos 50.000 L de leche y unos 5.730 kg de queso; leche UHT unos 43.300 L y 42.200 cajas.
+Producción diaria: yogurts unos 58.300 L de leche y 56.400 kg de producto; quesos 50.000 L de leche y unos 5.730 kg de queso; leche UHT unos 43.300 L y 42.200 cajas.
 
 ## 4. Recetas maestras
 
-### 4.1 YF · Yogur con fresa
+### 4.1 YF · Yogurt con fresa
 
-**Encabezado.** Denominación: yogur entero con dulce, con fresa (Resolución 2310 de 1986, art. 21). Celda PC21. Lote de 10.000 L de leche entera estandarizada. 13 lotes por semana; es el último de la campaña.
+**Encabezado.** Denominación: yogurt entero con dulce, con fresa (Resolución 2310 de 1986, art. 21). Celda PC21. Lote de 10.000 L de leche entera estandarizada. 13 lotes por semana; es el último de la campaña.
 
 **Fórmula por lote**
 
@@ -84,9 +84,9 @@ No lleva estabilizantes, gelificantes ni emulsificantes: la Resolución 2310 (ar
 
 **PCC.** PCC-1, PCC-2 (tronco común) · PCC-4 tratamiento de la base · PCC-5 metales · PCC-6 preparado de fruta (certificado del proceso térmico del proveedor, envase íntegro, conectado máximo 24 h a 8 °C o menos).
 
-### 4.2 YN · Yogur natural
+### 4.2 YN · Yogurt natural
 
-**Encabezado.** Denominación: yogur entero sin dulce (nombre comercial: natural). Celda PC21. Lote de 10.000 L. 13 lotes por semana; abre la campaña.
+**Encabezado.** Denominación: yogurt entero sin dulce (nombre comercial: natural). Celda PC21. Lote de 10.000 L. 13 lotes por semana; abre la campaña.
 
 **Fórmula por lote**
 
@@ -105,7 +105,7 @@ No lleva estabilizantes, gelificantes ni emulsificantes: la Resolución 2310 (ar
 
 **PCC.** PCC-1, PCC-2, PCC-4 y PCC-5.
 
-### 4.3 YG · Yogur griego
+### 4.3 YG · Yogurt griego
 
 **Encabezado.** Denominación: yogurt griego natural semidescremado, concentrado por separación del suero. En el Codex es una leche fermentada concentrada (proteína ≥ 5,6 %). Celda PC21. Lote de 10.000 L de leche descremada. 9 lotes por semana; va después del natural.
 
@@ -118,7 +118,7 @@ No lleva estabilizantes, gelificantes ni emulsificantes: la Resolución 2310 (ar
 | Concentrado del separador U216 | 3.087 | 0,10 % | 9,60 % | Restitución de grasa |
 | Suero ácido (pH 4,4 a 4,6) | 7.263 | 0,03 % | 0,5 % | U905 |
 | Crema pasteurizada al 40 % (U127) | 155 | 40 % | 1,9 % | Dosificada en línea |
-| **Yogur griego** | **3.242** | **2,00 %** | **9,23 %** | U217A o B, y luego U313 |
+| **Yogurt griego** | **3.242** | **2,00 %** | **9,23 %** | U217A o B, y luego U313 |
 
 Por cada kg de griego se usan 3,19 kg de leche descremada y salen 2,24 kg de suero ácido. El suero (unos 10.900 kg/día) no se vierte: va a U905 para venta o alimentación animal.
 
@@ -255,7 +255,7 @@ La grasa de la mezcla sale de (9.840 × 3,6 % + 160 × 40 %) / 10.000 = 4,2 %.
 
 **PCC.** PCC-1, PCC-2, PCC-8 y PCC-9.
 
-## 5. Presentaciones de la línea de yogures
+## 5. Presentaciones de la línea de yogurts
 
 | Referencia | Envase | Llenadora | Velocidad | Unidades por día | Unidades por caja |
 |---|---|---|---|---|---|
@@ -273,7 +273,7 @@ En cada llenadora se controla el peso neto (Resolución SIC 32209 de 2020), la t
 
 El enunciado pide que las referencias de cada línea se diferencien de forma no trivial. Así se cumple:
 
-| Criterio del enunciado | Yogures | Quesos | Leche UHT |
+| Criterio del enunciado | Yogurts | Quesos | Leche UHT |
 |---|---|---|---|
 | Ingredientes y formulación | Azúcar y fruta en fresa; ninguno en natural; leche descremada y crema en griego | Grasa de 3,0, 3,2 y 4,2 %; crema propia en doble crema | Leche entera, descremada o con azúcar, cacao y carragenina |
 | Cantidades y dosificación | 444, 357 o 0 kg de leche en polvo; 13 % de fresa; 155 kg de crema | 2,0 o 2,2 L de cuajo; 200 o 100 U de cultivo; 1,5 o 1,2 % de sal | 620 kg de azúcar, 125 kg de cacao y 2,6 kg de carragenina en chocolate |
@@ -296,18 +296,18 @@ Todos los lotes son de **10.000 L** de leche estandarizada, que caben en los fer
 |---|---|
 | Cisterna | Proveedor, ruta, volumen y sellos al llegar, con el resultado del laboratorio |
 | Lote de leche base | Silo y fecha; se libera con fosfatasa y peroxidasa antes de transferir. Formato propuesto en este modelo: `LB-<silo>-AAMMDD-NN`, por ejemplo `LB-U123A-261009-02` |
-| Lote de producto | Referencia, fecha y consecutivo del día, impresos en cada envase con el vencimiento. Ejemplo de las recetas de yogures: `YF150-261009-03` |
+| Lote de producto | Referencia, fecha y consecutivo del día, impresos en cada envase con el vencimiento. Ejemplo de las recetas de yogurts: `YF150-261009-03` |
 | Insumos críticos | Lote del cultivo (anotado en la planilla), del preparado de fruta, de la crema y del cacao |
 
 Cada línea toma la leche de un silo con lote liberado, así que la cadena queda encadenada: **cisterna → lote de leche base → lote de producto → despacho**.
 
 ### Ejemplo de receta de control
 
-Lote de yogur con fresa en vaso de 150 g. Las unidades y el lote de leche son un ejemplo de asignación.
+Lote de yogurt con fresa en vaso de 150 g. Las unidades y el lote de leche son un ejemplo de asignación.
 
 | Campo | Valor |
 |---|---|
-| Receta maestra | YF · Yogur con fresa |
+| Receta maestra | YF · Yogurt con fresa |
 | Lote de producto | YF150-261009-03 |
 | Tamaño | 10.000 L de leche estandarizada (10.320 kg) |
 | Leche base | Lote liberado del silo U123A |

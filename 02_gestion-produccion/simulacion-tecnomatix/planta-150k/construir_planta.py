@@ -1,5 +1,5 @@
 # Modelo de Plant Simulation 2404 (licencia estudiantil) de la PLANTA COMPLETA de Lácteos Altos de Teusacá según el acta
-# del 9-oct-2026: 150.000 L/día de leche que el tronco común reparte en tres líneas: yogures ≈ 57.000 L/día (detalle de las
+# del 9-oct-2026: 150.000 L/día de leche que el tronco común reparte en tres líneas: yogurts ≈ 57.000 L/día (detalle de las
 # recetas v1.7), quesos 50.000 L/día (mozzarella, quesillo y doble crema) y leche UHT 43.000 L/día (entera, descremada y
 # chocolate). Escenario actual, sin automatización. Los tiempos de quesos y de leche UHT son supuestos de diseño hasta que
 # existan sus recetas. Ocho secciones con su franja y su cartel en el 2D; la escena 3D se decora después (decorar_planta.py).
@@ -94,7 +94,7 @@ def obj(name, cls, x, y, proc=None, icon=None, extra=()):
 for nm in ('Lote_YF', 'Lote_YN', 'Lote_YG') + tuple('Lote_' + c for c in QUESOS + LECHES) + tuple(REFS) + ('Bulto_queso', 'Bulto_leche'):
     L.append(f'o := .MUs.Part.duplicate(.MUs, "{nm}")')
 
-Y0, YQ, YL = 330, 765, 1035                  # filas de yogures, quesos y leche UHT
+Y0, YQ, YL = 330, 765, 1035                  # filas de yogurts, quesos y leche UHT
 # 1 · recepción y tronco común
 obj('Programa_semanal', '.InformationFlow.DataTable', 70, 1110)
 L += ['o.setDataType(1, "object")', 'o.setDataType(2, "integer")', 'o.setDataType(3, "string")']
@@ -302,8 +302,8 @@ def text(x, y, s, size=12, c=INK):
 
 
 text(60, 28, 'Planta láctea · Lácteos Altos de Teusacá · 150.000 L/día · Escenario actual (sin automatización)', 22, NAVY)
-text(1500, 34, 'Acta 9-oct-2026: yogures ≈ 57.000 · quesos 50.000 · leche UHT 43.000 L/día', 11, ACC)
-text(60, 80, 'Plant Simulation 2404 · un lote = 10.000 L · 91 lotes por semana: 35 de yogur (13 natural, 9 griego, 13 fresa), 30 de queso y 26 de leche UHT · OEE de llenadoras ≈ 70 %', 11, SOFT)
+text(1500, 34, 'Acta 9-oct-2026: yogurts ≈ 57.000 · quesos 50.000 · leche UHT 43.000 L/día', 11, ACC)
+text(60, 80, 'Plant Simulation 2404 · un lote = 10.000 L · 91 lotes por semana: 35 de yogurt (13 natural, 9 griego, 13 fresa), 30 de queso y 26 de leche UHT · OEE de llenadoras ≈ 70 %', 11, SOFT)
 line(60, 104, 2230, 104, NAVY, 2)
 for num, tit, sub, x0, x1, YT, YB, fondo, borde in SECC:
     rect(x0, YT, x1 - x0, YB - YT, fondo)
@@ -332,7 +332,7 @@ rect(30, 1190, 1100, 160, NAVY, 2, 2)
 text(50, 1200, 'Cómo leer el modelo', 13, NAVY)
 text(50, 1225, f'Cada lote es una entidad de 10.000 L. En las llenadoras, cada entidad es {int(CHUNK_H * 60)} min de llenado a velocidad nominal (≈ {n1(T_CHUNK * 60)} min reales con OEE y paradas planeadas).', 10, INK)
 text(50, 1247, 'U202 hace un CIP-C de 1,4 h al cambiar de producto; las llenadoras, un cambio de formato de 0,75 h. El orden es natural → griego → fresa.', 10, INK)
-text(50, 1269, 'Yogures: recetas v1.8. Quesos y leche UHT: Recetas_basicas_planta_v1.0, valores de diseño por lote (tina 3,5 h; hilado 1 h; salmuera 8 h; UHT 1 h;', 10, INK)
+text(50, 1269, 'Yogurts: recetas v1.8. Quesos y leche UHT: Recetas_basicas_planta_v1.0, valores de diseño por lote (tina 3,5 h; hilado 1 h; salmuera 8 h; UHT 1 h;', 10, INK)
 text(50, 1291, 'envasado aséptico 2 h; cuarentena UHT 24 h) hasta tener sus recetas. Se simulan solo los días de producción (6 por semana).', 10, INK)
 text(50, 1313, 'Cada bulto de queso o de leche que pasa por la banda es 1/20 o 1/40 del lote.', 10, INK)
 
@@ -391,7 +391,7 @@ res = [f'Resultados de la simulación ({DIAS} días de producción)',
        f'Tronco común: {n1(R["recepcion_dia"], 0)} L/día recibidos · pasteurizador {n1(U["U121_Pasteurizador"]["ocupado"] * 100, 0)} %',
        f'Quesos: {n1(R["quesos_L_dia"], 0)} L/día ≈ {n1(R["queso_kg_dia"], 0)} kg de queso · hilado {n1(U["U223_Hilado"]["ocupado"] * 100, 0)} % · tinas {n1(sum(U[x]["ocupado"] for x in TINAS) / 3 * 100, 0)} %',
        f'Leche UHT: {n1(R["leche_L_dia"], 0)} L/día ≈ {n1(R["leche_envases_dia"], 0)} envases de 1 L · UHT {n1(U["U232_UHT"]["ocupado"] * 100, 0)} % · envasadora {n1(U["U331_Envasadora_aseptica"]["ocupado"] * 100, 0)} %',
-       f'Leche a yogures: {n1(R["litros_dia"], 0)} L/día ({n1(R["lotes_dia"], 2)} lotes/día)',
+       f'Leche a yogurts: {n1(R["litros_dia"], 0)} L/día ({n1(R["lotes_dia"], 2)} lotes/día)',
        f'Envases por día: {n1(R["vasos_U311_dia"], 0)} vasos · {n1(R["botellas_U312_dia"], 0)} botellas · {n1(R["griego_U313_dia"], 0)} griego',
        f'Uso U311 vasos: {n1(U["U311_Vasos"]["ocupado"] * 100, 0)} % · U312: {n1(U["U312_Botellas"]["ocupado"] * 100, 0)} % · U313: {n1(U["U313_Griego"]["ocupado"] * 100, 0)} %',
        f'Fermentadores: {n1(sum(U[f]["ocupado"] for f in FERM) / 4 * 100, 0)} % · cuello de botella: U311 vasos']

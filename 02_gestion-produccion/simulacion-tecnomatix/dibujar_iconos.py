@@ -6,7 +6,7 @@ OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'iconos')
 os.makedirs(OUT, exist_ok=True)
 NAVY = (27, 42, 120)
 COL = {
-    'yogur': ((236, 112, 140), (252, 214, 223)),     # fresa
+    'yogurt': ((236, 112, 140), (252, 214, 223)),     # fresa
     'kefir': ((70, 140, 200), (210, 230, 247)),      # azul
     'queso': ((232, 180, 40), (252, 238, 190)),      # amarillo
     'comun': ((120, 130, 150), (225, 229, 237)),     # gris acero
@@ -166,18 +166,18 @@ def queue(name, c, w=56, h=36):
 
 
 if __name__ == '__main__':
-    for ln in ('yogur', 'kefir', 'queso'):
+    for ln in ('yogurt', 'kefir', 'queso'):
         c = COL[ln]
         truck(f'pedidos_{ln}', c)
         queue(f'cola_{ln}', c)
         store(f'camara_{ln}', c)
         filler(f'llenadora_{ln}', c)
-    tank('formulacion', COL['yogur'], agit=True)
+    tank('formulacion', COL['yogurt'], agit=True)
     machine('u202', COL['comun'], glyph='H')
-    tank('fermentador_yogur', COL['yogur'], cone=True, agit=True)
+    tank('fermentador_yogur', COL['yogurt'], cone=True, agit=True)
     tank('fermentador_kefir', COL['kefir'], cone=True, agit=True)
     tank('tanque_kefir', COL['kefir'], w=48, h=60)
-    queue('pulmones', COL['yogur'])
+    queue('pulmones', COL['yogurt'])
     vat('tina', COL['queso'])
     belt('banda', COL['queso'])
     screw('hiladora', COL['queso'])

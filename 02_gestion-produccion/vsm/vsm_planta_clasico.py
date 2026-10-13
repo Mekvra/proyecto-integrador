@@ -1,4 +1,4 @@
-# VSM del estado actual de la planta completa (tronco común + yogures, quesos y leche UHT) con la notación clásica
+# VSM del estado actual de la planta completa (tronco común + yogurts, quesos y leche UHT) con la notación clásica
 # de Rother y Shook, igual que vsm_clasico.py. Datos: simulación planta-150k (12 semanas) y recetas de la planta.
 # Uso: python vsm_planta_clasico.py → vsm_planta_3_lineas_clasico.svg / .html (exportar con exportar.mjs 1800 1200)
 import os
@@ -11,7 +11,7 @@ U = {k: v['ocupado'] for k, v in R['uso'].items()}   # solo la simulación de la
 rect(0, 0, W, H, '#fff', '#fff', 0)
 rect(14, 14, W - 28, H - 28, 'none', K, 1.2)
 t(36, 52, 'Mapa de flujo de valor – estado actual', 24, K, 700)
-t(36, 76, 'Planta completa: tronco común y líneas de yogures, quesos y leche UHT · Lácteos Altos de Teusacá', 15, G)
+t(36, 76, 'Planta completa: tronco común y líneas de yogurts, quesos y leche UHT · Lácteos Altos de Teusacá', 15, G)
 
 # ---------------- proveedor, control y cliente ----------------
 fabrica(52, 100, 'Ganaderos')
@@ -19,7 +19,7 @@ caja_datos(52, 188, 150, ['150.000 L/día', '91 lotes/semana'], 12.5)
 rect(700, 100, 400, 92)
 t(900, 128, 'Control de producción', 16, K, 700, 'middle')
 t(900, 152, 'Programa semanal en hoja de cálculo', 13, K, 400, 'middle')
-t(900, 172, '35 lotes yogur · 30 queso · 26 leche UHT', 13, K, 400, 'middle')
+t(900, 172, '35 lotes yogurt · 30 queso · 26 leche UHT', 13, K, 400, 'middle')
 fabrica(1612, 100, 'Clientes')
 caja_datos(1390, 100, 205, ['Supermercados, tiendas', 'y distribuidores', 'Despacho diario por línea'], 12.5)
 rayo(1386, 150, 1104, 'Pedidos diarios por línea')
@@ -54,7 +54,7 @@ line(190, 380, 190, 350 + 2 * 240 + 44, 1.5)      # reparto a las tres líneas
 
 # ---------------- tres líneas ----------------
 LINEAS = [
-    ('Yogures', '≈ 57.500 L/día', [
+    ('Yogurts', '≈ 57.500 L/día', [
         ('Formulación', 'U201 · U202', '3,1 h', pct('U202_Tratamiento'), '1'),
         ('Fermentación', '4 × 12.000 L', '8,1–9,0 h', pct('U211_Fermentador'), '2'),
         ('Acondicionam.', 'U215 · U216', '1,0–1,7 h', pct('U215_Enfriamiento'), None),
@@ -103,7 +103,7 @@ for k, (nom, cap, procs, inv_mid, inv_fin, cuello, (lead, va), kz) in enumerate(
     envio(1504, 1540, y + 140) if False else None
 # ---------------- pie y cajetín ----------------
 t(36, H - 70, 'C/T por lote de 10.000 L, según las recetas. Uso = trabajo + alistamiento + fallas, de la simulación de 12 semanas (modelo planta-150k).', 12.5, G)
-t(36, H - 50, 'Solo la línea de yogures está al límite (llenadora de vasos U311); quesos y leche UHT tienen holgura.', 12.5, G)
+t(36, H - 50, 'Solo la línea de yogurts está al límite (llenadora de vasos U311); quesos y leche UHT tienen holgura.', 12.5, G)
 defs = (f'<defs><marker id="p" markerWidth="12" markerHeight="12" refX="10" refY="5" orient="auto" markerUnits="userSpaceOnUse">'
         f'<path d="M0,0 L10,5 L0,10 z" fill="{K}"/></marker></defs>')
 svg = f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" width="{W}" height="{H}">{defs}' + '\n'.join(s for s in S if s) + '</svg>'

@@ -1,5 +1,5 @@
-# Decoración 3D del modelo de la PLANTA COMPLETA (planta_150k.spp): tronco común, línea de yogures, línea de quesos y
-# línea de leche UHT. Basada en la decoración de la línea de yogures, aplicada DESPUÉS de crear la escena
+# Decoración 3D del modelo de la PLANTA COMPLETA (planta_150k.spp): tronco común, línea de yogurts, línea de quesos y
+# línea de leche UHT. Basada en la decoración de la línea de yogurts, aplicada DESPUÉS de crear la escena
 # con «Open 2D/3D». Pisos de color por sección, carteles de pie, tanques, tuberías de colores por producto (cada
 # producto con su propio pulmón), bandas con cajas, robot KUKA de la biblioteca de Plant Simulation, operarios,
 # laboratorio de calidad, cámara fría con estanterías y camiones de recepción y despacho.
@@ -9,11 +9,11 @@ import os, sys, json
 
 D = os.path.dirname(os.path.abspath(__file__))
 C = json.load(open(os.path.join(D, 'coords_planta.json'), encoding='utf-8'))
-MANUAL = os.environ.get('PALETIZADO', 'manual') == 'manual'   # estado actual: paletizado de yogures por personas (sin robot)
+MANUAL = os.environ.get('PALETIZADO', 'manual') == 'manual'   # estado actual: paletizado de yogurts por personas (sin robot)
 COORD, SECC, Y0, YQ, YL = C['coord'], C['secciones'], C['Y0'], C['YQ'], C['YL']
 LIB = r'C:\Program Files\Siemens\Tecnomatix Plant Simulation 2404\3D\jt-graphics' + '\\'
 FRESA, NATURAL, GRIEGO = (236, 112, 140), (95, 150, 215), (215, 175, 70)
-LECHE, BASE, YOGUR = (200, 206, 214), (238, 226, 196), (246, 240, 226)
+LECHE, BASE, YOGURT = (200, 206, 214), (238, 226, 196), (246, 240, 226)
 ACERO, BLANCO, OSCURO, NAVY = (205, 210, 218), (246, 247, 249), (40, 44, 55), (35, 60, 120)
 GOMA, AMARILLO = (25, 25, 28), (245, 190, 30)
 
@@ -318,10 +318,10 @@ for yy in (Y0 - 60, Y0 + 60):                                                   
 for f in C['ferm']:
     x, y = W(*COORD[f])
     cil(x, y, 6.0, 0.07, 0.4, BASE, brillo=0.9)
-tuberia([(900, Y0 - 60), (1080, Y0 - 60)], YOGUR)                                    # salida de los fermentadores (abajo)
-tuberia([(900, Y0 + 60), (1080, Y0 + 60)], YOGUR)
-tuberia([(1080, Y0 - 70), (1080, Y0 + 90)], YOGUR)
-tuberia([(1080, Y0 - 70), (1225, Y0 - 70)], YOGUR)                                   # → U215 enfriamiento
+tuberia([(900, Y0 - 60), (1080, Y0 - 60)], YOGURT)                                    # salida de los fermentadores (abajo)
+tuberia([(900, Y0 + 60), (1080, Y0 + 60)], YOGURT)
+tuberia([(1080, Y0 - 70), (1080, Y0 + 90)], YOGURT)
+tuberia([(1080, Y0 - 70), (1225, Y0 - 70)], YOGURT)                                   # → U215 enfriamiento
 tuberia([(1225, Y0 - 70), (1225, Y0 - 120), (1280, Y0 - 120)], FRESA)                # U215 → pulmón FRESA
 tuberia([(1225, Y0 - 70), (1225, Y0 - 20), (1280, Y0 - 20)], NATURAL)                # U215 → pulmón NATURAL
 tuberia([(1080, Y0 + 90), (1298, Y0 + 90)], GRIEGO)                                  # → separador → pulmones griego

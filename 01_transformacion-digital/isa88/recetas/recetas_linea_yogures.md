@@ -1,4 +1,4 @@
-# Recetas maestras · Línea de yogures
+# Recetas maestras · Línea de yogurts
 
 **Lácteos Altos de Teusacá** (Sopó, Sabana de Bogotá) · Integrador: **Mekvra**, Grupo 6 · APM 2026-2S, UNAL
 
@@ -6,7 +6,7 @@
 |---|---|
 | 1.8 | 10 de octubre de 2026 |
 
-Recetas en formato ISA-88 (IEC 61512) para los tres productos de la línea escogida en el acta del 7 de octubre: **yogur con fresa, yogur natural y yogur griego**. Cubren todo el recorrido, desde que la cisterna llega a la planta hasta el despacho. El nuevo modelo de Tecnomatix de la línea de yogures leerá ese mismo archivo; el modelo actual de Tecnomatix es de la planta anterior, de tres líneas.
+Recetas en formato ISA-88 (IEC 61512) para los tres productos de la línea escogida en el acta del 7 de octubre: **yogurt con fresa, yogurt natural y yogurt griego**. Cubren todo el recorrido, desde que la cisterna llega a la planta hasta el despacho. El nuevo modelo de Tecnomatix de la línea de yogurts leerá ese mismo archivo; el modelo actual de Tecnomatix es de la planta anterior, de tres líneas.
 
 > Todas las cantidades son **valores de diseño**: los parámetros vienen de la literatura técnica y de la normativa citadas, y la composición de las materias primas es un supuesto declarado (sección 1). Se reemplazan por los datos del proveedor y por mediciones cuando existan. Ningún valor es un resultado medido en planta.
 
@@ -16,9 +16,9 @@ Recetas en formato ISA-88 (IEC 61512) para los tres productos de la línea escog
 
 | Código | Producto | Denominación (Res. 2310/1986, arts. 12 y 21) | Lotes/semana | Producto por lote | Presentaciones |
 |---|---|---|---|---|---|
-| **YF** | Yogur con trozos de fresa | Yogur entero con dulce, con fresa | 13 | 13.092 kg | Vaso 150 g · botella 1000 g · botella 1750 g |
-| **YN** | Yogur natural | Yogur entero sin dulce | 13 | 10.677 kg | Vaso 200 g · botella 1000 g |
-| **YG** | Yogur griego | Yogur semidescremado sin dulce; en el Codex, leche fermentada concentrada | 9 | 3.242 kg | Vaso 150 g · pote 500 g |
+| **YF** | Yogurt con trozos de fresa | Yogurt entero con dulce, con fresa | 13 | 13.092 kg | Vaso 150 g · botella 1000 g · botella 1750 g |
+| **YN** | Yogurt natural | Yogurt entero sin dulce | 13 | 10.677 kg | Vaso 200 g · botella 1000 g |
+| **YG** | Yogurt griego | Yogurt semidescremado sin dulce; en el Codex, leche fermentada concentrada | 9 | 3.242 kg | Vaso 150 g · pote 500 g |
 
 - **Lote:** 10.000 L de leche estandarizada y pasteurizada.
 - **Programa:** 35 lotes por semana en 6 días (13 de fresa, 13 de natural y 9 de griego), es decir, ≈ 5,8 lotes al día.
@@ -43,7 +43,7 @@ Recetas en formato ISA-88 (IEC 61512) para los tres productos de la línea escog
 
 | Concepto | Valor | Origen |
 |---|---|---|
-| Recepción de la planta | 150.000 L/día (yogures ≈ 57.000 · quesos 50.000 · leche UHT 43.000) | Acta 9-oct-2026 |
+| Recepción de la planta | 150.000 L/día (yogurts ≈ 57.000 · quesos 50.000 · leche UHT 43.000) | Acta 9-oct-2026 |
 | Leche procesada por la línea | ≈ 58.300 L/día (capacidad actual, limitada por la llenadora de vasos U311) | Cálculo de la sección 10. La meta del acta del 7-oct se trata en la sección 14 |
 | Mezcla | 35 lotes por semana: 13 YF · 13 YN · 9 YG (proporción 3:3:2 acordada el 8-oct) | Por ratificar en acta |
 | Densidad a 15 °C | Entera 1,032 kg/L · descremada 1,035 kg/L | Supuesto. El Decreto 616/2006 fija 1,030–1,033 para la cruda entera; la descremada es más densa |
@@ -51,7 +51,7 @@ Recetas en formato ISA-88 (IEC 61512) para los tres productos de la línea escog
 | Crema del separador | 40 % de grasa; proteína y SNG proporcionales a la fase no grasa de la leche | Supuesto de diseño |
 | Leche en polvo descremada (LPD) | ≥ 34 % de proteína, 95 % de SNG, 1 % de grasa | Ficha típica (se reemplaza por la del proveedor) |
 | Calendario | 24 h/día en operación continua, 3 turnos. Arranca **un lote cada ≈ 4,1 h** (sección 10) | Propuesta de Pablo (8-oct); ritmo calculado en el script |
-| Módulo térmico U202 | **Dedicado a la línea de yogures** | Recomendado con el análisis de carga de la sección 13. En el ISA-88 anterior (55.000 L/día) U202 era compartido con el kéfir |
+| Módulo térmico U202 | **Dedicado a la línea de yogurts** | Recomendado con el análisis de carga de la sección 13. En el ISA-88 anterior (55.000 L/día) U202 era compartido con el kéfir |
 
 ### Nomenclatura
 
@@ -96,7 +96,7 @@ flowchart LR
 | 04 | **TEMPLE** | Desaireación, homogeneización y tratamiento térmico (UP-Y2) | U202 | ● | ● | ● |
 | 05 | **CULTIVO** | Inoculación y fermentación (UP-Y3) | U211–U213, U218 | ● | ● | ● |
 | 06 | **SEDA** | Ruptura del coágulo y enfriamiento suave (UP-Y4) | U215 | ● | ● | — |
-| 07 | **ESENCIA** | Concentración del yogur griego (UP-Y5) | U216 | — | — | ● |
+| 07 | **ESENCIA** | Concentración del yogurt griego (UP-Y5) | U216 | — | — | ● |
 | 08 | **MATIZ** | Pulmón de llenado y saborización en línea (UP-Y6) | U214A/B · U217A/B | ● | ● | ● |
 | 09 | **SELLO** | Envasado, sellado e inspección (UP-Y7) | U311 · U312 · U313 | ● | ● | ● |
 | 10 | **ESTIBA** | Encajonado y paletizado (UP-Y8) | U341 · U342 | ● | ● | ● |
@@ -109,7 +109,7 @@ flowchart LR
 
 | Área / celda | Unidad | Equipo | Requerimiento para la línea |
 |---|---|---|---|
-| A1 · Tronco común (compartido) | U111/U112 | Bahías de descarga: desaireador, filtro dúplex, caudalímetro y enfriador de placas | ≈ 60.000 L/día de cruda para yogures, de los 150.000 L/día de la planta (sección 10.4); salida ≤ 4 °C |
+| A1 · Tronco común (compartido) | U111/U112 | Bahías de descarga: desaireador, filtro dúplex, caudalímetro y enfriador de placas | ≈ 60.000 L/día de cruda para yogurts, de los 150.000 L/día de la planta (sección 10.4); salida ≤ 4 °C |
 | | U113/U114 | Tanques de leche cruda aislados, con agitador (sección 10.4) | 2 × 60.000 L para los 150.000 L/día de la planta; ≤ 4 °C; máximo 24 h |
 | | U121 | Separadora centrífuga autolimpiante con estandarización en línea | Dos consignas de grasa: 3,50 % y ≤ 0,05 % |
 | | U122 | Pasteurizador HTST de placas con regeneración y válvula de desvío (FDV) | 75 °C × 15 s |
@@ -117,8 +117,8 @@ flowchart LR
 | | **U123C** | Silo de leche descremada | 25.000 L, 2–4 °C (YG) |
 | | **U126** | Pasteurizador de crema de placas con retención y FDV | 85 °C × 15 s (crema al 40 %) |
 | | **U127** | Tanque de crema pasteurizada con camisa | 1.000 L, 2–4 °C |
-| A2 · PC21 Yogures | U201 | Tanque de formulación de 12.000 L con mezclador de polvos al vacío de alta cizalla y celdas de carga; EM-2014: intercambiador de placas con agua caliente para calentar la carga | Carga a 20 m³/h; calentamiento en línea de 4 a 50 °C: ≈ 1,05 MW durante la carga, 518 kWh por lote y ≈ 3.030 kWh/día (sección 13) |
-| | U202 | Módulo térmico de la base, dedicado a yogures: regeneración, desaireador al vacío, homogeneizador de 2 etapas (hasta 250 bar), calentador, celda de retención de 5 min y enfriador | 10 m³/h |
+| A2 · PC21 Yogurts | U201 | Tanque de formulación de 12.000 L con mezclador de polvos al vacío de alta cizalla y celdas de carga; EM-2014: intercambiador de placas con agua caliente para calentar la carga | Carga a 20 m³/h; calentamiento en línea de 4 a 50 °C: ≈ 1,05 MW durante la carga, 518 kWh por lote y ≈ 3.030 kWh/día (sección 13) |
+| | U202 | Módulo térmico de la base, dedicado a yogurts: regeneración, desaireador al vacío, homogeneizador de 2 etapas (hasta 250 bar), calentador, celda de retención de 5 min y enfriador | 10 m³/h |
 | | U211–U213, **U218** | Cuatro fermentadores aislados de 12.000 L con camisa, agitador de baja velocidad y pH en línea (U218 es el cuarto, nuevo) | 43 ± 0,5 °C |
 | | **U215** | Módulo de ruptura y enfriamiento: bomba de lóbulos, texturizador (filtro de ranura o válvula de contrapresión) y enfriador de placas de canal ancho | 10 m³/h; salida a 20 °C |
 | | **U216** | Concentración griega: separador centrífugo de boquillas, enfriador tubular y dosificación en línea de crema pasteurizada (desde U127) con medidor Coriolis | 7.000 L/h de alimentación |
@@ -172,11 +172,11 @@ flowchart LR
 | Liberar lote LB | Fosfatasa alcalina · peroxidasa | **Fosfatasa negativa y peroxidasa positiva** (leche pasteurizada, Decreto 616/2006, art. 18) | Laboratorio; sin liberación no se transfiere |
 | Liberar lote de crema | Fosfatasa alcalina | **Fosfatasa negativa**. A 85 °C la peroxidasa se inactiva, así que no se exige positiva | Laboratorio |
 
-> La pasteurización HTST protege la leche mientras espera en el silo. La función tecnológica del yogur (desnaturalizar la proteína sérica) la cumple el tratamiento de 92 °C × 5 min de la etapa 04. La crema del griego se añade **después** de la fermentación, así que su única barrera térmica es U126: por eso tiene su propio PCC.
+> La pasteurización HTST protege la leche mientras espera en el silo. La función tecnológica del yogurt (desnaturalizar la proteína sérica) la cumple el tratamiento de 92 °C × 5 min de la etapa 04. La crema del griego se añade **después** de la fermentación, así que su única barrera térmica es U126: por eso tiene su propio PCC.
 
 ---
 
-## 5. Receta maestra YF · Yogur con trozos de fresa
+## 5. Receta maestra YF · Yogurt con trozos de fresa
 
 **Encabezado.** Receta YF · versión 1.8 · referencias YF150, YF1000 y YF1750 · lote nominal 10.000 L de leche (10.320 kg), mínimo 8.000 L y máximo 10.500 L (la base del lote máximo ocupa ≈ 11 m³ de los 12 m³ del fermentador) · celda PC21 · estado: propuesta.
 
@@ -235,11 +235,11 @@ flowchart LR
 
 | Parámetro | Diseño YF | Requisito | Norma |
 |---|---|---|---|
-| Grasa láctea | 2,79 % | ≥ 2,5 % (yogur entero) | Res. 2310/1986, art. 13 |
+| Grasa láctea | 2,79 % | ≥ 2,5 % (yogurt entero) | Res. 2310/1986, art. 13 |
 | Proteína láctea | 3,60 % | ≥ 2,7 % | Codex CXS 243-2003 |
 | SNG lácteos | 10,0 % | ≥ 7,0 % | Res. 2310/1986, art. 13 |
 | Acidez titulable | ≈ 0,86 %: la base aporta 0,90 × 0,87 = 0,78 % y el preparado ≈ 0,08 % (estimado). Criterio de liberación: **≥ 0,75 %** medido en el producto con fruta | 0,70–1,50 % (Res. 2310) · ≥ 0,6 % (Codex) | Ambas |
-| pH de liberación | 4,2–4,5 | — | Tetra Pak (yogur batido) |
+| pH de liberación | 4,2–4,5 | — | Tetra Pak (yogurt batido) |
 | Fruta neta | 6,5 % | ≥ 3 % | Res. 2310/1986, art. 20 |
 | Azúcar añadida | 9,3 % (sacarosa de la base + del preparado) | Se declara en la etiqueta | Res. 810/2021, modificada por la Res. 2492/2022 |
 | Sellos frontales (estimación) | **«ALTO EN AZÚCARES»**: los azúcares libres son ≈ 37 % de la energía. **No lleva el sello de grasas saturadas**, porque no se añade grasa (art. 32: el sello aplica solo al nutriente añadido) | Umbral: azúcares libres ≥ 10 % de la energía | Res. 810/2021, modificada por la 2492/2022 y corregida por la 254/2023; se confirma con análisis nutricional |
@@ -247,11 +247,11 @@ flowchart LR
 | Fosfatasa | Negativa | Negativa | Res. 2310/1986 |
 | Microbiología | Ver sección 9.2 | | Res. 1407/2022 |
 | Vida útil | **30 días a 2–6 °C**. La acidez al vencimiento queda ≈ 0,86 + 0,30 = 1,16 %. Se confirma con el protocolo de la sección 13.3 | ≤ 1,50 % al vencimiento | Tetra Pak: 21–30 días por debajo de 8 °C en líneas de alta higiene |
-| Denominación | «Yogur entero con dulce, con fresa» | | Res. 2310/1986, art. 21 |
+| Denominación | «Yogurt entero con dulce, con fresa» | | Res. 2310/1986, art. 21 |
 
 ---
 
-## 6. Receta maestra YN · Yogur natural
+## 6. Receta maestra YN · Yogurt natural
 
 **Encabezado.** Receta YN · versión 1.8 · referencias YN200 y YN1000 · lote nominal 10.000 L (10.320 kg), máximo 10.500 L · celda PC21 · estado: propuesta.
 
@@ -291,15 +291,15 @@ Es un producto de etiqueta limpia: leche, leche en polvo y cultivo. No lleva az�
 | Sellos frontales | **Exento**: no se le añade sal, azúcar ni grasa | Art. 2.2 k | Res. 810/2021, modificada por la 2492/2022 |
 | Cultivo viable | Requisito de diseño: ≥ 10⁷ UFC/g al final de la vida útil | ≥ 10⁷ UFC/g | Codex |
 | Vida útil | **30 días a 2–6 °C** (acidez al vencimiento ≈ 1,25 %; protocolo 13.3) | ≤ 1,50 % | |
-| Denominación | «Yogur entero sin dulce» (nombre comercial: natural) | | Res. 2310/1986, art. 21 |
+| Denominación | «Yogurt entero sin dulce» (nombre comercial: natural) | | Res. 2310/1986, art. 21 |
 
 ---
 
-## 7. Receta maestra YG · Yogur griego
+## 7. Receta maestra YG · Yogurt griego
 
 **Encabezado.** Receta YG · versión 1.8 · referencias YG150 y YG500 · lote nominal 10.000 L de leche descremada (10.350 kg), máximo 10.500 L · celda PC21 · estado: propuesta.
 
-El yogur griego industrial se hace **concentrando** un yogur de leche descremada: un separador centrífugo de boquillas retira el suero ácido hasta la proteína objetivo y después se restituye la grasa con crema pasteurizada. Es el método de GEA y Tetra Pak, que conserva el cultivo vivo; no usa termización después de la fermentación. El Codex lo clasifica como *leche fermentada concentrada* (proteína ≥ 5,6 %). En Colombia se denomina como yogur según la Res. 2310 (sección 7.3).
+El yogurt griego industrial se hace **concentrando** un yogurt de leche descremada: un separador centrífugo de boquillas retira el suero ácido hasta la proteína objetivo y después se restituye la grasa con crema pasteurizada. Es el método de GEA y Tetra Pak, que conserva el cultivo vivo; no usa termización después de la fermentación. El Codex lo clasifica como *leche fermentada concentrada* (proteína ≥ 5,6 %). En Colombia se denomina como yogurt según la Res. 2310 (sección 7.3).
 
 ### 7.1 Fórmula y balance por lote
 
@@ -310,7 +310,7 @@ El yogur griego industrial se hace **concentrando** un yogur de leche descremada
 | → Concentrado del separador U216 | 3.087 | 0,10 % | 9,60 % | Pasa a la restitución de grasa |
 | → **Suero ácido** (pH 4,4–4,6) | 7.263 | 0,03 % | 0,5 % (medido: 0,41–0,68 %) | U905: valorización |
 | Crema pasteurizada al 40 % (de U127) | 155 | 40 % | 1,9 % | Restituye la grasa (5,0 % del concentrado) |
-| **Yogur griego (producto)** | **3.242** | **2,00 %** | **9,23 %** | Pulmón U217A o U217B (uno por lote) → U313 |
+| **Yogurt griego (producto)** | **3.242** | **2,00 %** | **9,23 %** | Pulmón U217A o U217B (uno por lote) → U313 |
 
 - **Consumo por kg de producto:** 3,19 kg de leche descremada y 2,24 kg de suero ácido. La referencia de la industria es ≈ 3 kg de leche por kg de griego y 2–3 kg de suero por kg (GEA; *Foods* 2022, 11, 3953).
 - **Rendimiento:** 0,32 kg de producto por litro de leche descremada.
@@ -343,7 +343,7 @@ El yogur griego industrial se hace **concentrando** un yogur de leche descremada
 | Proteína láctea | **9,23 %** | ≥ 5,6 % (leche fermentada concentrada) | Codex CXS 243-2003 |
 | Grasa láctea | 2,00 % | ≥ 1,5 % (semidescremado) | Res. 2310/1986, art. 13 |
 | SNG lácteos | ≈ 13 % (estimado: proteína 9,2 % + lactosa y minerales) | ≥ 7,0 % | Res. 2310/1986 |
-| Acidez titulable | **≈ 1,15 % al día 1.** El griego colado industrial de vaca con 8,6–9,6 % de proteína mide 1,09–1,17 %, porque el ácido láctico sale con el suero (*Foods* 2022). El 1,9 % reportado para yogures fortificados no aplica al colado. **Liberación ≤ 1,20 %**; con cultivo de pH estable y 21 días de vida útil queda ≤ 1,50 % al vencimiento (sección 13) | 0,70–1,50 % | Res. 2310/1986 |
+| Acidez titulable | **≈ 1,15 % al día 1.** El griego colado industrial de vaca con 8,6–9,6 % de proteína mide 1,09–1,17 %, porque el ácido láctico sale con el suero (*Foods* 2022). El 1,9 % reportado para yogurts fortificados no aplica al colado. **Liberación ≤ 1,20 %**; con cultivo de pH estable y 21 días de vida útil queda ≤ 1,50 % al vencimiento (sección 13) | 0,70–1,50 % | Res. 2310/1986 |
 | pH de liberación | 4,3–4,6 | — | |
 | Cultivo viable | Requisito de diseño: ≥ 10⁷ UFC/g al final de la vida útil | ≥ 10⁷ UFC/g | Codex |
 | Azúcar añadida | 0 % | — | |
@@ -439,7 +439,7 @@ Parámetros de Tetra Pak (*Dairy Processing Handbook*, capítulo de limpieza). L
 - **Sin dulce antes que con dulce:** el natural y el griego van antes de la fresa. Así nunca entra arrastre de azúcar ni de fruta en un producto sin dulce.
 - **Cambios entre productos:**
   - De YN a YG y de YG a YF: CIP-C de U202 y empuje con agua en U201.
-  - **De YF a YN** (fin del ciclo diario): CIP completo de U201, U202, U215, EM-2141 y las llenadoras, para que no pase azúcar ni fruta al yogur sin dulce. El primer YN espera en su pulmón mientras termina el CIP de la llenadora (≈ 1,5 h, dentro del límite de 8 h).
+  - **De YF a YN** (fin del ciclo diario): CIP completo de U201, U202, U215, EM-2141 y las llenadoras, para que no pase azúcar ni fruta al yogurt sin dulce. El primer YN espera en su pulmón mientras termina el CIP de la llenadora (≈ 1,5 h, dentro del límite de 8 h).
   - El separador U216 recibe su CIP-S al terminar los lotes YG del día, mientras siguen los YF.
 - **Fermentadores:** CIP-F después de cada lote (0,75 h), sin importar el producto.
 
@@ -483,7 +483,7 @@ Parámetros de Tetra Pak (*Dairy Processing Handbook*, capítulo de limpieza). L
 | Capacidad efectiva de llenado | Nominal × OEE. U311 con YF150: 1.800 kg/h nominales × 0,70 ≈ **1.260 kg/h**. Horas reales por día: U311 20,3 h (85 %) · U312 13,9 h (58 %) · U313 10,5 h (44 %) | Sección 10.2 |
 | **Producción diaria** | ≈ 56.400 kg de producto: **131.366 vasos** (U311), **27.051 botellas** (U312) y **23.339 envases de griego** (U313) | Sección 0 |
 | Otras capacidades | U201 12.000 L · U202 10 m³/h · separador U216 7.000 L/h · pulmones 2 × 12.000 L (U214A/B) y 2 × 4.000 L (U217A/B) | Sección 3 |
-| **Empleados (estimado)** | **≈ 57 personas en la línea de yogures**: 13 puestos por turno × 4 cuadrillas rotativas = 52, más 5 de día. No incluye la recepción común de leche ni el personal administrativo de la empresa | Sección 10.3 |
+| **Empleados (estimado)** | **≈ 57 personas en la línea de yogurts**: 13 puestos por turno × 4 cuadrillas rotativas = 52, más 5 de día. No incluye la recepción común de leche ni el personal administrativo de la empresa | Sección 10.3 |
 
 ### 10.2 OEE de diseño de las llenadoras
 
@@ -527,23 +527,23 @@ El OEE de la versión anterior se tomaba de la propuesta de Pablo (≈ 82 % actu
 
 ### 10.4 Tronco común continuo (acopio a pasteurización, 150.000 L/día)
 
-La recepción, la clarificación, la estandarización y la pasteurización son **continuas** y atienden a **toda la planta**. Según el acta del 9-oct-2026, la planta recibe **150.000 L/día** de leche cruda y tiene tres líneas: yogures, quesos y **leche UHT**, que reemplaza al kéfir del alcance anterior.
+La recepción, la clarificación, la estandarización y la pasteurización son **continuas** y atienden a **toda la planta**. Según el acta del 9-oct-2026, la planta recibe **150.000 L/día** de leche cruda y tiene tres líneas: yogurts, quesos y **leche UHT**, que reemplaza al kéfir del alcance anterior.
 
 | Línea | Productos | Leche (L/día) | % | Producto aproximado |
 |---|---|---:|---:|---|
-| **Yogures** (esta línea) | Fresa, natural y griego | **≈ 57.000** | 38 % | ≈ 56.400 kg/día; lo que alcanza la llenadora de vasos |
+| **Yogurts** (esta línea) | Fresa, natural y griego | **≈ 57.000** | 38 % | ≈ 56.400 kg/día; lo que alcanza la llenadora de vasos |
 | Quesos | Mozzarella, quesillo y doble crema | 50.000 | 33 % | ≈ 5.000 kg/día (≈ 10 L por kg) |
 | Leche UHT | Entera, descremada y con chocolate, envase aséptico de 1 L | 43.000 | 29 % | ≈ 42.000 envases/día |
 | **Total** | | **150.000** | 100 % | |
 
-- **Cupo de yogures:** la línea está diseñada para 80.000 L/día, pero hoy procesa ≈ 57.000 porque la llenadora de vasos está al límite. La propuesta de la sección 14 la lleva a 80.000; los ≈ 23.000 L adicionales salen del contrato de un año para aumentar el acopio en 30.000 L/día (acta 9-oct).
+- **Cupo de yogurts:** la línea está diseñada para 80.000 L/día, pero hoy procesa ≈ 57.000 porque la llenadora de vasos está al límite. La propuesta de la sección 14 la lleva a 80.000; los ≈ 23.000 L adicionales salen del contrato de un año para aumentar el acopio en 30.000 L/día (acta 9-oct).
 
 | Etapa | Equipo | Carga con 150.000 L/día | Uso |
 |---|---|---|---:|
 | Recepción | 2 bahías U111/U112 (30–40 m³/h) | ≈ 8 cisternas/día de 20.000 L, ≈ 1 h por cisterna: ≈ 8 h-bahía/día | 24 % en 16 h |
 | Leche cruda | Tanques U113/U114 de 60.000 L | Pico de ≈ 7.500 L en un día normal y ≈ 37.500 L si el pasteurizador se para 2 h en plena descarga. Uno recibe y el otro se lava | 2 × 60.000 L |
 | Clarificación, estandarización y pasteurización | U121 + U122 a 20.000 L/h | 7,5 h de proceso + 2 CIP-C (≈ 2,8 h) + arranques (≈ 0,5 h) = **10,8 h/día** | **45 %** |
-| Leche pasteurizada | U123A/B y U123C (yogures), U124 (quesos), U125 (leche UHT) | Máximo 24 h. Con 80.000 L/día los silos de yogures mueven ≈ 36.700 L al día y alcanzan, aun con uno en lavado | — |
+| Leche pasteurizada | U123A/B y U123C (yogurts), U124 (quesos), U125 (leche UHT) | Máximo 24 h. Con 80.000 L/día los silos de yogurts mueven ≈ 36.700 L al día y alcanzan, aun con uno en lavado | — |
 
 - **El tronco queda holgado:** bastan los dos tanques existentes. El tercer tanque U115 que se había propuesto para 300.000 L/día ya no hace falta.
 - **Supuestos:** dos olas de recolección (60 % entre 05:00 y 11:00 y 40 % entre 14:00 y 18:00) y cisterna media de 20.000 L; se confirman con la logística de acopio.
@@ -554,9 +554,9 @@ La recepción, la clarificación, la estandarización y la pasteurización son *
 
 | Entradas | Cantidad/día | Salidas | Cantidad/día |
 |---|---:|---|---:|
-| Leche cruda | 59.963 L (61.882 kg) | Yogur con fresa YF | 28.366 kg |
-| Leche en polvo descremada | 1.735 kg | Yogur natural YN | 23.134 kg |
-| Azúcar | 1.357 kg | Yogur griego YG | 4.862 kg |
+| Leche cruda | 59.963 L (61.882 kg) | Yogurt con fresa YF | 28.366 kg |
+| Leche en polvo descremada | 1.735 kg | Yogurt natural YN | 23.134 kg |
+| Azúcar | 1.357 kg | Yogurt griego YG | 4.862 kg |
 | Preparado de fresa | 3.688 kg | Suero ácido (U905) | 10.895 kg |
 | Cultivo DVS | 2.333 U | Crema excedente al 40 % (a otras líneas) | 1.405 kg |
 | **Total** | **68.662 kg** | **Total** | **68.662 kg** |
@@ -576,7 +576,7 @@ La recepción, la clarificación, la estandarización y la pasteurización son *
 | Pasteurización de la base 85 °C × 5 min | **92 °C × 5 min** | Tetra Pak recomienda 90–95 °C × 5 min: desnaturaliza 70–80 % de la proteína sérica y da cuerpo sin estabilizantes |
 | Homogeneización ≈ 192 bar a 60 °C | 200 + 50 bar a 65–70 °C | Rango de Tetra Pak: 200–250 bar a 65–70 °C |
 | Inoculación e incubación a 42 °C, corte a pH 4,6 | 43 °C; corte a pH 4,50 (YF, YN) y 4,55 (YG, para separar) | Tetra Pak: 42–43 °C y pH final ≈ 4,2–4,5 |
-| Enfriamiento < 15 °C y luego 4 °C en el tanque | Enfriamiento suave a 15–22 °C en placas; el producto llega a ≤ 6 °C en la cámara | Enfriar el yogur batido a 4 °C en el tanque daña la viscosidad (Tetra Pak: 15–22 °C antes de llenar) |
+| Enfriamiento < 15 °C y luego 4 °C en el tanque | Enfriamiento suave a 15–22 °C en placas; el producto llega a ≤ 6 °C en la cámara | Enfriar el yogurt batido a 4 °C en el tanque daña la viscosidad (Tetra Pak: 15–22 °C antes de llenar) |
 | Leche semidescremada | Leche estandarizada al 3,50 % | Con leche semidescremada la grasa del producto no llega al 2,5 % de «entero» |
 | Una sola receta | Tres recetas (YF, YN, YG) y siete referencias | Alcance del acta del 7-oct |
 
@@ -588,12 +588,12 @@ Cada riesgo de las recetas se investigó en fuentes primarias. La tabla muestra 
 
 | N.º | Riesgo | Evidencia | Resolución en la receta | Queda para el piloto |
 |---|---|---|---|---|
-| 1 | Acidez del griego mayor de 1,50 % (Res. 2310) | Griego colado industrial de vaca, con 8,6–9,6 % de proteína: acidez **1,09–1,17 %** al día 1, y el suero se lleva 0,45–0,52 % (*Foods* 2022, 11, 3953). El ácido láctico sale con el suero, así que el 1,9 % de los yogures fortificados no aplica. El riesgo está en el almacenamiento: con cultivo estándar sube hasta +0,78 % en 21 días a 4 °C (Yang y Yoon, *Foods* 2022) | **Cultivo de pH estable** (baja postacidificación; existen comerciales, p. ej. YoFlex Acidifix, y cepas deficientes en lactosa). Separar a 40–42 °C y enfriar a ≤ 10 °C de inmediato. **Liberación ≤ 1,20 %** al día 1 y **vida útil de 21 días**: 1,20 + 0,30 ≤ 1,50 % | Medir la subida real de acidez; si a 30 días queda ≤ 1,50 %, extender la vida útil a 30 días |
+| 1 | Acidez del griego mayor de 1,50 % (Res. 2310) | Griego colado industrial de vaca, con 8,6–9,6 % de proteína: acidez **1,09–1,17 %** al día 1, y el suero se lleva 0,45–0,52 % (*Foods* 2022, 11, 3953). El ácido láctico sale con el suero, así que el 1,9 % de los yogurts fortificados no aplica. El riesgo está en el almacenamiento: con cultivo estándar sube hasta +0,78 % en 21 días a 4 °C (Yang y Yoon, *Foods* 2022) | **Cultivo de pH estable** (baja postacidificación; existen comerciales, p. ej. YoFlex Acidifix, y cepas deficientes en lactosa). Separar a 40–42 °C y enfriar a ≤ 10 °C de inmediato. **Liberación ≤ 1,20 %** al día 1 y **vida útil de 21 días**: 1,20 + 0,30 ≤ 1,50 % | Medir la subida real de acidez; si a 30 días queda ≤ 1,50 %, extender la vida útil a 30 días |
 | 2 | Composición real de la leche cruda | Mínimo legal (Decreto 616/2006 y Decreto 1880/2011) y dos estudios regionales (tabla 13.1) | Las recetas cumplen en **todos** los casos, incluido el mínimo legal. Si la cruda trae menos de 3,5 % de grasa, U121 remezcla crema propia (sobra crema del descremado del griego) | Promedio real de los proveedores para ajustar la LPD |
 | 3 | Preparado de fresa sin gelificantes añadidos | Existen preparados de etiqueta limpia: solo fruta y azúcar (Zentis) o con fibra de cítricos como espesante (CP Kelco: 1,65 % de fibra, 20 % de trozos, 30 °Bx) | Especificación: ≥ 50 % de fresa, sacarosa y **fibra de cítricos ≤ 2 % como ingrediente**; sin pectina, almidón modificado ni conservantes | Concepto del INVIMA sobre la fibra de cítricos; prueba de sinéresis |
 | 4 | Uso del término «griego» | Res. 5109/2005, art. 4 (mod. Res. 557/2022): el rótulo no puede presentar el producto de forma falsa o engañosa. El griego tradicional se obtiene colando el suero, que es este proceso. Colanta, Pasco y Alpina venden «yogurt griego» en Colombia | **«Yogurt griego natural semidescremado — yogurt concentrado por separación del suero»**, sin espesantes; ingredientes: leche descremada, crema y cultivos | Radicar el rótulo con el registro sanitario |
 | 5 | Dosis del cultivo | Las unidades DVS no son comparables entre proveedores: 1 U/100 L en un producto, 10 g/100 L en otro | **Especificación funcional:** la dosis que lleve la base a pH 4,50 en 5,0–5,5 h a 43 °C (YF/YN) y a 4,55 en ≈ 5,5 h (YG). Las 400 U/lote quedan como valor de diseño para costos | Curvas de acidificación con el cultivo elegido |
-| 6 | Vida útil y cultivo viable | Yogur control a 4 °C: +0,28 % de acidez del día 1 al 21 y casi nada del 21 al 28. *L. bulgaricus* puede caer después de unos 20 días. Tetra Pak: 21–30 días en líneas higiénicas | **YF y YN, 30 días; YG, 21 días.** Protocolo de validación en la sección 13.2 | Ejecutar el protocolo |
+| 6 | Vida útil y cultivo viable | Yogurt control a 4 °C: +0,28 % de acidez del día 1 al 21 y casi nada del 21 al 28. *L. bulgaricus* puede caer después de unos 20 días. Tetra Pak: 21–30 días en líneas higiénicas | **YF y YN, 30 días; YG, 21 días.** Protocolo de validación en la sección 13.2 | Ejecutar el protocolo |
 | 7 | U202 dedicado o compartido | Carga calculada: ≈ 5,8 lotes × ≈ 1,2 h + 3 CIP-C × 1,4 h ≈ 11,2 h/día. Quedan huecos de ≈ 2,9 h entre lotes | **Dedicado** (recomendado): sin arbitraje y con los CIP alineados a los cambios de producto. La leche UHT tiene su propio esterilizador, así que U202 no se comparte | Resuelto con el acta del 9-oct |
 | 8 | Calor para la carga de U201 a 50 °C | m·cp·ΔT = 10.320 kg × 3,93 kJ/(kg·K) × 46 K = **518 kWh por lote** | EM-2014: intercambiador de placas de **≈ 1,05 MW** (carga en 0,5 h), con agua caliente de U902; **≈ 3.030 kWh/día** | Balance de energía de la planta |
 | 9 | Vigencia de la Res. SIC 32209/2020 | La SIC expidió la **Res. 51039 de 2026**, que prorroga 4 años el reglamento metrológico de preempacados | Se cita la 32209/2020, prorrogada por la 51039/2026 | — |
@@ -691,9 +691,9 @@ Con la propuesta, la línea cumple la meta y todos los equipos quedan por debajo
 
 | Entradas | Cantidad/día | Salidas | Cantidad/día |
 |---|---:|---|---:|
-| Leche cruda | 82.179 L (84.809 kg) | Yogur con fresa YF | 39.276 kg |
-| Leche en polvo descremada | 2.403 kg | Yogur natural YN | 32.032 kg |
-| Azúcar | 1.879 kg | Yogur griego YG | 6.483 kg |
+| Leche cruda | 82.179 L (84.809 kg) | Yogurt con fresa YF | 39.276 kg |
+| Leche en polvo descremada | 2.403 kg | Yogurt natural YN | 32.032 kg |
+| Azúcar | 1.879 kg | Yogurt griego YG | 6.483 kg |
 | Preparado de fresa | 5.106 kg | Suero ácido (U905) | 14.526 kg |
 | Cultivo DVS | 3.200 U | Crema excedente al 40 % | 1.880 kg |
 | **Total** | **94.197 kg** | **Total** | **94.197 kg** |
@@ -725,10 +725,10 @@ Leche a la línea: 80.000 L, de los cuales 60.000 L son entera y 20.000 L descre
 - Tetra Pak. *Precision pasteurization – your path to perfect yoghurt*. https://www.tetrapak.com/en-us/insights/cases-articles/precision-pasteurization
 - Tetra Pak. Separadores de boquillas. https://tetrapak.com/en-gr/solutions/integrated-solutions-equipment/processing-equipment/separation/nozzle-separators
 - GEA. *Strained yoghurt* (Fresh Cheese Uncovered). https://www.gea.com/en/campaigns/fresh-cheese-uncovered/strained-yoghurt/
-- GEA. Separadores de boquillas para queso fresco y yogur. https://www.gea.com/es/products/centrifuges-separation/centrifugal-separator/nozzle-separator/nozzle-separators-fresh-cheese-cream-yoghurt
+- GEA. Separadores de boquillas para queso fresco y yogurt. https://www.gea.com/es/products/centrifuges-separation/centrifugal-separator/nozzle-separator/nozzle-separators-fresh-cheese-cream-yoghurt
 - Budhkar et al. (2014), *Cream and butter* (pasteurización de crema según la FIL: hasta 80 °C × 15 s para crema ≥ 35 % de grasa). https://elearning.unite.it/pluginfile.php/203132/mod_resource/content/0/Budhkar%20et%20al.%202014-%20Cream%20and%20butter.pdf
-- *Foods* (MDPI) 2022, 11(24), 3953: suero ácido del yogur griego. https://www.mdpi.com/2304-8158/11/24/3953
-- Packaging Insights. Ósmosis inversa del suero de yogur griego. https://www.packaginginsights.com/news/reverse-osmosis-of-greekstyle-yogurt-whey.html
+- *Foods* (MDPI) 2022, 11(24), 3953: suero ácido del yogurt griego. https://www.mdpi.com/2304-8158/11/24/3953
+- Packaging Insights. Ósmosis inversa del suero de yogurt griego. https://www.packaginginsights.com/news/reverse-osmosis-of-greekstyle-yogurt-whey.html
 - Codex Alimentarius. CXS 243-2003, Norma para leches fermentadas. https://www.fao.org/input/download/standards/400/CXS_243s.pdf
 - Ministerio de Salud. Decreto 616 de 2006 (reglamento técnico de la leche). https://www.funcionpublica.gov.co/eva/gestornormativo/norma.php?i=21980
 - Ministerio de Salud. Resolución 2310 de 1986 (derivados lácteos). https://normograma.invima.gov.co/compilacion/docs/resolucion_minsalud_2310_1986.htm
@@ -736,8 +736,8 @@ Leche a la línea: 80.000 L, de los cuales 60.000 L son entera y 20.000 L descre
 - Ministerio de Salud. Resolución 810 de 2021, modificada por la Resolución 2492 de 2022 y corregida por la Resolución 254 de 2023 (etiquetado nutricional y frontal). https://normograma.invima.gov.co/normograma/compilacion/docs/resolucion_minsaludps_2492_2022.htm
 - Ministerio de Salud. Resolución 2674 de 2013 (BPM).
 - Superintendencia de Industria y Comercio. Resolución 32209 de 2020 (control metrológico). https://normograma.invima.gov.co/normograma/compilacion/docs/resolucion_superindustria_32209_2020.htm · Nota de derogación de la Res. 16379 de 2003: https://normas.cra.gov.co/Gestor/Docs/resolucion_superindustria_16379_2003.htm
-- *Foods* (MDPI) 2022, 11(24), 3953: composición del yogur griego colado y su suero (acidez y proteína medidas). https://pmc.ncbi.nlm.nih.gov/articles/PMC9778196/
-- Yang y Yoon (2022), *Foods* 11(23), 3799: pH y acidez del yogur griego en 21 días a 4 °C. https://pmc.ncbi.nlm.nih.gov/articles/PMC9740215/
+- *Foods* (MDPI) 2022, 11(24), 3953: composición del yogurt griego colado y su suero (acidez y proteína medidas). https://pmc.ncbi.nlm.nih.gov/articles/PMC9778196/
+- Yang y Yoon (2022), *Foods* 11(23), 3799: pH y acidez del yogurt griego en 21 días a 4 °C. https://pmc.ncbi.nlm.nih.gov/articles/PMC9740215/
 - Chr. Hansen, YoFlex Acidifix (cultivo de pH estable). https://www.foodnavigator.com/Article/2015/10/05/pH-stable-culture-will-revolutionize-yogurt-production-says-Chr-Hansen/
 - CP Kelco, receta de preparado de fruta con fibra de cítricos. https://www.cpkelco.com/wp-content/uploads/2024/05/cpk-website-cf-yogurt-fruit-prep-recipe-card-2024.pdf · Zentis, preparados de etiqueta limpia. https://zentis.com/B2B/Sales-Unterlagen_B2B/pdf_GB/GB_Zentis_Clean%20Label.pdf
 - Ministerio de Salud. Resolución 5109 de 2005 (rotulado), art. 4 modificado por la Resolución 557 de 2022. https://normograma.invima.gov.co/compilacion/docs/resolucion_minsaludps_0557_2022.htm

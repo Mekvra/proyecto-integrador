@@ -10,12 +10,12 @@ flowchart TB
         CRU --> SEP["U121<br/>Clarificación y<br/>estandarización"]
         SEP --> HTST["U122<br/>Pasteurización HTST<br/>75 °C por 15 s · PCC-2"]
         SEP -.->|"crema al 40 %"| CR["U126 → U127<br/>Crema pasteurizada<br/>85 °C por 15 s · PCC-3"]
-        HTST --> SY["U123A/B · U123C<br/>Silos de yogures"]
+        HTST --> SY["U123A/B · U123C<br/>Silos de yogurts"]
         HTST --> SQ["U124A/B<br/>Silos de quesos"]
         HTST --> SL["U125A/B<br/>Silos de leche UHT"]
     end
 
-    subgraph Y["PC21 · Yogures · 35 lotes/semana"]
+    subgraph Y["PC21 · Yogurts · 35 lotes/semana"]
         direction TB
         Y1["U201 Formulación"] --> Y2["U202 Tratamiento<br/>92 °C por 5 min · PCC-4"]
         Y2 --> Y3["U211 a U218<br/>Fermentación a 43 °C"]
@@ -42,7 +42,7 @@ flowchart TB
 
     subgraph FIN["Fin de línea, almacenamiento y servicios"]
         direction LR
-        PAL["U341 Paletizado manual<br/>U342 Envolvedora"] --> FRIO["U411 Cámara de yogures<br/>U414 Cámara de quesos<br/>U413 Bodega UHT"]
+        PAL["U341 Paletizado manual<br/>U342 Envolvedora"] --> FRIO["U411 Cámara de yogurts<br/>U414 Cámara de quesos<br/>U413 Bodega UHT"]
         FRIO --> DES["U412 Despacho"]
         SERV["U901 CIP · U905 Suero<br/>vapor · frío · aire · agua"]
     end
@@ -59,7 +59,7 @@ flowchart TB
 
 | Línea | Productos | Silos | Leche por día |
 |---|---|---|---|
-| Yogures | Fresa, natural y griego | U123A/B (3,50 %) y U123C (0,05 % o menos) | ≈ 58.300 L |
+| Yogurts | Fresa, natural y griego | U123A/B (3,50 %) y U123C (0,05 % o menos) | ≈ 58.300 L |
 | Quesos | Mozzarella, quesillo y doble crema | U124A/B (3,0, 3,2 o 3,6 %) | 50.000 L |
 | Leche UHT | Entera, descremada y con chocolate | U125A (3,0 %) y U125B (0,3 %) | ≈ 43.300 L |
 

@@ -1,5 +1,5 @@
 # Recetas básicas de la PLANTA COMPLETA de Lácteos Altos de Teusacá (acta 9-oct-2026): 150.000 L/día en tres líneas
-# (yogures, quesos y leche UHT) con su tronco común. Las tres recetas de yogur van resumidas (el detalle está en
+# (yogurts, quesos y leche UHT) con su tronco común. Las tres recetas de yogurt van resumidas (el detalle está en
 # Recetas_linea_yogures_v1.8.pdf); quesos y leche UHT van con fórmula por lote, etapas, máquinas y controles.
 # Los tiempos por lote son los mismos del modelo de Tecnomatix (planta-150k/construir_planta.py, diccionarios SQ y SL).
 # Genera recetas_planta.html; el PDF sale con pdf_planta.mjs.
@@ -53,7 +53,7 @@ B.append('''<div class="wrap">
   <ol>
     <li><a href="#resumen"><span class="n">00</span>Resumen de la planta</a></li>
     <li><a href="#tronco"><span class="n">01</span>Tronco común</a></li>
-    <li><a href="#yogures"><span class="n">02</span>Línea de yogures</a></li>
+    <li><a href="#yogurts"><span class="n">02</span>Línea de yogurts</a></li>
     <li><a href="#quesos"><span class="n">03</span>Línea de quesos</a></li>
     <li><a href="#uht"><span class="n">04</span>Línea de leche UHT</a></li>
     <li><a href="#fin"><span class="n">05</span>Fin de línea y despacho</a></li>
@@ -66,7 +66,7 @@ B.append('''<div class="wrap">
 <header class="head">
   <span class="eyebrow">Recetas básicas ISA-88 · Planta completa</span>
   <h1>Planta láctea de Lácteos Altos de Teusacá</h1>
-  <p>Tres líneas sobre un mismo tronco común: yogures, quesos y leche UHT. Para cada producto, la fórmula por lote, las etapas con sus parámetros, las máquinas que las hacen y los controles que no se pueden saltar.</p>
+  <p>Tres líneas sobre un mismo tronco común: yogurts, quesos y leche UHT. Para cada producto, la fórmula por lote, las etapas con sus parámetros, las máquinas que las hacen y los controles que no se pueden saltar.</p>
 </header>
 ''')
 
@@ -75,12 +75,12 @@ B.append(f'''<section id="resumen">
   <h2>150.000 L de leche al día, 91 lotes por semana</h2>
   <div class="kpis">
     <div><b>150.000 L</b><span>de leche cruda por día, 6 días por semana</span></div>
-    <div><b>91 lotes</b><span>por semana de 10.000 L: 35 de yogur, 30 de queso y 26 de leche</span></div>
+    <div><b>91 lotes</b><span>por semana de 10.000 L: 35 de yogurt, 30 de queso y 26 de leche</span></div>
     <div><b>≈ {miles(kg_q_dia)} kg</b><span>de queso por día</span></div>
     <div><b>≈ {miles(env_l_dia)}</b><span>envases de leche UHT de 1 L por día</span></div>
   </div>
   <div class="products">
-    <article class="prod y"><span class="code">Y</span><h3>Yogures · ≈ 57.000 L/día</h3>
+    <article class="prod y"><span class="code">Y</span><h3>Yogurts · ≈ 57.000 L/día</h3>
       <dl><dt>Productos</dt><dd>Fresa (YF), natural (YN) y griego (YG)</dd><dt>Lotes/semana</dt><dd>35 (13 · 13 · 9)</dd>
       <dt>Producto</dt><dd>≈ 56.400 kg/día en vasos, botellas y potes</dd><dt>Cuello de botella</dt><dd>Llenadora de vasos U311</dd></dl></article>
     <article class="prod q"><span class="code">Q</span><h3>Quesos · 50.000 L/día</h3>
@@ -90,7 +90,7 @@ B.append(f'''<section id="resumen">
       <dl><dt>Productos</dt><dd>Entera (LE), descremada (LD) y con chocolate (LC)</dd><dt>Lotes/semana</dt><dd>26 (14 · 6 · 6)</dd>
       <dt>Producto</dt><dd>≈ {miles(env_l_dia)} envases asépticos de 1 L/día</dd><dt>Equipo clave</dt><dd>Esterilizador UHT y envasadora aséptica</dd></dl></article>
   </div>
-  <p>La leche UHT reemplaza al kéfir del alcance anterior (acta del 9-oct). La línea de yogures tiene un cupo de diseño de 80.000 L/día, pero hoy procesa ≈ 57.000 porque la llenadora de vasos está al límite; la propuesta de automatización la lleva a 80.000 con el aumento de acopio del contrato de un año.</p>
+  <p>La leche UHT reemplaza al kéfir del alcance anterior (acta del 9-oct). La línea de yogurts tiene un cupo de diseño de 80.000 L/día, pero hoy procesa ≈ 57.000 porque la llenadora de vasos está al límite; la propuesta de automatización la lleva a 80.000 con el aumento de acopio del contrato de un año.</p>
 </section>
 ''')
 
@@ -103,19 +103,19 @@ B.append('''<section id="tronco">
     ['Leche cruda', 'Tanques U113/U114, 2 × 60.000 L', '≤ 4 °C con agitación, máximo 24 h', 'Temperatura continua'],
     ['Clarificación y estandarización', 'Separadora-clarificadora U121', 'Grasa a la medida de cada línea; la crema sobrante va a U126', 'Densímetro y analizador de grasa en línea'],
     ['Pasteurización HTST', 'Intercambiador de placas U122, 20.000 L/h', '≥ 72 °C × 15 s (75 °C de diseño) y enfriamiento a ≤ 4 °C', '<b>PCC-2:</b> registro de temperatura y válvula de desvío'],
-    ['Silos de leche pasteurizada', 'U123A/B y U123C (yogures) · U124 (quesos) · U125 (leche UHT)', '2–4 °C, máximo 24 h', 'Temperatura y tiempo por silo'],
+    ['Silos de leche pasteurizada', 'U123A/B y U123C (yogurts) · U124 (quesos) · U125 (leche UHT)', '2–4 °C, máximo 24 h', 'Temperatura y tiempo por silo'],
 ], ()) + '''
   <p>Carga del tronco con 150.000 L/día: recepción 24 % de las 16 h de ventana, pasteurizador 45 % del día (10,8 h con lavados y arranques). Bastan los dos tanques de leche cruda: el pico de un día normal es de ≈ 7.500 L.</p>
 </section>
 ''')
 
-B.append('''<section id="yogures" class="y">
-  <div class="line-head"><span class="code">Y</span><h2>Línea de yogures · ≈ 57.000 L/día</h2></div>
-  <p>Resumen de las recetas maestras de la línea de yogures.</p>
+B.append('''<section id="yogurts" class="y">
+  <div class="line-head"><span class="code">Y</span><h2>Línea de yogurts · ≈ 57.000 L/día</h2></div>
+  <p>Resumen de las recetas maestras de la línea de yogurts.</p>
 ''' + tabla(['Producto', 'Base por lote', 'Proceso clave', 'Presentaciones', 'Por lote'], [
-    ['<span class="chip">YF</span> Yogur con fresa', '10.000 L de leche entera estandarizada + leche en polvo + azúcar', 'Base a 92 °C × 5 min → fermentación a 43 °C hasta pH 4,50 → ruptura y enfriamiento → fruta en línea (13 %)', 'Vaso 150 g · botella 1000 y 1750 g', '13.092 kg'],
-    ['<span class="chip">YN</span> Yogur natural', '10.000 L de leche entera estandarizada + leche en polvo', 'Igual que YF, sin azúcar ni fruta', 'Vaso 200 g · botella 1000 g', '10.677 kg'],
-    ['<span class="chip">YG</span> Yogur griego', '10.000 L de leche descremada', 'Fermentación a 43 °C → separación del suero en U216 → crema propia al final', 'Vaso 150 g · pote 500 g', '3.242 kg'],
+    ['<span class="chip">YF</span> Yogurt con fresa', '10.000 L de leche entera estandarizada + leche en polvo + azúcar', 'Base a 92 °C × 5 min → fermentación a 43 °C hasta pH 4,50 → ruptura y enfriamiento → fruta en línea (13 %)', 'Vaso 150 g · botella 1000 y 1750 g', '13.092 kg'],
+    ['<span class="chip">YN</span> Yogurt natural', '10.000 L de leche entera estandarizada + leche en polvo', 'Igual que YF, sin azúcar ni fruta', 'Vaso 200 g · botella 1000 g', '10.677 kg'],
+    ['<span class="chip">YG</span> Yogurt griego', '10.000 L de leche descremada', 'Fermentación a 43 °C → separación del suero en U216 → crema propia al final', 'Vaso 150 g · pote 500 g', '3.242 kg'],
 ], (4,)) + tabla(['Etapa', 'Máquinas', 'Capacidad'], [
     ['Formulación y tratamiento de la base', 'U201 tanque de formulación con tolva de polvos · U202 homogeneizador + placas, 92 °C × 5 min', '12.000 L · 10 m³/h'],
     ['Fermentación', 'U211, U212, U213 y U218, fermentadores de 12.000 L', 'Ciclo de 8,1–9,0 h por lote'],
@@ -189,7 +189,7 @@ B.append('''<section id="fin">
   <span class="eyebrow">05 · Fin de línea</span>
   <h2>Cajas, estibas y despacho</h2>
 ''' + tabla(['Línea', 'Encajonado', 'Paletizado', 'Almacén', 'Despacho'], [
-    ['Yogures', 'Encajonadoras U321–U323', 'U341 (2 operarios en la planta actual) + envolvedora U342', 'Cámara U411 a 2–4 °C, reposo ≥ 12 h', 'Camión refrigerado a 2–6 °C'],
+    ['Yogurts', 'Encajonadoras U321–U323', 'U341 (2 operarios en la planta actual) + envolvedora U342', 'Cámara U411 a 2–4 °C, reposo ≥ 12 h', 'Camión refrigerado a 2–6 °C'],
     ['Quesos', 'A la salida de la empacadora Q311', 'Q341 manual, 2 operarios', 'Cámara de quesos Q411 a 2–4 °C', 'Camión refrigerado a 2–6 °C'],
     ['Leche UHT', 'En la envasadora L311 (bandejas de 12)', 'L341 manual, 2 operarios', 'Bodega L411 a temperatura ambiente', 'Camión seco'],
 ], ()) + '</section>\n')
@@ -198,11 +198,11 @@ B.append('''<section id="tiempos">
   <span class="eyebrow">06 · Tiempos por lote (insumo de Tecnomatix)</span>
   <h2>Programa semanal y tiempos por lote</h2>
 ''' + tabla(['Línea', 'Lotes por semana', 'Orden dentro del día', 'Etapas y tiempos por lote'], [
-    ['Yogures', '35 (13 YN · 9 YG · 13 YF)', 'Natural → griego → fresa', 'U201 1,9 h · U202 1,2 h · fermentador 8,1–9,0 h · U215 1,1 h · llenado ≈ 3,5 h'],
+    ['Yogurts', '35 (13 YN · 9 YG · 13 YF)', 'Natural → griego → fresa', 'U201 1,9 h · U202 1,2 h · fermentador 8,1–9,0 h · U215 1,1 h · llenado ≈ 3,5 h'],
     ['Quesos', '30 (10 QM · 10 QQ · 10 QD)', 'Mozzarella → quesillo → doble crema', 'Tina 3,5 h · hilado 1,0 h · salmuera 8,0 h · empaque 1,2 h · cámara 12 h'],
     ['Leche UHT', '26 (14 LE · 6 LD · 6 LC)', 'Entera → descremada → chocolate', 'Mezcla 1,0 h · UHT 1,0 h · envasado 2,0 h · retención 24 h'],
 ], ()) + '''
-  <p>En el modelo de la planta (12 semanas simuladas, con fallas) el tronco recibe ≈ 151.700 L/día, el cuello de botella sigue siendo la llenadora de vasos de yogur (88 %) y las líneas de quesos y leche UHT quedan holgadas: tinas al 24 %, hiladora al 27 % y envasadora aséptica al 40 %.</p>
+  <p>En el modelo de la planta (12 semanas simuladas, con fallas) el tronco recibe ≈ 151.700 L/día, el cuello de botella sigue siendo la llenadora de vasos de yogurt (88 %) y las líneas de quesos y leche UHT quedan holgadas: tinas al 24 %, hiladora al 27 % y envasadora aséptica al 40 %.</p>
 </section>
 ''')
 
@@ -212,7 +212,7 @@ B.append('''<section id="haccp">
 ''' + tabla(['PCC', 'Línea', 'Peligro', 'Límite crítico', 'Monitoreo y acción'], [
     ['PCC-1', 'Tronco', 'Antibióticos en la leche', 'Prueba negativa', 'Kit rápido por cisterna; se rechaza'],
     ['PCC-2', 'Tronco', 'Patógenos en la leche', '≥ 72 °C × 15 s', 'Registro continuo y válvula de desvío'],
-    ['PCC-Y', 'Yogures', 'Ver el plan de la línea de yogures', '92 °C × 5 min, pH, metales', 'Recetas de la línea de yogures, sección 9'],
+    ['PCC-Y', 'Yogurts', 'Ver el plan de la línea de yogurts', '92 °C × 5 min, pH, metales', 'Recetas de la línea de yogurts, sección 9'],
     ['PCC-Q1', 'Quesos', 'Metales en el producto', 'Sin metal ≥ patrón validado', 'Detector antes de Q311; se rechaza y reinspecciona'],
     ['PC-Q', 'Quesos', 'Salmuera contaminada', 'NaCl 18–22 %, 8–12 °C', 'Medición por turno; filtrado y pasteurización de la salmuera'],
     ['PCC-L1', 'Leche UHT', 'Supervivencia de esporas', '≥ 137 °C × 4 s', 'Registro continuo; si baja, se desvía y se reprocesa'],

@@ -1,4 +1,4 @@
-# Balance de masas y tiempos de las recetas maestras de la línea de yogures Mekvra (versión 1.7).
+# Balance de masas y tiempos de las recetas maestras de la línea de yogurts Mekvra (versión 1.7).
 # Una sola fuente de cifras: el documento de recetas, la página y el modelo de Tecnomatix leen recetas_yogures.json.
 # Uso: python balance_recetas_yogures.py   (escribe recetas_yogures.json junto a este archivo)
 import json, os, sys
@@ -56,24 +56,24 @@ def base_fortificada(leche, sng_obj, azucar_frac):
                 grasa=(leche['grasa'] * m + LPD['grasa'] * p) / b, prot=(leche['prot'] * m + LPD['prot'] * p) / b)
 
 
-# ---------------- YF · Yogur con trozos de fresa (entero, con dulce) ----------------
+# ---------------- YF · Yogurt con trozos de fresa (entero, con dulce) ----------------
 lyf = estandarizar(0.035, 'entera')
 byf = base_fortificada(lyf, 0.115, 0.055)
 yf_kg = byf['base_kg'] / (1 - PREP['frac'])
 prep_kg = yf_kg - byf['base_kg']
-YF = dict(codigo='YF', nombre='Yogur con trozos de fresa', leche=lyf, base=byf, preparado_kg=prep_kg, producto_kg=yf_kg,
+YF = dict(codigo='YF', nombre='Yogurt con trozos de fresa', leche=lyf, base=byf, preparado_kg=prep_kg, producto_kg=yf_kg,
           grasa=byf['grasa'] * byf['base_kg'] / yf_kg, prot=byf['prot'] * byf['base_kg'] / yf_kg,
           sng=byf['sng'] * byf['base_kg'] / yf_kg, fruta_neta=PREP['fruta'] * prep_kg / yf_kg,
           azucar_añadida=(byf['azucar_kg'] + PREP['sacarosa'] * prep_kg) / yf_kg,
           dilucion_base=byf['base_kg'] / yf_kg, ph_corte=4.50)
 
-# ---------------- YN · Yogur natural (entero, sin dulce) ----------------
+# ---------------- YN · Yogurt natural (entero, sin dulce) ----------------
 lyn = estandarizar(0.035, 'entera')
 byn = base_fortificada(lyn, 0.115, 0.0)
-YN = dict(codigo='YN', nombre='Yogur natural', leche=lyn, base=byn, producto_kg=byn['base_kg'],
+YN = dict(codigo='YN', nombre='Yogurt natural', leche=lyn, base=byn, producto_kg=byn['base_kg'],
           grasa=byn['grasa'], prot=byn['prot'], sng=byn['sng'], azucar_añadida=0.0, ph_corte=4.50)
 
-# ---------------- YG · Yogur griego (leche fermentada concentrada) ----------------
+# ---------------- YG · Yogurt griego (leche fermentada concentrada) ----------------
 lyg = estandarizar(GRASA_DESCREMADA, 'descremada')
 f = lyg['leche_kg']
 conc = (lyg['prot'] - SUERO['prot']) * f / (PROT_CONC - SUERO['prot'])      # balance de proteína en U216
@@ -81,7 +81,7 @@ suero = f - conc
 grasa_conc = (lyg['grasa'] * f - SUERO['grasa'] * suero) / conc
 crema_yg = conc * (GRASA_YG - grasa_conc) / (CREMA['grasa'] - GRASA_YG)      # crema pasteurizada en U126
 yg_kg = conc + crema_yg
-YG = dict(codigo='YG', nombre='Yogur griego', leche=lyg, concentrado_kg=conc, grasa_concentrado=grasa_conc,
+YG = dict(codigo='YG', nombre='Yogurt griego', leche=lyg, concentrado_kg=conc, grasa_concentrado=grasa_conc,
           suero_acido_kg=suero, crema_kg=crema_yg, crema_sobre_concentrado=crema_yg / conc, producto_kg=yg_kg,
           grasa=GRASA_YG, prot=(PROT_CONC * conc + CREMA['prot'] * crema_yg) / yg_kg,
           leche_kg_por_kg=f / yg_kg, suero_kg_por_kg=suero / yg_kg, rendimiento_kg_L=yg_kg / LOTE_L,
@@ -120,7 +120,7 @@ for p in PROD:
     t201 = dict(cargar=PROD[p]['leche']['leche_L'] / 20000, dispersar_hidratar=0.33, transferir=b / CAUDAL_KG_H)
     t202 = dict(procesar=b / CAUDAL_KG_H, empuje=0.15)
     if p == 'YG':
-        salida = dict(agitar=0.20, separar=(b / 1.04) / SEPARADOR_L_H)        # yogur fermentado ≈ 1,04 kg/L
+        salida = dict(agitar=0.20, separar=(b / 1.04) / SEPARADOR_L_H)        # yogurt fermentado ≈ 1,04 kg/L
     else:
         salida = dict(romper=0.15, vaciar_enfriar=b / CAUDAL_KG_H)
     ferm = dict(llenar=b / CAUDAL_KG_H, inocular_agitar=0.17, incubar=INCUBAR[p], **salida, cip=0.75)

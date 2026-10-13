@@ -7,7 +7,7 @@ El modelo físico responde **¿con qué produzco?** Organiza los equipos de la p
 | Empresa | La organización dueña de la planta | Lácteos Altos de Teusacá |
 | Sitio | La planta física | Planta de Zipaquirá, 150.000 L/día |
 | Área | Zona de la planta con una función | A1 tronco común, A2 elaboración, A3 envasado y fin de línea, A4 almacenamiento y despacho, A9 servicios |
-| Celda de proceso | Grupo de unidades que trabajan juntas para hacer un lote | Por ejemplo, PC21 línea de yogures |
+| Celda de proceso | Grupo de unidades que trabajan juntas para hacer un lote | Por ejemplo, PC21 línea de yogurts |
 | Unidad | Equipo donde ocurre una actividad sobre el lote | Por ejemplo, U211 primer fermentador |
 | Módulo de equipo | Grupo de dispositivos que cumple una función dentro de una unidad | Por ejemplo, el control térmico de la camisa del fermentador |
 | Módulo de control | Instrumento, válvula, motor o lazo individual | Por ejemplo, el lazo TIC-2111 con su válvula TCV-2111 |
@@ -16,7 +16,7 @@ Este modelo describe la **empresa base**. Los equipos, capacidades y tags son lo
 
 ## Convenciones
 
-**Código de los equipos.** `U` + área + celda + número. Por ejemplo, **U211** es el área 2, la celda 1 (yogures) y la unidad 1, el primer fermentador. Las letras A, B y C distinguen equipos iguales (U123A, U221C). El mismo código se usa en las recetas, los P&ID, el documento ISA-95 y el modelo de Tecnomatix.
+**Código de los equipos.** `U` + área + celda + número. Por ejemplo, **U211** es el área 2, la celda 1 (yogurts) y la unidad 1, el primer fermentador. Las letras A, B y C distinguen equipos iguales (U123A, U221C). El mismo código se usa en las recetas, los P&ID, el documento ISA-95 y el modelo de Tecnomatix.
 
 **Otros prefijos de los P&ID.** `E` intercambiador, `P` bomba, `H` homogeneizador, `M` motor de agitador, `EM` módulo de equipo con nombre propio en el P&ID.
 
@@ -45,10 +45,10 @@ flowchart LR
     S --> A9["A9 · Servicios"]
     A1 --> PC11["PC11 · Recepción"]
     A1 --> PC12["PC12 · Tratamiento común"]
-    A2 --> PC21["PC21 · Yogures"]
+    A2 --> PC21["PC21 · Yogurts"]
     A2 --> PC22["PC22 · Quesos"]
     A2 --> PC23["PC23 · Leche UHT"]
-    A3 --> PC31["PC31 · Envasado de yogures"]
+    A3 --> PC31["PC31 · Envasado de yogurts"]
     A3 --> PC32["PC32 · Empaque de quesos"]
     A3 --> PC33["PC33 · Envasado aséptico"]
     A3 --> PC34["PC34 · Fin de línea"]
@@ -58,7 +58,7 @@ flowchart LR
 
 Las celdas de A1 y A2 son las del documento de los P&ID. Las de A3, A4 y A9 salen directamente del código de sus unidades (U311 es área 3, celda 1).
 
-**Nota sobre U201 y U202.** Por su código serían la celda 0 del área 2. Conservan el número de una versión anterior del modelo, en la que preparaban bases para dos líneas. Hoy trabajan solo para la línea de yogures, porque la leche UHT tiene su propia planta, así que pertenecen a la celda PC21.
+**Nota sobre U201 y U202.** Por su código serían la celda 0 del área 2. Conservan el número de una versión anterior del modelo, en la que preparaban bases para dos líneas. Hoy trabajan solo para la línea de yogurts, porque la leche UHT tiene su propia planta, así que pertenecen a la celda PC21.
 
 ## Área A1 · Tronco común
 
@@ -87,7 +87,7 @@ La bahía U112 tiene la misma instrumentación que U111. La aprobación de la ci
 |---|---|---|---|
 | U121 | Separadora-clarificadora con estandarización de grasa | 20.000 L/h, a 55 °C (50 a 60 °C) | C |
 | U122 | Pasteurizador HTST de placas con regeneración, tubo de retención y válvula de desvío | 20.000 L/h, 75 °C por 15 s | C |
-| U123A, U123B | Silos de leche entera para yogur, en alternancia | 2 × 40.000 L, grasa 3,50 % | B |
+| U123A, U123B | Silos de leche entera para yogurt, en alternancia | 2 × 40.000 L, grasa 3,50 % | B |
 | U123C | Silo de leche descremada para griego | 25.000 L, grasa 0,05 % o menos | B |
 | U124A, U124B | Silos de leche para quesos, en alternancia | 2 × 25.000 L, grasa 3,0, 3,2 o 3,6 % según el queso | B |
 | U125A | Silo de leche UHT entera y base del chocolate | 25.000 L, grasa 3,0 % | B |
@@ -110,7 +110,7 @@ La estandarización de la grasa es manual: el operador ajusta HV-1202 mirando FI
 
 ## Área A2 · Elaboración
 
-### Celda PC21 · Yogures (línea desarrollada en detalle)
+### Celda PC21 · Yogurts (línea desarrollada en detalle)
 
 | Unidad | Equipo | Capacidad | Modo |
 |---|---|---|---|
@@ -138,7 +138,7 @@ flowchart TD
     U217 --> L2["U313<br/>Llenadora de potes"]
 ```
 
-**Módulos de equipo y de control de la línea de yogures**
+**Módulos de equipo y de control de la línea de yogurts**
 
 Los módulos de equipo que tienen nombre en el P&ID se escriben con su código (EM-2012, EM-2014, EM-2141). Los demás se nombran por su función.
 
@@ -228,8 +228,8 @@ Los módulos de equipo que tienen nombre en el P&ID se escriben con su código (
 
 | Unidad | Equipo | Condición | Módulos de control | Modo |
 |---|---|---|---|---|
-| U411 | Cámara fría de yogures | 2 a 4 °C, reposo de 12 h como mínimo | TIC-4111 · TR-4111 registrador | B |
-| U412 | Muelle de despacho | Camión refrigerado de 2 a 6 °C (yogures y quesos); camión seco (UHT) | — | D |
+| U411 | Cámara fría de yogurts | 2 a 4 °C, reposo de 12 h como mínimo | TIC-4111 · TR-4111 registrador | B |
+| U412 | Muelle de despacho | Camión refrigerado de 2 a 6 °C (yogurts y quesos); camión seco (UHT) | — | D |
 | U413 | Bodega de leche UHT | Temperatura ambiente, lote retenido hasta su liberación | — | B |
 | U414 | Cámara fría de quesos | 2 a 4 °C, reposo de 12 h | TIC-4141 · TR-4141 registrador | B |
 

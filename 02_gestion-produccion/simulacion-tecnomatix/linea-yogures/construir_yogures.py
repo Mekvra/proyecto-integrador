@@ -1,4 +1,4 @@
-# Modelo de Plant Simulation 2404 (licencia estudiantil) de la LÍNEA DE YOGURES de Lácteos Altos de Teusacá,
+# Modelo de Plant Simulation 2404 (licencia estudiantil) de la LÍNEA DE YOGURTS de Lácteos Altos de Teusacá,
 # ESCENARIO ACTUAL (sin automatización): llenadora de vasos U311 de 12.000 vasos/h, OEE ≈ 70 %,
 # programa semanal de 35 lotes (13 YN, 9 YG, 13 YF) en 6 días. Datos: recetas v1.7 (recetas_yogures.json).
 # Seis secciones con su franja y su cartel en el Frame 2D; la escena 3D se decora después (decorar_3d.py).
@@ -236,7 +236,7 @@ def text(x, y, s, size=12, c=INK):
 
 
 YT, YB = 150, 620
-text(60, 28, 'Línea de yogures · Lácteos Altos de Teusacá · Escenario actual (sin automatización)', 22, NAVY)
+text(60, 28, 'Línea de yogurts · Lácteos Altos de Teusacá · Escenario actual (sin automatización)', 22, NAVY)
 text(60, 80, 'Plant Simulation 2404 · un lote = 10.000 L · 35 lotes por semana (13 natural, 9 griego, 13 fresa) · llenadora de vasos de 12.000/h · OEE ≈ 70 %', 11, SOFT)
 line(60, 104, 2230, 104, NAVY, 2)
 for num, tit, sub, x0, x1, fondo, borde in SECC:

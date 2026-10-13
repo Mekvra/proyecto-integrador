@@ -1,4 +1,4 @@
-# Diagramas de espagueti de la línea de yogures con presentación de plano técnico: Arial, trazo negro, equipos sin
+# Diagramas de espagueti de la línea de yogurts con presentación de plano técnico: Arial, trazo negro, equipos sin
 # relleno de color, cajetín con cuadrícula. Usa la misma geometría y las mismas rutas de plano.py; las rutas conservan
 # sus colores (la de la analista es morada). Genera espagueti_linea_yogures_actual_clasico y _propuesto_clasico (svg + html).
 import plano as P
@@ -6,7 +6,7 @@ import plano as P
 A = 'Arial, Helvetica, sans-serif'
 P.FD = P.FB = P.FM = A
 P.INK, P.MUTED, P.RULE, P.BG, P.ACC = '#000000', '#444444', '#000000', '#ffffff', '#000000'
-P.LINEA = {'tronco': '#000000', 'yogur': '#000000', 'queso': '#9a9a9a', 'uht': '#9a9a9a', 'serv': '#9a9a9a', 'frio': '#000000'}
+P.LINEA = {'tronco': '#000000', 'yogurt': '#000000', 'queso': '#9a9a9a', 'uht': '#9a9a9a', 'serv': '#9a9a9a', 'frio': '#000000'}
 P.GRIS = '#9a9a9a'
 P.tinte = lambda c, a=0.13: '#ffffff'
 P.ALMACENES = [a for a in P.ALMACENES if a[0] != 'U411']   # la cámara ya lleva su nombre; el rótulo chocaba con la ruta amarilla
@@ -28,7 +28,7 @@ def rotulo(h, plano_txt, hoja):
 
 def hoja(titulo, sub):
     h = P.Hoja()
-    P.plano(h, 'yogur', '', titulo, sub, etiquetas_equipo=False)
+    P.plano(h, 'yogurt', '', titulo, sub, etiquetas_equipo=False)
     # marco recto (sin esquinas redondeadas) y título más sobrio
     h.S = [s.replace('rx="10"', 'rx="0"').replace('font-size="30" font-weight="800"', 'font-size="26" font-weight="700"') for s in h.S]
     xp = f'x="{P.X(86):.1f}"'
@@ -36,12 +36,12 @@ def hoja(titulo, sub):
     return h
 
 
-h = hoja('Diagrama de espagueti – estado actual', 'Línea de yogures · recorridos que se repiten cada día (viajes estimados para ≈ 57.600 L/día de leche a yogures)')
+h = hoja('Diagrama de espagueti – estado actual', 'Línea de yogurts · recorridos que se repiten cada día (viajes estimados para ≈ 57.600 L/día de leche a yogurts)')
 filas, tot_act = P.espagueti(h, P.ACTUAL, False)
 P.tabla_rutas(h, filas, tot_act, 1585, 200, False)
 h.svg('espagueti_linea_yogures_actual_clasico', 'Espagueti actual')
 
-h = hoja('Diagrama de espagueti – con la propuesta', 'Línea de yogures · robot en U341, llenadora FFS, pH en línea y registro en el MES')
+h = hoja('Diagrama de espagueti – con la propuesta', 'Línea de yogurts · robot en U341, llenadora FFS, pH en línea y registro en el MES')
 filas, tot_pro = P.espagueti(h, P.PROPUESTO, True)
 y = P.tabla_rutas(h, filas, tot_pro, 1585, 200, True, tot_act)
 h.t(1585, y + 4, 'Qué cambia', 15, '#000', 700, A)
@@ -50,12 +50,12 @@ for i, s in enumerate(['Robot en U341: nadie estiba cajas a mano.', 'FFS: bobina
     h.t(1585, y + 28 + i * 18, s, 11.5, '#000', 400, A)
 h.svg('espagueti_linea_yogures_propuesto_clasico', 'Espagueti propuesto')
 
-# layout de la planta (tres líneas) y de la línea de yogures en el mismo formato, con el color de cada línea en el contorno
-P.LINEA = {'tronco': '#000000', 'yogur': '#c33c64', 'queso': '#a37c12', 'uht': '#3d8a52', 'serv': '#6b7682', 'frio': '#2b7bb0'}
+# layout de la planta (tres líneas) y de la línea de yogurts en el mismo formato, con el color de cada línea en el contorno
+P.LINEA = {'tronco': '#000000', 'yogurt': '#c33c64', 'queso': '#a37c12', 'uht': '#3d8a52', 'serv': '#6b7682', 'frio': '#2b7bb0'}
 for nombre, enf, tit, sub in (('layout_planta_3_lineas_clasico', None, 'Distribución en planta – tres líneas',
-                               'Edificio de 110 × 60 m · yogures, quesos y leche UHT · 150.000 L/día · paletizado manual'),
-                              ('layout_linea_yogures_actual_clasico', 'yogur', 'Distribución en planta – línea de yogures',
-                               'La línea de yogures en color y las demás áreas en gris · paletizado manual con dos operarios')):
+                               'Edificio de 110 × 60 m · yogurts, quesos y leche UHT · 150.000 L/día · paletizado manual'),
+                              ('layout_linea_yogures_actual_clasico', 'yogurt', 'Distribución en planta – línea de yogurts',
+                               'La línea de yogurts en color y las demás áreas en gris · paletizado manual con dos operarios')):
     h = P.Hoja()
     P.plano(h, enf, '', tit, sub)
     h.S = [s.replace('rx="10"', 'rx="0"').replace('font-size="30" font-weight="800"', 'font-size="26" font-weight="700"') for s in h.S if 'Mekvra · APM 2026-2S · UNAL' not in s]

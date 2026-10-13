@@ -112,7 +112,7 @@ def paletizado(name, w=80, h=64):
 
 
 if __name__ == '__main__':
-    Y, Q, K = COL['yogur'], COL['queso'], COL['kefir']
+    Y, Q, K = COL['yogurt'], COL['queso'], COL['kefir']
     cisterna('vsm_cisterna')
     bahia('vsm_recepcion')
     tank('vsm_crudo', GRIS, w=56, h=70)

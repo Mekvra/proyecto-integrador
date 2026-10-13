@@ -27,7 +27,7 @@ Cada **procedimiento de unidad** se ejecuta en una unidad o en un grupo de unida
 | Preparación de la leche base | Clarificar, estandarizar, pasteurizar | Calentar a 55 °C, separar la crema, ajustar la grasa al producto, calentar a 75 °C por 15 s, enfriar a 4 °C |
 | Preparación de la crema | Pasteurizar y almacenar la crema | Calentar a 85 °C por 15 s, enfriar a 4 °C o menos |
 
-### Línea de yogures
+### Línea de yogurts
 
 | Etapa de proceso | Operaciones de proceso | Acciones de proceso |
 |---|---|---|
@@ -73,15 +73,15 @@ Este procedimiento es común a los nueve productos. Cada procedimiento de produc
 
 | Silo | Producto | Grasa |
 |---|---|---|
-| U123A/B | Yogur con fresa y natural | 3,50 % ± 0,03 |
-| U123C | Yogur griego | 0,05 % o menos |
+| U123A/B | Yogurt con fresa y natural | 3,50 % ± 0,03 |
+| U123C | Yogurt griego | 0,05 % o menos |
 | U124A/B | Mozzarella · quesillo · doble crema | 3,0 % · 3,2 % · 3,6 % |
 | U125A | Leche entera UHT y base de la de chocolate | 3,0 % |
 | U125B | Leche descremada UHT | 0,3 % |
 
 El pasteurizador trabaja unas 10,8 h al día con los 150.000 L, contando arranques y dos lavados.
 
-## 3. Procedimiento de la línea de yogures
+## 3. Procedimiento de la línea de yogurts
 
 Un mismo procedimiento sirve para las tres referencias. Lo que cambia entre ellas es la receta (cantidades, pH de corte, tiempos) y la ruta por las unidades. La receta tiene nueve etapas y cada una es un procedimiento de unidad.
 
@@ -97,7 +97,7 @@ Un mismo procedimiento sirve para las tres referencias. Lo que cambia entre ella
 | UP-Y8 Envasado | U311, U312 (YF, YN) · U313 (YG) | ✓ | ✓ | ✓ |
 | UP-Y9 Cámara | U411 | ✓ | ✓ | ✓ |
 
-Esta numeración sigue las etapas del documento *Recetas y procesos de la planta*. No coincide con la de las recetas de yogures v1.8, que agrupaban las etapas de otra forma.
+Esta numeración sigue las etapas del documento *Recetas y procesos de la planta*. No coincide con la de las recetas de yogurts v1.8, que agrupaban las etapas de otra forma.
 
 ```mermaid
 flowchart TD
@@ -117,7 +117,7 @@ flowchart TD
     F --> Y9["UP-Y9 Cámara<br/>U411"]
 ```
 
-### 3.1 Yogur con fresa (YF): operaciones y fases
+### 3.1 Yogurt con fresa (YF): operaciones y fases
 
 | Procedimiento de unidad | Operación | Fase | Valor de receta | Tolerancia o alarma |
 |---|---|---|---|---|
@@ -139,7 +139,7 @@ flowchart TD
 | | | Llenar, sellar y codificar | Llenado a 18 a 22 °C; mordaza a 180 a 220 °C | Peso neto según la Res. SIC 32209 de 2020 |
 | UP-Y9 Cámara (U411) | Conservar | Enfriar y madurar | 6 °C o menos en 12 h; reposo de 12 h a 2 a 4 °C | Despacho FEFO |
 
-### 3.2 Yogur natural (YN): diferencias con el de fresa
+### 3.2 Yogurt natural (YN): diferencias con el de fresa
 
 | Procedimiento de unidad | Diferencia |
 |---|---|
@@ -148,7 +148,7 @@ flowchart TD
 | UP-Y6 Pulmón | Va al pulmón U214B |
 | UP-Y7 Saborizado | No aplica: el dosificador EM-2141 queda aislado con válvulas para que no pase fruta |
 
-### 3.3 Yogur griego (YG): operaciones y fases propias
+### 3.3 Yogurt griego (YG): operaciones y fases propias
 
 | Procedimiento de unidad | Operación | Fase | Valor de receta | Tolerancia o alarma |
 |---|---|---|---|---|
@@ -166,7 +166,7 @@ flowchart TD
 
 ```mermaid
 flowchart TD
-    A["Procedimiento<br/>Elaborar un lote de yogur con fresa (10.000 L)"] --> B["Procedimiento de unidad<br/>UP-Y3 Fermentación en U211"]
+    A["Procedimiento<br/>Elaborar un lote de yogurt con fresa (10.000 L)"] --> B["Procedimiento de unidad<br/>UP-Y3 Fermentación en U211"]
     B --> C["Operación<br/>Fermentar"]
     C --> D1["Fase<br/>Inocular: 400 U, 10 min a 15 a 20 rpm"]
     C --> D2["Fase<br/>Incubar: 43 °C, 4,75 a 6,25 h"]
@@ -223,7 +223,7 @@ Cada lote es de 10.000 L de U125A (entera y chocolate) o U125B (descremada). Ant
 
 ## 6. Fin de línea y limpieza
 
-**Fin de línea (U341 y U342).** Las cajas se arman a la salida de cada llenadora o empacadora y se paletizan a mano, con 2 operarios por línea; la envolvedora U342 envuelve las estibas. Yogures y quesos van a cámara fría; la leche UHT va a bodega a temperatura ambiente.
+**Fin de línea (U341 y U342).** Las cajas se arman a la salida de cada llenadora o empacadora y se paletizan a mano, con 2 operarios por línea; la envolvedora U342 envuelve las estibas. Yogurts y quesos van a cámara fría; la leche UHT va a bodega a temperatura ambiente.
 
 **Limpieza (U901).** Es un procedimiento propio que se ejecuta entre lotes. El operador conecta el circuito con codos en el panel y elige el programa.
 
@@ -243,7 +243,7 @@ Son los mismos que usa el modelo de Tecnomatix de la planta.
 
 | Línea | Lotes por semana | Orden en el día | Tiempos por lote |
 |---|---|---|---|
-| Yogures | 35 (13 natural, 9 griego, 13 fresa) | Natural, griego, fresa | U201 1,9 h · U202 1,2 h · fermentador 8,1 a 9,0 h · U215 1,1 h · llenado unas 3,5 h |
+| Yogurts | 35 (13 natural, 9 griego, 13 fresa) | Natural, griego, fresa | U201 1,9 h · U202 1,2 h · fermentador 8,1 a 9,0 h · U215 1,1 h · llenado unas 3,5 h |
 | Quesos | 30 (10 de cada uno) | Mozzarella, quesillo, doble crema | Tina 3,5 h · hilado 1,0 h · salmuera 8,0 h · empaque 1,2 h · cámara 12 h |
 | Leche UHT | 26 (14 entera, 6 descremada, 6 chocolate) | Entera, descremada, chocolate | Mezcla 1,0 h · UHT 1,0 h · envasado 2,0 h · retención 24 h |
 
@@ -293,14 +293,14 @@ El diagrama muestra los estados estables. La norma también define estados trans
 |---|---|---|
 | Recepción, separadora y pasteurizador (U111 a U122) | Las tres líneas | Trabajan en continuo; la grasa la fija el silo que se está llenando |
 | Silos A y B de cada línea | Cada línea con su par de silos | Uno se llena con la grasa del siguiente producto mientras el otro alimenta la línea; se lavan al vaciarse |
-| Crema pasteurizada (U127) | Yogur griego y doble crema | Solo se entrega crema de un lote liberado; máximo 24 h a 4 °C o menos |
-| Módulo térmico U202 | Solo la línea de yogures | La leche UHT tiene su propia planta; U202 lleva CIP-C en cada cambio de producto |
-| Fermentadores U211 a U218 | Los tres yogures | Cada lote ocupa un fermentador libre durante su ciclo de 8,1 a 9,0 h; se lava cada vez que se vacía |
+| Crema pasteurizada (U127) | Yogurt griego y doble crema | Solo se entrega crema de un lote liberado; máximo 24 h a 4 °C o menos |
+| Módulo térmico U202 | Solo la línea de yogurts | La leche UHT tiene su propia planta; U202 lleva CIP-C en cada cambio de producto |
+| Fermentadores U211 a U218 | Los tres yogurts | Cada lote ocupa un fermentador libre durante su ciclo de 8,1 a 9,0 h; se lava cada vez que se vacía |
 | Llenadoras U311 y U312 | Fresa y natural | Lavado completo al pasar de fresa a natural; U312 cambia de formato entre 1000 y 1750 g |
 | Tinas U221A/B/C | Los tres quesos | Una tina por lote; entre quesos distintos basta un enjuague |
 | Estación CIP U901 | Todas las unidades | El operador conecta con codos el circuito que va a lavar y elige el programa en el panel |
-| Muelle de despacho U412 | Las tres líneas | Yogures y quesos en camión refrigerado; leche UHT en camión seco |
+| Muelle de despacho U412 | Las tres líneas | Yogurts y quesos en camión refrigerado; leche UHT en camión seco |
 
-**Orden de campaña.** Yogures: natural, griego y fresa, para que ningún producto sin azúcar reciba arrastre de azúcar o de fruta. Quesos: mozzarella, quesillo y doble crema, de menor a mayor grasa. Leche UHT: entera, descremada y chocolate, porque el cacao va al final.
+**Orden de campaña.** Yogurts: natural, griego y fresa, para que ningún producto sin azúcar reciba arrastre de azúcar o de fruta. Quesos: mozzarella, quesillo y doble crema, de menor a mayor grasa. Leche UHT: entera, descremada y chocolate, porque el cacao va al final.
 
 Fuentes: *Recetas y procesos de la planta* (procedimientos, parámetros, CIP, PCC y tiempos), *Diagramas P&ID de la empresa base* (unidades y módulos) y *Comunicación y visualización de los datos en la empresa base (ISA-95)* (estado actual del control).
