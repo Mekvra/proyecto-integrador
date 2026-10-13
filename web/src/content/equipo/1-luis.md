@@ -1,6 +1,6 @@
 ---
 numero: 1
 nombre: Luis Alberto Mendoza
-rol: Líder de integración OT/IT
+rol: Líder de automatización
 github: lmendozar2001
 ---

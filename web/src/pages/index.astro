@@ -21,6 +21,8 @@ const { Content: EmpresaTexto } = await render(empresa);
 const { Content: RetoTexto } = await render(reto);
 
 const modulos = (await getCollection('modulos')).sort((a, b) => a.data.numero.localeCompare(b.data.numero));
+const equipo = (await getCollection('equipo')).sort((a, b) => a.data.numero - b.data.numero);
+
 const estados = { pendiente: 'Pendiente', 'en-desarrollo': 'En desarrollo', completado: 'Completado' } as const;
 const repoTree = `${sitio.repositorio}/tree/main`;
 // Une las palabras cortas (a, la, de…) con la siguiente para que no queden sueltas al final de una línea.
@@ -285,6 +287,29 @@ const recetas = [
       </div>
     </section>
 
+    <!-- 10 EQUIPO -->
+    <section id="equipo" class="section wrap">
+      <div class="section-head">
+        <span class="mono">10 · Equipo</span>
+        <h2>Las personas detrás de Mekvra.</h2>
+        <p>Cinco ingenieros mecatrónicos a cargo de la automatización, la ingeniería, la gestión, las finanzas y el software del proyecto.</p>
+      </div>
+
+      <div class="team">
+        {
+          equipo.map(({ data }) => (
+            <article class="member">
+              <span class="mono gold">{String(data.numero).padStart(2, '0')}</span>
+              <h3>{data.nombre}</h3>
+              <span class="member-role">{data.rol}</span>
+              <a class="ghost-link member-gh" href={`https://github.com/${data.github}`} target="_blank" rel="noopener">
+                @{data.github} <span class="arrow" aria-hidden="true">→</span>
+              </a>
+            </article>
+          ))
+        }
+      </div>
+    </section>
   </main>
 
   <footer class="wrap">
@@ -908,7 +933,7 @@ const recetas = [
     border-radius: var(--radius);
     padding: 24px 20px;
     display: grid;
-    grid-template-rows: auto auto auto 1fr auto;
+    grid-template-rows: auto auto 1fr auto;
     gap: 8px;
     transition: border-color 150ms var(--ease-switch);
   }
