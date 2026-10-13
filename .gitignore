@@ -21,3 +21,8 @@ web/.astro/
 
 # Archivos de trabajo locales (no se suben)
 .claude/
+
+# Python y versiones intermedias de los modelos de Tecnomatix (se quedan en local)
+__pycache__/
+02_gestion-produccion/simulacion-tecnomatix/linea-yogures/linea_yogures_150k*.spp
+02_gestion-produccion/simulacion-tecnomatix/linea-yogures/respaldo_antes_acta_09oct/
