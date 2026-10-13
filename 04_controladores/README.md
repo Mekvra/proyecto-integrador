@@ -1,8 +1,6 @@
 # 04 · Controladores industriales
 
-Control lógico-secuencial de la línea de quesos.
 
-**Entrega:** final, 7 de diciembre de 2026 · **Responsable:** _por definir_
 
 ## Entregables
 
