@@ -264,25 +264,29 @@ const links = [
     display: inline-grid;
   }
 
-  /* En pantallas grandes el panel se alinea con el ancho de la página y las secciones se leen más grandes. */
+  /* En PC el menú es un desplegable bajo el botón: lista vertical como en el celular, sin tapar la página. */
   @media (min-width: 961px) {
     .menu {
-      padding: 24px max(var(--gutter), calc((100vw - var(--page)) / 2)) 48px;
+      inset: var(--menu-top, 61px) auto auto auto;
+      right: max(var(--gutter), calc((100vw - var(--page)) / 2));
+      width: 300px;
+      max-height: calc(100vh - var(--menu-top, 61px) - 24px);
+      padding: 8px 24px 20px;
+      gap: 16px;
+      border: 1px solid var(--cream-12);
+      border-top: 0;
+      border-radius: 0 0 var(--radius-frame) var(--radius-frame);
+      transform-origin: top;
+      clip-path: inset(0 0 100% 0);
+      transition: clip-path 380ms var(--ease-out-expo);
     }
 
-    .menu ol {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      column-gap: 48px;
-      max-width: 820px;
-    }
-
-    .menu-label {
-      font-size: 24px;
-      letter-spacing: -0.5px;
+    .menu[data-visible] {
+      clip-path: inset(0 0 -1px 0);
     }
 
     .menu a[data-menu-link] {
-      padding: 18px 0;
+      padding: 12px 0;
     }
   }
 
@@ -348,17 +352,18 @@ const links = [
   // --- Menú (dos rayitas, en todos los tamaños) ---
   const btn = nav.querySelector<HTMLButtonElement>('[data-menu-btn]')!;
   const menu = nav.querySelector<HTMLElement>('[data-menu]')!;
+  const escritorio = window.matchMedia('(min-width: 961px)');
 
   function setOpen(open: boolean) {
     btn.setAttribute('aria-expanded', String(open));
     btn.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
     nav.toggleAttribute('data-open', open);
-    document.body.style.overflow = open ? 'hidden' : '';
+    document.body.style.overflow = open && !escritorio.matches ? 'hidden' : '';
     if (open) {
       menu.style.setProperty('--menu-top', `${Math.max(0, nav.getBoundingClientRect().bottom)}px`);
       menu.hidden = false;
       requestAnimationFrame(() => requestAnimationFrame(() => menu.setAttribute('data-visible', '')));
-      menu.querySelector<HTMLElement>('a')?.focus({ preventScroll: true });
+      if (!escritorio.matches) menu.querySelector<HTMLElement>('a')?.focus({ preventScroll: true });
     } else {
       menu.removeAttribute('data-visible');
       menu.hidden = true;
@@ -367,6 +372,12 @@ const links = [
 
   btn.addEventListener('click', () => setOpen(btn.getAttribute('aria-expanded') !== 'true'));
   menu.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => setOpen(false)));
+  document.addEventListener('click', (e) => {
+    if (btn.getAttribute('aria-expanded') === 'true' && !nav.contains(e.target as Node)) setOpen(false);
+  });
+  window.addEventListener('scroll', () => {
+    if (escritorio.matches && btn.getAttribute('aria-expanded') === 'true') setOpen(false);
+  }, { passive: true });
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && btn.getAttribute('aria-expanded') === 'true') {
       setOpen(false);

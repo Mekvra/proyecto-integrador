@@ -347,4 +347,4 @@ Todo movimiento continuo se pausa cuando sale de la pantalla y se congela con `p
 
 ## Menú (decisión del 12-oct-2026)
 
-La barra superior solo lleva la marca y el botón de dos rayitas, también en PC (Janan no quiere los enlaces en línea). Al abrirlo, el panel ocupa la pantalla; en PC las secciones van en dos columnas a 24 px alineadas con el ancho de la página, y en celular en una columna a 16 px.
+La barra superior solo lleva la marca y el botón de dos rayitas, también en PC (Janan no quiere los enlaces en línea). En PC el menú es un desplegable de 300 px que baja desde el botón (lista vertical a 16 px, como en el celular, borde `--cream-12`, se abre con un recorte de arriba hacia abajo) y se cierra al tocar fuera, al hacer scroll o con Esc; la página sigue visible detrás. En celular el panel ocupa la pantalla.
