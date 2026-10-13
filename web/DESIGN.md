@@ -352,3 +352,7 @@ La barra superior solo lleva la marca y el botón de dos rayitas, también en PC
 ## Arquitectura ISA-95 (pirámide)
 
 Los seis niveles del curso (N0 Proceso a N5 ERP) se dibujan como un solo triángulo con la punta arriba: cada nivel es una franja SVG cuyos bordes inclinados continúan los del nivel vecino (30 % de ancho en la punta, 100 % en la base), con ícono de trazo fino, código en dorado y nombre del sistema. La función de cada nivel (Gestión, Operación, Supervisión, Control, Campo, Proceso) va afuera, a la derecha, en Geist Mono con una guía corta. El relleno sube de tono hacia la base; el nivel activo va en `--carbon` con borde dorado. Se conservan los rieles animados de datos (suben) y órdenes (bajan) y el panel de detalle.
+
+## Tablero de evidencias (uso de equipos)
+
+Debajo de los indicadores, barras horizontales apiladas con el uso de cada equipo de la línea de yogurts en la simulación de 12 semanas: trabajo en champaña, cambios de formato y limpieza en `--ash` y fallas en naranja señal (es un dato de estado). Una marca discontinua marca el techo de operación del 85 %. El equipo más cargado se resalta con borde dorado y la etiqueta «Cuello de botella» en naranja. Las barras crecen desde la izquierda en cascada cuando el tablero entra en pantalla; sin animación si el usuario pidió reducir el movimiento. Datos en `src/data/uso-yogurt.json`.

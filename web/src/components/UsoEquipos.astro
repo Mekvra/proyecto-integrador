@@ -1,0 +1,302 @@
+---
+// Uso de los equipos de la línea de yogurts según la simulación de 12 semanas en Tecnomatix (estado actual).
+// Barras apiladas: trabajo, cambios de formato y limpieza, y fallas. El equipo más cargado es el cuello de botella.
+// Datos en src/data/uso-yogurt.json (salen de linea-yogures/resultados_paletizado_manual.json).
+import uso from '../data/uso-yogurt.json';
+
+const cuello = uso.equipos.reduce((a, b) => (b.total > a.total ? b : a));
+const f = (v: number) => v.toLocaleString('es-CO', { maximumFractionDigits: 0 });
+---
+
+<div class="frame chart" data-uso>
+  <div class="frame-bar">
+    <span class="frame-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+    <span class="frame-title mono">Tablero de evidencias · línea de yogurts</span>
+    <span class="frame-status mono"><span class="pulse"></span>Simulación · 12 semanas</span>
+  </div>
+
+  <slot />
+
+  <div class="uso-body">
+    <div class="uso-head">
+      <span class="mono uso-title">{uso.titulo}</span>
+      <span class="uso-legend mono" aria-hidden="true">
+        <i class="lg lg-t"></i>Trabajo <i class="lg lg-c"></i>Cambio y limpieza <i class="lg lg-f"></i>Fallas
+      </span>
+    </div>
+
+    <div class="bar-row techo-row mono" aria-hidden="true" style={`--techo:${uso.techo}%`}>
+      <span></span>
+      <span class="techo-cell"><span>Techo de operación {uso.techo} %</span></span>
+      <span></span>
+    </div>
+    <ol class="bars" style={`--techo:${uso.techo}%`} aria-label={`${uso.titulo}, en % del tiempo de producción`}>
+      {
+        uso.equipos.map((e, i) => (
+          <li class:list={['bar-row', { cuello: e === cuello }]} style={`--i:${i}`}>
+            <span class="bar-name">
+              <span class="mono bar-code">{e.codigo}</span>
+              <span>{e.nombre}</span>
+            </span>
+            <span class="bar-track" role="img" aria-label={`${e.nombre}: ${f(e.total)} % ocupado (trabajo ${f(e.trabajo)} %, cambios ${f(e.cambio)} %, fallas ${f(e.falla)} %)`}>
+              <span class="bar-fill">
+                <span class="seg seg-t" style={`width:${e.trabajo}%`} />
+                <span class="seg seg-c" style={`width:${e.cambio}%`} />
+                <span class="seg seg-f" style={`width:${e.falla}%`} />
+              </span>
+            </span>
+            <span class="bar-val mono">
+              {f(e.total)} %{e === cuello && <span class="tag">Cuello de botella</span>}
+            </span>
+          </li>
+        ))
+      }
+    </ol>
+
+    <p class="uso-note mono">{uso.nota}</p>
+  </div>
+</div>
+
+<style>
+  .uso-body {
+    padding: 24px 24px 20px;
+    display: grid;
+    gap: 16px;
+  }
+
+  .uso-head {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 8px 24px;
+    font-size: 11px;
+  }
+
+  .uso-title {
+    color: var(--cream-70);
+  }
+
+  .uso-legend {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px 14px;
+    color: var(--granite);
+  }
+
+  .lg {
+    display: inline-block;
+    width: 12px;
+    height: 8px;
+    margin-right: -8px;
+    border-radius: 1px;
+  }
+
+  .lg-t,
+  .seg-t {
+    background: var(--gold);
+  }
+
+  .lg-c,
+  .seg-c {
+    background: var(--ash);
+  }
+
+  .lg-f,
+  .seg-f {
+    background: var(--orange);
+  }
+
+  .bar-row {
+    --name: 230px;
+    --val: 170px;
+  }
+
+  .bars {
+    --name: 230px;
+    --val: 170px;
+    position: relative;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 8px;
+  }
+
+  .bar-row {
+    display: grid;
+    grid-template-columns: var(--name) minmax(0, 1fr) var(--val);
+    align-items: center;
+    gap: 16px;
+    font-size: 13px;
+    color: var(--cream-70);
+  }
+
+  .bar-name {
+    display: grid;
+    grid-template-columns: 76px 1fr;
+    gap: 8px;
+    align-items: baseline;
+  }
+
+  .bar-code {
+    color: var(--granite);
+    font-size: 11px;
+  }
+
+  .bar-track {
+    position: relative;
+    height: 14px;
+    background: var(--cream-08);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .bar-fill {
+    display: flex;
+    height: 100%;
+    transform-origin: left;
+    transform: scaleX(0);
+    transition: transform 900ms var(--ease-out-expo);
+    transition-delay: calc(var(--i) * 60ms);
+  }
+
+  [data-uso][data-visto] .bar-fill {
+    transform: none;
+  }
+
+  .seg {
+    height: 100%;
+  }
+
+  .bar-val {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--cream);
+    font-size: 12px;
+  }
+
+  .tag {
+    padding: 2px 6px;
+    border: 1px solid var(--orange);
+    border-radius: var(--radius);
+    color: var(--orange);
+    font-size: 10px;
+    white-space: nowrap;
+  }
+
+  .cuello {
+    color: var(--cream);
+  }
+
+  .cuello .bar-code {
+    color: var(--gold);
+  }
+
+  .cuello .bar-track {
+    outline: 1px solid var(--gold-60);
+    outline-offset: 2px;
+  }
+
+  /* Techo de operación: una marca discontinua en la misma posición de cada barra y su etiqueta encima. */
+  .bar-track::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: var(--techo);
+    border-left: 1px dashed var(--cream-70);
+  }
+
+  .techo-row {
+    --name: 230px;
+    --val: 170px;
+    margin-bottom: -10px;
+  }
+
+  .techo-cell {
+    position: relative;
+    height: 14px;
+    font-size: 10px;
+    color: var(--granite);
+  }
+
+  .techo-cell span {
+    position: absolute;
+    left: var(--techo);
+    transform: translateX(-50%);
+    white-space: nowrap;
+  }
+
+  .uso-note {
+    margin: 4px 0 0;
+    color: var(--granite);
+    font-size: 11px;
+    line-height: 1.6;
+  }
+
+  @media (max-width: 720px) {
+    .uso-body {
+      padding: 20px 16px 16px;
+    }
+
+    .bars {
+      --name: 0px;
+      --val: 0px;
+    }
+
+    .bar-row {
+      grid-template-columns: minmax(0, 1fr) auto;
+      grid-template-areas: 'name val' 'track track';
+      gap: 6px 12px;
+    }
+
+    .bar-name {
+      grid-area: name;
+      grid-template-columns: 64px 1fr;
+    }
+
+    .bar-track {
+      grid-area: track;
+    }
+
+    .bar-val {
+      grid-area: val;
+      justify-content: flex-end;
+    }
+
+    .techo-row {
+      display: none;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .bar-fill {
+      transform: none;
+      transition: none;
+    }
+  }
+</style>
+
+<script>
+  // Las barras crecen cuando el tablero entra en pantalla.
+  for (const el of document.querySelectorAll<HTMLElement>('[data-uso]')) {
+    if (!('IntersectionObserver' in window)) {
+      el.setAttribute('data-visto', '');
+      continue;
+    }
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) {
+          if (e.isIntersecting) {
+            el.setAttribute('data-visto', '');
+            io.disconnect();
+          }
+        }
+      },
+      { threshold: 0.25 },
+    );
+    io.observe(el);
+  }
+</script>
