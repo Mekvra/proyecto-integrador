@@ -149,7 +149,6 @@ El repositorio sigue los módulos del curso. Cada carpeta tiene su propio `READM
 | `08` | [**Investigación**](08_investigacion) | Proceso lácteo, variables de operación y fuentes |
 | `web` | [**Página web**](web) | Sitio en Astro, publicado automáticamente con GitHub Pages |
 
-**Cómo aportar:** sube tus archivos a la carpeta de tu módulo directamente desde GitHub. La guía completa está en [CONTRIBUTING.md](CONTRIBUTING.md).
 
 <br>
 
