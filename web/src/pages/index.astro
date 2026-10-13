@@ -32,10 +32,10 @@ const sinHuerfanas = (t: string) => t.replace(/\s(\p{L}{1,2})\s/gu, ' $1\u00a0')
 
 // Indicadores de la línea de yogurts, planta actual: simulación de 12 semanas en Tecnomatix y recetas.
 const kpis = [
-  { nombre: 'OEE', valor: '≈ 70', unidad: '%', nota: 'Llenadoras: 0,90 × 0,80 × 0,97' },
-  { nombre: 'Takt Time', valor: '4,2', unidad: 'h/lote', nota: '24 h ÷ 5,75 lotes de 10.000 L' },
-  { nombre: 'Throughput', valor: '≈ 2.350', unidad: 'kg/h', nota: 'Yogurt terminado, 24 h al día' },
-  { nombre: 'MLT', valor: '≈ 35', unidad: 'h', nota: 'Lote de fresa, del camión a la cámara' },
+  { nombre: 'OEE', valor: '≈ 70', unidad: '%', nota: 'Llenadoras: 0,90 × 0,80 × 0,97', fuente: 'Diseño · recetas' },
+  { nombre: 'Takt Time', valor: '4,2', unidad: 'h/lote', nota: '24 h ÷ 5,75 lotes de 10.000 L', fuente: 'Simulación · Tecnomatix' },
+  { nombre: 'Throughput', valor: '≈ 2.350', unidad: 'kg/h', nota: 'Yogurt terminado, 24 h al día', fuente: 'Diseño · recetas' },
+  { nombre: 'MLT', valor: '≈ 35', unidad: 'h', nota: 'Lote de fresa, de la recepción a la salida de la cámara', fuente: 'VSM actual' },
 ];
 const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
 const blob = `${sitio.repositorio}/blob/main`;
@@ -168,7 +168,7 @@ const recetas = [
                   {k.valor}<span class="mono unit">{k.unidad}</span>
                 </span>
                 <span class="kpi-note">{k.nota}</span>
-                <span class="mono kpi-pending">Simulación · Tecnomatix</span>
+                <span class="mono kpi-pending">{k.fuente}</span>
               </div>
             ))
           }
