@@ -2,8 +2,6 @@
 
 Planeación estructurada, análisis económico y propuesta comercial.
 
-**Responsable:** Integrante 4 (Daniel Felipe Castro) · Cronograma con apoyo del Integrante 2
-**Entrega:** intermedia, 5 de octubre de 2026
 
 ## Entregables
 
