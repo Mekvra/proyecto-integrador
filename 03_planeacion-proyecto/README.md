@@ -16,5 +16,5 @@ Planeación estructurada, análisis económico y propuesta comercial.
 |:--|:--|
 | [EDT](edt-cronograma/EDT_Completo_v1.0.pdf) | Estructura de desglose del trabajo: 9 fases y sus entregables |
 | [Cronograma](edt-cronograma/Cronograma_Planta_Lactea_v1.0.pdf) | Cronograma de 12 meses con tareas, responsables, paradas e hitos |
-| [Estado financiero](evaluacion-financiera/Estado_Financiero.pdf) ([Excel](evaluacion-financiera/Estado_Financiero.xlsx)) | Base de producción, detalle por línea, OPEX, CAPEX, estado gerencial de la línea de yogurts, estado financiero de la planta y evaluación de la propuesta de mejora (Daniel Castro) |
+| [Estado financiero](evaluacion-financiera/Estado_Financiero.pdf) | Base de producción, detalle por línea, OPEX, CAPEX, estado gerencial de la línea de yogurts, estado financiero de la planta y evaluación de la propuesta de mejora (Daniel Castro) |
 | [Base de cotización](presupuesto/cotizaciones/Mekvra_Base_Cotizacion.pdf) ([Excel](presupuesto/cotizaciones/Mekvra_Base_Cotizacion.xlsx)) | Costeo interno de Mekvra (horas, servicios, licencias y equipos importados) y resumen de la propuesta económica para el cliente (Daniel Castro) |
