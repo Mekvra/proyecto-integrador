@@ -1,73 +1,86 @@
 ---
-// EDT como diagrama de árbol: raíz del proyecto, tres ramas y, en cada una, las fases con sus entregables colgando.
+// EDT como diagrama clásico de desglose: el proyecto arriba, una barra horizontal de la que bajan las fases en
+// columnas, y los entregables de cada fase debajo de ella con una sola guía. En celular pasa a árbol vertical.
 // Datos: src/data/edt.json (se genera desde EDT_Completo.docx del Drive del grupo).
 import edt from '../data/edt.json';
 
 const fases = edt.fases;
 const total = fases.reduce((n, f) => n + f.entregables.length, 0);
-const columnas = [fases.slice(0, 3), fases.slice(3, 6), fases.slice(6)];
 ---
 
 <figure class="wbs" aria-label={`EDT del proyecto: ${fases.length} fases y ${total} entregables`}>
-  <div class="wbs-root">
-    <span class="mono gold">EDT · nivel 0</span>
-    <strong>{edt.titulo}</strong>
-    <span class="mono wbs-meta">{fases.length} fases · {total} entregables</span>
-  </div>
+  <div class="wbs-scroll">
+    <div class="wbs-canvas" style={`--n:${fases.length}`}>
+      <div class="wbs-root">
+        <span class="mono gold">EDT · nivel 0</span>
+        <strong>{edt.titulo}</strong>
+        <span class="mono wbs-meta">{fases.length} fases · {total} entregables</span>
+      </div>
 
-  <div class="wbs-cols">
-    {
-      columnas.map((col) => (
-        <ol class="wbs-col">
-          {col.map((f) => (
-            <li class="wbs-branch">
+      <ol class="wbs-cols">
+        {
+          fases.map((f) => (
+            <li class="wbs-col">
               <div class="wbs-phase">
-                <span class="mono gold">{f.codigo.padStart(2, '0')}</span>
+                <span class="mono gold">{f.codigo}</span>
                 <span class="wbs-phase-name">{f.nombre}</span>
                 {f.nota && <span class="mono wbs-note">{f.nota}</span>}
               </div>
               <ul class="wbs-items">
                 {f.entregables.map((e) => (
                   <li>
-                    <div class="wbs-item">
-                      <span class="mono wbs-code">{e.codigo}</span>
-                      <span>
-                        {e.nombre}
-                        {e.detalle && e.detalle.length <= 45 && <span class="wbs-detail">{e.detalle}</span>}
-                      </span>
-                    </div>
+                    <span class="mono wbs-code">{e.codigo}</span>
+                    <span class="wbs-text">
+                      {e.nombre}
+                      {e.detalle && e.detalle.length <= 45 && <span class="wbs-detail">{e.detalle}</span>}
+                    </span>
                   </li>
                 ))}
               </ul>
             </li>
-          ))}
-        </ol>
-      ))
-    }
+          ))
+        }
+      </ol>
+    </div>
   </div>
+  <figcaption class="mono wbs-hint">Desliza para ver todas las fases →</figcaption>
 </figure>
 
 <style>
   .wbs {
     --line: var(--cream-16);
-    --drop: 32px;
+    --gap: 10px;
+    --drop: 26px;
     margin: 0;
+  }
+
+  .wbs-scroll {
+    overflow-x: auto;
+    padding-bottom: 4px;
+  }
+
+  .wbs-canvas {
+    min-width: 1100px;
   }
 
   .wbs-root {
     position: relative;
+    width: min(100%, 460px);
+    margin: 0 auto var(--drop);
     display: grid;
     gap: 6px;
-    padding: 20px 24px;
+    justify-items: center;
+    text-align: center;
+    padding: 18px 24px;
     border: 1px solid var(--gold-60);
     border-radius: var(--radius);
     background: var(--carbon);
   }
 
   .wbs-root strong {
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 500;
-    letter-spacing: -0.4px;
+    letter-spacing: -0.3px;
   }
 
   .wbs-meta {
@@ -75,169 +88,211 @@ const columnas = [fases.slice(0, 3), fases.slice(3, 6), fases.slice(6)];
     font-size: 11px;
   }
 
-  .wbs-cols {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 24px;
-    padding-top: var(--drop);
+  /* tronco: de la raíz a la barra */
+  .wbs-root::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 100%;
+    width: 1px;
+    height: var(--drop);
+    background: var(--line);
   }
 
-  .wbs-col {
+  .wbs-cols {
     position: relative;
     list-style: none;
     margin: 0;
-    padding: 0;
+    padding: var(--drop) 0 0;
+    display: grid;
+    grid-template-columns: repeat(var(--n), minmax(0, 1fr));
+    gap: var(--gap);
   }
 
-  /* bajada desde la raíz hasta cada rama */
-  .wbs-col::before {
+  /* barra horizontal: del centro de la primera columna al de la última */
+  .wbs-cols::before {
     content: '';
     position: absolute;
-    left: 18px;
-    top: calc(var(--drop) * -1);
-    height: var(--drop);
-    width: 1px;
-    background: var(--line);
-  }
-
-  .wbs-branch {
-    position: relative;
-    padding: 0 0 28px 40px;
-  }
-
-  /* columna vertebral de la rama y conector a cada fase */
-  .wbs-branch::before {
-    content: '';
-    position: absolute;
-    left: 18px;
     top: 0;
-    bottom: 0;
-    width: 1px;
-    background: var(--line);
-  }
-
-  .wbs-branch:last-child::before {
-    bottom: auto;
-    height: 26px;
-  }
-
-  .wbs-branch::after {
-    content: '';
-    position: absolute;
-    left: 18px;
-    top: 26px;
-    width: 22px;
+    left: calc((100% - (var(--n) - 1) * var(--gap)) / var(--n) / 2);
+    right: calc((100% - (var(--n) - 1) * var(--gap)) / var(--n) / 2);
     height: 1px;
     background: var(--line);
   }
 
-  .wbs-phase {
+  .wbs-col {
     position: relative;
     display: grid;
+    grid-template-rows: auto 1fr;
+  }
+
+  /* bajada de la barra a cada fase */
+  .wbs-col::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: calc(var(--drop) * -1);
+    width: 1px;
+    height: var(--drop);
+    background: var(--line);
+  }
+
+  .wbs-phase {
+    min-height: 96px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     gap: 6px;
-    padding: 14px 16px;
+    padding: 12px 10px;
+    text-align: center;
     border: 1px solid var(--gold-60);
     border-radius: var(--radius);
     background: var(--black);
   }
 
   .wbs-phase-name {
-    font-size: 15px;
+    font-size: 13px;
     font-weight: 500;
     line-height: 1.3;
-    letter-spacing: -0.2px;
   }
 
   .wbs-note {
     color: var(--granite);
-    font-size: 11px;
+    font-size: 10px;
   }
 
   .wbs-items {
+    position: relative;
     list-style: none;
     margin: 0;
-    padding: 10px 0 0 30px;
+    padding: 6px 0 0 14px;
   }
 
   .wbs-items li {
     position: relative;
-    padding-top: 8px;
+    display: grid;
+    gap: 2px;
+    padding: 8px 0 8px 8px;
+    font-size: 12px;
+    line-height: 1.35;
+    color: var(--cream-70);
   }
 
+  /* una sola guía vertical por fase, con un trazo corto a cada entregable */
   .wbs-items li::before {
     content: '';
     position: absolute;
-    left: -16px;
-    top: -10px;
+    left: -8px;
+    top: -6px;
     bottom: 0;
     width: 1px;
     background: var(--cream-12);
   }
 
-  .wbs-items li:first-child::before {
-    top: -10px;
-  }
-
   .wbs-items li:last-child::before {
     bottom: auto;
-    height: calc(10px + 8px + 18px);
+    height: calc(6px + 16px);
   }
 
   .wbs-items li::after {
     content: '';
     position: absolute;
-    left: -16px;
-    top: calc(8px + 18px);
-    width: 16px;
+    left: -8px;
+    top: 16px;
+    width: 10px;
     height: 1px;
     background: var(--cream-12);
   }
 
-  .wbs-item {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: 10px;
-    align-items: baseline;
-    padding: 10px 12px;
-    border: 1px solid var(--cream-12);
-    border-radius: var(--radius);
-    font-size: 13px;
-    line-height: 1.35;
-    color: var(--cream-70);
-    transition: border-color 150ms var(--ease-switch), color 150ms var(--ease-switch);
-  }
-
-  .wbs-item:hover {
-    border-color: var(--gold-60);
-    color: var(--cream);
+  .wbs-code {
+    color: var(--gold);
+    font-size: 10px;
   }
 
   .wbs-detail {
     display: block;
     margin-top: 2px;
     color: var(--granite);
-    font-size: 12px;
-  }
-
-  .wbs-code {
-    color: var(--gold);
     font-size: 11px;
   }
 
-  @media (max-width: 960px) {
+  .wbs-hint {
+    display: none;
+    margin-top: 8px;
+    color: var(--granite);
+    font-size: 11px;
+  }
+
+  @media (min-width: 721px) and (max-width: 1180px) {
+    .wbs-hint {
+      display: block;
+    }
+  }
+
+  /* celular: árbol vertical, la raíz arriba y las fases bajando por una guía a la izquierda */
+  @media (max-width: 720px) {
+    .wbs-canvas {
+      min-width: 0;
+    }
+
+    .wbs-root {
+      width: 100%;
+      margin: 0 0 var(--drop);
+      justify-items: start;
+      text-align: left;
+    }
+
+    .wbs-root::after {
+      left: 18px;
+    }
+
     .wbs-cols {
       grid-template-columns: 1fr;
       gap: 0;
+      padding: 0;
     }
 
-    .wbs-col + .wbs-col::before {
+    .wbs-cols::before {
       display: none;
     }
 
-    /* en una sola columna, la vertebral sigue de una rama a la siguiente */
-    .wbs-col:not(:last-child) .wbs-branch:last-child::before {
-      bottom: 0;
-      height: auto;
+    .wbs-col {
+      padding: 0 0 24px 36px;
+    }
+
+    .wbs-col::before {
+      left: 18px;
+      top: calc(var(--drop) * -1);
+      height: calc(100% + var(--drop));
+    }
+
+    .wbs-col:last-child::before {
+      height: calc(var(--drop) + 30px);
+    }
+
+    .wbs-col::after {
+      content: '';
+      position: absolute;
+      left: 18px;
+      top: 30px;
+      width: 18px;
+      height: 1px;
+      background: var(--line);
+    }
+
+    .wbs-phase {
+      min-height: 0;
+      align-items: flex-start;
+      text-align: left;
+    }
+
+    .wbs-phase-name {
+      font-size: 15px;
+    }
+
+    .wbs-items li {
+      font-size: 13px;
     }
   }
 </style>

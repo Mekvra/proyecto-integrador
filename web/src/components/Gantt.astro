@@ -90,33 +90,43 @@ const hitos = crono.hitos.map((h) => ({ ...h, nombre: h.nombre.replace(/^Hito \d
         ))
       }
 
-      <div class="g-row g-miles">
-        <span class="g-name">
-          <span class="mono gold">◆</span>
-          <span>Hitos</span>
-        </span>
-        <div class="g-track">
-          {meses.map((m) => <i class="g-tick" style={`left:${m.left}%`} />)}
-          {hitos.map((h) => <i class="g-mile" style={`left:${pos(h.inicio)}%`} title={`${corto(h.inicio)} · ${h.nombre}`} />)}
-          {corte !== null && <i class="g-cut" style={`left:${corte}%`} />}
+      <details class="g-phase g-miles">
+        <summary class="g-row">
+          <span class="g-name">
+            <span class="mono gold">◆</span>
+            <span>Hitos · {hitos.length}</span>
+            <span class="mono g-toggle" aria-hidden="true" />
+          </span>
+          <div class="g-track">
+            {meses.map((m) => <i class="g-tick" style={`left:${m.left}%`} />)}
+            {hitos.map((h) => <i class="g-mile" style={`left:${pos(h.inicio)}%`} title={`${corto(h.inicio)} · ${h.nombre}`} />)}
+            {corte !== null && <i class="g-cut" style={`left:${corte}%`} />}
+          </div>
+        </summary>
+        <div class="g-tasks">
+          {hitos.map((h) => (
+            <div class="g-row g-task">
+              <span class="g-name">
+                <span class="mono gold">◆</span>
+                <span>
+                  {h.nombre}
+                  <span class="mono g-who">{corto(h.inicio)}</span>
+                </span>
+              </span>
+              <div class="g-track">
+                {meses.map((m) => <i class="g-tick" style={`left:${m.left}%`} />)}
+                <i class="g-mile g-mile-sm" style={`left:${pos(h.inicio)}%`} title={corto(h.inicio)} />
+                {corte !== null && <i class="g-cut" style={`left:${corte}%`} />}
+              </div>
+            </div>
+          ))}
         </div>
-      </div>
+      </details>
     </div>
   </div>
 
-  <ol class="g-milelist">
-    {
-      hitos.map((h) => (
-        <li>
-          <span class="mono gold">{corto(h.inicio)}</span>
-          <span>{h.nombre}</span>
-        </li>
-      ))
-    }
-  </ol>
-
   <figcaption class="mono g-foot">
-    Avance global ≈ {avanceGlobal} % al corte · abre cada fase para ver sus tareas y responsables
+    Avance global ≈ {avanceGlobal} % al corte · abre cada fase para ver sus tareas y responsables, y los hitos para ver sus fechas
   </figcaption>
 </figure>
 
@@ -346,10 +356,6 @@ const hitos = crono.hitos.map((h) => ({ ...h, nombre: h.nombre.replace(/^Hito \d
     font-size: 10px;
   }
 
-  .g-miles {
-    padding: 12px 0 4px;
-  }
-
   .g-mile {
     position: absolute;
     top: 50%;
@@ -360,27 +366,13 @@ const hitos = crono.hitos.map((h) => ({ ...h, nombre: h.nombre.replace(/^Hito \d
     border-radius: 1px;
   }
 
-  .g-milelist {
-    list-style: none;
-    margin: 0;
-    padding: 16px 20px;
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 8px 32px;
-    border-top: 1px solid var(--stroke);
-    font-size: 13px;
-    color: var(--cream-70);
+  .g-mile-sm {
+    width: 8px;
+    height: 8px;
   }
 
-  .g-milelist li {
-    display: grid;
-    grid-template-columns: 82px 1fr;
-    gap: 12px;
-    align-items: baseline;
-  }
-
-  .g-milelist .mono {
-    font-size: 11px;
+  .g-miles {
+    border-bottom: 0;
   }
 
   .g-foot {
@@ -414,8 +406,5 @@ const hitos = crono.hitos.map((h) => ({ ...h, nombre: h.nombre.replace(/^Hito \d
       content: ' · desliza →';
     }
 
-    .g-milelist {
-      grid-template-columns: 1fr;
-    }
   }
 </style>
