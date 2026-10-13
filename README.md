@@ -106,13 +106,18 @@ Análisis de la planta en su estado actual, antes de la propuesta de automatizac
 
 **Documentos**
 
-| Documento | Contenido |
-|:--|:--|
-| [Modelo ISA-88](01_transformacion-digital/isa88) | Modelo físico, modelo procedimental y recetas maestras de las 9 referencias |
-| [Recetas de la línea de yogurts](01_transformacion-digital/isa88/recetas/Recetas_linea_yogures_v1.8.pdf) | Fresa, natural y griego, de la recepción al despacho |
-| [Recetas básicas de la planta](01_transformacion-digital/isa88/recetas/Recetas_basicas_planta_v1.0.pdf) | Yogurts, quesos y leche UHT con sus máquinas |
-| [Layout de la línea de yogurts](02_gestion-produccion/distribucion-planta/layout_linea_yogures_actual_clasico.pdf) | La línea de yogurts dentro de la nave, con paletizado manual |
-| [EDT](03_planeacion-proyecto/edt-cronograma/EDT_Completo_v1.0.pdf) y [cronograma](03_planeacion-proyecto/edt-cronograma/Cronograma_Planta_Lactea_v1.0.pdf) | Estructura de desglose del trabajo y plan de actividades |
+| Módulo | Documento | Contenido |
+|:--|:--|:--|
+| Transformación digital | [Recetas y procesos de la planta](01_transformacion-digital/isa88/Recetas_y_procesos_planta.pdf) | Fórmulas, procedimientos, parámetros, PCC y equipos de las tres líneas |
+| | [Modelo ISA-88](01_transformacion-digital/isa88) | Modelo físico, modelo procedimental y [recetas maestras](01_transformacion-digital/isa88/recetas-maestras) de los 9 productos, con [diagramas](01_transformacion-digital/isa88/diagramas) |
+| | [Recetas de la línea de yogurts](01_transformacion-digital/isa88/recetas/Recetas_linea_yogures_v1.8.pdf) | Fresa, natural y griego, de la recepción al despacho |
+| | [Recetas básicas de la planta](01_transformacion-digital/isa88/recetas/Recetas_basicas_planta_v1.0.pdf) | Yogurts, quesos y leche UHT con sus máquinas |
+| | [P&ID de la empresa base](01_transformacion-digital/instrumentacion/PID_Planta_Lactea_Grupo6_Empresa_Base.pdf) | Tuberías, instrumentos y nivel de automatización de cada equipo |
+| | [Comunicación y datos según ISA-95](01_transformacion-digital/arquitectura-isa95/ISA95_Comunicacion_Datos_Empresa_Base.pdf) | Qué se registra hoy, dónde y quién decide, por niveles |
+| Gestión de la producción | [Layout de la línea de yogurts](02_gestion-produccion/distribucion-planta/layout_linea_yogures_actual_clasico.pdf) | La línea de yogurts dentro de la nave, con paletizado manual |
+| Planeación del proyecto | [EDT](03_planeacion-proyecto/edt-cronograma/EDT_Completo_v1.0.pdf) y [cronograma](03_planeacion-proyecto/edt-cronograma/Cronograma_Planta_Lactea_v1.0.pdf) | Estructura de desglose del trabajo y plan de 12 meses |
+| | [Estado financiero](03_planeacion-proyecto/evaluacion-financiera/Estado_Financiero.pdf) | OPEX, CAPEX, estado gerencial de la línea de yogurts, estado financiero de la planta y evaluación de la propuesta |
+| | [Base de cotización](03_planeacion-proyecto/presupuesto/cotizaciones/Mekvra_Base_Cotizacion.pdf) | Costeo de servicios, licencias y equipos, y propuesta económica para el cliente |
 
 <sub>Las cifras son valores de diseño o de simulación, no medidas en planta.</sub>
 
