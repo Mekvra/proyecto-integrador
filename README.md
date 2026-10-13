@@ -42,14 +42,14 @@
 
 Nuestro cliente es **Lácteos Altos de Teusacá**, una planta de derivados lácteos que recibe **150.000 L de leche al día**. Tres líneas por lotes comparten la recepción, la pasteurización y los silos (acta del 9 de octubre de 2026).
 
-| | Línea | Leche al día | Productos | Alcance en el proyecto |
-|:--:|:--|--:|:--|:--|
-| <img src="https://img.shields.io/badge/-%20%20-e87090?style=flat-square" alt=""> | **Yogures** | ≈ 57.600 L | Fresa, natural y griego | Línea detallada: recetas ISA-88, simulación, VSM, layout y espagueti |
-| <img src="https://img.shields.io/badge/-%20%20-e6c25a?style=flat-square" alt=""> | **Quesos** | 50.000 L | Mozzarella, quesillo y doble crema | Recetas básicas y simulación de la planta |
-| <img src="https://img.shields.io/badge/-%20%20-6fae78?style=flat-square" alt=""> | **Leche UHT** | 43.000 L | Entera, descremada y con chocolate | Recetas básicas y simulación de la planta |
+| | Línea | Productos | Alcance en el proyecto |
+|:--:|:--|:--|:--|
+| <img src="https://img.shields.io/badge/-%20%20-e87090?style=flat-square" alt=""> | **Yogures** | Fresa, natural y griego | Línea detallada: recetas ISA-88, simulación, VSM, layout y espagueti |
+| <img src="https://img.shields.io/badge/-%20%20-e6c25a?style=flat-square" alt=""> | **Quesos** | Mozzarella, quesillo y doble crema | Recetas básicas y simulación de la planta |
+| <img src="https://img.shields.io/badge/-%20%20-6fae78?style=flat-square" alt=""> | **Leche UHT** | Entera, descremada y con chocolate | Recetas básicas y simulación de la planta |
 
 <p align="center">
-  <img src=".github/assets/cifras.png" alt="Cifras del estado actual: 150.000 L/día recibidos, 57.600 L/día en yogures, OEE de llenadoras ≈ 70 %, llenadora de vasos U311 al 88 %, lead time de 35 h y 21 km de recorridos al día" width="100%">
+  <img src=".github/assets/cifras.png" alt="Producción diaria: 150.000 L de leche recibida, 57.600 L en yogures, 50.000 L en quesos y 43.000 L en leche UHT" width="100%">
 </p>
 
 <br>
@@ -62,31 +62,31 @@ Estado actual de la planta, antes de la propuesta de automatización. Cada image
   <tr>
     <td width="50%" valign="top">
       <a href="02_gestion-produccion/simulacion-tecnomatix/planta-150k"><img src=".github/assets/avances/d1.jpg" alt="Modelo 3D de la planta con tres líneas en Tecnomatix" width="100%"></a>
-      <sub>Tronco común de 150.000 L/día con las líneas de yogures, quesos y leche UHT, 12 semanas simuladas en Plant Simulation.</sub>
+      <sub>Planta completa en Plant Simulation: tronco común y líneas de yogures, quesos y leche UHT.</sub>
     </td>
     <td width="50%" valign="top">
       <a href="02_gestion-produccion/simulacion-tecnomatix/linea-yogures"><img src=".github/assets/avances/d2.jpg" alt="Modelo 3D de la línea de yogures con paletizado manual" width="100%"></a>
-      <sub>Seis secciones, de la recepción al despacho. Dos operarios estiban a mano y no alcanzan cuando las tres llenadoras trabajan.</sub>
+      <sub>Línea de yogures en seis secciones, de la recepción al despacho, con paletizado manual.</sub>
     </td>
   </tr>
   <tr>
     <td width="50%" valign="top">
       <a href="02_gestion-produccion/vsm/vsm_planta_3_lineas_clasico.pdf"><img src=".github/assets/avances/d3.jpg" alt="VSM de la planta con tres líneas" width="100%"></a>
-      <sub>Un flujo de valor por línea sobre el tronco común, con el uso de cada equipo simulado.</sub>
+      <sub>Mapa de flujo de valor de las tres líneas sobre el tronco común.</sub>
     </td>
     <td width="50%" valign="top">
       <a href="02_gestion-produccion/vsm/vsm_linea_yogures_clasico.pdf"><img src=".github/assets/avances/d4.jpg" alt="VSM de la línea de yogures" width="100%"></a>
-      <sub>Lead time ≈ 35 h con 30 % de valor agregado. La llenadora de vasos U311 marca el ritmo.</sub>
+      <sub>Mapa de flujo de valor de la línea de yogures, de la recepción a la cámara.</sub>
     </td>
   </tr>
   <tr>
     <td width="50%" valign="top">
       <a href="02_gestion-produccion/distribucion-planta/layout_planta_3_lineas_clasico.pdf"><img src=".github/assets/avances/d5.jpg" alt="Distribución en planta de la nave de 110 por 60 metros" width="100%"></a>
-      <sub>Nave de 110 × 60 m con muros, puertas, pasillos y 79 % de piso libre. También el <a href="02_gestion-produccion/distribucion-planta/layout_linea_yogures_actual_clasico.pdf">layout de la línea de yogures</a>.</sub>
+      <sub>Plano de la nave de 110 × 60 m con las tres líneas. También el <a href="02_gestion-produccion/distribucion-planta/layout_linea_yogures_actual_clasico.pdf">layout de la línea de yogures</a>.</sub>
     </td>
     <td width="50%" valign="top">
       <a href="02_gestion-produccion/distribucion-planta/espagueti_linea_yogures_actual_clasico.pdf"><img src=".github/assets/avances/d6.jpg" alt="Diagrama de espagueti de la línea de yogures" width="100%"></a>
-      <sub>≈ 21 km de recorridos al día y ≈ 11.600 cajas estibadas a mano. La ruta morada es la de la analista de calidad.</sub>
+      <sub>Recorridos diarios de personas y montacargas en la línea de yogures.</sub>
     </td>
   </tr>
 </table>
@@ -104,42 +104,50 @@ Estado actual de la planta, antes de la propuesta de automatización. Cada image
 <table>
   <tr>
     <td align="center" valign="top" width="20%">
-      <a href="https://github.com/lmendozar2001"><img src=".github/assets/equipo/luis.png" width="120" alt="Luis Alberto Mendoza"></a><br>
-      <b>Luis Alberto Mendoza</b><br>
-      <sub>Líder de automatización</sub><br>
-      <sub><a href="https://github.com/lmendozar2001">@lmendozar2001</a></sub>
+      <a href="https://github.com/lmendozar2001"><img src=".github/assets/equipo/luis.png" width="128" alt="Luis Alberto Mendoza"></a>
+      <br><br>
+      <b>Luis Alberto Mendoza</b>
+      <br>
+      <sub>Líder de automatización</sub>
+      <br><br>
+      <a href="https://github.com/lmendozar2001"><img src="https://img.shields.io/badge/lmendozar2001-141312?style=flat-square&logo=github&logoColor=c8ad86" alt="@lmendozar2001"></a>
     </td>
     <td align="center" valign="top" width="20%">
-      <a href="https://github.com/Kreiop"><img src=".github/assets/equipo/pablo.png" width="120" alt="Pablo de Jesús Arcila Mora"></a><br>
-      <b>Pablo de Jesús Arcila Mora</b><br>
-      <sub>Líder de ingeniería</sub><br>
-      <sub><a href="https://github.com/Kreiop">@Kreiop</a></sub>
+      <a href="https://github.com/Kreiop"><img src=".github/assets/equipo/pablo.png" width="128" alt="Pablo de Jesús Arcila Mora"></a>
+      <br><br>
+      <b>Pablo de Jesús Arcila Mora</b>
+      <br>
+      <sub>Líder de ingeniería</sub>
+      <br><br>
+      <a href="https://github.com/Kreiop"><img src="https://img.shields.io/badge/Kreiop-141312?style=flat-square&logo=github&logoColor=c8ad86" alt="@Kreiop"></a>
     </td>
     <td align="center" valign="top" width="20%">
-      <a href="https://github.com/david-pi3141"><img src=".github/assets/equipo/david.png" width="120" alt="David Steven Pinzón Hernández"></a><br>
-      <b>David Steven Pinzón Hernández</b><br>
-      <sub>Líder de gestión y administración</sub><br>
-      <sub><a href="https://github.com/david-pi3141">@david-pi3141</a></sub>
+      <a href="https://github.com/david-pi3141"><img src=".github/assets/equipo/david.png" width="128" alt="David Steven Pinzón Hernández"></a>
+      <br><br>
+      <b>David Steven Pinzón Hernández</b>
+      <br>
+      <sub>Líder de gestión y administración</sub>
+      <br><br>
+      <a href="https://github.com/david-pi3141"><img src="https://img.shields.io/badge/david--pi3141-141312?style=flat-square&logo=github&logoColor=c8ad86" alt="@david-pi3141"></a>
     </td>
     <td align="center" valign="top" width="20%">
-      <a href="https://github.com/DanielCastro-02"><img src=".github/assets/equipo/daniel.png" width="120" alt="Daniel Felipe Castro"></a><br>
-      <b>Daniel Felipe Castro</b><br>
-      <sub>Gerencia, desarrollo y finanzas</sub><br>
-      <sub><a href="https://github.com/DanielCastro-02">@DanielCastro-02</a></sub>
+      <a href="https://github.com/DanielCastro-02"><img src=".github/assets/equipo/daniel.png" width="128" alt="Daniel Felipe Castro"></a>
+      <br><br>
+      <b>Daniel Felipe Castro</b>
+      <br>
+      <sub>Gerencia, desarrollo y finanzas</sub>
+      <br><br>
+      <a href="https://github.com/DanielCastro-02"><img src="https://img.shields.io/badge/DanielCastro--02-141312?style=flat-square&logo=github&logoColor=c8ad86" alt="@DanielCastro-02"></a>
     </td>
     <td align="center" valign="top" width="20%">
-      <a href="https://github.com/JananLC"><img src=".github/assets/equipo/janan.png" width="120" alt="Janan Libardo Carreño Riaño"></a><br>
-      <b>Janan Libardo Carreño Riaño</b><br>
-      <sub>Líder de instrumentación y software</sub><br>
-      <sub><a href="https://github.com/JananLC">@JananLC</a></sub>
+      <a href="https://github.com/JananLC"><img src=".github/assets/equipo/janan.png" width="128" alt="Janan Libardo Carreño Riaño"></a>
+      <br><br>
+      <b>Janan Libardo Carreño Riaño</b>
+      <br>
+      <sub>Líder de instrumentación y software</sub>
+      <br><br>
+      <a href="https://github.com/JananLC"><img src="https://img.shields.io/badge/JananLC-141312?style=flat-square&logo=github&logoColor=c8ad86" alt="@JananLC"></a>
     </td>
-  </tr>
-  <tr>
-    <td align="center" valign="top"><sub><i>Diagramas de proceso, modelo ISA-88 e instrumentación</i></sub></td>
-    <td align="center" valign="top"><sub><i>Modelo ISA-95 y P&amp;ID</i></sub></td>
-    <td align="center" valign="top"><sub><i>EDT y cronograma de actividades</i></sub></td>
-    <td align="center" valign="top"><sub><i>Análisis financiero y definición de la empresa integradora</i></sub></td>
-    <td align="center" valign="top"><sub><i>Tecnomatix, VSM, layout y espagueti, página web y GitHub</i></sub></td>
   </tr>
 </table>
 
