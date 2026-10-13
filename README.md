@@ -9,74 +9,158 @@
   <a href="https://github.com/Mekvra/proyecto-integrador/actions/workflows/deploy-web.yml"><img alt="Publicación" src="https://img.shields.io/github/actions/workflow/status/Mekvra/proyecto-integrador/deploy-web.yml?branch=main&label=publicaci%C3%B3n&style=flat-square&labelColor=141312&color=a0ca92"></a>
   <img alt="Curso" src="https://img.shields.io/badge/APM-2026--2S-c8ad86?style=flat-square&labelColor=141312">
   <img alt="Universidad" src="https://img.shields.io/badge/UNAL-Sede_Bogot%C3%A1-c8ad86?style=flat-square&labelColor=141312">
+  <img alt="Tecnomatix" src="https://img.shields.io/badge/Tecnomatix-Plant_Simulation-8a8380?style=flat-square&labelColor=141312">
+  <img alt="ISA-88 e ISA-95" src="https://img.shields.io/badge/ISA--88_·_ISA--95-est%C3%A1ndares-8a8380?style=flat-square&labelColor=141312">
 </p>
 
 <p align="center">
   <a href="https://mekvra.github.io/proyecto-integrador/"><b>Página web</b></a>
   &nbsp;·&nbsp;
-  <a href="#estructura">Estructura</a>
+  <a href="#la-planta">La planta</a>
+  &nbsp;·&nbsp;
+  <a href="#avances">Avances</a>
   &nbsp;·&nbsp;
   <a href="#equipo">Equipo</a>
   &nbsp;·&nbsp;
-  <a href="CONTRIBUTING.md">Cómo aportar</a>
+  <a href="#estructura">Estructura</a>
   &nbsp;·&nbsp;
-  Video de sustentación <sub>(próximamente)</sub>
+  <a href="CONTRIBUTING.md">Cómo aportar</a>
 </p>
 
 <br>
 
-**Mekvra S.A.S** es una empresa integradora de soluciones de **Transformación Digital Industrial**, formada por ingenieros mecatrónicos. Nuestro cliente es **Lácteos Altos de Teusacá**, una planta de derivados lácteos que recibe 150.000 L de leche al día, y le proponemos una solución que conecta todos sus niveles productivos: del sensor en el tanque a la decisión en la gerencia.
+<p align="center">
+  <b>Mekvra S.A.S</b> es una empresa integradora de soluciones de <b>Transformación Digital Industrial</b>, formada por ingenieros mecatrónicos.<br>
+  Conectamos el proceso físico con la gestión del negocio: del sensor en el tanque a la decisión en la gerencia.
+</p>
 
-> Proyecto Integrador del curso **Automatización de Procesos de Manufactura 2026-2S** · Universidad Nacional de Colombia · Sede Bogotá.
+<p align="center"><sub>Proyecto Integrador · Automatización de Procesos de Manufactura 2026-2S · Universidad Nacional de Colombia · Sede Bogotá</sub></p>
 
-## Líneas de producción
+<br>
 
-Tres líneas por lotes que comparten la recepción, la pasteurización y los silos de leche (acta del 9 de octubre de 2026).
+<h2 id="la-planta">La planta</h2>
 
-| Línea | Leche al día | Productos | Alcance en el proyecto |
-|:--|--:|:--|:--|
-| **Yogures** | ≈ 57.000 L | Fresa, natural y griego | Línea detallada: recetas ISA-88, simulación, VSM, layout y espagueti |
-| **Quesos** | 50.000 L | Mozzarella, quesillo y doble crema | Recetas básicas y simulación de la planta |
-| **Leche UHT** | 43.000 L | Entera, descremada y con chocolate | Recetas básicas y simulación de la planta |
+Nuestro cliente es **Lácteos Altos de Teusacá**, una planta de derivados lácteos que recibe **150.000 L de leche al día**. Tres líneas por lotes comparten la recepción, la pasteurización y los silos (acta del 9 de octubre de 2026).
 
-## Avances
+| | Línea | Leche al día | Productos | Alcance en el proyecto |
+|:--:|:--|--:|:--|:--|
+| <img src="https://img.shields.io/badge/-%20%20-e87090?style=flat-square" alt=""> | **Yogures** | ≈ 57.600 L | Fresa, natural y griego | Línea detallada: recetas ISA-88, simulación, VSM, layout y espagueti |
+| <img src="https://img.shields.io/badge/-%20%20-e6c25a?style=flat-square" alt=""> | **Quesos** | 50.000 L | Mozzarella, quesillo y doble crema | Recetas básicas y simulación de la planta |
+| <img src="https://img.shields.io/badge/-%20%20-6fae78?style=flat-square" alt=""> | **Leche UHT** | 43.000 L | Entera, descremada y con chocolate | Recetas básicas y simulación de la planta |
 
-| Entregable | Contenido |
-|:--|:--|
-| [**Simulación en Tecnomatix**](02_gestion-produccion/simulacion-tecnomatix) | Planta con las tres líneas y línea de yogures con paletizado manual, en 3D, con 12 semanas simuladas |
-| [**VSM**](02_gestion-produccion/vsm) | [Planta completa](02_gestion-produccion/vsm/vsm_planta_3_lineas_clasico.pdf) y [línea de yogures](02_gestion-produccion/vsm/vsm_linea_yogures_clasico.pdf): lead time ≈ 35 h con 30 % de valor agregado |
-| [**Distribución en planta**](02_gestion-produccion/distribucion-planta) | [Layout de la planta](02_gestion-produccion/distribucion-planta/layout_planta_3_lineas_clasico.pdf) (edificio de 110 × 60 m) y [layout de la línea de yogures](02_gestion-produccion/distribucion-planta/layout_linea_yogures_actual_clasico.pdf) |
-| [**Diagrama de espagueti**](02_gestion-produccion/distribucion-planta/espagueti_linea_yogures_actual_clasico.pdf) | Recorridos diarios de la línea de yogures: ≈ 21 km al día y ≈ 11.600 cajas estibadas a mano |
-| [**Recetas ISA-88**](01_transformacion-digital/isa88/recetas) | [Recetas de la línea de yogures](01_transformacion-digital/isa88/recetas/Recetas_linea_yogures_v1.8.pdf) y [recetas básicas de la planta](01_transformacion-digital/isa88/recetas/Recetas_basicas_planta_v1.0.pdf) |
+<p align="center">
+  <img src=".github/assets/cifras.png" alt="Cifras del estado actual: 150.000 L/día recibidos, 57.600 L/día en yogures, OEE de llenadoras ≈ 70 %, llenadora de vasos U311 al 88 %, lead time de 35 h y 21 km de recorridos al día" width="100%">
+</p>
 
-Todas las cifras son valores de diseño o de simulación, no medidas en planta.
+<br>
 
-<h2 id="estructura">Estructura</h2>
+<h2 id="avances">Avances</h2>
 
-El repositorio sigue los módulos del curso. Cada carpeta tiene su propio `README.md` con los entregables, el responsable y el estado.
+Estado actual de la planta, antes de la propuesta de automatización. Cada imagen abre el documento completo.
 
-| | Módulo | Contenido |
-|:--:|:--|:--|
-| `00` | [**Gestión del equipo**](00_gestion-equipo) | Actas, roles y evidencias de trabajo colaborativo |
-| `01` | [**Transformación digital**](01_transformacion-digital) | Arquitectura ISA-95, modelos y recetas ISA-88, instrumentación |
-| `02` | [**Gestión de la producción**](02_gestion-produccion) | Diagramas de proceso, layout, VSM, OEE, Tecnomatix, MES/ERP |
-| `03` | [**Planeación del proyecto**](03_planeacion-proyecto) | EDT, cronograma, presupuesto, flujo de caja, propuesta de valor |
-| `04` | [**Controladores**](04_controladores) | Grafcet y lógica Ladder en Logix Emulate |
-| `05` | [**Gemelo digital**](05_gemelo-digital) | Línea de quesos en Siemens NX |
-| `06` | [**Celda robotizada**](06_celda-robotizada) | Diseño, simulación en RobotStudio y análisis de riesgos |
-| `07` | [**SCADA**](07_scada) | HMI ISA-101 en Ignition, comunicación OPC |
-| `08` | [**Investigación**](08_investigacion) | Proceso lácteo, variables de operación y fuentes |
-| `web` | [**Página web**](web) | Sitio en Astro, publicado automáticamente con GitHub Pages |
+<table>
+  <tr>
+    <td width="50%" valign="top">
+      <a href="02_gestion-produccion/simulacion-tecnomatix/planta-150k"><img src=".github/assets/avances/d1.jpg" alt="Modelo 3D de la planta con tres líneas en Tecnomatix" width="100%"></a>
+      <sub>Tronco común de 150.000 L/día con las líneas de yogures, quesos y leche UHT, 12 semanas simuladas en Plant Simulation.</sub>
+    </td>
+    <td width="50%" valign="top">
+      <a href="02_gestion-produccion/simulacion-tecnomatix/linea-yogures"><img src=".github/assets/avances/d2.jpg" alt="Modelo 3D de la línea de yogures con paletizado manual" width="100%"></a>
+      <sub>Seis secciones, de la recepción al despacho. Dos operarios estiban a mano y no alcanzan cuando las tres llenadoras trabajan.</sub>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top">
+      <a href="02_gestion-produccion/vsm/vsm_planta_3_lineas_clasico.pdf"><img src=".github/assets/avances/d3.jpg" alt="VSM de la planta con tres líneas" width="100%"></a>
+      <sub>Un flujo de valor por línea sobre el tronco común, con el uso de cada equipo simulado.</sub>
+    </td>
+    <td width="50%" valign="top">
+      <a href="02_gestion-produccion/vsm/vsm_linea_yogures_clasico.pdf"><img src=".github/assets/avances/d4.jpg" alt="VSM de la línea de yogures" width="100%"></a>
+      <sub>Lead time ≈ 35 h con 30 % de valor agregado. La llenadora de vasos U311 marca el ritmo.</sub>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top">
+      <a href="02_gestion-produccion/distribucion-planta/layout_planta_3_lineas_clasico.pdf"><img src=".github/assets/avances/d5.jpg" alt="Distribución en planta de la nave de 110 por 60 metros" width="100%"></a>
+      <sub>Nave de 110 × 60 m con muros, puertas, pasillos y 79 % de piso libre. También el <a href="02_gestion-produccion/distribucion-planta/layout_linea_yogures_actual_clasico.pdf">layout de la línea de yogures</a>.</sub>
+    </td>
+    <td width="50%" valign="top">
+      <a href="02_gestion-produccion/distribucion-planta/espagueti_linea_yogures_actual_clasico.pdf"><img src=".github/assets/avances/d6.jpg" alt="Diagrama de espagueti de la línea de yogures" width="100%"></a>
+      <sub>≈ 21 km de recorridos al día y ≈ 11.600 cajas estibadas a mano. La ruta morada es la de la analista de calidad.</sub>
+    </td>
+  </tr>
+</table>
+
+**Recetas ISA-88:** [modelo físico, procedimental y 9 recetas maestras](01_transformacion-digital/isa88) · [recetas de la línea de yogures](01_transformacion-digital/isa88/recetas/Recetas_linea_yogures_v1.8.pdf) · [recetas básicas de la planta](01_transformacion-digital/isa88/recetas/Recetas_basicas_planta_v1.0.pdf)
+<br>
+**Planeación:** [EDT](03_planeacion-proyecto/edt-cronograma/EDT_Completo_v1.0.pdf) · [cronograma](03_planeacion-proyecto/edt-cronograma/Cronograma_Planta_Lactea_v1.0.pdf)
+
+<sub>Todas las cifras son valores de diseño o de simulación, no medidas en planta.</sub>
+
+<br>
 
 <h2 id="equipo">Equipo</h2>
 
-| | Integrante | Rol |
-|:--:|:--|:--|
-| <img src="https://github.com/lmendozar2001.png?size=80" width="40" alt=""> | **Luis Alberto Mendoza**<br><sub>[@lmendozar2001](https://github.com/lmendozar2001)</sub> | Líder de integración OT/IT |
-| <img src="https://github.com/Kreiop.png?size=80" width="40" alt=""> | **Pablo de Jesús Arcila**<br><sub>[@Kreiop](https://github.com/Kreiop)</sub> | Líder de arquitectura y modelado técnico |
-| <img src="https://github.com/david-pi3141.png?size=80" width="40" alt=""> | **David Steven Pinzón Hernández**<br><sub>[@david-pi3141](https://github.com/david-pi3141)</sub> | Líder de gestión de producción |
-| <img src="https://github.com/DanielCastro-02.png?size=80" width="40" alt=""> | **Daniel Felipe Castro**<br><sub>[@DanielCastro-02](https://github.com/DanielCastro-02)</sub> | CFO · Gestión de proyecto |
-| <img src="https://github.com/JananLC.png?size=80" width="40" alt=""> | **Janan Libardo Carreño Riaño**<br><sub>[@JananLC](https://github.com/JananLC)</sub> | CTO · Integración digital |
+<table>
+  <tr>
+    <td align="center" valign="top" width="20%">
+      <a href="https://github.com/lmendozar2001"><img src=".github/assets/equipo/luis.png" width="120" alt="Luis Alberto Mendoza"></a><br>
+      <b>Luis Alberto Mendoza</b><br>
+      <sub>Líder de automatización</sub><br>
+      <sub><a href="https://github.com/lmendozar2001">@lmendozar2001</a></sub>
+    </td>
+    <td align="center" valign="top" width="20%">
+      <a href="https://github.com/Kreiop"><img src=".github/assets/equipo/pablo.png" width="120" alt="Pablo de Jesús Arcila Mora"></a><br>
+      <b>Pablo de Jesús Arcila Mora</b><br>
+      <sub>Líder de ingeniería</sub><br>
+      <sub><a href="https://github.com/Kreiop">@Kreiop</a></sub>
+    </td>
+    <td align="center" valign="top" width="20%">
+      <a href="https://github.com/david-pi3141"><img src=".github/assets/equipo/david.png" width="120" alt="David Steven Pinzón Hernández"></a><br>
+      <b>David Steven Pinzón Hernández</b><br>
+      <sub>Líder de gestión y administración</sub><br>
+      <sub><a href="https://github.com/david-pi3141">@david-pi3141</a></sub>
+    </td>
+    <td align="center" valign="top" width="20%">
+      <a href="https://github.com/DanielCastro-02"><img src=".github/assets/equipo/daniel.png" width="120" alt="Daniel Felipe Castro"></a><br>
+      <b>Daniel Felipe Castro</b><br>
+      <sub>Gerencia, desarrollo y finanzas</sub><br>
+      <sub><a href="https://github.com/DanielCastro-02">@DanielCastro-02</a></sub>
+    </td>
+    <td align="center" valign="top" width="20%">
+      <a href="https://github.com/JananLC"><img src=".github/assets/equipo/janan.png" width="120" alt="Janan Libardo Carreño Riaño"></a><br>
+      <b>Janan Libardo Carreño Riaño</b><br>
+      <sub>Líder de instrumentación y software</sub><br>
+      <sub><a href="https://github.com/JananLC">@JananLC</a></sub>
+    </td>
+  </tr>
+  <tr>
+    <td align="center" valign="top"><sub><i>Diagramas de proceso, modelo ISA-88 e instrumentación</i></sub></td>
+    <td align="center" valign="top"><sub><i>Modelo ISA-95 y P&amp;ID</i></sub></td>
+    <td align="center" valign="top"><sub><i>EDT y cronograma de actividades</i></sub></td>
+    <td align="center" valign="top"><sub><i>Análisis financiero y definición de la empresa integradora</i></sub></td>
+    <td align="center" valign="top"><sub><i>Tecnomatix, VSM, layout y espagueti, página web y GitHub</i></sub></td>
+  </tr>
+</table>
+
+<br>
+
+<h2 id="estructura">Estructura</h2>
+
+El repositorio sigue los módulos del curso. Cada carpeta tiene su propio `README.md` con sus entregables.
+
+| | Módulo | Contenido | Estado |
+|:--:|:--|:--|:--:|
+| `00` | [**Gestión del equipo**](00_gestion-equipo) | Actas, roles y evidencias de trabajo colaborativo | ![](https://img.shields.io/badge/-en_curso-c8ad86?style=flat-square) |
+| `01` | [**Transformación digital**](01_transformacion-digital) | Modelos y recetas ISA-88, arquitectura ISA-95, instrumentación | ![](https://img.shields.io/badge/-en_desarrollo-c8ad86?style=flat-square) |
+| `02` | [**Gestión de la producción**](02_gestion-produccion) | Tecnomatix, VSM, layout, espagueti, indicadores, MES/ERP | ![](https://img.shields.io/badge/-en_desarrollo-c8ad86?style=flat-square) |
+| `03` | [**Planeación del proyecto**](03_planeacion-proyecto) | EDT, cronograma, presupuesto, flujo de caja, propuesta de valor | ![](https://img.shields.io/badge/-en_desarrollo-c8ad86?style=flat-square) |
+| `04` | [**Controladores**](04_controladores) | Grafcet y lógica Ladder en Logix Emulate | ![](https://img.shields.io/badge/-pendiente-8a8380?style=flat-square) |
+| `05` | [**Gemelo digital**](05_gemelo-digital) | Gemelo digital en Siemens NX | ![](https://img.shields.io/badge/-pendiente-8a8380?style=flat-square) |
+| `06` | [**Celda robotizada**](06_celda-robotizada) | Diseño, simulación en RobotStudio y análisis de riesgos | ![](https://img.shields.io/badge/-pendiente-8a8380?style=flat-square) |
+| `07` | [**SCADA**](07_scada) | HMI ISA-101 en Ignition, comunicación OPC | ![](https://img.shields.io/badge/-pendiente-8a8380?style=flat-square) |
+| `08` | [**Investigación**](08_investigacion) | Proceso lácteo, variables de operación y fuentes | ![](https://img.shields.io/badge/-en_curso-c8ad86?style=flat-square) |
+| `web` | [**Página web**](web) | Sitio en Astro, publicado automáticamente con GitHub Pages | ![](https://img.shields.io/badge/-en_l%C3%ADnea-a0ca92?style=flat-square) |
 
 ## Cómo aportar
 
@@ -85,7 +169,9 @@ Sube tus archivos a la carpeta de tu módulo, directamente desde GitHub y sin in
 <br>
 
 <p align="center">
-  <img src=".github/assets/avatar.png" width="44" alt="">
+  <img src=".github/assets/avatar.png" width="56" alt="">
   <br>
-  <sub><b>MEKVRA S.A.S</b> · Automatización e integración industrial</sub>
+  <b>MEKVRA S.A.S</b>
+  <br>
+  <sub>Automatización e integración industrial · Bogotá, Colombia</sub>
 </p>
