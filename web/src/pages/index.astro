@@ -30,27 +30,27 @@ const repoTree = `${sitio.repositorio}/tree/main`;
 // Une las palabras cortas (a, la, de…) con la siguiente para que no queden sueltas al final de una línea.
 const sinHuerfanas = (t: string) => t.replace(/\s(\p{L}{1,2})\s/gu, ' $1\u00a0');
 
-// Indicadores de la línea de yogures, planta actual: simulación de 12 semanas en Tecnomatix y recetas.
+// Indicadores de la línea de yogurts, planta actual: simulación de 12 semanas en Tecnomatix y recetas.
 const kpis = [
   { nombre: 'OEE', valor: '≈ 70', unidad: '%', nota: 'Llenadoras: 0,90 × 0,80 × 0,97' },
   { nombre: 'Takt Time', valor: '4,2', unidad: 'h/lote', nota: '24 h ÷ 5,75 lotes de 10.000 L' },
-  { nombre: 'Throughput', valor: '≈ 2.350', unidad: 'kg/h', nota: 'Yogur terminado, 24 h al día' },
+  { nombre: 'Throughput', valor: '≈ 2.350', unidad: 'kg/h', nota: 'Yogurt terminado, 24 h al día' },
   { nombre: 'MLT', valor: '≈ 35', unidad: 'h', nota: 'Lote de fresa, del camión a la cámara' },
 ];
 const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
 const blob = `${sitio.repositorio}/blob/main`;
 // Galería de la sección de simulación: imagen en public/evidencias y documento completo en el repositorio.
 const galeria = [
-  { img: 'planta-3d.webp', titulo: 'Planta con tres líneas en Tecnomatix', nota: 'Tronco común de 150.000 L/día, yogures, quesos y leche UHT, con paletizado manual en las tres líneas. 66 de los 80 objetos de la licencia.', doc: '02_gestion-produccion/simulacion-tecnomatix/planta-150k', tipo: 'Modelo 3D', ancho: true },
+  { img: 'planta-3d.webp', titulo: 'Planta con tres líneas en Tecnomatix', nota: 'Tronco común de 150.000 L/día, yogurts, quesos y leche UHT, con paletizado manual en las tres líneas. 66 de los 80 objetos de la licencia.', doc: '02_gestion-produccion/simulacion-tecnomatix/planta-150k', tipo: 'Modelo 3D', ancho: true },
   { img: 'planta-vsm.webp', titulo: 'VSM de la planta', nota: 'Un VSM por línea sobre el tronco común, con el uso de cada equipo simulado.', doc: '02_gestion-produccion/vsm/vsm_planta_3_lineas_clasico.pdf', tipo: 'VSM' },
   { img: 'planta-layout.webp', titulo: 'Distribución de la planta', nota: 'Plano de la nave de 110 × 60 m: muros, puertas, pasillos y 80 % de piso libre.', doc: '02_gestion-produccion/distribucion-planta/layout_planta_3_lineas_clasico.pdf', tipo: 'Layout' },
-  { img: 'yogur-3d-manual.webp', titulo: 'Línea de yogures con paletizado manual', nota: 'Escenario actual: dos personas estiban las cajas que llegan por las bandas.', doc: '02_gestion-produccion/simulacion-tecnomatix/linea-yogures', tipo: 'Modelo 3D', ancho: true },
-  { img: 'yogur-vsm.webp', titulo: 'VSM de la línea de yogures', nota: 'Lead time ≈ 35 h con 30 % de valor agregado. La llenadora de vasos marca el ritmo.', doc: '02_gestion-produccion/vsm/vsm_linea_yogures_clasico.pdf', tipo: 'VSM', ancho: true },
-  { img: 'espagueti-actual.webp', titulo: 'Diagrama de espagueti de la línea de yogures', nota: '≈ 21 km de recorridos al día y ≈ 11.600 cajas estibadas a mano. La ruta morada es la de la analista de calidad.', doc: '02_gestion-produccion/distribucion-planta/espagueti_linea_yogures_actual_clasico.pdf', tipo: 'Espagueti', ancho: true },
+  { img: 'yogur-3d-manual.webp', titulo: 'Línea de yogurts con paletizado manual', nota: 'Escenario actual: dos personas estiban las cajas que llegan por las bandas.', doc: '02_gestion-produccion/simulacion-tecnomatix/linea-yogures', tipo: 'Modelo 3D', ancho: true },
+  { img: 'yogur-vsm.webp', titulo: 'VSM de la línea de yogurts', nota: 'Lead time ≈ 35 h con 30 % de valor agregado. La llenadora de vasos marca el ritmo.', doc: '02_gestion-produccion/vsm/vsm_linea_yogures_clasico.pdf', tipo: 'VSM', ancho: true },
+  { img: 'espagueti-actual.webp', titulo: 'Diagrama de espagueti de la línea de yogurts', nota: '≈ 21 km de recorridos al día y ≈ 11.600 cajas estibadas a mano. La ruta morada es la de la analista de calidad.', doc: '02_gestion-produccion/distribucion-planta/espagueti_linea_yogures_actual_clasico.pdf', tipo: 'Espagueti', ancho: true },
 ];
 const recetas = [
-  { titulo: 'Recetas de la planta', nota: 'Yogures, quesos y leche UHT con sus máquinas', doc: '01_transformacion-digital/isa88/recetas/Recetas_basicas_planta_v1.0.pdf' },
-  { titulo: 'Recetas de la línea de yogures', nota: 'Fresa, natural y griego, de la recepción al despacho', doc: '01_transformacion-digital/isa88/recetas/Recetas_linea_yogures_v1.8.pdf' },
+  { titulo: 'Recetas de la planta', nota: 'Yogurts, quesos y leche UHT con sus máquinas', doc: '01_transformacion-digital/isa88/recetas/Recetas_basicas_planta_v1.0.pdf' },
+  { titulo: 'Recetas de la línea de yogurts', nota: 'Fresa, natural y griego, de la recepción al despacho', doc: '01_transformacion-digital/isa88/recetas/Recetas_linea_yogures_v1.8.pdf' },
 ];
 ---
 
@@ -116,7 +116,7 @@ const recetas = [
         <span class="mono">03 · Automatización</span>
         <h2>Máquinas que trabajan, datos que suben.</h2>
         <p>
-          Así se verá la celda de paletizado de la línea de yogures: el sensor detecta la caja, la banda se detiene,
+          Así se verá la celda de paletizado de la línea de yogurts: el sensor detecta la caja, la banda se detiene,
           el PLC ordena el ciclo y el brazo apila. Hoy lo hacen dos personas a mano; con la celda, cada evento llega al
           tablero en tiempo real.
         </p>
@@ -153,7 +153,7 @@ const recetas = [
         <span class="mono">06 · Evidencias</span>
         <h2>Datos de proceso, no promesas.</h2>
         <p>
-          Indicadores de la línea de yogures en la planta actual, con su memoria de cálculo en las recetas y en la
+          Indicadores de la línea de yogurts en la planta actual, con su memoria de cálculo en las recetas y en la
           simulación de 12 semanas en Tecnomatix. Son valores de diseño y de simulación, no medidas de planta.
         </p>
       </div>
@@ -183,7 +183,7 @@ const recetas = [
         <h2>La planta, modelada antes de tocarla.</h2>
         <p>
           Modelos de Plant Simulation, VSM, distribución en planta y diagramas de espagueti de la planta de 150.000 L/día
-          y de la línea de yogures. Abre cada uno para verlo en grande y descargar el documento completo.
+          y de la línea de yogurts. Abre cada uno para verlo en grande y descargar el documento completo.
         </p>
       </div>
       <ol class="fichas">
@@ -248,7 +248,7 @@ const recetas = [
       <div class="section-head">
         <span class="mono">08 · Planeación</span>
         <h2>Doce meses, de la ingeniería a la operación.</h2>
-        <p>El semestre es la primera fase de un proyecto de doce meses: después de la propuesta vienen las compras, el montaje, dos paradas breves de planta y la puesta en marcha de la línea de yogures con su MES.</p>
+        <p>El semestre es la primera fase de un proyecto de doce meses: después de la propuesta vienen las compras, el montaje, dos paradas breves de planta y la puesta en marcha de la línea de yogurts con su MES.</p>
       </div>
 
       <div class="plan-block">

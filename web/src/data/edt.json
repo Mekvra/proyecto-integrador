@@ -57,11 +57,11 @@
   },
   {
    "nombre": "Ingeniería y modelado",
-   "nota": "Línea: Yogures",
+   "nota": "Línea: Yogurts",
    "entregables": [
     {
      "nombre": "Recetarios maestros validados",
-     "detalle": "Yogures",
+     "detalle": "Yogurts",
      "codigo": "3.1"
     },
     {
@@ -155,7 +155,7 @@
   },
   {
    "nombre": "Implementación y puesta en marcha",
-   "nota": "Base Común, Yogures",
+   "nota": "Base Común, Yogurts",
    "entregables": [
     {
      "nombre": "Paquetes de adquisición de equipos",

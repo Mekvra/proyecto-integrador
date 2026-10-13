@@ -1,12 +1,12 @@
 ---
-nombre: Yogures
+nombre: Yogurts
 orden: 1
 detallada: true
-resumen: La línea que desarrollamos en detalle. Yogur con fresa, natural y griego en lotes de 10.000 L; hoy procesa ≈ 57.600 L/día porque la llenadora de vasos está al límite.
+resumen: La línea que desarrollamos en detalle. Yogurt con fresa, natural y griego en lotes de 10.000 L; hoy procesa ≈ 57.600 L/día porque la llenadora de vasos está al límite.
 productos:
   - codigo: YF
-    nombre: Yogur con fresa
-    descripcion: Yogur batido con azúcar y preparado de fresa en trozos, que se mezcla en línea al 13 % después de fermentar.
+    nombre: Yogurt con fresa
+    descripcion: Yogurt batido con azúcar y preparado de fresa en trozos, que se mezcla en línea al 13 % después de fermentar.
     datos:
       - { k: Lotes por semana, v: "13" }
       - { k: Fermentación, v: "43 °C hasta pH 4,50 · 5,25 h" }
@@ -17,8 +17,8 @@ productos:
       - "Botella 1.000 g · U312"
       - "Botella 1.750 g · U312"
   - codigo: YN
-    nombre: Yogur natural
-    descripcion: Yogur batido sin azúcar ni fruta. Abre la semana de producción para no arrastrar azúcar ni fruta a los demás lotes.
+    nombre: Yogurt natural
+    descripcion: Yogurt batido sin azúcar ni fruta. Abre la semana de producción para no arrastrar azúcar ni fruta a los demás lotes.
     datos:
       - { k: Lotes por semana, v: "13" }
       - { k: Fermentación, v: "43 °C hasta pH 4,50 · 5,0 h" }
@@ -28,8 +28,8 @@ productos:
       - "Vaso 200 g · U311"
       - "Botella 1.000 g · U312"
   - codigo: YG
-    nombre: Yogur griego
-    descripcion: Yogur colado en el separador U216, que retira el suero ácido para concentrar la proteína; se usan ≈ 3,2 kg de leche por kg.
+    nombre: Yogurt griego
+    descripcion: Yogurt colado en el separador U216, que retira el suero ácido para concentrar la proteína; se usan ≈ 3,2 kg de leche por kg.
     datos:
       - { k: Lotes por semana, v: "9" }
       - { k: Fermentación, v: "43 °C hasta pH 4,55 · 5,5 h" }

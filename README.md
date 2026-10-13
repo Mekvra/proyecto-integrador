@@ -56,11 +56,11 @@
 
 La planta recibe la leche por un tronco común (recepción, pasteurización y silos) y la reparte entre tres líneas por lotes, según el acta del 9 de octubre de 2026.
 
-<img src=".github/assets/cifras.png" alt="Producción diaria: 150.000 L de leche recibida, 57.600 L en yogures, 50.000 L en quesos y 43.000 L en leche UHT" width="100%">
+<img src=".github/assets/cifras.png" alt="Producción diaria: 150.000 L de leche recibida, 57.600 L en yogurts, 50.000 L en quesos y 43.000 L en leche UHT" width="100%">
 
 | Línea | Productos | Alcance en el proyecto |
 |:--|:--|:--|
-| **Yogures** | Fresa, natural y griego | Línea detallada: recetas ISA-88, simulación, VSM, layout y espagueti |
+| **Yogurts** | Fresa, natural y griego | Línea detallada: recetas ISA-88, simulación, VSM, layout y espagueti |
 | **Quesos** | Mozzarella, quesillo y doble crema | Recetas básicas y simulación de la planta |
 | **Leche UHT** | Entera, descremada y con chocolate | Recetas básicas y simulación de la planta |
 
@@ -75,11 +75,11 @@ Análisis de la planta en su estado actual, antes de la propuesta de automatizac
   <tr>
     <td width="50%" valign="top">
       <a href="02_gestion-produccion/simulacion-tecnomatix/planta-150k"><img src=".github/assets/avances/d1.jpg" alt="Modelo 3D de la planta con tres líneas en Tecnomatix" width="100%"></a>
-      <sub>Planta completa en Plant Simulation: tronco común y líneas de yogures, quesos y leche UHT.</sub>
+      <sub>Planta completa en Plant Simulation: tronco común y líneas de yogurts, quesos y leche UHT.</sub>
     </td>
     <td width="50%" valign="top">
-      <a href="02_gestion-produccion/simulacion-tecnomatix/linea-yogures"><img src=".github/assets/avances/d2.jpg" alt="Modelo 3D de la línea de yogures con paletizado manual" width="100%"></a>
-      <sub>Línea de yogures en seis secciones, de la recepción al despacho, con paletizado manual.</sub>
+      <a href="02_gestion-produccion/simulacion-tecnomatix/linea-yogures"><img src=".github/assets/avances/d2.jpg" alt="Modelo 3D de la línea de yogurts con paletizado manual" width="100%"></a>
+      <sub>Línea de yogurts en seis secciones, de la recepción al despacho, con paletizado manual.</sub>
     </td>
   </tr>
   <tr>
@@ -88,8 +88,8 @@ Análisis de la planta en su estado actual, antes de la propuesta de automatizac
       <sub>Mapa de flujo de valor de las tres líneas sobre el tronco común.</sub>
     </td>
     <td width="50%" valign="top">
-      <a href="02_gestion-produccion/vsm/vsm_linea_yogures_clasico.pdf"><img src=".github/assets/avances/d4.jpg" alt="VSM de la línea de yogures" width="100%"></a>
-      <sub>Mapa de flujo de valor de la línea de yogures, de la recepción a la cámara.</sub>
+      <a href="02_gestion-produccion/vsm/vsm_linea_yogures_clasico.pdf"><img src=".github/assets/avances/d4.jpg" alt="VSM de la línea de yogurts" width="100%"></a>
+      <sub>Mapa de flujo de valor de la línea de yogurts, de la recepción a la cámara.</sub>
     </td>
   </tr>
   <tr>
@@ -98,8 +98,8 @@ Análisis de la planta en su estado actual, antes de la propuesta de automatizac
       <sub>Plano de la nave de 110 × 60 m con las tres líneas.</sub>
     </td>
     <td width="50%" valign="top">
-      <a href="02_gestion-produccion/distribucion-planta/espagueti_linea_yogures_actual_clasico.pdf"><img src=".github/assets/avances/d6.jpg" alt="Diagrama de espagueti de la línea de yogures" width="100%"></a>
-      <sub>Recorridos diarios de personas y montacargas en la línea de yogures.</sub>
+      <a href="02_gestion-produccion/distribucion-planta/espagueti_linea_yogures_actual_clasico.pdf"><img src=".github/assets/avances/d6.jpg" alt="Diagrama de espagueti de la línea de yogurts" width="100%"></a>
+      <sub>Recorridos diarios de personas y montacargas en la línea de yogurts.</sub>
     </td>
   </tr>
 </table>
@@ -109,9 +109,9 @@ Análisis de la planta en su estado actual, antes de la propuesta de automatizac
 | Documento | Contenido |
 |:--|:--|
 | [Modelo ISA-88](01_transformacion-digital/isa88) | Modelo físico, modelo procedimental y recetas maestras de las 9 referencias |
-| [Recetas de la línea de yogures](01_transformacion-digital/isa88/recetas/Recetas_linea_yogures_v1.8.pdf) | Fresa, natural y griego, de la recepción al despacho |
-| [Recetas básicas de la planta](01_transformacion-digital/isa88/recetas/Recetas_basicas_planta_v1.0.pdf) | Yogures, quesos y leche UHT con sus máquinas |
-| [Layout de la línea de yogures](02_gestion-produccion/distribucion-planta/layout_linea_yogures_actual_clasico.pdf) | La línea de yogures dentro de la nave, con paletizado manual |
+| [Recetas de la línea de yogurts](01_transformacion-digital/isa88/recetas/Recetas_linea_yogures_v1.8.pdf) | Fresa, natural y griego, de la recepción al despacho |
+| [Recetas básicas de la planta](01_transformacion-digital/isa88/recetas/Recetas_basicas_planta_v1.0.pdf) | Yogurts, quesos y leche UHT con sus máquinas |
+| [Layout de la línea de yogurts](02_gestion-produccion/distribucion-planta/layout_linea_yogures_actual_clasico.pdf) | La línea de yogurts dentro de la nave, con paletizado manual |
 | [EDT](03_planeacion-proyecto/edt-cronograma/EDT_Completo_v1.0.pdf) y [cronograma](03_planeacion-proyecto/edt-cronograma/Cronograma_Planta_Lactea_v1.0.pdf) | Estructura de desglose del trabajo y plan de actividades |
 
 <sub>Las cifras son valores de diseño o de simulación, no medidas en planta.</sub>

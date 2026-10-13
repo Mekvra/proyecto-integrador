@@ -178,7 +178,7 @@
   },
   {
    "codigo": "3",
-   "nombre": "Línea de yogures · ingeniería y modelado: con fruta (fresa), sin sabor, griego",
+   "nombre": "Línea de yogurts · ingeniería y modelado: con fruta (fresa), sin sabor, griego",
    "responsable": "",
    "inicio": "2026-09-28",
    "fin": "2026-11-11",
@@ -187,7 +187,7 @@
    "tareas": [
     {
      "codigo": "3.1",
-     "nombre": "Receta de yogur con fruta (fresa)",
+     "nombre": "Receta de yogurt con fruta (fresa)",
      "responsable": "D. Pinzón",
      "inicio": "2026-09-28",
      "fin": "2026-10-05",
@@ -197,7 +197,7 @@
     },
     {
      "codigo": "3.2",
-     "nombre": "Verificación de receta: yogur sin sabor",
+     "nombre": "Verificación de receta: yogurt sin sabor",
      "responsable": "D. Pinzón",
      "inicio": "2026-10-07",
      "fin": "2026-10-15",
@@ -207,7 +207,7 @@
     },
     {
      "codigo": "3.3",
-     "nombre": "Verificación de receta: yogur griego",
+     "nombre": "Verificación de receta: yogurt griego",
      "responsable": "L. Mendoza",
      "inicio": "2026-10-07",
      "fin": "2026-10-15",
@@ -217,7 +217,7 @@
     },
     {
      "codigo": "3.4",
-     "nombre": "Validación conjunta de las recetas de yogures con fuentes",
+     "nombre": "Validación conjunta de las recetas de yogurts con fuentes",
      "responsable": "Equipo",
      "inicio": "2026-10-16",
      "fin": "2026-10-20",
@@ -227,7 +227,7 @@
     },
     {
      "codigo": "3.5",
-     "nombre": "Diagrama de proceso de la línea de yogures",
+     "nombre": "Diagrama de proceso de la línea de yogurts",
      "responsable": "J. Carreño",
      "inicio": "2026-10-08",
      "fin": "2026-10-15",
@@ -237,7 +237,7 @@
     },
     {
      "codigo": "3.6",
-     "nombre": "Tiempos de residencia y transición entre etapas (yogures)",
+     "nombre": "Tiempos de residencia y transición entre etapas (yogurts)",
      "responsable": "D. Castro",
      "inicio": "2026-09-28",
      "fin": "2026-10-16",
@@ -247,7 +247,7 @@
     },
     {
      "codigo": "3.7",
-     "nombre": "Capacidades y balance de materia por producto (yogures)",
+     "nombre": "Capacidades y balance de materia por producto (yogurts)",
      "responsable": "D. Castro",
      "inicio": "2026-10-21",
      "fin": "2026-10-27",
@@ -257,7 +257,7 @@
     },
     {
      "codigo": "3.9",
-     "nombre": "Sensores, actuadores, variables y comunicaciones (yogures)",
+     "nombre": "Sensores, actuadores, variables y comunicaciones (yogurts)",
      "responsable": "L. Mendoza",
      "inicio": "2026-10-22",
      "fin": "2026-10-29",
@@ -267,7 +267,7 @@
     },
     {
      "codigo": "3.10",
-     "nombre": "Diagrama P&ID de la línea de yogures (adaptar a nueva información)",
+     "nombre": "Diagrama P&ID de la línea de yogurts (adaptar a nueva información)",
      "responsable": "P. Arcila",
      "inicio": "2026-09-30",
      "fin": "2026-10-16",
@@ -277,7 +277,7 @@
     },
     {
      "codigo": "3.11",
-     "nombre": "ISA-88 yogures: modelo físico (unidades, módulos de equipo y de control)",
+     "nombre": "ISA-88 yogurts: modelo físico (unidades, módulos de equipo y de control)",
      "responsable": "P. Arcila",
      "inicio": "2026-10-22",
      "fin": "2026-10-27",
@@ -287,7 +287,7 @@
     },
     {
      "codigo": "3.12",
-     "nombre": "ISA-88 yogures: modelo de proceso y modelo procedimental (fases, estados, modos)",
+     "nombre": "ISA-88 yogurts: modelo de proceso y modelo procedimental (fases, estados, modos)",
      "responsable": "L. Mendoza",
      "inicio": "2026-10-21",
      "fin": "2026-10-27",
@@ -297,7 +297,7 @@
     },
     {
      "codigo": "3.13",
-     "nombre": "ISA-88 yogures: recetas maestras por referencia de envase",
+     "nombre": "ISA-88 yogurts: recetas maestras por referencia de envase",
      "responsable": "D. Pinzón",
      "inicio": "2026-10-28",
      "fin": "2026-11-04",
@@ -307,7 +307,7 @@
     },
     {
      "codigo": "3.14",
-     "nombre": "Registro de lote y trazabilidad de la línea de yogures",
+     "nombre": "Registro de lote y trazabilidad de la línea de yogurts",
      "responsable": "L. Mendoza",
      "inicio": "2026-11-06",
      "fin": "2026-11-11",
@@ -358,7 +358,7 @@
     },
     {
      "codigo": "4.4",
-     "nombre": "Recursos compartidos de la base común con la línea de yogures",
+     "nombre": "Recursos compartidos de la base común con la línea de yogurts",
      "responsable": "L. Mendoza",
      "inicio": "2026-11-11",
      "fin": "2026-11-13",
@@ -419,7 +419,7 @@
     },
     {
      "codigo": "5.5",
-     "nombre": "Matriz de rentabilidad y selección de la línea a automatizar (yogures)",
+     "nombre": "Matriz de rentabilidad y selección de la línea a automatizar (yogurts)",
      "responsable": "Equipo",
      "inicio": "2026-10-15",
      "fin": "2026-10-15",
@@ -500,7 +500,7 @@
     },
     {
      "codigo": "6.7",
-     "nombre": "Simulación del escenario propuesto (línea de yogures)",
+     "nombre": "Simulación del escenario propuesto (línea de yogurts)",
      "responsable": "J. Carreño",
      "inicio": "2026-11-13",
      "fin": "2026-11-20",
@@ -520,7 +520,7 @@
     },
     {
      "codigo": "6.9",
-     "nombre": "Medición real de indicadores tras la implementación (yogures)",
+     "nombre": "Medición real de indicadores tras la implementación (yogurts)",
      "responsable": "J. Carreño",
      "inicio": "2027-07-14",
      "fin": "2027-08-01",
@@ -551,7 +551,7 @@
    "tareas": [
     {
      "codigo": "7.1",
-     "nombre": "Presupuesto de inversión de la automatización (base común y línea de yogures)",
+     "nombre": "Presupuesto de inversión de la automatización (base común y línea de yogurts)",
      "responsable": "D. Castro",
      "inicio": "2026-11-13",
      "fin": "2026-11-20",
@@ -714,7 +714,7 @@
   },
   {
    "codigo": "9",
-   "nombre": "Implementación · línea de yogures (foco)",
+   "nombre": "Implementación · línea de yogurts (foco)",
    "responsable": "",
    "inicio": "2026-10-30",
    "fin": "2027-07-19",
@@ -733,7 +733,7 @@
     },
     {
      "codigo": "9.2",
-     "nombre": "Evaluación de ofertas, contratación y órdenes de compra de equipos de yogures",
+     "nombre": "Evaluación de ofertas, contratación y órdenes de compra de equipos de yogurts",
      "responsable": "D. Castro",
      "inicio": "2026-12-21",
      "fin": "2027-01-13",
@@ -743,7 +743,7 @@
     },
     {
      "codigo": "9.3",
-     "nombre": "Fabricación y entrega de equipos de yogures (plazo del proveedor)",
+     "nombre": "Fabricación y entrega de equipos de yogurts (plazo del proveedor)",
      "responsable": "Proveedor",
      "inicio": "2027-01-14",
      "fin": "2027-04-12",
@@ -773,7 +773,7 @@
     },
     {
      "codigo": "9.6",
-     "nombre": "HMI/SCADA de la línea de yogures (estados, comandos, modos y alarmas)",
+     "nombre": "HMI/SCADA de la línea de yogurts (estados, comandos, modos y alarmas)",
      "responsable": "J. Carreño",
      "inicio": "2027-02-25",
      "fin": "2027-03-29",
@@ -823,7 +823,7 @@
     },
     {
      "codigo": "9.11",
-     "nombre": "PARADA PROGRAMADA DE LA LÍNEA DE YOGURES · cut-over (breve)",
+     "nombre": "PARADA PROGRAMADA DE LA LÍNEA DE YOGURTS · cut-over (breve)",
      "responsable": "D. Pinzón",
      "inicio": "2027-05-24",
      "fin": "2027-05-26",
@@ -894,7 +894,7 @@
     },
     {
      "codigo": "10.4",
-     "nombre": "Implementación del MES piloto en yogures: órdenes de producción, lotes y recetas de control",
+     "nombre": "Implementación del MES piloto en yogurts: órdenes de producción, lotes y recetas de control",
      "responsable": "D. Pinzón",
      "inicio": "2026-12-21",
      "fin": "2027-02-03",
@@ -944,7 +944,7 @@
     },
     {
      "codigo": "10.9",
-     "nombre": "Pruebas integrales y puesta en marcha del MES–ERP con producción real de yogures",
+     "nombre": "Pruebas integrales y puesta en marcha del MES–ERP con producción real de yogurts",
      "responsable": "Equipo",
      "inicio": "2027-06-21",
      "fin": "2027-07-02",
@@ -995,7 +995,7 @@
     },
     {
      "codigo": "11.4",
-     "nombre": "Consolidación del documento previo a la firma del contrato (diseño de la linea de yogures, ISA-95 y MES/ERP)",
+     "nombre": "Consolidación del documento previo a la firma del contrato (diseño de la linea de yogurts, ISA-95 y MES/ERP)",
      "responsable": "D. Pinzón",
      "inicio": "2026-11-27",
      "fin": "2026-12-03",
@@ -1059,7 +1059,7 @@
  "hitos": [
   {
    "codigo": "H2",
-   "nombre": "Hito 3: Recetas de los tres yogures validadas",
+   "nombre": "Hito 3: Recetas de los tres yogurts validadas",
    "responsable": "",
    "inicio": "2026-10-11",
    "fin": "2026-10-11",
@@ -1086,7 +1086,7 @@
   },
   {
    "codigo": "H4",
-   "nombre": "Hito 5: Ingeniería de la línea de yogures, ISA-95 y diseño MES/ERP completos",
+   "nombre": "Hito 5: Ingeniería de la línea de yogurts, ISA-95 y diseño MES/ERP completos",
    "responsable": "",
    "inicio": "2026-11-20",
    "fin": "2026-11-20",
@@ -1122,7 +1122,7 @@
   },
   {
    "codigo": "H7",
-   "nombre": "Hito 8: Línea de yogures en operación (SAT aprobado)",
+   "nombre": "Hito 8: Línea de yogurts en operación (SAT aprobado)",
    "responsable": "",
    "inicio": "2027-06-18",
    "fin": "2027-06-18",
@@ -1131,7 +1131,7 @@
   },
   {
    "codigo": "H8",
-   "nombre": "Hito 9: MES–ERP en producción con yogures",
+   "nombre": "Hito 9: MES–ERP en producción con yogurts",
    "responsable": "",
    "inicio": "2027-07-02",
    "fin": "2027-07-02",

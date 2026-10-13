@@ -1,5 +1,5 @@
 {
-  "titulo": "Yogur con fresa · perfil de temperatura del lote",
+  "titulo": "Yogurt con fresa · perfil de temperatura del lote",
   "nota": "Lote YF de 10.000 L con los tiempos de las recetas: formulación en U201, tratamiento a 92 °C × 5 min en U202, incubación a 43 °C hasta pH 4,50, ruptura y enfriamiento, fruta en línea y envasado. Es la receta de diseño, no un registro de planta.",
   "limite": { "valor": 90, "etiqueta": "PCC-4 · 90 °C × 300 s mín." },
   "fases": [
