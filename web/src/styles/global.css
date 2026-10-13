@@ -18,8 +18,8 @@
   --cream-12: rgb(255 247 221 / 0.12);
   --cream-08: rgb(255 247 221 / 0.08);
 
-  --gold-60: var(--gold-60);
-  --gold-08: var(--gold-08);
+  --gold-60: rgb(200 173 134 / 0.6);
+  --gold-08: rgb(200 173 134 / 0.08);
 
   --sans: var(--font-switzer), 'General Sans', ui-sans-serif, system-ui, sans-serif;
   --mono: var(--font-geist-mono), ui-monospace, Consolas, monospace;

@@ -1,0 +1,243 @@
+---
+// EDT como diagrama de árbol: raíz del proyecto, tres ramas y, en cada una, las fases con sus entregables colgando.
+// Datos: src/data/edt.json (se genera desde EDT_Completo.docx del Drive del grupo).
+import edt from '../data/edt.json';
+
+const fases = edt.fases;
+const total = fases.reduce((n, f) => n + f.entregables.length, 0);
+const columnas = [fases.slice(0, 3), fases.slice(3, 6), fases.slice(6)];
+---
+
+<figure class="wbs" aria-label={`EDT del proyecto: ${fases.length} fases y ${total} entregables`}>
+  <div class="wbs-root">
+    <span class="mono gold">EDT · nivel 0</span>
+    <strong>{edt.titulo}</strong>
+    <span class="mono wbs-meta">{fases.length} fases · {total} entregables</span>
+  </div>
+
+  <div class="wbs-cols">
+    {
+      columnas.map((col) => (
+        <ol class="wbs-col">
+          {col.map((f) => (
+            <li class="wbs-branch">
+              <div class="wbs-phase">
+                <span class="mono gold">{f.codigo.padStart(2, '0')}</span>
+                <span class="wbs-phase-name">{f.nombre}</span>
+                {f.nota && <span class="mono wbs-note">{f.nota}</span>}
+              </div>
+              <ul class="wbs-items">
+                {f.entregables.map((e) => (
+                  <li>
+                    <div class="wbs-item">
+                      <span class="mono wbs-code">{e.codigo}</span>
+                      <span>
+                        {e.nombre}
+                        {e.detalle && e.detalle.length <= 45 && <span class="wbs-detail">{e.detalle}</span>}
+                      </span>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </li>
+          ))}
+        </ol>
+      ))
+    }
+  </div>
+</figure>
+
+<style>
+  .wbs {
+    --line: var(--cream-16);
+    --drop: 32px;
+    margin: 0;
+  }
+
+  .wbs-root {
+    position: relative;
+    display: grid;
+    gap: 6px;
+    padding: 20px 24px;
+    border: 1px solid var(--gold-60);
+    border-radius: var(--radius);
+    background: var(--carbon);
+  }
+
+  .wbs-root strong {
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: -0.4px;
+  }
+
+  .wbs-meta {
+    color: var(--granite);
+    font-size: 11px;
+  }
+
+  .wbs-cols {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+    padding-top: var(--drop);
+  }
+
+  .wbs-col {
+    position: relative;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* bajada desde la raíz hasta cada rama */
+  .wbs-col::before {
+    content: '';
+    position: absolute;
+    left: 18px;
+    top: calc(var(--drop) * -1);
+    height: var(--drop);
+    width: 1px;
+    background: var(--line);
+  }
+
+  .wbs-branch {
+    position: relative;
+    padding: 0 0 28px 40px;
+  }
+
+  /* columna vertebral de la rama y conector a cada fase */
+  .wbs-branch::before {
+    content: '';
+    position: absolute;
+    left: 18px;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: var(--line);
+  }
+
+  .wbs-branch:last-child::before {
+    bottom: auto;
+    height: 26px;
+  }
+
+  .wbs-branch::after {
+    content: '';
+    position: absolute;
+    left: 18px;
+    top: 26px;
+    width: 22px;
+    height: 1px;
+    background: var(--line);
+  }
+
+  .wbs-phase {
+    position: relative;
+    display: grid;
+    gap: 6px;
+    padding: 14px 16px;
+    border: 1px solid var(--gold-60);
+    border-radius: var(--radius);
+    background: var(--black);
+  }
+
+  .wbs-phase-name {
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1.3;
+    letter-spacing: -0.2px;
+  }
+
+  .wbs-note {
+    color: var(--granite);
+    font-size: 11px;
+  }
+
+  .wbs-items {
+    list-style: none;
+    margin: 0;
+    padding: 10px 0 0 30px;
+  }
+
+  .wbs-items li {
+    position: relative;
+    padding-top: 8px;
+  }
+
+  .wbs-items li::before {
+    content: '';
+    position: absolute;
+    left: -16px;
+    top: -10px;
+    bottom: 0;
+    width: 1px;
+    background: var(--cream-12);
+  }
+
+  .wbs-items li:first-child::before {
+    top: -10px;
+  }
+
+  .wbs-items li:last-child::before {
+    bottom: auto;
+    height: calc(10px + 8px + 18px);
+  }
+
+  .wbs-items li::after {
+    content: '';
+    position: absolute;
+    left: -16px;
+    top: calc(8px + 18px);
+    width: 16px;
+    height: 1px;
+    background: var(--cream-12);
+  }
+
+  .wbs-item {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 10px;
+    align-items: baseline;
+    padding: 10px 12px;
+    border: 1px solid var(--cream-12);
+    border-radius: var(--radius);
+    font-size: 13px;
+    line-height: 1.35;
+    color: var(--cream-70);
+    transition: border-color 150ms var(--ease-switch), color 150ms var(--ease-switch);
+  }
+
+  .wbs-item:hover {
+    border-color: var(--gold-60);
+    color: var(--cream);
+  }
+
+  .wbs-detail {
+    display: block;
+    margin-top: 2px;
+    color: var(--granite);
+    font-size: 12px;
+  }
+
+  .wbs-code {
+    color: var(--gold);
+    font-size: 11px;
+  }
+
+  @media (max-width: 960px) {
+    .wbs-cols {
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+
+    .wbs-col + .wbs-col::before {
+      display: none;
+    }
+
+    /* en una sola columna, la vertebral sigue de una rama a la siguiente */
+    .wbs-col:not(:last-child) .wbs-branch:last-child::before {
+      bottom: 0;
+      height: auto;
+    }
+  }
+</style>

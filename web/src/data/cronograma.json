@@ -1,0 +1,1151 @@
+{
+ "inicio": "2026-09-21",
+ "fin": "2027-09-20",
+ "corte": "2026-10-12",
+ "avance": 0.044,
+ "fases": [
+  {
+   "codigo": "1",
+   "nombre": "Planeación y gestión del proyecto",
+   "responsable": "",
+   "inicio": "2026-09-24",
+   "fin": "2027-08-08",
+   "avance": 0.037,
+   "estado": "En curso",
+   "tareas": [
+    {
+     "codigo": "1.1",
+     "nombre": "Repositorio GitHub bien estructurado",
+     "responsable": "D. Pinzón",
+     "inicio": "2026-09-24",
+     "fin": "2026-09-28",
+     "avance": 1.0,
+     "estado": "Completada",
+     "parada": false
+    },
+    {
+     "codigo": "1.2",
+     "nombre": "Reuniones de equipo, actas y seguimiento semanal",
+     "responsable": "Equipo",
+     "inicio": "2026-09-24",
+     "fin": "2027-08-08",
+     "avance": 0.04,
+     "estado": "En curso",
+     "parada": false
+    },
+    {
+     "codigo": "1.3",
+     "nombre": "EDT definitivo",
+     "responsable": "L. Mendoza",
+     "inicio": "2026-09-28",
+     "fin": "2026-10-09",
+     "avance": 0.7,
+     "estado": "En curso",
+     "parada": false
+    },
+    {
+     "codigo": "1.4",
+     "nombre": "Consulta con docentes sobre alcance, empresa y volumen",
+     "responsable": "Equipo",
+     "inicio": "2026-10-06",
+     "fin": "2026-10-07",
+     "avance": 1.0,
+     "estado": "Completada",
+     "parada": false
+    },
+    {
+     "codigo": "1.5",
+     "nombre": "Definición del volumen de producción de una empresa mediana",
+     "responsable": "D. Castro",
+     "inicio": "2026-10-07",
+     "fin": "2026-10-14",
+     "avance": 0.3,
+     "estado": "En curso",
+     "parada": false
+    },
+    {
+     "codigo": "1.6",
+     "nombre": "Constitución de la empresa y registro en Cámara de Comercio",
+     "responsable": "D. Castro",
+     "inicio": "2026-10-08",
+     "fin": "2026-10-16",
+     "avance": 0.0,
+     "estado": "En curso",
+     "parada": false
+    },
+    {
+     "codigo": "1.7",
+     "nombre": "Cronograma a 6 meses y matriz RACI",
+     "responsable": "D. Pinzón",
+     "inicio": "2026-10-07",
+     "fin": "2026-10-13",
+     "avance": 0.3,
+     "estado": "En curso",
+     "parada": false
+    },
+    {
+     "codigo": "1.8",
+     "nombre": "Gestión de riesgos y de cambios (plazos de equipos, paradas, alcance)",
+     "responsable": "Equipo",
+     "inicio": "2026-10-19",
+     "fin": "2027-08-08",
+     "avance": 0.0,
+     "estado": "Pendiente",
+     "parada": false
+    },
+    {
+     "codigo": "1.9",
+     "nombre": "Comités mensuales de seguimiento con el cliente",
+     "responsable": "Equipo",
+     "inicio": "2026-11-03",
+     "fin": "2027-08-08",
+     "avance": 0.0,
+     "estado": "Pendiente",
+     "parada": false
+    }
+   ]
+  },
+  {
+   "codigo": "2",
+   "nombre": "Investigación y caracterización de la planta",
+   "responsable": "",
+   "inicio": "2026-09-28",
+   "fin": "2026-10-26",
+   "avance": 0.212,
+   "estado": "En curso",
+   "tareas": [
+    {
+     "codigo": "2.1",
+     "nombre": "Estado del arte que sustente la definición",
+     "responsable": "Equipo",
+     "inicio": "2026-09-28",
+     "fin": "2026-10-16",
+     "avance": 0.3,
+     "estado": "En curso",
+     "parada": false
+    },
+    {
+     "codigo": "2.2",
+     "nombre": "Caracterización de la planta: líneas, productos y presentaciones",
+     "responsable": "Equipo",
+     "inicio": "2026-09-28",
+     "fin": "2026-10-14",
+     "avance": 0.5,
+     "estado": "En curso",
+     "parada": false
+    },
+    {
+     "codigo": "2.3",
+     "nombre": "Contextualización de la empresa base en un municipio de la Sabana",
+     "responsable": "P. Arcila",
+     "inicio": "2026-10-07",
+     "fin": "2026-10-15",
+     "avance": 0.1,
+     "estado": "En curso",
+     "parada": false
+    },
+    {
+     "codigo": "2.4",
+     "nombre": "Distribución de planta (layout)",
+     "responsable": "P. Arcila",
+     "inicio": "2026-10-16",
+     "fin": "2026-10-26",
+     "avance": 0.0,
+     "estado": "Pendiente",
+     "parada": false
+    },
+    {
+     "codigo": "2.5",
+     "nombre": "Nivel tecnológico de la empresa base",
+     "responsable": "P. Arcila",
+     "inicio": "2026-10-07",
+     "fin": "2026-10-15",
+     "avance": 0.0,
+     "estado": "En curso",
+     "parada": false
+    },
+    {
+     "codigo": "2.6",
+     "nombre": "VSM de la planta base",
+     "responsable": "P. Arcila",
+     "inicio": "2026-10-07",
+     "fin": "2026-10-15",
+     "avance": 0.0,
+     "estado": "En curso",
+     "parada": false
+    }
+   ]
+  },
+  {
+   "codigo": "3",
+   "nombre": "Línea de yogures · ingeniería y modelado: con fruta (fresa), sin sabor, griego",
+   "responsable": "",
+   "inicio": "2026-09-28",
+   "fin": "2026-11-11",
+   "avance": 0.205,
+   "estado": "En curso",
+   "tareas": [
+    {
+     "codigo": "3.1",
+     "nombre": "Receta de yogur con fruta (fresa)",
+     "responsable": "D. Pinzón",
+     "inicio": "2026-09-28",
+     "fin": "2026-10-05",
+     "avance": 1.0,
+     "estado": "Completada",
+     "parada": false
+    },
+    {
+     "codigo": "3.2",
+     "nombre": "Verificación de receta: yogur sin sabor",
+     "responsable": "D. Pinzón",
+     "inicio": "2026-10-07",
+     "fin": "2026-10-15",
+     "avance": 0.0,
+     "estado": "En curso",
+     "parada": false
+    },
+    {
+     "codigo": "3.3",
+     "nombre": "Verificación de receta: yogur griego",
+     "responsable": "L. Mendoza",
+     "inicio": "2026-10-07",
+     "fin": "2026-10-15",
+     "avance": 0.0,
+     "estado": "En curso",
+     "parada": false
+    },
+    {
+     "codigo": "3.4",
+     "nombre": "Validación conjunta de las recetas de yogures con fuentes",
+     "responsable": "Equipo",
+     "inicio": "2026-10-16",
+     "fin": "2026-10-20",
+     "avance": 0.0,
+     "estado": "Pendiente",
+     "parada": false
+    },
+    {
+     "codigo": "3.5",
+     "nombre": "Diagrama de proceso de la línea de yogures",
+     "responsable": "J. Carreño",
+     "inicio": "2026-10-08",
+     "fin": "2026-10-15",
+     "avance": 0.0,
+     "estado": "En curso",
+     "parada": false
+    },
+    {
+     "codigo": "3.6",
+     "nombre": "Tiempos de residencia y transición entre etapas (yogures)",
+     "responsable": "D. Castro",
+     "inicio": "2026-09-28",
+     "fin": "2026-10-16",
+     "avance": 0.5,
+     "estado": "En curso",
+     "parada": false
+    },
+    {
+     "codigo": "3.7",
+     "nombre": "Capacidades y balance de materia por producto (yogures)",
+     "responsable": "D. Castro",
+     "inicio": "2026-10-21",
+     "fin": "2026-10-27",
+     "avance": 0.0,
+     "estado": "Pendiente",
+     "parada": false
+    },
+    {
+     "codigo": "3.9",
+     "nombre": "Sensores, actuadores, variables y comunicaciones (yogures)",
+     "responsable": "L. Mendoza",
+     "inicio": "2026-10-22",
+     "fin": "2026-10-29",
+     "avance": 0.0,
+     "estado": "Pendiente",
+     "parada": false
+    },
+    {
+     "codigo": "3.10",
+     "nombre": "Diagrama P&ID de la línea de yogures (adaptar a nueva información)",
+     "responsable": "P. Arcila",
+     "inicio": "2026-09-30",
+     "fin": "2026-10-16",
+     "avance": 0.3,
+     "estado": "En curso",
+     "parada": false
+    },
+    {
+     "codigo": "3.11",
+     "nombre": "ISA-88 yogures: modelo físico (unidades, módulos de equipo y de control)",
+     "responsable": "P. Arcila",
+     "inicio": "2026-10-22",
+     "fin": "2026-10-27",
+     "avance": 0.0,
+     "estado": "Pendiente",
+     "parada": false
+    },
+    {
+     "codigo": "3.12",
+     "nombre": "ISA-88 yogures: modelo de proceso y modelo procedimental (fases, estados, modos)",
+     "responsable": "L. Mendoza",
+     "inicio": "2026-10-21",
+     "fin": "2026-10-27",
+     "avance": 0.0,
+     "estado": "Pendiente",
+     "parada": false
+    },
+    {
+     "codigo": "3.13",
+     "nombre": "ISA-88 yogures: recetas maestras por referencia de envase",
+     "responsable": "D. Pinzón",
+     "inicio": "2026-10-28",
+     "fin": "2026-11-04",
+     "avance": 0.0,
+     "estado": "Pendiente",
+     "parada": false
+    },
+    {
+     "codigo": "3.14",
+     "nombre": "Registro de lote y trazabilidad de la línea de yogures",
+     "responsable": "L. Mendoza",
+     "inicio": "2026-11-06",
+     "fin": "2026-11-11",
+     "avance": 0.0,
+     "estado": "Pendiente",
+     "parada": false
+    }
+   ]
+  },
+  {
+   "codigo": "4",
+   "nombre": "Arquitectura ISA-95 e integración OT/IT (diseño)",
+   "responsable": "",
+   "inicio": "2026-10-16",
+   "fin": "2026-11-13",
+   "avance": 0.0,
+   "estado": "Pendiente",
+   "tareas": [
+    {
+     "codigo": "4.1",
+     "nombre": "Estructura ISA-95 de la planta",
+     "responsable": "P. Arcila",
+     "inicio": "2026-10-16",
+     "fin": "2026-10-22",
+     "avance": 0.0,
+     "estado": "Pendiente",
+     "parada": false
+    },
+    {
+     "codigo": "4.2",
+     "nombre": "Arquitectura de comunicaciones y red OT/IT",
+     "responsable": "P. Arcila",
+     "inicio": "2026-10-23",
+     "fin": "2026-10-29",
+     "avance": 0.0,
+     "estado": "Pendiente",
+     "parada": false
+    },
+    {
+     "codigo": "4.3",
+     "nombre": "Flujo de información entre sistemas OT e IT",
+     "responsable": "P. Arcila",
+     "inicio": "2026-10-30",
+     "fin": "2026-11-05",
+     "avance": 0.0,
+     "estado": "Pendiente",
+     "parada": false
+    },
+    {
+     "codigo": "4.4",
+     "nombre": "Recursos compartidos de la base común con la línea de yogures",
+     "responsable": "L. Mendoza",
+     "inicio": "2026-11-11",
+     "fin": "2026-11-13",
+     "avance": 0.0,
+     "estado": "Pendiente",
+     "parada": false
+    }
+   ]
+  },
+  {
+   "codigo": "5",
+   "nombre": "Análisis de rentabilidad por línea y selección de la línea a automatizar",
+   "responsable": "",
+   "inicio": "2026-10-07",
+   "fin": "2026-10-15",
+   "avance": 0.0,
+   "estado": "En curso",
+   "tareas": [
+    {
+     "codigo": "5.1",
+     "nombre": "Datos de quesos (mozzarella, quesillo, doble crema): rendimiento, lote, vida útil y precio de venta",
+     "responsable": "L. Mendoza",
+     "inicio": "2026-10-07",
+     "fin": "2026-10-09",
+     "avance": 0.0,
+     "estado": "En curso",
+     "parada": false
+    },
+    {
+     "codigo": "5.2",
+     "nombre": "Datos de leche UHT (entera, descremada, chocolate): envases por lote, vida útil y precio de venta",
+     "responsable": "D. Pinzón",
+     "inicio": "2026-10-07",
+     "fin": "2026-10-09",
+     "avance": 0.0,
+     "estado": "En curso",
+     "parada": false
+    },
+    {
+     "codigo": "5.3",
+     "nombre": "Capacidad, uso de equipos y cuellos de botella actuales de las tres líneas",
+     "responsable": "J. Carreño",
+     "inicio": "2026-10-07",
+     "fin": "2026-10-09",
+     "avance": 0.0,
+     "estado": "En curso",
+     "parada": false
+    },
+    {
+     "codigo": "5.4",
+     "nombre": "Inversión estimada de automatización y retorno (payback) por línea",
+     "responsable": "P. Arcila",
+     "inicio": "2026-10-13",
+     "fin": "2026-10-14",
+     "avance": 0.0,
+     "estado": "Pendiente",
+     "parada": false
+    },
+    {
+     "codigo": "5.5",
+     "nombre": "Matriz de rentabilidad y selección de la línea a automatizar (yogures)",
+     "responsable": "Equipo",
+     "inicio": "2026-10-15",
+     "fin": "2026-10-15",
+     "avance": 0.0,
+     "estado": "Pendiente",
+     "parada": false
+    }
+   ]
+  },
+  {
+   "codigo": "6",
+   "nombre": "Análisis de proceso, simulación e indicadores",
+   "responsable": "",
+   "inicio": "2026-09-28",
+   "fin": "2027-08-08",
+   "avance": 0.208,
+   "estado": "En curso",
+   "tareas": [
+    {
+     "codigo": "6.1",
+     "nombre": "Tiempos de transporte entre etapas y entre bandas (planta)",
+     "responsable": "D. Castro",
+     "inicio": "2026-09-28",
+     "fin": "2026-10-16",
+     "avance": 0.3,
+     "estado": "En curso",
+     "parada": false
+    },
+    {
+     "codigo": "6.2",
+     "nombre": "Diagramas de proceso del sitio completo",
+     "responsable": "J. Carreño",
+     "inicio": "2026-09-28",
+     "fin": "2026-10-16",
+     "avance": 0.4,
+     "estado": "En curso",
+     "parada": false
+    },
+    {
+     "codigo": "6.3",
+     "nombre": "VSM actual (antes de la automatización)",
+     "responsable": "D. Castro",
+     "inicio": "2026-09-28",
+     "fin": "2026-10-16",
+     "avance": 0.4,
+     "estado": "En curso",
+     "parada": false
+    },
+    {
+     "codigo": "6.4",
+     "nombre": "Revisión y ajuste del modelo de simulación en Tecnomatix",
+     "responsable": "J. Carreño",
+     "inicio": "2026-10-05",
+     "fin": "2026-10-16",
+     "avance": 0.3,
+     "estado": "En curso",
+     "parada": false
+    },
+    {
+     "codigo": "6.5",
+     "nombre": "Propuesta de automatización (escenario propuesto)",
+     "responsable": "L. Mendoza",
+     "inicio": "2026-11-06",
+     "fin": "2026-11-12",
+     "avance": 0.0,
+     "estado": "Pendiente",
+     "parada": false
+    },
+    {
+     "codigo": "6.6",
+     "nombre": "VSM propuesto (después de la automatización)",
+     "responsable": "D. Castro",
+     "inicio": "2026-11-13",
+     "fin": "2026-11-20",
+     "avance": 0.0,
+     "estado": "Pendiente",
+     "parada": false
+    },
+    {
+     "codigo": "6.7",
+     "nombre": "Simulación del escenario propuesto (línea de yogures)",
+     "responsable": "J. Carreño",
+     "inicio": "2026-11-13",
+     "fin": "2026-11-20",
+     "avance": 0.0,
+     "estado": "Pendiente",
+     "parada": false
+    },
+    {
+     "codigo": "6.8",
+     "nombre": "Indicadores simulados antes vs. después: OEE, Takt Time, Throughput, MLT, utilización",
+     "responsable": "J. Carreño",
+     "inicio": "2026-11-23",
+     "fin": "2026-11-26",
+     "avance": 0.0,
+     "estado": "Pendiente",
+     "parada": false
+    },
+    {
+     "codigo": "6.9",
+     "nombre": "Medición real de indicadores tras la implementación (yogures)",
+     "responsable": "J. Carreño",
+     "inicio": "2027-07-14",
+     "fin": "2027-08-01",
+     "avance": 0.0,
+     "estado": "Pendiente",
+     "parada": false
+    },
+    {
+     "codigo": "6.11",
+     "nombre": "Comparación real vs. simulado y ajuste del modelo",
+     "responsable": "J. Carreño",
+     "inicio": "2027-08-01",
+     "fin": "2027-08-08",
+     "avance": 0.0,
+     "estado": "Pendiente",
+     "parada": false
+    }
+   ]
+  },
+  {
+   "codigo": "7",
+   "nombre": "Análisis económico, propuesta de valor y contratación",
+   "responsable": "",
+   "inicio": "2026-11-13",
+   "fin": "2027-08-08",
+   "avance": 0.0,
+   "estado": "Pendiente",
+   "tareas": [
+    {
+     "codigo": "7.1",
+     "nombre": "Presupuesto de inversión de la automatización (base común y línea de yogures)",
+     "responsable": "D. Castro",
+     "inicio": "2026-11-13",
+     "fin": "2026-11-20",
+     "avance": 0.0,
+     "estado": "Pendiente",
+     "parada": false
+    },
+    {
+     "codigo": "7.2",
+     "nombre": "Flujo de caja a 12 meses",
+     "responsable": "D. Castro",
+     "inicio": "2026-11-23",
+     "fin": "2026-11-25",
+     "avance": 0.0,
+     "estado": "Pendiente",
+     "parada": false
+    },
+    {
+     "codigo": "7.3",
+     "nombre": "Indicadores financieros",
+     "responsable": "D. Castro",
+     "inicio": "2026-11-26",
+     "fin": "2026-11-27",
+     "avance": 0.0,
+     "estado": "Pendiente",
+     "parada": false
+    },
+    {
+     "codigo": "7.4",
+     "nombre": "Propuesta de valor y oferta comercial final",
+     "responsable": "D. Castro",
+     "inicio": "2026-11-30",
+     "fin": "2026-12-03",
+     "avance": 0.0,
+     "estado": "Pendiente",
+     "parada": false
+    },
+    {
+     "codigo": "7.6",
+     "nombre": "Seguimiento de presupuesto y flujo de caja reales",
+     "responsable": "Equipo",
+     "inicio": "2026-12-21",
+     "fin": "2027-08-08",
+     "avance": 0.0,
+     "estado": "Pendiente",
+     "parada": false
+    }
+   ]
+  },
+  {
+   "codigo": "8",
+   "nombre": "Implementación · base común: recepción, tratamiento, silos, CIP y red OT/IT",
+   "responsable": "",
+   "inicio": "2026-10-28",
+   "fin": "2027-05-06",
+   "avance": 0.0,
+   "estado": "Pendiente",
+   "tareas": [
+    {
+     "codigo": "8.1",
+     "nombre": "Especificación técnica y solicitud de ofertas de equipos de la base común",
+     "responsable": "P. Arcila",
+     "inicio": "2026-10-28",
+     "fin": "2026-11-13",
+     "avance": 0.0,
+     "estado": "Pendiente",
+     "parada": false
+    },
+    {
+     "codigo": "8.2",
+     "nombre": "Evaluación de ofertas y órdenes de compra (base común)",
+     "responsable": "D. Castro",
+     "inicio": "2026-12-21",
+     "fin": "2027-01-05",
+     "avance": 0.0,
+     "estado": "Pendiente",
+     "parada": false
+    },
+    {
+     "codigo": "8.3",
+     "nombre": "Fabricación y entrega de equipos de la base común (plazo del proveedor)",
+     "responsable": "Proveedor",
+     "inicio": "2027-01-06",
+     "fin": "2027-03-17",
+     "avance": 0.0,
+     "estado": "Pendiente",
+     "parada": false
+    },
+    {
+     "codigo": "8.4",
+     "nombre": "Plan de instalacion de red OT/IT, servidores y ciberseguridad: instalación y configuración",
+     "responsable": "L. Mendoza",
+     "inicio": "2026-12-21",
+     "fin": "2027-01-27",
+     "avance": 0.0,
+     "estado": "Pendiente",
+     "parada": false
+    },
+    {
+     "codigo": "8.5",
+     "nombre": "Programación de PLC de la base común (recepción, tratamiento, silos)",
+     "responsable": "L. Mendoza",
+     "inicio": "2027-01-06",
+     "fin": "2027-02-10",
+     "avance": 0.0,
+     "estado": "Pendiente",
+     "parada": false
+    },
+    {
+     "codigo": "8.6",
+     "nombre": "SCADA de la base común",
+     "responsable": "J. Carreño",
+     "inicio": "2027-01-28",
+     "fin": "2027-02-24",
+     "avance": 0.0,
+     "estado": "Pendiente",
+     "parada": false
+    },
+    {
+     "codigo": "8.7",
+     "nombre": "Plan de montaje mecánico, eléctrico e instrumentación de la base común",
+     "responsable": "P. Arcila",
+     "inicio": "2027-03-18",
+     "fin": "2027-04-19",
+     "avance": 0.0,
+     "estado": "Pendiente",
+     "parada": false
+    },
+    {
+     "codigo": "8.8",
+     "nombre": "Plan de parada y contingencia (inventario previo, reprogramación, ventana acordada con el cliente)",
+     "responsable": "D. Pinzón",
+     "inicio": "2027-03-18",
+     "fin": "2027-04-05",
+     "avance": 0.0,
+     "estado": "Pendiente",
+     "parada": false
+    },
+    {
+     "codigo": "8.9",
+     "nombre": "PARADA PROGRAMADA DE PLANTA · cut-over de la base común (breve, no cero)",
+     "responsable": "D. Pinzón",
+     "inicio": "2027-04-20",
+     "fin": "2027-04-22",
+     "avance": 0.0,
+     "estado": "Pendiente",
+     "parada": true
+    },
+    {
+     "codigo": "8.10",
+     "nombre": "Pruebas de aceptación y arranque de la base común",
+     "responsable": "L. Mendoza",
+     "inicio": "2027-04-23",
+     "fin": "2027-05-06",
+     "avance": 0.0,
+     "estado": "Pendiente",
+     "parada": false
+    }
+   ]
+  },
+  {
+   "codigo": "9",
+   "nombre": "Implementación · línea de yogures (foco)",
+   "responsable": "",
+   "inicio": "2026-10-30",
+   "fin": "2027-07-19",
+   "avance": 0.0,
+   "estado": "Pendiente",
+   "tareas": [
+    {
+     "codigo": "9.1",
+     "nombre": "Especificación técnica: fermentadores, preparación de base, saborización y llenadoras",
+     "responsable": "P. Arcila",
+     "inicio": "2026-10-30",
+     "fin": "2026-11-23",
+     "avance": 0.0,
+     "estado": "Pendiente",
+     "parada": false
+    },
+    {
+     "codigo": "9.2",
+     "nombre": "Evaluación de ofertas, contratación y órdenes de compra de equipos de yogures",
+     "responsable": "D. Castro",
+     "inicio": "2026-12-21",
+     "fin": "2027-01-13",
+     "avance": 0.0,
+     "estado": "Pendiente",
+     "parada": false
+    },
+    {
+     "codigo": "9.3",
+     "nombre": "Fabricación y entrega de equipos de yogures (plazo del proveedor)",
+     "responsable": "Proveedor",
+     "inicio": "2027-01-14",
+     "fin": "2027-04-12",
+     "avance": 0.0,
+     "estado": "Pendiente",
+     "parada": false
+    },
+    {
+     "codigo": "9.4",
+     "nombre": "Programación de fases ISA-88 en PLC: preparación de base, fermentación y saborización",
+     "responsable": "L. Mendoza",
+     "inicio": "2027-01-14",
+     "fin": "2027-02-24",
+     "avance": 0.0,
+     "estado": "Pendiente",
+     "parada": false
+    },
+    {
+     "codigo": "9.5",
+     "nombre": "Pruebas de la lógica en el gemelo digital (FAT virtual)",
+     "responsable": "J. Carreño",
+     "inicio": "2027-02-25",
+     "fin": "2027-03-10",
+     "avance": 0.0,
+     "estado": "Pendiente",
+     "parada": false
+    },
+    {
+     "codigo": "9.6",
+     "nombre": "HMI/SCADA de la línea de yogures (estados, comandos, modos y alarmas)",
+     "responsable": "J. Carreño",
+     "inicio": "2027-02-25",
+     "fin": "2027-03-29",
+     "avance": 0.0,
+     "estado": "Pendiente",
+     "parada": false
+    },
+    {
+     "codigo": "9.7",
+     "nombre": "Plan de montaje mecánico y de tuberías sanitarias de la línea",
+     "responsable": "P. Arcila",
+     "inicio": "2027-04-13",
+     "fin": "2027-05-11",
+     "avance": 0.0,
+     "estado": "Pendiente",
+     "parada": false
+    },
+    {
+     "codigo": "9.8",
+     "nombre": "Plan de instalación eléctrica, instrumentación y comunicaciones de la línea",
+     "responsable": "L. Mendoza",
+     "inicio": "2027-04-13",
+     "fin": "2027-05-11",
+     "avance": 0.0,
+     "estado": "Pendiente",
+     "parada": false
+    },
+    {
+     "codigo": "9.9",
+     "nombre": "Plan de pruebas en frío y precomisionado (sin producto)",
+     "responsable": "J. Carreño",
+     "inicio": "2027-05-12",
+     "fin": "2027-05-21",
+     "avance": 0.0,
+     "estado": "Pendiente",
+     "parada": false
+    },
+    {
+     "codigo": "9.10",
+     "nombre": "Capacitación de operadores y mantenimiento",
+     "responsable": "D. Pinzón",
+     "inicio": "2027-05-24",
+     "fin": "2027-06-03",
+     "avance": 0.0,
+     "estado": "Pendiente",
+     "parada": false
+    },
+    {
+     "codigo": "9.11",
+     "nombre": "PARADA PROGRAMADA DE LA LÍNEA DE YOGURES · cut-over (breve)",
+     "responsable": "D. Pinzón",
+     "inicio": "2027-05-24",
+     "fin": "2027-05-26",
+     "avance": 0.0,
+     "estado": "Pendiente",
+     "parada": true
+    },
+    {
+     "codigo": "9.12",
+     "nombre": "Validación de limpieza (CIP), BPM e inocuidad",
+     "responsable": "D. Pinzón",
+     "inicio": "2027-05-27",
+     "fin": "2027-06-03",
+     "avance": 0.0,
+     "estado": "Pendiente",
+     "parada": false
+    },
+    {
+     "codigo": "9.13",
+     "nombre": "Estabilización y puesta a punto (rampa de producción)",
+     "responsable": "D. Pinzón",
+     "inicio": "2027-06-21",
+     "fin": "2027-07-19",
+     "avance": 0.0,
+     "estado": "Pendiente",
+     "parada": false
+    }
+   ]
+  },
+  {
+   "codigo": "10",
+   "nombre": "MES y ERP · requerimientos, integración y trazabilidad",
+   "responsable": "",
+   "inicio": "2026-10-06",
+   "fin": "2027-07-02",
+   "avance": 0.0,
+   "estado": "En curso",
+   "tareas": [
+    {
+     "codigo": "10.1",
+     "nombre": "Requerimientos del MES: órdenes, lotes, cantidades, calidad, paradas, trazabilidad e indicadores",
+     "responsable": "D. Pinzón",
+     "inicio": "2026-10-06",
+     "fin": "2026-10-14",
+     "avance": 0.0,
+     "estado": "En curso",
+     "parada": false
+    },
+    {
+     "codigo": "10.2",
+     "nombre": "Selección de la plataforma MES y revisión del ERP del cliente",
+     "responsable": "P. Arcila",
+     "inicio": "2026-10-15",
+     "fin": "2026-10-28",
+     "avance": 0.0,
+     "estado": "Pendiente",
+     "parada": false
+    },
+    {
+     "codigo": "10.3",
+     "nombre": "Diseño de la integración MES–ERP según ISA-95",
+     "responsable": "P. Arcila",
+     "inicio": "2026-11-06",
+     "fin": "2026-11-20",
+     "avance": 0.0,
+     "estado": "Pendiente",
+     "parada": false
+    },
+    {
+     "codigo": "10.4",
+     "nombre": "Implementación del MES piloto en yogures: órdenes de producción, lotes y recetas de control",
+     "responsable": "D. Pinzón",
+     "inicio": "2026-12-21",
+     "fin": "2027-02-03",
+     "avance": 0.0,
+     "estado": "Pendiente",
+     "parada": false
+    },
+    {
+     "codigo": "10.5",
+     "nombre": "Integración MES–SCADA/PLC (OPC UA): datos de lote, estados y paradas",
+     "responsable": "L. Mendoza",
+     "inicio": "2027-03-30",
+     "fin": "2027-04-19",
+     "avance": 0.0,
+     "estado": "Pendiente",
+     "parada": false
+    },
+    {
+     "codigo": "10.6",
+     "nombre": "Integración MES–ERP: órdenes de producción, inventarios y costos",
+     "responsable": "L. Mendoza",
+     "inicio": "2027-02-04",
+     "fin": "2027-03-03",
+     "avance": 0.0,
+     "estado": "Pendiente",
+     "parada": false
+    },
+    {
+     "codigo": "10.7",
+     "nombre": "Trazabilidad y genealogía de lotes (leche base a producto terminado)",
+     "responsable": "D. Pinzón",
+     "inicio": "2027-04-20",
+     "fin": "2027-05-03",
+     "avance": 0.0,
+     "estado": "Pendiente",
+     "parada": false
+    },
+    {
+     "codigo": "10.8",
+     "nombre": "Tablero de indicadores (OEE, paradas, calidad, cantidades programadas vs. producidas)",
+     "responsable": "J. Carreño",
+     "inicio": "2027-04-20",
+     "fin": "2027-05-03",
+     "avance": 0.0,
+     "estado": "Pendiente",
+     "parada": false
+    },
+    {
+     "codigo": "10.9",
+     "nombre": "Pruebas integrales y puesta en marcha del MES–ERP con producción real de yogures",
+     "responsable": "Equipo",
+     "inicio": "2027-06-21",
+     "fin": "2027-07-02",
+     "avance": 0.0,
+     "estado": "Pendiente",
+     "parada": false
+    }
+   ]
+  },
+  {
+   "codigo": "11",
+   "nombre": "Entregables y cierre",
+   "responsable": "",
+   "inicio": "2026-10-05",
+   "fin": "2027-08-08",
+   "avance": 0.079,
+   "estado": "En curso",
+   "tareas": [
+    {
+     "codigo": "11.1",
+     "nombre": "Diapositivas de la primera entrega",
+     "responsable": "D. Pinzón",
+     "inicio": "2026-10-05",
+     "fin": "2026-10-09",
+     "avance": 0.6,
+     "estado": "En curso",
+     "parada": false
+    },
+    {
+     "codigo": "11.2",
+     "nombre": "Fotos para la presentación y retoque",
+     "responsable": "P. Arcila",
+     "inicio": "2026-10-07",
+     "fin": "2026-10-09",
+     "avance": 0.1,
+     "estado": "En curso",
+     "parada": false
+    },
+    {
+     "codigo": "11.3",
+     "nombre": "Decisión y producción del video",
+     "responsable": "Equipo",
+     "inicio": "2026-10-09",
+     "fin": "2026-10-16",
+     "avance": 0.0,
+     "estado": "En curso",
+     "parada": false
+    },
+    {
+     "codigo": "11.4",
+     "nombre": "Consolidación del documento previo a la firma del contrato (diseño de la linea de yogures, ISA-95 y MES/ERP)",
+     "responsable": "D. Pinzón",
+     "inicio": "2026-11-27",
+     "fin": "2026-12-03",
+     "avance": 0.0,
+     "estado": "Pendiente",
+     "parada": false
+    },
+    {
+     "codigo": "11.5",
+     "nombre": "Revisión de consistencia entre ISA-88, ISA-95, MES/ERP y simulación",
+     "responsable": "P. Arcila",
+     "inicio": "2026-12-04",
+     "fin": "2026-12-07",
+     "avance": 0.0,
+     "estado": "Pendiente",
+     "parada": false
+    },
+    {
+     "codigo": "11.6",
+     "nombre": "Preparación de la sustentación del semestre",
+     "responsable": "Equipo",
+     "inicio": "2026-12-09",
+     "fin": "2026-12-11",
+     "avance": 0.0,
+     "estado": "Pendiente",
+     "parada": false
+    },
+    {
+     "codigo": "11.7",
+     "nombre": "Informe de avance intermedio del proyecto (hito de mitad de año)",
+     "responsable": "D. Pinzón",
+     "inicio": "2027-05-07",
+     "fin": "2027-05-14",
+     "avance": 0.0,
+     "estado": "Pendiente",
+     "parada": false
+    },
+    {
+     "codigo": "11.8",
+     "nombre": "Evaluación de resultados y lecciones aprendidas",
+     "responsable": "Equipo",
+     "inicio": "2027-07-18",
+     "fin": "2027-07-25",
+     "avance": 0.0,
+     "estado": "Pendiente",
+     "parada": false
+    },
+    {
+     "codigo": "11.9",
+     "nombre": "Cierre del proyecto y entrega al cliente",
+     "responsable": "D. Castro",
+     "inicio": "2027-07-25",
+     "fin": "2027-08-08",
+     "avance": 0.0,
+     "estado": "Pendiente",
+     "parada": false
+    }
+   ]
+  }
+ ],
+ "hitos": [
+  {
+   "codigo": "H2",
+   "nombre": "Hito 3: Recetas de los tres yogures validadas",
+   "responsable": "",
+   "inicio": "2026-10-11",
+   "fin": "2026-10-11",
+   "avance": 0.0,
+   "estado": "En curso"
+  },
+  {
+   "codigo": "H1",
+   "nombre": "Hito 2: Alcance, volumen y línea a automatizar definidos",
+   "responsable": "",
+   "inicio": "2026-10-16",
+   "fin": "2026-10-16",
+   "avance": 0.0,
+   "estado": "Pendiente"
+  },
+  {
+   "codigo": "H3",
+   "nombre": "Hito 4: Entrega preliminar de la propuesta",
+   "responsable": "",
+   "inicio": "2026-10-16",
+   "fin": "2026-10-16",
+   "avance": 0.0,
+   "estado": "Pendiente"
+  },
+  {
+   "codigo": "H4",
+   "nombre": "Hito 5: Ingeniería de la línea de yogures, ISA-95 y diseño MES/ERP completos",
+   "responsable": "",
+   "inicio": "2026-11-20",
+   "fin": "2026-11-20",
+   "avance": 0.0,
+   "estado": "Pendiente"
+  },
+  {
+   "codigo": "H5",
+   "nombre": "Hito 6: Entrega final previa a firma",
+   "responsable": "",
+   "inicio": "2026-12-11",
+   "fin": "2026-12-11",
+   "avance": 0.0,
+   "estado": "Pendiente"
+  },
+  {
+   "codigo": "7.5",
+   "nombre": "Hito 1: Aprobación de la inversión por el cliente y firma del contrato de implementación",
+   "responsable": "",
+   "inicio": "2026-12-16",
+   "fin": "2026-12-16",
+   "avance": 0.0,
+   "estado": "Pendiente"
+  },
+  {
+   "codigo": "H6",
+   "nombre": "Hito 7: Base común operativa tras la parada breve",
+   "responsable": "",
+   "inicio": "2027-05-06",
+   "fin": "2027-05-06",
+   "avance": 0.0,
+   "estado": "Pendiente"
+  },
+  {
+   "codigo": "H7",
+   "nombre": "Hito 8: Línea de yogures en operación (SAT aprobado)",
+   "responsable": "",
+   "inicio": "2027-06-18",
+   "fin": "2027-06-18",
+   "avance": 0.0,
+   "estado": "Pendiente"
+  },
+  {
+   "codigo": "H8",
+   "nombre": "Hito 9: MES–ERP en producción con yogures",
+   "responsable": "",
+   "inicio": "2027-07-02",
+   "fin": "2027-07-02",
+   "avance": 0.0,
+   "estado": "Pendiente"
+  },
+  {
+   "codigo": "H9",
+   "nombre": "Hito 10: Cierre del proyecto y entrega al cliente",
+   "responsable": "",
+   "inicio": "2027-08-08",
+   "fin": "2027-08-08",
+   "avance": 0.0,
+   "estado": "Pendiente"
+  }
+ ]
+}

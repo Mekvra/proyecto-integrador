@@ -9,6 +9,8 @@ import Isa95 from '../components/Isa95.astro';
 import BatchChart from '../components/BatchChart.astro';
 import Monogram from '../components/Monogram.astro';
 import Lockup from '../components/Lockup.astro';
+import Edt from '../components/Edt.astro';
+import Gantt from '../components/Gantt.astro';
 import sitio from '../data/sitio.json';
 
 const empresa = await getEntry('textos', 'empresa');
@@ -241,10 +243,35 @@ const recetas = [
       </div>
     </section>
 
-    <!-- 08 MÓDULOS -->
+    <!-- 08 PLANEACIÓN -->
+    <section id="planeacion" class="section wrap">
+      <div class="section-head">
+        <span class="mono">08 · Planeación</span>
+        <h2>Doce meses, de la ingeniería a la operación.</h2>
+        <p>El semestre es la primera fase de un proyecto de doce meses: después de la propuesta vienen las compras, el montaje, dos paradas breves de planta y la puesta en marcha de la línea de yogures con su MES.</p>
+      </div>
+
+      <div class="plan-block">
+        <div class="plan-head">
+          <h3>Estructura de desglose del trabajo</h3>
+          <a class="ghost-link" href="https://github.com/Mekvra/proyecto-integrador/blob/main/03_planeacion-proyecto/edt-cronograma/EDT_Completo_v1.0.pdf" target="_blank" rel="noopener">Ver PDF <span class="arrow" aria-hidden="true">→</span></a>
+        </div>
+        <Edt />
+      </div>
+
+      <div class="plan-block">
+        <div class="plan-head">
+          <h3>Cronograma</h3>
+          <a class="ghost-link" href="https://github.com/Mekvra/proyecto-integrador/blob/main/03_planeacion-proyecto/edt-cronograma/Cronograma_Planta_Lactea_v1.0.pdf" target="_blank" rel="noopener">Ver PDF <span class="arrow" aria-hidden="true">→</span></a>
+        </div>
+        <Gantt />
+      </div>
+    </section>
+
+    <!-- 09 MÓDULOS -->
     <section id="modulos" class="section wrap">
       <div class="section-head">
-        <span class="mono">08 · Módulos</span>
+        <span class="mono">09 · Módulos</span>
         <h2>Cada entregable, en su lugar.</h2>
         <p>Cada módulo del curso tiene su carpeta de evidencias en el repositorio.</p>
       </div>
@@ -275,22 +302,22 @@ const recetas = [
       </div>
     </section>
 
-    <!-- 09 PROPUESTA -->
+    <!-- 10 PROPUESTA -->
     <section id="propuesta" class="section wrap">
       <div class="proposal">
         <Monogram size={96} />
         <div class="section-head">
-          <span class="mono">09 · Propuesta de valor</span>
+          <span class="mono">10 · Propuesta de valor</span>
           <h2>{propuesta.data.titulo}</h2>
           <p>{propuesta.data.resumen}</p>
         </div>
       </div>
     </section>
 
-    <!-- 10 EQUIPO -->
+    <!-- 11 EQUIPO -->
     <section id="equipo" class="section wrap">
       <div class="section-head">
-        <span class="mono">10 · Equipo</span>
+        <span class="mono">11 · Equipo</span>
         <h2>Las personas detrás de Mekvra.</h2>
         <p>Cinco ingenieros mecatrónicos a cargo de la automatización, la ingeniería, la gestión, las finanzas y el software del proyecto.</p>
       </div>
@@ -920,6 +947,24 @@ const recetas = [
 
   .proposal .section-head {
     margin: 0;
+  }
+
+  .plan-block {
+    margin-top: 56px;
+  }
+
+  .plan-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+
+  .plan-head h3 {
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: -0.4px;
   }
 
   .team {

@@ -1,0 +1,421 @@
+---
+// Cronograma de 12 meses como diagrama de Gantt: una barra por fase con su avance; al abrir una fase se ven sus
+// tareas. Rojo = parada programada de planta; rombos = hitos; línea dorada = fecha de corte.
+// Datos: src/data/cronograma.json (se genera desde Cronograma_Planta_Lactea.xlsx del Drive del grupo).
+import crono from '../data/cronograma.json';
+
+const t0 = Date.parse(crono.inicio);
+const t1 = Date.parse(crono.fin);
+const pos = (d: string) => Math.min(100, Math.max(0, ((Date.parse(d) - t0) / (t1 - t0)) * 100));
+const ancho = (a: string, b: string) => Math.max(0.6, pos(b) - pos(a) + (86400000 / (t1 - t0)) * 100);
+const MES = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'];
+const corto = (d: string) => {
+  const [y, m, dd] = d.split('-').map(Number);
+  return `${dd} ${MES[m - 1]} ${String(y).slice(2)}`;
+};
+
+// meses del eje: desde el mes de inicio hasta el de fin
+const meses: { label: string; left: number }[] = [];
+for (let d = new Date(Date.UTC(2026, 9, 1)); d.getTime() < t1; d.setUTCMonth(d.getUTCMonth() + 1)) {
+  meses.push({
+    label: `${MES[d.getUTCMonth()]}${d.getUTCMonth() === 0 || meses.length === 0 ? ' ' + String(d.getUTCFullYear()).slice(2) : ''}`,
+    left: pos(d.toISOString().slice(0, 10)),
+  });
+}
+const corte = crono.corte ? pos(crono.corte) : null;
+const avanceGlobal = Math.round((crono.avance ?? 0) * 100);
+const hitos = crono.hitos.map((h) => ({ ...h, nombre: h.nombre.replace(/^Hito \d+:\s*/, '') }));
+---
+
+<figure class="gantt" aria-label="Cronograma del proyecto a 12 meses">
+  <div class="g-bar mono">
+    <span><b>Cronograma · 12 meses</b> · {corto(crono.inicio)} → {corto(crono.fin)}</span>
+    <span class="g-legend">
+      <i class="lg lg-done"></i>Avance <i class="lg lg-todo"></i>Pendiente <i class="lg lg-stop"></i>Parada
+      <i class="lg lg-mile"></i>Hito <i class="lg lg-cut"></i>Corte {crono.corte && corto(crono.corte)}
+    </span>
+  </div>
+
+  <div class="g-scroll">
+    <div class="g-grid">
+      <div class="g-head">
+        <span class="mono g-col-label">Fase</span>
+        <div class="g-track g-months">
+          {meses.map((m) => <span class="mono" style={`left:${m.left}%`}>{m.label}</span>)}
+        </div>
+      </div>
+
+      {
+        crono.fases.map((f) => (
+          <details class="g-phase">
+            <summary class="g-row">
+              <span class="g-name">
+                <span class="mono gold">{f.codigo.padStart(2, '0')}</span>
+                <span>{f.nombre}</span>
+                <span class="mono g-toggle" aria-hidden="true" />
+              </span>
+              <div class="g-track">
+                {meses.map((m) => <i class="g-tick" style={`left:${m.left}%`} />)}
+                <span class="g-span" style={`left:${pos(f.inicio)}%;width:${ancho(f.inicio, f.fin)}%`}>
+                  <span class="g-fill" style={`width:${Math.round(f.avance * 100)}%`} />
+                </span>
+                {corte !== null && <i class="g-cut" style={`left:${corte}%`} />}
+              </div>
+            </summary>
+            <div class="g-tasks">
+              {f.tareas.map((t) => (
+                <div class="g-row g-task">
+                  <span class="g-name">
+                    <span class="mono">{t.codigo}</span>
+                    <span>
+                      {t.nombre}
+                      {t.responsable && <span class="mono g-who">{t.responsable}</span>}
+                    </span>
+                  </span>
+                  <div class="g-track">
+                    {meses.map((m) => <i class="g-tick" style={`left:${m.left}%`} />)}
+                    <span
+                      class:list={['g-span', 'g-span-sm', { 'g-stop': t.parada }]}
+                      style={`left:${pos(t.inicio)}%;width:${ancho(t.inicio, t.fin)}%`}
+                      title={`${corto(t.inicio)} → ${corto(t.fin)}`}
+                    >
+                      {!t.parada && <span class="g-fill" style={`width:${Math.round(t.avance * 100)}%`} />}
+                    </span>
+                    {corte !== null && <i class="g-cut" style={`left:${corte}%`} />}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </details>
+        ))
+      }
+
+      <div class="g-row g-miles">
+        <span class="g-name">
+          <span class="mono gold">◆</span>
+          <span>Hitos</span>
+        </span>
+        <div class="g-track">
+          {meses.map((m) => <i class="g-tick" style={`left:${m.left}%`} />)}
+          {hitos.map((h) => <i class="g-mile" style={`left:${pos(h.inicio)}%`} title={`${corto(h.inicio)} · ${h.nombre}`} />)}
+          {corte !== null && <i class="g-cut" style={`left:${corte}%`} />}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <ol class="g-milelist">
+    {
+      hitos.map((h) => (
+        <li>
+          <span class="mono gold">{corto(h.inicio)}</span>
+          <span>{h.nombre}</span>
+        </li>
+      ))
+    }
+  </ol>
+
+  <figcaption class="mono g-foot">
+    Avance global ≈ {avanceGlobal} % al corte · abre cada fase para ver sus tareas y responsables
+  </figcaption>
+</figure>
+
+<style>
+  .gantt {
+    --label: 300px;
+    margin: 0;
+    border: 1px solid var(--stroke);
+    border-radius: var(--radius-frame);
+    background: var(--black);
+    overflow: hidden;
+  }
+
+  .g-bar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 10px 24px;
+    padding: 14px 20px;
+    background: var(--carbon);
+    border-bottom: 1px solid var(--stroke);
+    color: var(--granite);
+    font-size: 11px;
+  }
+
+  .g-bar b {
+    color: var(--gold);
+    font-weight: 500;
+  }
+
+  .g-legend {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px 14px;
+  }
+
+  .lg {
+    display: inline-block;
+    width: 14px;
+    height: 6px;
+    margin-right: -8px;
+    border-radius: 2px;
+    vertical-align: middle;
+  }
+
+  .lg-done {
+    background: var(--green);
+  }
+
+  .lg-todo {
+    background: var(--cream-16);
+  }
+
+  .lg-stop {
+    background: var(--orange);
+  }
+
+  .lg-mile {
+    width: 8px;
+    height: 8px;
+    background: var(--gold);
+    transform: rotate(45deg);
+    border-radius: 1px;
+  }
+
+  .lg-cut {
+    width: 1px;
+    height: 12px;
+    background: var(--gold);
+  }
+
+  .g-scroll {
+    overflow-x: auto;
+  }
+
+  .g-grid {
+    min-width: 900px;
+    padding: 4px 20px 12px;
+  }
+
+  .g-head,
+  .g-row {
+    display: grid;
+    grid-template-columns: var(--label) 1fr;
+    gap: 16px;
+    align-items: center;
+  }
+
+  .g-head {
+    padding: 10px 0;
+    border-bottom: 1px solid var(--stroke);
+  }
+
+  .g-col-label {
+    color: var(--granite);
+    font-size: 11px;
+  }
+
+  .g-track {
+    position: relative;
+    height: 100%;
+    min-height: 22px;
+  }
+
+  .g-months span {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    padding-left: 6px;
+    color: var(--granite);
+    font-size: 10px;
+    white-space: nowrap;
+  }
+
+  .g-tick {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: var(--cream-08);
+  }
+
+  .g-phase {
+    border-bottom: 1px solid var(--stroke);
+  }
+
+  .g-phase > summary {
+    list-style: none;
+    cursor: pointer;
+    padding: 10px 0;
+    min-height: 44px;
+  }
+
+  .g-phase > summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .g-phase > summary:hover .g-name > span:last-child {
+    color: var(--cream);
+  }
+
+  .g-name {
+    display: grid;
+    grid-template-columns: 28px 1fr;
+    gap: 8px;
+    align-items: baseline;
+    font-size: 13px;
+    line-height: 1.35;
+    color: var(--cream-70);
+  }
+
+  .g-phase > summary .g-name {
+    color: var(--cream);
+    font-weight: 500;
+  }
+
+  .g-phase > summary .g-name {
+    grid-template-columns: 28px 1fr 14px;
+  }
+
+  .g-toggle::before {
+    content: '+';
+    color: var(--gold);
+  }
+
+  .g-phase[open] .g-toggle::before {
+    content: '–';
+  }
+
+  .g-span {
+    position: absolute;
+    top: 50%;
+    height: 10px;
+    transform: translateY(-50%);
+    background: var(--cream-16);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .g-span-sm {
+    height: 6px;
+    background: var(--cream-12);
+  }
+
+  .g-fill {
+    display: block;
+    height: 100%;
+    background: var(--green);
+  }
+
+  .g-stop {
+    background: var(--orange);
+  }
+
+  .g-cut {
+    position: absolute;
+    top: -6px;
+    bottom: -6px;
+    width: 1px;
+    background: var(--gold);
+    opacity: 0.8;
+  }
+
+  .g-tasks {
+    padding: 0 0 12px;
+  }
+
+  .g-task {
+    padding: 5px 0;
+  }
+
+  .g-task .g-name {
+    font-size: 12px;
+    padding-left: 12px;
+  }
+
+  .g-task .g-name .mono {
+    color: var(--granite);
+    font-size: 10px;
+  }
+
+  .g-who {
+    display: block;
+    margin-top: 2px;
+    color: var(--granite);
+    font-size: 10px;
+  }
+
+  .g-miles {
+    padding: 12px 0 4px;
+  }
+
+  .g-mile {
+    position: absolute;
+    top: 50%;
+    width: 10px;
+    height: 10px;
+    background: var(--gold);
+    transform: translate(-50%, -50%) rotate(45deg);
+    border-radius: 1px;
+  }
+
+  .g-milelist {
+    list-style: none;
+    margin: 0;
+    padding: 16px 20px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px 32px;
+    border-top: 1px solid var(--stroke);
+    font-size: 13px;
+    color: var(--cream-70);
+  }
+
+  .g-milelist li {
+    display: grid;
+    grid-template-columns: 82px 1fr;
+    gap: 12px;
+    align-items: baseline;
+  }
+
+  .g-milelist .mono {
+    font-size: 11px;
+  }
+
+  .g-foot {
+    padding: 12px 20px;
+    border-top: 1px solid var(--stroke);
+    color: var(--granite);
+    font-size: 11px;
+  }
+
+  @media (max-width: 720px) {
+    .gantt {
+      --label: 190px;
+    }
+
+    /* al deslizar el diagrama, los nombres quedan fijos a la izquierda */
+    .g-head > :first-child,
+    .g-row > .g-name {
+      position: sticky;
+      left: 0;
+      z-index: 2;
+      background: var(--black);
+      padding-right: 8px;
+      box-shadow: 8px 0 8px -8px rgb(0 0 0 / 0.9);
+    }
+
+    .g-grid {
+      padding-left: 0;
+    }
+
+    .g-head > :first-child::after {
+      content: ' · desliza →';
+    }
+
+    .g-milelist {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

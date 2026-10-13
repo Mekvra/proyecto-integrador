@@ -338,3 +338,9 @@ Todo movimiento continuo se pausa cuando sale de la pantalla y se congela con `p
   --ease-switch: cubic-bezier(0.4, 0, 0.2, 1);
 }
 ```
+
+## Componentes de planeación (EDT y cronograma)
+
+- **EDT (`Edt.astro`)**: diagrama de árbol, no lista. Raíz en recuadro `--carbon` con borde dorado al 60 %; tres ramas que bajan con líneas finas (`--cream-16`); fases con borde dorado y número en Geist Mono dorado; entregables en recuadros de borde `--cream-12` colgando de su fase con conectores en L. En celular, una sola columna con la vertebral continua.
+- **Cronograma (`Gantt.astro`)**: marco de dashboard (barra `--carbon`, bordes `--stroke`). Barras de fase en `--cream-16` con avance en verde métrica; paradas en naranja señal; hitos como rombos dorados; fecha de corte como línea dorada. Cada fase es un `<details>` que despliega sus tareas con responsable. En celular el diagrama se desliza y la columna de nombres queda fija.
+- Datos en `src/data/edt.json` y `src/data/cronograma.json`, generados desde los archivos del Drive del grupo.
