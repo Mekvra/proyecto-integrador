@@ -26,3 +26,7 @@ web/.astro/
 __pycache__/
 02_gestion-produccion/simulacion-tecnomatix/linea-yogures/linea_yogures_150k*.spp
 02_gestion-produccion/simulacion-tecnomatix/linea-yogures/respaldo_antes_acta_09oct/
+
+# Nunca subir: códigos de recuperación de la cuenta y descargas sin terminar
+github-recovery-codes.txt
+*.crdownload
