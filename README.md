@@ -136,18 +136,18 @@ Análisis de la planta en su estado actual, antes de la propuesta de automatizac
 
 El repositorio sigue los módulos del curso. Cada carpeta tiene su propio `README.md` con sus entregables.
 
-| Carpeta | Módulo | Contenido |
-|:--|:--|:--|
-| [`00_gestion-equipo`](00_gestion-equipo) | Gestión del equipo | Actas, roles y evidencias de trabajo colaborativo |
-| [`01_transformacion-digital`](01_transformacion-digital) | Transformación digital | Modelo y recetas ISA-88, arquitectura ISA-95 e instrumentación |
-| [`02_gestion-produccion`](02_gestion-produccion) | Gestión de la producción | Tecnomatix, VSM, layout, espagueti, indicadores y MES/ERP |
-| [`03_planeacion-proyecto`](03_planeacion-proyecto) | Planeación del proyecto | EDT, cronograma, presupuesto, flujo de caja y propuesta de valor |
-| [`04_controladores`](04_controladores) | Controladores | Grafcet y lógica Ladder en Logix Emulate |
-| [`05_gemelo-digital`](05_gemelo-digital) | Gemelo digital | Gemelo digital en Siemens NX |
-| [`06_celda-robotizada`](06_celda-robotizada) | Celda robotizada | Diseño, simulación en RobotStudio y análisis de riesgos |
-| [`07_scada`](07_scada) | SCADA | HMI ISA-101 en Ignition y comunicación OPC |
-| [`08_investigacion`](08_investigacion) | Investigación | Proceso lácteo, variables de operación y fuentes |
-| [`web`](web) | Página web | Sitio en Astro, publicado automáticamente con GitHub Pages |
+| | Módulo | Contenido |
+|:--:|:--|:--|
+| `00` | [**Gestión del equipo**](00_gestion-equipo) | Actas, roles y evidencias de trabajo colaborativo |
+| `01` | [**Transformación digital**](01_transformacion-digital) | Modelo y recetas ISA-88, arquitectura ISA-95 e instrumentación |
+| `02` | [**Gestión de la producción**](02_gestion-produccion) | Tecnomatix, VSM, layout, espagueti, indicadores y MES/ERP |
+| `03` | [**Planeación del proyecto**](03_planeacion-proyecto) | EDT, cronograma, presupuesto, flujo de caja y propuesta de valor |
+| `04` | [**Controladores**](04_controladores) | Grafcet y lógica Ladder en Logix Emulate |
+| `05` | [**Gemelo digital**](05_gemelo-digital) | Gemelo digital en Siemens NX |
+| `06` | [**Celda robotizada**](06_celda-robotizada) | Diseño, simulación en RobotStudio y análisis de riesgos |
+| `07` | [**SCADA**](07_scada) | HMI ISA-101 en Ignition y comunicación OPC |
+| `08` | [**Investigación**](08_investigacion) | Proceso lácteo, variables de operación y fuentes |
+| `web` | [**Página web**](web) | Sitio en Astro, publicado automáticamente con GitHub Pages |
 
 **Cómo aportar:** sube tus archivos a la carpeta de tu módulo directamente desde GitHub. La guía completa está en [CONTRIBUTING.md](CONTRIBUTING.md).
 
