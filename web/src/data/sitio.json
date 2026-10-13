@@ -8,19 +8,24 @@
   "lema": "Automatización e integración industrial",
   "datos": [
     {
-      "valor": "5,85 M L",
-      "texto": "de leche al día produce Cundinamarca",
-      "fuente": "Gobernación de Cundinamarca, 2025"
+      "valor": "150.000 L",
+      "texto": "de leche recibe la planta al día por un tronco común",
+      "fuente": "Acta del 9 de octubre de 2026"
     },
     {
-      "valor": "350 mil L",
-      "texto": "de leche recibe al día una planta de referencia de la región (Sabanalac)",
-      "fuente": "Investigación del equipo"
+      "valor": "57.600 L",
+      "texto": "al día procesa la línea de yogures: fresa, natural y griego",
+      "fuente": "Simulación en Tecnomatix"
     },
     {
-      "valor": "3 líneas",
-      "texto": "por lotes comparten recepción, pasteurización y almacenamiento",
-      "fuente": "Enunciado del proyecto"
+      "valor": "50.000 L",
+      "texto": "al día van a la línea de quesos: mozzarella, quesillo y doble crema",
+      "fuente": "Acta del 9 de octubre de 2026"
+    },
+    {
+      "valor": "43.000 L",
+      "texto": "al día van a la línea de leche UHT: entera, descremada y chocolate",
+      "fuente": "Acta del 9 de octubre de 2026"
     }
   ],
   "tecnologias": [

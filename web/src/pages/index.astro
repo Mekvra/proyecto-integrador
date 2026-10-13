@@ -15,20 +15,12 @@ const empresa = await getEntry('textos', 'empresa');
 const reto = await getEntry('textos', 'reto');
 const solucion = await getEntry('textos', 'solucion');
 const propuesta = await getEntry('textos', 'propuesta');
-const aprendizaje = await getEntry('textos', 'aprendizaje');
-if (!empresa || !reto || !solucion || !propuesta || !aprendizaje) throw new Error('Falta un texto en src/content/textos');
+if (!empresa || !reto || !solucion || !propuesta) throw new Error('Falta un texto en src/content/textos');
 
 const { Content: EmpresaTexto } = await render(empresa);
 const { Content: RetoTexto } = await render(reto);
-const { Content: AprendizajeTexto } = await render(aprendizaje);
 
 const modulos = (await getCollection('modulos')).sort((a, b) => a.data.numero.localeCompare(b.data.numero));
-const equipo = await Promise.all(
-  (await getCollection('equipo'))
-    .sort((a, b) => a.data.numero - b.data.numero)
-    .map(async (m) => ({ ...m, Reflexion: (await render(m)).Content, tieneReflexion: Boolean(m.body?.trim()) })),
-);
-
 const estados = { pendiente: 'Pendiente', 'en-desarrollo': 'En desarrollo', completado: 'Completado' } as const;
 const repoTree = `${sitio.repositorio}/tree/main`;
 // Une las palabras cortas (a, la, de…) con la siguiente para que no queden sueltas al final de una línea.
@@ -293,33 +285,6 @@ const recetas = [
       </div>
     </section>
 
-    <!-- 10 EQUIPO -->
-    <section id="equipo" class="section wrap">
-      <div class="section-head">
-        <span class="mono">10 · Proceso de aprendizaje</span>
-        <h2>{aprendizaje.data.titulo}</h2>
-        <p>{aprendizaje.data.resumen}</p>
-        <div class="prose"><AprendizajeTexto /></div>
-      </div>
-
-      <div class="team">
-        {
-          equipo.map(({ data, Reflexion, tieneReflexion }) => (
-            <article class="member">
-              <span class="mono gold">{String(data.numero).padStart(2, '0')}</span>
-              <h3>{data.nombre}</h3>
-              <span class="member-role">{data.rol}</span>
-              <div class="member-reflection">
-                {tieneReflexion ? <Reflexion /> : <p class="mono pending">Reflexión individual pendiente</p>}
-              </div>
-              <a class="ghost-link member-gh" href={`https://github.com/${data.github}`} target="_blank" rel="noopener">
-                @{data.github} <span class="arrow" aria-hidden="true">→</span>
-              </a>
-            </article>
-          ))
-        }
-      </div>
-    </section>
   </main>
 
   <footer class="wrap">
@@ -477,7 +442,7 @@ const recetas = [
   .facts {
     margin: 64px 0 0;
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     border-top: 1px solid var(--cream-12);
   }
 
