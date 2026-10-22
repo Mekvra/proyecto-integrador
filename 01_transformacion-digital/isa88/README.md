@@ -48,19 +48,6 @@ Los litros por día salen de los lotes por semana divididos entre 6 días. Por e
 
 Todas las cantidades son **valores de diseño** del grupo, tomados de la normativa colombiana, el Codex y la bibliografía técnica (Tetra Pak). La empresa es un caso de estudio y ninguna cifra es una medición de planta.
 
-## Fuentes y criterio
-
-**Documentos locales del proyecto (mandan cuando hay diferencias):**
-
-- *Recetas y procesos de la planta* (11 de octubre de 2026). Fórmulas, procedimientos, parámetros, PCC, equipos y códigos de las tres líneas.
-- *Diagramas P&ID de la empresa base* y su *documento explicativo* (11 de octubre de 2026). Instrumentos, válvulas, módulos y nivel de automatización de cada equipo.
-- *Comunicación y visualización de los datos en la empresa base (ISA-95)* (11 de octubre de 2026). Qué se registra hoy, dónde y quién decide.
-- *Diagramas de proceso de los nueve productos* (octubre de 2026).
-
-**Carpeta de entregas del proyecto en Drive:** recetas de la línea de yogurts v1.8, recetas básicas de la planta v1.0, VSM, layout y la presentación de la entrega intermedia. Se usan para datos que los documentos locales no tienen y que no los contradicen.
-
-Los PDF anteriores de las recetas (v1.8 de la línea de yogurts y v1.0 de la planta, en la carpeta `recetas/`) se conservan como historial y detalle de la línea de yogurts. Donde haya diferencias, manda este modelo, que sigue el documento *Recetas y procesos de la planta*. La principal: en la empresa base el **paletizado es manual**; la celda robotizada es parte de la propuesta.
-
 ## Norma de referencia
 
 ANSI/ISA-88.00.01 (IEC 61512-1), *Batch Control Part 1: Models and Terminology*. Los símbolos y las letras de los instrumentos siguen ANSI/ISA-5.1.
