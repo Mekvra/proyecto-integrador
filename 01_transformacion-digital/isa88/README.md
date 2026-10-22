@@ -13,7 +13,6 @@ Modelo ISA-88 de la planta láctea de **Lácteos Altos de Teusacá**.
 | [`modelo-procedimental/modelo-procedimental.md`](modelo-procedimental/modelo-procedimental.md) | ¿Qué acciones ejecuto? | Modelo de proceso, procedimientos de las tres líneas y del tronco común, operaciones y fases con sus parámetros, estados y modos, recursos compartidos |
 | [`Recetas_y_procesos_planta.pdf`](Recetas_y_procesos_planta.pdf) | ¿Qué producto fabrico y con qué especificación? | Fórmulas, procedimientos, parámetros, PCC y equipos de los nueve productos de las tres líneas |
 | [`recetas-maestras/`](recetas-maestras) | ¿Cómo se hace cada uno de los nueve productos? | Una receta maestra completa por referencia (encabezado, fórmula, equipos, procedimiento con fases y valores, especificación y PCC), cada una con su diagrama de procedimiento |
-| [`diagramas/`](diagramas) | ¿Cómo se ve todo junto? | Modelo físico, modelo procedimental de cada línea y diagrama de procedimiento de los nueve productos (SVG) |
 | [`diagrama_tronco_comun.md`](diagrama_tronco_comun.md) | ¿Cómo se conectan las líneas? | Tronco común y las tres ramas de producto con sus unidades |
 
 ## Cómo encajan las piezas
