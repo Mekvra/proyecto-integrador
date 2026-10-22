@@ -59,7 +59,7 @@ Todas las cantidades son **valores de diseño** del grupo, tomados de la normati
 
 **Carpeta de entregas del proyecto en Drive:** recetas de la línea de yogurts v1.8, recetas básicas de la planta v1.0, VSM, layout y la presentación de la entrega intermedia. Se usan para datos que los documentos locales no tienen y que no los contradicen.
 
-Los documentos anteriores de esta carpeta ([`recetas/recetas_linea_yogures.md`](recetas/recetas_linea_yogures.md) y los PDF de las recetas v1.7, v1.8 y v1.0) se conservan como historial y detalle de la línea de yogurts. Donde haya diferencias, manda este modelo, que sigue el documento *Recetas y procesos de la planta*. La principal: en la empresa base el **paletizado es manual**; la celda robotizada es parte de la propuesta.
+Los PDF anteriores de las recetas (v1.8 de la línea de yogurts y v1.0 de la planta, en la carpeta `recetas/`) se conservan como historial y detalle de la línea de yogurts. Donde haya diferencias, manda este modelo, que sigue el documento *Recetas y procesos de la planta*. La principal: en la empresa base el **paletizado es manual**; la celda robotizada es parte de la propuesta.
 
 ## Norma de referencia
 
