@@ -1,6 +1,6 @@
 # ISA-88 · Producción por lotes
 
-Modelo ISA-88 de la planta láctea de **Lácteos Altos de Teusacá** (empresa base, es decir, la planta como opera hoy, antes de la propuesta de automatización de Mekvra S.A.S).
+Modelo ISA-88 de la planta láctea de **Lácteos Altos de Teusacá**.
 
 **Responsables:** Luis Alberto Mendoza (líder de automatización) y Janan Libardo Carreño (líder de instrumentación y software).
 **Línea desarrollada en detalle:** yogurts (fresa, natural y griego). Quesos y leche UHT se modelan con el mismo método y con el detalle necesario para la planta completa.
