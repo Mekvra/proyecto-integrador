@@ -1,6 +1,6 @@
 # Receta maestra QD · Doble crema
 
-Receta maestra ISA-88 de la referencia QD, ligada a la celda PC22 y a sus unidades. Sale del [modelo físico](../modelo-fisico/modelo-fisico.md), el [modelo procedimental](../modelo-procedimental/modelo-procedimental.md) y las [recetas de la planta](../recetas/recetas.md).
+Receta maestra ISA-88 de la referencia QD, ligada a la celda PC22 y a sus unidades. Sale del [modelo físico](../modelo-fisico/modelo-fisico.md), el [modelo procedimental](../modelo-procedimental/modelo-procedimental.md) y las [recetas de la planta](../Recetas_y_procesos_planta.pdf).
 
 ![Diagrama de procedimiento QD](../diagramas/pfc_QD.svg)
 

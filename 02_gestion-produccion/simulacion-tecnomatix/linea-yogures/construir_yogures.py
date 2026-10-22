@@ -8,7 +8,7 @@ import win32com.client as w
 
 D = os.path.dirname(os.path.abspath(__file__))
 ICO = os.path.join(os.path.dirname(D), 'iconos')
-REC = json.load(open(os.path.join(D, '..', '..', '..', '01_transformacion-digital', 'isa88', 'recetas', 'recetas_yogures.json'),
+REC = json.load(open(os.path.join(D, '..', 'recetas_yogures.json'),
                      encoding='utf-8'))
 OUT = sys.argv[1] if len(sys.argv) > 1 else '-'
 SEMANAS = int(sys.argv[2]) if len(sys.argv) > 2 else 4

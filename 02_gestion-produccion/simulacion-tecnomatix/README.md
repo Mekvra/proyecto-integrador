@@ -39,7 +39,7 @@ Los equipos usan los códigos del modelo físico ISA-88 y del P&ID del grupo. En
 
 ## Cómo se regeneran
 
-Los tiempos de la línea de yogurts salen de [`recetas_yogures.json`](../../01_transformacion-digital/isa88/recetas/recetas_yogures.json); los de quesos y leche UHT son supuestos de diseño que están al inicio de `construir_planta.py`.
+Los tiempos de la línea de yogurts salen de [`recetas_yogures.json`](recetas_yogures.json); los de quesos y leche UHT son supuestos de diseño que están al inicio de `construir_planta.py`.
 
 - **Planta:** `python construir_planta.py planta_150k.spp 12` construye y simula el 2D y escribe `resultados_planta.json` y `coords_planta.json`. Luego `generar_planta_3d.ps1` crea la escena 3D y aplica la decoración de `decorar_planta.py`.
 - **Línea de yogurts:** `generar_3d.ps1` construye el modelo con `construir_yogures.py`, crea la escena 3D y aplica `decorar_3d.py`. La variante con paletizado manual se arma sobre esa escena con `PALETIZADO=manual python decorar_3d.py` (mesa de rodillos, dos operarios y estibas) y con U341 como estación de 150 s por bulto.
