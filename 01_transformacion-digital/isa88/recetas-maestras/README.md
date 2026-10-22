@@ -20,5 +20,3 @@ Una receta maestra por referencia, con la misma estructura: encabezado, fórmula
 - [Modelo procedimental de la línea de yogurts](../diagramas/procedimiento_yogurts.svg)
 - [Modelo procedimental de la línea de quesos](../diagramas/procedimiento_quesos.svg)
 - [Modelo procedimental de la línea de leche UHT](../diagramas/procedimiento_leche_uht.svg)
-
-Se generan con `python generar_isa88.py` (carpeta `isa88`).
