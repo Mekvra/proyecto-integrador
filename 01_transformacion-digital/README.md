@@ -3,14 +3,6 @@
 Arquitectura integral de automatización según **ISA-95** y modelos de producción por lotes según **ISA-88**.
 
 
-## Entregables
-
-- [ ] **Arquitectura ISA-95** ([`arquitectura-isa95/`](arquitectura-isa95)): niveles N0–N4 (Proceso → Sensores/actuadores → Control → SCADA → MES → ERP), tecnologías por nivel y flujo de información en ambos sentidos (datos que suben, órdenes y decisiones que bajan). Integración OT/IT.
-- [ ] **Modelo físico ISA-88** ([`isa88/modelo-fisico/`](isa88/modelo-fisico)): empresa → sitio → área → celda de proceso → unidad → módulo de equipo → módulo de control, para las tres líneas y los recursos compartidos.
-- [ ] **Modelo procedimental ISA-88** ([`isa88/modelo-procedimental/`](isa88/modelo-procedimental)): procedimiento → procedimiento de unidad → operación → fase.
-- [ ] **Recetas** ([`isa88/recetas/`](isa88/recetas)): al menos **3 referencias por línea**, que se diferencien de forma no trivial (ingredientes, cantidades, temperaturas, tiempos, envases, calidad).
-- [ ] **Instrumentación** ([`instrumentacion/`](instrumentacion)): equipos, sensores, actuadores, variables y comunicaciones. Diagramas P&ID.
-
 ## Documentos
 
 | Documento | Contenido |
