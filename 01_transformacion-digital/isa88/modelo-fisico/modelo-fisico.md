@@ -56,8 +56,6 @@ flowchart LR
 
 Las celdas de A1 y A2 son las del documento de los P&ID. Las de A3, A4 y A9 salen directamente del código de sus unidades (U311 es área 3, celda 1).
 
-**Nota sobre U201 y U202.** Por su código serían la celda 0 del área 2. Conservan el número de una versión anterior del modelo, en la que preparaban bases para dos líneas. Hoy trabajan solo para la línea de yogurts, porque la leche UHT tiene su propia planta, así que pertenecen a la celda PC21.
-
 ## Área A1 · Tronco común
 
 Es compartida por las tres líneas. Recibe toda la leche, la estandariza y la pasteuriza en flujo continuo, y la deja en un silo por línea. Es la única parte de la planta con PLC central (PLC-100) y SCADA con historiador.
