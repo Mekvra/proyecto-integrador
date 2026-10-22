@@ -1,7 +1,5 @@
 # Modelo físico ISA-88
 
-El modelo físico responde **¿con qué produzco?** Organiza los equipos de la planta en siete niveles. Los tres primeros (empresa, sitio y área) son de gestión; los cuatro siguientes (celda de proceso, unidad, módulo de equipo y módulo de control) son los que maneja el control por lotes.
-
 | Nivel ISA-88 | Qué es | En la planta |
 |---|---|---|
 | Empresa | La organización dueña de la planta | Lácteos Altos de Teusacá |
