@@ -171,12 +171,13 @@ const TABLAS = ['maquinas', 'eventos_maquina', 'ordenes', 'lotes', 'paros', 'cal
 const D: Record<string, Fila[]> = Object.fromEntries([...TABLAS, 'archivos'].map((t) => [t, []]));
 let yo = '';
 let miRol = '';
+let pleno = false; // acceso total: puede todo, conserva su rol para la pantalla de inicio
 let rolVista = '';
 let vista: Vista | null = null;
 let trazaPendiente = '';
 let montada = '';
 const nombre = (id: string | null) => (id ? D.perfiles.find((p) => p.id === id)?.nombre ?? '—' : 'Pasarela');
-const puede = (roles: string[]) => roles.includes(miRol);
+const puede = (roles: string[]) => pleno || roles.includes(miRol);
 const esSim = (f: Fila) => f.origen === 'Simulación';
 const tagSim = (f: Fila) => (esSim(f) ? h('span', { class: 'sim', title: 'Generado por la pasarela simulada' }, 'SIM') : null);
 const P = (k: string) => Number(D.parametros.find((p) => p.clave === k)?.valor ?? 0);
@@ -263,7 +264,7 @@ function aplicar(t: string, pl: any) {
 }
 function revisarRol() {
   const p = D.perfiles.find((x) => x.id === yo);
-  if (p && p.rol !== miRol) { miRol = p.rol; rolVista = p.rol; pintarUsuario(); pintarMenu(); irA(vista?.id ?? ''); }
+  if (p && (p.rol !== miRol || Boolean(p.pleno) !== pleno)) { miRol = p.rol; pleno = Boolean(p.pleno) || p.rol === 'Administrador'; rolVista = p.rol; pintarUsuario(); pintarMenu(); irA(vista?.id ?? ''); }
 }
 
 async function guardar(p: PromiseLike<{ error: any }>, ok: string, ...tablas: string[]) {
@@ -1265,7 +1266,7 @@ const vUsuarios: Vista = {
   id: 'usuarios', titulo: 'Usuarios y pasarela', grupo: 'General', roles: ['Administrador'],
   montar(c) {
     c.append(tarjeta('Pasarela de datos de planta', h('div', { 'data-u-sim': '' })),
-      tarjeta('Usuarios y roles', h('p', { class: 'nota' }, 'Los usuarios se crean en Supabase → Authentication → Users → Add user (con “Auto Confirm User”). Aquí se les pone el nombre y el rol; el rol define el nivel de la pirámide y las ventanas que ve cada persona.'),
+      tarjeta('Usuarios y roles', h('p', { class: 'nota' }, 'Los usuarios se crean en Supabase → Authentication → Users → Add user (con “Auto Confirm User”). Los del equipo se crean con la función crear_usuario en el SQL Editor (esquema-5-usuarios.sql) y entran con su nombre corto, por ejemplo «pablo». El rol define con qué pantalla arranca cada persona; con acceso total puede usar todas las ventanas y editar todo.'),
         h('div', { 'data-u-tabla': '' })));
   },
   refrescar() {
@@ -1283,12 +1284,14 @@ const vUsuarios: Vista = {
     cont.querySelector('[data-u-tabla]')!.replaceChildren(tabla([
       ['nombre', 'Nombre', (p) => inp('nombre', { value: p.nombre, 'aria-label': 'Nombre' })],
       ['rol', 'Rol', (p) => sel('rol', ROLES, p.rol)],
+      ['pleno', 'Acceso total', (p) => h('label', { class: 'check' }, inp('pleno', { type: 'checkbox', checked: Boolean(p.pleno) }), h('span', { class: 'mono' }, 'sí'))],
       ['creado', 'Desde', (p) => fecha(p.creado)],
     ], D.perfiles, (p) => boton('Guardar', (e) => {
       const tr = (e.currentTarget as HTMLElement).closest('tr')!;
       const n = (tr.querySelector('input[name=nombre]') as HTMLInputElement).value.trim();
       const r = (tr.querySelector('select[name=rol]') as HTMLSelectElement).value;
-      guardar(sb!.from('perfiles').update({ nombre: n, rol: r }).eq('id', p.id), `${n}: ${r}.`, 'perfiles');
+      const pl = (tr.querySelector('input[name=pleno]') as HTMLInputElement).checked;
+      guardar(sb!.from('perfiles').update({ nombre: n, rol: r, pleno: pl }).eq('id', p.id), `${n}: ${r}${pl ? ' · acceso total' : ''}.`, 'perfiles');
     }, 'm-btn mini')));
   },
 };
@@ -1299,7 +1302,7 @@ const ORDEN_GRUPOS = ['Nivel 4 · Negocio', 'Nivel 3 · Gestión de planta', 'Ni
 
 // ---------------------------------------------------------------- navegación
 function visibles() {
-  return VISTAS.filter((v) => v.roles.includes(rolVista));
+  return VISTAS.filter((v) => v.roles.includes(rolVista) || (pleno && rolVista === miRol));
 }
 function pintarMenu() {
   const grupos = ORDEN_GRUPOS.filter((g) => visibles().some((v) => v.grupo === g));
@@ -1313,7 +1316,7 @@ function pintarPiramide() {
     h('ol', {}, NIVELES.map((n, i) => {
       const activo = rolVista === 'Administrador' || n.roles.includes(rolVista);
       const li = h('li', { class: activo ? 'activo' : '', style: `--i:${i}`, title: n.quien },
-        h('button', { type: 'button', disabled: miRol !== 'Administrador', onclick: () => verComo(n.roles[0]) }, h('b', { class: 'mono' }, `N${n.n}`), h('span', {}, n.t)));
+        h('button', { type: 'button', disabled: !pleno, onclick: () => verComo(n.roles[0]) }, h('b', { class: 'mono' }, `N${n.n}`), h('span', {}, n.t)));
       return li;
     })));
 }
@@ -1346,10 +1349,10 @@ window.addEventListener('hashchange', () => { if (!pantallaApp.hidden) irA(locat
 function pintarUsuario() {
   const p = D.perfiles.find((x) => x.id === yo);
   raiz.querySelector('[data-u-nombre]')!.textContent = p?.nombre ?? '';
-  raiz.querySelector('[data-u-rol]')!.textContent = miRol;
+  raiz.querySelector('[data-u-rol]')!.textContent = pleno && miRol !== 'Administrador' ? `${miRol} · acceso total` : miRol;
   raiz.querySelector('[data-u-ini]')!.textContent = (p?.nombre ?? '?').slice(0, 1).toUpperCase();
   const como = raiz.querySelector<HTMLElement>('[data-como]')!;
-  como.hidden = miRol !== 'Administrador';
+  como.hidden = !pleno;
   if (!como.hidden) {
     const s2 = como.querySelector('select')!;
     opcionesActualizar(s2, ROLES);
@@ -1404,7 +1407,9 @@ async function entrar(uid: string) {
   pantallaApp.hidden = false;
   cont.replaceChildren(h('div', { class: 'cargando' }, h('span', { class: 'pulse', 'data-live': '' }), h('span', { class: 'mono' }, 'Conectando con la planta…')));
   await Promise.all([...TABLAS, 'archivos'].map(cargar));
-  miRol = D.perfiles.find((p) => p.id === yo)?.rol ?? 'Operario';
+  const yoP = D.perfiles.find((p) => p.id === yo);
+  miRol = yoP?.rol ?? 'Operario';
+  pleno = Boolean(yoP?.pleno) || miRol === 'Administrador';
   rolVista = miRol;
   pintarUsuario();
   pintarMenu();
