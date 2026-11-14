@@ -1,0 +1,44 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import Siguiente from '../components/Siguiente.astro';
+import sitio from '../data/sitio.json';
+import Edt from '../components/Edt.astro';
+import Gantt from '../components/Gantt.astro';
+
+---
+
+<Base title={`Planeación · ${sitio.nombre}`}>
+  <Nav actual="planeacion" />
+
+  <main class="pagina">
+    <!-- 08 PLANEACIÓN -->
+    <section id="planeacion" class="section wrap">
+      <div class="section-head">
+        <span class="mono">08 · Planeación</span>
+        <h2>Doce meses, de la ingeniería a la operación.</h2>
+        <p>El semestre es la primera fase de un proyecto de doce meses: después de la propuesta vienen las compras, el montaje, dos paradas breves de planta y la puesta en marcha de la línea de yogurts con su MES.</p>
+      </div>
+
+      <div class="plan-block">
+        <div class="plan-head">
+          <h3>Estructura de desglose del trabajo</h3>
+          <a class="ghost-link" href="https://github.com/Mekvra/proyecto-integrador/blob/main/03_planeacion-proyecto/edt-cronograma/EDT_Completo_v1.0.pdf" target="_blank" rel="noopener">Ver PDF <span class="arrow" aria-hidden="true">→</span></a>
+        </div>
+        <Edt />
+      </div>
+
+      <div class="plan-block">
+        <div class="plan-head">
+          <h3>Cronograma</h3>
+          <a class="ghost-link" href="https://github.com/Mekvra/proyecto-integrador/blob/main/03_planeacion-proyecto/edt-cronograma/Cronograma_Planta_Lactea_v1.0.pdf" target="_blank" rel="noopener">Ver PDF <span class="arrow" aria-hidden="true">→</span></a>
+        </div>
+        <Gantt />
+      </div>
+    </section>
+    <Siguiente actual="planeacion" />
+  </main>
+
+  <Footer />
+</Base>

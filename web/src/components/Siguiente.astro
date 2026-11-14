@@ -1,0 +1,77 @@
+---
+// Pie de cada página: vuelve a la anterior o pasa a la siguiente, en el orden del menú.
+import { PAGINAS, url } from '../lib/paginas';
+
+interface Props {
+  actual: string;
+}
+const i = PAGINAS.findIndex((p) => p.slug === Astro.props.actual);
+const anterior = PAGINAS[i - 1];
+const siguiente = PAGINAS[i + 1];
+---
+
+<nav class="wrap siguiente" aria-label="Páginas vecinas">
+  {
+    anterior && (
+      <a class="sig-link" href={url(anterior.slug)}>
+        <span class="mono">← Anterior</span>
+        <span class="sig-t">{anterior.label}</span>
+      </a>
+    )
+  }
+  {
+    siguiente && (
+      <a class="sig-link sig-next" href={url(siguiente.slug)}>
+        <span class="mono">Siguiente →</span>
+        <span class="sig-t">{siguiente.label}</span>
+      </a>
+    )
+  }
+</nav>
+
+<style>
+  .siguiente {
+    margin-top: var(--section-gap);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .sig-link {
+    display: grid;
+    gap: 6px;
+    min-height: 44px;
+    padding: 20px 24px;
+    border: 1px solid var(--cream-16);
+    border-radius: var(--radius);
+    color: var(--cream);
+    transition: border-color 150ms var(--ease-switch);
+  }
+
+  .sig-link:hover {
+    border-color: var(--gold-60);
+  }
+
+  .sig-link .mono {
+    color: var(--gold);
+  }
+
+  .sig-t {
+    font-size: 20px;
+    letter-spacing: -0.5px;
+  }
+
+  .sig-next {
+    grid-column: 2;
+    text-align: right;
+  }
+
+  @media (max-width: 560px) {
+    .siguiente {
+      grid-template-columns: 1fr;
+    }
+    .sig-next {
+      grid-column: 1;
+    }
+  }
+</style>

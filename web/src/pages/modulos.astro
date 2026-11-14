@@ -1,0 +1,69 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import Siguiente from '../components/Siguiente.astro';
+import sitio from '../data/sitio.json';
+import { getCollection, getEntry } from 'astro:content';
+import Monogram from '../components/Monogram.astro';
+
+const modulos = (await getCollection('modulos')).sort((a, b) => a.data.numero.localeCompare(b.data.numero));
+const propuesta = await getEntry('textos', 'propuesta');
+if (!propuesta) throw new Error('Falta un texto');
+const estados = { pendiente: 'Pendiente', 'en-desarrollo': 'En desarrollo', completado: 'Completado' } as const;
+const repoTree = `${sitio.repositorio}/tree/main`;
+---
+
+<Base title={`Módulos y propuesta · ${sitio.nombre}`}>
+  <Nav actual="modulos" />
+
+  <main class="pagina">
+    <!-- 09 MÓDULOS -->
+    <section id="modulos" class="section wrap">
+      <div class="section-head">
+        <span class="mono">09 · Módulos</span>
+        <h2>Cada entregable, en su lugar.</h2>
+        <p>Cada módulo del curso tiene su carpeta de evidencias en el repositorio.</p>
+      </div>
+      <div class="cards">
+        {
+          modulos.map((m) => (
+            <article class="card">
+              <div class="card-top">
+                <span class="mono gold">{m.data.numero}</span>
+                <span class="pill" data-estado={m.data.estado}>
+                  {estados[m.data.estado]}
+                </span>
+              </div>
+              <h3>{m.data.titulo}</h3>
+              <ul class="deliverables">
+                {m.data.entregables.map((e) => (
+                  <li>{e}</li>
+                ))}
+              </ul>
+              <div class="card-foot">
+                <a class="ghost-link" href={`${repoTree}/${m.data.carpeta}`} target="_blank" rel="noopener">
+                  Ver carpeta <span class="arrow" aria-hidden="true">→</span>
+                </a>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </section>
+    <!-- 10 PROPUESTA -->
+    <section id="propuesta" class="section wrap">
+      <div class="proposal">
+        <Monogram size={96} />
+        <div class="section-head">
+          <span class="mono">10 · Propuesta de valor</span>
+          <h2>{propuesta.data.titulo}</h2>
+          <p>{propuesta.data.resumen}</p>
+        </div>
+      </div>
+    </section>
+    <Siguiente actual="modulos" />
+  </main>
+
+  <Footer />
+</Base>

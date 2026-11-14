@@ -1,0 +1,32 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import Siguiente from '../components/Siguiente.astro';
+import sitio from '../data/sitio.json';
+import AutomationCell from '../components/AutomationCell.astro';
+
+---
+
+<Base title={`Automatización · ${sitio.nombre}`}>
+  <Nav actual="automatizacion" />
+
+  <main class="pagina">
+    <!-- 03 AUTOMATIZACIÓN -->
+    <section id="automatizacion" class="section wrap">
+      <div class="section-head">
+        <span class="mono">03 · Automatización</span>
+        <h2>Máquinas que trabajan, datos que suben.</h2>
+        <p>
+          Así se verá la celda de paletizado de la línea de yogurts: el sensor detecta la caja, la banda se detiene,
+          el PLC ordena el ciclo y el brazo apila. Hoy lo hacen dos personas a mano; con la celda, cada evento llega al
+          tablero en tiempo real.
+        </p>
+      </div>
+      <AutomationCell />
+    </section>
+    <Siguiente actual="automatizacion" />
+  </main>
+
+  <Footer />
+</Base>

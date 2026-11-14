@@ -1,0 +1,35 @@
+---
+import Lockup from './Lockup.astro';
+import sitio from '../data/sitio.json';
+---
+
+  <footer class="wrap">
+    <div class="footer">
+    <div class="footer-brand">
+      <Lockup size="lg" />
+    </div>
+    <div class="footer-cols">
+      <div>
+        <span class="mono footer-h">Proyecto</span>
+        <p>Proyecto Integrador · APM 2026-2S</p>
+        <p>{sitio.curso}</p>
+        <p>{sitio.universidad}</p>
+      </div>
+      <div>
+        <span class="mono footer-h">Enlaces</span>
+        <p>
+          <a class="ghost-link" href={sitio.repositorio} target="_blank" rel="noopener">
+            Repositorio <span class="arrow" aria-hidden="true">→</span>
+          </a>
+        </p>
+        {sitio.video && (
+          <p>
+            <a class="ghost-link" href={sitio.video} target="_blank" rel="noopener">
+              Video de sustentación <span class="arrow" aria-hidden="true">→</span>
+            </a>
+          </p>
+        )}
+      </div>
+    </div>
+    </div>
+  </footer>

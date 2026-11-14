@@ -1,0 +1,31 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import Siguiente from '../components/Siguiente.astro';
+import sitio from '../data/sitio.json';
+import ProcessTabs from '../components/ProcessTabs.astro';
+
+---
+
+<Base title={`Proceso · ${sitio.nombre}`}>
+  <Nav actual="proceso" />
+
+  <main class="pagina">
+    <!-- 04 PROCESO -->
+    <section id="proceso" class="section wrap">
+      <div class="section-head">
+        <span class="mono">04 · Proceso</span>
+        <h2>Tres líneas. Una sola planta.</h2>
+        <p>
+          Operaciones continuas, secuenciales por lotes y discretas conviven en la misma planta. Estas son las etapas y
+          variables críticas de cada línea, desde la recepción de la leche hasta el empaque.
+        </p>
+      </div>
+      <ProcessTabs />
+    </section>
+    <Siguiente actual="proceso" />
+  </main>
+
+  <Footer />
+</Base>

@@ -1,0 +1,5 @@
+{
+  "_nota": "Conexión del MES con Supabase. La URL y la clave anon (publishable) son públicas por diseño: los permisos los protege la base de datos (RLS). Nunca pongas aquí la clave service_role.",
+  "url": "",
+  "anonKey": ""
+}

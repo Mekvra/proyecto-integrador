@@ -1,0 +1,55 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import Siguiente from '../components/Siguiente.astro';
+import sitio from '../data/sitio.json';
+import { getEntry, render } from 'astro:content';
+
+const empresa = await getEntry('textos', 'empresa');
+const reto = await getEntry('textos', 'reto');
+if (!empresa || !reto) throw new Error('Falta un texto');
+const { Content: EmpresaTexto } = await render(empresa);
+const { Content: RetoTexto } = await render(reto);
+---
+
+<Base title={`La empresa y el cliente · ${sitio.nombre}`}>
+  <Nav actual="empresa" />
+
+  <main class="pagina">
+    <!-- 01 EMPRESA Y RETO -->
+    <section id="empresa" class="section wrap">
+      <div class="two-col">
+        <div class="section-head">
+          <span class="mono">01 · La empresa</span>
+          <h2>{empresa.data.titulo}</h2>
+          <p>{empresa.data.resumen}</p>
+          <div class="prose"><EmpresaTexto /></div>
+        </div>
+        <div class="section-head">
+          <span class="mono">02 · El cliente</span>
+          <h2>{reto.data.titulo}</h2>
+          <p>{reto.data.resumen}</p>
+          <div class="prose"><RetoTexto /></div>
+        </div>
+      </div>
+
+      <dl class="facts">
+        {
+          sitio.datos.map((d) => (
+            <div class="fact">
+              <dt class="fact-value">{d.valor}</dt>
+              <dd>
+                <span>{d.texto}</span>
+                <span class="mono fact-src">{d.fuente}</span>
+              </dd>
+            </div>
+          ))
+        }
+      </dl>
+    </section>
+    <Siguiente actual="empresa" />
+  </main>
+
+  <Footer />
+</Base>

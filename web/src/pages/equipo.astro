@@ -1,0 +1,43 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import Siguiente from '../components/Siguiente.astro';
+import sitio from '../data/sitio.json';
+import { getCollection } from 'astro:content';
+
+const equipo = (await getCollection('equipo')).sort((a, b) => a.data.numero - b.data.numero);
+---
+
+<Base title={`Equipo · ${sitio.nombre}`}>
+  <Nav actual="equipo" />
+
+  <main class="pagina">
+    <!-- 11 EQUIPO -->
+    <section id="equipo" class="section wrap">
+      <div class="section-head">
+        <span class="mono">11 · Equipo</span>
+        <h2>Las personas detrás de Mekvra.</h2>
+        <p>Cinco ingenieros mecatrónicos a cargo de la automatización, la ingeniería, la gestión, las finanzas y el software del proyecto.</p>
+      </div>
+
+      <div class="team">
+        {
+          equipo.map(({ data }) => (
+            <article class="member">
+              <span class="mono gold">{String(data.numero).padStart(2, '0')}</span>
+              <h3>{data.nombre}</h3>
+              <span class="member-role">{data.rol}</span>
+              <a class="ghost-link member-gh" href={`https://github.com/${data.github}`} target="_blank" rel="noopener">
+                @{data.github} <span class="arrow" aria-hidden="true">→</span>
+              </a>
+            </article>
+          ))
+        }
+      </div>
+    </section>
+    <Siguiente actual="equipo" />
+  </main>
+
+  <Footer />
+</Base>

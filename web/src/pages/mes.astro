@@ -1,0 +1,693 @@
+---
+// MES de Lácteos Altos de Teusacá: inicio de sesión real y registros compartidos entre portátiles (Supabase).
+// La conexión está en src/data/mes.json; la base de datos se crea con 02_gestion-produccion/mes-erp/supabase/esquema.sql.
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import sitio from '../data/sitio.json';
+import mes from '../data/mes.json';
+
+const conectado = Boolean(mes.url && mes.anonKey);
+const PRODUCTOS = {
+  Yogurts: ['YF · Yogurt con fresa', 'YN · Yogurt natural', 'YG · Yogurt griego'],
+  Quesos: ['QM · Mozzarella', 'QQ · Quesillo', 'QD · Doble crema'],
+  'Leche UHT': ['LE · Leche entera', 'LD · Leche descremada', 'LC · Leche con chocolate'],
+};
+const EQUIPOS = ['U111 Recepción', 'U121 Pasteurizador', 'U201 Formulación', 'U202 Tratamiento', 'U211–U218 Fermentadores', 'U215 Enfriamiento',
+  'U216 Separador', 'U311 Llenadora de vasos', 'U312 Llenadora de botellas', 'U313 Llenadora de griego', 'U321–U323 Encajonadoras',
+  'U341 Paletizado', 'Q201–Q203 Tinas', 'Q301 Hiladora', 'Q311 Empacadora', 'L202 UHT', 'L311 Envasadora aséptica'];
+const CAUSAS = ['Falla', 'Cambio de formato', 'Limpieza CIP', 'Falta de material', 'Mantenimiento', 'Otra'];
+const PRUEBAS = ['pH', 'Acidez (% ácido láctico)', 'Grasa (%)', 'Sólidos (%)', 'Temperatura (°C)', 'Peso de llenado (g)', 'Antibióticos', 'Microbiología', 'Sensorial'];
+---
+
+<Base title={`MES · ${sitio.nombre}`}>
+  <Nav actual="mes" />
+
+  <main class="pagina mes" data-mes data-url={mes.url} data-key={mes.anonKey}>
+    <section class="section wrap">
+      <div class="section-head">
+        <span class="mono">10 · MES</span>
+        <h2>La planta, en un solo tablero.</h2>
+        <p>
+          Plataforma de ejecución de la manufactura de Lácteos Altos de Teusacá. Cada persona entra con su usuario desde
+          cualquier portátil, registra lotes, paros y controles de calidad, y sube o descarga archivos. Todos ven la
+          misma información en tiempo real.
+        </p>
+      </div>
+
+      <!-- ingreso -->
+      <div class="frame mes-login" data-vista="login">
+        <div class="frame-bar">
+          <span class="frame-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+          <span class="frame-title mono">Lácteos Altos de Teusacá · MES</span>
+          <span class="frame-status mono"><span class="pulse" data-estado-conexion></span><span data-estado-texto>{conectado ? 'En línea' : 'Sin servidor'}</span></span>
+        </div>
+        <form class="login" data-login>
+          <h3>Iniciar sesión</h3>
+          <label>
+            <span class="mono">Correo</span>
+            <input type="email" name="correo" autocomplete="username" required />
+          </label>
+          <label>
+            <span class="mono">Contraseña</span>
+            <input type="password" name="clave" autocomplete="current-password" required minlength="6" />
+          </label>
+          <button class="boton" type="submit" disabled={!conectado}>Entrar</button>
+          <p class="login-msg" data-login-msg role="status">
+            {conectado ? 'Los usuarios los crea el administrador de la planta.' : 'El MES todavía no está conectado a su servidor.'}
+          </p>
+        </form>
+      </div>
+
+      <!-- tablero -->
+      <div class="frame mes-app" data-vista="app" hidden>
+        <div class="frame-bar">
+          <span class="frame-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+          <span class="frame-title mono">MES · <span data-usuario></span></span>
+          <span class="frame-status mono"><span class="pulse" data-live></span>En vivo</span>
+          <button class="salir mono" type="button" data-salir>Cerrar sesión</button>
+        </div>
+
+        <div class="tabs" role="tablist" aria-label="Ventanas del MES">
+          {['Resumen', 'Lotes', 'Paros', 'Calidad', 'Archivos'].map((t, i) => (
+            <button role="tab" type="button" class="tab mono" id={`tab-${t}`} aria-controls={`panel-${t}`} aria-selected={i === 0 ? 'true' : 'false'} data-tab={t}>{t}</button>
+          ))}
+        </div>
+
+        <div class="panel" role="tabpanel" id="panel-Resumen" aria-labelledby="tab-Resumen">
+          <div class="kpis-mes">
+            <div><span class="mono">Lotes hoy</span><b data-kpi="lotes">—</b></div>
+            <div><span class="mono">Litros hoy</span><b data-kpi="litros">—</b></div>
+            <div><span class="mono">Paros hoy</span><b data-kpi="paros">—</b><small>minutos</small></div>
+            <div><span class="mono">Calidad hoy</span><b data-kpi="calidad">—</b><small>aprobados</small></div>
+          </div>
+          <h4 class="mono">Últimos registros</h4>
+          <ol class="feed" data-feed></ol>
+        </div>
+
+        <div class="panel" role="tabpanel" id="panel-Lotes" aria-labelledby="tab-Lotes" hidden>
+          <form class="registro" data-form="lotes">
+            <label><span class="mono">Línea</span><select name="linea" data-linea>{Object.keys(PRODUCTOS).map((l) => <option>{l}</option>)}</select></label>
+            <label><span class="mono">Producto</span><select name="producto" data-productos>{PRODUCTOS.Yogurts.map((p) => <option>{p}</option>)}</select></label>
+            <label><span class="mono">Código del lote</span><input name="codigo" required placeholder="YF-2611-01" /></label>
+            <label><span class="mono">Litros</span><input name="litros" type="number" min="1" step="1" required value="10000" /></label>
+            <label><span class="mono">Estado</span><select name="estado"><option>En proceso</option><option>Terminado</option><option>Retenido</option><option>Liberado</option></select></label>
+            <label class="ancho"><span class="mono">Nota</span><input name="nota" /></label>
+            <button class="boton" type="submit">Registrar lote</button>
+          </form>
+          <div class="tabla-bar"><span class="mono" data-cuenta="lotes"></span><button type="button" class="ghost-link" data-csv="lotes">Descargar CSV ↓</button></div>
+          <div class="tabla"><table data-tabla="lotes"></table></div>
+        </div>
+
+        <div class="panel" role="tabpanel" id="panel-Paros" aria-labelledby="tab-Paros" hidden>
+          <form class="registro" data-form="paros">
+            <label><span class="mono">Línea</span><select name="linea">{Object.keys(PRODUCTOS).map((l) => <option>{l}</option>)}</select></label>
+            <label><span class="mono">Equipo</span><select name="equipo">{EQUIPOS.map((e) => <option>{e}</option>)}</select></label>
+            <label><span class="mono">Causa</span><select name="causa">{CAUSAS.map((c) => <option>{c}</option>)}</select></label>
+            <label><span class="mono">Minutos</span><input name="minutos" type="number" min="1" step="1" required /></label>
+            <label class="ancho"><span class="mono">Nota</span><input name="nota" /></label>
+            <button class="boton" type="submit">Registrar paro</button>
+          </form>
+          <div class="tabla-bar"><span class="mono" data-cuenta="paros"></span><button type="button" class="ghost-link" data-csv="paros">Descargar CSV ↓</button></div>
+          <div class="tabla"><table data-tabla="paros"></table></div>
+        </div>
+
+        <div class="panel" role="tabpanel" id="panel-Calidad" aria-labelledby="tab-Calidad" hidden>
+          <form class="registro" data-form="calidad">
+            <label><span class="mono">Lote</span><input name="lote" required placeholder="YF-2611-01" /></label>
+            <label><span class="mono">Prueba</span><select name="prueba">{PRUEBAS.map((p) => <option>{p}</option>)}</select></label>
+            <label><span class="mono">Valor</span><input name="valor" required /></label>
+            <label><span class="mono">Resultado</span><select name="resultado"><option>Aprobado</option><option>Rechazado</option><option>En revisión</option></select></label>
+            <label class="ancho"><span class="mono">Nota</span><input name="nota" /></label>
+            <button class="boton" type="submit">Registrar control</button>
+          </form>
+          <div class="tabla-bar"><span class="mono" data-cuenta="calidad"></span><button type="button" class="ghost-link" data-csv="calidad">Descargar CSV ↓</button></div>
+          <div class="tabla"><table data-tabla="calidad"></table></div>
+        </div>
+
+        <div class="panel" role="tabpanel" id="panel-Archivos" aria-labelledby="tab-Archivos" hidden>
+          <form class="subir" data-subir>
+            <label class="soltar">
+              <input type="file" name="archivo" multiple required />
+              <span>Arrastra archivos aquí o <u>elígelos</u> · reportes, registros, planillas (máx. 50 MB)</span>
+            </label>
+            <button class="boton" type="submit">Subir</button>
+          </form>
+          <ul class="archivos" data-archivos></ul>
+        </div>
+
+        <p class="mes-msg" data-msg role="status"></p>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Base>
+
+<script>
+  import { createClient, type SupabaseClient } from '@supabase/supabase-js';
+
+  type Fila = Record<string, string | number | null>;
+  const raiz = document.querySelector<HTMLElement>('[data-mes]')!;
+  const login = raiz.querySelector<HTMLElement>('[data-vista="login"]')!;
+  const app = raiz.querySelector<HTMLElement>('[data-vista="app"]')!;
+  const msg = raiz.querySelector<HTMLElement>('[data-msg]')!;
+  const loginMsg = raiz.querySelector<HTMLElement>('[data-login-msg]')!;
+  const TABLAS = ['lotes', 'paros', 'calidad'] as const;
+  type Tabla = (typeof TABLAS)[number];
+  const COLUMNAS: Record<Tabla, [string, string][]> = {
+    lotes: [['creado', 'Fecha'], ['linea', 'Línea'], ['producto', 'Producto'], ['codigo', 'Lote'], ['litros', 'Litros'], ['estado', 'Estado'], ['autor_nombre', 'Registró'], ['nota', 'Nota']],
+    paros: [['creado', 'Fecha'], ['linea', 'Línea'], ['equipo', 'Equipo'], ['causa', 'Causa'], ['minutos', 'Min'], ['autor_nombre', 'Registró'], ['nota', 'Nota']],
+    calidad: [['creado', 'Fecha'], ['lote', 'Lote'], ['prueba', 'Prueba'], ['valor', 'Valor'], ['resultado', 'Resultado'], ['autor_nombre', 'Registró'], ['nota', 'Nota']],
+  };
+  const PRODUCTOS: Record<string, string[]> = {
+    Yogurts: ['YF · Yogurt con fresa', 'YN · Yogurt natural', 'YG · Yogurt griego'],
+    Quesos: ['QM · Mozzarella', 'QQ · Quesillo', 'QD · Doble crema'],
+    'Leche UHT': ['LE · Leche entera', 'LD · Leche descremada', 'LC · Leche con chocolate'],
+  };
+  const datos: Record<Tabla, Fila[]> = { lotes: [], paros: [], calidad: [] };
+  let nombres: Record<string, string> = {};
+  let yo = '';
+
+  const fecha = (s: string) => new Date(s).toLocaleString('es-CO', { day: '2-digit', month: 'short', hour: '2-digit', minute: '2-digit' });
+  const miles = (n: number) => n.toLocaleString('es-CO');
+  const aviso = (t: string, error = false) => { msg.textContent = t; msg.toggleAttribute('data-error', error); };
+
+  const url = raiz.dataset.url, key = raiz.dataset.key;
+  const sb: SupabaseClient | null = url && key ? createClient(url, key) : null;
+
+  // ---------- ventanas ----------
+  raiz.querySelectorAll<HTMLButtonElement>('[data-tab]').forEach((b) =>
+    b.addEventListener('click', () => {
+      raiz.querySelectorAll<HTMLButtonElement>('[data-tab]').forEach((o) => o.setAttribute('aria-selected', String(o === b)));
+      raiz.querySelectorAll<HTMLElement>('[role="tabpanel"]').forEach((p) => (p.hidden = p.id !== `panel-${b.dataset.tab}`));
+    }),
+  );
+  const linea = raiz.querySelector<HTMLSelectElement>('[data-linea]')!;
+  const productos = raiz.querySelector<HTMLSelectElement>('[data-productos]')!;
+  linea.addEventListener('change', () => {
+    productos.replaceChildren(...PRODUCTOS[linea.value].map((p) => new Option(p, p)));
+  });
+
+  // ---------- pintar ----------
+  function pintarTabla(t: Tabla) {
+    const tabla = raiz.querySelector<HTMLTableElement>(`[data-tabla="${t}"]`)!;
+    const cab = document.createElement('tr');
+    COLUMNAS[t].forEach(([, n]) => { const th = document.createElement('th'); th.textContent = n; cab.append(th); });
+    cab.append(document.createElement('th'));
+    const filas = datos[t].map((f) => {
+      const tr = document.createElement('tr');
+      COLUMNAS[t].forEach(([k]) => {
+        const td = document.createElement('td');
+        const v = k === 'autor_nombre' ? nombres[String(f.autor)] ?? '—' : f[k];
+        td.textContent = k === 'creado' ? fecha(String(v)) : k === 'litros' ? miles(Number(v)) : String(v ?? '');
+        if (k === 'estado' || k === 'resultado') td.dataset.valor = String(v);
+        tr.append(td);
+      });
+      const td = document.createElement('td');
+      if (f.autor === yo) {
+        const b = document.createElement('button');
+        b.type = 'button'; b.className = 'borrar'; b.textContent = 'Borrar'; b.setAttribute('aria-label', 'Borrar este registro');
+        b.addEventListener('click', async () => {
+          if (!confirm('¿Borrar este registro? No se puede deshacer.')) return;
+          const { error } = await sb!.from(t).delete().eq('id', f.id);
+          aviso(error ? `No se pudo borrar: ${error.message}` : 'Registro borrado.', !!error);
+          if (!error) cargar(t);
+        });
+        td.append(b);
+      }
+      tr.append(td);
+      return tr;
+    });
+    const thead = document.createElement('thead'); thead.append(cab);
+    const tbody = document.createElement('tbody'); tbody.append(...filas);
+    tabla.replaceChildren(thead, tbody);
+    raiz.querySelector(`[data-cuenta="${t}"]`)!.textContent = `${datos[t].length} registros`;
+    pintarResumen();
+  }
+
+  function pintarResumen() {
+    const hoy = new Date().toDateString();
+    const deHoy = (t: Tabla) => datos[t].filter((f) => new Date(String(f.creado)).toDateString() === hoy);
+    const l = deHoy('lotes'), p = deHoy('paros'), c = deHoy('calidad');
+    const set = (k: string, v: string) => (raiz.querySelector(`[data-kpi="${k}"]`)!.textContent = v);
+    set('lotes', String(l.length));
+    set('litros', miles(l.reduce((s, f) => s + Number(f.litros), 0)));
+    set('paros', miles(p.reduce((s, f) => s + Number(f.minutos), 0)));
+    set('calidad', c.length ? `${Math.round((c.filter((f) => f.resultado === 'Aprobado').length / c.length) * 100)} %` : '—');
+    const feed = TABLAS.flatMap((t) => datos[t].map((f) => ({ t, f })))
+      .sort((a, b) => String(b.f.creado).localeCompare(String(a.f.creado))).slice(0, 12)
+      .map(({ t, f }) => {
+        const li = document.createElement('li');
+        const tag = document.createElement('span'); tag.className = 'mono'; tag.textContent = t === 'lotes' ? 'Lote' : t === 'paros' ? 'Paro' : 'Calidad';
+        const txt = document.createElement('span');
+        txt.textContent = t === 'lotes' ? `${f.codigo} · ${f.producto} · ${miles(Number(f.litros))} L · ${f.estado}`
+          : t === 'paros' ? `${f.equipo} · ${f.causa} · ${f.minutos} min` : `${f.lote} · ${f.prueba}: ${f.valor} · ${f.resultado}`;
+        const quien = document.createElement('small'); quien.textContent = `${nombres[String(f.autor)] ?? ''} · ${fecha(String(f.creado))}`;
+        li.append(tag, txt, quien);
+        return li;
+      });
+    raiz.querySelector('[data-feed]')!.replaceChildren(...(feed.length ? feed : [Object.assign(document.createElement('li'), { textContent: 'Aún no hay registros.' })]));
+  }
+
+  async function cargar(t: Tabla) {
+    const { data, error } = await sb!.from(t).select('*').order('creado', { ascending: false }).limit(500);
+    if (error) return aviso(`No se pudieron leer los ${t}: ${error.message}`, true);
+    datos[t] = data as Fila[];
+    pintarTabla(t);
+  }
+
+  async function cargarNombres() {
+    const { data } = await sb!.from('perfiles').select('id, nombre, rol');
+    nombres = Object.fromEntries((data ?? []).map((p) => [p.id, p.nombre]));
+    return data ?? [];
+  }
+
+  // ---------- registrar ----------
+  raiz.querySelectorAll<HTMLFormElement>('[data-form]').forEach((form) =>
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const t = form.dataset.form as Tabla;
+      const fila = Object.fromEntries(new FormData(form)) as Record<string, string | number>;
+      if ('litros' in fila) fila.litros = Number(fila.litros);
+      if ('minutos' in fila) fila.minutos = Number(fila.minutos);
+      const { error } = await sb!.from(t).insert(fila);
+      aviso(error ? `No se guardó: ${error.message}` : 'Registro guardado.', !!error);
+      if (!error) { form.querySelectorAll<HTMLInputElement>('input[name="nota"], input[name="valor"]').forEach((i) => (i.value = '')); cargar(t); }
+    }),
+  );
+
+  // ---------- CSV ----------
+  raiz.querySelectorAll<HTMLButtonElement>('[data-csv]').forEach((b) =>
+    b.addEventListener('click', () => {
+      const t = b.dataset.csv as Tabla;
+      const cols = COLUMNAS[t];
+      const esc = (v: unknown) => `"${String(v ?? '').replace(/"/g, '""')}"`;
+      const filas = [cols.map(([, n]) => esc(n)).join(';'),
+        ...datos[t].map((f) => cols.map(([k]) => esc(k === 'autor_nombre' ? nombres[String(f.autor)] : f[k])).join(';'))];
+      const a = Object.assign(document.createElement('a'), {
+        href: URL.createObjectURL(new Blob(['﻿' + filas.join('\n')], { type: 'text/csv;charset=utf-8' })),
+        download: `mes_${t}_${new Date().toISOString().slice(0, 10)}.csv`,
+      });
+      a.click();
+      URL.revokeObjectURL(a.href);
+    }),
+  );
+
+  // ---------- archivos ----------
+  const BUCKET = 'mes-archivos';
+  async function listarArchivos() {
+    const { data, error } = await sb!.storage.from(BUCKET).list('', { limit: 200, sortBy: { column: 'created_at', order: 'desc' } });
+    const ul = raiz.querySelector('[data-archivos]')!;
+    if (error) return aviso(`No se pudieron leer los archivos: ${error.message}`, true);
+    const items = (data ?? []).filter((o) => o.name !== '.emptyFolderPlaceholder').map((o) => {
+      const li = document.createElement('li');
+      const n = document.createElement('span'); n.textContent = o.name.replace(/^\d+_/, '');
+      const m = document.createElement('small'); m.className = 'mono';
+      m.textContent = `${o.created_at ? fecha(o.created_at) : ''} · ${o.metadata?.size ? `${Math.max(1, Math.round(o.metadata.size / 1024))} KB` : ''}`;
+      const b = document.createElement('button'); b.type = 'button'; b.className = 'ghost-link'; b.textContent = 'Descargar ↓';
+      b.addEventListener('click', async () => {
+        const { data: s, error: e } = await sb!.storage.from(BUCKET).createSignedUrl(o.name, 120, { download: n.textContent! });
+        if (e) return aviso(`No se pudo descargar: ${e.message}`, true);
+        location.href = s.signedUrl;
+      });
+      li.append(n, m, b);
+      return li;
+    });
+    ul.replaceChildren(...(items.length ? items : [Object.assign(document.createElement('li'), { textContent: 'Aún no hay archivos.' })]));
+  }
+  raiz.querySelector<HTMLFormElement>('[data-subir]')!.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const files = (e.currentTarget as HTMLFormElement).querySelector<HTMLInputElement>('input[type=file]')!.files!;
+    for (const f of files) {
+      const nombre = `${Date.now()}_${f.name.normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^\w.\- ]/g, '_')}`;
+      const { error } = await sb!.storage.from(BUCKET).upload(nombre, f);
+      aviso(error ? `No se subió ${f.name}: ${error.message}` : `Subido: ${f.name}`, !!error);
+    }
+    (e.currentTarget as HTMLFormElement).reset();
+    listarArchivos();
+  });
+
+  // ---------- sesión ----------
+  async function entrar(uid: string, correo: string) {
+    yo = uid;
+    login.hidden = true;
+    app.hidden = false;
+    const perfiles = await cargarNombres();
+    const p = perfiles.find((x) => x.id === uid);
+    raiz.querySelector('[data-usuario]')!.textContent = p ? `${p.nombre} · ${p.rol}` : correo;
+    await Promise.all([...TABLAS.map(cargar), listarArchivos()]);
+    sb!.channel('mes').on('postgres_changes', { event: '*', schema: 'public' }, (c) => {
+      const t = c.table as Tabla;
+      if (TABLAS.includes(t)) cargarNombres().then(() => cargar(t));
+    }).subscribe();
+  }
+
+  if (sb) {
+    sb.auth.getSession().then(({ data }) => { if (data.session) entrar(data.session.user.id, data.session.user.email ?? ''); });
+    raiz.querySelector<HTMLFormElement>('[data-login]')!.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const f = new FormData(e.currentTarget as HTMLFormElement);
+      loginMsg.textContent = 'Entrando…';
+      const { data, error } = await sb.auth.signInWithPassword({ email: String(f.get('correo')), password: String(f.get('clave')) });
+      if (error) { loginMsg.textContent = 'Correo o contraseña incorrectos.'; return; }
+      loginMsg.textContent = '';
+      entrar(data.user.id, data.user.email ?? '');
+    });
+    raiz.querySelector('[data-salir]')!.addEventListener('click', async () => {
+      await sb.auth.signOut();
+      location.reload();
+    });
+  }
+</script>
+
+<style>
+  .mes-login {
+    max-width: 460px;
+  }
+
+  .login {
+    display: grid;
+    gap: 16px;
+    padding: 28px 24px 24px;
+  }
+
+  .login h3 {
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: -0.5px;
+  }
+
+  label {
+    display: grid;
+    gap: 6px;
+  }
+
+  label .mono {
+    color: var(--granite);
+  }
+
+  input,
+  select {
+    min-height: 44px;
+    padding: 10px 12px;
+    border: 1px solid var(--cream-16);
+    border-radius: var(--radius);
+    background: var(--black);
+    color: var(--cream);
+    font: inherit;
+    font-size: 15px;
+  }
+
+  input:focus-visible,
+  select:focus-visible {
+    outline: 1px solid var(--gold);
+    border-color: var(--gold);
+  }
+
+  .boton {
+    min-height: 44px;
+    padding: 10px 20px;
+    border: 1px solid var(--gold);
+    border-radius: var(--radius);
+    background: var(--gold);
+    color: var(--black);
+    font: inherit;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 150ms var(--ease-switch);
+  }
+
+  .boton:hover {
+    background: var(--cream);
+    border-color: var(--cream);
+  }
+
+  .boton:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+
+  .login-msg,
+  .mes-msg {
+    margin: 0;
+    font-size: 13px;
+    color: var(--granite);
+  }
+
+  .mes-msg {
+    padding: 12px 20px 16px;
+  }
+
+  .mes-msg[data-error] {
+    color: var(--orange);
+  }
+
+  .salir {
+    margin-left: 12px;
+    min-height: 32px;
+    padding: 4px 10px;
+    border: 1px solid var(--cream-16);
+    border-radius: var(--radius);
+    background: none;
+    color: var(--cream-70);
+    cursor: pointer;
+  }
+
+  .salir:hover {
+    color: var(--cream);
+    border-color: var(--gold-60);
+  }
+
+  .tabs {
+    display: flex;
+    gap: 4px;
+    padding: 8px 12px 0;
+    border-bottom: 1px solid var(--stroke);
+    overflow-x: auto;
+  }
+
+  .tab {
+    min-height: 44px;
+    padding: 10px 16px;
+    border: 0;
+    border-bottom: 2px solid transparent;
+    background: none;
+    color: var(--granite);
+    cursor: pointer;
+    white-space: nowrap;
+  }
+
+  .tab[aria-selected='true'] {
+    color: var(--cream);
+    border-bottom-color: var(--gold);
+  }
+
+  .panel {
+    padding: 20px;
+  }
+
+  .kpis-mes {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    border: 1px solid var(--stroke);
+    border-radius: var(--radius);
+    margin-bottom: 24px;
+  }
+
+  .kpis-mes div {
+    display: grid;
+    gap: 8px;
+    padding: 16px 20px;
+  }
+
+  .kpis-mes div + div {
+    border-left: 1px solid var(--stroke);
+  }
+
+  .kpis-mes .mono,
+  .kpis-mes small {
+    color: var(--granite);
+    font-size: 11px;
+  }
+
+  .kpis-mes b {
+    font-weight: 400;
+    font-size: 28px;
+    letter-spacing: -1px;
+    line-height: 1;
+  }
+
+  h4 {
+    margin: 0 0 8px;
+    color: var(--granite);
+    font-weight: 400;
+  }
+
+  .feed,
+  .archivos {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .feed li,
+  .archivos li {
+    display: grid;
+    grid-template-columns: 80px minmax(0, 1fr) auto;
+    gap: 12px;
+    align-items: baseline;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--stroke);
+    color: var(--cream-70);
+    font-size: 14px;
+  }
+
+  .archivos li {
+    grid-template-columns: minmax(0, 1fr) auto auto;
+  }
+
+  .feed .mono {
+    color: var(--gold);
+    font-size: 11px;
+  }
+
+  .feed small,
+  .archivos small {
+    color: var(--granite);
+    font-size: 11px;
+  }
+
+  .registro {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    gap: 14px;
+    align-items: end;
+    margin-bottom: 24px;
+  }
+
+  .registro .ancho {
+    grid-column: span 2;
+  }
+
+  .tabla-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+    color: var(--granite);
+  }
+
+  .tabla-bar button {
+    background: none;
+    border: 0;
+    min-height: 44px;
+    cursor: pointer;
+  }
+
+  .tabla {
+    overflow-x: auto;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+  }
+
+  th {
+    text-align: left;
+    padding: 8px 10px;
+    color: var(--granite);
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 400;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--cream-16);
+    white-space: nowrap;
+  }
+
+  td {
+    padding: 10px;
+    border-bottom: 1px solid var(--stroke);
+    color: var(--cream-70);
+  }
+
+  td[data-valor='Aprobado'],
+  td[data-valor='Liberado'],
+  td[data-valor='Terminado'] {
+    color: var(--green);
+  }
+
+  td[data-valor='Rechazado'],
+  td[data-valor='Retenido'] {
+    color: var(--orange);
+  }
+
+  .borrar {
+    min-height: 32px;
+    padding: 2px 8px;
+    border: 1px solid var(--cream-16);
+    border-radius: var(--radius);
+    background: none;
+    color: var(--granite);
+    font-size: 11px;
+    cursor: pointer;
+  }
+
+  .subir {
+    display: flex;
+    gap: 14px;
+    align-items: stretch;
+    margin-bottom: 20px;
+  }
+
+  .soltar {
+    flex: 1;
+    display: grid;
+    place-items: center;
+    min-height: 88px;
+    padding: 16px;
+    border: 1px dashed var(--cream-16);
+    border-radius: var(--radius);
+    color: var(--cream-70);
+    text-align: center;
+    cursor: pointer;
+  }
+
+  .soltar input {
+    width: 100%;
+    min-height: 0;
+    border: 0;
+    padding: 0;
+  }
+
+  .archivos button {
+    background: none;
+    border: 0;
+    min-height: 44px;
+    cursor: pointer;
+  }
+
+  @media (max-width: 760px) {
+    .kpis-mes {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .kpis-mes div:nth-child(3) {
+      border-left: 0;
+    }
+    .kpis-mes div:nth-child(n + 3) {
+      border-top: 1px solid var(--stroke);
+    }
+    .registro .ancho {
+      grid-column: auto;
+    }
+    .subir {
+      flex-direction: column;
+    }
+    .feed li {
+      grid-template-columns: 1fr;
+      gap: 4px;
+    }
+  }
+</style>

@@ -1,0 +1,31 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import Siguiente from '../components/Siguiente.astro';
+import sitio from '../data/sitio.json';
+import { getEntry } from 'astro:content';
+import Isa95 from '../components/Isa95.astro';
+
+const solucion = await getEntry('textos', 'solucion');
+if (!solucion) throw new Error('Falta un texto');
+---
+
+<Base title={`Arquitectura · ${sitio.nombre}`}>
+  <Nav actual="arquitectura" />
+
+  <main class="pagina">
+    <!-- 05 ARQUITECTURA -->
+    <section id="arquitectura" class="section wrap">
+      <div class="section-head">
+        <span class="mono">05 · Arquitectura</span>
+        <h2>{solucion.data.titulo}</h2>
+        <p>{solucion.data.resumen}</p>
+      </div>
+      <Isa95 />
+    </section>
+    <Siguiente actual="arquitectura" />
+  </main>
+
+  <Footer />
+</Base>

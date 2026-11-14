@@ -1,28 +1,25 @@
 ---
 import Lockup from './Lockup.astro';
 import sitio from '../data/sitio.json';
+import { PAGINAS, url } from '../lib/paginas';
 
-const links = [
-  { href: '#empresa', label: 'Empresa' },
-  { href: '#automatizacion', label: 'Automatización' },
-  { href: '#proceso', label: 'Proceso' },
-  { href: '#arquitectura', label: 'Arquitectura' },
-  { href: '#simulacion', label: 'Simulación' },
-  { href: '#planeacion', label: 'Planeación' },
-  { href: '#modulos', label: 'Módulos' },
-  { href: '#equipo', label: 'Equipo' },
-];
+interface Props {
+  actual?: string;
+}
+const { actual = 'inicio' } = Astro.props;
+// Cada sección es una página: el menú lleva a su dirección y marca la página actual.
+const links = PAGINAS.map((p) => ({ href: url(p.slug), label: p.label, actual: p.slug === actual }));
 ---
 
 <header class="nav" data-nav>
   <div class="nav-inner">
-    <Lockup badge={false} />
+    <a class="nav-home" href={url('inicio')} aria-label="Inicio"><Lockup badge={false} /></a>
     <nav aria-label="Secciones">
       <ul>
         {
           links.map((l) => (
             <li>
-              <a href={l.href} data-navlink>
+              <a href={l.href} aria-current={l.actual ? 'page' : undefined}>
                 {l.label}
               </a>
             </li>
@@ -51,7 +48,7 @@ const links = [
         {
           links.map((l, i) => (
             <li style={`--i:${i}`}>
-              <a href={l.href} data-navlink data-menu-link>
+              <a href={l.href} data-menu-link aria-current={l.actual ? 'page' : undefined}>
                 <span class="menu-label">{l.label}</span>
               </a>
             </li>
@@ -126,7 +123,7 @@ const links = [
   }
 
   nav a:hover,
-  nav a[aria-current='true'] {
+  nav a[aria-current='page'] {
     color: var(--cream);
   }
 
@@ -245,7 +242,7 @@ const links = [
     transition: color 150ms var(--ease-switch);
   }
 
-  .menu a[aria-current='true'] .menu-label,
+  .menu a[aria-current='page'] .menu-label,
   .menu a:hover .menu-label {
     color: var(--gold);
   }

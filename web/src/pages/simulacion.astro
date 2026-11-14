@@ -1,0 +1,98 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import Siguiente from '../components/Siguiente.astro';
+import sitio from '../data/sitio.json';
+
+const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
+const blob = `${sitio.repositorio}/blob/main`;
+const repoTree = `${sitio.repositorio}/tree/main`;
+const galeria = [
+  { img: 'planta-3d.webp', titulo: 'Planta con tres líneas en Tecnomatix', nota: 'Tronco común de 150.000 L/día, yogurts, quesos y leche UHT, con paletizado manual en las tres líneas. 66 de los 80 objetos de la licencia.', doc: '02_gestion-produccion/simulacion-tecnomatix/planta-150k', tipo: 'Modelo 3D', ancho: true },
+  { img: 'planta-vsm.webp', titulo: 'VSM de la planta', nota: 'Un VSM por línea sobre el tronco común, con el uso de cada equipo simulado.', doc: '02_gestion-produccion/vsm/vsm_planta_3_lineas_clasico.pdf', tipo: 'VSM' },
+  { img: 'planta-layout.webp', titulo: 'Distribución de la planta', nota: 'Plano de la nave de 110 × 60 m: muros, puertas, pasillos y 80 % de piso libre.', doc: '02_gestion-produccion/distribucion-planta/layout_planta_3_lineas_clasico.pdf', tipo: 'Layout' },
+  { img: 'yogur-3d-manual.webp', titulo: 'Línea de yogurts con paletizado manual', nota: 'Escenario actual: dos personas estiban las cajas que llegan por las bandas.', doc: '02_gestion-produccion/simulacion-tecnomatix/linea-yogures', tipo: 'Modelo 3D', ancho: true },
+  { img: 'yogur-vsm.webp', titulo: 'VSM de la línea de yogurts', nota: 'Lead time ≈ 35 h con 30 % de valor agregado. La llenadora de vasos marca el ritmo.', doc: '02_gestion-produccion/vsm/vsm_linea_yogures_clasico.pdf', tipo: 'VSM', ancho: true },
+  { img: 'espagueti-actual.webp', titulo: 'Diagrama de espagueti de la línea de yogurts', nota: '≈ 21 km de recorridos al día y ≈ 11.600 cajas estibadas a mano. La ruta morada es la de la analista de calidad.', doc: '02_gestion-produccion/distribucion-planta/espagueti_linea_yogures_actual_clasico.pdf', tipo: 'Espagueti', ancho: true },
+];
+const recetas = [
+  { titulo: 'Recetas y procesos de la planta', nota: 'Yogurts, quesos y leche UHT: fórmulas, procedimientos, parámetros y PCC', doc: '01_transformacion-digital/isa88/Recetas_y_procesos_planta.pdf' },
+];
+---
+
+<Base title={`Simulación y planta · ${sitio.nombre}`}>
+  <Nav actual="simulacion" />
+
+  <main class="pagina">
+    <!-- 07 SIMULACIÓN -->
+    <section id="simulacion" class="section wrap">
+      <div class="section-head">
+        <span class="mono">07 · Simulación y planta</span>
+        <h2>La planta, modelada antes de tocarla.</h2>
+        <p>
+          Modelos de Plant Simulation, VSM, distribución en planta y diagramas de espagueti de la planta de 150.000 L/día
+          y de la línea de yogurts. Abre cada uno para verlo en grande y descargar el documento completo.
+        </p>
+      </div>
+      <ol class="fichas">
+        {
+          galeria.map((g, i) => (
+            <li>
+              <button type="button" class="ficha" data-visor data-img={`${base}evidencias/${g.img}`} data-titulo={g.titulo}
+                data-nota={g.nota} data-doc={`${g.doc.endsWith('.pdf') ? blob : repoTree}/${g.doc}`}>
+                <span class="ficha-n mono">{String(i + 1).padStart(2, '0')}</span>
+                <span class="ficha-tipo mono gold">{g.tipo}</span>
+                <span class="ficha-t">{g.titulo}</span>
+                <span class="ficha-nota">{g.nota}</span>
+                <span class="ficha-ver mono" aria-hidden="true">Ver ↗</span>
+              </button>
+            </li>
+          ))
+        }
+      </ol>
+      <dialog class="visor" aria-label="Imagen ampliada">
+        <div class="visor-bar">
+          <strong data-visor-titulo></strong>
+          <a class="visor-doc mono" data-visor-doc target="_blank" rel="noopener">Ver documento →</a>
+          <button type="button" class="visor-x" data-visor-cerrar aria-label="Cerrar">×</button>
+        </div>
+        <div class="visor-body"><img data-visor-img alt="" /></div>
+        <p class="visor-nota" data-visor-nota></p>
+      </dialog>
+      <script>
+        const visor = document.querySelector<HTMLDialogElement>('dialog.visor');
+        if (visor) {
+          const img = visor.querySelector<HTMLImageElement>('[data-visor-img]')!;
+          document.querySelectorAll<HTMLButtonElement>('[data-visor]').forEach((b) =>
+            b.addEventListener('click', () => {
+              img.src = b.dataset.img!;
+              img.alt = `${b.dataset.titulo}. ${b.dataset.nota}`;
+              visor.querySelector('[data-visor-titulo]')!.textContent = b.dataset.titulo!;
+              visor.querySelector('[data-visor-nota]')!.textContent = b.dataset.nota!;
+              visor.querySelector<HTMLAnchorElement>('[data-visor-doc]')!.href = b.dataset.doc!;
+              visor.showModal();
+            }),
+          );
+          visor.querySelector('[data-visor-cerrar]')!.addEventListener('click', () => visor.close());
+          visor.addEventListener('click', (e) => { if (e.target === visor) visor.close(); });
+        }
+      </script>
+      <div class="docs">
+        {
+          recetas.map((r) => (
+            <a class="doc" href={`${blob}/${r.doc}`} target="_blank" rel="noopener">
+              <span class="mono gold">PDF</span>
+              <span class="doc-t">{r.titulo}</span>
+              <span class="doc-n">{r.nota}</span>
+              <span class="arrow" aria-hidden="true">→</span>
+            </a>
+          ))
+        }
+      </div>
+    </section>
+    <Siguiente actual="simulacion" />
+  </main>
+
+  <Footer />
+</Base>
