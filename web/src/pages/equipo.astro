@@ -30,34 +30,42 @@ const iniciales = (n: string) => {
         </p>
       </div>
 
-      <ul class="team">
+      <ul class="team" data-equipo>
         {
           equipo.map(({ data }, i) => (
             <li class="member" style={`--i:${i}`}>
-              <article class="persona">
-                <span class="top mono">
-                  <span class="gold">{String(data.numero).padStart(2, '0')}</span>
-                  <span class="sigla">{data.sigla}</span>
+              <button class="flip" type="button" aria-pressed="false" aria-label={`${data.nombre}: ver de qué se encarga`} data-flip>
+                <span class="cara frente">
+                  <span class="brillo" aria-hidden="true" />
+                  <span class="top mono">
+                    <span class="gold">{String(data.numero).padStart(2, '0')}</span>
+                    <span class="sigla">{data.sigla}</span>
+                  </span>
+                  <span class="retrato" aria-hidden="true">
+                    <span class="aro" />
+                    {data.foto ? (
+                      <img src={`${BASE}equipo/${data.foto}`} alt="" loading="lazy" width="240" height="240" />
+                    ) : (
+                      <span class="ini">{iniciales(data.nombre)}</span>
+                    )}
+                  </span>
+                  <span class="nombre">{data.nombre}</span>
+                  <span class="member-role">{data.rol}</span>
                 </span>
-                <span class="retrato" aria-hidden="true">
-                  <span class="aro" />
-                  {data.foto ? (
-                    <img src={`${BASE}equipo/${data.foto}`} alt="" loading="lazy" width="240" height="240" />
-                  ) : (
-                    <span class="ini">{iniciales(data.nombre)}</span>
-                  )}
+                <span class="cara reverso">
+                  <span class="top mono">
+                    <span class="gold">{data.sigla}</span>
+                    <span>{data.nombre.split(' ')[0]}</span>
+                  </span>
+                  <span class="reverso-t">Se encarga de</span>
+                  <span class="tareas">
+                    {data.tareas.map((t, k) => (
+                      <span class="tarea" style={`--k:${k}`}>{t}</span>
+                    ))}
+                  </span>
+                  <span class="gh mono">@{data.github}</span>
                 </span>
-                <h3 class="nombre">{data.nombre}</h3>
-                <span class="member-role">{data.rol}</span>
-                <ul class="tareas">
-                  {data.tareas.map((t) => (
-                    <li>{t}</li>
-                  ))}
-                </ul>
-                <a class="gh mono" href={`https://github.com/${data.github}`} target="_blank" rel="noopener">
-                  @{data.github} <span class="arrow" aria-hidden="true">→</span>
-                </a>
-              </article>
+              </button>
             </li>
           ))
         }
@@ -69,6 +77,28 @@ const iniciales = (n: string) => {
 
   <Footer />
 </Base>
+
+<script>
+  // Voltear al tocar; inclinación 3D que sigue al puntero (solo con mouse y sin "reducir movimiento").
+  const quieto = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.querySelectorAll<HTMLButtonElement>('[data-flip]').forEach((b) => {
+    b.addEventListener('click', () => b.setAttribute('aria-pressed', String(b.getAttribute('aria-pressed') !== 'true')));
+    if (quieto) return;
+    b.addEventListener('pointermove', (e) => {
+      if (e.pointerType !== 'mouse') return;
+      const r = b.getBoundingClientRect();
+      const x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
+      b.style.setProperty('--rx', `${(0.5 - y) * 10}deg`);
+      b.style.setProperty('--ry', `${(x - 0.5) * 12}deg`);
+      b.style.setProperty('--mx', `${x * 100}%`);
+      b.style.setProperty('--my', `${y * 100}%`);
+    });
+    b.addEventListener('pointerleave', () => {
+      b.style.removeProperty('--rx');
+      b.style.removeProperty('--ry');
+    });
+  });
+</script>
 
 <style>
   .team {
@@ -83,30 +113,82 @@ const iniciales = (n: string) => {
   .member {
     padding: 0;
     border: 0;
+    perspective: 1100px;
   }
 
-  .persona {
-    height: 100%;
+  .flip {
+    --rx: 0deg;
+    --ry: 0deg;
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 440px;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: inherit;
+    font: inherit;
+    text-align: left;
+    cursor: pointer;
+    transform-style: preserve-3d;
+    transform: rotateX(var(--rx)) rotateY(var(--ry));
+    transition: transform 700ms var(--ease-out-expo), translate 400ms var(--ease-out-expo);
+  }
+
+  .flip:hover {
+    translate: 0 -10px;
+    transition: transform 160ms linear, translate 400ms var(--ease-out-expo);
+  }
+
+  .flip[aria-pressed='true'] {
+    transform: rotateX(var(--rx)) rotateY(calc(180deg + var(--ry)));
+    transition: transform 800ms var(--ease-out-expo), translate 400ms var(--ease-out-expo);
+  }
+
+  .flip:focus-visible {
+    outline: none;
+  }
+
+  .flip:focus-visible .cara {
+    border-color: var(--gold);
+  }
+
+  .cara {
+    position: absolute;
+    inset: 0;
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 10px;
     padding: 20px 18px;
     border: 1px solid var(--cream-16);
     border-radius: var(--radius-frame);
     background: var(--carbon);
-    transition:
-      border-color 200ms var(--ease-switch),
-      translate 400ms var(--ease-out-expo),
-      box-shadow 400ms var(--ease-out-expo);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    overflow: hidden;
+    transition: border-color 200ms var(--ease-switch), box-shadow 400ms var(--ease-out-expo);
   }
 
-  .persona:hover {
-    translate: 0 -6px;
+  .flip:hover .cara {
     border-color: var(--gold-60);
-    box-shadow: 0 30px 60px -30px rgb(0 0 0 / 0.55);
+    box-shadow: 0 30px 60px -30px rgb(0 0 0 / 0.55), 0 0 0 1px var(--gold-08);
+  }
+
+  .brillo {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(260px circle at var(--mx, 50%) var(--my, 0%), var(--gold-08), transparent 70%);
+    opacity: 0;
+    transition: opacity 300ms var(--ease-switch);
+    pointer-events: none;
+  }
+
+  .flip:hover .brillo {
+    opacity: 1;
   }
 
   .top {
+    position: relative;
     display: flex;
     justify-content: space-between;
     font-size: 11px;
@@ -124,9 +206,10 @@ const iniciales = (n: string) => {
     position: relative;
     display: grid;
     place-items: center;
-    width: 120px;
+    width: 132px;
     aspect-ratio: 1;
-    margin: 14px auto 8px;
+    margin: 18px auto 10px;
+    transform: translateZ(40px);
   }
 
   .aro {
@@ -140,7 +223,7 @@ const iniciales = (n: string) => {
     transition: opacity 300ms var(--ease-switch);
   }
 
-  .persona:hover .aro {
+  .flip:hover .aro {
     opacity: 1;
     animation: girar 4s linear infinite;
   }
@@ -168,11 +251,13 @@ const iniciales = (n: string) => {
   .ini {
     display: grid;
     place-items: center;
-    background: var(--black);
+    background: radial-gradient(120% 120% at 30% 20%, var(--gold-08), transparent 60%), var(--black);
     border: 1px solid var(--cream-12);
     color: var(--gold);
-    font-size: 40px;
+    font-family: var(--display, var(--sans));
+    font-size: 44px;
     font-weight: 600;
+    letter-spacing: 1px;
   }
 
   .nombre {
@@ -181,50 +266,76 @@ const iniciales = (n: string) => {
     letter-spacing: -0.3px;
     line-height: 1.25;
     text-align: center;
+    transform: translateZ(24px);
   }
 
   .member-role {
     font-size: 12.5px;
-    color: var(--gold);
+    color: var(--cream-70);
     text-align: center;
   }
 
-  .tareas {
-    list-style: none;
-    margin: 10px 0 0;
-    padding: 12px 0 0;
-    display: grid;
-    gap: 7px;
-    border-top: 1px solid var(--cream-08);
+  .voltear {
+    margin-top: auto;
+    align-self: center;
+    font-size: 11px;
+    color: var(--granite);
+    transition: color 200ms var(--ease-switch);
   }
 
-  .tareas li {
+  .flip:hover .voltear {
+    color: var(--gold);
+  }
+
+  .reverso {
+    transform: rotateY(180deg);
+    background: linear-gradient(170deg, var(--gold-08), var(--carbon) 55%);
+    border-color: var(--gold-60);
+  }
+
+  .reverso-t {
+    margin-top: 8px;
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: -0.4px;
+  }
+
+  .tareas {
+    display: grid;
+    gap: 9px;
+  }
+
+  .tarea {
     position: relative;
-    padding-left: 13px;
-    font-size: 12px;
+    padding-left: 16px;
+    font-size: 12.5px;
     line-height: 1.4;
     color: var(--cream-70);
+    opacity: 0;
+    translate: 0 8px;
   }
 
-  .tareas li::before {
+  .tarea::before {
     content: '';
     position: absolute;
     left: 0;
     top: 6px;
-    width: 5px;
-    height: 5px;
+    width: 6px;
+    height: 6px;
     border-radius: 1px;
     background: var(--gold);
   }
 
-  .gh {
-    margin-top: auto;
-    padding-top: 12px;
-    font-size: 11px;
-    color: var(--granite);
+  .flip[aria-pressed='true'] .tarea {
+    opacity: 1;
+    translate: 0 0;
+    transition: opacity 500ms var(--ease-out-expo), translate 600ms var(--ease-out-expo);
+    transition-delay: calc(300ms + var(--k) * 70ms);
   }
 
-  .gh:hover {
+  .gh {
+    margin-top: auto;
+    font-size: 11px;
     color: var(--gold);
   }
 
@@ -244,20 +355,37 @@ const iniciales = (n: string) => {
     .team {
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
+    .flip {
+      height: 420px;
+    }
   }
 
   @media (max-width: 480px) {
     .team {
       grid-template-columns: 1fr;
     }
+    .flip {
+      height: 380px;
+    }
+    .retrato {
+      width: 112px;
+    }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .persona:hover {
+    .flip,
+    .flip[aria-pressed='true'] {
+      transition: none;
+    }
+    .flip:hover {
       translate: none;
     }
-    .persona:hover .aro {
+    .flip:hover .aro {
       animation: none;
+    }
+    .tarea {
+      opacity: 1;
+      translate: none;
     }
   }
 </style>
