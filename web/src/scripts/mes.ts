@@ -264,6 +264,7 @@ function aplicar(t: string, pl: any) {
 }
 function revisarRol() {
   const p = D.perfiles.find((x) => x.id === yo);
+  if (p && !pantallaApp.hidden) pintarUsuario();
   if (p && (p.rol !== miRol || Boolean(p.pleno) !== pleno)) { miRol = p.rol; pleno = Boolean(p.pleno) || p.rol === 'Administrador'; rolVista = p.rol; pintarUsuario(); pintarMenu(); irA(vista?.id ?? ''); }
 }
 
