@@ -642,7 +642,7 @@ function tileMaquina(m: Fila) {
     h('span', { class: 'maq-c' }, m.causa || '—', m.orden ? h('span', { class: 'mono' }, ` · ${m.orden}`) : null),
     h('span', { class: 'maq-fila' }, h('span', { class: 'maq-t mono' }, vivo(m.desde)), h('span', { class: 'maq-s mono' }, senalTxt(m))),
     spark(m.codigo),
-    vel ? h('span', { class: 'maq-cont mono' }, 'Contador ', h('b', { 'data-cont': '', 'data-base': m.contador, 'data-vel': m.estado === 'En marcha' ? porMin : 0, 'data-t0': m.lectura ?? '' }, miles(Number(m.contador))), ` ${String(vel.u).split('/')[0]}`) : null,
+    vel ? h('span', { class: 'maq-cont mono' }, 'Contador ', h('b', { 'data-contador': '', 'data-base': m.contador, 'data-vel': m.estado === 'En marcha' ? porMin : 0, 'data-t0': m.lectura ?? '' }, miles(Number(m.contador))), ` ${String(vel.u).split('/')[0]}`) : null,
     tira(m.codigo, inicioDia(), Date.now()));
 }
 
@@ -1362,7 +1362,7 @@ setInterval(() => {
   raiz.querySelectorAll<HTMLElement>('[data-desde]').forEach((e) => (e.textContent = dur(n - Date.parse(e.dataset.desde!))));
   raiz.querySelectorAll<HTMLElement>('[data-hasta]').forEach((e) => (e.textContent = dur(Number(e.dataset.hasta) - n)));
   // contadores y órdenes avanzan entre lecturas (máximo 90 s de extrapolación)
-  raiz.querySelectorAll<HTMLElement>('[data-cont]').forEach((e) => {
+  raiz.querySelectorAll<HTMLElement>('[data-contador]').forEach((e) => {
     const t0 = Date.parse(e.dataset.t0 || '');
     const dt = Number.isFinite(t0) ? Math.min(1.5, Math.max(0, (n - t0) / 60000)) : 0;
     e.textContent = miles(Math.floor(Number(e.dataset.base) + Number(e.dataset.vel) * dt));
