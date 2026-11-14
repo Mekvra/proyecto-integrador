@@ -1425,8 +1425,10 @@ if (sb) {
     e.preventDefault();
     const f = new FormData(e.currentTarget as HTMLFormElement);
     loginMsg.textContent = 'Entrando…';
-    const { data, error } = await sb.auth.signInWithPassword({ email: String(f.get('correo')), password: String(f.get('clave')) });
-    if (error) { loginMsg.textContent = 'Correo o contraseña incorrectos.'; return; }
+    // Los usuarios del equipo entran con un nombre corto: "pablo" equivale a pablo@mekvra.test.
+    const u = String(f.get('correo')).trim().toLowerCase();
+    const { data, error } = await sb.auth.signInWithPassword({ email: u.includes('@') ? u : `${u}@mekvra.test`, password: String(f.get('clave')) });
+    if (error) { loginMsg.textContent = 'Usuario o contraseña incorrectos.'; return; }
     loginMsg.textContent = '';
     entrar(data.user.id);
   });
