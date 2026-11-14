@@ -337,7 +337,9 @@ html.reveal-ready
     border-color 150ms var(--ease-switch),
     background-color 150ms var(--ease-switch),
     color 150ms var(--ease-switch),
-    top 320ms var(--ease-out-expo);
+    top 320ms var(--ease-out-expo),
+    translate 450ms var(--ease-out-expo),
+    box-shadow 450ms var(--ease-out-expo);
 }
 
 /* Paneles de instrumento: entran como un monitor que se enciende. */
@@ -378,5 +380,80 @@ html.reveal-ready :is(.stack-strip, .hero-main > :not(script), .section-head > *
   }
   .pulse[data-live] {
     animation: none;
+  }
+}
+
+/* ================= Movimiento (extiende DESIGN.md) ================= */
+/* Cambio de pestaña: la página que sale se desvanece hacia arriba y la nueva entra desde abajo.
+   La barra de navegación se queda quieta. Navegadores sin soporte cambian de página normal. */
+@view-transition {
+  navigation: auto;
+}
+.nav {
+  view-transition-name: barra;
+}
+::view-transition-old(root) {
+  animation: vt-sale 240ms var(--ease-switch) both;
+}
+::view-transition-new(root) {
+  animation: vt-entra 620ms var(--ease-out-expo) both;
+}
+@keyframes vt-sale {
+  to {
+    opacity: 0;
+    transform: translateY(-14px);
+    filter: blur(4px);
+  }
+}
+@keyframes vt-entra {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+    filter: blur(8px);
+  }
+}
+
+/* Tarjetas: se elevan y un brillo champaña sigue al cursor. */
+.card,
+.stage,
+.level,
+.fact {
+  background-image: radial-gradient(420px circle at var(--mx, -999px) var(--my, -999px), var(--gold-08), transparent 65%);
+}
+.card:hover {
+  translate: 0 -4px;
+  box-shadow: 0 24px 48px -28px rgb(0 0 0 / 0.5);
+}
+
+/* Etiqueta de cada sección: una línea dorada se dibuja cuando aparece. */
+.section-head > .mono:first-child {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 6px;
+}
+.section-head > .mono:first-child::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  background: var(--gold);
+  transform-origin: left;
+  transform: scaleX(0);
+  transition: transform 1100ms var(--ease-out-expo) 250ms;
+}
+html:not(.reveal-ready) .section-head > .mono:first-child::after,
+.section-head > .mono:first-child.is-in::after {
+  transform: scaleX(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none;
+  }
+  .card:hover {
+    translate: none;
   }
 }

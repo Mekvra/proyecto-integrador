@@ -7,6 +7,12 @@ import sitio from '../data/sitio.json';
 import { getCollection } from 'astro:content';
 
 const equipo = (await getCollection('equipo')).sort((a, b) => a.data.numero - b.data.numero);
+const BASE = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
+// Nombre + primer apellido (con cuatro palabras, el primer apellido es la penúltima).
+const iniciales = (n: string) => {
+  const p = n.split(' ').filter((x) => x && !['de', 'del', 'la'].includes(x.toLowerCase()));
+  return p[0][0] + (p.length >= 4 ? p[p.length - 2] : p[p.length - 1])[0];
+};
 ---
 
 <Base title={`Equipo · ${sitio.nombre}`}>
@@ -18,26 +24,369 @@ const equipo = (await getCollection('equipo')).sort((a, b) => a.data.numero - b.
       <div class="section-head">
         <span class="mono">11 · Equipo</span>
         <h2>Las personas detrás de Mekvra.</h2>
-        <p>Cinco ingenieros mecatrónicos a cargo de la automatización, la ingeniería, la gestión, las finanzas y el software del proyecto.</p>
+        <p>
+          Cinco ingenieros mecatrónicos a cargo de la automatización, la ingeniería, la gestión, las finanzas y el
+          software del proyecto. Toca una tarjeta para ver de qué se encarga cada uno.
+        </p>
       </div>
 
-      <div class="team">
+      <ul class="team" data-equipo>
         {
-          equipo.map(({ data }) => (
-            <article class="member">
-              <span class="mono gold">{String(data.numero).padStart(2, '0')}</span>
-              <h3>{data.nombre}</h3>
-              <span class="member-role">{data.rol}</span>
-              <a class="ghost-link member-gh" href={`https://github.com/${data.github}`} target="_blank" rel="noopener">
-                @{data.github} <span class="arrow" aria-hidden="true">→</span>
-              </a>
-            </article>
+          equipo.map(({ data }, i) => (
+            <li class="member" style={`--i:${i}`}>
+              <button class="flip" type="button" aria-pressed="false" aria-label={`${data.nombre}: ver de qué se encarga`} data-flip>
+                <span class="cara frente">
+                  <span class="brillo" aria-hidden="true" />
+                  <span class="top mono">
+                    <span class="gold">{String(data.numero).padStart(2, '0')}</span>
+                    <span class="sigla">{data.sigla}</span>
+                  </span>
+                  <span class="retrato" aria-hidden="true">
+                    <span class="aro" />
+                    {data.foto ? (
+                      <img src={`${BASE}equipo/${data.foto}`} alt="" loading="lazy" width="240" height="240" />
+                    ) : (
+                      <span class="ini">{iniciales(data.nombre)}</span>
+                    )}
+                  </span>
+                  <span class="nombre">{data.nombre}</span>
+                  <span class="member-role">{data.rol}</span>
+                  <span class="voltear mono">Toca para ver qué hace <span aria-hidden="true">↻</span></span>
+                </span>
+                <span class="cara reverso">
+                  <span class="top mono">
+                    <span class="gold">{data.sigla}</span>
+                    <span>{data.nombre.split(' ')[0]}</span>
+                  </span>
+                  <span class="reverso-t">Se encarga de</span>
+                  <span class="tareas">
+                    {data.tareas.map((t, k) => (
+                      <span class="tarea" style={`--k:${k}`}>{t}</span>
+                    ))}
+                  </span>
+                  <span class="gh mono">@{data.github}</span>
+                </span>
+              </button>
+            </li>
           ))
         }
-      </div>
+      </ul>
+      <p class="team-nota mono">Responsabilidades según la matriz RACI del proyecto (responsable o aprobador).</p>
     </section>
     <Siguiente actual="equipo" />
   </main>
 
   <Footer />
 </Base>
+
+<script>
+  // Voltear al tocar; inclinación 3D que sigue al puntero (solo con mouse y sin "reducir movimiento").
+  const quieto = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.querySelectorAll<HTMLButtonElement>('[data-flip]').forEach((b) => {
+    b.addEventListener('click', () => b.setAttribute('aria-pressed', String(b.getAttribute('aria-pressed') !== 'true')));
+    if (quieto) return;
+    b.addEventListener('pointermove', (e) => {
+      if (e.pointerType !== 'mouse') return;
+      const r = b.getBoundingClientRect();
+      const x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
+      b.style.setProperty('--rx', `${(0.5 - y) * 10}deg`);
+      b.style.setProperty('--ry', `${(x - 0.5) * 12}deg`);
+      b.style.setProperty('--mx', `${x * 100}%`);
+      b.style.setProperty('--my', `${y * 100}%`);
+    });
+    b.addEventListener('pointerleave', () => {
+      b.style.removeProperty('--rx');
+      b.style.removeProperty('--ry');
+    });
+  });
+</script>
+
+<style>
+  .team {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .member {
+    padding: 0;
+    border: 0;
+    perspective: 1100px;
+  }
+
+  .flip {
+    --rx: 0deg;
+    --ry: 0deg;
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 440px;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: inherit;
+    font: inherit;
+    text-align: left;
+    cursor: pointer;
+    transform-style: preserve-3d;
+    transform: rotateX(var(--rx)) rotateY(var(--ry));
+    transition: transform 700ms var(--ease-out-expo), translate 400ms var(--ease-out-expo);
+  }
+
+  .flip:hover {
+    translate: 0 -10px;
+    transition: transform 160ms linear, translate 400ms var(--ease-out-expo);
+  }
+
+  .flip[aria-pressed='true'] {
+    transform: rotateX(var(--rx)) rotateY(calc(180deg + var(--ry)));
+    transition: transform 800ms var(--ease-out-expo), translate 400ms var(--ease-out-expo);
+  }
+
+  .flip:focus-visible {
+    outline: none;
+  }
+
+  .flip:focus-visible .cara {
+    border-color: var(--gold);
+  }
+
+  .cara {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px 18px;
+    border: 1px solid var(--cream-16);
+    border-radius: var(--radius-frame);
+    background: var(--carbon);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    overflow: hidden;
+    transition: border-color 200ms var(--ease-switch), box-shadow 400ms var(--ease-out-expo);
+  }
+
+  .flip:hover .cara {
+    border-color: var(--gold-60);
+    box-shadow: 0 30px 60px -30px rgb(0 0 0 / 0.55), 0 0 0 1px var(--gold-08);
+  }
+
+  .brillo {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(260px circle at var(--mx, 50%) var(--my, 0%), var(--gold-08), transparent 70%);
+    opacity: 0;
+    transition: opacity 300ms var(--ease-switch);
+    pointer-events: none;
+  }
+
+  .flip:hover .brillo {
+    opacity: 1;
+  }
+
+  .top {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    color: var(--granite);
+  }
+
+  .sigla {
+    padding: 1px 7px;
+    border: 1px solid var(--cream-12);
+    border-radius: 99px;
+    letter-spacing: 0.6px;
+  }
+
+  .retrato {
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: 132px;
+    aspect-ratio: 1;
+    margin: 18px auto 10px;
+    transform: translateZ(40px);
+  }
+
+  .aro {
+    position: absolute;
+    inset: -6px;
+    border-radius: 50%;
+    background: conic-gradient(from var(--giro, 0deg), var(--gold), transparent 30%, var(--gold-60) 55%, transparent 80%, var(--gold));
+    -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 2px), #000 calc(100% - 1.5px));
+    mask: radial-gradient(farthest-side, transparent calc(100% - 2px), #000 calc(100% - 1.5px));
+    opacity: 0.55;
+    transition: opacity 300ms var(--ease-switch);
+  }
+
+  .flip:hover .aro {
+    opacity: 1;
+    animation: girar 4s linear infinite;
+  }
+
+  @property --giro {
+    syntax: '<angle>';
+    inherits: false;
+    initial-value: 0deg;
+  }
+
+  @keyframes girar {
+    to {
+      --giro: 360deg;
+    }
+  }
+
+  .retrato img,
+  .ini {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .ini {
+    display: grid;
+    place-items: center;
+    background: radial-gradient(120% 120% at 30% 20%, var(--gold-08), transparent 60%), var(--black);
+    border: 1px solid var(--cream-12);
+    color: var(--gold);
+    font-family: var(--display, var(--sans));
+    font-size: 44px;
+    font-weight: 600;
+    letter-spacing: 1px;
+  }
+
+  .nombre {
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: -0.3px;
+    line-height: 1.25;
+    text-align: center;
+    transform: translateZ(24px);
+  }
+
+  .member-role {
+    font-size: 12.5px;
+    color: var(--cream-70);
+    text-align: center;
+  }
+
+  .voltear {
+    margin-top: auto;
+    align-self: center;
+    font-size: 11px;
+    color: var(--granite);
+    transition: color 200ms var(--ease-switch);
+  }
+
+  .flip:hover .voltear {
+    color: var(--gold);
+  }
+
+  .reverso {
+    transform: rotateY(180deg);
+    background: linear-gradient(170deg, var(--gold-08), var(--carbon) 55%);
+    border-color: var(--gold-60);
+  }
+
+  .reverso-t {
+    margin-top: 8px;
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: -0.4px;
+  }
+
+  .tareas {
+    display: grid;
+    gap: 9px;
+  }
+
+  .tarea {
+    position: relative;
+    padding-left: 16px;
+    font-size: 12.5px;
+    line-height: 1.4;
+    color: var(--cream-70);
+    opacity: 0;
+    translate: 0 8px;
+  }
+
+  .tarea::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 6px;
+    width: 6px;
+    height: 6px;
+    border-radius: 1px;
+    background: var(--gold);
+  }
+
+  .flip[aria-pressed='true'] .tarea {
+    opacity: 1;
+    translate: 0 0;
+    transition: opacity 500ms var(--ease-out-expo), translate 600ms var(--ease-out-expo);
+    transition-delay: calc(300ms + var(--k) * 70ms);
+  }
+
+  .gh {
+    margin-top: auto;
+    font-size: 11px;
+    color: var(--gold);
+  }
+
+  .team-nota {
+    margin-top: 20px;
+    font-size: 11px;
+    color: var(--granite);
+  }
+
+  @media (max-width: 1100px) {
+    .team {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 720px) {
+    .team {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .flip {
+      height: 420px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .team {
+      grid-template-columns: 1fr;
+    }
+    .flip {
+      height: 380px;
+    }
+    .retrato {
+      width: 112px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .flip,
+    .flip[aria-pressed='true'] {
+      transition: none;
+    }
+    .flip:hover {
+      translate: none;
+    }
+    .flip:hover .aro {
+      animation: none;
+    }
+    .tarea {
+      opacity: 1;
+      translate: none;
+    }
+  }
+</style>

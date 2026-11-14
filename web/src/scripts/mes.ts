@@ -44,8 +44,7 @@ const pct = (x: number | null) => (x == null || !Number.isFinite(x) ? '—' : `$
 function cop(n: number | null) {
   if (n == null || !Number.isFinite(n)) return '—';
   const a = Math.abs(n), sg = n < 0 ? '−' : '';
-  if (a >= 1e9) return `${sg}$ ${miles(a / 1e9, 2)} mil M`;
-  if (a >= 1e6) return `${sg}$ ${miles(a / 1e6, 1)} M`;
+  if (a >= 1e6) return `${sg}$ ${miles(a / 1e6, a >= 1e8 ? 0 : 1)} M`;
   return `${sg}$ ${miles(a)}`;
 }
 const fecha = (iso: string) => new Date(iso).toLocaleString('es-CO', { day: '2-digit', month: 'short', hour: '2-digit', minute: '2-digit' });

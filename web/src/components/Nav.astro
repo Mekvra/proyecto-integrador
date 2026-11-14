@@ -12,6 +12,7 @@ const links = PAGINAS.map((p) => ({ href: url(p.slug), label: p.label, actual: p
 ---
 
 <header class="nav" data-nav>
+  <span class="progreso" aria-hidden="true"></span>
   <div class="nav-inner">
     <a class="nav-home" href={url('inicio')} aria-label="Inicio"><Lockup badge={false} /></a>
     <nav aria-label="Secciones">
@@ -80,6 +81,32 @@ const links = PAGINAS.map((p) => ({ href: url(p.slug), label: p.label, actual: p
     transition:
       transform 320ms var(--ease-out-expo),
       border-color 200ms var(--ease-switch);
+  }
+
+  /* Progreso de lectura: línea dorada que crece con el scroll (navegadores con scroll-timeline). */
+  .progreso {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -1px;
+    height: 1px;
+    background: linear-gradient(90deg, var(--gold-60), var(--gold));
+    transform-origin: left;
+    transform: scaleX(0);
+    pointer-events: none;
+  }
+
+  @supports (animation-timeline: scroll()) {
+    .progreso {
+      animation: progreso linear both;
+      animation-timeline: scroll(root);
+    }
+  }
+
+  @keyframes progreso {
+    to {
+      transform: scaleX(1);
+    }
   }
 
   /* Solo lleva transform cuando está escondida: así el panel fijo del menú

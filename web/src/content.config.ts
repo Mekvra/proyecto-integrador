@@ -77,6 +77,11 @@ const equipo = defineCollection({
     nombre: z.string(),
     rol: z.string(),
     github: z.string(),
+    sigla: z.string().default(''),
+    // Foto opcional: archivo en public/equipo/ (por ejemplo "janan.jpg"). Sin foto se muestran las iniciales.
+    foto: z.string().optional(),
+    // Lo que tiene a cargo (responsable o aprobador en la matriz RACI del proyecto).
+    tareas: z.array(z.string()).default([]),
   }),
 });
 
