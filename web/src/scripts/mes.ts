@@ -175,6 +175,7 @@ let miRol = '';
 let rolVista = '';
 let vista: Vista | null = null;
 let trazaPendiente = '';
+let montada = '';
 const nombre = (id: string | null) => (id ? D.perfiles.find((p) => p.id === id)?.nombre ?? '—' : 'Pasarela');
 const puede = (roles: string[]) => roles.includes(miRol);
 const esSim = (f: Fila) => f.origen === 'Simulación';
@@ -192,24 +193,35 @@ function aviso(t: string, error = false) {
 }
 
 // ---------------------------------------------------------------- datos
+// Supabase entrega máximo 1.000 filas por consulta: se leen por páginas.
+async function paginas(mk: () => any, max = 40000) {
+  let out: Fila[] = [];
+  for (let i = 0; i < max; i += 1000) {
+    const { data, error } = await mk().range(i, i + 999);
+    if (error) return { data: null, error };
+    out = out.concat(data ?? []);
+    if (!data || data.length < 1000) break;
+  }
+  return { data: out, error: null };
+}
 async function cargar(t: string) {
   if (!sb) return;
-  let q;
+  let q: () => any;
   const hace = (ms: number) => new Date(Date.now() - ms).toISOString();
-  if (t === 'maquinas') q = sb.from(t).select('*').order('posicion');
-  else if (t === 'eventos_maquina') q = sb.from(t).select('*').or(`fin.is.null,fin.gte.${hace(31 * 864e5)}`).order('inicio').limit(30000);
-  else if (t === 'ordenes') q = sb.from(t).select('*').order('fecha', { ascending: false }).order('id', { ascending: false }).limit(2000);
-  else if (t === 'perfiles') q = sb.from(t).select('*').order('creado');
-  else if (t === 'lecturas') q = sb.from(t).select('*').gte('ts', hace(3 * 36e5)).order('ts').limit(8000);
-  else if (t === 'simulacion') q = sb.from(t).select('*');
-  else if (t === 'sim_maquina') q = sb.from(t).select('*');
-  else if (t === 'parametros') q = sb.from(t).select('*').order('orden');
+  if (t === 'maquinas') q = () => sb.from(t).select('*').order('posicion');
+  else if (t === 'eventos_maquina') q = () => sb.from(t).select('*').or(`fin.is.null,fin.gte.${hace(31 * 864e5)}`).order('inicio').order('id');
+  else if (t === 'ordenes') q = () => sb.from(t).select('*').order('fecha', { ascending: false }).order('id', { ascending: false });
+  else if (t === 'perfiles') q = () => sb.from(t).select('*').order('creado');
+  else if (t === 'lecturas') q = () => sb.from(t).select('*').gte('ts', hace(3 * 36e5)).order('ts').order('id');
+  else if (t === 'simulacion') q = () => sb.from(t).select('*');
+  else if (t === 'sim_maquina') q = () => sb.from(t).select('*');
+  else if (t === 'parametros') q = () => sb.from(t).select('*').order('orden');
   else if (t === 'archivos') {
     const { data, error } = await sb.storage.from('mes-archivos').list('', { limit: 300, sortBy: { column: 'created_at', order: 'desc' } });
     if (!error) D.archivos = (data ?? []).filter((o) => o.name !== '.emptyFolderPlaceholder') as Fila[];
     return;
-  } else q = sb.from(t).select('*').order('creado', { ascending: false }).limit(t === 'calidad' ? 8000 : 4000);
-  const { data, error } = await q;
+  } else q = () => sb.from(t).select('*').order('creado', { ascending: false }).order('id', { ascending: false });
+  const { data, error } = await paginas(q, ['lotes', 'calidad', 'paros'].includes(t) ? 8000 : 40000);
   if (error) { if (!['recepciones', 'lecturas', 'simulacion', 'sim_maquina', 'parametros'].includes(t)) aviso(`No se pudo leer ${t}: ${error.message}`, true); return; }
   D[t] = data ?? [];
 }
@@ -219,7 +231,9 @@ function programarRefresco() {
   if (refrescoT) return;
   refrescoT = window.setTimeout(() => {
     refrescoT = 0;
-    if (!dialogo.open) vista?.refrescar();
+    if (!dialogo.open && vista && montada === vista.id) {
+      try { vista.refrescar(); } catch (e) { console.warn(e); }
+    }
     pintarSim();
     pulsoVivo();
   }, 700);
@@ -1322,7 +1336,9 @@ function irA(id: string) {
   cont.classList.remove('entra');
   void cont.offsetWidth;
   cont.classList.add('entra');
+  montada = '';
   v.montar(cont);
+  montada = v.id;
   v.refrescar();
   if (location.hash !== `#${v.id}`) history.replaceState(null, '', `#${v.id}`);
 }
@@ -1380,7 +1396,7 @@ setInterval(() => {
   const tn = raiz.querySelector('[data-turno]');
   if (tn) tn.textContent = `Turno ${turnoDe().nombre}`;
   if (++seg % 10 === 0) pintarSim();
-  if (seg % 60 === 0 && vista && ['planta', 'indicadores', 'mantenimiento', 'negocio'].includes(vista.id) && !dialogo.open) vista.refrescar();
+  if (seg % 60 === 0 && vista && montada === vista.id && ['planta', 'indicadores', 'mantenimiento', 'negocio'].includes(vista.id) && !dialogo.open) vista.refrescar();
 }, 1000);
 
 async function entrar(uid: string) {
