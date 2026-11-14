@@ -27,7 +27,8 @@
 <script>
   import { SHAPES, SIZE, samplePoints, shuffle } from '../scripts/shapes';
 
-  const GOLD = '200, 173, 134';
+  // Champaña del tema activo (más oscuro en el tema claro para que se lea sobre el papel).
+  const colorOro = () => (document.documentElement.dataset.theme === 'light' ? '138, 106, 60' : '200, 173, 134');
   const HOLD_MS = 3200;
   const REPEL_RADIUS = 30; // en unidades del lienzo de 200
 
@@ -135,8 +136,9 @@
 
     function draw() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
+      const oro = colorOro();
       for (const p of particles) {
-        ctx.fillStyle = `rgba(${GOLD}, ${p.alpha})`;
+        ctx.fillStyle = `rgba(${oro}, ${p.alpha})`;
         const x = (p.x + p.ox) * scale - tile / 2;
         const y = (p.y + p.oy) * scale - tile / 2;
         ctx.fillRect(x, y, tile, tile);

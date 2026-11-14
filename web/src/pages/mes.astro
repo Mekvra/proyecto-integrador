@@ -1,693 +1,490 @@
 ---
-// MES de Lácteos Altos de Teusacá: inicio de sesión real y registros compartidos entre portátiles (Supabase).
-// La conexión está en src/data/mes.json; la base de datos se crea con 02_gestion-produccion/mes-erp/supabase/esquema.sql.
+// MES de Lácteos Altos de Teusacá: inicio de sesión real, planta en vivo y vistas por rol (Supabase).
+// Conexión: src/data/mes.json. Base de datos: 02_gestion-produccion/mes-erp/supabase/ (esquema.sql y esquema-2-planta.sql).
+// La lógica está en src/scripts/mes.ts.
 import Base from '../layouts/Base.astro';
 import Nav from '../components/Nav.astro';
-import Footer from '../components/Footer.astro';
 import sitio from '../data/sitio.json';
 import mes from '../data/mes.json';
 
 const conectado = Boolean(mes.url && mes.anonKey);
-const PRODUCTOS = {
-  Yogurts: ['YF · Yogurt con fresa', 'YN · Yogurt natural', 'YG · Yogurt griego'],
-  Quesos: ['QM · Mozzarella', 'QQ · Quesillo', 'QD · Doble crema'],
-  'Leche UHT': ['LE · Leche entera', 'LD · Leche descremada', 'LC · Leche con chocolate'],
-};
-const EQUIPOS = ['U111 Recepción', 'U121 Pasteurizador', 'U201 Formulación', 'U202 Tratamiento', 'U211–U218 Fermentadores', 'U215 Enfriamiento',
-  'U216 Separador', 'U311 Llenadora de vasos', 'U312 Llenadora de botellas', 'U313 Llenadora de griego', 'U321–U323 Encajonadoras',
-  'U341 Paletizado', 'Q201–Q203 Tinas', 'Q301 Hiladora', 'Q311 Empacadora', 'L202 UHT', 'L311 Envasadora aséptica'];
-const CAUSAS = ['Falla', 'Cambio de formato', 'Limpieza CIP', 'Falta de material', 'Mantenimiento', 'Otra'];
-const PRUEBAS = ['pH', 'Acidez (% ácido láctico)', 'Grasa (%)', 'Sólidos (%)', 'Temperatura (°C)', 'Peso de llenado (g)', 'Antibióticos', 'Microbiología', 'Sensorial'];
 ---
 
 <Base title={`MES · ${sitio.nombre}`}>
   <Nav actual="mes" />
 
-  <main class="pagina mes" data-mes data-url={mes.url} data-key={mes.anonKey}>
-    <section class="section wrap">
-      <div class="section-head">
+  <main class="mes" data-mes data-url={mes.url} data-key={mes.anonKey}>
+    <!-- ingreso -->
+    <section class="section wrap mes-portada" data-vista="login">
+      <div class="portada-txt">
         <span class="mono">10 · MES</span>
         <h2>La planta, en un solo tablero.</h2>
         <p>
           Plataforma de ejecución de la manufactura de Lácteos Altos de Teusacá. Cada persona entra con su usuario desde
-          cualquier portátil, registra lotes, paros y controles de calidad, y sube o descarga archivos. Todos ven la
-          misma información en tiempo real.
+          cualquier portátil y ve lo que le toca: el operario su máquina y su turno, calidad los lotes por liberar,
+          mantenimiento las fallas, el jefe de planta y la gerencia los indicadores. Todo en tiempo real.
         </p>
+        <ul class="portada-roles mono">
+          <li>Operario</li><li>Supervisor</li><li>Calidad</li><li>Mantenimiento</li><li>Jefe de planta</li><li>Gerencia</li>
+        </ul>
       </div>
-
-      <!-- ingreso -->
-      <div class="frame mes-login" data-vista="login">
+      <div class="frame mes-login">
         <div class="frame-bar">
           <span class="frame-dots" aria-hidden="true"><i></i><i></i><i></i></span>
           <span class="frame-title mono">Lácteos Altos de Teusacá · MES</span>
-          <span class="frame-status mono"><span class="pulse" data-estado-conexion></span><span data-estado-texto>{conectado ? 'En línea' : 'Sin servidor'}</span></span>
+          <span class="frame-status mono"><span class="pulse" data-live={conectado ? '' : undefined}></span>{conectado ? 'En línea' : 'Sin servidor'}</span>
         </div>
         <form class="login" data-login>
           <h3>Iniciar sesión</h3>
-          <label>
+          <label class="campo">
             <span class="mono">Correo</span>
             <input type="email" name="correo" autocomplete="username" required />
           </label>
-          <label>
+          <label class="campo">
             <span class="mono">Contraseña</span>
             <input type="password" name="clave" autocomplete="current-password" required minlength="6" />
           </label>
-          <button class="boton" type="submit" disabled={!conectado}>Entrar</button>
+          <button class="m-btn" type="submit" disabled={!conectado}>Entrar</button>
           <p class="login-msg" data-login-msg role="status">
             {conectado ? 'Los usuarios los crea el administrador de la planta.' : 'El MES todavía no está conectado a su servidor.'}
           </p>
         </form>
       </div>
-
-      <!-- tablero -->
-      <div class="frame mes-app" data-vista="app" hidden>
-        <div class="frame-bar">
-          <span class="frame-dots" aria-hidden="true"><i></i><i></i><i></i></span>
-          <span class="frame-title mono">MES · <span data-usuario></span></span>
-          <span class="frame-status mono"><span class="pulse" data-live></span>En vivo</span>
-          <button class="salir mono" type="button" data-salir>Cerrar sesión</button>
-        </div>
-
-        <div class="tabs" role="tablist" aria-label="Ventanas del MES">
-          {['Resumen', 'Lotes', 'Paros', 'Calidad', 'Archivos'].map((t, i) => (
-            <button role="tab" type="button" class="tab mono" id={`tab-${t}`} aria-controls={`panel-${t}`} aria-selected={i === 0 ? 'true' : 'false'} data-tab={t}>{t}</button>
-          ))}
-        </div>
-
-        <div class="panel" role="tabpanel" id="panel-Resumen" aria-labelledby="tab-Resumen">
-          <div class="kpis-mes">
-            <div><span class="mono">Lotes hoy</span><b data-kpi="lotes">—</b></div>
-            <div><span class="mono">Litros hoy</span><b data-kpi="litros">—</b></div>
-            <div><span class="mono">Paros hoy</span><b data-kpi="paros">—</b><small>minutos</small></div>
-            <div><span class="mono">Calidad hoy</span><b data-kpi="calidad">—</b><small>aprobados</small></div>
-          </div>
-          <h4 class="mono">Últimos registros</h4>
-          <ol class="feed" data-feed></ol>
-        </div>
-
-        <div class="panel" role="tabpanel" id="panel-Lotes" aria-labelledby="tab-Lotes" hidden>
-          <form class="registro" data-form="lotes">
-            <label><span class="mono">Línea</span><select name="linea" data-linea>{Object.keys(PRODUCTOS).map((l) => <option>{l}</option>)}</select></label>
-            <label><span class="mono">Producto</span><select name="producto" data-productos>{PRODUCTOS.Yogurts.map((p) => <option>{p}</option>)}</select></label>
-            <label><span class="mono">Código del lote</span><input name="codigo" required placeholder="YF-2611-01" /></label>
-            <label><span class="mono">Litros</span><input name="litros" type="number" min="1" step="1" required value="10000" /></label>
-            <label><span class="mono">Estado</span><select name="estado"><option>En proceso</option><option>Terminado</option><option>Retenido</option><option>Liberado</option></select></label>
-            <label class="ancho"><span class="mono">Nota</span><input name="nota" /></label>
-            <button class="boton" type="submit">Registrar lote</button>
-          </form>
-          <div class="tabla-bar"><span class="mono" data-cuenta="lotes"></span><button type="button" class="ghost-link" data-csv="lotes">Descargar CSV ↓</button></div>
-          <div class="tabla"><table data-tabla="lotes"></table></div>
-        </div>
-
-        <div class="panel" role="tabpanel" id="panel-Paros" aria-labelledby="tab-Paros" hidden>
-          <form class="registro" data-form="paros">
-            <label><span class="mono">Línea</span><select name="linea">{Object.keys(PRODUCTOS).map((l) => <option>{l}</option>)}</select></label>
-            <label><span class="mono">Equipo</span><select name="equipo">{EQUIPOS.map((e) => <option>{e}</option>)}</select></label>
-            <label><span class="mono">Causa</span><select name="causa">{CAUSAS.map((c) => <option>{c}</option>)}</select></label>
-            <label><span class="mono">Minutos</span><input name="minutos" type="number" min="1" step="1" required /></label>
-            <label class="ancho"><span class="mono">Nota</span><input name="nota" /></label>
-            <button class="boton" type="submit">Registrar paro</button>
-          </form>
-          <div class="tabla-bar"><span class="mono" data-cuenta="paros"></span><button type="button" class="ghost-link" data-csv="paros">Descargar CSV ↓</button></div>
-          <div class="tabla"><table data-tabla="paros"></table></div>
-        </div>
-
-        <div class="panel" role="tabpanel" id="panel-Calidad" aria-labelledby="tab-Calidad" hidden>
-          <form class="registro" data-form="calidad">
-            <label><span class="mono">Lote</span><input name="lote" required placeholder="YF-2611-01" /></label>
-            <label><span class="mono">Prueba</span><select name="prueba">{PRUEBAS.map((p) => <option>{p}</option>)}</select></label>
-            <label><span class="mono">Valor</span><input name="valor" required /></label>
-            <label><span class="mono">Resultado</span><select name="resultado"><option>Aprobado</option><option>Rechazado</option><option>En revisión</option></select></label>
-            <label class="ancho"><span class="mono">Nota</span><input name="nota" /></label>
-            <button class="boton" type="submit">Registrar control</button>
-          </form>
-          <div class="tabla-bar"><span class="mono" data-cuenta="calidad"></span><button type="button" class="ghost-link" data-csv="calidad">Descargar CSV ↓</button></div>
-          <div class="tabla"><table data-tabla="calidad"></table></div>
-        </div>
-
-        <div class="panel" role="tabpanel" id="panel-Archivos" aria-labelledby="tab-Archivos" hidden>
-          <form class="subir" data-subir>
-            <label class="soltar">
-              <input type="file" name="archivo" multiple required />
-              <span>Arrastra archivos aquí o <u>elígelos</u> · reportes, registros, planillas (máx. 50 MB)</span>
-            </label>
-            <button class="boton" type="submit">Subir</button>
-          </form>
-          <ul class="archivos" data-archivos></ul>
-        </div>
-
-        <p class="mes-msg" data-msg role="status"></p>
-      </div>
     </section>
-  </main>
 
-  <Footer />
+    <!-- plataforma -->
+    <div class="mes-app" data-vista="app" hidden>
+      <aside class="mes-side">
+        <div class="side-marca">
+          <span class="mono gold">LAT · MES</span>
+          <b>Lácteos Altos de Teusacá</b>
+          <span class="mono">Planta 150.000 L/día</span>
+        </div>
+        <nav class="side-menu" data-menu aria-label="Ventanas del MES"></nav>
+        <div class="side-pie">
+          <label class="campo como" data-como hidden>
+            <span class="mono">Ver como</span>
+            <select></select>
+          </label>
+          <div class="usuario">
+            <span class="avatar" data-u-ini aria-hidden="true"></span>
+            <span><b data-u-nombre></b><small class="mono" data-u-rol></small></span>
+          </div>
+          <button class="m-btn sec mini" type="button" data-salir>Cerrar sesión</button>
+        </div>
+      </aside>
+
+      <div class="mes-main">
+        <header class="mes-top">
+          <div>
+            <span class="mono gold" data-grupo></span>
+            <h1 data-titulo>MES</h1>
+          </div>
+          <div class="top-estado mono">
+            <span data-turno></span>
+            <span data-reloj></span>
+            <span class="en-vivo"><span class="pulse" data-live></span><span data-live-t>Conectando…</span></span>
+          </div>
+        </header>
+        <p class="aviso" data-aviso role="status" hidden></p>
+        <div class="mes-cont" data-cont></div>
+      </div>
+    </div>
+
+    <dialog class="m-dialog" data-dialogo></dialog>
+  </main>
 </Base>
 
 <script>
-  import { createClient, type SupabaseClient } from '@supabase/supabase-js';
-
-  type Fila = Record<string, string | number | null>;
-  const raiz = document.querySelector<HTMLElement>('[data-mes]')!;
-  const login = raiz.querySelector<HTMLElement>('[data-vista="login"]')!;
-  const app = raiz.querySelector<HTMLElement>('[data-vista="app"]')!;
-  const msg = raiz.querySelector<HTMLElement>('[data-msg]')!;
-  const loginMsg = raiz.querySelector<HTMLElement>('[data-login-msg]')!;
-  const TABLAS = ['lotes', 'paros', 'calidad'] as const;
-  type Tabla = (typeof TABLAS)[number];
-  const COLUMNAS: Record<Tabla, [string, string][]> = {
-    lotes: [['creado', 'Fecha'], ['linea', 'Línea'], ['producto', 'Producto'], ['codigo', 'Lote'], ['litros', 'Litros'], ['estado', 'Estado'], ['autor_nombre', 'Registró'], ['nota', 'Nota']],
-    paros: [['creado', 'Fecha'], ['linea', 'Línea'], ['equipo', 'Equipo'], ['causa', 'Causa'], ['minutos', 'Min'], ['autor_nombre', 'Registró'], ['nota', 'Nota']],
-    calidad: [['creado', 'Fecha'], ['lote', 'Lote'], ['prueba', 'Prueba'], ['valor', 'Valor'], ['resultado', 'Resultado'], ['autor_nombre', 'Registró'], ['nota', 'Nota']],
-  };
-  const PRODUCTOS: Record<string, string[]> = {
-    Yogurts: ['YF · Yogurt con fresa', 'YN · Yogurt natural', 'YG · Yogurt griego'],
-    Quesos: ['QM · Mozzarella', 'QQ · Quesillo', 'QD · Doble crema'],
-    'Leche UHT': ['LE · Leche entera', 'LD · Leche descremada', 'LC · Leche con chocolate'],
-  };
-  const datos: Record<Tabla, Fila[]> = { lotes: [], paros: [], calidad: [] };
-  let nombres: Record<string, string> = {};
-  let yo = '';
-
-  const fecha = (s: string) => new Date(s).toLocaleString('es-CO', { day: '2-digit', month: 'short', hour: '2-digit', minute: '2-digit' });
-  const miles = (n: number) => n.toLocaleString('es-CO');
-  const aviso = (t: string, error = false) => { msg.textContent = t; msg.toggleAttribute('data-error', error); };
-
-  const url = raiz.dataset.url, key = raiz.dataset.key;
-  const sb: SupabaseClient | null = url && key ? createClient(url, key) : null;
-
-  // ---------- ventanas ----------
-  raiz.querySelectorAll<HTMLButtonElement>('[data-tab]').forEach((b) =>
-    b.addEventListener('click', () => {
-      raiz.querySelectorAll<HTMLButtonElement>('[data-tab]').forEach((o) => o.setAttribute('aria-selected', String(o === b)));
-      raiz.querySelectorAll<HTMLElement>('[role="tabpanel"]').forEach((p) => (p.hidden = p.id !== `panel-${b.dataset.tab}`));
-    }),
-  );
-  const linea = raiz.querySelector<HTMLSelectElement>('[data-linea]')!;
-  const productos = raiz.querySelector<HTMLSelectElement>('[data-productos]')!;
-  linea.addEventListener('change', () => {
-    productos.replaceChildren(...PRODUCTOS[linea.value].map((p) => new Option(p, p)));
-  });
-
-  // ---------- pintar ----------
-  function pintarTabla(t: Tabla) {
-    const tabla = raiz.querySelector<HTMLTableElement>(`[data-tabla="${t}"]`)!;
-    const cab = document.createElement('tr');
-    COLUMNAS[t].forEach(([, n]) => { const th = document.createElement('th'); th.textContent = n; cab.append(th); });
-    cab.append(document.createElement('th'));
-    const filas = datos[t].map((f) => {
-      const tr = document.createElement('tr');
-      COLUMNAS[t].forEach(([k]) => {
-        const td = document.createElement('td');
-        const v = k === 'autor_nombre' ? nombres[String(f.autor)] ?? '—' : f[k];
-        td.textContent = k === 'creado' ? fecha(String(v)) : k === 'litros' ? miles(Number(v)) : String(v ?? '');
-        if (k === 'estado' || k === 'resultado') td.dataset.valor = String(v);
-        tr.append(td);
-      });
-      const td = document.createElement('td');
-      if (f.autor === yo) {
-        const b = document.createElement('button');
-        b.type = 'button'; b.className = 'borrar'; b.textContent = 'Borrar'; b.setAttribute('aria-label', 'Borrar este registro');
-        b.addEventListener('click', async () => {
-          if (!confirm('¿Borrar este registro? No se puede deshacer.')) return;
-          const { error } = await sb!.from(t).delete().eq('id', f.id);
-          aviso(error ? `No se pudo borrar: ${error.message}` : 'Registro borrado.', !!error);
-          if (!error) cargar(t);
-        });
-        td.append(b);
-      }
-      tr.append(td);
-      return tr;
-    });
-    const thead = document.createElement('thead'); thead.append(cab);
-    const tbody = document.createElement('tbody'); tbody.append(...filas);
-    tabla.replaceChildren(thead, tbody);
-    raiz.querySelector(`[data-cuenta="${t}"]`)!.textContent = `${datos[t].length} registros`;
-    pintarResumen();
-  }
-
-  function pintarResumen() {
-    const hoy = new Date().toDateString();
-    const deHoy = (t: Tabla) => datos[t].filter((f) => new Date(String(f.creado)).toDateString() === hoy);
-    const l = deHoy('lotes'), p = deHoy('paros'), c = deHoy('calidad');
-    const set = (k: string, v: string) => (raiz.querySelector(`[data-kpi="${k}"]`)!.textContent = v);
-    set('lotes', String(l.length));
-    set('litros', miles(l.reduce((s, f) => s + Number(f.litros), 0)));
-    set('paros', miles(p.reduce((s, f) => s + Number(f.minutos), 0)));
-    set('calidad', c.length ? `${Math.round((c.filter((f) => f.resultado === 'Aprobado').length / c.length) * 100)} %` : '—');
-    const feed = TABLAS.flatMap((t) => datos[t].map((f) => ({ t, f })))
-      .sort((a, b) => String(b.f.creado).localeCompare(String(a.f.creado))).slice(0, 12)
-      .map(({ t, f }) => {
-        const li = document.createElement('li');
-        const tag = document.createElement('span'); tag.className = 'mono'; tag.textContent = t === 'lotes' ? 'Lote' : t === 'paros' ? 'Paro' : 'Calidad';
-        const txt = document.createElement('span');
-        txt.textContent = t === 'lotes' ? `${f.codigo} · ${f.producto} · ${miles(Number(f.litros))} L · ${f.estado}`
-          : t === 'paros' ? `${f.equipo} · ${f.causa} · ${f.minutos} min` : `${f.lote} · ${f.prueba}: ${f.valor} · ${f.resultado}`;
-        const quien = document.createElement('small'); quien.textContent = `${nombres[String(f.autor)] ?? ''} · ${fecha(String(f.creado))}`;
-        li.append(tag, txt, quien);
-        return li;
-      });
-    raiz.querySelector('[data-feed]')!.replaceChildren(...(feed.length ? feed : [Object.assign(document.createElement('li'), { textContent: 'Aún no hay registros.' })]));
-  }
-
-  async function cargar(t: Tabla) {
-    const { data, error } = await sb!.from(t).select('*').order('creado', { ascending: false }).limit(500);
-    if (error) return aviso(`No se pudieron leer los ${t}: ${error.message}`, true);
-    datos[t] = data as Fila[];
-    pintarTabla(t);
-  }
-
-  async function cargarNombres() {
-    const { data } = await sb!.from('perfiles').select('id, nombre, rol');
-    nombres = Object.fromEntries((data ?? []).map((p) => [p.id, p.nombre]));
-    return data ?? [];
-  }
-
-  // ---------- registrar ----------
-  raiz.querySelectorAll<HTMLFormElement>('[data-form]').forEach((form) =>
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const t = form.dataset.form as Tabla;
-      const fila = Object.fromEntries(new FormData(form)) as Record<string, string | number>;
-      if ('litros' in fila) fila.litros = Number(fila.litros);
-      if ('minutos' in fila) fila.minutos = Number(fila.minutos);
-      const { error } = await sb!.from(t).insert(fila);
-      aviso(error ? `No se guardó: ${error.message}` : 'Registro guardado.', !!error);
-      if (!error) { form.querySelectorAll<HTMLInputElement>('input[name="nota"], input[name="valor"]').forEach((i) => (i.value = '')); cargar(t); }
-    }),
-  );
-
-  // ---------- CSV ----------
-  raiz.querySelectorAll<HTMLButtonElement>('[data-csv]').forEach((b) =>
-    b.addEventListener('click', () => {
-      const t = b.dataset.csv as Tabla;
-      const cols = COLUMNAS[t];
-      const esc = (v: unknown) => `"${String(v ?? '').replace(/"/g, '""')}"`;
-      const filas = [cols.map(([, n]) => esc(n)).join(';'),
-        ...datos[t].map((f) => cols.map(([k]) => esc(k === 'autor_nombre' ? nombres[String(f.autor)] : f[k])).join(';'))];
-      const a = Object.assign(document.createElement('a'), {
-        href: URL.createObjectURL(new Blob(['﻿' + filas.join('\n')], { type: 'text/csv;charset=utf-8' })),
-        download: `mes_${t}_${new Date().toISOString().slice(0, 10)}.csv`,
-      });
-      a.click();
-      URL.revokeObjectURL(a.href);
-    }),
-  );
-
-  // ---------- archivos ----------
-  const BUCKET = 'mes-archivos';
-  async function listarArchivos() {
-    const { data, error } = await sb!.storage.from(BUCKET).list('', { limit: 200, sortBy: { column: 'created_at', order: 'desc' } });
-    const ul = raiz.querySelector('[data-archivos]')!;
-    if (error) return aviso(`No se pudieron leer los archivos: ${error.message}`, true);
-    const items = (data ?? []).filter((o) => o.name !== '.emptyFolderPlaceholder').map((o) => {
-      const li = document.createElement('li');
-      const n = document.createElement('span'); n.textContent = o.name.replace(/^\d+_/, '');
-      const m = document.createElement('small'); m.className = 'mono';
-      m.textContent = `${o.created_at ? fecha(o.created_at) : ''} · ${o.metadata?.size ? `${Math.max(1, Math.round(o.metadata.size / 1024))} KB` : ''}`;
-      const b = document.createElement('button'); b.type = 'button'; b.className = 'ghost-link'; b.textContent = 'Descargar ↓';
-      b.addEventListener('click', async () => {
-        const { data: s, error: e } = await sb!.storage.from(BUCKET).createSignedUrl(o.name, 120, { download: n.textContent! });
-        if (e) return aviso(`No se pudo descargar: ${e.message}`, true);
-        location.href = s.signedUrl;
-      });
-      li.append(n, m, b);
-      return li;
-    });
-    ul.replaceChildren(...(items.length ? items : [Object.assign(document.createElement('li'), { textContent: 'Aún no hay archivos.' })]));
-  }
-  raiz.querySelector<HTMLFormElement>('[data-subir]')!.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const files = (e.currentTarget as HTMLFormElement).querySelector<HTMLInputElement>('input[type=file]')!.files!;
-    for (const f of files) {
-      const nombre = `${Date.now()}_${f.name.normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^\w.\- ]/g, '_')}`;
-      const { error } = await sb!.storage.from(BUCKET).upload(nombre, f);
-      aviso(error ? `No se subió ${f.name}: ${error.message}` : `Subido: ${f.name}`, !!error);
-    }
-    (e.currentTarget as HTMLFormElement).reset();
-    listarArchivos();
-  });
-
-  // ---------- sesión ----------
-  async function entrar(uid: string, correo: string) {
-    yo = uid;
-    login.hidden = true;
-    app.hidden = false;
-    const perfiles = await cargarNombres();
-    const p = perfiles.find((x) => x.id === uid);
-    raiz.querySelector('[data-usuario]')!.textContent = p ? `${p.nombre} · ${p.rol}` : correo;
-    await Promise.all([...TABLAS.map(cargar), listarArchivos()]);
-    sb!.channel('mes').on('postgres_changes', { event: '*', schema: 'public' }, (c) => {
-      const t = c.table as Tabla;
-      if (TABLAS.includes(t)) cargarNombres().then(() => cargar(t));
-    }).subscribe();
-  }
-
-  if (sb) {
-    sb.auth.getSession().then(({ data }) => { if (data.session) entrar(data.session.user.id, data.session.user.email ?? ''); });
-    raiz.querySelector<HTMLFormElement>('[data-login]')!.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const f = new FormData(e.currentTarget as HTMLFormElement);
-      loginMsg.textContent = 'Entrando…';
-      const { data, error } = await sb.auth.signInWithPassword({ email: String(f.get('correo')), password: String(f.get('clave')) });
-      if (error) { loginMsg.textContent = 'Correo o contraseña incorrectos.'; return; }
-      loginMsg.textContent = '';
-      entrar(data.user.id, data.user.email ?? '');
-    });
-    raiz.querySelector('[data-salir]')!.addEventListener('click', async () => {
-      await sb.auth.signOut();
-      location.reload();
-    });
-  }
+  import '../scripts/mes.ts';
 </script>
 
-<style>
-  .mes-login {
-    max-width: 460px;
+<style is:global>
+  /* ============ MES · extiende web/DESIGN.md (mismos tokens; colores de estado de máquina propios) ============ */
+  .mes {
+    --est-marcha: var(--green);
+    --est-parada: var(--granite);
+    --est-cambio: var(--gold);
+    --est-limpieza: #7fa9c9;
+    --est-falla: var(--orange);
+    --est-mant: #b691d2;
   }
+  :root[data-theme='light'] .mes {
+    --est-limpieza: #2f6c97;
+    --est-mant: #7b4b9c;
+  }
+  .e-marcha { --c: var(--est-marcha); }
+  .e-parada { --c: var(--est-parada); }
+  .e-cambio { --c: var(--est-cambio); }
+  .e-limpieza { --c: var(--est-limpieza); }
+  .e-falla { --c: var(--est-falla); }
+  .e-mant { --c: var(--est-mant); }
+  .o-planeada { --c: var(--granite); }
+  .o-liberada { --c: var(--est-limpieza); }
+  .o-enejecucin { --c: var(--est-marcha); }
+  .o-terminada { --c: var(--gold); }
+  .o-cerrada { --c: var(--cream-40); }
+  .l-enproceso, .l-enrevisin { --c: var(--est-limpieza); }
+  .l-terminado { --c: var(--gold); }
+  .l-liberado, .l-aprobado { --c: var(--est-marcha); }
+  .l-retenido, .l-rechazado { --c: var(--est-falla); }
+  .p-alta { --c: var(--gold); }
+  .p-urgente { --c: var(--orange); }
 
-  .login {
+  /* ---------- portada e ingreso ---------- */
+  .mes-portada {
     display: grid;
-    gap: 16px;
-    padding: 28px 24px 24px;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: clamp(32px, 6vw, 80px);
+    align-items: center;
+    padding-top: clamp(40px, 7vw, 88px);
   }
+  .mes-portada::before { display: none; }
+  .portada-txt { display: grid; gap: 16px; align-content: start; }
+  .portada-txt > .mono { color: var(--gold); }
+  .portada-txt p { color: var(--cream-70); max-width: 56ch; }
+  .portada-roles { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; padding: 0; margin: 8px 0 0; }
+  .portada-roles li { padding: 4px 10px; border: 1px solid var(--cream-12); border-radius: 99px; color: var(--cream-70); font-size: 11px; }
+  .mes-login { width: 100%; max-width: 440px; justify-self: end; }
+  .login { display: grid; gap: 16px; padding: 28px 24px 24px; }
+  .login h3 { font-size: 20px; font-weight: 500; letter-spacing: -0.5px; }
+  .login .m-btn { min-height: 44px; }
+  .login-msg { color: var(--granite); font-size: 13px; min-height: 1.4em; }
 
-  .login h3 {
-    font-size: 20px;
-    font-weight: 500;
-    letter-spacing: -0.5px;
-  }
-
-  label {
-    display: grid;
-    gap: 6px;
-  }
-
-  label .mono {
-    color: var(--granite);
-  }
-
-  input,
-  select {
-    min-height: 44px;
-    padding: 10px 12px;
+  /* ---------- controles ---------- */
+  .mes .campo { display: grid; gap: 6px; min-width: 0; }
+  .mes .campo > .mono { color: var(--granite); font-size: 11px; letter-spacing: 0.4px; text-transform: uppercase; }
+  .mes input, .mes select {
+    width: 100%;
+    min-height: 40px;
+    padding: 8px 10px;
     border: 1px solid var(--cream-16);
     border-radius: var(--radius);
     background: var(--black);
     color: var(--cream);
     font: inherit;
-    font-size: 15px;
+    font-size: 14px;
   }
-
-  input:focus-visible,
-  select:focus-visible {
-    outline: 1px solid var(--gold);
-    border-color: var(--gold);
-  }
-
-  .boton {
-    min-height: 44px;
-    padding: 10px 20px;
+  .mes input:focus-visible, .mes select:focus-visible { outline: 1px solid var(--gold); border-color: var(--gold); }
+  .m-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    min-height: 40px;
+    padding: 8px 16px;
     border: 1px solid var(--gold);
     border-radius: var(--radius);
     background: var(--gold);
     color: var(--black);
     font: inherit;
-    font-weight: 500;
-    cursor: pointer;
-    transition: background-color 150ms var(--ease-switch);
-  }
-
-  .boton:hover {
-    background: var(--cream);
-    border-color: var(--cream);
-  }
-
-  .boton:disabled {
-    opacity: 0.4;
-    cursor: not-allowed;
-  }
-
-  .login-msg,
-  .mes-msg {
-    margin: 0;
-    font-size: 13px;
-    color: var(--granite);
-  }
-
-  .mes-msg {
-    padding: 12px 20px 16px;
-  }
-
-  .mes-msg[data-error] {
-    color: var(--orange);
-  }
-
-  .salir {
-    margin-left: 12px;
-    min-height: 32px;
-    padding: 4px 10px;
-    border: 1px solid var(--cream-16);
-    border-radius: var(--radius);
-    background: none;
-    color: var(--cream-70);
-    cursor: pointer;
-  }
-
-  .salir:hover {
-    color: var(--cream);
-    border-color: var(--gold-60);
-  }
-
-  .tabs {
-    display: flex;
-    gap: 4px;
-    padding: 8px 12px 0;
-    border-bottom: 1px solid var(--stroke);
-    overflow-x: auto;
-  }
-
-  .tab {
-    min-height: 44px;
-    padding: 10px 16px;
-    border: 0;
-    border-bottom: 2px solid transparent;
-    background: none;
-    color: var(--granite);
-    cursor: pointer;
-    white-space: nowrap;
-  }
-
-  .tab[aria-selected='true'] {
-    color: var(--cream);
-    border-bottom-color: var(--gold);
-  }
-
-  .panel {
-    padding: 20px;
-  }
-
-  .kpis-mes {
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    border: 1px solid var(--stroke);
-    border-radius: var(--radius);
-    margin-bottom: 24px;
-  }
-
-  .kpis-mes div {
-    display: grid;
-    gap: 8px;
-    padding: 16px 20px;
-  }
-
-  .kpis-mes div + div {
-    border-left: 1px solid var(--stroke);
-  }
-
-  .kpis-mes .mono,
-  .kpis-mes small {
-    color: var(--granite);
-    font-size: 11px;
-  }
-
-  .kpis-mes b {
-    font-weight: 400;
-    font-size: 28px;
-    letter-spacing: -1px;
-    line-height: 1;
-  }
-
-  h4 {
-    margin: 0 0 8px;
-    color: var(--granite);
-    font-weight: 400;
-  }
-
-  .feed,
-  .archivos {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-
-  .feed li,
-  .archivos li {
-    display: grid;
-    grid-template-columns: 80px minmax(0, 1fr) auto;
-    gap: 12px;
-    align-items: baseline;
-    padding: 12px 0;
-    border-bottom: 1px solid var(--stroke);
-    color: var(--cream-70);
     font-size: 14px;
-  }
-
-  .archivos li {
-    grid-template-columns: minmax(0, 1fr) auto auto;
-  }
-
-  .feed .mono {
-    color: var(--gold);
-    font-size: 11px;
-  }
-
-  .feed small,
-  .archivos small {
-    color: var(--granite);
-    font-size: 11px;
-  }
-
-  .registro {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
-    gap: 14px;
-    align-items: end;
-    margin-bottom: 24px;
-  }
-
-  .registro .ancho {
-    grid-column: span 2;
-  }
-
-  .tabla-bar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 8px;
-    color: var(--granite);
-  }
-
-  .tabla-bar button {
-    background: none;
-    border: 0;
-    min-height: 44px;
+    font-weight: 500;
+    white-space: nowrap;
     cursor: pointer;
+    transition: background-color 150ms var(--ease-switch), color 150ms var(--ease-switch), border-color 150ms var(--ease-switch);
   }
-
-  .tabla {
-    overflow-x: auto;
-  }
-
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 13px;
-  }
-
-  th {
-    text-align: left;
-    padding: 8px 10px;
-    color: var(--granite);
+  .m-btn:hover { background: var(--cream); border-color: var(--cream); }
+  .m-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+  .m-btn.sec { background: transparent; color: var(--cream); border-color: var(--cream-16); }
+  .m-btn.sec:hover { border-color: var(--gold); color: var(--gold); }
+  .m-btn.mini { min-height: 30px; padding: 4px 10px; font-size: 12px; }
+  .m-btn.peligro { background: transparent; color: var(--granite); border-color: transparent; }
+  .m-btn.peligro:hover { color: var(--orange); border-color: var(--orange); }
+  .m-form { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; align-items: end; }
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 2px 9px 2px 7px;
+    border: 1px solid color-mix(in srgb, var(--c, var(--granite)) 45%, transparent);
+    border-radius: 99px;
+    background: color-mix(in srgb, var(--c, var(--granite)) 12%, transparent);
+    color: var(--c, var(--cream-70));
     font-family: var(--mono);
     font-size: 11px;
-    font-weight: 400;
-    text-transform: uppercase;
-    border-bottom: 1px solid var(--cream-16);
+    line-height: 1.5;
     white-space: nowrap;
+    vertical-align: middle;
   }
+  .chip::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+  .e-falla.chip::before { animation: mes-latido 1.2s ease-in-out infinite; }
+  .mes .gold { color: var(--gold); }
+  .mes .sub { color: var(--granite); font-size: 12px; }
+  .mes .nota { color: var(--granite); font-size: 12px; line-height: 1.5; }
+  .mes .vacio { color: var(--granite); font-size: 13px; padding: 12px 0; }
 
-  td {
-    padding: 10px;
-    border-bottom: 1px solid var(--stroke);
-    color: var(--cream-70);
-  }
-
-  td[data-valor='Aprobado'],
-  td[data-valor='Liberado'],
-  td[data-valor='Terminado'] {
-    color: var(--green);
-  }
-
-  td[data-valor='Rechazado'],
-  td[data-valor='Retenido'] {
-    color: var(--orange);
-  }
-
-  .borrar {
-    min-height: 32px;
-    padding: 2px 8px;
-    border: 1px solid var(--cream-16);
-    border-radius: var(--radius);
-    background: none;
-    color: var(--granite);
-    font-size: 11px;
-    cursor: pointer;
-  }
-
-  .subir {
-    display: flex;
-    gap: 14px;
-    align-items: stretch;
-    margin-bottom: 20px;
-  }
-
-  .soltar {
-    flex: 1;
+  /* ---------- armazón de la plataforma ---------- */
+  .mes-app {
     display: grid;
-    place-items: center;
-    min-height: 88px;
-    padding: 16px;
-    border: 1px dashed var(--cream-16);
+    grid-template-columns: 236px minmax(0, 1fr);
+    min-height: calc(100vh - 61px);
+    border-top: 1px solid var(--cream-08);
+  }
+  .mes-app[hidden] { display: none; }
+  .mes-side {
+    position: sticky;
+    top: var(--nav-offset, 0px);
+    align-self: start;
+    height: calc(100vh - var(--nav-offset, 0px));
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px 14px 16px;
+    border-right: 1px solid var(--cream-08);
+    background: var(--carbon);
+    overflow-y: auto;
+    transition: top 320ms var(--ease-out-expo), height 320ms var(--ease-out-expo);
+  }
+  .side-marca { display: grid; gap: 2px; padding: 0 8px 16px; border-bottom: 1px solid var(--cream-08); }
+  .side-marca b { font-size: 14px; font-weight: 500; }
+  .side-marca .mono { font-size: 11px; color: var(--granite); }
+  .side-marca .gold { color: var(--gold); }
+  .side-menu { display: grid; gap: 18px; }
+  .side-menu .grupo { display: grid; gap: 2px; }
+  .side-menu .grupo > .mono { padding: 0 8px 6px; color: var(--granite); font-size: 10px; letter-spacing: 0.8px; text-transform: uppercase; }
+  .side-menu a {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 10px;
     border-radius: var(--radius);
     color: var(--cream-70);
-    text-align: center;
+    font-size: 14px;
+    transition: background-color 150ms var(--ease-switch), color 150ms var(--ease-switch);
+  }
+  .side-menu a:hover { background: var(--cream-08); color: var(--cream); }
+  .side-menu a[aria-current] { background: var(--cream-08); color: var(--cream); }
+  .side-menu a[aria-current]::before { content: ''; position: absolute; left: -14px; top: 8px; bottom: 8px; width: 2px; background: var(--gold); }
+  .side-menu svg { width: 17px; height: 17px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+  .side-menu a[aria-current] svg { color: var(--gold); }
+  .side-pie { margin-top: auto; display: grid; gap: 12px; padding-top: 16px; border-top: 1px solid var(--cream-08); }
+  .side-pie .como[hidden] { display: none; }
+  .usuario { display: flex; align-items: center; gap: 10px; padding: 0 4px; min-width: 0; }
+  .usuario > span:last-child { display: grid; min-width: 0; }
+  .usuario b { font-size: 14px; font-weight: 500; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .usuario small { color: var(--gold); font-size: 11px; }
+  .avatar { display: grid; place-items: center; width: 34px; height: 34px; flex: none; border-radius: 50%; background: var(--gold-08); border: 1px solid var(--gold-60); color: var(--gold); font-weight: 600; }
+
+  .mes-main { min-width: 0; padding: 24px clamp(16px, 3vw, 40px) 64px; }
+  .mes-top { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 12px 24px; padding-bottom: 20px; margin-bottom: 20px; border-bottom: 1px solid var(--cream-08); }
+  .mes-top .mono.gold { font-size: 11px; letter-spacing: 0.8px; text-transform: uppercase; }
+  .mes-top h1 { font-size: clamp(26px, 3vw, 34px); font-weight: 500; letter-spacing: -1px; line-height: 1.1; margin-top: 4px; }
+  .top-estado { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 18px; color: var(--cream-70); font-size: 12px; font-variant-numeric: tabular-nums; }
+  .en-vivo { display: inline-flex; align-items: center; gap: 8px; color: var(--green); }
+  .en-vivo .pulse[data-off] { background: var(--orange); }
+  .aviso { position: sticky; top: calc(var(--nav-offset, 0px) + 8px); z-index: 5; margin-bottom: 16px; padding: 10px 14px; border: 1px solid var(--gold-60); border-radius: var(--radius); background: var(--carbon); color: var(--cream); font-size: 13px; box-shadow: 0 8px 24px -12px rgb(0 0 0 / 0.5); }
+  .aviso[hidden] { display: none; }
+  .aviso[data-error] { border-color: var(--orange); color: var(--orange); }
+  .mes-cont { display: grid; gap: 20px; min-width: 0; }
+
+  /* ---------- tarjetas, KPIs, tablas ---------- */
+  .m-card { display: grid; gap: 14px; align-content: start; padding: 18px; border: 1px solid var(--cream-12); border-radius: var(--radius-frame); background: var(--carbon); min-width: 0; }
+  .m-card-t { color: var(--granite); font-size: 11px; font-weight: 400; letter-spacing: 0.8px; text-transform: uppercase; }
+  .kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 1px; border: 1px solid var(--cream-12); border-radius: var(--radius-frame); background: var(--cream-12); overflow: hidden; }
+  .kpi { display: grid; gap: 4px; align-content: start; padding: 16px 18px; background: var(--carbon); }
+  .kpi > .mono { color: var(--granite); font-size: 11px; letter-spacing: 0.6px; text-transform: uppercase; }
+  .kpi b { font-size: 28px; font-weight: 500; letter-spacing: -1px; font-variant-numeric: tabular-nums; line-height: 1.15; }
+  .kpi small { color: var(--granite); font-size: 12px; }
+  .kpis.grandes .kpi b { font-size: 32px; }
+  .k-marcha b { color: var(--est-marcha); }
+  .k-falla b { color: var(--est-falla); }
+  .k-cambio b { color: var(--gold); }
+  .k-oee { background: linear-gradient(160deg, var(--gold-08), var(--carbon) 70%); }
+  .k-oee b { color: var(--gold); }
+  .dos { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr)); gap: 20px; }
+  .barra { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 12px 20px; }
+  .barra .campo { width: min(100%, 240px); }
+  .barra .campo.ancho { width: min(100%, 360px); }
+  .barra-kpi { color: var(--cream-70); font-size: 12px; }
+  .m-tabla { overflow-x: auto; border: 1px solid var(--cream-12); border-radius: var(--radius-frame); background: var(--carbon); }
+  .m-tabla table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .m-tabla th { padding: 10px 12px; text-align: left; font-family: var(--mono); font-size: 10px; font-weight: 400; letter-spacing: 0.6px; text-transform: uppercase; color: var(--granite); background: var(--carbon); border-bottom: 1px solid var(--cream-12); white-space: nowrap; }
+  .m-tabla td { padding: 9px 12px; border-bottom: 1px solid var(--cream-08); vertical-align: middle; font-variant-numeric: tabular-nums; }
+  .m-tabla tr:last-child td { border-bottom: 0; }
+  .m-tabla tr.clic { cursor: pointer; }
+  .m-tabla tr.clic:hover td { background: var(--cream-08); }
+  .m-tabla td.acc { text-align: right; white-space: nowrap; }
+  .m-tabla td.acc > * + * { margin-left: 6px; }
+  .m-tabla td[data-k='tira'] { min-width: 180px; }
+  .m-tabla input, .m-tabla select { min-height: 32px; padding: 4px 8px; font-size: 13px; }
+  .lista { list-style: none; margin: 0; padding: 0; display: grid; }
+  .lista > li { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 16px; padding: 12px 0; border-bottom: 1px solid var(--cream-08); }
+  .lista > li:last-child { border-bottom: 0; }
+  .lista .sub { margin-top: 3px; }
+  .btns { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+  .feed { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; font-size: 13px; }
+  .feed li { display: grid; grid-template-columns: 48px 1fr; gap: 10px; }
+  .feed .mono { color: var(--granite); }
+  .leyenda { display: flex; flex-wrap: wrap; gap: 6px 16px; color: var(--cream-70); font-size: 11px; align-items: center; }
+  .leyenda > span { display: inline-flex; align-items: center; gap: 6px; }
+  .leyenda i { width: 10px; height: 10px; border-radius: 2px; background: var(--c); }
+  .leyenda .leyenda-n { color: var(--granite); margin-left: auto; }
+
+  /* ---------- tira de estados ---------- */
+  .tira { position: relative; height: 6px; border-radius: 2px; background: var(--cream-08); overflow: hidden; }
+  .tira.grande { height: 12px; }
+  .tira i { position: absolute; top: 0; bottom: 0; background: var(--c); }
+
+  /* ---------- planta en vivo ---------- */
+  .linea { display: grid; gap: 12px; padding-top: 8px; }
+  .linea + .linea { margin-top: 12px; }
+  .linea header { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 4px 16px; }
+  .linea h3 { font-size: 18px; font-weight: 500; letter-spacing: -0.4px; }
+  .linea header .mono { color: var(--granite); font-size: 11px; }
+  .maqs { display: grid; grid-template-columns: repeat(auto-fill, minmax(196px, 1fr)); gap: 10px; }
+  .maq {
+    position: relative;
+    display: grid;
+    gap: 6px;
+    padding: 14px 14px 12px;
+    border: 1px solid var(--cream-12);
+    border-radius: var(--radius-frame);
+    background: linear-gradient(180deg, color-mix(in srgb, var(--c) 9%, var(--carbon)), var(--carbon) 60%);
+    color: var(--cream);
+    font: inherit;
+    text-align: left;
     cursor: pointer;
+    overflow: hidden;
+    transition: border-color 150ms var(--ease-switch), transform 200ms var(--ease-out-expo);
   }
+  .maq::before { content: ''; position: absolute; inset: 0 0 auto; height: 3px; background: var(--c); }
+  .maq:hover { border-color: color-mix(in srgb, var(--c) 60%, transparent); transform: translateY(-2px); }
+  .maq:focus-visible { outline: 1px solid var(--gold); }
+  .maq.e-falla { border-color: color-mix(in srgb, var(--c) 55%, transparent); animation: mes-alarma 2.4s ease-in-out infinite; }
+  .maq-top { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+  .maq-top > .mono { color: var(--gold); font-size: 12px; }
+  .maq-n { font-size: 14px; font-weight: 500; line-height: 1.3; }
+  .maq-c { color: var(--granite); font-size: 12px; min-height: 1.3em; }
+  .maq-t { font-size: 20px; letter-spacing: -0.5px; color: var(--c); font-variant-numeric: tabular-nums; }
 
-  .soltar input {
-    width: 100%;
-    min-height: 0;
-    border: 0;
-    padding: 0;
+  /* ---------- mi turno ---------- */
+  .turno-grid { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 20px; align-items: start; }
+  .turno-col { display: grid; gap: 20px; min-width: 0; }
+  .mi-maq { display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; padding: 16px; border-radius: var(--radius-frame); border: 1px solid color-mix(in srgb, var(--c) 45%, transparent); background: color-mix(in srgb, var(--c) 10%, var(--carbon)); }
+  .mi-maq > div { display: grid; gap: 2px; }
+  .mi-maq .mono { color: var(--granite); font-size: 11px; }
+  .mi-maq b { font-size: 26px; font-weight: 500; letter-spacing: -0.8px; color: var(--c); }
+  .mi-maq .mi-maq-t { font-size: 26px; color: var(--c); font-variant-numeric: tabular-nums; }
+  .acciones { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 8px; }
+  .accion { display: flex; align-items: center; gap: 10px; min-height: 52px; padding: 10px 14px; border: 1px solid var(--cream-12); border-radius: var(--radius-frame); background: var(--black); color: var(--cream); font: inherit; font-size: 14px; text-align: left; cursor: pointer; transition: border-color 150ms var(--ease-switch), background-color 150ms var(--ease-switch); }
+  .accion i { width: 10px; height: 10px; border-radius: 50%; background: var(--c); flex: none; }
+  .accion:hover:not(:disabled) { border-color: var(--c, var(--gold)); background: color-mix(in srgb, var(--c, var(--gold)) 10%, var(--black)); }
+  .accion:disabled { opacity: 0.4; cursor: default; }
+  .accion.otra { justify-content: center; color: var(--cream-70); }
+  .turno-info { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px 16px; }
+  .turno-info b { font-size: 24px; font-weight: 500; }
+  .turno-info .mono { color: var(--cream-70); font-size: 12px; }
+
+  /* ---------- órdenes ---------- */
+  .prog { position: relative; display: grid; gap: 4px; margin-top: 6px; }
+  .prog::before { content: ''; height: 4px; border-radius: 2px; background: var(--cream-08); grid-area: 1 / 1; }
+  .prog i { height: 4px; border-radius: 2px; background: var(--gold); grid-area: 1 / 1; }
+  .prog .mono { color: var(--granite); font-size: 11px; }
+  .kanban { display: grid; grid-template-columns: repeat(5, minmax(220px, 1fr)); gap: 12px; overflow-x: auto; padding-bottom: 8px; }
+  .kanban .col { display: grid; gap: 10px; align-content: start; padding: 12px; border: 1px solid var(--cream-08); border-radius: var(--radius-frame); background: color-mix(in srgb, var(--carbon) 60%, transparent); min-height: 200px; }
+  .kanban .col > header { display: flex; justify-content: space-between; align-items: center; }
+  .kanban .col > header .mono { color: var(--granite); font-size: 12px; }
+  .ord { display: grid; gap: 4px; padding: 12px; border: 1px solid var(--cream-12); border-left: 2px solid var(--c, var(--cream-16)); border-radius: var(--radius); background: var(--carbon); font-size: 13px; }
+  .ord-top { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+  .ord .btns { margin-top: 6px; }
+
+  /* ---------- lotes ---------- */
+  .lotes-grid { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 20px; align-items: start; }
+  .traza { position: sticky; top: calc(var(--nav-offset, 0px) + 16px); }
+  .traza-cab { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+  .traza-cab b { font-size: 18px; }
+  .traza-pasos { list-style: none; margin: 0; padding: 0 0 0 14px; display: grid; gap: 14px; border-left: 1px solid var(--gold-60); font-size: 13px; }
+  .traza-pasos > li { position: relative; display: grid; gap: 4px; }
+  .traza-pasos > li::before { content: ''; position: absolute; left: -18px; top: 4px; width: 7px; height: 7px; border-radius: 50%; background: var(--gold); }
+  .traza-pasos > li > .mono { font-size: 10px; letter-spacing: 0.6px; text-transform: uppercase; }
+  .traza-pasos ul { margin: 0; padding-left: 16px; display: grid; gap: 4px; }
+
+  /* ---------- mantenimiento e indicadores ---------- */
+  .lista > li.alerta { padding-left: 12px; border-left: 2px solid var(--c); }
+  .pareto { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; font-size: 13px; }
+  .pareto li { display: grid; grid-template-columns: minmax(110px, 1.2fr) 2fr auto 44px; gap: 10px; align-items: center; }
+  .p-k { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .p-bar { height: 10px; border-radius: 2px; background: var(--cream-08); overflow: hidden; }
+  .p-bar i { display: block; height: 100%; }
+  .p-v { font-size: 12px; text-align: right; white-space: nowrap; }
+  .p-a { font-size: 11px; color: var(--granite); text-align: right; }
+  .segmentos { display: inline-flex; border: 1px solid var(--cream-16); border-radius: var(--radius); overflow: hidden; }
+  .segmentos button { min-height: 36px; padding: 6px 14px; border: 0; background: transparent; color: var(--cream-70); font: inherit; font-size: 13px; cursor: pointer; }
+  .segmentos button + button { border-left: 1px solid var(--cream-16); }
+  .segmentos button[aria-pressed='true'] { background: var(--gold); color: var(--black); }
+  .graf { width: 100%; height: auto; display: block; }
+  .g-rej { stroke: var(--cream-08); }
+  .g-txt { fill: var(--granite); font-family: var(--mono); font-size: 10px; }
+  .gantt { display: grid; gap: 5px; overflow-x: auto; }
+  .g-horas, .g-fila { display: grid; grid-template-columns: 52px minmax(480px, 1fr); gap: 10px; align-items: center; }
+  .g-horas > div { position: relative; height: 16px; color: var(--granite); font-size: 10px; }
+  .g-horas > div span { position: absolute; top: 0; transform: translateX(-50%); }
+  .g-horas > div span:first-child { transform: none; }
+  .g-fila > .mono { font-size: 11px; color: var(--cream-70); }
+  .g-pista { position: relative; }
+  .tira.g { height: 14px; border-radius: 2px; }
+  .g-ahora { position: absolute; top: -3px; bottom: -3px; width: 1px; background: var(--cream); }
+
+  /* ---------- archivos ---------- */
+  .subir { display: flex; flex-wrap: wrap; gap: 12px; align-items: stretch; }
+  .soltar { position: relative; flex: 1 1 280px; display: grid; place-items: center; gap: 4px; padding: 20px; border: 1px dashed var(--cream-16); border-radius: var(--radius-frame); text-align: center; cursor: pointer; transition: border-color 150ms var(--ease-switch); }
+  .soltar:hover { border-color: var(--gold); }
+  .mes .soltar input { position: absolute; inset: 0; opacity: 0; cursor: pointer; min-height: 0; height: 100%; }
+  .soltar .mono { color: var(--granite); font-size: 11px; }
+
+  /* ---------- diálogo de máquina ---------- */
+  .m-dialog { width: min(560px, calc(100vw - 32px)); max-height: calc(100vh - 48px); padding: 0; border: 1px solid var(--cream-16); border-radius: var(--radius-frame); background: var(--carbon); color: var(--cream); }
+  .m-dialog::backdrop { background: rgb(0 0 0 / 0.6); backdrop-filter: blur(2px); }
+  .dlg { display: grid; gap: 14px; padding: 20px; }
+  .dlg header { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; }
+  .dlg header .mono { font-size: 11px; }
+  .dlg h3 { font-size: 22px; font-weight: 500; letter-spacing: -0.5px; }
+  .dlg .cerrar { width: 36px; height: 36px; border: 0; background: transparent; color: var(--cream-70); font-size: 24px; cursor: pointer; }
+  .dlg-ahora { display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: center; font-size: 13px; color: var(--cream-70); }
+  .dlg-nota { color: var(--granite); font-size: 11px; }
+  .dlg .etq { color: var(--granite); font-size: 11px; text-transform: uppercase; letter-spacing: 0.6px; }
+  .estados-btn { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+  .est-btn { display: flex; align-items: center; gap: 8px; min-height: 44px; padding: 8px 12px; border: 1px solid var(--cream-12); border-radius: var(--radius); background: var(--black); color: var(--cream); font: inherit; font-size: 13px; cursor: pointer; }
+  .est-btn i { width: 9px; height: 9px; border-radius: 50%; background: var(--c); }
+  .est-btn[aria-pressed='true'] { border-color: var(--c); background: color-mix(in srgb, var(--c) 14%, var(--black)); }
+  .dlg footer { display: flex; justify-content: flex-end; gap: 8px; padding-top: 6px; }
+
+  @keyframes mes-latido { 50% { opacity: 0.25; } }
+  @keyframes mes-alarma { 50% { box-shadow: 0 0 0 3px color-mix(in srgb, var(--est-falla) 25%, transparent); } }
+  .pulse.latido { animation: mes-latido 600ms ease-out 1; }
+
+  /* ---------- responsive ---------- */
+  @media (max-width: 1180px) {
+    .lotes-grid { grid-template-columns: 1fr; }
+    .traza { position: static; }
   }
-
-  .archivos button {
-    background: none;
-    border: 0;
-    min-height: 44px;
-    cursor: pointer;
+  @media (max-width: 960px) {
+    .mes-portada { grid-template-columns: 1fr; }
+    .mes-login { justify-self: stretch; max-width: none; }
+    .turno-grid { grid-template-columns: 1fr; }
+    .mes-app { grid-template-columns: 1fr; }
+    .mes-side { position: static; height: auto; gap: 12px; padding: 12px 16px; border-right: 0; border-bottom: 1px solid var(--cream-08); }
+    .side-marca { display: none; }
+    .side-menu { display: flex; gap: 4px; overflow-x: auto; margin: 0 -16px; padding: 0 16px 4px; scrollbar-width: none; }
+    .side-menu .grupo { display: contents; }
+    .side-menu .grupo > .mono { display: none; }
+    .side-menu a { flex: none; padding: 8px 12px; border: 1px solid var(--cream-08); font-size: 13px; }
+    .side-menu a[aria-current]::before { display: none; }
+    .side-menu a[aria-current] { border-color: var(--gold-60); }
+    .side-pie { order: -1; margin: 0; padding: 0; border: 0; grid-template-columns: minmax(0, 1fr) auto; align-items: center; }
+    .side-pie .como { grid-column: 1 / -1; }
+    .mes-main { padding-top: 16px; }
   }
-
-  @media (max-width: 760px) {
-    .kpis-mes {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-    .kpis-mes div:nth-child(3) {
-      border-left: 0;
-    }
-    .kpis-mes div:nth-child(n + 3) {
-      border-top: 1px solid var(--stroke);
-    }
-    .registro .ancho {
-      grid-column: auto;
-    }
-    .subir {
-      flex-direction: column;
-    }
-    .feed li {
-      grid-template-columns: 1fr;
-      gap: 4px;
-    }
+  @media (max-width: 560px) {
+    .estados-btn { grid-template-columns: repeat(2, 1fr); }
+    .kpi b { font-size: 24px; }
+    .pareto li { grid-template-columns: minmax(90px, 1fr) 1.2fr auto; }
+    .p-a { display: none; }
+    .leyenda .leyenda-n { margin-left: 0; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .maq.e-falla, .e-falla.chip::before, .pulse.latido { animation: none; }
   }
 </style>

@@ -34,6 +34,12 @@ const favicon = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/favicon.svg`;
     <Font cssVariable="--font-display" preload />
     <title>{title}</title>
     <script is:inline>
+      // Tema guardado por el visitante (oscuro por defecto); se aplica antes de pintar para que no parpadee.
+      try {
+        if (localStorage.getItem('tema') === 'light') document.documentElement.dataset.theme = 'light';
+      } catch (e) {}
+    </script>
+    <script is:inline>
       // Activa las animaciones de entrada antes del primer pintado (así no hay parpadeo).
       if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
         document.documentElement.classList.add('reveal-ready');

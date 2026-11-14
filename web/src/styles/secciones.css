@@ -793,3 +793,11 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* Tema claro: superficies que en el oscuro eran negras fijas. */
+:root[data-theme='light'] .shot-link {
+  background: radial-gradient(120% 90% at 50% 0%, #ffffff 0%, var(--carbon) 70%);
+}
+:root[data-theme='light'] .visor-body {
+  background: #ece7dd;
+}

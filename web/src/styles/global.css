@@ -35,6 +35,30 @@
   --ease-switch: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* Tema claro (botón del menú): papel cálido, tinta casi negra y el mismo champaña, más oscuro para que tenga contraste. */
+:root[data-theme='light'] {
+  color-scheme: light;
+
+  --gold: #8a6a3c;
+  --cream: #1c1915;
+  --black: #f6f3ec;
+  --ash: #b9b2a6;
+  --granite: #5f5952;
+  --carbon: #ffffff;
+  --stroke: #e3ddd2;
+  --green: #3f7a32;
+  --orange: #c4470a;
+
+  --cream-70: rgb(28 25 21 / 0.74);
+  --cream-40: rgb(28 25 21 / 0.45);
+  --cream-16: rgb(28 25 21 / 0.16);
+  --cream-12: rgb(28 25 21 / 0.12);
+  --cream-08: rgb(28 25 21 / 0.07);
+
+  --gold-60: rgb(138 106 60 / 0.6);
+  --gold-08: rgb(138 106 60 / 0.08);
+}
+
 *,
 *::before,
 *::after {

@@ -17,7 +17,7 @@ const links = PAGINAS.map((p) => ({ href: url(p.slug), label: p.label, actual: p
     <nav aria-label="Secciones">
       <ul>
         {
-          links.map((l) => (
+          links.filter((l) => l.label !== 'Inicio').map((l) => (
             <li>
               <a href={l.href} aria-current={l.actual ? 'page' : undefined}>
                 {l.label}
@@ -27,9 +27,10 @@ const links = PAGINAS.map((p) => ({ href: url(p.slug), label: p.label, actual: p
         }
       </ul>
     </nav>
-    <a class="ghost-link repo" href={sitio.repositorio} target="_blank" rel="noopener">
-      Repositorio <span class="arrow" aria-hidden="true">→</span>
-    </a>
+    <button class="tema-btn" type="button" data-tema aria-label="Cambiar a tema claro" title="Cambiar tema">
+      <svg class="ico-sol" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2" /><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M5.3 18.7l1.6-1.6M17.1 6.9l1.6-1.6" /></svg>
+      <svg class="ico-luna" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z" /></svg>
+    </button>
     <button
       class="menu-btn"
       type="button"
@@ -251,14 +252,78 @@ const links = PAGINAS.map((p) => ({ href: url(p.slug), label: p.label, actual: p
     font-size: 14px;
   }
 
-  /* El menú de dos rayitas se usa en todos los tamaños: la barra solo lleva la marca y el botón. */
-  .nav-inner > nav,
-  .nav-inner > .repo {
+  /* Botón de tema: sol en el tema oscuro (pasa a claro), luna en el claro. */
+  .tema-btn {
+    display: inline-grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    margin-right: -6px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: var(--cream-70);
+    cursor: pointer;
+    transition: color 150ms var(--ease-switch);
+  }
+
+  .tema-btn:hover {
+    color: var(--gold);
+  }
+
+  .tema-btn svg {
+    width: 19px;
+    height: 19px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.5;
+    stroke-linecap: round;
+  }
+
+  .ico-luna {
     display: none;
   }
 
-  .menu-btn {
-    display: inline-grid;
+  :global(:root[data-theme='light']) .ico-sol {
+    display: none;
+  }
+
+  :global(:root[data-theme='light']) .ico-luna {
+    display: block;
+  }
+
+  /* PC ancho: todas las secciones a la vista en la barra. Más angosto: menú de dos rayitas. */
+  .nav-inner > nav ul {
+    gap: 20px;
+  }
+
+  .nav-inner > nav a {
+    font-size: 13px;
+    white-space: nowrap;
+  }
+
+  .nav-inner > nav a[aria-current='page'] {
+    color: var(--gold);
+  }
+
+  @media (max-width: 1139px) {
+    .nav-inner > nav {
+      display: none;
+    }
+    .menu-btn {
+      display: inline-grid;
+      margin-left: 0;
+    }
+    .tema-btn {
+      margin-left: auto;
+      margin-right: 0;
+    }
+  }
+
+  @media (min-width: 1140px) {
+    .menu-btn {
+      display: none;
+    }
   }
 
   /* En PC el menú es un desplegable bajo el botón: lista vertical como en el celular, sin tapar la página. */
@@ -346,7 +411,24 @@ const links = PAGINAS.map((p) => ({ href: url(p.slug), label: p.label, actual: p
   root.style.setProperty('--nav-offset', `${nav.offsetHeight}px`);
   update();
 
-  // --- Menú (dos rayitas, en todos los tamaños) ---
+  // --- Tema claro / oscuro ---
+  const tema = nav.querySelector<HTMLButtonElement>('[data-tema]')!;
+  function pintarTema() {
+    const claro = root.dataset.theme === 'light';
+    tema.setAttribute('aria-label', claro ? 'Cambiar a tema oscuro' : 'Cambiar a tema claro');
+    document.querySelector('meta[name="theme-color"]')?.setAttribute('content', claro ? '#f6f3ec' : '#000000');
+  }
+  tema.addEventListener('click', () => {
+    const claro = root.dataset.theme !== 'light';
+    if (claro) root.dataset.theme = 'light';
+    else delete root.dataset.theme;
+    try { localStorage.setItem('tema', claro ? 'light' : 'dark'); } catch (e) {}
+    pintarTema();
+    window.dispatchEvent(new CustomEvent('tema'));
+  });
+  pintarTema();
+
+  // --- Menú (dos rayitas, en pantallas angostas) ---
   const btn = nav.querySelector<HTMLButtonElement>('[data-menu-btn]')!;
   const menu = nav.querySelector<HTMLElement>('[data-menu]')!;
   const escritorio = window.matchMedia('(min-width: 961px)');
