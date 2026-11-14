@@ -3,6 +3,7 @@ numero: 1
 nombre: Luis Alberto Mendoza
 rol: Líder de automatización
 github: lmendozar2001
+foto: luis.webp
 sigla: OT/IT
 tareas:
   - Programación de las fases en PLC (Logix Emulate) y Grafcet
