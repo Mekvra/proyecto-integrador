@@ -1267,7 +1267,7 @@ const vUsuarios: Vista = {
   id: 'usuarios', titulo: 'Usuarios y pasarela', grupo: 'General', roles: ['Administrador'],
   montar(c) {
     c.append(tarjeta('Pasarela de datos de planta', h('div', { 'data-u-sim': '' })),
-      tarjeta('Usuarios y roles', h('p', { class: 'nota' }, 'Los usuarios se crean en Supabase → Authentication → Users → Add user (con “Auto Confirm User”). Los del equipo se crean con la función crear_usuario en el SQL Editor (esquema-5-usuarios.sql) y entran con su nombre corto, por ejemplo «pablo». El rol define con qué pantalla arranca cada persona; con acceso total puede usar todas las ventanas y editar todo.'),
+      tarjeta('Usuarios y roles', h('p', { class: 'nota' }, 'Los usuarios se crean en Supabase → Authentication → Users → Add user (con “Auto Confirm User”). Los del equipo se crean con la función crear_usuario en el SQL Editor (esquema-5-usuarios.sql) y entran con su nombre corto, por ejemplo «Pablo». El rol define con qué pantalla arranca cada persona; con acceso total puede usar todas las ventanas y editar todo.'),
         h('div', { 'data-u-tabla': '' })));
   },
   refrescar() {

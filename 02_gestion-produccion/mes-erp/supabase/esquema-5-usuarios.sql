@@ -32,7 +32,7 @@ begin
   insert into auth.identities (id, user_id, provider_id, identity_data, provider, last_sign_in_at, created_at, updated_at)
   values (gen_random_uuid(), uid, uid::text, jsonb_build_object('sub', uid::text, 'email', correo, 'email_verified', true),
           'email', now(), now(), now());
-  return format('usuario: %s   ·   clave: %s   ·   %s (%s)', lower(trim(usuario)), clave, nombre, rol);
+  return format('usuario: %s   ·   clave: %s   ·   %s (%s)', initcap(trim(usuario)), clave, nombre, rol);
 end $$;
 
 revoke execute on function public.crear_usuario(text, text, text, text) from public, anon, authenticated;
