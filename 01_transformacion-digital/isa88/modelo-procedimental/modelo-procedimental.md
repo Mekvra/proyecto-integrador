@@ -23,40 +23,40 @@ Cada **procedimiento de unidad** se ejecuta en una unidad o en un grupo de unida
 
 | Etapa de proceso | Operaciones de proceso | Acciones de proceso |
 |---|---|---|
-| Recepción de leche cruda | Aceptar, descargar, enfriar, almacenar | Analizar la cisterna, filtrar, enfriar a 4 °C o menos, guardar máximo 24 h |
-| Preparación de la leche base | Clarificar, estandarizar, pasteurizar | Calentar a 55 °C, separar la crema, ajustar la grasa al producto, calentar a 75 °C por 15 s, enfriar a 4 °C |
-| Preparación de la crema | Pasteurizar y almacenar la crema | Calentar a 85 °C por 15 s, enfriar a 4 °C o menos |
+| Recepción de leche cruda | <ul><li>Aceptar</li><li>Descargar</li><li>Enfriar</li><li>Almacenar</li></ul> | <ul><li>Analizar la cisterna</li><li>Filtrar</li><li>Enfriar a 4 °C o menos</li><li>Guardar máximo 24 h</li></ul> |
+| Preparación de la leche base | <ul><li>Clarificar</li><li>Estandarizar</li><li>Pasteurizar</li></ul> | <ul><li>Calentar a 55 °C</li><li>Separar la crema</li><li>Ajustar la grasa al producto</li><li>Calentar a 75 °C por 15 s</li><li>Enfriar a 4 °C</li></ul> |
+| Preparación de la crema | <ul><li>Pasteurizar la crema</li><li>Almacenar la crema</li></ul> | <ul><li>Calentar a 85 °C por 15 s</li><li>Enfriar a 4 °C o menos</li></ul> |
 
 ### Línea de yogurts
 
 | Etapa de proceso | Operaciones de proceso | Acciones de proceso |
 |---|---|---|
-| Preparación de la base | Formular, homogeneizar, tratar térmicamente | Dispersar leche en polvo (y azúcar en fresa) a 50 °C, homogeneizar, calentar a 92 °C por 5 min, enfriar a 43 °C |
-| Fermentación | Inocular, incubar, cortar | Agregar el cultivo, mantener 43 °C sin agitar hasta el pH de corte |
-| Acondicionamiento | Romper y enfriar (fresa y natural) o concentrar (griego) | Romper el coágulo y enfriar a 20 °C, o separar el suero, enfriar a 10 a 12 °C y añadir crema |
+| Preparación de la base | <ul><li>Formular</li><li>Homogeneizar</li><li>Tratar térmicamente</li></ul> | <ul><li>Dispersar leche en polvo (y azúcar en fresa) a 50 °C</li><li>Homogeneizar</li><li>Calentar a 92 °C por 5 min</li><li>Enfriar a 43 °C</li></ul> |
+| Fermentación | <ul><li>Inocular</li><li>Incubar</li><li>Cortar</li></ul> | <ul><li>Agregar el cultivo</li><li>Mantener 43 °C sin agitar hasta el pH de corte</li></ul> |
+| Acondicionamiento | <ul><li>Romper y enfriar (fresa y natural)</li><li>Concentrar (griego)</li></ul> | <ul><li>Fresa y natural: romper el coágulo y enfriar a 20 °C</li><li>Griego: separar el suero, enfriar a 10 a 12 °C y añadir crema</li></ul> |
 | Saborizado | Dosificar fruta (solo fresa) | Agregar 13 % de preparado de fresa en línea |
-| Envasado | Llenar, sellar, inspeccionar | Detectar metales, llenar, sellar, pesar y codificar |
-| Conservación | Enfriar y madurar | Llevar a 6 °C o menos y reposar 12 h a 2 a 4 °C |
+| Envasado | <ul><li>Llenar</li><li>Sellar</li><li>Inspeccionar</li></ul> | <ul><li>Detectar metales</li><li>Llenar</li><li>Sellar</li><li>Pesar</li><li>Codificar</li></ul> |
+| Conservación | <ul><li>Enfriar</li><li>Madurar</li></ul> | <ul><li>Llevar a 6 °C o menos</li><li>Reposar 12 h a 2 a 4 °C</li></ul> |
 
 ### Línea de quesos
 
 | Etapa de proceso | Operaciones de proceso | Acciones de proceso |
 |---|---|---|
-| Coagulación | Atemperar, madurar, coagular | Llevar a 32 a 35 °C, agregar cloruro de calcio, cultivo y cuajo |
-| Trabajo de la cuajada | Cortar, cocinar, desuerar | Cortar en cubos de 1 a 1,5 cm, calentar a 40 a 42 °C, retirar el 85 % del suero |
+| Coagulación | <ul><li>Atemperar</li><li>Madurar</li><li>Coagular</li></ul> | <ul><li>Llevar a 32 a 35 °C</li><li>Agregar cloruro de calcio, cultivo y cuajo</li></ul> |
+| Trabajo de la cuajada | <ul><li>Cortar</li><li>Cocinar</li><li>Desuerar</li></ul> | <ul><li>Cortar en cubos de 1 a 1,5 cm</li><li>Calentar a 40 a 42 °C</li><li>Retirar el 85 % del suero</li></ul> |
 | Acidificación | Acidificar la cuajada | Mantener 35 a 38 °C hasta el pH de hilado |
-| Hilado | Hilar y moldear | Estirar con agua a 75 a 85 °C, moldear bloques y barras |
-| Salado | Enfriar y salar | Enfriar en agua fría y salar en salmuera o en la hiladora |
-| Empaque y conservación | Empacar al vacío, almacenar en frío | Detectar metales, empacar, guardar a 2 a 4 °C |
+| Hilado | <ul><li>Hilar</li><li>Moldear</li></ul> | <ul><li>Estirar con agua a 75 a 85 °C</li><li>Moldear bloques y barras</li></ul> |
+| Salado | <ul><li>Enfriar</li><li>Salar</li></ul> | <ul><li>Enfriar en agua fría</li><li>Salar en salmuera o en la hiladora</li></ul> |
+| Empaque y conservación | <ul><li>Empacar al vacío</li><li>Almacenar en frío</li></ul> | <ul><li>Detectar metales</li><li>Empacar</li><li>Guardar a 2 a 4 °C</li></ul> |
 
 ### Línea de leche UHT
 
 | Etapa de proceso | Operaciones de proceso | Acciones de proceso |
 |---|---|---|
-| Preparación | Mezclar y estandarizar | Verificar la grasa; en chocolate, dispersar azúcar, cacao y carragenina a 60 a 65 °C |
-| Esterilización | Precalentar, desairear, esterilizar, homogeneizar, enfriar | Calentar a 137 °C por 4 s, homogeneizar a 200/50 bar, enfriar a 20 a 25 °C |
-| Envasado aséptico | Guardar en estéril, envasar | Esterilizar el envase con H₂O₂, llenar y sellar la caja de 1 L |
-| Liberación | Retener y liberar | Retener el lote hasta confirmar la esterilidad |
+| Preparación | <ul><li>Mezclar</li><li>Estandarizar</li></ul> | <ul><li>Verificar la grasa</li><li>En chocolate: dispersar azúcar, cacao y carragenina a 60 a 65 °C</li></ul> |
+| Esterilización | <ul><li>Precalentar</li><li>Desairear</li><li>Esterilizar</li><li>Homogeneizar</li><li>Enfriar</li></ul> | <ul><li>Calentar a 137 °C por 4 s</li><li>Homogeneizar a 200/50 bar</li><li>Enfriar a 20 a 25 °C</li></ul> |
+| Envasado aséptico | <ul><li>Guardar en estéril</li><li>Envasar</li></ul> | <ul><li>Esterilizar el envase con H₂O₂</li><li>Llenar y sellar la caja de 1 L</li></ul> |
+| Liberación | <ul><li>Retener</li><li>Liberar</li></ul> | Retener el lote hasta confirmar la esterilidad |
 
 ## 2. Procedimiento de la leche base y la crema (tronco común)
 
@@ -64,10 +64,10 @@ Este procedimiento es común a los nueve productos. Cada procedimiento de produc
 
 | Procedimiento de unidad | Unidad | Operaciones | Fases y parámetros |
 |---|---|---|---|
-| UP-LB1 Recepción | U111/U112 → U113/U114 | Registrar, aceptar, descargar, enfriar y almacenar | Registrar la cisterna (proveedor, ruta, volumen y sellos) · Muestrear y analizar: temperatura 4 ± 2 °C, alcohol 68 % m/m (78 % v/v si va a UHT), acidez 0,13 a 0,17 %, densidad 1,030 a 1,033 g/mL, crioscopia −0,530 a −0,510 °C, antibióticos negativos (PCC-1), grasa ≥ 3,0 %, proteína ≥ 2,9 %, SNG ≥ 8,3 % · Descargar a 30 a 40 m³/h por el filtro dúplex · Enfriar a 4 °C o menos · Almacenar máximo 24 h con agitación; si va a esperar más, termizar a 63 a 65 °C por 15 s |
-| UP-LB2 Estandarización y pasteurización | U121 + U122 | Clarificar, estandarizar, pasteurizar, enfriar | Precalentar a 55 °C (50 a 60 °C) en la regeneración · Separar y estandarizar a la grasa del silo destino · Pasteurizar a 75 °C por 15 s; desvío si baja de 72 °C (PCC-2) · Mantener el lado pasteurizado 0,3 bar por encima del crudo · Enfriar a 4 °C o menos |
-| UP-LB3 Almacenamiento y liberación | U123A/B/C, U124A/B, U125A/B | Recibir, mantener, liberar | Llenar el silo con la grasa del siguiente producto · Mantener a 2 a 4 °C, máximo 24 h · Liberar con fosfatasa negativa y peroxidasa positiva · Transferir solo lotes liberados |
-| UP-LB4 Crema | U126 → U127 | Pasteurizar, almacenar, liberar | Pasteurizar la crema al 40 % a 85 °C por 15 s; desvío si baja de 80 °C (PCC-3) · Mantener a 4 °C o menos, máximo 24 h · Liberar con fosfatasa negativa · Entregar unos 230 kg/día al griego y unos 270 L/día a la doble crema; el excedente se vende |
+| UP-LB1 Recepción | U111/U112 → U113/U114 | Registrar, aceptar, descargar, enfriar y almacenar | <ul><li>Registrar la cisterna (proveedor, ruta, volumen y sellos)</li><li>Muestrear y analizar: temperatura 4 ± 2 °C, alcohol 68 % m/m (78 % v/v si va a UHT), acidez 0,13 a 0,17 %, densidad 1,030 a 1,033 g/mL, crioscopia −0,530 a −0,510 °C, antibióticos negativos (PCC-1), grasa ≥ 3,0 %, proteína ≥ 2,9 %, SNG ≥ 8,3 %</li><li>Descargar a 30 a 40 m³/h por el filtro dúplex</li><li>Enfriar a 4 °C o menos</li><li>Almacenar máximo 24 h con agitación; si va a esperar más, termizar a 63 a 65 °C por 15 s</li></ul> |
+| UP-LB2 Estandarización y pasteurización | U121 + U122 | Clarificar, estandarizar, pasteurizar, enfriar | <ul><li>Precalentar a 55 °C (50 a 60 °C) en la regeneración</li><li>Separar y estandarizar a la grasa del silo destino</li><li>Pasteurizar a 75 °C por 15 s; desvío si baja de 72 °C (PCC-2)</li><li>Mantener el lado pasteurizado 0,3 bar por encima del crudo</li><li>Enfriar a 4 °C o menos</li></ul> |
+| UP-LB3 Almacenamiento y liberación | U123A/B/C, U124A/B, U125A/B | Recibir, mantener, liberar | <ul><li>Llenar el silo con la grasa del siguiente producto</li><li>Mantener a 2 a 4 °C, máximo 24 h</li><li>Liberar con fosfatasa negativa y peroxidasa positiva</li><li>Transferir solo lotes liberados</li></ul> |
+| UP-LB4 Crema | U126 → U127 | Pasteurizar, almacenar, liberar | <ul><li>Pasteurizar la crema al 40 % a 85 °C por 15 s; desvío si baja de 80 °C (PCC-3)</li><li>Mantener a 4 °C o menos, máximo 24 h</li><li>Liberar con fosfatasa negativa</li><li>Entregar unos 230 kg/día al griego y unos 270 L/día a la doble crema; el excedente se vende</li></ul> |
 
 **Grasa de estandarización por silo destino**
 
@@ -75,7 +75,7 @@ Este procedimiento es común a los nueve productos. Cada procedimiento de produc
 |---|---|---|
 | U123A/B | Yogurt con fresa y natural | 3,50 % ± 0,03 |
 | U123C | Yogurt griego | 0,05 % o menos |
-| U124A/B | Mozzarella · quesillo · doble crema | 3,0 % · 3,2 % · 3,6 % |
+| U124A/B | <ul><li>Mozzarella</li><li>Quesillo</li><li>Doble crema</li></ul> | <ul><li>3,0 %</li><li>3,2 %</li><li>3,6 %</li></ul> |
 | U125A | Leche entera UHT y base de la de chocolate | 3,0 % |
 | U125B | Leche descremada UHT | 0,3 % |
 
@@ -94,7 +94,7 @@ Un mismo procedimiento sirve para las tres referencias. Lo que cambia entre ella
 | UP-Y5 Separación | U216 | — | — | ✓ |
 | UP-Y6 Pulmón | U214A (YF), U214B (YN), U217A/B (YG) | ✓ | ✓ | ✓ |
 | UP-Y7 Saborizado | EM-2141 a la salida de U214A | ✓ | — | — |
-| UP-Y8 Envasado | U311, U312 (YF, YN) · U313 (YG) | ✓ | ✓ | ✓ |
+| UP-Y8 Envasado | <ul><li>U311, U312 (YF, YN)</li><li>U313 (YG)</li></ul> | ✓ | ✓ | ✓ |
 | UP-Y9 Cámara | U411 | ✓ | ✓ | ✓ |
 
 Esta numeración sigue las etapas del documento *Recetas y procesos de la planta*. No coincide con la de las recetas de yogurts v1.8, que agrupaban las etapas de otra forma.
@@ -181,11 +181,11 @@ Los tres quesos son de pasta hilada y usan las mismas unidades. Cada lote es de 
 
 | Procedimiento de unidad | Unidad | Operaciones | Fases y parámetros | Tiempo por lote |
 |---|---|---|---|---|
-| UP-Q1 Tina | U221A, U221B o U221C | Llenar y atemperar · madurar · coagular · cortar · cocinar y desuerar | Atemperar a 32 a 35 °C en E-2210 (en doble crema se añade la crema de U127) · Agregar cloruro de calcio y cultivo; madurar 20 a 30 min con agitación lenta · Agregar el cuajo; reposar sin agitar 30 a 40 min hasta corte limpio · Cortar en cubos de 1 a 1,5 cm; reposo de 5 min · Calentar hasta 40 a 42 °C con agitación y retirar el 85 % del suero | 3,0 h más 0,5 h de lavado |
+| UP-Q1 Tina | U221A, U221B o U221C | <ul><li>Llenar y atemperar</li><li>Madurar</li><li>Coagular</li><li>Cortar</li><li>Cocinar y desuerar</li></ul> | <ul><li>Atemperar a 32 a 35 °C en E-2210 (en doble crema se añade la crema de U127)</li><li>Agregar cloruro de calcio y cultivo; madurar 20 a 30 min con agitación lenta</li><li>Agregar el cuajo; reposar sin agitar 30 a 40 min hasta corte limpio</li><li>Cortar en cubos de 1 a 1,5 cm; reposo de 5 min</li><li>Calentar hasta 40 a 42 °C con agitación y retirar el 85 % del suero</li></ul> | 3,0 h más 0,5 h de lavado |
 | UP-Q2 Acidificación | U222 | Acidificar la cuajada | Mantener 35 a 38 °C hasta el pH de hilado; confirmar con la prueba de estiramiento en agua caliente | 2 a 3 h |
 | UP-Q3 Hilado | U223 | Hilar y moldear | Agua de hilado a 75 a 85 °C; pasta a la salida a 58 a 62 °C; en quesillo y doble crema se agrega la sal; moldeo en bloques y barras | 1,0 h (0,5 h al cambiar de queso) |
-| UP-Q4 Salado | U224 | Enfriar y salar | Canal de agua fría a 4 a 10 °C · Salmuera al 20 % (18 a 22 %) de NaCl a 8 a 12 °C | Hasta 8,0 h (mozzarella) |
-| UP-Q5 Empaque | U321 | Inspeccionar y empacar | Detector de metales (PCC-7) · Vacío y sellado · Etiqueta con lote, fecha y vencimiento | 1,2 h |
+| UP-Q4 Salado | U224 | Enfriar y salar | <ul><li>Canal de agua fría a 4 a 10 °C</li><li>Salmuera al 20 % (18 a 22 %) de NaCl a 8 a 12 °C</li></ul> | Hasta 8,0 h (mozzarella) |
+| UP-Q5 Empaque | U321 | Inspeccionar y empacar | <ul><li>Detector de metales (PCC-7)</li><li>Vacío y sellado</li><li>Etiqueta con lote, fecha y vencimiento</li></ul> | 1,2 h |
 | UP-Q6 Cámara | U414 | Conservar | 2 a 4 °C, reposo de 12 h; transporte refrigerado a 2 a 6 °C | 12 h |
 
 **Parámetros que cambian por referencia**
@@ -207,11 +207,11 @@ Cada lote es de 10.000 L de U125A (entera y chocolate) o U125B (descremada). Ant
 
 | Procedimiento de unidad | Unidad | Operaciones | Fases y parámetros | Tiempo por lote |
 |---|---|---|---|---|
-| UP-L1 Mezcla | U231 | Mezclar y estandarizar | Entera y descremada: verificar la grasa y ajustar si hace falta · Chocolate: calentar a 60 a 65 °C, premezclar la carragenina en seco con azúcar (1 a 10), agregar por la tolva con el resto del azúcar y el cacao, mezclar 20 min con recirculación | 1,0 h (0,5 h de lavado al pasar a chocolate) |
-| UP-L2 Tratamiento UHT | U232 | Precalentar y desairear · esterilizar · homogeneizar · enfriar | Precalentar en la regeneración y desairear · Esterilizar a 137 °C por 4 s; si baja, se desvía y se recircula (PCC-8) · Homogeneizar a 200/50 bar a unos 70 °C · Enfriar a 20 a 25 °C | 1,0 h para todo el paso por la planta |
+| UP-L1 Mezcla | U231 | Mezclar y estandarizar | <ul><li>Entera y descremada: verificar la grasa y ajustar si hace falta</li><li>Chocolate: calentar a 60 a 65 °C, premezclar la carragenina en seco con azúcar (1 a 10), agregar por la tolva con el resto del azúcar y el cacao, mezclar 20 min con recirculación</li></ul> | 1,0 h (0,5 h de lavado al pasar a chocolate) |
+| UP-L2 Tratamiento UHT | U232 | <ul><li>Precalentar y desairear</li><li>Esterilizar</li><li>Homogeneizar</li><li>Enfriar</li></ul> | <ul><li>Precalentar en la regeneración y desairear</li><li>Esterilizar a 137 °C por 4 s; si baja, se desvía y se recircula (PCC-8)</li><li>Homogeneizar a 200/50 bar a unos 70 °C</li><li>Enfriar a 20 a 25 °C</li></ul> | 1,0 h para todo el paso por la planta |
 | UP-L3 Almacenamiento estéril | U233 | Guardar en estéril | Presión positiva con aire estéril filtrado; alimenta la envasadora sin parar la UHT | Pulmón |
-| UP-L4 Envasado aséptico | U331 | Esterilizar el envase y envasar | Baño de H₂O₂ y secado con aire estéril caliente (PCC-9) · Sellar la caja de 1 L y la tapa | 2,0 h |
-| UP-L5 Retención | U413 | Retener y liberar | Cajas del inicio, del medio y del final: incubación a 30 a 35 °C por 7 días y prueba rápida de ATP a las 24 a 48 h · Esterilidad comercial según NTC 4433 por auditoría | 24 h en el modelo de Tecnomatix |
+| UP-L4 Envasado aséptico | U331 | Esterilizar el envase y envasar | <ul><li>Baño de H₂O₂ y secado con aire estéril caliente (PCC-9)</li><li>Sellar la caja de 1 L y la tapa</li></ul> | 2,0 h |
+| UP-L5 Retención | U413 | Retener y liberar | <ul><li>Cajas del inicio, del medio y del final: incubación a 30 a 35 °C por 7 días y prueba rápida de ATP a las 24 a 48 h</li><li>Esterilidad comercial según NTC 4433 por auditoría</li></ul> | 24 h en el modelo de Tecnomatix |
 
 **Parámetros que cambian por referencia**
 
@@ -229,11 +229,11 @@ Cada lote es de 10.000 L de U125A (entera y chocolate) o U125B (descremada). Ant
 
 | Programa | Equipos | Secuencia | Duración | Cuándo |
 |---|---|---|---|---|
-| CIP-C (superficies calientes) | U122, U126, U202 | Agua tibia 10 min · NaOH 0,5 a 2 % a 75 °C, 30 min · agua 5 min · HNO₃ 0,5 a 1,5 % a 70 °C, 20 min · agua fría 8 min. Antes de producir, agua a 90 a 95 °C por 10 a 15 min | 85 min | U122 dos veces al día; U202 en cada cambio de producto |
-| CIP-F (superficies frías) | Cisternas, U113/U114, silos, U127, U201, fermentadores, pulmones, tinas U221, U231 y tuberías | Agua 3 min · NaOH 0,5 a 1,5 % a 75 °C, 10 min · agua 3 min · desinfección con agua a 90 a 95 °C, 5 min. Ácido una vez por semana | 45 min con llenados y drenajes | Cada vez que se vacía el equipo |
+| CIP-C (superficies calientes) | U122, U126, U202 | <ul><li>Agua tibia 10 min</li><li>NaOH 0,5 a 2 % a 75 °C, 30 min</li><li>Agua 5 min</li><li>HNO₃ 0,5 a 1,5 % a 70 °C, 20 min</li><li>Agua fría 8 min. Antes de producir, agua a 90 a 95 °C por 10 a 15 min</li></ul> | 85 min | U122 dos veces al día; U202 en cada cambio de producto |
+| CIP-F (superficies frías) | Cisternas, U113/U114, silos, U127, U201, fermentadores, pulmones, tinas U221, U231 y tuberías | <ul><li>Agua 3 min</li><li>NaOH 0,5 a 1,5 % a 75 °C, 10 min</li><li>Agua 3 min</li><li>Desinfección con agua a 90 a 95 °C, 5 min. Ácido una vez por semana</li></ul> | 45 min con llenados y drenajes | Cada vez que se vacía el equipo |
 | CIP-S (separadora) | U216 | La secuencia del CIP-F, con tres descargas del bowl durante la soda y una al final | 60 min | Al terminar la corrida |
-| CIP-UHT | U232, U233 | Agua 10 min · NaOH 2 % a 137 °C, 40 min · agua 10 min · HNO₃ 1 % a 105 °C, 20 min · agua y enfriamiento 20 min. Antes de producir, esterilización con agua a 137 °C por 30 min | Final 120 min; intermedia 30 min; esterilización 60 min | Al terminar la corrida del día y al pasar de chocolate a entera |
-| CIP-L (máquinas) | U311 a U313, U223, U321, U331 | Agua 5 min · NaOH 1,5 % a 75 °C, 20 min · agua 5 min · HNO₃ 1 % a 65 °C, 15 min · agua 5 min · agua a 90 °C, 10 min | 75 min (105 min en U331, con esterilización) | Al final del día y en cada cambio de fresa a natural |
+| CIP-UHT | U232, U233 | <ul><li>Agua 10 min</li><li>NaOH 2 % a 137 °C, 40 min</li><li>Agua 10 min</li><li>HNO₃ 1 % a 105 °C, 20 min</li><li>Agua y enfriamiento 20 min. Antes de producir, esterilización con agua a 137 °C por 30 min</li></ul> | Final 120 min; intermedia 30 min; esterilización 60 min | Al terminar la corrida del día y al pasar de chocolate a entera |
+| CIP-L (máquinas) | U311 a U313, U223, U321, U331 | <ul><li>Agua 5 min</li><li>NaOH 1,5 % a 75 °C, 20 min</li><li>Agua 5 min</li><li>HNO₃ 1 % a 65 °C, 15 min</li><li>Agua 5 min</li><li>Agua a 90 °C, 10 min</li></ul> | 75 min (105 min en U331, con esterilización) | Al final del día y en cada cambio de fresa a natural |
 
 La velocidad en las tuberías debe estar entre 1,5 y 3,0 m/s. La concentración de soda y ácido se revisa por titulación manual y la limpieza se verifica con ATP en superficies.
 
@@ -243,9 +243,9 @@ Son los mismos que usa el modelo de Tecnomatix de la planta.
 
 | Línea | Lotes por semana | Orden en el día | Tiempos por lote |
 |---|---|---|---|
-| Yogurts | 35 (13 natural, 9 griego, 13 fresa) | Natural, griego, fresa | U201 1,9 h · U202 1,2 h · fermentador 8,1 a 9,0 h · U215 1,1 h · llenado unas 3,5 h |
-| Quesos | 30 (10 de cada uno) | Mozzarella, quesillo, doble crema | Tina 3,5 h · hilado 1,0 h · salmuera 8,0 h · empaque 1,2 h · cámara 12 h |
-| Leche UHT | 26 (14 entera, 6 descremada, 6 chocolate) | Entera, descremada, chocolate | Mezcla 1,0 h · UHT 1,0 h · envasado 2,0 h · retención 24 h |
+| Yogurts | 35 (13 natural, 9 griego, 13 fresa) | Natural, griego, fresa | <ul><li>U201 1,9 h</li><li>U202 1,2 h</li><li>Fermentador 8,1 a 9,0 h</li><li>U215 1,1 h</li><li>Llenado unas 3,5 h</li></ul> |
+| Quesos | 30 (10 de cada uno) | Mozzarella, quesillo, doble crema | <ul><li>Tina 3,5 h</li><li>Hilado 1,0 h</li><li>Salmuera 8,0 h</li><li>Empaque 1,2 h</li><li>Cámara 12 h</li></ul> |
+| Leche UHT | 26 (14 entera, 6 descremada, 6 chocolate) | Entera, descremada, chocolate | <ul><li>Mezcla 1,0 h</li><li>UHT 1,0 h</li><li>Envasado 2,0 h</li><li>Retención 24 h</li></ul> |
 
 Con estos tiempos, la simulación de 12 semanas en Tecnomatix da que el cuello de botella es la llenadora de vasos U311 (88 %) y que las líneas de quesos y leche UHT tienen capacidad libre: tinas al 24 %, hiladora al 27 % y envasadora aséptica al 40 %.
 
