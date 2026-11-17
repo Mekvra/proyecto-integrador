@@ -85,10 +85,10 @@ Es compartida por las tres líneas. Recibe toda la leche, la estandariza y la pa
 
 | Unidad | Módulo de equipo | Módulos de control | Dónde se ve |
 |---|---|---|---|
-| U111/U112 | Descarga | HV-1101 válvula de entrada · desaireador con LSL-1101 (nivel bajo, protege la bomba) · filtro dúplex con PDI-1102 · P-1101 bomba con HS-1101 (marcha desde panel) | Campo y panel; LSL al PLC-100 |
-| U111/U112 | Medición de lo recibido | FQI-1101 caudal totalizado · TI-1101 temperatura de llegada | SCADA e historiador |
-| U111/U112 | Enfriamiento | E-1101 enfriador de placas · TT-1102 · TIC-1102 (lazo del PLC-100) · TCV-1102 agua helada o glicol | SCADA |
-| U113, U114 | Almacenamiento | HV-1131/HV-1141 entrada · agitador M · LI-1131/LI-1141 nivel · TI-1131/TI-1141 temperatura · LSHH-1131/LSHH-1141 nivel muy alto (detiene la bomba) · HV-1132/HV-1142 salida | SCADA |
+| U111/U112 | Descarga | <ul><li>HV-1101 válvula de entrada</li><li>Desaireador con LSL-1101 (nivel bajo, protege la bomba)</li><li>Filtro dúplex con PDI-1102</li><li>P-1101 bomba con HS-1101 (marcha desde panel)</li></ul> | Campo y panel; LSL al PLC-100 |
+| U111/U112 | Medición de lo recibido | <ul><li>FQI-1101 caudal totalizado</li><li>TI-1101 temperatura de llegada</li></ul> | SCADA e historiador |
+| U111/U112 | Enfriamiento | <ul><li>E-1101 enfriador de placas</li><li>TT-1102</li><li>TIC-1102 (lazo del PLC-100)</li><li>TCV-1102 agua helada o glicol</li></ul> | SCADA |
+| U113, U114 | Almacenamiento | <ul><li>HV-1131/HV-1141 entrada</li><li>Agitador M</li><li>LI-1131/LI-1141 nivel</li><li>TI-1131/TI-1141 temperatura</li><li>LSHH-1131/LSHH-1141 nivel muy alto (detiene la bomba)</li><li>HV-1132/HV-1142 salida</li></ul> | SCADA |
 | U113, U114 | Transferencia a tratamiento | P-1132 con HS-1132 | Panel |
 
 La bahía U112 tiene la misma instrumentación que U111. La aprobación de la cisterna (PCC-1, antibióticos) la hace el laboratorio y es manual: el operador abre HV-1101 cuando el laboratorio le avisa.
@@ -109,14 +109,14 @@ La bahía U112 tiene la misma instrumentación que U111. La aprobación de la ci
 
 | Unidad | Módulo de equipo | Módulos de control | Dónde se ve |
 |---|---|---|---|
-| U122 | Alimentación a caudal constante | Tanque de balance con LT-1217 · P-1214 bomba de tiempo con variador · FT-1214 caudal | PLC del fabricante |
-| U122 | Regeneración | Sección de placas · PDT-1213 presión diferencial (lado pasteurizado 0,3 bar por encima del crudo) | PLC del fabricante |
-| U121 | Separación y estandarización | Separadora con SI-1201 velocidad y TI-1201 temperatura · crema por FI-1202 (rotámetro) y HV-1202 (manual) · TM-1202 muestra de grasa | Pantalla de U121; grasa en laboratorio |
-| U122 | Calentamiento y retención | TCV-1211 agua caliente · TT-1211 · tubo de retención de 15 s · TT-1212 · TRC-1212 registrador · FDV-1212 desvío si la temperatura baja de 72 °C (PCC-2) | PLC del fabricante; lectura por Ethernet al SCADA e historiador |
-| U122 | Enfriamiento | TCV-1215 agua helada · TT-1215 | PLC del fabricante |
-| U123 a U125 | Almacenamiento por silo | HV-1231A/B/C, HV-1241A/B, HV-1251A/B entrada · agitador M · LI y TI de cada silo (LI-1231A … LI-1251B, TI-1231A … TI-1251B) | SCADA con alarmas |
-| U126 | Pasteurización de crema | TCV-1261 agua caliente · TT-1262 · TRC-1262 · FDV-1262 desvío si baja de 80 °C (PCC-3) | PLC del fabricante; lectura al SCADA |
-| U127 | Almacenamiento de crema | Agitador M · TT-1271 · TIC-1271 (lazo del PLC-100) · TCV-1271 glicol · LI-1271 · HV-1272 salida a U216 o a las tinas | SCADA |
+| U122 | Alimentación a caudal constante | <ul><li>Tanque de balance con LT-1217</li><li>P-1214 bomba de tiempo con variador</li><li>FT-1214 caudal</li></ul> | PLC del fabricante |
+| U122 | Regeneración | <ul><li>Sección de placas</li><li>PDT-1213 presión diferencial (lado pasteurizado 0,3 bar por encima del crudo)</li></ul> | PLC del fabricante |
+| U121 | Separación y estandarización | <ul><li>Separadora con SI-1201 velocidad y TI-1201 temperatura</li><li>Crema por FI-1202 (rotámetro) y HV-1202 (manual)</li><li>TM-1202 muestra de grasa</li></ul> | Pantalla de U121; grasa en laboratorio |
+| U122 | Calentamiento y retención | <ul><li>TCV-1211 agua caliente</li><li>TT-1211</li><li>Tubo de retención de 15 s</li><li>TT-1212</li><li>TRC-1212 registrador</li><li>FDV-1212 desvío si la temperatura baja de 72 °C (PCC-2)</li></ul> | PLC del fabricante; lectura por Ethernet al SCADA e historiador |
+| U122 | Enfriamiento | <ul><li>TCV-1215 agua helada</li><li>TT-1215</li></ul> | PLC del fabricante |
+| U123 a U125 | Almacenamiento por silo | <ul><li>HV-1231A/B/C, HV-1241A/B, HV-1251A/B entrada</li><li>Agitador M</li><li>LI y TI de cada silo (LI-1231A … LI-1251B, TI-1231A … TI-1251B)</li></ul> | SCADA con alarmas |
+| U126 | Pasteurización de crema | <ul><li>TCV-1261 agua caliente</li><li>TT-1262</li><li>TRC-1262</li><li>FDV-1262 desvío si baja de 80 °C (PCC-3)</li></ul> | PLC del fabricante; lectura al SCADA |
+| U127 | Almacenamiento de crema | <ul><li>Agitador M</li><li>TT-1271</li><li>TIC-1271 (lazo del PLC-100)</li><li>TCV-1271 glicol</li><li>LI-1271</li><li>HV-1272 salida a U216 o a las tinas</li></ul> | SCADA |
 
 La estandarización de la grasa es manual: el operador ajusta HV-1202 mirando FI-1202 y la confirma con la muestra TM-1202. Cada silo se libera con fosfatasa negativa y peroxidasa positiva antes de transferir a su línea.
 
@@ -156,26 +156,26 @@ Los módulos de equipo que tienen nombre en el P&ID se escriben con su código (
 
 | Unidad | Módulo de equipo | Módulos de control | Dónde se ve |
 |---|---|---|---|
-| U201 | Carga de leche | HV-2011A (desde U123A/B) · HV-2011B (desde U123C) · P-2011 bomba con HS-2011 · FQI-2011 cantidad cargada | Panel local |
-| U201 | EM-2014 Calentamiento en línea | TT-2011 · TIC-2011 · TCV-2011 agua caliente (de 4 a 50 °C) | Panel local |
-| U201 | EM-2012 Mezclador de polvos al vacío | WI-2012 báscula de piso (pesa el operador) · HV-2012 leche en polvo · HV-2013 azúcar (solo fresa) · HV-2016 · P-2015 recirculación con HV-2015 | Panel local |
-| U201 | Agitación y nivel | Agitador M de alta cizalla · LI-2011 · LSHH-2011 nivel muy alto · HV-2017 salida a U202 | Panel local |
-| U202 | Regeneración y desaireación | E-2021 · TI-2021 · desaireador con PI-2027 (vacío) | PLC del fabricante |
-| U202 | Homogeneización | H-2021 dos etapas, 200 + 50 bar · P-2022 · PI-2021 y PI-2022 · HV-2023 derivación para el griego | PLC del fabricante |
-| U202 | Tratamiento térmico | E-2022 · TCV-2023 · TT-2023 · celda de retención de 5 min · TT-2024 · TRC-2024 · FDV-2024 desvío si baja de 90 °C (PCC-4) | PLC del fabricante; registro impreso |
-| U202 | Enfriamiento a inoculación | E-2026 · TT-2026 · TCV-2026 agua helada (a 43 °C) | PLC del fabricante |
-| U211 (igual en U212, U213 y U218) | Control térmico de la camisa | TT-2111 · TIC-2111 controlador autónomo · TCV-2111 agua caliente | Panel local (display del TIC) |
+| U201 | Carga de leche | <ul><li>HV-2011A (desde U123A/B)</li><li>HV-2011B (desde U123C)</li><li>P-2011 bomba con HS-2011</li><li>FQI-2011 cantidad cargada</li></ul> | Panel local |
+| U201 | EM-2014 Calentamiento en línea | <ul><li>TT-2011</li><li>TIC-2011</li><li>TCV-2011 agua caliente (de 4 a 50 °C)</li></ul> | Panel local |
+| U201 | EM-2012 Mezclador de polvos al vacío | <ul><li>WI-2012 báscula de piso (pesa el operador)</li><li>HV-2012 leche en polvo</li><li>HV-2013 azúcar (solo fresa)</li><li>HV-2016</li><li>P-2015 recirculación con HV-2015</li></ul> | Panel local |
+| U201 | Agitación y nivel | <ul><li>Agitador M de alta cizalla</li><li>LI-2011</li><li>LSHH-2011 nivel muy alto</li><li>HV-2017 salida a U202</li></ul> | Panel local |
+| U202 | Regeneración y desaireación | <ul><li>E-2021</li><li>TI-2021</li><li>Desaireador con PI-2027 (vacío)</li></ul> | PLC del fabricante |
+| U202 | Homogeneización | <ul><li>H-2021 dos etapas, 200 + 50 bar</li><li>P-2022</li><li>PI-2021 y PI-2022</li><li>HV-2023 derivación para el griego</li></ul> | PLC del fabricante |
+| U202 | Tratamiento térmico | <ul><li>E-2022</li><li>TCV-2023</li><li>TT-2023</li><li>Celda de retención de 5 min</li><li>TT-2024</li><li>TRC-2024</li><li>FDV-2024 desvío si baja de 90 °C (PCC-4)</li></ul> | PLC del fabricante; registro impreso |
+| U202 | Enfriamiento a inoculación | <ul><li>E-2026</li><li>TT-2026</li><li>TCV-2026 agua helada (a 43 °C)</li></ul> | PLC del fabricante |
+| U211 (igual en U212, U213 y U218) | Control térmico de la camisa | <ul><li>TT-2111</li><li>TIC-2111 controlador autónomo</li><li>TCV-2111 agua caliente</li></ul> | Panel local (display del TIC) |
 | U211 | Enfriamiento para cortar | HV-2113 agua helada, la abre el operador | Manual |
 | U211 | Agitación | Agitador M | Panel local |
-| U211 | Medición del lote | LI-2111 nivel · TM-2111 toma de muestra de pH | Panel; pH en planilla |
-| U211 | Entrada y salida | HV-2111 entrada desde el cabezal · HV-2112 salida a U215 o a U216 | Manual |
-| U215 | Ruptura y enfriamiento | P-2151 bomba de lóbulos · texturizador · enfriador de canal ancho · TT-2151 · TIC-2151 · TCV-2151 agua helada | Panel local |
-| U214A/B | Pulmón | HV-2141A/B entrada · venteo estéril · LI-2141A/B · TI-2141A/B · HV-2142A/B salida · P-2142 | Indicadores en campo |
-| U214A | EM-2141 Dosificador de fruta (solo fresa) | Bolsa aséptica a 8 °C o menos · P-2143 · HIC-2143 velocidad fija que pone el operador · mezclador estático · HV-2144 y HV-2145 (cerradas en natural) | Panel local; PCC-6 |
-| U216 | Separación del griego | P-2161 bomba de lóbulos · separador de boquillas · TM-2161 muestra de proteína · suero ácido a U905 | PLC del fabricante |
-| U216 | Enfriamiento del concentrado | E-2162 enfriador tubular · TT-2162 · TIC-2162 · TCV-2162 agua helada (10 a 12 °C) | Panel local |
-| U216 | Restitución de grasa | Crema desde U127 · P-2163 · HIC-2163 velocidad fija · HV-2163 · mezclador | Panel local; PCC-3 aguas arriba |
-| U217A/B | Pulmón del griego | HV-2171A/B entrada · agitador de ancla M · LI-2171A/B · TI-2171A/B · HV-2172A/B salida a U313 | Indicadores en campo |
+| U211 | Medición del lote | <ul><li>LI-2111 nivel</li><li>TM-2111 toma de muestra de pH</li></ul> | Panel; pH en planilla |
+| U211 | Entrada y salida | <ul><li>HV-2111 entrada desde el cabezal</li><li>HV-2112 salida a U215 o a U216</li></ul> | Manual |
+| U215 | Ruptura y enfriamiento | <ul><li>P-2151 bomba de lóbulos</li><li>Texturizador</li><li>Enfriador de canal ancho</li><li>TT-2151</li><li>TIC-2151</li><li>TCV-2151 agua helada</li></ul> | Panel local |
+| U214A/B | Pulmón | <ul><li>HV-2141A/B entrada</li><li>Venteo estéril</li><li>LI-2141A/B</li><li>TI-2141A/B</li><li>HV-2142A/B salida</li><li>P-2142</li></ul> | Indicadores en campo |
+| U214A | EM-2141 Dosificador de fruta (solo fresa) | <ul><li>Bolsa aséptica a 8 °C o menos</li><li>P-2143</li><li>HIC-2143 velocidad fija que pone el operador</li><li>Mezclador estático</li><li>HV-2144 y HV-2145 (cerradas en natural)</li></ul> | Panel local; PCC-6 |
+| U216 | Separación del griego | <ul><li>P-2161 bomba de lóbulos</li><li>Separador de boquillas</li><li>TM-2161 muestra de proteína</li><li>Suero ácido a U905</li></ul> | PLC del fabricante |
+| U216 | Enfriamiento del concentrado | <ul><li>E-2162 enfriador tubular</li><li>TT-2162</li><li>TIC-2162</li><li>TCV-2162 agua helada (10 a 12 °C)</li></ul> | Panel local |
+| U216 | Restitución de grasa | <ul><li>Crema desde U127</li><li>P-2163</li><li>HIC-2163 velocidad fija</li><li>HV-2163</li><li>Mezclador</li></ul> | Panel local; PCC-3 aguas arriba |
+| U217A/B | Pulmón del griego | <ul><li>HV-2171A/B entrada</li><li>Agitador de ancla M</li><li>LI-2171A/B</li><li>TI-2171A/B</li><li>HV-2172A/B salida a U313</li></ul> | Indicadores en campo |
 
 ### Celda PC22 · Quesos
 
@@ -189,15 +189,15 @@ Los módulos de equipo que tienen nombre en el P&ID se escriben con su código (
 
 | Unidad | Módulo de equipo | Módulos de control | Dónde se ve |
 |---|---|---|---|
-| E-2210 | Atemperado | P-2210 con HS-2210 · TT-2210 · TIC-2210 · TCV-2210 agua caliente | Panel local |
-| U221 (cabezal) | Crema para doble crema | HV-2212 · FQI-2212 contador (160 L por lote) | Panel local |
-| U221A (igual en B y C) | Control térmico de la camisa | TT-2211A · TIC-2211A · TCV-2211A agua caliente | Panel local |
+| E-2210 | Atemperado | <ul><li>P-2210 con HS-2210</li><li>TT-2210</li><li>TIC-2210</li><li>TCV-2210 agua caliente</li></ul> | Panel local |
+| U221 (cabezal) | Crema para doble crema | <ul><li>HV-2212</li><li>FQI-2212 contador (160 L por lote)</li></ul> | Panel local |
+| U221A (igual en B y C) | Control térmico de la camisa | <ul><li>TT-2211A</li><li>TIC-2211A</li><li>TCV-2211A agua caliente</li></ul> | Panel local |
 | U221A | Corte y agitación | Liras con motor M y variador SIC-2211A | Panel local |
-| U221A | Medición y desuerado | TM-2211A muestra de pH · HV-2211A entrada · HV-2214A suero dulce a U905 · HV-2215A cuajada · P-2216 bomba de cuajada | Manual |
-| U222 | Acidificación | TI-2221 · TM-2221 muestra de pH (el operador decide cuándo pasa a hilar) | Campo; pH en planilla |
-| U223 | Hilado | TT-2231 · TIC-2231 · TCV-2231 agua de hilado (75 a 85 °C) · TI-2233 temperatura de la pasta · WI-2232 báscula de sal (quesillo y doble crema) | Panel local |
-| U224 | Canal de enfriamiento | TT-2242 · TIC-2242 · TCV-2242 agua helada (4 a 10 °C) | Panel local |
-| U224 | Salmuera | TI-2241 · LI-2241 · TM-2241 muestra de NaCl · P-2241 recirculación con filtro · E-2244 enfriador · TT-2244 · TIC-2244 · TCV-2244 glicol | Panel local; PC-Q por turno |
+| U221A | Medición y desuerado | <ul><li>TM-2211A muestra de pH</li><li>HV-2211A entrada</li><li>HV-2214A suero dulce a U905</li><li>HV-2215A cuajada</li><li>P-2216 bomba de cuajada</li></ul> | Manual |
+| U222 | Acidificación | <ul><li>TI-2221</li><li>TM-2221 muestra de pH (el operador decide cuándo pasa a hilar)</li></ul> | Campo; pH en planilla |
+| U223 | Hilado | <ul><li>TT-2231</li><li>TIC-2231</li><li>TCV-2231 agua de hilado (75 a 85 °C)</li><li>TI-2233 temperatura de la pasta</li><li>WI-2232 báscula de sal (quesillo y doble crema)</li></ul> | Panel local |
+| U224 | Canal de enfriamiento | <ul><li>TT-2242</li><li>TIC-2242</li><li>TCV-2242 agua helada (4 a 10 °C)</li></ul> | Panel local |
+| U224 | Salmuera | <ul><li>TI-2241</li><li>LI-2241</li><li>TM-2241 muestra de NaCl</li><li>P-2241 recirculación con filtro</li><li>E-2244 enfriador</li><li>TT-2244</li><li>TIC-2244</li><li>TCV-2244 glicol</li></ul> | Panel local; PC-Q por turno |
 
 ### Celda PC23 · Leche UHT
 
@@ -209,13 +209,13 @@ Los módulos de equipo que tienen nombre en el P&ID se escriben con su código (
 
 | Unidad | Módulo de equipo | Módulos de control | Dónde se ve |
 |---|---|---|---|
-| U231 | Carga de leche | HV-2311A (desde U125A) · HV-2311B (desde U125B) | Manual |
-| U231 | Calentamiento y nivel | TT-2311 · TIC-2311 · TCV-2311 agua caliente (chocolate a 60 a 65 °C) · LI-2311 · LSHH-2311 · agitador M con HS-2311 | Panel local |
-| U231 | EM-2313 Incorporación de sólidos | WI-2312 báscula de piso · tolva de azúcar, cacao y carragenina · mezclador de alto cizallamiento · P-2314 · HV-2315 recirculación · HV-2314 y HV-2316 salida a U232 | Panel local |
-| U232 | Precalentamiento y desaireación | Tanque de balance con LT-2321 · P-2321 · E-2321 regeneración · desaireador con PI-2327 · P-2322 | PLC del fabricante |
-| U232 | Esterilización | E-2322 calentamiento · TCV-2323 agua presurizada · retención de 4 s · TT-2324 · TRC-2324 · FDV-2324 desvío si baja de 137 °C (PCC-8) | PLC del fabricante; registro impreso |
-| U232 | Homogeneización aséptica y enfriamiento | E-2325 preenfriamiento a unos 70 °C · H-2321 200/50 bar · PI-2321 y PI-2322 · E-2326 · TT-2326 · TCV-2326 agua helada (20 a 25 °C) | PLC del fabricante |
-| U233 | Almacenamiento estéril | PI-2331 presión de aire estéril · LI-2331 | PLC del fabricante |
+| U231 | Carga de leche | <ul><li>HV-2311A (desde U125A)</li><li>HV-2311B (desde U125B)</li></ul> | Manual |
+| U231 | Calentamiento y nivel | <ul><li>TT-2311</li><li>TIC-2311</li><li>TCV-2311 agua caliente (chocolate a 60 a 65 °C)</li><li>LI-2311</li><li>LSHH-2311</li><li>Agitador M con HS-2311</li></ul> | Panel local |
+| U231 | EM-2313 Incorporación de sólidos | <ul><li>WI-2312 báscula de piso</li><li>Tolva de azúcar, cacao y carragenina</li><li>Mezclador de alto cizallamiento</li><li>P-2314</li><li>HV-2315 recirculación</li><li>HV-2314 y HV-2316 salida a U232</li></ul> | Panel local |
+| U232 | Precalentamiento y desaireación | <ul><li>Tanque de balance con LT-2321</li><li>P-2321</li><li>E-2321 regeneración</li><li>Desaireador con PI-2327</li><li>P-2322</li></ul> | PLC del fabricante |
+| U232 | Esterilización | <ul><li>E-2322 calentamiento</li><li>TCV-2323 agua presurizada</li><li>Retención de 4 s</li><li>TT-2324</li><li>TRC-2324</li><li>FDV-2324 desvío si baja de 137 °C (PCC-8)</li></ul> | PLC del fabricante; registro impreso |
+| U232 | Homogeneización aséptica y enfriamiento | <ul><li>E-2325 preenfriamiento a unos 70 °C</li><li>H-2321 200/50 bar</li><li>PI-2321 y PI-2322</li><li>E-2326</li><li>TT-2326</li><li>TCV-2326 agua helada (20 a 25 °C)</li></ul> | PLC del fabricante |
+| U233 | Almacenamiento estéril | <ul><li>PI-2331 presión de aire estéril</li><li>LI-2331</li></ul> | PLC del fabricante |
 
 ## Área A3 · Envasado y fin de línea
 
@@ -231,19 +231,19 @@ Los módulos de equipo que tienen nombre en el P&ID se escriben con su código (
 
 | Unidad | Módulo de equipo | Módulos de control | Dónde se ve |
 |---|---|---|---|
-| U311 (igual en U312 y U313) | Inspección antes de llenar | XS-3113 detector de metales en tubería (XS-3123 en U312, XS-3133 en U313), con alarma y parada (PCC-5) · HV-3110 entrada (HV-3120 en U312) | Pantalla de la llenadora |
-| U311 | Llenado, sellado y control de peso | PLC del fabricante · TIC-3111 temperatura de la mordaza · WI-3111 peso (TIC-3121 y WI-3121 en U312; TIC-3131 y WI-3131 en U313) | Pantalla de la llenadora; contador copiado al final del turno |
-| U321 | Inspección y empaque | XS-3213 detector de metales antes de la empacadora (PCC-7) · PLC del fabricante · PI-3211 vacío | Pantalla de la máquina |
-| U331 | Esterilización del envase y llenado | PLC del fabricante · TIC-3311 temperatura del baño de H₂O₂ · AI-3312 concentración de H₂O₂ (PCC-9) · WI-3313 peso | Panel de U331 |
+| U311 (igual en U312 y U313) | Inspección antes de llenar | <ul><li>XS-3113 detector de metales en tubería (XS-3123 en U312, XS-3133 en U313), con alarma y parada (PCC-5)</li><li>HV-3110 entrada (HV-3120 en U312)</li></ul> | Pantalla de la llenadora |
+| U311 | Llenado, sellado y control de peso | <ul><li>PLC del fabricante</li><li>TIC-3111 temperatura de la mordaza</li><li>WI-3111 peso (TIC-3121 y WI-3121 en U312; TIC-3131 y WI-3131 en U313)</li></ul> | Pantalla de la llenadora; contador copiado al final del turno |
+| U321 | Inspección y empaque | <ul><li>XS-3213 detector de metales antes de la empacadora (PCC-7)</li><li>PLC del fabricante</li><li>PI-3211 vacío</li></ul> | Pantalla de la máquina |
+| U331 | Esterilización del envase y llenado | <ul><li>PLC del fabricante</li><li>TIC-3311 temperatura del baño de H₂O₂</li><li>AI-3312 concentración de H₂O₂ (PCC-9)</li><li>WI-3313 peso</li></ul> | Panel de U331 |
 
 ## Área A4 · Almacenamiento y despacho (celda PC41)
 
 | Unidad | Equipo | Condición | Módulos de control | Modo |
 |---|---|---|---|---|
-| U411 | Cámara fría de yogurts | 2 a 4 °C, reposo de 12 h como mínimo | TIC-4111 · TR-4111 registrador | B |
+| U411 | Cámara fría de yogurts | 2 a 4 °C, reposo de 12 h como mínimo | <ul><li>TIC-4111</li><li>TR-4111 registrador</li></ul> | B |
 | U412 | Muelle de despacho | Camión refrigerado de 2 a 6 °C (yogurts y quesos); camión seco (UHT) | — | D |
 | U413 | Bodega de leche UHT | Temperatura ambiente, lote retenido hasta su liberación | — | B |
-| U414 | Cámara fría de quesos | 2 a 4 °C, reposo de 12 h | TIC-4141 · TR-4141 registrador | B |
+| U414 | Cámara fría de quesos | 2 a 4 °C, reposo de 12 h | <ul><li>TIC-4141</li><li>TR-4141 registrador</li></ul> | B |
 
 Los registradores de las cámaras se descargan cada semana; no hay monitoreo en línea.
 
@@ -251,7 +251,7 @@ Los registradores de las cámaras se descargan cada semana; no hay monitoreo en 
 
 | Unidad | Equipo | Módulos de control | Dónde se ve |
 |---|---|---|---|
-| U901 | Estación CIP central con cuatro tanques: agua recuperada (T1), soda NaOH 0,5 a 2 % (T2), ácido HNO₃ 0,5 a 1,5 % (T3) y agua de enjuague a 90 a 95 °C (T4) | LI-9011 a LI-9014 · TI-9012 a TI-9014 · TM-9012 y TM-9013 titulación manual · XV-9011A/B a XV-9014A/B · HV-9018 agua de red · P-9011 impulsión · E-9011 calentador con TCV-9014 (vapor) y TT-9015 · P-9012 retorno con TI-9011 · panel de conexiones con codos | PLC del fabricante; el SCADA del tronco lee el programa y TT-9015 |
+| U901 | Estación CIP central con cuatro tanques: agua recuperada (T1), soda NaOH 0,5 a 2 % (T2), ácido HNO₃ 0,5 a 1,5 % (T3) y agua de enjuague a 90 a 95 °C (T4) | <ul><li>LI-9011 a LI-9014</li><li>TI-9012 a TI-9014</li><li>TM-9012 y TM-9013 titulación manual</li><li>XV-9011A/B a XV-9014A/B</li><li>HV-9018 agua de red</li><li>P-9011 impulsión</li><li>E-9011 calentador con TCV-9014 (vapor) y TT-9015</li><li>P-9012 retorno con TI-9011</li><li>Panel de conexiones con codos</li></ul> | PLC del fabricante; el SCADA del tronco lee el programa y TT-9015 |
 | U905 | Manejo de suero (dulce de quesos y ácido del griego) | — | — |
 
 Además, la planta tiene servicios de vapor, frío (NH₃ y glicol), aire comprimido, tratamiento de agua y PTAR, que aparecen en los diagramas de proceso como servicios compartidos.
