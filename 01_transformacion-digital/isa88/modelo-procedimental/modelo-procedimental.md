@@ -279,12 +279,6 @@ stateDiagram-v2
 | Stopped | Terminó antes de tiempo, de forma ordenada | Se suspende el lote para hacer limpieza |
 | Aborted | Terminó de inmediato por emergencia; el lote queda retenido | Desvío continuo en el tratamiento térmico |
 
-El diagrama muestra los estados estables. La norma también define estados transitorios (Pausing, Holding, Restarting, Stopping y Aborting), en los que la fase ejecuta su lógica para llegar al estado siguiente de forma segura; por ejemplo, en Holding el fermentador cierra la válvula de agua caliente antes de quedar en Held.
-
-**Modos.** Automático (el procedimiento ordena las fases según la receta), semiautomático (el operador confirma cada paso) y manual (mando individual de los módulos de control, solo para mantenimiento, con los enclavamientos activos).
-
-**En la empresa base** no existe este modelo de estados: las fases las ejecuta el operador, y solo los tratamientos térmicos tienen una reacción automática (las válvulas de desvío FDV). Implementar estados, comandos y modos en el PLC y el SCADA es parte de la propuesta de automatización.
-
 ## 9. Recursos compartidos y reglas de uso
 
 | Recurso | Quién lo usa | Regla en la empresa base |
