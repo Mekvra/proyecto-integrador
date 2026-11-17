@@ -1,6 +1,6 @@
 # Modelo procedimental ISA-88
 
-El modelo procedimental responde **¿qué acciones ejecuto?** Describe cómo se fabrica un lote con los equipos del [modelo físico](../modelo-fisico/modelo-fisico.md). Antes se presenta el **modelo de proceso**, que describe lo que le pasa al producto sin mencionar equipos y es la base de la receta general.
+Ya que el modelo procedimental responde a qué acciones se ejecutan en la planta, este documento describe cómo se fabrica un lote con los equipos del [modelo físico](../modelo-fisico/modelo-fisico.md). Antes de eso se presenta el **modelo de proceso**, que describe lo que le ocurre al producto sin mencionar los equipos y que es la base de la receta general.
 
 ```mermaid
 flowchart LR
