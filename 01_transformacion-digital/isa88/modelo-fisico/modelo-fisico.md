@@ -18,17 +18,6 @@
 
 **Tags de instrumentos (ANSI/ISA-5.1).** La primera letra es la variable y las siguientes la función. `T` temperatura, `P` presión, `L` nivel, `F` caudal, `W` peso, `S` velocidad, `A` análisis, `X` detector de metales, `H` mando manual. `I` indica, `T` transmite, `C` controla, `R` registra, `S` interruptor, `V` válvula. `TM` es una toma de muestra manual. El número repite el de la unidad: TIC-2111 es el controlador de temperatura de U211.
 
-**Modo de operación de cada unidad.** B por lotes (batch), C continuo y D discreto.
-
-**Dónde se ve cada módulo de control.** Es lo que muestra el nivel de automatización de la planta, y sale del símbolo del P&ID:
-
-| Símbolo | Significado |
-|---|---|
-| Círculo simple | En campo: se lee en el mismo equipo |
-| Círculo con una línea | En el SCADA de la sala de control (solo tronco común y CIP) |
-| Círculo con doble línea | En el panel local del equipo o en un controlador autónomo |
-| Rombo en un cuadro | PLC: con línea simple el PLC-100 del tronco común; con doble línea el PLC propio de una máquina (fabricante) |
-
 ## Vista general
 
 ```mermaid
