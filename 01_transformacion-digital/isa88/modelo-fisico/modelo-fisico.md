@@ -72,8 +72,6 @@ flowchart LR
     A9 --> PC90["PC90 · Limpieza y suero"]
 ```
 
-Las celdas de A1 y A2 son las del documento de los P&ID. Las de A3, A4 y A9 salen directamente del código de sus unidades (U311 es área 3, celda 1).
-
 ## Área A1 · Tronco común
 
 Es compartida por las tres líneas. Recibe toda la leche, la estandariza y la pasteuriza en flujo continuo, y la deja en un silo por línea. Es la única parte de la planta con PLC central (PLC-100) y SCADA con historiador.
