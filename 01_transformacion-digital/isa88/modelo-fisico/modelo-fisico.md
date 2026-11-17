@@ -265,5 +265,3 @@ Además, la planta tiene servicios de vapor, frío (NH₃ y glicol), aire compri
 | PLC del fabricante sin red | U121, U202, U216, U232, U233, U311 a U313, U321, U331 |
 | Controladores autónomos en panel local | U201, fermentadores U211 a U218, U215, enfriador de U216, E-2210, tinas U221, hiladora U223, U224, U231, cámaras U411 y U414 |
 | Manual | Aprobación de la cisterna, estandarización de grasa, corte de la fermentación, pH de hilado, dosificación de fruta y crema, paletizado |
-
-Fuentes: *Diagramas P&ID de la empresa base* y su documento explicativo, *Recetas y procesos de la planta* (sección de equipos y códigos) y *Comunicación y visualización de los datos en la empresa base (ISA-95)*.
