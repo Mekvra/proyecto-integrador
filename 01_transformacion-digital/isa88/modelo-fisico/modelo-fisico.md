@@ -10,8 +10,6 @@
 | Módulo de equipo | Grupo de dispositivos que cumple una función dentro de una unidad | Por ejemplo, el control térmico de la camisa del fermentador |
 | Módulo de control | Instrumento, válvula, motor o lazo individual | Por ejemplo, el lazo TIC-2111 con su válvula TCV-2111 |
 
-Este modelo describe la **empresa base**. Los equipos, capacidades y tags son los de las recetas y los P&ID del proyecto.
-
 ## Convenciones
 
 **Código de los equipos.** `U` + área + celda + número. Por ejemplo, **U211** es el área 2, la celda 1 (yogurts) y la unidad 1, el primer fermentador. Las letras A, B y C distinguen equipos iguales (U123A, U221C). El mismo código se usa en las recetas, los P&ID, el documento ISA-95 y el modelo de Tecnomatix.
