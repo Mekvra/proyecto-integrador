@@ -68,5 +68,3 @@ Procedimientos de unidad en orden, con sus fases y los valores de esta receta. A
 | PCC-2 | Pasteurización de la leche a 75 °C por 15 s |
 | PCC-8 | Esterilización UHT a 137 °C por 4 s |
 | PCC-9 | Esterilización del envase con H₂O₂ (envasado aséptico) |
-
-Valores de diseño del proyecto; no son mediciones de planta.

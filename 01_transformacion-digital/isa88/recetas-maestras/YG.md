@@ -74,5 +74,3 @@ Procedimientos de unidad en orden, con sus fases y los valores de esta receta. A
 | PCC-3 | Pasteurización de la crema a 85 °C por 15 s |
 | PCC-4 | Tratamiento de la base a 92 °C por 5 min |
 | PCC-5 | Detector de metales antes de las llenadoras de yogurt |
-
-Valores de diseño del proyecto; no son mediciones de planta.

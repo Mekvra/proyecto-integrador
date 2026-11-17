@@ -74,5 +74,3 @@ Procedimientos de unidad en orden, con sus fases y los valores de esta receta. A
 | PCC-2 | Pasteurización de la leche a 75 °C por 15 s |
 | PCC-3 | Pasteurización de la crema a 85 °C por 15 s |
 | PCC-7 | Detector de metales antes de la empacadora de quesos |
-
-Valores de diseño del proyecto; no son mediciones de planta.

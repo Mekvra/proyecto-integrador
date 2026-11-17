@@ -80,5 +80,3 @@ Procedimientos de unidad en orden, con sus fases y los valores de esta receta. A
 | PCC-4 | Tratamiento de la base a 92 °C por 5 min |
 | PCC-5 | Detector de metales antes de las llenadoras de yogurt |
 | PCC-6 | Preparado de fruta: certificado, envase íntegro, máximo 24 h a 8 °C o menos |
-
-Valores de diseño del proyecto; no son mediciones de planta.
