@@ -294,5 +294,3 @@ stateDiagram-v2
 | Muelle de despacho U412 | Las tres líneas | Yogurts y quesos en camión refrigerado; leche UHT en camión seco |
 
 **Orden de campaña.** Yogurts: natural, griego y fresa, para que ningún producto sin azúcar reciba arrastre de azúcar o de fruta. Quesos: mozzarella, quesillo y doble crema, de menor a mayor grasa. Leche UHT: entera, descremada y chocolate, porque el cacao va al final.
-
-Fuentes: *Recetas y procesos de la planta* (procedimientos, parámetros, CIP, PCC y tiempos), *Diagramas P&ID de la empresa base* (unidades y módulos) y *Comunicación y visualización de los datos en la empresa base (ISA-95)* (estado actual del control).
