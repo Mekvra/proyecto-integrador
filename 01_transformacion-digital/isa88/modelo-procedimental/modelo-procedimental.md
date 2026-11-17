@@ -97,8 +97,6 @@ Un mismo procedimiento sirve para las tres referencias. Lo que cambia entre ella
 | UP-Y8 Envasado | <ul><li>U311, U312 (YF, YN)</li><li>U313 (YG)</li></ul> | ✓ | ✓ | ✓ |
 | UP-Y9 Cámara | U411 | ✓ | ✓ | ✓ |
 
-Esta numeración sigue las etapas del documento *Recetas y procesos de la planta*. No coincide con la de las recetas de yogurts v1.8, que agrupaban las etapas de otra forma.
-
 ```mermaid
 flowchart TD
     LB["Lote de leche base liberado<br/>U123A/B (YF, YN) · U123C (YG)"] --> Y1["UP-Y1 Formulación<br/>U201"]
