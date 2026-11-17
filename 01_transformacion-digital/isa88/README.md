@@ -30,8 +30,6 @@ flowchart TD
     EJ --> RL["Registro de lote<br/>hoy: planillas y Excel"]
 ```
 
-En la empresa base la receta de control es una **orden de lote impresa** y su ejecución depende del operador y de los controladores locales de cada equipo. Pasar esa cadena a un MES y a fases ejecutadas por PLC es parte de la propuesta de automatización.
-
 ## Bases de diseño
 
 | Dato | Valor |
