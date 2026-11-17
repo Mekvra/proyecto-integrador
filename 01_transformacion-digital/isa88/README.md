@@ -42,10 +42,6 @@ flowchart TD
 | Referencias | 9: tres por línea |
 | Ampliación prevista | Contrato a un año para recibir 30.000 L/día más, destinados a yogurts o quesos |
 
-Los litros por día salen de los lotes por semana divididos entre 6 días. Por ejemplo, en yogurts 35 × 10.000 L ÷ 6 ≈ 58.300 L/día. La suma de las tres líneas da ≈ 151.700 L/día; la diferencia de 1,1 % con los 150.000 L/día se acepta como variación normal del acopio.
-
-Todas las cantidades son **valores de diseño** del grupo, tomados de la normativa colombiana, el Codex y la bibliografía técnica (Tetra Pak). La empresa es un caso de estudio y ninguna cifra es una medición de planta.
-
 ## Norma de referencia
 
 ANSI/ISA-88.00.01 (IEC 61512-1), *Batch Control Part 1: Models and Terminology*. Los símbolos y las letras de los instrumentos siguen ANSI/ISA-5.1.
