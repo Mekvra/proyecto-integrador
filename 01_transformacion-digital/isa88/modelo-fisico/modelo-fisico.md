@@ -14,9 +14,40 @@
 
 **Código de los equipos.** `U` + área + celda + número. Por ejemplo, **U211** es el área 2, la celda 1 (yogurts) y la unidad 1, el primer fermentador. Las letras A, B y C distinguen equipos iguales (U123A, U221C). El mismo código se usa en las recetas, los P&ID, el documento ISA-95 y el modelo de Tecnomatix.
 
-**Otros prefijos de los P&ID.** `E` intercambiador, `P` bomba, `H` homogeneizador, `M` motor de agitador, `EM` módulo de equipo con nombre propio en el P&ID.
+**Otros prefijos de los P&ID**
 
-**Tags de instrumentos (ANSI/ISA-5.1).** La primera letra es la variable y las siguientes la función. `T` temperatura, `P` presión, `L` nivel, `F` caudal, `W` peso, `S` velocidad, `A` análisis, `X` detector de metales, `H` mando manual. `I` indica, `T` transmite, `C` controla, `R` registra, `S` interruptor, `V` válvula. `TM` es una toma de muestra manual. El número repite el de la unidad: TIC-2111 es el controlador de temperatura de U211.
+- `E`: intercambiador
+- `P`: bomba
+- `H`: homogeneizador
+- `M`: motor de agitador
+- `EM`: módulo de equipo con nombre propio en el P&ID
+
+**Tags de instrumentos (ANSI/ISA-5.1)**
+
+La primera letra es la variable y las siguientes la función. El número repite el de la unidad: TIC-2111 es el controlador de temperatura de U211.
+
+Primera letra (variable):
+
+- `T`: temperatura
+- `P`: presión
+- `L`: nivel
+- `F`: caudal
+- `W`: peso
+- `S`: velocidad
+- `A`: análisis
+- `X`: detector de metales
+- `H`: mando manual
+
+Letras siguientes (función):
+
+- `I`: indica
+- `T`: transmite
+- `C`: controla
+- `R`: registra
+- `S`: interruptor
+- `V`: válvula
+
+Además, `TM` es una toma de muestra manual.
 
 ## Vista general
 
